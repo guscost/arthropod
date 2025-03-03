@@ -2,7 +2,7 @@ import { Link, Route, Switch } from "wouter";
 
 import { Button } from "@/components/ui/button";
 import { Title } from "@/components/title";
-import { CardsDemo } from "@/components/demo-cards/index";
+import { SinkPage } from "@/components/demo-v4/index";
 import { FormDemo } from "@/components/demo-form/index";
 import { KanbanBoard } from "@/components/demo-kanban/KanbanBoard";
 
@@ -41,7 +41,7 @@ export function App() {
           <FormDemo />
         </Route>
         <Route path="*">
-          <CardsDemo />
+          <SinkPage />
         </Route>
       </Switch>
     </div>

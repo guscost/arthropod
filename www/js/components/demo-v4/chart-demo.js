@@ -1,0 +1,9 @@
+define(["require", "exports", "react/jsx-runtime", "@/components/demo-v4/chart-area-demo", "@/components/demo-v4/chart-bar-demo", "@/components/demo-v4/chart-line-demo"], function (require, exports, jsx_runtime_1, chart_area_demo_1, chart_bar_demo_1, chart_line_demo_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ChartDemo = ChartDemo;
+    function ChartDemo() {
+        return ((0, jsx_runtime_1.jsxs)("div", { className: "flex w-full max-w-screen-xl flex-col flex-wrap gap-4 *:data-[slot=card]:flex-1 md:flex-row", children: [(0, jsx_runtime_1.jsx)(chart_area_demo_1.ChartAreaDemo, {}), (0, jsx_runtime_1.jsx)(chart_bar_demo_1.ChartBarDemo, {}), (0, jsx_runtime_1.jsx)(chart_line_demo_1.ChartLineDemo, {})] }));
+    }
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2hhcnQtZGVtby5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9jb21wb25lbnRzL2RlbW8tdjQvY2hhcnQtZGVtby50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0lBSUEsOEJBUUM7SUFSRCxTQUFnQixTQUFTO1FBQ3ZCLE9BQU8sQ0FDTCxpQ0FBSyxTQUFTLEVBQUMsNEZBQTRGLGFBQ3pHLHVCQUFDLCtCQUFhLEtBQUcsRUFDakIsdUJBQUMsNkJBQVksS0FBRyxFQUNoQix1QkFBQywrQkFBYSxLQUFHLElBQ2IsQ0FDUCxDQUFDO0lBQ0osQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENoYXJ0QXJlYURlbW8gfSBmcm9tIFwiQC9jb21wb25lbnRzL2RlbW8tdjQvY2hhcnQtYXJlYS1kZW1vXCI7XG5pbXBvcnQgeyBDaGFydEJhckRlbW8gfSBmcm9tIFwiQC9jb21wb25lbnRzL2RlbW8tdjQvY2hhcnQtYmFyLWRlbW9cIjtcbmltcG9ydCB7IENoYXJ0TGluZURlbW8gfSBmcm9tIFwiQC9jb21wb25lbnRzL2RlbW8tdjQvY2hhcnQtbGluZS1kZW1vXCI7XG5cbmV4cG9ydCBmdW5jdGlvbiBDaGFydERlbW8oKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IHctZnVsbCBtYXgtdy1zY3JlZW4teGwgZmxleC1jb2wgZmxleC13cmFwIGdhcC00ICo6ZGF0YS1bc2xvdD1jYXJkXTpmbGV4LTEgbWQ6ZmxleC1yb3dcIj5cbiAgICAgIDxDaGFydEFyZWFEZW1vIC8+XG4gICAgICA8Q2hhcnRCYXJEZW1vIC8+XG4gICAgICA8Q2hhcnRMaW5lRGVtbyAvPlxuICAgIDwvZGl2PlxuICApO1xufVxuIl19

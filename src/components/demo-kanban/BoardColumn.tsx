@@ -88,7 +88,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
         </Button>
         <span className="ml-auto"> {column.title}</span>
       </CardHeader>
-      <ScrollArea>
+      <ScrollArea className="overflow-hidden">
         <CardContent className="flex flex-grow flex-col gap-2 p-2">
           <SortableContext items={tasksIds}>
             {tasks.map((task) => (
