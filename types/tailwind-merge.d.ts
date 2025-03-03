@@ -574,7 +574,7 @@ declare const getDefaultConfig: () => {
     ];
     readonly radius: readonly [(value: string) => boolean];
     readonly shadow: readonly [(value: string) => boolean];
-    readonly spacing: readonly [(value: string) => boolean];
+    readonly spacing: readonly ["px", (value: string) => boolean];
     readonly text: readonly [(value: string) => boolean];
     readonly tracking: readonly [
       "tighter",
@@ -879,7 +879,6 @@ declare const getDefaultConfig: () => {
       {
         readonly inset: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -896,7 +895,6 @@ declare const getDefaultConfig: () => {
       {
         readonly "inset-x": readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -913,7 +911,6 @@ declare const getDefaultConfig: () => {
       {
         readonly "inset-y": readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -930,7 +927,6 @@ declare const getDefaultConfig: () => {
       {
         readonly start: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -947,7 +943,6 @@ declare const getDefaultConfig: () => {
       {
         readonly end: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -964,7 +959,6 @@ declare const getDefaultConfig: () => {
       {
         readonly top: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -981,7 +975,6 @@ declare const getDefaultConfig: () => {
       {
         readonly right: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -998,7 +991,6 @@ declare const getDefaultConfig: () => {
       {
         readonly bottom: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -1015,7 +1007,6 @@ declare const getDefaultConfig: () => {
       {
         readonly left: readonly [
           (value: string) => boolean,
-          "px",
           "full",
           "auto",
           (value: string) => boolean,
@@ -1053,9 +1044,9 @@ declare const getDefaultConfig: () => {
           (value: string) => boolean,
           "full",
           "auto",
-          (value: string) => boolean,
-          (value: string) => boolean,
           ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
           ThemeGetter,
         ];
       },
@@ -1505,7 +1496,11 @@ declare const getDefaultConfig: () => {
      */
     readonly p: readonly [
       {
-        readonly p: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly p: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1514,7 +1509,11 @@ declare const getDefaultConfig: () => {
      */
     readonly px: readonly [
       {
-        readonly px: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly px: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1523,7 +1522,11 @@ declare const getDefaultConfig: () => {
      */
     readonly py: readonly [
       {
-        readonly py: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly py: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1532,7 +1535,11 @@ declare const getDefaultConfig: () => {
      */
     readonly ps: readonly [
       {
-        readonly ps: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly ps: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1541,7 +1548,11 @@ declare const getDefaultConfig: () => {
      */
     readonly pe: readonly [
       {
-        readonly pe: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly pe: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1550,7 +1561,11 @@ declare const getDefaultConfig: () => {
      */
     readonly pt: readonly [
       {
-        readonly pt: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly pt: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1559,7 +1574,11 @@ declare const getDefaultConfig: () => {
      */
     readonly pr: readonly [
       {
-        readonly pr: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly pr: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1568,7 +1587,11 @@ declare const getDefaultConfig: () => {
      */
     readonly pb: readonly [
       {
-        readonly pb: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly pb: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1577,7 +1600,11 @@ declare const getDefaultConfig: () => {
      */
     readonly pl: readonly [
       {
-        readonly pl: (string | ThemeGetter | ((value: string) => boolean))[];
+        readonly pl: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
       },
     ];
     /**
@@ -1587,7 +1614,6 @@ declare const getDefaultConfig: () => {
     readonly m: readonly [
       {
         readonly m: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1602,7 +1628,6 @@ declare const getDefaultConfig: () => {
     readonly mx: readonly [
       {
         readonly mx: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1617,7 +1642,6 @@ declare const getDefaultConfig: () => {
     readonly my: readonly [
       {
         readonly my: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1632,7 +1656,6 @@ declare const getDefaultConfig: () => {
     readonly ms: readonly [
       {
         readonly ms: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1647,7 +1670,6 @@ declare const getDefaultConfig: () => {
     readonly me: readonly [
       {
         readonly me: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1662,7 +1684,6 @@ declare const getDefaultConfig: () => {
     readonly mt: readonly [
       {
         readonly mt: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1677,7 +1698,6 @@ declare const getDefaultConfig: () => {
     readonly mr: readonly [
       {
         readonly mr: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1692,7 +1712,6 @@ declare const getDefaultConfig: () => {
     readonly mb: readonly [
       {
         readonly mb: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1707,7 +1726,6 @@ declare const getDefaultConfig: () => {
     readonly ml: readonly [
       {
         readonly ml: readonly [
-          "px",
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1752,10 +1770,6 @@ declare const getDefaultConfig: () => {
      */
     readonly "space-y-reverse": readonly ["space-y-reverse"];
     /**
-     * Width
-     * @see https://tailwindcss.com/docs/width
-     */
-    /**
      * Size
      * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
      */
@@ -1764,7 +1778,6 @@ declare const getDefaultConfig: () => {
         readonly size: readonly [
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1781,6 +1794,10 @@ declare const getDefaultConfig: () => {
         ];
       },
     ];
+    /**
+     * Width
+     * @see https://tailwindcss.com/docs/width
+     */
     readonly w: readonly [
       {
         readonly w: readonly [
@@ -1788,7 +1805,6 @@ declare const getDefaultConfig: () => {
           "screen",
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1817,7 +1833,6 @@ declare const getDefaultConfig: () => {
           "none",
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1850,7 +1865,6 @@ declare const getDefaultConfig: () => {
           },
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1877,7 +1891,6 @@ declare const getDefaultConfig: () => {
           "screen",
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1905,7 +1918,6 @@ declare const getDefaultConfig: () => {
           "none",
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -1932,7 +1944,6 @@ declare const getDefaultConfig: () => {
           "screen",
           (value: string) => boolean,
           "auto",
-          "px",
           "full",
           "dvw",
           "dvh",
@@ -2087,9 +2098,9 @@ declare const getDefaultConfig: () => {
     readonly leading: readonly [
       {
         readonly leading: readonly [
-          (value: string) => boolean,
-          (value: string) => boolean,
           ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
           ThemeGetter,
         ];
       },
@@ -2276,7 +2287,6 @@ declare const getDefaultConfig: () => {
     readonly indent: readonly [
       {
         readonly indent: readonly [
-          "px",
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -4065,7 +4075,6 @@ declare const getDefaultConfig: () => {
         readonly translate: readonly [
           (value: string) => boolean,
           "full",
-          "px",
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -4081,7 +4090,6 @@ declare const getDefaultConfig: () => {
         readonly "translate-x": readonly [
           (value: string) => boolean,
           "full",
-          "px",
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -4097,7 +4105,6 @@ declare const getDefaultConfig: () => {
         readonly "translate-y": readonly [
           (value: string) => boolean,
           "full",
-          "px",
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -4113,7 +4120,6 @@ declare const getDefaultConfig: () => {
         readonly "translate-z": readonly [
           (value: string) => boolean,
           "full",
-          "px",
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
