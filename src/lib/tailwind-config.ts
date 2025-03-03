@@ -149,6 +149,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  touch-action: manipulation;
+}
 `;
   document.head.appendChild(globalStyles);
 })();

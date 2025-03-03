@@ -7,8 +7,12 @@ import {
   ShieldAlertIcon,
 } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/new-york-v4/ui/alert";
+import { Button } from "@/registry/new-york-v4/ui/button";
 
 export function AlertDemo() {
   return (
@@ -88,7 +92,9 @@ export function AlertDemo() {
       </Alert>
       <Alert>
         <CheckCircle2Icon />
-        <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
+        <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
+          The selected emails have been marked as spam.
+        </AlertTitle>
         <Button
           size="sm"
           variant="outline"

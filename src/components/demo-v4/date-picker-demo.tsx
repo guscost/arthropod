@@ -6,13 +6,13 @@ import { CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar-v9";
+import { Button } from "@/registry/new-york-v4/ui/button";
+import { Calendar } from "@/registry/new-york-v4/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/registry/new-york-v4/ui/popover";
 
 export function DatePickerDemo() {
   return (
@@ -36,7 +36,7 @@ function DatePickerSimple() {
             !date && "text-muted-foreground",
           )}
         >
-          <CalendarIcon />
+          <CalendarIcon className="text-muted-foreground" />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
@@ -69,7 +69,7 @@ function DatePickerWithRange() {
             !date && "text-muted-foreground",
           )}
         >
-          <CalendarIcon />
+          <CalendarIcon className="text-muted-foreground" />
           {date?.from ? (
             date.to ? (
               <>

@@ -1,15 +1,15 @@
 import { InfoIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/new-york-v4/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/registry/new-york-v4/ui/tooltip";
 
 export function TooltipDemo() {
   return (
-    <div className="flex flex-col gap-6 md:flex-row">
+    <div className="flex flex-wrap items-start gap-4">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Hover</Button>

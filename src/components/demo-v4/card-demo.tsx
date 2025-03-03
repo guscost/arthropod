@@ -1,8 +1,13 @@
+import Image from "next/image";
 import { BathIcon, BedIcon, LandPlotIcon } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar";
+import { Badge } from "@/registry/new-york-v4/ui/badge";
+import { Button } from "@/registry/new-york-v4/ui/button";
 import {
   Card,
   CardContent,
@@ -10,15 +15,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/registry/new-york-v4/ui/card";
+import { Input } from "@/registry/new-york-v4/ui/input";
+import { Label } from "@/registry/new-york-v4/ui/label";
 
 export function CardDemo() {
   return (
     <div className="flex flex-col items-start gap-4">
-      <Card>
-        <form>
+      <form>
+        <Card>
           <CardHeader>
             <CardTitle>Login to your account</CardTitle>
             <CardDescription>
@@ -64,8 +69,8 @@ export function CardDemo() {
               </a>
             </div>
           </CardFooter>
-        </form>
-      </Card>
+        </Card>
+      </form>
       <Card>
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
@@ -111,8 +116,8 @@ export function CardDemo() {
           <CardTitle>Is this an image?</CardTitle>
           <CardDescription>This is a card with an image.</CardDescription>
         </CardHeader>
-        <CardContent className="p-0">
-          <img
+        <CardContent className="px-0">
+          <Image
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
             alt="Photo by Drew Beamer"
             className="aspect-video object-cover"
@@ -120,7 +125,7 @@ export function CardDemo() {
             height={500}
           />
         </CardContent>
-        <CardFooter className="flex items-center gap-2 p-6">
+        <CardFooter className="flex items-center gap-2">
           <Badge variant="outline">
             <BedIcon /> 4
           </Badge>
@@ -133,6 +138,54 @@ export function CardDemo() {
           <div className="ml-auto font-medium tabular-nums">$135,000</div>
         </CardFooter>
       </Card>
+      <div className="flex w-full flex-wrap items-start gap-8 md:*:data-[slot=card]:basis-1/4">
+        <Card>
+          <CardContent className="text-sm">Content Only</CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header Only</CardTitle>
+            <CardDescription>
+              This is a card with a header and a description.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header and Content</CardTitle>
+            <CardDescription>
+              This is a card with a header and a content.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+        </Card>
+        <Card>
+          <CardFooter className="text-sm">Footer Only</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
+              This is a card with a header and a footer.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+        <Card>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Header + Footer</CardTitle>
+            <CardDescription>
+              This is a card with a header and a footer.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+      </div>
     </div>
   );
 }

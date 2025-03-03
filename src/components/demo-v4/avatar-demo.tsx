@@ -1,8 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar";
 
 export function AvatarDemo() {
   return (
-    <div className="flex flex-col items-center gap-4 md:flex-row">
+    <div className="flex flex-row flex-wrap items-center gap-4">
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>

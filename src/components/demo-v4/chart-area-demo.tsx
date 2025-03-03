@@ -10,13 +10,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/registry/new-york-v4/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/registry/new-york-v4/ui/chart";
 
 export const description = "A simple area chart";
 

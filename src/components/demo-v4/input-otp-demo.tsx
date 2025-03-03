@@ -8,8 +8,8 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { Label } from "@/components/ui/label";
+} from "@/registry/new-york-v4/ui/input-otp";
+import { Label } from "@/registry/new-york-v4/ui/label";
 
 export function InputOTPDemo() {
   return (
@@ -98,10 +98,10 @@ function InputOTPWithSpacing() {
       <Label htmlFor="with-spacing">With Spacing</Label>
       <InputOTP id="with-spacing" maxLength={6}>
         <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
-          <InputOTPSlot index={0} />
-          <InputOTPSlot index={1} />
-          <InputOTPSlot index={2} />
-          <InputOTPSlot index={3} />
+          <InputOTPSlot index={0} aria-invalid="true" />
+          <InputOTPSlot index={1} aria-invalid="true" />
+          <InputOTPSlot index={2} aria-invalid="true" />
+          <InputOTPSlot index={3} aria-invalid="true" />
         </InputOTPGroup>
       </InputOTP>
     </div>

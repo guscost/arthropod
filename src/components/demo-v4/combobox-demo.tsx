@@ -9,8 +9,12 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/new-york-v4/ui/avatar";
+import { Button } from "@/registry/new-york-v4/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -19,12 +23,12 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
+} from "@/registry/new-york-v4/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/registry/new-york-v4/ui/popover";
 
 const frameworks = [
   {
@@ -108,7 +112,7 @@ type Timezone = (typeof timezones)[number];
 
 export function ComboboxDemo() {
   return (
-    <div className="flex w-full flex-col items-start gap-4 md:flex-row">
+    <div className="flex w-full flex-wrap items-start gap-4">
       <FrameworkCombobox frameworks={[...frameworks]} />
       <UserCombobox users={[...users]} selectedUserId={users[0].id} />
       <TimezoneCombobox

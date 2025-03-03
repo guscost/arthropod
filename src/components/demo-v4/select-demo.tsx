@@ -14,11 +14,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/registry/new-york-v4/ui/select";
 
 export function SelectDemo() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-start gap-4">
       <Select>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Select a fruit" />

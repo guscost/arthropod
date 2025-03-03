@@ -1,10 +1,13 @@
 import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/new-york-v4/ui/toggle-group";
 
 export function ToggleGroupDemo() {
   return (
-    <div className="flex flex-col items-center gap-6 md:flex-row">
+    <div className="flex flex-wrap items-start gap-4">
       <ToggleGroup type="multiple">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <BoldIcon />

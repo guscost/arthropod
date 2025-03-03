@@ -1,7 +1,8 @@
 import * as React from "react";
+import Image from "next/image";
 
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area";
+import { Separator } from "@/registry/new-york-v4/ui/separator";
 
 export function ScrollAreaDemo() {
   return (
@@ -56,7 +57,7 @@ function ScrollAreaHorizontalDemo() {
         {works.map((artwork) => (
           <figure key={artwork.artist} className="shrink-0">
             <div className="overflow-hidden rounded-md">
-              <img
+              <Image
                 src={artwork.art}
                 alt={`Photo by ${artwork.artist}`}
                 className="aspect-[3/4] h-fit w-fit object-cover"
