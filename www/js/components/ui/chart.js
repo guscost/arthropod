@@ -54,7 +54,7 @@ ${colorConfig
                 return null;
             }
             const [item] = payload;
-            const key = `${labelKey || item.dataKey || item.name || "value"}`;
+            const key = `${labelKey || (item === null || item === void 0 ? void 0 : item.dataKey) || (item === null || item === void 0 ? void 0 : item.name) || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const value = !labelKey && typeof label === "string"
                 ? ((_a = config[label]) === null || _a === void 0 ? void 0 : _a.label) || label
