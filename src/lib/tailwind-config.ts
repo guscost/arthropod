@@ -3,386 +3,156 @@
   const globalStyles = document.createElement("style");
   globalStyles.type = "text/tailwindcss";
   globalStyles.innerHTML = `/* global styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-  touch-action: manipulation;
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
+
+html {
+  touch-action: manipulation;
+}
 `;
   document.head.appendChild(globalStyles);
 })();
-
-// Set the tailwind v3 config on the window object
-(window as any).tailwind.config = {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-
-  // Interpolate the tailwindcss-animate plugin
-  plugins: [
-    (window as any).tailwind.plugin(
-      ({ addUtilities, matchUtilities, theme }: any) => {
-        addUtilities({
-          "@keyframes enter": theme("keyframes.enter"),
-          "@keyframes exit": theme("keyframes.exit"),
-          ".animate-in": {
-            animationName: "enter",
-            animationDuration: theme("animationDuration.DEFAULT"),
-            "--tw-enter-opacity": "initial",
-            "--tw-enter-scale": "initial",
-            "--tw-enter-rotate": "initial",
-            "--tw-enter-translate-x": "initial",
-            "--tw-enter-translate-y": "initial",
-          },
-          ".animate-out": {
-            animationName: "exit",
-            animationDuration: theme("animationDuration.DEFAULT"),
-            "--tw-exit-opacity": "initial",
-            "--tw-exit-scale": "initial",
-            "--tw-exit-rotate": "initial",
-            "--tw-exit-translate-x": "initial",
-            "--tw-exit-translate-y": "initial",
-          },
-        });
-        matchUtilities(
-          {
-            "fade-in": (value: any) => ({ "--tw-enter-opacity": value }),
-            "fade-out": (value: any) => ({ "--tw-exit-opacity": value }),
-          },
-          { values: theme("animationOpacity") },
-        );
-
-        matchUtilities(
-          {
-            "zoom-in": (value: any) => ({ "--tw-enter-scale": value }),
-            "zoom-out": (value: any) => ({ "--tw-exit-scale": value }),
-          },
-          { values: theme("animationScale") },
-        );
-
-        matchUtilities(
-          {
-            "spin-in": (value: any) => ({ "--tw-enter-rotate": value }),
-            "spin-out": (value: any) => ({ "--tw-exit-rotate": value }),
-          },
-          { values: theme("animationRotate") },
-        );
-
-        matchUtilities(
-          {
-            "slide-in-from-top": (value: any) => ({
-              "--tw-enter-translate-y": `-${value}`,
-            }),
-            "slide-in-from-bottom": (value: any) => ({
-              "--tw-enter-translate-y": value,
-            }),
-            "slide-in-from-left": (value: any) => ({
-              "--tw-enter-translate-x": `-${value}`,
-            }),
-            "slide-in-from-right": (value: any) => ({
-              "--tw-enter-translate-x": value,
-            }),
-            "slide-out-to-top": (value: any) => ({
-              "--tw-exit-translate-y": `-${value}`,
-            }),
-            "slide-out-to-bottom": (value: any) => ({
-              "--tw-exit-translate-y": value,
-            }),
-            "slide-out-to-left": (value: any) => ({
-              "--tw-exit-translate-x": `-${value}`,
-            }),
-            "slide-out-to-right": (value: any) => ({
-              "--tw-exit-translate-x": value,
-            }),
-          },
-          { values: theme("animationTranslate") },
-        );
-
-        matchUtilities(
-          { duration: (value: any) => ({ animationDuration: value }) },
-          {
-            values: Object.fromEntries(
-              Object.entries(theme("animationDuration")).filter(
-                ([key]) => key !== "DEFAULT",
-              ),
-            ),
-          },
-        );
-
-        matchUtilities(
-          { delay: (value: any) => ({ animationDelay: value }) },
-          { values: theme("animationDelay") },
-        );
-
-        matchUtilities(
-          { ease: (value: any) => ({ animationTimingFunction: value }) },
-          {
-            values: Object.fromEntries(
-              Object.entries(theme("animationTimingFunction")).filter(
-                ([key]) => key !== "DEFAULT",
-              ),
-            ),
-          },
-        );
-
-        addUtilities({
-          ".running": { animationPlayState: "running" },
-          ".paused": { animationPlayState: "paused" },
-        });
-
-        matchUtilities(
-          { "fill-mode": (value: any) => ({ animationFillMode: value }) },
-          { values: theme("animationFillMode") },
-        );
-
-        matchUtilities(
-          { direction: (value: any) => ({ animationDirection: value }) },
-          { values: theme("animationDirection") },
-        );
-
-        matchUtilities(
-          { repeat: (value: any) => ({ animationIterationCount: value }) },
-          { values: theme("animationRepeat") },
-        );
-      },
-      {
-        theme: {
-          extend: {
-            animationDelay: ({ theme }: any) => ({
-              ...theme("transitionDelay"),
-            }),
-            animationDuration: ({ theme }: any) => ({
-              0: "0ms",
-              ...theme("transitionDuration"),
-            }),
-            animationTimingFunction: ({ theme }: any) => ({
-              ...theme("transitionTimingFunction"),
-            }),
-            animationFillMode: {
-              none: "none",
-              forwards: "forwards",
-              backwards: "backwards",
-              both: "both",
-            },
-            animationDirection: {
-              normal: "normal",
-              reverse: "reverse",
-              alternate: "alternate",
-              "alternate-reverse": "alternate-reverse",
-            },
-            animationOpacity: ({ theme }: any) => ({
-              DEFAULT: 0,
-              ...theme("opacity"),
-            }),
-            animationTranslate: ({ theme }: any) => ({
-              DEFAULT: "100%",
-              ...theme("translate"),
-            }),
-            animationScale: ({ theme }: any) => ({
-              DEFAULT: 0,
-              ...theme("scale"),
-            }),
-            animationRotate: ({ theme }: any) => ({
-              DEFAULT: "30deg",
-              ...theme("rotate"),
-            }),
-            animationRepeat: {
-              0: "0",
-              1: "1",
-              infinite: "infinite",
-            },
-            keyframes: {
-              enter: {
-                from: {
-                  opacity: "var(--tw-enter-opacity, 1)",
-                  transform:
-                    "translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0))",
-                },
-              },
-              exit: {
-                to: {
-                  opacity: "var(--tw-exit-opacity, 1)",
-                  transform:
-                    "translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0))",
-                },
-              },
-            },
-          },
-        },
-      },
-    ),
-  ],
-};
