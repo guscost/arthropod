@@ -12,13 +12,13 @@ export function App() {
       <Title />
 
       <div className="flex gap-2 my-4">
-        <Link href="/">
+        <Link asChild href="/">
           <Button>Cards</Button>
         </Link>
-        <Link href="/form">
+        <Link asChild href="/form">
           <Button>Form</Button>
         </Link>
-        <Link href="/drag-n-drop">
+        <Link asChild href="/drag-n-drop">
           <Button>Drag 'n Drop</Button>
         </Link>
       </div>

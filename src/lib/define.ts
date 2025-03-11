@@ -72,10 +72,7 @@ const __MODULES__: {
       }
       name = [...absolutePath, ...relativeDep].join("/");
     } else {
-      name = name.replace(
-        /^@?\//,
-        document.location.pathname.split("/").slice(0, -1).join("/") + "/js/",
-      );
+      name = name.replace(/^@?\//, __ROOT_PATH__ + "/js/");
     }
     return name;
   },
@@ -134,10 +131,7 @@ const define = (...args: any) => {
           unmetDeps.includes(dep),
         )
       ) {
-        const dynamicScript = document.createElement("script");
-        dynamicScript.type = "text/javascript";
-        dynamicScript.src = dep + ".js";
-        document.body.appendChild(dynamicScript);
+        __LOAD_SCRIPT__(dep, true);
       }
     }
 
