@@ -1,4 +1,4 @@
-// Compiled types from react-day-picker 9.5.1
+// Compiled types from react-day-picker 9.6.2
 import {
   Context,
   CSSProperties,
@@ -16,6 +16,7 @@ import {
   MouseEventHandler,
   OptionHTMLAttributes,
   ThHTMLAttributes,
+  Ref,
 } from "react";
 
 declare const constructFromSymbol: unique symbol;
@@ -34,7 +35,7 @@ declare enum UI {
   Chevron = "chevron",
   /**
    * The grid cell with the day's date. Extended by {@link DayFlag} and
-   * {@link SelectionFlag}.
+   * {@link SelectionState}.
    */
   Day = "day",
   /** The button containing the formatted day's date, inside the grid cell. */
@@ -114,6 +115,29 @@ declare enum SelectionState {
   range_start = "range_start",
   /** The day is selected. */
   selected = "selected",
+}
+/** CSS classes used for animating months and captions. */
+/**
+ * Enum representing different animation states for transitioning between
+ * months.
+ */
+declare enum Animation {
+  /** The entering weeks when they appear before the exiting month. */
+  weeks_before_enter = "weeks_before_enter",
+  /** The exiting weeks when they disappear before the entering month. */
+  weeks_before_exit = "weeks_before_exit",
+  /** The entering weeks when they appear after the exiting month. */
+  weeks_after_enter = "weeks_after_enter",
+  /** The exiting weeks when they disappear after the entering month. */
+  weeks_after_exit = "weeks_after_exit",
+  /** The entering caption when it appears after the exiting month. */
+  caption_after_enter = "caption_after_enter",
+  /** The exiting caption when it disappears after the entering month. */
+  caption_after_exit = "caption_after_exit",
+  /** The entering caption when it appears before the exiting month. */
+  caption_before_enter = "caption_before_enter",
+  /** The exiting caption when it disappears before the entering month. */
+  caption_before_exit = "caption_before_exit",
 }
 /**
  * Deprecated UI elements and flags.
@@ -850,7 +874,7 @@ type ChevronProps = Parameters<typeof Chevron>[0];
  * the focus with they day.
  *
  * If you need to just change the content of the day cell, consider swapping the
- * `DayDate` component instead.
+ * `DayButton` component instead.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -1054,7 +1078,12 @@ type PreviousMonthButtonProps = Parameters<typeof PreviousMonthButton>[0];
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
-declare function Root(props: HTMLAttributes<HTMLDivElement>): JSX.Element;
+declare function Root(
+  props: {
+    /** Ref for root element used when `animate` is `true`. */
+    rootRef?: Ref<HTMLDivElement>;
+  } & HTMLAttributes<HTMLDivElement>,
+): JSX.Element;
 type RootProps = Parameters<typeof Root>[0];
 
 /**
@@ -1663,7 +1692,7 @@ type MonthChangeEventHandler = (month: Date) => void;
  *   };
  */
 type ClassNames = {
-  [key in UI | SelectionState | DayFlag]: string;
+  [key in UI | SelectionState | DayFlag | Animation]: string;
 };
 /**
  * The CSS styles to use for the {@link UI} elements, the {@link SelectionState}
@@ -2421,7 +2450,7 @@ interface PropsBase {
   /**
    * Show the outside days (days falling in the next or the previous month).
    *
-   * **Note:** when a broadcast {@link calendar} is set, this prop defaults to
+   * **Note:** when a {@link broadcastCalendar} is set, this prop defaults to
    * true.
    *
    * @see https://daypicker.dev/docs/customization#outside-days
@@ -2434,6 +2463,13 @@ interface PropsBase {
    * @see https://daypicker.dev/docs/customization#showweeknumber
    */
   showWeekNumber?: boolean;
+  /**
+   * Animate navigating between months.
+   *
+   * @since 9.6.0
+   * @see https://daypicker.dev/docs/navigation#animate
+   */
+  animate?: boolean;
   /**
    * Display the weeks in the month following the broadcast calendar. Setting
    * this prop will ignore {@link weekStartsOn} (always Monday) and
@@ -3092,18 +3128,20 @@ type InternalModifier =
   | SelectionState.selected;
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<"single">` instead.
+ * @deprecated This type will be removed. Use `SelectHandler<{mode: "single"}>`
+ *   instead.
  */
 type SelectSingleEventHandler = PropsSingle["onSelect"];
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<"multiple">`
- *   instead.
+ * @deprecated This type will be removed. Use `SelectHandler<{mode:
+ *   "multiple"}>` instead.
  */
 type SelectMultipleEventHandler = PropsMulti["onSelect"];
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<"range">` instead.
+ * @deprecated This type will be removed. Use `SelectHandler<{mode: "range"}>`
+ *   instead.
  */
 type SelectRangeEventHandler = PropsRange["onSelect"];
 /**
@@ -3686,6 +3724,7 @@ declare class TZDate extends Date {
 }
 
 export {
+  Animation,
   Button,
   type ButtonProps,
   CalendarDay,
