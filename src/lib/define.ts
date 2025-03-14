@@ -122,7 +122,7 @@ const define = (...args: any) => {
     const unmetDeps = [];
     for (let dep of deps) {
       dep = __MODULES__.resolve(dep, name);
-      !__MODULES__.get(dep) && unmetDeps.push(dep);
+      !(dep in __MODULES__.cache) && unmetDeps.push(dep);
     }
 
     for (let dep of unmetDeps) {

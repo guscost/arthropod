@@ -14,7 +14,7 @@
     "target": "es2018",
     "paths": {
       "react/jsx-runtime": ["types/jsx-runtime"],
-      "@/*": ["src/*", "src/*/index"],
+      "@/*": ["src/*"],
       "*": ["types/*", "types/*/index"]
     }
   },
