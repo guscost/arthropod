@@ -1,4 +1,4 @@
-// Compiled types from react-day-picker 9.6.2
+// Compiled types from react-day-picker 9.6.3
 import {
   Context,
   CSSProperties,
