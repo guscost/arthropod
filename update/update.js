@@ -272,13 +272,13 @@ async function buildUmds() {
 
     // tailwindcss
     const tailwindResponse = await fetch(
-      "https://cdn.tailwindcss.com/?plugins=typography,aspect-ratio,container-queries",
+      "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4",
     );
     const tailwindContent = await tailwindResponse.text();
     appendFileSync(
       path.join(_root, "www/js/lib/tailwind.min.js"),
       tailwindContent.replace(
-        /console.warn\("cdn.tailwindcss.com[^\)\;]*\)\;/,
+        /console.warn\("The browser build of Tailwind CSS should not be used in production.[^"]*"\)\;/,
         "",
       ),
     );
