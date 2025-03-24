@@ -272,7 +272,7 @@ async function buildUmds() {
 
     // tailwindcss
     const tailwindResponse = await fetch(
-      "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4",
+      "https://unpkg.com/@tailwindcss/browser@4",
     );
     const tailwindContent = await tailwindResponse.text();
     appendFileSync(
