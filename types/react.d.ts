@@ -2466,6 +2466,8 @@ declare namespace React {
     // UI Events
     onScroll?: UIEventHandler<T> | undefined;
     onScrollCapture?: UIEventHandler<T> | undefined;
+    onScrollEnd?: UIEventHandler<T> | undefined;
+    onScrollEndCapture?: UIEventHandler<T> | undefined;
 
     // Wheel Events
     onWheel?: WheelEventHandler<T> | undefined;
@@ -2938,6 +2940,14 @@ declare namespace React {
      * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is}
      */
     is?: string | undefined;
+    /**
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts}
+     */
+    exportparts?: string | undefined;
+    /**
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part}
+     */
+    part?: string | undefined;
   }
 
   /**
