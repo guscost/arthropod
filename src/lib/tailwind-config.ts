@@ -11,7 +11,7 @@
  * @license MIT
  */
 
- @theme inline {
+@theme inline {
   /* Predefined values */
 
   --animation-delay-0: 0s;
@@ -59,6 +59,7 @@
   --percentage-90: 0.9;
   --percentage-95: 0.95;
   --percentage-100: 1;
+  --percentage-translate-full: 1;
 
   /* Animations and keyframes */
 
@@ -133,7 +134,7 @@
 }
 
 @utility repeat-* {
-  animation-iteration-count: --value(--animation-repeat- *, integer);
+  animation-iteration-count: --value(--animation-repeat- *, number);
 }
 
 @utility direction-* {
@@ -204,15 +205,16 @@
 }
 @utility slide-in-from-top-* {
   --tw-enter-translate-y: calc(--value(integer) * var(--spacing) * -1);
+  --tw-enter-translate-y: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
   --tw-enter-translate-y: calc(--value(ratio) * 100%);
   --tw-enter-translate-y: calc(--value(--translate- *, [percentage], [length]) * -1);
 }
-
 @utility slide-in-from-bottom {
   --tw-enter-translate-y: 100%;
 }
 @utility slide-in-from-bottom-* {
   --tw-enter-translate-y: calc(--value(integer) * var(--spacing));
+  --tw-enter-translate-y: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
   --tw-enter-translate-y: calc(--value(ratio) * 100%);
   --tw-enter-translate-y: --value(--translate- *, [percentage], [length]);
 }
@@ -221,6 +223,7 @@
 }
 @utility slide-in-from-left-* {
   --tw-enter-translate-x: calc(--value(integer) * var(--spacing) * -1);
+  --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
   --tw-enter-translate-x: calc(--value(ratio) * 100%);
   --tw-enter-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
 }
@@ -229,6 +232,7 @@
 }
 @utility slide-in-from-right-* {
   --tw-enter-translate-x: calc(--value(integer) * var(--spacing));
+  --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
   --tw-enter-translate-x: calc(--value(ratio) * 100%);
   --tw-enter-translate-x: --value(--translate- *, [percentage], [length]);
 }
@@ -238,6 +242,7 @@
 }
 @utility slide-out-to-top-* {
   --tw-exit-translate-y: calc(--value(integer) * var(--spacing) * -1);
+  --tw-exit-translate-y: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
   --tw-exit-translate-y: calc(--value(ratio) * 100%);
   --tw-exit-translate-y: calc(--value(--translate- *, [percentage], [length]) * -1);
 }
@@ -246,6 +251,7 @@
 }
 @utility slide-out-to-bottom-* {
   --tw-exit-translate-y: calc(--value(integer) * var(--spacing));
+  --tw-exit-translate-y: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
   --tw-exit-translate-y: calc(--value(ratio) * 100%);
   --tw-exit-translate-y: --value(--translate- *, [percentage], [length]);
 }
@@ -254,6 +260,7 @@
 }
 @utility slide-out-to-left-* {
   --tw-exit-translate-x: calc(--value(integer) * var(--spacing) * -1);
+  --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
   --tw-exit-translate-x: calc(--value(ratio) * 100%);
   --tw-exit-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
 }
@@ -262,6 +269,7 @@
 }
 @utility slide-out-to-right-* {
   --tw-exit-translate-x: calc(--value(integer) * var(--spacing));
+  --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
   --tw-exit-translate-x: calc(--value(ratio) * 100%);
   --tw-exit-translate-x: --value(--translate- *, [percentage], [length]);
 }
