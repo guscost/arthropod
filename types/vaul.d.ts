@@ -14,6 +14,7 @@ declare const NODES: readonly [
   "nav",
   "ol",
   "p",
+  "select",
   "span",
   "svg",
   "ul",

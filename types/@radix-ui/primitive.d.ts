@@ -1,4 +1,8 @@
-declare function composeEventHandlers<E>(
+declare function composeEventHandlers<
+  E extends {
+    defaultPrevented: boolean;
+  },
+>(
   originalEventHandler?: (event: E) => void,
   ourEventHandler?: (event: E) => void,
   {

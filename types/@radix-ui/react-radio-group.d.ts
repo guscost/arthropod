@@ -31,7 +31,7 @@ type RadioGroupContextValue = {
   name?: string;
   required: boolean;
   disabled: boolean;
-  value?: string;
+  value: string;
   onValueChange(value: string): void;
 };
 type RovingFocusGroupProps = React.ComponentPropsWithoutRef<

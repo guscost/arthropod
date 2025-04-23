@@ -1,5 +1,5 @@
 type Measurable = {
-  getBoundingClientRect(): ClientRect;
+  getBoundingClientRect(): DOMRect;
 };
 /**
  * Observes an element's rectangle on screen (getBoundingClientRect)
@@ -12,6 +12,6 @@ declare function observeElementRect(
   /** The callback which will be called when the rect changes */
   callback: CallbackFn,
 ): () => void;
-type CallbackFn = (rect: ClientRect) => void;
+type CallbackFn = (rect: DOMRect) => void;
 
 export { type Measurable, observeElementRect };

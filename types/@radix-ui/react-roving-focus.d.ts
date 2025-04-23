@@ -36,10 +36,16 @@ interface RovingFocusGroupImplProps
   preventScrollOnEntryFocus?: boolean;
 }
 type PrimitiveSpanProps = React.ComponentPropsWithoutRef<typeof Primitive.span>;
-interface RovingFocusItemProps extends PrimitiveSpanProps {
+interface RovingFocusItemProps extends Omit<PrimitiveSpanProps, "children"> {
   tabStopId?: string;
   focusable?: boolean;
   active?: boolean;
+  children?:
+    | React.ReactNode
+    | ((props: {
+        hasTabStop: boolean;
+        isCurrentTabStop: boolean;
+      }) => React.ReactNode);
 }
 declare const RovingFocusGroupItem: React.ForwardRefExoticComponent<
   RovingFocusItemProps & React.RefAttributes<HTMLSpanElement>

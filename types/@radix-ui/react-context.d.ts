@@ -29,7 +29,7 @@ declare function createContextScope(
 ): readonly [
   <ContextValueType extends object | null>(
     rootComponentName: string,
-    defaultContext?: ContextValueType | undefined,
+    defaultContext?: ContextValueType,
   ) => readonly [
     React.FC<
       ContextValueType & {

@@ -267,21 +267,6 @@ declare const AlignCenterVertical: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name AlignEndHorizontal
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iNiIgaGVpZ2h0PSIxNiIgeD0iNCIgeT0iMiIgcng9IjIiIC8+CiAgPHJlY3Qgd2lkdGg9IjYiIGhlaWdodD0iOSIgeD0iMTQiIHk9IjkiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0yMiAyMkgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/align-end-horizontal
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const AlignEndHorizontal: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name AlignCenter
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -293,6 +278,21 @@ declare const AlignEndHorizontal: react.ForwardRefExoticComponent<
  *
  */
 declare const AlignCenter: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name AlignEndHorizontal
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iNiIgaGVpZ2h0PSIxNiIgeD0iNCIgeT0iMiIgcng9IjIiIC8+CiAgPHJlY3Qgd2lkdGg9IjYiIGhlaWdodD0iOSIgeD0iMTQiIHk9IjkiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0yMiAyMkgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/align-end-horizontal
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const AlignEndHorizontal: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -432,21 +432,6 @@ declare const AlignHorizontalSpaceBetween: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name AlignJustify
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAxMmgxOCIgLz4KICA8cGF0aCBkPSJNMyAxOGgxOCIgLz4KICA8cGF0aCBkPSJNMyA2aDE4IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/align-justify
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const AlignJustify: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name AlignLeft
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -458,6 +443,21 @@ declare const AlignJustify: react.ForwardRefExoticComponent<
  *
  */
 declare const AlignLeft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name AlignJustify
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAxMmgxOCIgLz4KICA8cGF0aCBkPSJNMyAxOGgxOCIgLz4KICA8cGF0aCBkPSJNMyA2aDE4IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/align-justify
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const AlignJustify: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -672,6 +672,21 @@ declare const Ampersands: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Amphora
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnY1LjYzMmMwIC40MjQtLjI3Mi43OTUtLjY1My45ODJBNiA2IDAgMCAwIDYgMTRjLjAwNiA0IDMgNyA1IDgiIC8+CiAgPHBhdGggZD0iTTEwIDVIOGEyIDIgMCAwIDAgMCA0aC42OCIgLz4KICA8cGF0aCBkPSJNMTQgMnY1LjYzMmMwIC40MjQuMjcyLjc5NS42NTIuOTgyQTYgNiAwIDAgMSAxOCAxNGMwIDQtMyA3LTUgOCIgLz4KICA8cGF0aCBkPSJNMTQgNWgyYTIgMiAwIDAgMSAwIDRoLS42OCIgLz4KICA8cGF0aCBkPSJNMTggMjJINiIgLz4KICA8cGF0aCBkPSJNOSAyaDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/amphora
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Amphora: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Anchor
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -687,17 +702,17 @@ declare const Anchor: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Amphora
+ * @component @name Annoyed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnY1LjYzMmMwIC40MjQtLjI3Mi43OTUtLjY1My45ODJBNiA2IDAgMCAwIDYgMTRjLjAwNiA0IDMgNyA1IDgiIC8+CiAgPHBhdGggZD0iTTEwIDVIOGEyIDIgMCAwIDAgMCA0aC42OCIgLz4KICA8cGF0aCBkPSJNMTQgMnY1LjYzMmMwIC40MjQuMjcyLjc5NS42NTIuOTgyQTYgNiAwIDAgMSAxOCAxNGMwIDQtMyA3LTUgOCIgLz4KICA8cGF0aCBkPSJNMTQgNWgyYTIgMiAwIDAgMSAwIDRoLS42OCIgLz4KICA8cGF0aCBkPSJNMTggMjJINiIgLz4KICA8cGF0aCBkPSJNOSAyaDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/amphora
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNOCAxNWg4IiAvPgogIDxwYXRoIGQ9Ik04IDloMiIgLz4KICA8cGF0aCBkPSJNMTQgOWgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/annoyed
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Amphora: react.ForwardRefExoticComponent<
+declare const Annoyed: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -728,21 +743,6 @@ declare const Angry: react.ForwardRefExoticComponent<
  *
  */
 declare const Antenna: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Annoyed
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNOCAxNWg4IiAvPgogIDxwYXRoIGQ9Ik04IDloMiIgLz4KICA8cGF0aCBkPSJNMTQgOWgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/annoyed
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Annoyed: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -852,21 +852,6 @@ declare const ArchiveX: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Armchair
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTkgOVY2YTIgMiAwIDAgMC0yLTJIN2EyIDIgMCAwIDAtMiAydjMiIC8+CiAgPHBhdGggZD0iTTMgMTZhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0ydi01YTIgMiAwIDAgMC00IDB2MS41YS41LjUgMCAwIDEtLjUuNWgtOWEuNS41IDAgMCAxLS41LS41VjExYTIgMiAwIDAgMC00IDB6IiAvPgogIDxwYXRoIGQ9Ik01IDE4djIiIC8+CiAgPHBhdGggZD0iTTE5IDE4djIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/armchair
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Armchair: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Archive
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -878,6 +863,21 @@ declare const Armchair: react.ForwardRefExoticComponent<
  *
  */
 declare const Archive: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Armchair
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTkgOVY2YTIgMiAwIDAgMC0yLTJIN2EyIDIgMCAwIDAtMiAydjMiIC8+CiAgPHBhdGggZD0iTTMgMTZhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0ydi01YTIgMiAwIDAgMC00IDB2MS41YS41LjUgMCAwIDEtLjUuNWgtOWEuNS41IDAgMCAxLS41LS41VjExYTIgMiAwIDAgMC00IDB6IiAvPgogIDxwYXRoIGQ9Ik01IDE4djIiIC8+CiAgPHBhdGggZD0iTTE5IDE4djIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/armchair
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Armchair: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1092,6 +1092,21 @@ declare const ArrowDownNarrowWide: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name ArrowDownToDot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYxNCIgLz4KICA8cGF0aCBkPSJtMTkgOS03IDctNy03IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMjEiIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/arrow-down-to-dot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ArrowDownToDot: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name ArrowDownRight
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1137,17 +1152,17 @@ declare const ArrowDownUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ArrowDownToDot
+ * @component @name ArrowDownZA
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYxNCIgLz4KICA8cGF0aCBkPSJtMTkgOS03IDctNy03IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMjEiIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/arrow-down-to-dot
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMyAxNiA0IDQgNC00IiAvPgogIDxwYXRoIGQ9Ik03IDR2MTYiIC8+CiAgPHBhdGggZD0iTTE1IDRoNWwtNSA2aDUiIC8+CiAgPHBhdGggZD0iTTE1IDIwdi0zLjVhMi41IDIuNSAwIDAgMSA1IDBWMjAiIC8+CiAgPHBhdGggZD0iTTIwIDE4aC01IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/arrow-down-z-a
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const ArrowDownToDot: react.ForwardRefExoticComponent<
+declare const ArrowDownZA: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1163,21 +1178,6 @@ declare const ArrowDownToDot: react.ForwardRefExoticComponent<
  *
  */
 declare const ArrowDownWideNarrow: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name ArrowDownZA
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMyAxNiA0IDQgNC00IiAvPgogIDxwYXRoIGQ9Ik03IDR2MTYiIC8+CiAgPHBhdGggZD0iTTE1IDRoNWwtNSA2aDUiIC8+CiAgPHBhdGggZD0iTTE1IDIwdi0zLjVhMi41IDIuNSAwIDAgMSA1IDBWMjAiIC8+CiAgPHBhdGggZD0iTTIwIDE4aC01IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/arrow-down-z-a
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ArrowDownZA: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1362,21 +1362,6 @@ declare const ArrowUpAZ: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ArrowUpFromDot
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNSA5IDctNyA3IDciIC8+CiAgPHBhdGggZD0iTTEyIDE2VjIiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIyMSIgcj0iMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/arrow-up-from-dot
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ArrowUpFromDot: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ArrowUpDown
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1388,6 +1373,21 @@ declare const ArrowUpFromDot: react.ForwardRefExoticComponent<
  *
  */
 declare const ArrowUpDown: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ArrowUpFromDot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNSA5IDctNyA3IDciIC8+CiAgPHBhdGggZD0iTTEyIDE2VjIiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIyMSIgcj0iMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/arrow-up-from-dot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ArrowUpFromDot: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1527,21 +1527,6 @@ declare const ArrowsUpFromLine: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name AtSign
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiAvPgogIDxwYXRoIGQ9Ik0xNiA4djVhMyAzIDAgMCAwIDYgMHYtMWExMCAxMCAwIDEgMC00IDgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/at-sign
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const AtSign: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Asterisk
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1553,6 +1538,21 @@ declare const AtSign: react.ForwardRefExoticComponent<
  *
  */
 declare const Asterisk: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name AtSign
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiAvPgogIDxwYXRoIGQ9Ik0xNiA4djVhMyAzIDAgMCAwIDYgMHYtMWExMCAxMCAwIDEgMC00IDgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/at-sign
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const AtSign: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1632,21 +1632,6 @@ declare const Axe: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Baby
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOSAxMmguMDEiIC8+CiAgPHBhdGggZD0iTTE1IDEyaC4wMSIgLz4KICA8cGF0aCBkPSJNMTAgMTZjLjUuMyAxLjIuNSAyIC41czEuNS0uMiAyLS41IiAvPgogIDxwYXRoIGQ9Ik0xOSA2LjNhOSA5IDAgMCAxIDEuOCAzLjkgMiAyIDAgMCAxIDAgMy42IDkgOSAwIDAgMS0xNy42IDAgMiAyIDAgMCAxIDAtMy42QTkgOSAwIDAgMSAxMiAzYzIgMCAzLjUgMS4xIDMuNSAyLjVzLS45IDIuNS0yIDIuNWMtLjggMC0xLjUtLjQtMS41LTEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/baby
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Baby: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Axis3d
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1677,17 +1662,17 @@ declare const Backpack: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BadgeAlert
+ * @component @name Baby
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPGxpbmUgeDE9IjEyIiB4Mj0iMTIiIHkxPSI4IiB5Mj0iMTIiIC8+CiAgPGxpbmUgeDE9IjEyIiB4Mj0iMTIuMDEiIHkxPSIxNiIgeTI9IjE2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/badge-alert
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMTZjLjUuMyAxLjIuNSAyIC41czEuNS0uMiAyLS41IiAvPgogIDxwYXRoIGQ9Ik0xNSAxMmguMDEiIC8+CiAgPHBhdGggZD0iTTE5LjM4IDYuODEzQTkgOSAwIDAgMSAyMC44IDEwLjJhMiAyIDAgMCAxIDAgMy42IDkgOSAwIDAgMS0xNy42IDAgMiAyIDAgMCAxIDAtMy42QTkgOSAwIDAgMSAxMiAzYzIgMCAzLjUgMS4xIDMuNSAyLjVzLS45IDIuNS0yIDIuNWMtLjggMC0xLjUtLjQtMS41LTEiIC8+CiAgPHBhdGggZD0iTTkgMTJoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/baby
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const BadgeAlert: react.ForwardRefExoticComponent<
+declare const Baby: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1707,6 +1692,21 @@ declare const BadgeCent: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name BadgeAlert
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPGxpbmUgeDE9IjEyIiB4Mj0iMTIiIHkxPSI4IiB5Mj0iMTIiIC8+CiAgPGxpbmUgeDE9IjEyIiB4Mj0iMTIuMDEiIHkxPSIxNiIgeTI9IjE2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/badge-alert
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BadgeAlert: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name BadgeCheck
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1722,21 +1722,6 @@ declare const BadgeCheck: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BadgeDollarSign
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPHBhdGggZD0iTTE2IDhoLTZhMiAyIDAgMSAwIDAgNGg0YTIgMiAwIDEgMSAwIDRIOCIgLz4KICA8cGF0aCBkPSJNMTIgMThWNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/badge-dollar-sign
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BadgeDollarSign: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BadgeEuro
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1748,6 +1733,21 @@ declare const BadgeDollarSign: react.ForwardRefExoticComponent<
  *
  */
 declare const BadgeEuro: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BadgeDollarSign
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPHBhdGggZD0iTTE2IDhoLTZhMiAyIDAgMSAwIDAgNGg0YTIgMiAwIDEgMSAwIDRIOCIgLz4KICA8cGF0aCBkPSJNMTIgMThWNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/badge-dollar-sign
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BadgeDollarSign: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1857,21 +1857,6 @@ declare const BadgePlus: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BadgePoundSterling
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPHBhdGggZD0iTTggMTJoNCIgLz4KICA8cGF0aCBkPSJNMTAgMTZWOS41YTIuNSAyLjUgMCAwIDEgNSAwIiAvPgogIDxwYXRoIGQ9Ik04IDE2aDciIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/badge-pound-sterling
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BadgePoundSterling: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BadgeRussianRuble
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1883,6 +1868,21 @@ declare const BadgePoundSterling: react.ForwardRefExoticComponent<
  *
  */
 declare const BadgeRussianRuble: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BadgePoundSterling
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPHBhdGggZD0iTTggMTJoNCIgLz4KICA8cGF0aCBkPSJNMTAgMTZWOS41YTIuNSAyLjUgMCAwIDEgNSAwIiAvPgogIDxwYXRoIGQ9Ik04IDE2aDciIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/badge-pound-sterling
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BadgePoundSterling: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -1902,21 +1902,6 @@ declare const BadgeSwissFranc: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BadgeX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPGxpbmUgeDE9IjE1IiB4Mj0iOSIgeTE9IjkiIHkyPSIxNSIgLz4KICA8bGluZSB4MT0iOSIgeDI9IjE1IiB5MT0iOSIgeTI9IjE1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/badge-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BadgeX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Badge
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -1928,6 +1913,21 @@ declare const BadgeX: react.ForwardRefExoticComponent<
  *
  */
 declare const Badge: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BadgeX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiIC8+CiAgPGxpbmUgeDE9IjE1IiB4Mj0iOSIgeTE9IjkiIHkyPSIxNSIgLz4KICA8bGluZSB4MT0iOSIgeDI9IjE1IiB5MT0iOSIgeTI9IjE1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/badge-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BadgeX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2007,17 +2007,32 @@ declare const BanknoteArrowDown: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Barcode
+ * @component @name BanknoteArrowUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyA1djE0IiAvPgogIDxwYXRoIGQ9Ik04IDV2MTQiIC8+CiAgPHBhdGggZD0iTTEyIDV2MTQiIC8+CiAgPHBhdGggZD0iTTE3IDV2MTQiIC8+CiAgPHBhdGggZD0iTTIxIDV2MTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/barcode
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMThINGEyIDIgMCAwIDEtMi0yVjhhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjUiIC8+CiAgPHBhdGggZD0iTTE4IDEyaC4wMSIgLz4KICA8cGF0aCBkPSJNMTkgMjJ2LTYiIC8+CiAgPHBhdGggZD0ibTIyIDE5LTMtMy0zIDMiIC8+CiAgPHBhdGggZD0iTTYgMTJoLjAxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/banknote-arrow-up
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Barcode: react.ForwardRefExoticComponent<
+declare const BanknoteArrowUp: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BanknoteX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMThINGEyIDIgMCAwIDEtMi0yVjhhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjUiIC8+CiAgPHBhdGggZD0ibTE3IDE3IDUgNSIgLz4KICA8cGF0aCBkPSJNMTggMTJoLjAxIiAvPgogIDxwYXRoIGQ9Im0yMiAxNy01IDUiIC8+CiAgPHBhdGggZD0iTTYgMTJoLjAxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/banknote-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BanknoteX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2033,6 +2048,21 @@ declare const Barcode: react.ForwardRefExoticComponent<
  *
  */
 declare const Banknote: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Barcode
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyA1djE0IiAvPgogIDxwYXRoIGQ9Ik04IDV2MTQiIC8+CiAgPHBhdGggZD0iTTEyIDV2MTQiIC8+CiAgPHBhdGggZD0iTTE3IDV2MTQiIC8+CiAgPHBhdGggZD0iTTIxIDV2MTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/barcode
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Barcode: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2172,21 +2202,6 @@ declare const Battery: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Beaker
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNC41IDNoMTUiIC8+CiAgPHBhdGggZD0iTTYgM3YxNmEyIDIgMCAwIDAgMiAyaDhhMiAyIDAgMCAwIDItMlYzIiAvPgogIDxwYXRoIGQ9Ik02IDE0aDEyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/beaker
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Beaker: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BeanOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2202,17 +2217,17 @@ declare const BeanOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Bean
+ * @component @name Beaker
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMTY1IDYuNTk4QzkuOTU0IDcuNDc4IDkuNjQgOC4zNiA5IDljLS42NC42NC0xLjUyMS45NTQtMi40MDIgMS4xNjVBNiA2IDAgMCAwIDggMjJjNy43MzIgMCAxNC02LjI2OCAxNC0xNGE2IDYgMCAwIDAtMTEuODM1LTEuNDAyWiIgLz4KICA8cGF0aCBkPSJNNS4zNDEgMTAuNjJhNCA0IDAgMSAwIDUuMjc5LTUuMjgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bean
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNC41IDNoMTUiIC8+CiAgPHBhdGggZD0iTTYgM3YxNmEyIDIgMCAwIDAgMiAyaDhhMiAyIDAgMCAwIDItMlYzIiAvPgogIDxwYXRoIGQ9Ik02IDE0aDEyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/beaker
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Bean: react.ForwardRefExoticComponent<
+declare const Beaker: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2228,6 +2243,21 @@ declare const Bean: react.ForwardRefExoticComponent<
  *
  */
 declare const BedDouble: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Bean
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMTY1IDYuNTk4QzkuOTU0IDcuNDc4IDkuNjQgOC4zNiA5IDljLS42NC42NC0xLjUyMS45NTQtMi40MDIgMS4xNjVBNiA2IDAgMCAwIDggMjJjNy43MzIgMCAxNC02LjI2OCAxNC0xNGE2IDYgMCAwIDAtMTEuODM1LTEuNDAyWiIgLz4KICA8cGF0aCBkPSJNNS4zNDEgMTAuNjJhNCA0IDAgMSAwIDUuMjc5LTUuMjgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bean
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Bean: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2277,21 +2307,6 @@ declare const Beef: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BeerOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMTN2NSIgLz4KICA8cGF0aCBkPSJNMTcgMTEuNDdWOCIgLz4KICA8cGF0aCBkPSJNMTcgMTFoMWEzIDMgMCAwIDEgMi43NDUgNC4yMTEiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNNSA4djEyYTIgMiAwIDAgMCAyIDJoOGEyIDIgMCAwIDAgMi0ydi0zIiAvPgogIDxwYXRoIGQ9Ik03LjUzNiA3LjUzNUM2Ljc2NiA3LjY0OSA2LjE1NCA4IDUuNSA4YTIuNSAyLjUgMCAwIDEtMS43NjgtNC4yNjgiIC8+CiAgPHBhdGggZD0iTTguNzI3IDMuMjA0QzkuMzA2IDIuNzY3IDkuODg1IDIgMTEgMmMxLjU2IDAgMiAxLjUgMyAxLjVzMS43Mi0uNSAyLjUtLjVhMSAxIDAgMSAxIDAgNWMtLjc4IDAtMS41LS41LTIuNS0uNWEzLjE0OSAzLjE0OSAwIDAgMC0uODQyLjEyIiAvPgogIDxwYXRoIGQ9Ik05IDE0LjZWMTgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/beer-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BeerOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Beer
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2303,6 +2318,21 @@ declare const BeerOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Beer: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BeerOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMTN2NSIgLz4KICA8cGF0aCBkPSJNMTcgMTEuNDdWOCIgLz4KICA8cGF0aCBkPSJNMTcgMTFoMWEzIDMgMCAwIDEgMi43NDUgNC4yMTEiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNNSA4djEyYTIgMiAwIDAgMCAyIDJoOGEyIDIgMCAwIDAgMi0ydi0zIiAvPgogIDxwYXRoIGQ9Ik03LjUzNiA3LjUzNUM2Ljc2NiA3LjY0OSA2LjE1NCA4IDUuNSA4YTIuNSAyLjUgMCAwIDEtMS43NjgtNC4yNjgiIC8+CiAgPHBhdGggZD0iTTguNzI3IDMuMjA0QzkuMzA2IDIuNzY3IDkuODg1IDIgMTEgMmMxLjU2IDAgMiAxLjUgMyAxLjVzMS43Mi0uNSAyLjUtLjVhMSAxIDAgMSAxIDAgNWMtLjc4IDAtMS41LS41LTIuNS0uNWEzLjE0OSAzLjE0OSAwIDAgMC0uODQyLjEyIiAvPgogIDxwYXRoIGQ9Ik05IDE0LjZWMTgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/beer-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BeerOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2397,36 +2427,6 @@ declare const BellRing: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Bell
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMjY4IDIxYTIgMiAwIDAgMCAzLjQ2NCAwIiAvPgogIDxwYXRoIGQ9Ik0zLjI2MiAxNS4zMjZBMSAxIDAgMCAwIDQgMTdoMTZhMSAxIDAgMCAwIC43NC0xLjY3M0MxOS40MSAxMy45NTYgMTggMTIuNDk5IDE4IDhBNiA2IDAgMCAwIDYgOGMwIDQuNDk5LTEuNDExIDUuOTU2LTIuNzM4IDcuMzI2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bell
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Bell: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name BetweenHorizontalStart
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTMiIGhlaWdodD0iNyIgeD0iOCIgeT0iMyIgcng9IjEiIC8+CiAgPHBhdGggZD0ibTIgOSAzIDMtMyAzIiAvPgogIDxyZWN0IHdpZHRoPSIxMyIgaGVpZ2h0PSI3IiB4PSI4IiB5PSIxNCIgcng9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/between-horizontal-start
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BetweenHorizontalStart: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BetweenHorizontalEnd
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2442,6 +2442,21 @@ declare const BetweenHorizontalEnd: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Bell
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMjY4IDIxYTIgMiAwIDAgMCAzLjQ2NCAwIiAvPgogIDxwYXRoIGQ9Ik0zLjI2MiAxNS4zMjZBMSAxIDAgMCAwIDQgMTdoMTZhMSAxIDAgMCAwIC43NC0xLjY3M0MxOS40MSAxMy45NTYgMTggMTIuNDk5IDE4IDhBNiA2IDAgMCAwIDYgOGMwIDQuNDk5LTEuNDExIDUuOTU2LTIuNzM4IDcuMzI2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bell
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Bell: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name BetweenVerticalEnd
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2453,6 +2468,21 @@ declare const BetweenHorizontalEnd: react.ForwardRefExoticComponent<
  *
  */
 declare const BetweenVerticalEnd: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BetweenHorizontalStart
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTMiIGhlaWdodD0iNyIgeD0iOCIgeT0iMyIgcng9IjEiIC8+CiAgPHBhdGggZD0ibTIgOSAzIDMtMyAzIiAvPgogIDxyZWN0IHdpZHRoPSIxMyIgaGVpZ2h0PSI3IiB4PSI4IiB5PSIxNCIgcng9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/between-horizontal-start
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BetweenHorizontalStart: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2517,21 +2547,6 @@ declare const Binary: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Biohazard
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjExLjkiIHI9IjIiIC8+CiAgPHBhdGggZD0iTTYuNyAzLjRjLS45IDIuNSAwIDUuMiAyLjIgNi43QzYuNSA5IDMuNyA5LjYgMiAxMS42IiAvPgogIDxwYXRoIGQ9Im04LjkgMTAuMSAxLjQuOCIgLz4KICA8cGF0aCBkPSJNMTcuMyAzLjRjLjkgMi41IDAgNS4yLTIuMiA2LjcgMi40LTEuMiA1LjItLjYgNi45IDEuNSIgLz4KICA8cGF0aCBkPSJtMTUuMSAxMC4xLTEuNC44IiAvPgogIDxwYXRoIGQ9Ik0xNi43IDIwLjhjLTIuNi0uNC00LjYtMi42LTQuNy01LjMtLjIgMi42LTIuMSA0LjgtNC43IDUuMiIgLz4KICA8cGF0aCBkPSJNMTIgMTMuOXYxLjYiIC8+CiAgPHBhdGggZD0iTTEzLjUgNS40Yy0xLS4yLTItLjItMyAwIiAvPgogIDxwYXRoIGQ9Ik0xNyAxNi40Yy43LS43IDEuMi0xLjYgMS41LTIuNSIgLz4KICA8cGF0aCBkPSJNNS41IDEzLjljLjMuOS44IDEuOCAxLjUgMi41IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/biohazard
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Biohazard: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Binoculars
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2543,6 +2558,21 @@ declare const Biohazard: react.ForwardRefExoticComponent<
  *
  */
 declare const Binoculars: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Biohazard
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjExLjkiIHI9IjIiIC8+CiAgPHBhdGggZD0iTTYuNyAzLjRjLS45IDIuNSAwIDUuMiAyLjIgNi43QzYuNSA5IDMuNyA5LjYgMiAxMS42IiAvPgogIDxwYXRoIGQ9Im04LjkgMTAuMSAxLjQuOCIgLz4KICA8cGF0aCBkPSJNMTcuMyAzLjRjLjkgMi41IDAgNS4yLTIuMiA2LjcgMi40LTEuMiA1LjItLjYgNi45IDEuNSIgLz4KICA8cGF0aCBkPSJtMTUuMSAxMC4xLTEuNC44IiAvPgogIDxwYXRoIGQ9Ik0xNi43IDIwLjhjLTIuNi0uNC00LjYtMi42LTQuNy01LjMtLjIgMi42LTIuMSA0LjgtNC43IDUuMiIgLz4KICA8cGF0aCBkPSJNMTIgMTMuOXYxLjYiIC8+CiAgPHBhdGggZD0iTTEzLjUgNS40Yy0xLS4yLTItLjItMyAwIiAvPgogIDxwYXRoIGQ9Ik0xNyAxNi40Yy43LS43IDEuMi0xLjYgMS41LTIuNSIgLz4KICA8cGF0aCBkPSJNNS41IDEzLjljLjMuOS44IDEuOCAxLjUgMi41IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/biohazard
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Biohazard: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2697,21 +2727,6 @@ declare const Bold: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Bomb
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMSIgY3k9IjEzIiByPSI5IiAvPgogIDxwYXRoIGQ9Ik0xNC4zNSA0LjY1IDE2LjMgMi43YTIuNDEgMi40MSAwIDAgMSAzLjQgMGwxLjYgMS42YTIuNCAyLjQgMCAwIDEgMCAzLjRsLTEuOTUgMS45NSIgLz4KICA8cGF0aCBkPSJtMjIgMi0xLjUgMS41IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bomb
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Bomb: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Bolt
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2727,17 +2742,17 @@ declare const Bolt: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookA
+ * @component @name Bomb
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KICA8cGF0aCBkPSJtOCAxMyA0LTcgNCA3IiAvPgogIDxwYXRoIGQ9Ik05LjEgMTFoNS43IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/book-a
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMSIgY3k9IjEzIiByPSI5IiAvPgogIDxwYXRoIGQ9Ik0xNC4zNSA0LjY1IDE2LjMgMi43YTIuNDEgMi40MSAwIDAgMSAzLjQgMGwxLjYgMS42YTIuNCAyLjQgMCAwIDEgMCAzLjRsLTEuOTUgMS45NSIgLz4KICA8cGF0aCBkPSJtMjIgMi0xLjUgMS41IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bomb
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const BookA: react.ForwardRefExoticComponent<
+declare const Bomb: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2753,6 +2768,21 @@ declare const BookA: react.ForwardRefExoticComponent<
  *
  */
 declare const Bone: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BookA
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KICA8cGF0aCBkPSJtOCAxMyA0LTcgNCA3IiAvPgogIDxwYXRoIGQ9Ik05LjEgMTFoNS43IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/book-a
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BookA: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2832,21 +2862,6 @@ declare const BookDown: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookHeart
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgOC4yQTIuMjIgMi4yMiAwIDAgMCAxMy44IDZjLS44IDAtMS40LjMtMS44LjktLjQtLjYtMS0uOS0xLjgtLjlBMi4yMiAyLjIyIDAgMCAwIDggOC4yYzAgLjYuMyAxLjIuNyAxLjZBMjI2LjY1MiAyMjYuNjUyIDAgMCAwIDEyIDEzYTQwNCA0MDQgMCAwIDAgMy4zLTMuMSAyLjQxMyAyLjQxMyAwIDAgMCAuNy0xLjciIC8+CiAgPHBhdGggZD0iTTQgMTkuNXYtMTVBMi41IDIuNSAwIDAgMSA2LjUgMkgxOWExIDEgMCAwIDEgMSAxdjE4YTEgMSAwIDAgMS0xIDFINi41YTEgMSAwIDAgMSAwLTVIMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/book-heart
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BookHeart: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BookHeadphones
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2862,17 +2877,17 @@ declare const BookHeadphones: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookKey
+ * @component @name BookHeart
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTkgMyAxIDEiIC8+CiAgPHBhdGggZD0ibTIwIDItNC41IDQuNSIgLz4KICA8cGF0aCBkPSJNMjAgOHYxM2ExIDEgMCAwIDEtMSAxSDYuNWExIDEgMCAwIDEgMC01SDIwIiAvPgogIDxwYXRoIGQ9Ik00IDE5LjV2LTE1QTIuNSAyLjUgMCAwIDEgNi41IDJIMTQiIC8+CiAgPGNpcmNsZSBjeD0iMTQiIGN5PSI4IiByPSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/book-key
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgOC4yQTIuMjIgMi4yMiAwIDAgMCAxMy44IDZjLS44IDAtMS40LjMtMS44LjktLjQtLjYtMS0uOS0xLjgtLjlBMi4yMiAyLjIyIDAgMCAwIDggOC4yYzAgLjYuMyAxLjIuNyAxLjZBMjI2LjY1MiAyMjYuNjUyIDAgMCAwIDEyIDEzYTQwNCA0MDQgMCAwIDAgMy4zLTMuMSAyLjQxMyAyLjQxMyAwIDAgMCAuNy0xLjciIC8+CiAgPHBhdGggZD0iTTQgMTkuNXYtMTVBMi41IDIuNSAwIDAgMSA2LjUgMkgxOWExIDEgMCAwIDEgMSAxdjE4YTEgMSAwIDAgMS0xIDFINi41YTEgMSAwIDAgMSAwLTVIMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/book-heart
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const BookKey: react.ForwardRefExoticComponent<
+declare const BookHeart: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -2892,21 +2907,6 @@ declare const BookImage: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookMarked
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnY4bDMtMyAzIDNWMiIgLz4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/book-marked
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BookMarked: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BookLock
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -2918,6 +2918,36 @@ declare const BookMarked: react.ForwardRefExoticComponent<
  *
  */
 declare const BookLock: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BookKey
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTkgMyAxIDEiIC8+CiAgPHBhdGggZD0ibTIwIDItNC41IDQuNSIgLz4KICA8cGF0aCBkPSJNMjAgNy44OThWMjFhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAyaDcuODQ0IiAvPgogIDxjaXJjbGUgY3g9IjE0IiBjeT0iOCIgcj0iMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/book-key
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BookKey: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BookMarked
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnY4bDMtMyAzIDNWMiIgLz4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/book-marked
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BookMarked: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3042,21 +3072,6 @@ declare const BookUp2: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookUp
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTNWNyIgLz4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KICA8cGF0aCBkPSJtOSAxMCAzLTMgMyAzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/book-up
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BookUp: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BookUser
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3068,6 +3083,21 @@ declare const BookUp: react.ForwardRefExoticComponent<
  *
  */
 declare const BookUser: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BookUp
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTNWNyIgLz4KICA8cGF0aCBkPSJNNCAxOS41di0xNUEyLjUgMi41IDAgMCAxIDYuNSAySDE5YTEgMSAwIDAgMSAxIDF2MThhMSAxIDAgMCAxLTEgMUg2LjVhMSAxIDAgMCAxIDAtNUgyMCIgLz4KICA8cGF0aCBkPSJtOSAxMCAzLTMgMyAzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/book-up
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BookUp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3117,21 +3147,6 @@ declare const BookmarkCheck: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BookmarkMinus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiIC8+CiAgPGxpbmUgeDE9IjE1IiB4Mj0iOSIgeTE9IjEwIiB5Mj0iMTAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bookmark-minus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BookmarkMinus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BookmarkPlus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3143,6 +3158,21 @@ declare const BookmarkMinus: react.ForwardRefExoticComponent<
  *
  */
 declare const BookmarkPlus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BookmarkMinus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiIC8+CiAgPGxpbmUgeDE9IjE1IiB4Mj0iOSIgeTE9IjEwIiB5Mj0iMTAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bookmark-minus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BookmarkMinus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3177,21 +3207,6 @@ declare const Bookmark: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BotMessageSquare
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgNlYySDgiIC8+CiAgPHBhdGggZD0ibTggMTgtNCA0VjhhMiAyIDAgMCAxIDItMmgxMmEyIDIgMCAwIDEgMiAydjhhMiAyIDAgMCAxLTIgMloiIC8+CiAgPHBhdGggZD0iTTIgMTJoMiIgLz4KICA8cGF0aCBkPSJNOSAxMXYyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxMXYyIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMmgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bot-message-square
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BotMessageSquare: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BoomBox
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3203,6 +3218,21 @@ declare const BotMessageSquare: react.ForwardRefExoticComponent<
  *
  */
 declare const BoomBox: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BotMessageSquare
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgNlYySDgiIC8+CiAgPHBhdGggZD0ibTggMTgtNCA0VjhhMiAyIDAgMCAxIDItMmgxMmEyIDIgMCAwIDEgMiAydjhhMiAyIDAgMCAxLTIgMloiIC8+CiAgPHBhdGggZD0iTTIgMTJoMiIgLz4KICA8cGF0aCBkPSJNOSAxMXYyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxMXYyIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMmgyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bot-message-square
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BotMessageSquare: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3233,6 +3263,21 @@ declare const BotOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Bot: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BowArrow
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTcgM2g0djQiIC8+CiAgPHBhdGggZD0iTTE4LjU3NSAxMS4wODJhMTMgMTMgMCAwIDEgMS4wNDggOS4wMjcgMS4xNyAxLjE3IDAgMCAxLTEuOTE0LjU5N0wxNCAxNyIgLz4KICA8cGF0aCBkPSJNNyAxMCAzLjI5IDYuMjlhMS4xNyAxLjE3IDAgMCAxIC42LTEuOTEgMTMgMTMgMCAwIDEgOS4wMyAxLjA1IiAvPgogIDxwYXRoIGQ9Ik03IDE0YTEuNyAxLjcgMCAwIDAtMS4yMDcuNWwtMi42NDYgMi42NDZBLjUuNSAwIDAgMCAzLjUgMThINWExIDEgMCAwIDEgMSAxdjEuNWEuNS41IDAgMCAwIC44NTQuMzU0TDkuNSAxOC4yMDdBMS43IDEuNyAwIDAgMCAxMCAxN3YtMmExIDEgMCAwIDAtMS0xeiIgLz4KICA8cGF0aCBkPSJNOS43MDcgMTQuMjkzIDIxIDMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bow-arrow
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BowArrow: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3282,21 +3327,6 @@ declare const Braces: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BrainCircuit
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgNWEzIDMgMCAxIDAtNS45OTcuMTI1IDQgNCAwIDAgMC0yLjUyNiA1Ljc3IDQgNCAwIDAgMCAuNTU2IDYuNTg4QTQgNCAwIDEgMCAxMiAxOFoiIC8+CiAgPHBhdGggZD0iTTkgMTNhNC41IDQuNSAwIDAgMCAzLTQiIC8+CiAgPHBhdGggZD0iTTYuMDAzIDUuMTI1QTMgMyAwIDAgMCA2LjQwMSA2LjUiIC8+CiAgPHBhdGggZD0iTTMuNDc3IDEwLjg5NmE0IDQgMCAwIDEgLjU4NS0uMzk2IiAvPgogIDxwYXRoIGQ9Ik02IDE4YTQgNCAwIDAgMS0xLjk2Ny0uNTE2IiAvPgogIDxwYXRoIGQ9Ik0xMiAxM2g0IiAvPgogIDxwYXRoIGQ9Ik0xMiAxOGg2YTIgMiAwIDAgMSAyIDJ2MSIgLz4KICA8cGF0aCBkPSJNMTIgOGg4IiAvPgogIDxwYXRoIGQ9Ik0xNiA4VjVhMiAyIDAgMCAxIDItMiIgLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjEzIiByPSIuNSIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjMiIHI9Ii41IiAvPgogIDxjaXJjbGUgY3g9IjIwIiBjeT0iMjEiIHI9Ii41IiAvPgogIDxjaXJjbGUgY3g9IjIwIiBjeT0iOCIgcj0iLjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/brain-circuit
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BrainCircuit: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Brackets
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3312,10 +3342,25 @@ declare const Brackets: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name BrainCircuit
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgNWEzIDMgMCAxIDAtNS45OTcuMTI1IDQgNCAwIDAgMC0yLjUyNiA1Ljc3IDQgNCAwIDAgMCAuNTU2IDYuNTg4QTQgNCAwIDEgMCAxMiAxOFoiIC8+CiAgPHBhdGggZD0iTTkgMTNhNC41IDQuNSAwIDAgMCAzLTQiIC8+CiAgPHBhdGggZD0iTTYuMDAzIDUuMTI1QTMgMyAwIDAgMCA2LjQwMSA2LjUiIC8+CiAgPHBhdGggZD0iTTMuNDc3IDEwLjg5NmE0IDQgMCAwIDEgLjU4NS0uMzk2IiAvPgogIDxwYXRoIGQ9Ik02IDE4YTQgNCAwIDAgMS0xLjk2Ny0uNTE2IiAvPgogIDxwYXRoIGQ9Ik0xMiAxM2g0IiAvPgogIDxwYXRoIGQ9Ik0xMiAxOGg2YTIgMiAwIDAgMSAyIDJ2MSIgLz4KICA8cGF0aCBkPSJNMTIgOGg4IiAvPgogIDxwYXRoIGQ9Ik0xNiA4VjVhMiAyIDAgMCAxIDItMiIgLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjEzIiByPSIuNSIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjMiIHI9Ii41IiAvPgogIDxjaXJjbGUgY3g9IjIwIiBjeT0iMjEiIHI9Ii41IiAvPgogIDxjaXJjbGUgY3g9IjIwIiBjeT0iOCIgcj0iLjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/brain-circuit
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BrainCircuit: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name BrainCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgNWEzIDMgMCAxIDAtNS45OTcuMTQyIDQgNCAwIDAgMC0yLjUyNiA1Ljc3IDQgNCAwIDAgMCAuNTU2IDYuNTg4IDQgNCAwIDAgMCA3LjYzNiAyLjEwNiAzLjIgMy4yIDAgMCAwIC4xNjQtLjU0NmMuMDI4LS4xMy4zMDYtLjEzLjMzNSAwYTMuMiAzLjIgMCAwIDAgLjE2My41NDYgNCA0IDAgMCAwIDcuNjM2LTIuMTA2IDQgNCAwIDAgMCAuNTU2LTYuNTg4IDQgNCAwIDAgMC0yLjUyNi01Ljc3QTMgMyAwIDEgMCAxMiA1IiAvPgogIDxwYXRoIGQ9Ik0xNy41OTkgNi41YTMgMyAwIDAgMCAuMzk5LTEuMzc1IiAvPgogIDxwYXRoIGQ9Ik02LjAwMyA1LjEyNUEzIDMgMCAwIDAgNi40MDEgNi41IiAvPgogIDxwYXRoIGQ9Ik0zLjQ3NyAxMC44OTZhNCA0IDAgMCAxIC41ODUtLjM5NiIgLz4KICA8cGF0aCBkPSJNMTkuOTM4IDEwLjVhNCA0IDAgMCAxIC41ODUuMzk2IiAvPgogIDxwYXRoIGQ9Ik02IDE4YTQgNCAwIDAgMS0xLjk2Ny0uNTE2IiAvPgogIDxwYXRoIGQ9Ik0xOS45NjcgMTcuNDg0QTQgNCAwIDAgMSAxOCAxOCIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIiAvPgogIDxwYXRoIGQ9Im0xNS43IDEwLjQtLjkuNCIgLz4KICA8cGF0aCBkPSJtOS4yIDEzLjItLjkuNCIgLz4KICA8cGF0aCBkPSJtMTMuNiAxNS43LS40LS45IiAvPgogIDxwYXRoIGQ9Im0xMC44IDkuMi0uNC0uOSIgLz4KICA8cGF0aCBkPSJtMTUuNyAxMy41LS45LS40IiAvPgogIDxwYXRoIGQ9Im05LjIgMTAuOS0uOS0uNCIgLz4KICA8cGF0aCBkPSJtMTAuNSAxNS43LjQtLjkiIC8+CiAgPHBhdGggZD0ibTEzLjEgOS4yLjQtLjkiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/brain-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTAuODUyIDE0Ljc3Mi0uMzgzLjkyMyIgLz4KICA8cGF0aCBkPSJtMTAuODUyIDkuMjI4LS4zODMtLjkyMyIgLz4KICA8cGF0aCBkPSJtMTMuMTQ4IDE0Ljc3Mi4zODIuOTI0IiAvPgogIDxwYXRoIGQ9Im0xMy41MzEgOC4zMDUtLjM4My45MjMiIC8+CiAgPHBhdGggZD0ibTE0Ljc3MiAxMC44NTIuOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE0Ljc3MiAxMy4xNDguOTIzLjM4MyIgLz4KICA8cGF0aCBkPSJNMTcuNTk4IDYuNUEzIDMgMCAxIDAgMTIgNWEzIDMgMCAwIDAtNS42My0xLjQ0NiAzIDMgMCAwIDAtLjM2OCAxLjU3MSA0IDQgMCAwIDAtMi41MjUgNS43NzEiIC8+CiAgPHBhdGggZD0iTTE3Ljk5OCA1LjEyNWE0IDQgMCAwIDEgMi41MjUgNS43NzEiIC8+CiAgPHBhdGggZD0iTTE5LjUwNSAxMC4yOTRhNCA0IDAgMCAxLTEuNSA3LjcwNiIgLz4KICA8cGF0aCBkPSJNNC4wMzIgMTcuNDgzQTQgNCAwIDAgMCAxMS40NjQgMjBjLjE4LS4zMTEuODkyLS4zMTEgMS4wNzIgMGE0IDQgMCAwIDAgNy40MzItMi41MTYiIC8+CiAgPHBhdGggZD0iTTQuNSAxMC4yOTFBNCA0IDAgMCAwIDYgMTgiIC8+CiAgPHBhdGggZD0iTTYuMDAyIDUuMTI1YTMgMyAwIDAgMCAuNCAxLjM3NSIgLz4KICA8cGF0aCBkPSJtOS4yMjggMTAuODUyLS45MjMtLjM4MyIgLz4KICA8cGF0aCBkPSJtOS4yMjggMTMuMTQ4LS45MjMuMzgzIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/brain-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -3323,21 +3368,6 @@ declare const Brackets: react.ForwardRefExoticComponent<
  *
  */
 declare const BrainCog: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name BrickWall
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xMiA5djYiIC8+CiAgPHBhdGggZD0iTTE2IDE1djYiIC8+CiAgPHBhdGggZD0iTTE2IDN2NiIgLz4KICA8cGF0aCBkPSJNMyAxNWgxOCIgLz4KICA8cGF0aCBkPSJNMyA5aDE4IiAvPgogIDxwYXRoIGQ9Ik04IDE1djYiIC8+CiAgPHBhdGggZD0iTTggM3Y2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/brick-wall
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BrickWall: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3357,6 +3387,36 @@ declare const Brain: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name BrickWallFire
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgM3YyLjEwNyIgLz4KICA8cGF0aCBkPSJNMTcgOWMxIDMgMi41IDMuNSAzLjUgNC41QTUgNSAwIDAgMSAyMiAxN2E1IDUgMCAwIDEtMTAgMGMwLS4zIDAtLjYuMS0uOWEyIDIgMCAxIDAgMy4zLTJDMTMgMTEuNSAxNiA5IDE3IDkiIC8+CiAgPHBhdGggZD0iTTIxIDguMjc0VjVhMiAyIDAgMCAwLTItMkg1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgzLjkzOCIgLz4KICA8cGF0aCBkPSJNMyAxNWg1LjI1MyIgLz4KICA8cGF0aCBkPSJNMyA5aDguMjI4IiAvPgogIDxwYXRoIGQ9Ik04IDE1djYiIC8+CiAgPHBhdGggZD0iTTggM3Y2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/brick-wall-fire
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BrickWallFire: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BrickWall
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xMiA5djYiIC8+CiAgPHBhdGggZD0iTTE2IDE1djYiIC8+CiAgPHBhdGggZD0iTTE2IDN2NiIgLz4KICA8cGF0aCBkPSJNMyAxNWgxOCIgLz4KICA8cGF0aCBkPSJNMyA5aDE4IiAvPgogIDxwYXRoIGQ9Ik04IDE1djYiIC8+CiAgPHBhdGggZD0iTTggM3Y2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/brick-wall
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BrickWall: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name BriefcaseBusiness
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3372,21 +3432,6 @@ declare const BriefcaseBusiness: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BriefcaseMedical
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTF2NCIgLz4KICA8cGF0aCBkPSJNMTQgMTNoLTQiIC8+CiAgPHBhdGggZD0iTTE2IDZWNGEyIDIgMCAwIDAtMi0yaC00YTIgMiAwIDAgMC0yIDJ2MiIgLz4KICA8cGF0aCBkPSJNMTggNnYxNCIgLz4KICA8cGF0aCBkPSJNNiA2djE0IiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgeD0iMiIgeT0iNiIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/briefcase-medical
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BriefcaseMedical: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name BriefcaseConveyorBelt
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3398,6 +3443,21 @@ declare const BriefcaseMedical: react.ForwardRefExoticComponent<
  *
  */
 declare const BriefcaseConveyorBelt: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BriefcaseMedical
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTF2NCIgLz4KICA8cGF0aCBkPSJNMTQgMTNoLTQiIC8+CiAgPHBhdGggZD0iTTE2IDZWNGEyIDIgMCAwIDAtMi0yaC00YTIgMiAwIDAgMC0yIDJ2MiIgLz4KICA8cGF0aCBkPSJNMTggNnYxNCIgLz4KICA8cGF0aCBkPSJNNiA2djE0IiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgeD0iMiIgeT0iNiIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/briefcase-medical
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BriefcaseMedical: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3432,21 +3492,6 @@ declare const BringToFront: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name BugOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgNy4xM1Y2YTMgMyAwIDAgMC01LjE0LTIuMUw4IDIiIC8+CiAgPHBhdGggZD0iTTE0LjEyIDMuODggMTYgMiIgLz4KICA8cGF0aCBkPSJNMjIgMTNoLTR2LTJhNCA0IDAgMCAwLTQtNGgtMS4zIiAvPgogIDxwYXRoIGQ9Ik0yMC45NyA1YzAgMi4xLTEuNiAzLjgtMy41IDQiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNNy43IDcuN0E0IDQgMCAwIDAgNiAxMXYzYTYgNiAwIDAgMCAxMS4xMyAzLjEzIiAvPgogIDxwYXRoIGQ9Ik0xMiAyMHYtOCIgLz4KICA8cGF0aCBkPSJNNiAxM0gyIiAvPgogIDxwYXRoIGQ9Ik0zIDIxYzAtMi4xIDEuNy0zLjkgMy44LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bug-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const BugOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Brush
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3458,6 +3503,36 @@ declare const BugOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Brush: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Bubbles
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNy4yIDE0LjhhMiAyIDAgMCAxIDIgMiIgLz4KICA8Y2lyY2xlIGN4PSIxOC41IiBjeT0iOC41IiByPSIzLjUiIC8+CiAgPGNpcmNsZSBjeD0iNy41IiBjeT0iMTYuNSIgcj0iNS41IiAvPgogIDxjaXJjbGUgY3g9IjcuNSIgY3k9IjQuNSIgcj0iMi41IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/bubbles
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Bubbles: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name BugOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgNy4xM1Y2YTMgMyAwIDAgMC01LjE0LTIuMUw4IDIiIC8+CiAgPHBhdGggZD0iTTE0LjEyIDMuODggMTYgMiIgLz4KICA8cGF0aCBkPSJNMjIgMTNoLTR2LTJhNCA0IDAgMCAwLTQtNGgtMS4zIiAvPgogIDxwYXRoIGQ9Ik0yMC45NyA1YzAgMi4xLTEuNiAzLjgtMy41IDQiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNNy43IDcuN0E0IDQgMCAwIDAgNiAxMXYzYTYgNiAwIDAgMCAxMS4xMyAzLjEzIiAvPgogIDxwYXRoIGQ9Ik0xMiAyMHYtOCIgLz4KICA8cGF0aCBkPSJNNiAxM0gyIiAvPgogIDxwYXRoIGQ9Ik0zIDIxYzAtMi4xIDEuNy0zLjkgMy44LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/bug-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const BugOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3567,6 +3642,21 @@ declare const CableCar: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Cable
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTcgMjF2LTJhMSAxIDAgMCAxLTEtMXYtMWEyIDIgMCAwIDEgMi0yaDJhMiAyIDAgMCAxIDIgMnYxYTEgMSAwIDAgMS0xIDEiIC8+CiAgPHBhdGggZD0iTTE5IDE1VjYuNWExIDEgMCAwIDAtNyAwdjExYTEgMSAwIDAgMS03IDBWOSIgLz4KICA8cGF0aCBkPSJNMjEgMjF2LTJoLTQiIC8+CiAgPHBhdGggZD0iTTMgNWg0VjMiIC8+CiAgPHBhdGggZD0iTTcgNWExIDEgMCAwIDEgMSAxdjFhMiAyIDAgMCAxLTIgMkg0YTIgMiAwIDAgMS0yLTJWNmExIDEgMCAwIDEgMS0xVjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cable
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Cable: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name CakeSlice
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3597,21 +3687,6 @@ declare const Cake: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Cable
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTcgMjF2LTJhMSAxIDAgMCAxLTEtMXYtMWEyIDIgMCAwIDEgMi0yaDJhMiAyIDAgMCAxIDIgMnYxYTEgMSAwIDAgMS0xIDEiIC8+CiAgPHBhdGggZD0iTTE5IDE1VjYuNWExIDEgMCAwIDAtNyAwdjExYTEgMSAwIDAgMS03IDBWOSIgLz4KICA8cGF0aCBkPSJNMjEgMjF2LTJoLTQiIC8+CiAgPHBhdGggZD0iTTMgNWg0VjMiIC8+CiAgPHBhdGggZD0iTTcgNWExIDEgMCAwIDEgMSAxdjFhMiAyIDAgMCAxLTIgMkg0YTIgMiAwIDAgMS0yLTJWNmExIDEgMCAwIDEgMS0xVjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cable
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Cable: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Calculator
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3623,21 +3698,6 @@ declare const Cable: react.ForwardRefExoticComponent<
  *
  */
 declare const Calculator: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name CalendarArrowUp
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQgMTggNC00IDQgNCIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxwYXRoIGQ9Ik0xOCAyMnYtOCIgLz4KICA8cGF0aCBkPSJNMjEgMTEuMzQzVjZhMiAyIDAgMCAwLTItMkg1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmg5IiAvPgogIDxwYXRoIGQ9Ik0zIDEwaDE4IiAvPgogIDxwYXRoIGQ9Ik04IDJ2NCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/calendar-arrow-up
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CalendarArrowUp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3672,17 +3732,17 @@ declare const CalendarArrowDown: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CalendarCheck
+ * @component @name CalendarArrowUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTE2IDJ2NCIgLz4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjQiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0zIDEwaDE4IiAvPgogIDxwYXRoIGQ9Im05IDE2IDIgMiA0LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/calendar-check
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQgMTggNC00IDQgNCIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxwYXRoIGQ9Ik0xOCAyMnYtOCIgLz4KICA8cGF0aCBkPSJNMjEgMTEuMzQzVjZhMiAyIDAgMCAwLTItMkg1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmg5IiAvPgogIDxwYXRoIGQ9Ik0zIDEwaDE4IiAvPgogIDxwYXRoIGQ9Ik04IDJ2NCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/calendar-arrow-up
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const CalendarCheck: react.ForwardRefExoticComponent<
+declare const CalendarArrowUp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3698,6 +3758,21 @@ declare const CalendarCheck: react.ForwardRefExoticComponent<
  *
  */
 declare const CalendarCheck2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CalendarCheck
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTE2IDJ2NCIgLz4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjQiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0zIDEwaDE4IiAvPgogIDxwYXRoIGQ9Im05IDE2IDIgMiA0LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/calendar-check
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CalendarCheck: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -3720,7 +3795,7 @@ declare const CalendarClock: react.ForwardRefExoticComponent<
  * @component @name CalendarCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTUuMiAxNi45LS45LS40IiAvPgogIDxwYXRoIGQ9Im0xNS4yIDE5LjEtLjkuNCIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxwYXRoIGQ9Im0xNi45IDE1LjItLjQtLjkiIC8+CiAgPHBhdGggZD0ibTE2LjkgMjAuOC0uNC45IiAvPgogIDxwYXRoIGQ9Im0xOS41IDE0LjMtLjQuOSIgLz4KICA8cGF0aCBkPSJtMTkuNSAyMS43LS40LS45IiAvPgogIDxwYXRoIGQ9Ik0yMSAxMC41VjZhMiAyIDAgMCAwLTItMkg1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmg2IiAvPgogIDxwYXRoIGQ9Im0yMS43IDE2LjUtLjkuNCIgLz4KICA8cGF0aCBkPSJtMjEuNyAxOS41LS45LS40IiAvPgogIDxwYXRoIGQ9Ik0zIDEwaDE4IiAvPgogIDxwYXRoIGQ9Ik04IDJ2NCIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE4IiByPSIzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/calendar-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTUuMjI4IDE2Ljg1Mi0uOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE1LjIyOCAxOS4xNDgtLjkyMy4zODMiIC8+CiAgPHBhdGggZD0iTTE2IDJ2NCIgLz4KICA8cGF0aCBkPSJtMTYuNDcgMTQuMzA1LjM4Mi45MjMiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiAyMC43NzItLjM4My45MjQiIC8+CiAgPHBhdGggZD0ibTE5LjE0OCAxNS4yMjguMzgzLS45MjMiIC8+CiAgPHBhdGggZD0ibTE5LjUzIDIxLjY5Ni0uMzgyLS45MjQiIC8+CiAgPHBhdGggZD0ibTIwLjc3MiAxNi44NTIuOTI0LS4zODMiIC8+CiAgPHBhdGggZD0ibTIwLjc3MiAxOS4xNDguOTI0LjM4MyIgLz4KICA8cGF0aCBkPSJNMjEgMTFWNmEyIDIgMCAwIDAtMi0ySDVhMiAyIDAgMCAwLTIgMnYxNGEyIDIgMCAwIDAgMiAyaDYiIC8+CiAgPHBhdGggZD0iTTMgMTBoMTgiIC8+CiAgPHBhdGggZD0iTTggMnY0IiAvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMTgiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/calendar-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -3840,7 +3915,7 @@ declare const CalendarPlus2: react.ForwardRefExoticComponent<
  * @component @name CalendarPlus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTE2IDJ2NCIgLz4KICA8cGF0aCBkPSJNMjEgMTNWNmEyIDIgMCAwIDAtMi0ySDVhMiAyIDAgMCAwLTIgMnYxNGEyIDIgMCAwIDAgMiAyaDgiIC8+CiAgPHBhdGggZD0iTTMgMTBoMTgiIC8+CiAgPHBhdGggZD0iTTE2IDE5aDYiIC8+CiAgPHBhdGggZD0iTTE5IDE2djYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/calendar-plus
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTloNiIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxwYXRoIGQ9Ik0xOSAxNnY2IiAvPgogIDxwYXRoIGQ9Ik0yMSAxMi41OThWNmEyIDIgMCAwIDAtMi0ySDVhMiAyIDAgMCAwLTIgMnYxNGEyIDIgMCAwIDAgMiAyaDguNSIgLz4KICA8cGF0aCBkPSJNMyAxMGgxOCIgLz4KICA8cGF0aCBkPSJNOCAydjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/calendar-plus
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -3957,21 +4032,6 @@ declare const CameraOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Camera
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQuNSA0aC01TDcgN0g0YTIgMiAwIDAgMC0yIDJ2OWEyIDIgMCAwIDAgMiAyaDE2YTIgMiAwIDAgMCAyLTJWOWEyIDIgMCAwIDAtMi0yaC0zbC0yLjUtM3oiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMyIgcj0iMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/camera
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Camera: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CandyCane
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -3983,6 +4043,21 @@ declare const Camera: react.ForwardRefExoticComponent<
  *
  */
 declare const CandyCane: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Camera
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQuNSA0aC01TDcgN0g0YTIgMiAwIDAgMC0yIDJ2OWEyIDIgMCAwIDAgMiAyaDE2YTIgMiAwIDAgMCAyLTJWOWEyIDIgMCAwIDAtMi0yaC0zbC0yLjUtM3oiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMyIgcj0iMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/camera
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Camera: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4077,21 +4152,6 @@ declare const Captions: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CarTaxiFront
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMmg0IiAvPgogIDxwYXRoIGQ9Im0yMSA4LTIgMi0xLjUtMy43QTIgMiAwIDAgMCAxNS42NDYgNUg4LjRhMiAyIDAgMCAwLTEuOTAzIDEuMjU3TDUgMTAgMyA4IiAvPgogIDxwYXRoIGQ9Ik03IDE0aC4wMSIgLz4KICA8cGF0aCBkPSJNMTcgMTRoLjAxIiAvPgogIDxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSI4IiB4PSIzIiB5PSIxMCIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTUgMTh2MiIgLz4KICA8cGF0aCBkPSJNMTkgMTh2MiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/car-taxi-front
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CarTaxiFront: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Car
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4103,6 +4163,21 @@ declare const CarTaxiFront: react.ForwardRefExoticComponent<
  *
  */
 declare const Car: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CarTaxiFront
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMmg0IiAvPgogIDxwYXRoIGQ9Im0yMSA4LTIgMi0xLjUtMy43QTIgMiAwIDAgMCAxNS42NDYgNUg4LjRhMiAyIDAgMCAwLTEuOTAzIDEuMjU3TDUgMTAgMyA4IiAvPgogIDxwYXRoIGQ9Ik03IDE0aC4wMSIgLz4KICA8cGF0aCBkPSJNMTcgMTRoLjAxIiAvPgogIDxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSI4IiB4PSIzIiB5PSIxMCIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTUgMTh2MiIgLz4KICA8cGF0aCBkPSJNMTkgMTh2MiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/car-taxi-front
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CarTaxiFront: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4122,21 +4197,6 @@ declare const Caravan: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Carrot
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMi4yNyAyMS43czkuODctMy41IDEyLjczLTYuMzZhNC41IDQuNSAwIDAgMC02LjM2LTYuMzdDNS43NyAxMS44NCAyLjI3IDIxLjcgMi4yNyAyMS43ek04LjY0IDE0bC0yLjA1LTIuMDRNMTUuMzQgMTVsLTIuNDYtMi40NiIgLz4KICA8cGF0aCBkPSJNMjIgOXMtMS4zMy0yLTMuNS0yQzE2Ljg2IDcgMTUgOSAxNSA5czEuMzMgMiAzLjUgMlMyMiA5IDIyIDl6IiAvPgogIDxwYXRoIGQ9Ik0xNSAycy0yIDEuMzMtMiAzLjVTMTUgOSAxNSA5czItMS44NCAyLTMuNUMxNyAzLjMzIDE1IDIgMTUgMnoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/carrot
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Carrot: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CaseLower
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4148,6 +4208,21 @@ declare const Carrot: react.ForwardRefExoticComponent<
  *
  */
 declare const CaseLower: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Carrot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMi4yNyAyMS43czkuODctMy41IDEyLjczLTYuMzZhNC41IDQuNSAwIDAgMC02LjM2LTYuMzdDNS43NyAxMS44NCAyLjI3IDIxLjcgMi4yNyAyMS43ek04LjY0IDE0bC0yLjA1LTIuMDRNMTUuMzQgMTVsLTIuNDYtMi40NiIgLz4KICA8cGF0aCBkPSJNMjIgOXMtMS4zMy0yLTMuNS0yQzE2Ljg2IDcgMTUgOSAxNSA5czEuMzMgMiAzLjUgMlMyMiA5IDIyIDl6IiAvPgogIDxwYXRoIGQ9Ik0xNSAycy0yIDEuMzMtMiAzLjVTMTUgOSAxNSA5czItMS44NCAyLTMuNUMxNyAzLjMzIDE1IDIgMTUgMnoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/carrot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Carrot: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4317,21 +4392,6 @@ declare const ChartBarIncreasing: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ChartBar
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAzdjE2YTIgMiAwIDAgMCAyIDJoMTYiIC8+CiAgPHBhdGggZD0iTTcgMTZoOCIgLz4KICA8cGF0aCBkPSJNNyAxMWgxMiIgLz4KICA8cGF0aCBkPSJNNyA2aDMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/chart-bar
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ChartBar: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ChartBarStacked
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4343,6 +4403,21 @@ declare const ChartBar: react.ForwardRefExoticComponent<
  *
  */
 declare const ChartBarStacked: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ChartBar
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAzdjE2YTIgMiAwIDAgMCAyIDJoMTYiIC8+CiAgPHBhdGggZD0iTTcgMTZoOCIgLz4KICA8cGF0aCBkPSJNNyAxMWgxMiIgLz4KICA8cGF0aCBkPSJNNyA2aDMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/chart-bar
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ChartBar: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4482,6 +4557,21 @@ declare const ChartNetwork: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name ChartNoAxesColumnDecreasing
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjBWMTAiIC8+CiAgPHBhdGggZD0iTTE4IDIwdi00IiAvPgogIDxwYXRoIGQ9Ik02IDIwVjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/chart-no-axes-column-decreasing
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ChartNoAxesColumnDecreasing: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name ChartNoAxesColumnIncreasing
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4508,21 +4598,6 @@ declare const ChartNoAxesColumnIncreasing: react.ForwardRefExoticComponent<
  *
  */
 declare const ChartNoAxesColumn: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name ChartNoAxesColumnDecreasing
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjBWMTAiIC8+CiAgPHBhdGggZD0iTTE4IDIwdi00IiAvPgogIDxwYXRoIGQ9Ik02IDIwVjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/chart-no-axes-column-decreasing
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ChartNoAxesColumnDecreasing: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4752,21 +4827,6 @@ declare const ChevronUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ChevronsDownUp
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNyAyMCA1LTUgNSA1IiAvPgogIDxwYXRoIGQ9Im03IDQgNSA1IDUtNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/chevrons-down-up
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ChevronsDownUp: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ChevronsDown
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4778,6 +4838,21 @@ declare const ChevronsDownUp: react.ForwardRefExoticComponent<
  *
  */
 declare const ChevronsDown: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ChevronsDownUp
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNyAyMCA1LTUgNSA1IiAvPgogIDxwYXRoIGQ9Im03IDQgNSA1IDUtNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/chevrons-down-up
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ChevronsDownUp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -4917,21 +4992,6 @@ declare const Church: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CigaretteOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTJIM2ExIDEgMCAwIDAtMSAxdjJhMSAxIDAgMCAwIDEgMWgxMyIgLz4KICA8cGF0aCBkPSJNMTggOGMwLTIuNS0yLTIuNS0yLTUiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNMjEgMTJhMSAxIDAgMCAxIDEgMXYyYTEgMSAwIDAgMS0uNS44NjYiIC8+CiAgPHBhdGggZD0iTTIyIDhjMC0yLjUtMi0yLjUtMi01IiAvPgogIDxwYXRoIGQ9Ik03IDEydjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cigarette-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CigaretteOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Cigarette
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -4943,6 +5003,21 @@ declare const CigaretteOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Cigarette: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CigaretteOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTJIM2ExIDEgMCAwIDAtMSAxdjJhMSAxIDAgMCAwIDEgMWgxMyIgLz4KICA8cGF0aCBkPSJNMTggOGMwLTIuNS0yLTIuNS0yLTUiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNMjEgMTJhMSAxIDAgMCAxIDEgMXYyYTEgMSAwIDAgMS0uNS44NjYiIC8+CiAgPHBhdGggZD0iTTIyIDhjMC0yLjUtMi0yLjUtMi01IiAvPgogIDxwYXRoIGQ9Ik03IDEydjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cigarette-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CigaretteOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5052,21 +5127,6 @@ declare const CircleArrowOutUpRight: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CircleArrowUp
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtMTYgMTItNC00LTQgNCIgLz4KICA8cGF0aCBkPSJNMTIgMTZWOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle-arrow-up
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CircleArrowUp: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CircleArrowRight
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5082,17 +5142,17 @@ declare const CircleArrowRight: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CircleCheckBig
+ * @component @name CircleArrowUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEuODAxIDEwQTEwIDEwIDAgMSAxIDE3IDMuMzM1IiAvPgogIDxwYXRoIGQ9Im05IDExIDMgM0wyMiA0IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-check-big
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtMTYgMTItNC00LTQgNCIgLz4KICA8cGF0aCBkPSJNMTIgMTZWOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle-arrow-up
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const CircleCheckBig: react.ForwardRefExoticComponent<
+declare const CircleArrowUp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5108,6 +5168,21 @@ declare const CircleCheckBig: react.ForwardRefExoticComponent<
  *
  */
 declare const CircleCheck: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CircleCheckBig
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEuODAxIDEwQTEwIDEwIDAgMSAxIDE3IDMuMzM1IiAvPgogIDxwYXRoIGQ9Im05IDExIDMgM0wyMiA0IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-check-big
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CircleCheckBig: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5232,21 +5307,6 @@ declare const CircleDotDashed: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CircleDot
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-dot
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CircleDot: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CircleEllipsis
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5258,6 +5318,21 @@ declare const CircleDot: react.ForwardRefExoticComponent<
  *
  */
 declare const CircleEllipsis: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CircleDot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-dot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CircleDot: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5292,21 +5367,6 @@ declare const CircleFadingArrowUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CircleFadingPlus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMmExMCAxMCAwIDAgMSA3LjM4IDE2Ljc1IiAvPgogIDxwYXRoIGQ9Ik0xMiA4djgiIC8+CiAgPHBhdGggZD0iTTE2IDEySDgiIC8+CiAgPHBhdGggZD0iTTIuNSA4Ljg3NWExMCAxMCAwIDAgMC0uNSAzIiAvPgogIDxwYXRoIGQ9Ik0yLjgzIDE2YTEwIDEwIDAgMCAwIDIuNDMgMy40IiAvPgogIDxwYXRoIGQ9Ik00LjYzNiA1LjIzNWExMCAxMCAwIDAgMSAuODkxLS44NTciIC8+CiAgPHBhdGggZD0iTTguNjQ0IDIxLjQyYTEwIDEwIDAgMCAwIDcuNjMxLS4zOCIgLz4KPC9zdmc+) - https://lucide.dev/icons/circle-fading-plus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CircleFadingPlus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CircleGauge
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5322,17 +5382,17 @@ declare const CircleGauge: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CircleMinus
+ * @component @name CircleFadingPlus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNOCAxMmg4IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-minus
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMmExMCAxMCAwIDAgMSA3LjM4IDE2Ljc1IiAvPgogIDxwYXRoIGQ9Ik0xMiA4djgiIC8+CiAgPHBhdGggZD0iTTE2IDEySDgiIC8+CiAgPHBhdGggZD0iTTIuNSA4Ljg3NWExMCAxMCAwIDAgMC0uNSAzIiAvPgogIDxwYXRoIGQ9Ik0yLjgzIDE2YTEwIDEwIDAgMCAwIDIuNDMgMy40IiAvPgogIDxwYXRoIGQ9Ik00LjYzNiA1LjIzNWExMCAxMCAwIDAgMSAuODkxLS44NTciIC8+CiAgPHBhdGggZD0iTTguNjQ0IDIxLjQyYTEwIDEwIDAgMCAwIDcuNjMxLS4zOCIgLz4KPC9zdmc+) - https://lucide.dev/icons/circle-fading-plus
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const CircleMinus: react.ForwardRefExoticComponent<
+declare const CircleFadingPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5348,6 +5408,21 @@ declare const CircleMinus: react.ForwardRefExoticComponent<
  *
  */
 declare const CircleHelp: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CircleMinus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNOCAxMmg4IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/circle-minus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CircleMinus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5412,21 +5487,6 @@ declare const CirclePause: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CirclePercent
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtMTUgOS02IDYiIC8+CiAgPHBhdGggZD0iTTkgOWguMDEiIC8+CiAgPHBhdGggZD0iTTE1IDE1aC4wMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle-percent
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CirclePercent: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CirclePlay
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5438,6 +5498,21 @@ declare const CirclePercent: react.ForwardRefExoticComponent<
  *
  */
 declare const CirclePlay: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CirclePercent
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtMTUgOS02IDYiIC8+CiAgPHBhdGggZD0iTTkgOWguMDEiIC8+CiAgPHBhdGggZD0iTTE1IDE1aC4wMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle-percent
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CirclePercent: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5562,21 +5637,6 @@ declare const CircleUser: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Circle
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Circle: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CircleX
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5588,6 +5648,21 @@ declare const Circle: react.ForwardRefExoticComponent<
  *
  */
 declare const CircleX: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Circle
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/circle
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Circle: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -5700,7 +5775,7 @@ declare const ClipboardMinus: react.ForwardRefExoticComponent<
  * @component @name ClipboardPaste
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMkg5YTEgMSAwIDAgMC0xIDF2MmMwIC42LjQgMSAxIDFoNmMuNiAwIDEtLjQgMS0xVjNjMC0uNi0uNC0xLTEtMVoiIC8+CiAgPHBhdGggZD0iTTggNEg2YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yTTE2IDRoMmEyIDIgMCAwIDEgMiAydjJNMTEgMTRoMTAiIC8+CiAgPHBhdGggZD0ibTE3IDEwIDQgNC00IDQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/clipboard-paste
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgMTRoMTAiIC8+CiAgPHBhdGggZD0iTTE2IDRoMmEyIDIgMCAwIDEgMiAydjEuMzQ0IiAvPgogIDxwYXRoIGQ9Im0xNyAxOCA0LTQtNC00IiAvPgogIDxwYXRoIGQ9Ik04IDRINmEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDEuNzkzLTEuMTEzIiAvPgogIDxyZWN0IHg9IjgiIHk9IjIiIHdpZHRoPSI4IiBoZWlnaHQ9IjQiIHJ4PSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/clipboard-paste
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -5742,21 +5817,6 @@ declare const ClipboardPen: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ClipboardPlus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI0IiB4PSI4IiB5PSIyIiByeD0iMSIgcnk9IjEiIC8+CiAgPHBhdGggZD0iTTE2IDRoMmEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDJINmEyIDIgMCAwIDEtMi0yVjZhMiAyIDAgMCAxIDItMmgyIiAvPgogIDxwYXRoIGQ9Ik05IDE0aDYiIC8+CiAgPHBhdGggZD0iTTEyIDE3di02IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/clipboard-plus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ClipboardPlus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ClipboardType
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -5768,6 +5828,21 @@ declare const ClipboardPlus: react.ForwardRefExoticComponent<
  *
  */
 declare const ClipboardType: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ClipboardPlus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI0IiB4PSI4IiB5PSIyIiByeD0iMSIgcnk9IjEiIC8+CiAgPHBhdGggZD0iTTE2IDRoMmEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDJINmEyIDIgMCAwIDEtMi0yVjZhMiAyIDAgMCAxIDItMmgyIiAvPgogIDxwYXRoIGQ9Ik05IDE0aDYiIC8+CiAgPHBhdGggZD0iTTEyIDE3di02IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/clipboard-plus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ClipboardPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6072,25 +6147,10 @@ declare const CloudAlert: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CloudDownload
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTN2OGwtNC00IiAvPgogIDxwYXRoIGQ9Im0xMiAyMSA0LTQiIC8+CiAgPHBhdGggZD0iTTQuMzkzIDE1LjI2OUE3IDcgMCAxIDEgMTUuNzEgOGgxLjc5YTQuNSA0LjUgMCAwIDEgMi40MzYgOC4yODQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cloud-download
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CloudDownload: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CloudCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjE3IiByPSIzIiAvPgogIDxwYXRoIGQ9Ik00LjIgMTUuMUE3IDcgMCAxIDEgMTUuNzEgOGgxLjc5YTQuNSA0LjUgMCAwIDEgMi41IDguMiIgLz4KICA8cGF0aCBkPSJtMTUuNyAxOC40LS45LS4zIiAvPgogIDxwYXRoIGQ9Im05LjIgMTUuOS0uOS0uMyIgLz4KICA8cGF0aCBkPSJtMTAuNiAyMC43LjMtLjkiIC8+CiAgPHBhdGggZD0ibTEzLjEgMTQuMi4zLS45IiAvPgogIDxwYXRoIGQ9Im0xMy42IDIwLjctLjQtMSIgLz4KICA8cGF0aCBkPSJtMTAuOCAxNC4zLS40LTEiIC8+CiAgPHBhdGggZD0ibTguMyAxOC42IDEtLjQiIC8+CiAgPHBhdGggZD0ibTE0LjcgMTUuOCAxLS40IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/cloud-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTAuODUyIDE5Ljc3Mi0uMzgzLjkyNCIgLz4KICA8cGF0aCBkPSJtMTMuMTQ4IDE0LjIyOC4zODMtLjkyMyIgLz4KICA8cGF0aCBkPSJNMTMuMTQ4IDE5Ljc3MmEzIDMgMCAxIDAtMi4yOTYtNS41NDRsLS4zODMtLjkyMyIgLz4KICA8cGF0aCBkPSJtMTMuNTMgMjAuNjk2LS4zODItLjkyNGEzIDMgMCAxIDEtMi4yOTYtNS41NDQiIC8+CiAgPHBhdGggZD0ibTE0Ljc3MiAxNS44NTIuOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE0Ljc3MiAxOC4xNDguOTIzLjM4MyIgLz4KICA8cGF0aCBkPSJNNC4yIDE1LjFhNyA3IDAgMSAxIDkuOTMtOS44NThBNyA3IDAgMCAxIDE1LjcxIDhoMS43OWE0LjUgNC41IDAgMCAxIDIuNSA4LjIiIC8+CiAgPHBhdGggZD0ibTkuMjI4IDE1Ljg1Mi0uOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTkuMjI4IDE4LjE0OC0uOTIzLjM4MyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/cloud-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -6117,6 +6177,21 @@ declare const CloudDrizzle: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name CloudDownload
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTN2OGwtNC00IiAvPgogIDxwYXRoIGQ9Im0xMiAyMSA0LTQiIC8+CiAgPHBhdGggZD0iTTQuMzkzIDE1LjI2OUE3IDcgMCAxIDEgMTUuNzEgOGgxLjc5YTQuNSA0LjUgMCAwIDEgMi40MzYgOC4yODQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cloud-download
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CloudDownload: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name CloudFog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -6132,21 +6207,6 @@ declare const CloudFog: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CloudLightning
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAxNi4zMjZBNyA3IDAgMSAxIDE1LjcxIDhoMS43OWE0LjUgNC41IDAgMCAxIC41IDguOTczIiAvPgogIDxwYXRoIGQ9Im0xMyAxMi0zIDVoNGwtMyA1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/cloud-lightning
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CloudLightning: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CloudHail
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -6158,6 +6218,21 @@ declare const CloudLightning: react.ForwardRefExoticComponent<
  *
  */
 declare const CloudHail: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CloudLightning
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAxNi4zMjZBNyA3IDAgMSAxIDE1LjcxIDhoMS43OWE0LjUgNC41IDAgMCAxIC41IDguOTczIiAvPgogIDxwYXRoIGQ9Im0xMyAxMi0zIDVoNGwtMyA1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/cloud-lightning
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CloudLightning: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6207,21 +6282,6 @@ declare const CloudOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CloudRain
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxNC44OTlBNyA3IDAgMSAxIDE1LjcxIDhoMS43OWE0LjUgNC41IDAgMCAxIDIuNSA4LjI0MiIgLz4KICA8cGF0aCBkPSJNMTYgMTR2NiIgLz4KICA8cGF0aCBkPSJNOCAxNHY2IiAvPgogIDxwYXRoIGQ9Ik0xMiAxNnY2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/cloud-rain
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CloudRain: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CloudRainWind
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -6233,6 +6293,21 @@ declare const CloudRain: react.ForwardRefExoticComponent<
  *
  */
 declare const CloudRainWind: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CloudRain
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxNC44OTlBNyA3IDAgMSAxIDE1LjcxIDhoMS43OWE0LjUgNC41IDAgMCAxIDIuNSA4LjI0MiIgLz4KICA8cGF0aCBkPSJNMTYgMTR2NiIgLz4KICA8cGF0aCBkPSJNOCAxNHY2IiAvPgogIDxwYXRoIGQ9Ik0xMiAxNnY2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/cloud-rain
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CloudRain: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6252,21 +6327,6 @@ declare const CloudSnow: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name CloudSun
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyIiAvPgogIDxwYXRoIGQ9Im00LjkzIDQuOTMgMS40MSAxLjQxIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMmgyIiAvPgogIDxwYXRoIGQ9Im0xOS4wNyA0LjkzLTEuNDEgMS40MSIgLz4KICA8cGF0aCBkPSJNMTUuOTQ3IDEyLjY1YTQgNCAwIDAgMC01LjkyNS00LjEyOCIgLz4KICA8cGF0aCBkPSJNMTMgMjJIN2E1IDUgMCAxIDEgNC45LTZIMTNhMyAzIDAgMCAxIDAgNloiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cloud-sun
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const CloudSun: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name CloudSunRain
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -6278,6 +6338,21 @@ declare const CloudSun: react.ForwardRefExoticComponent<
  *
  */
 declare const CloudSunRain: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name CloudSun
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyIiAvPgogIDxwYXRoIGQ9Im00LjkzIDQuOTMgMS40MSAxLjQxIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMmgyIiAvPgogIDxwYXRoIGQ9Im0xOS4wNyA0LjkzLTEuNDEgMS40MSIgLz4KICA8cGF0aCBkPSJNMTUuOTQ3IDEyLjY1YTQgNCAwIDAgMC01LjkyNS00LjEyOCIgLz4KICA8cGF0aCBkPSJNMTMgMjJIN2E1IDUgMCAxIDEgNC45LTZIMTNhMyAzIDAgMCAxIDAgNloiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cloud-sun
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const CloudSun: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6473,6 +6548,21 @@ declare const Coins: react.ForwardRefExoticComponent<
  *
  */
 declare const Columns2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Columns3Cog
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuNSAyMUg1YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ2NS41IiAvPgogIDxwYXRoIGQ9Im0xNC4zIDE5LjYgMS0uNCIgLz4KICA8cGF0aCBkPSJNMTUgM3Y3LjUiIC8+CiAgPHBhdGggZD0ibTE1LjIgMTYuOS0uOS0uMyIgLz4KICA8cGF0aCBkPSJtMTYuNiAyMS43LjMtLjkiIC8+CiAgPHBhdGggZD0ibTE2LjggMTUuMy0uNC0xIiAvPgogIDxwYXRoIGQ9Im0xOS4xIDE1LjIuMy0uOSIgLz4KICA8cGF0aCBkPSJtMTkuNiAyMS43LS40LTEiIC8+CiAgPHBhdGggZD0ibTIwLjcgMTYuOCAxLS40IiAvPgogIDxwYXRoIGQ9Im0yMS43IDE5LjQtLjktLjMiIC8+CiAgPHBhdGggZD0iTTkgM3YxOCIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE4IiByPSIzIiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/columns-3-cog
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Columns3Cog: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6807,21 +6897,6 @@ declare const Copy: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Copyright
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNMTQuODMgMTQuODNhNCA0IDAgMSAxIDAtNS42NiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/copyright
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Copyright: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Copyleft
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -6833,6 +6908,21 @@ declare const Copyright: react.ForwardRefExoticComponent<
  *
  */
 declare const Copyleft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Copyright
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNMTQuODMgMTQuODNhNCA0IDAgMSAxIDAtNS42NiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/copyright
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Copyright: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -6960,7 +7050,7 @@ declare const CornerUpRight: react.ForwardRefExoticComponent<
  * @component @name Cpu
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHg9IjQiIHk9IjQiIHJ4PSIyIiAvPgogIDxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHg9IjkiIHk9IjkiIHJ4PSIxIiAvPgogIDxwYXRoIGQ9Ik0xNSAydjIiIC8+CiAgPHBhdGggZD0iTTE1IDIwdjIiIC8+CiAgPHBhdGggZD0iTTIgMTVoMiIgLz4KICA8cGF0aCBkPSJNMiA5aDIiIC8+CiAgPHBhdGggZD0iTTIwIDE1aDIiIC8+CiAgPHBhdGggZD0iTTIwIDloMiIgLz4KICA8cGF0aCBkPSJNOSAydjIiIC8+CiAgPHBhdGggZD0iTTkgMjB2MiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/cpu
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjB2MiIgLz4KICA8cGF0aCBkPSJNMTIgMnYyIiAvPgogIDxwYXRoIGQ9Ik0xNyAyMHYyIiAvPgogIDxwYXRoIGQ9Ik0xNyAydjIiIC8+CiAgPHBhdGggZD0iTTIgMTJoMiIgLz4KICA8cGF0aCBkPSJNMiAxN2gyIiAvPgogIDxwYXRoIGQ9Ik0yIDdoMiIgLz4KICA8cGF0aCBkPSJNMjAgMTJoMiIgLz4KICA8cGF0aCBkPSJNMjAgMTdoMiIgLz4KICA8cGF0aCBkPSJNMjAgN2gyIiAvPgogIDxwYXRoIGQ9Ik03IDIwdjIiIC8+CiAgPHBhdGggZD0iTTcgMnYyIiAvPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjIiIC8+CiAgPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjgiIGhlaWdodD0iOCIgcng9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/cpu
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -7182,21 +7272,6 @@ declare const DatabaseZap: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Delete
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNWEyIDIgMCAwIDAtMS4zNDQuNTE5bC02LjMyOCA1Ljc0YTEgMSAwIDAgMCAwIDEuNDgxbDYuMzI4IDUuNzQxQTIgMiAwIDAgMCAxMCAxOWgxMGEyIDIgMCAwIDAgMi0yVjdhMiAyIDAgMCAwLTItMnoiIC8+CiAgPHBhdGggZD0ibTEyIDkgNiA2IiAvPgogIDxwYXRoIGQ9Im0xOCA5LTYgNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/delete
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Delete: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Database
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7208,6 +7283,51 @@ declare const Delete: react.ForwardRefExoticComponent<
  *
  */
 declare const Database: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name DecimalsArrowLeft
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTMgMjEtMy0zIDMtMyIgLz4KICA8cGF0aCBkPSJNMjAgMThIMTAiIC8+CiAgPHBhdGggZD0iTTMgMTFoLjAxIiAvPgogIDxyZWN0IHg9IjYiIHk9IjMiIHdpZHRoPSI1IiBoZWlnaHQ9IjgiIHJ4PSIyLjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/decimals-arrow-left
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const DecimalsArrowLeft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name DecimalsArrowRight
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMThoMTAiIC8+CiAgPHBhdGggZD0ibTE3IDIxIDMtMy0zLTMiIC8+CiAgPHBhdGggZD0iTTMgMTFoLjAxIiAvPgogIDxyZWN0IHg9IjE1IiB5PSIzIiB3aWR0aD0iNSIgaGVpZ2h0PSI4IiByeD0iMi41IiAvPgogIDxyZWN0IHg9IjYiIHk9IjMiIHdpZHRoPSI1IiBoZWlnaHQ9IjgiIHJ4PSIyLjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/decimals-arrow-right
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const DecimalsArrowRight: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Delete
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNWEyIDIgMCAwIDAtMS4zNDQuNTE5bC02LjMyOCA1Ljc0YTEgMSAwIDAgMCAwIDEuNDgxbDYuMzI4IDUuNzQxQTIgMiAwIDAgMCAxMCAxOWgxMGEyIDIgMCAwIDAgMi0yVjdhMiAyIDAgMCAwLTItMnoiIC8+CiAgPHBhdGggZD0ibTEyIDkgNiA2IiAvPgogIDxwYXRoIGQ9Im0xOCA5LTYgNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/delete
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Delete: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7257,21 +7377,6 @@ declare const DiamondMinus: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name DiamondPlus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgOHY4IiAvPgogIDxwYXRoIGQ9Ik0yLjcgMTAuM2EyLjQxIDIuNDEgMCAwIDAgMCAzLjQxbDcuNTkgNy41OWEyLjQxIDIuNDEgMCAwIDAgMy40MSAwbDcuNTktNy41OWEyLjQxIDIuNDEgMCAwIDAgMC0zLjQxTDEzLjcgMi43MWEyLjQxIDIuNDEgMCAwIDAtMy40MSAweiIgLz4KICA8cGF0aCBkPSJNOCAxMmg4IiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/diamond-plus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const DiamondPlus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name DiamondPercent
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7283,6 +7388,21 @@ declare const DiamondPlus: react.ForwardRefExoticComponent<
  *
  */
 declare const DiamondPercent: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name DiamondPlus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgOHY4IiAvPgogIDxwYXRoIGQ9Ik0yLjcgMTAuM2EyLjQxIDIuNDEgMCAwIDAgMCAzLjQxbDcuNTkgNy41OWEyLjQxIDIuNDEgMCAwIDAgMy40MSAwbDcuNTktNy41OWEyLjQxIDIuNDEgMCAwIDAgMC0zLjQxTDEzLjcgMi43MWEyLjQxIDIuNDEgMCAwIDAtMy40MSAweiIgLz4KICA8cGF0aCBkPSJNOCAxMmg4IiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/diamond-plus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const DiamondPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7422,21 +7542,6 @@ declare const Diff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Disc3
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNNiAxMmMwLTEuNy43LTMuMiAxLjgtNC4yIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjIiIC8+CiAgPHBhdGggZD0iTTE4IDEyYzAgMS43LS43IDMuMi0xLjggNC4yIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/disc-3
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Disc3: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Disc2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7452,17 +7557,17 @@ declare const Disc2: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name DiscAlbum
+ * @component @name Disc3
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiIC8+CiAgPHBhdGggZD0iTTEyIDEyaC4wMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/disc-album
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJNNiAxMmMwLTEuNy43LTMuMiAxLjgtNC4yIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjIiIC8+CiAgPHBhdGggZD0iTTE4IDEyYzAgMS43LS43IDMuMi0xLjggNC4yIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/disc-3
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const DiscAlbum: react.ForwardRefExoticComponent<
+declare const Disc3: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7478,6 +7583,21 @@ declare const DiscAlbum: react.ForwardRefExoticComponent<
  *
  */
 declare const Disc: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name DiscAlbum
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiIC8+CiAgPHBhdGggZD0iTTEyIDEyaC4wMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/disc-album
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const DiscAlbum: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7632,21 +7752,6 @@ declare const Dot: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name DraftingCompass
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTIuOTkgNi43NCAxLjkzIDMuNDQiIC8+CiAgPHBhdGggZD0iTTE5LjEzNiAxMmExMCAxMCAwIDAgMS0xNC4yNzEgMCIgLz4KICA8cGF0aCBkPSJtMjEgMjEtMi4xNi0zLjg0IiAvPgogIDxwYXRoIGQ9Im0zIDIxIDguMDItMTQuMjYiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSI1IiByPSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/drafting-compass
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const DraftingCompass: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Download
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7658,6 +7763,21 @@ declare const DraftingCompass: react.ForwardRefExoticComponent<
  *
  */
 declare const Download: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name DraftingCompass
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTIuOTkgNi43NCAxLjkzIDMuNDQiIC8+CiAgPHBhdGggZD0iTTE5LjEzNiAxMmExMCAxMCAwIDAgMS0xNC4yNzEgMCIgLz4KICA8cGF0aCBkPSJtMjEgMjEtMi4xNi0zLjg0IiAvPgogIDxwYXRoIGQ9Im0zIDIxIDguMDItMTQuMjYiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSI1IiByPSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/drafting-compass
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const DraftingCompass: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7737,21 +7857,6 @@ declare const Droplet: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Drumstick
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUuNCAxNS42M2E3Ljg3NSA2IDEzNSAxIDEgNi4yMy02LjIzIDQuNSAzLjQzIDEzNSAwIDAtNi4yMyA2LjIzIiAvPgogIDxwYXRoIGQ9Im04LjI5IDEyLjcxLTIuNiAyLjZhMi41IDIuNSAwIDEgMC0xLjY1IDQuNjVBMi41IDIuNSAwIDEgMCA4LjcgMTguM2wyLjU5LTIuNTkiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/drumstick
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Drumstick: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Droplets
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7778,6 +7883,21 @@ declare const Droplets: react.ForwardRefExoticComponent<
  *
  */
 declare const Drum: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Drumstick
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUuNCAxNS42M2E3Ljg3NSA2IDEzNSAxIDEgNi4yMy02LjIzIDQuNSAzLjQzIDEzNSAwIDAtNi4yMyA2LjIzIiAvPgogIDxwYXRoIGQ9Im04LjI5IDEyLjcxLTIuNiAyLjZhMi41IDIuNSAwIDEgMC0xLjY1IDQuNjVBMi41IDIuNSAwIDEgMCA4LjcgMTguM2wyLjU5LTIuNTkiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/drumstick
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Drumstick: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7842,21 +7962,6 @@ declare const EarthLock: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Earth
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEuNTQgMTVIMTdhMiAyIDAgMCAwLTIgMnY0LjU0IiAvPgogIDxwYXRoIGQ9Ik03IDMuMzRWNWEzIDMgMCAwIDAgMyAzYTIgMiAwIDAgMSAyIDJjMCAxLjEuOSAyIDIgMmEyIDIgMCAwIDAgMi0yYzAtMS4xLjktMiAyLTJoMy4xNyIgLz4KICA8cGF0aCBkPSJNMTEgMjEuOTVWMThhMiAyIDAgMCAwLTItMmEyIDIgMCAwIDEtMi0ydi0xYTIgMiAwIDAgMC0yLTJIMi4wNSIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/earth
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Earth: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Eclipse
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -7868,6 +7973,21 @@ declare const Earth: react.ForwardRefExoticComponent<
  *
  */
 declare const Eclipse: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Earth
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEuNTQgMTVIMTdhMiAyIDAgMCAwLTIgMnY0LjU0IiAvPgogIDxwYXRoIGQ9Ik03IDMuMzRWNWEzIDMgMCAwIDAgMyAzYTIgMiAwIDAgMSAyIDJjMCAxLjEuOSAyIDIgMmEyIDIgMCAwIDAgMi0yYzAtMS4xLjktMiAyLTJoMy4xNyIgLz4KICA8cGF0aCBkPSJNMTEgMjEuOTVWMThhMiAyIDAgMCAwLTItMmEyIDIgMCAwIDEtMi0ydi0xYTIgMiAwIDAgMC0yLTJIMi4wNSIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/earth
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Earth: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7917,17 +8037,17 @@ declare const Egg: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name EllipsisVertical
+ * @component @name Ellipsis
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iNSIgcj0iMSIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjE5IiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/ellipsis-vertical
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTIiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iNSIgY3k9IjEyIiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/ellipsis
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const EllipsisVertical: react.ForwardRefExoticComponent<
+declare const Ellipsis: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7947,17 +8067,17 @@ declare const EqualApproximately: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Ellipsis
+ * @component @name EllipsisVertical
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTIiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iNSIgY3k9IjEyIiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/ellipsis
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iNSIgcj0iMSIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjE5IiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/ellipsis-vertical
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Ellipsis: react.ForwardRefExoticComponent<
+declare const EllipsisVertical: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -7977,21 +8097,6 @@ declare const EqualNot: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Equal
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8bGluZSB4MT0iNSIgeDI9IjE5IiB5MT0iOSIgeTI9IjkiIC8+CiAgPGxpbmUgeDE9IjUiIHgyPSIxOSIgeTE9IjE1IiB5Mj0iMTUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/equal
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Equal: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Eraser
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8003,6 +8108,21 @@ declare const Equal: react.ForwardRefExoticComponent<
  *
  */
 declare const Eraser: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Equal
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8bGluZSB4MT0iNSIgeDI9IjE5IiB5MT0iOSIgeTI9IjkiIC8+CiAgPGxpbmUgeDE9IjUiIHgyPSIxOSIgeTE9IjE1IiB5Mj0iMTUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/equal
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Equal: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8052,6 +8172,21 @@ declare const Expand: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name ExternalLink
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgM2g2djYiIC8+CiAgPHBhdGggZD0iTTEwIDE0IDIxIDMiIC8+CiAgPHBhdGggZD0iTTE4IDEzdjZhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJWOGEyIDIgMCAwIDEgMi0yaDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/external-link
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ExternalLink: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name EyeClosed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8078,21 +8213,6 @@ declare const EyeClosed: react.ForwardRefExoticComponent<
  *
  */
 declare const EyeOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name ExternalLink
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgM2g2djYiIC8+CiAgPHBhdGggZD0iTTEwIDE0IDIxIDMiIC8+CiAgPHBhdGggZD0iTTE4IDEzdjZhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJWOGEyIDIgMCAwIDEgMi0yaDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/external-link
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ExternalLink: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8172,21 +8292,6 @@ declare const FastForward: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Feather
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNjcgMTlhMiAyIDAgMCAwIDEuNDE2LS41ODhsNi4xNTQtNi4xNzJhNiA2IDAgMCAwLTguNDktOC40OUw1LjU4NiA5LjkxNEEyIDIgMCAwIDAgNSAxMS4zMjhWMThhMSAxIDAgMCAwIDEgMXoiIC8+CiAgPHBhdGggZD0iTTE2IDggMiAyMiIgLz4KICA8cGF0aCBkPSJNMTcuNSAxNUg5IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/feather
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Feather: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Fence
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8198,6 +8303,21 @@ declare const Feather: react.ForwardRefExoticComponent<
  *
  */
 declare const Fence: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Feather
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNjcgMTlhMiAyIDAgMCAwIDEuNDE2LS41ODhsNi4xNTQtNi4xNzJhNiA2IDAgMCAwLTguNDktOC40OUw1LjU4NiA5LjkxNEEyIDIgMCAwIDAgNSAxMS4zMjhWMThhMSAxIDAgMCAwIDEgMXoiIC8+CiAgPHBhdGggZD0iTTE2IDggMiAyMiIgLz4KICA8cGF0aCBkPSJNMTcuNSAxNUg5IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/feather
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Feather: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8295,7 +8415,7 @@ declare const FileAxis3d: react.ForwardRefExoticComponent<
  * @component @name FileBadge2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjdaIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjMiIC8+CiAgPHBhdGggZD0iTTE0IDJ2NGEyIDIgMCAwIDAgMiAyaDQiIC8+CiAgPHBhdGggZD0ibTE0IDEyLjUgMSA1LjUtMy0xLTMgMSAxLTUuNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/file-badge-2
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTMuNjkgMTIuNDc5IDEuMjkgNC44OGEuNS41IDAgMCAxLS42OTcuNTkxbC0xLjg0NC0uODQ5YTEgMSAwIDAgMC0uODguMDAxbC0xLjg0Ni44NWEuNS41IDAgMCAxLS42OTMtLjU5M2wxLjI5LTQuODgiIC8+CiAgPHBhdGggZD0iTTE1IDJINmEyIDIgMCAwIDAtMiAydjE2YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMlY3eiIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEwIiByPSIzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/file-badge-2
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -8367,21 +8487,6 @@ declare const FileChartColumn: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileChartPie
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJNMTYgMjJoMmEyIDIgMCAwIDAgMi0yVjdsLTUtNUg2YTIgMiAwIDAgMC0yIDJ2My41IiAvPgogIDxwYXRoIGQ9Ik00LjAxNyAxMS41MTJhNiA2IDAgMSAwIDguNDY2IDguNDc1IiAvPgogIDxwYXRoIGQ9Ik05IDE2YTEgMSAwIDAgMS0xLTF2LTRjMC0uNTUyLjQ1LTEuMDA4Ljk5NS0uOTE3YTYgNiAwIDAgMSA0LjkyMiA0LjkyMmMuMDkxLjU0NC0uMzY1Ljk5NS0uOTE3Ljk5NXoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-chart-pie
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FileChartPie: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FileChartLine
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8393,6 +8498,21 @@ declare const FileChartPie: react.ForwardRefExoticComponent<
  *
  */
 declare const FileChartLine: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FileChartPie
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJNMTYgMjJoMmEyIDIgMCAwIDAgMi0yVjdsLTUtNUg2YTIgMiAwIDAgMC0yIDJ2My41IiAvPgogIDxwYXRoIGQ9Ik00LjAxNyAxMS41MTJhNiA2IDAgMSAwIDguNDY2IDguNDc1IiAvPgogIDxwYXRoIGQ9Ik05IDE2YTEgMSAwIDAgMS0xLTF2LTRjMC0uNTUyLjQ1LTEuMDA4Ljk5NS0uOTE3YTYgNiAwIDAgMSA0LjkyMiA0LjkyMmMuMDkxLjU0NC0uMzY1Ljk5NS0uOTE3Ljk5NXoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-chart-pie
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FileChartPie: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8475,7 +8595,7 @@ declare const FileCode: react.ForwardRefExoticComponent<
  * @component @name FileCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJtMy4yIDEyLjktLjktLjQiIC8+CiAgPHBhdGggZD0ibTMuMiAxNS4xLS45LjQiIC8+CiAgPHBhdGggZD0iTTQuNjc3IDIxLjVhMiAyIDAgMCAwIDEuMzEzLjVIMThhMiAyIDAgMCAwIDItMlY3bC01LTVINmEyIDIgMCAwIDAtMiAydjIuNSIgLz4KICA8cGF0aCBkPSJtNC45IDExLjItLjQtLjkiIC8+CiAgPHBhdGggZD0ibTQuOSAxNi44LS40LjkiIC8+CiAgPHBhdGggZD0ibTcuNSAxMC4zLS40LjkiIC8+CiAgPHBhdGggZD0ibTcuNSAxNy43LS40LS45IiAvPgogIDxwYXRoIGQ9Im05LjcgMTIuNS0uOS40IiAvPgogIDxwYXRoIGQ9Im05LjcgMTUuNS0uOS0uNCIgLz4KICA8Y2lyY2xlIGN4PSI2IiBjeT0iMTQiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJtMi4zMDUgMTUuNTMuOTIzLS4zODIiIC8+CiAgPHBhdGggZD0ibTMuMjI4IDEyLjg1Mi0uOTI0LS4zODMiIC8+CiAgPHBhdGggZD0iTTQuNjc3IDIxLjVhMiAyIDAgMCAwIDEuMzEzLjVIMThhMiAyIDAgMCAwIDItMlY3bC01LTVINmEyIDIgMCAwIDAtMiAydjIuNSIgLz4KICA8cGF0aCBkPSJtNC44NTIgMTEuMjI4LS4zODMtLjkyMyIgLz4KICA8cGF0aCBkPSJtNC44NTIgMTYuNzcyLS4zODMuOTI0IiAvPgogIDxwYXRoIGQ9Im03LjE0OCAxMS4yMjguMzgzLS45MjMiIC8+CiAgPHBhdGggZD0ibTcuNTMgMTcuNjk2LS4zODItLjkyNCIgLz4KICA8cGF0aCBkPSJtOC43NzIgMTIuODUyLjkyMy0uMzgzIiAvPgogIDxwYXRoIGQ9Im04Ljc3MiAxNS4xNDguOTIzLjM4MyIgLz4KICA8Y2lyY2xlIGN4PSI2IiBjeT0iMTQiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -8787,21 +8907,6 @@ declare const FilePlus: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileScan
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMTBWN2wtNS01SDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDQiIC8+CiAgPHBhdGggZD0iTTE0IDJ2NGEyIDIgMCAwIDAgMiAyaDQiIC8+CiAgPHBhdGggZD0iTTE2IDE0YTIgMiAwIDAgMC0yIDIiIC8+CiAgPHBhdGggZD0iTTIwIDE0YTIgMiAwIDAgMSAyIDIiIC8+CiAgPHBhdGggZD0iTTIwIDIyYTIgMiAwIDAgMCAyLTIiIC8+CiAgPHBhdGggZD0iTTE2IDIyYTIgMiAwIDAgMS0yLTIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-scan
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FileScan: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FileQuestion
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8813,6 +8918,21 @@ declare const FileScan: react.ForwardRefExoticComponent<
  *
  */
 declare const FileQuestion: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FileScan
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMTBWN2wtNS01SDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDQiIC8+CiAgPHBhdGggZD0iTTE0IDJ2NGEyIDIgMCAwIDAgMiAyaDQiIC8+CiAgPHBhdGggZD0iTTE2IDE0YTIgMiAwIDAgMC0yIDIiIC8+CiAgPHBhdGggZD0iTTIwIDE0YTIgMiAwIDAgMSAyIDIiIC8+CiAgPHBhdGggZD0iTTIwIDIyYTIgMiAwIDAgMCAyLTIiIC8+CiAgPHBhdGggZD0iTTE2IDIyYTIgMiAwIDAgMS0yLTIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-scan
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FileScan: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8862,21 +8982,6 @@ declare const FileSliders: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileStack
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgN2gtM2EyIDIgMCAwIDEtMi0yVjIiIC8+CiAgPHBhdGggZD0iTTIxIDZ2Ni41YzAgLjgtLjcgMS41LTEuNSAxLjVoLTdjLS44IDAtMS41LS43LTEuNS0xLjV2LTljMC0uOC43LTEuNSAxLjUtMS41SDE3WiIgLz4KICA8cGF0aCBkPSJNNyA4djguOGMwIC4zLjIuNi40LjguMi4yLjUuNC44LjRIMTUiIC8+CiAgPHBhdGggZD0iTTMgMTJ2OC44YzAgLjMuMi42LjQuOC4yLjIuNS40LjguNEgxMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/file-stack
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FileStack: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FileSpreadsheet
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -8888,6 +8993,21 @@ declare const FileStack: react.ForwardRefExoticComponent<
  *
  */
 declare const FileSpreadsheet: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FileStack
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgN2gtM2EyIDIgMCAwIDEtMi0yVjIiIC8+CiAgPHBhdGggZD0iTTIxIDZ2Ni41YzAgLjgtLjcgMS41LTEuNSAxLjVoLTdjLS44IDAtMS41LS43LTEuNS0xLjV2LTljMC0uOC43LTEuNSAxLjUtMS41SDE3WiIgLz4KICA8cGF0aCBkPSJNNyA4djguOGMwIC4zLjIuNi40LjguMi4yLjUuNC44LjRIMTUiIC8+CiAgPHBhdGggZD0iTTMgMTJ2OC44YzAgLjMuMi42LjQuOC4yLjIuNS40LjguNEgxMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/file-stack
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FileStack: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -8982,21 +9102,6 @@ declare const FileUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileUser
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJNMTUgMThhMyAzIDAgMSAwLTYgMCIgLz4KICA8cGF0aCBkPSJNMTUgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjd6IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTMiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-user
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FileUser: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FileVideo2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9008,6 +9113,21 @@ declare const FileUser: react.ForwardRefExoticComponent<
  *
  */
 declare const FileVideo2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FileUser
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJNMTUgMThhMyAzIDAgMSAwLTYgMCIgLz4KICA8cGF0aCBkPSJNMTUgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjd6IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTMiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-user
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FileUser: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9072,17 +9192,17 @@ declare const FileWarning: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileX
+ * @component @name FileX2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjdaIiAvPgogIDxwYXRoIGQ9Ik0xNCAydjRhMiAyIDAgMCAwIDIgMmg0IiAvPgogIDxwYXRoIGQ9Im0xNC41IDEyLjUtNSA1IiAvPgogIDxwYXRoIGQ9Im05LjUgMTIuNSA1IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-x
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAyMmgxNGEyIDIgMCAwIDAgMi0yVjdsLTUtNUg2YTIgMiAwIDAgMC0yIDJ2NCIgLz4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJtOCAxMi41LTUgNSIgLz4KICA8cGF0aCBkPSJtMyAxMi41IDUgNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/file-x-2
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const FileX: react.ForwardRefExoticComponent<
+declare const FileX2: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9102,17 +9222,17 @@ declare const File: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FileX2
+ * @component @name FileX
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAyMmgxNGEyIDIgMCAwIDAgMi0yVjdsLTUtNUg2YTIgMiAwIDAgMC0yIDJ2NCIgLz4KICA8cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIgLz4KICA8cGF0aCBkPSJtOCAxMi41LTUgNSIgLz4KICA8cGF0aCBkPSJtMyAxMi41IDUgNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/file-x-2
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjdaIiAvPgogIDxwYXRoIGQ9Ik0xNCAydjRhMiAyIDAgMCAwIDIgMmg0IiAvPgogIDxwYXRoIGQ9Im0xNC41IDEyLjUtNSA1IiAvPgogIDxwYXRoIGQ9Im05LjUgMTIuNSA1IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/file-x
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const FileX2: react.ForwardRefExoticComponent<
+declare const FileX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9552,21 +9672,6 @@ declare const FolderCheck: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FolderClosed
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMjBhMiAyIDAgMCAwIDItMlY4YTIgMiAwIDAgMC0yLTJoLTcuOWEyIDIgMCAwIDEtMS42OS0uOUw5LjYgMy45QTIgMiAwIDAgMCA3LjkzIDNINGEyIDIgMCAwIDAtMiAydjEzYTIgMiAwIDAgMCAyIDJaIiAvPgogIDxwYXRoIGQ9Ik0yIDEwaDIwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/folder-closed
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderClosed: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FolderClock
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9582,6 +9687,21 @@ declare const FolderClock: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name FolderClosed
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMjBhMiAyIDAgMCAwIDItMlY4YTIgMiAwIDAgMC0yLTJoLTcuOWEyIDIgMCAwIDEtMS42OS0uOUw5LjYgMy45QTIgMiAwIDAgMCA3LjkzIDNINGEyIDIgMCAwIDAtMiAydjEzYTIgMiAwIDAgMCAyIDJaIiAvPgogIDxwYXRoIGQ9Ik0yIDEwaDIwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/folder-closed
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderClosed: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name FolderCode
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9593,6 +9713,21 @@ declare const FolderClock: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderCode: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FolderCog
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMyAyMEg0YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDMuOThhMiAyIDAgMCAxIDEuNjkuOWwuNjYgMS4yQTIgMiAwIDAgMCAxMiA2aDhhMiAyIDAgMCAxIDIgMnYzLjMiIC8+CiAgPHBhdGggZD0ibTE0LjMwNSAxOS41My45MjMtLjM4MiIgLz4KICA8cGF0aCBkPSJtMTUuMjI4IDE2Ljg1Mi0uOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiAxNS4yMjgtLjM4My0uOTIzIiAvPgogIDxwYXRoIGQ9Im0xNi44NTIgMjAuNzcyLS4zODMuOTI0IiAvPgogIDxwYXRoIGQ9Im0xOS4xNDggMTUuMjI4LjM4My0uOTIzIiAvPgogIDxwYXRoIGQ9Im0xOS41MyAyMS42OTYtLjM4Mi0uOTI0IiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTYuODUyLjkyNC0uMzgzIiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTkuMTQ4LjkyNC4zODMiIC8+CiAgPGNpcmNsZSBjeD0iMTgiIGN5PSIxOCIgcj0iMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/folder-cog
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderCog: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9627,21 +9762,6 @@ declare const FolderDown: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FolderCog
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE4IiByPSIzIiAvPgogIDxwYXRoIGQ9Ik0xMC4zIDIwSDRhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMy45YTIgMiAwIDAgMSAxLjY5LjlsLjgxIDEuMmEyIDIgMCAwIDAgMS42Ny45SDIwYTIgMiAwIDAgMSAyIDJ2My4zIiAvPgogIDxwYXRoIGQ9Im0yMS43IDE5LjQtLjktLjMiIC8+CiAgPHBhdGggZD0ibTE1LjIgMTYuOS0uOS0uMyIgLz4KICA8cGF0aCBkPSJtMTYuNiAyMS43LjMtLjkiIC8+CiAgPHBhdGggZD0ibTE5LjEgMTUuMi4zLS45IiAvPgogIDxwYXRoIGQ9Im0xOS42IDIxLjctLjQtMSIgLz4KICA8cGF0aCBkPSJtMTYuOCAxNS4zLS40LTEiIC8+CiAgPHBhdGggZD0ibTE0LjMgMTkuNiAxLS40IiAvPgogIDxwYXRoIGQ9Im0yMC43IDE2LjggMS0uNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/folder-cog
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderCog: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FolderGit2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9653,6 +9773,21 @@ declare const FolderCog: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderGit2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FolderGit
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEzIiByPSIyIiAvPgogIDxwYXRoIGQ9Ik0yMCAyMGEyIDIgMCAwIDAgMi0yVjhhMiAyIDAgMCAwLTItMmgtNy45YTIgMiAwIDAgMS0xLjY5LS45TDkuNiAzLjlBMiAyIDAgMCAwIDcuOTMgM0g0YTIgMiAwIDAgMC0yIDJ2MTNhMiAyIDAgMCAwIDIgMloiIC8+CiAgPHBhdGggZD0iTTE0IDEzaDMiIC8+CiAgPHBhdGggZD0iTTcgMTNoMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/folder-git
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderGit: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9683,21 +9818,6 @@ declare const FolderHeart: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderInput: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name FolderGit
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEzIiByPSIyIiAvPgogIDxwYXRoIGQ9Ik0yMCAyMGEyIDIgMCAwIDAgMi0yVjhhMiAyIDAgMCAwLTItMmgtNy45YTIgMiAwIDAgMS0xLjY5LS45TDkuNiAzLjlBMiAyIDAgMCAwIDcuOTMgM0g0YTIgMiAwIDAgMC0yIDJ2MTNhMiAyIDAgMCAwIDIgMloiIC8+CiAgPHBhdGggZD0iTTE0IDEzaDMiIC8+CiAgPHBhdGggZD0iTTcgMTNoMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/folder-git
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderGit: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9747,21 +9867,6 @@ declare const FolderLock: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FolderOpenDot
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNiAxNCAxLjQ1LTIuOUEyIDIgMCAwIDEgOS4yNCAxMEgyMGEyIDIgMCAwIDEgMS45NCAyLjVsLTEuNTUgNmEyIDIgMCAwIDEtMS45NCAxLjVINGEyIDIgMCAwIDEtMi0yVjVjMC0xLjEuOS0yIDItMmgzLjkzYTIgMiAwIDAgMSAxLjY2LjlsLjgyIDEuMmEyIDIgMCAwIDAgMS42Ni45SDE4YTIgMiAwIDAgMSAyIDJ2MiIgLz4KICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjE1IiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/folder-open-dot
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderOpenDot: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FolderMinus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9773,6 +9878,21 @@ declare const FolderOpenDot: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderMinus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FolderOpenDot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtNiAxNCAxLjQ1LTIuOUEyIDIgMCAwIDEgOS4yNCAxMEgyMGEyIDIgMCAwIDEgMS45NCAyLjVsLTEuNTUgNmEyIDIgMCAwIDEtMS45NCAxLjVINGEyIDIgMCAwIDEtMi0yVjVjMC0xLjEuOS0yIDItMmgzLjkzYTIgMiAwIDAgMSAxLjY2LjlsLjgyIDEuMmEyIDIgMCAwIDAgMS42Ni45SDE4YTIgMiAwIDAgMSAyIDJ2MiIgLz4KICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjE1IiByPSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/folder-open-dot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderOpenDot: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9807,21 +9927,6 @@ declare const FolderOutput: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FolderPlus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTB2NiIgLz4KICA8cGF0aCBkPSJNOSAxM2g2IiAvPgogIDxwYXRoIGQ9Ik0yMCAyMGEyIDIgMCAwIDAgMi0yVjhhMiAyIDAgMCAwLTItMmgtNy45YTIgMiAwIDAgMS0xLjY5LS45TDkuNiAzLjlBMiAyIDAgMCAwIDcuOTMgM0g0YTIgMiAwIDAgMC0yIDJ2MTNhMiAyIDAgMCAwIDIgMloiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/folder-plus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderPlus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FolderPen
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9833,6 +9938,21 @@ declare const FolderPlus: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderPen: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FolderPlus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTB2NiIgLz4KICA8cGF0aCBkPSJNOSAxM2g2IiAvPgogIDxwYXRoIGQ9Ik0yMCAyMGEyIDIgMCAwIDAgMi0yVjhhMiAyIDAgMCAwLTItMmgtNy45YTIgMiAwIDAgMS0xLjY5LS45TDkuNiAzLjlBMiAyIDAgMCAwIDcuOTMgM0g0YTIgMiAwIDAgMC0yIDJ2MTNhMiAyIDAgMCAwIDIgMloiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/folder-plus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -9927,21 +10047,6 @@ declare const FolderTree: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FolderX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMjBhMiAyIDAgMCAwIDItMlY4YTIgMiAwIDAgMC0yLTJoLTcuOWEyIDIgMCAwIDEtMS42OS0uOUw5LjYgMy45QTIgMiAwIDAgMCA3LjkzIDNINGEyIDIgMCAwIDAtMiAydjEzYTIgMiAwIDAgMCAyIDJaIiAvPgogIDxwYXRoIGQ9Im05LjUgMTAuNSA1IDUiIC8+CiAgPHBhdGggZD0ibTE0LjUgMTAuNS01IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/folder-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FolderX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name FolderUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -9953,6 +10058,21 @@ declare const FolderX: react.ForwardRefExoticComponent<
  *
  */
 declare const FolderUp: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FolderX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMjBhMiAyIDAgMCAwIDItMlY4YTIgMiAwIDAgMC0yLTJoLTcuOWEyIDIgMCAwIDEtMS42OS0uOUw5LjYgMy45QTIgMiAwIDAgMCA3LjkzIDNINGEyIDIgMCAwIDAtMiAydjEzYTIgMiAwIDAgMCAyIDJaIiAvPgogIDxwYXRoIGQ9Im05LjUgMTAuNSA1IDUiIC8+CiAgPHBhdGggZD0ibTE0LjUgMTAuNS01IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/folder-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FolderX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10122,21 +10242,6 @@ declare const FunnelPlus: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name FunnelX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNTMxIDNIM2ExIDEgMCAwIDAtLjc0MiAxLjY3bDcuMjI1IDcuOTg5QTIgMiAwIDAgMSAxMCAxNHY2YTEgMSAwIDAgMCAuNTUzLjg5NWwyIDFBMSAxIDAgMCAwIDE0IDIxdi03YTIgMiAwIDAgMSAuNTE3LTEuMzQxbC40MjctLjQ3MyIgLz4KICA8cGF0aCBkPSJtMTYuNSAzLjUgNSA1IiAvPgogIDxwYXRoIGQ9Im0yMS41IDMuNS01IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/funnel-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const FunnelX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Funnel
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10148,6 +10253,21 @@ declare const FunnelX: react.ForwardRefExoticComponent<
  *
  */
 declare const Funnel: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name FunnelX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNTMxIDNIM2ExIDEgMCAwIDAtLjc0MiAxLjY3bDcuMjI1IDcuOTg5QTIgMiAwIDAgMSAxMCAxNHY2YTEgMSAwIDAgMCAuNTUzLjg5NWwyIDFBMSAxIDAgMCAwIDE0IDIxdi03YTIgMiAwIDAgMSAuNTE3LTEuMzQxbC40MjctLjQ3MyIgLz4KICA8cGF0aCBkPSJtMTYuNSAzLjUgNSA1IiAvPgogIDxwYXRoIGQ9Im0yMS41IDMuNS01IDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/funnel-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const FunnelX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10272,21 +10392,6 @@ declare const Gauge: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Gem
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAzaDEybDQgNi0xMCAxM0wyIDlaIiAvPgogIDxwYXRoIGQ9Ik0xMSAzIDggOWw0IDEzIDQtMTMtMy02IiAvPgogIDxwYXRoIGQ9Ik0yIDloMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/gem
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Gem: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Gavel
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10302,6 +10407,21 @@ declare const Gavel: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Gem
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAzaDEybDQgNi0xMCAxM0wyIDlaIiAvPgogIDxwYXRoIGQ9Ik0xMSAzIDggOWw0IDEzIDQtMTMtMy02IiAvPgogIDxwYXRoIGQ9Ik0yIDloMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/gem
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Gem: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Ghost
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10313,21 +10433,6 @@ declare const Gavel: react.ForwardRefExoticComponent<
  *
  */
 declare const Ghost: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name GitBranchPlus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAzdjEyIiAvPgogIDxwYXRoIGQ9Ik0xOCA5YTMgMyAwIDEgMCAwLTYgMyAzIDAgMCAwIDAgNnoiIC8+CiAgPHBhdGggZD0iTTYgMjFhMyAzIDAgMSAwIDAtNiAzIDMgMCAwIDAgMCA2eiIgLz4KICA8cGF0aCBkPSJNMTUgNmE5IDkgMCAwIDAtOSA5IiAvPgogIDxwYXRoIGQ9Ik0xOCAxNXY2IiAvPgogIDxwYXRoIGQ9Ik0yMSAxOGgtNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/git-branch-plus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const GitBranchPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10358,6 +10463,21 @@ declare const Gift: react.ForwardRefExoticComponent<
  *
  */
 declare const GitBranch: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name GitBranchPlus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNiAzdjEyIiAvPgogIDxwYXRoIGQ9Ik0xOCA5YTMgMyAwIDEgMCAwLTYgMyAzIDAgMCAwIDAgNnoiIC8+CiAgPHBhdGggZD0iTTYgMjFhMyAzIDAgMSAwIDAtNiAzIDMgMCAwIDAgMCA2eiIgLz4KICA8cGF0aCBkPSJNMTUgNmE5IDkgMCAwIDAtOSA5IiAvPgogIDxwYXRoIGQ9Ik0xOCAxNXY2IiAvPgogIDxwYXRoIGQ9Ik0yMSAxOGgtNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/git-branch-plus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const GitBranchPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10467,21 +10587,6 @@ declare const GitMerge: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name GitPullRequestArrow
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSI1IiBjeT0iNiIgcj0iMyIgLz4KICA8cGF0aCBkPSJNNSA5djEyIiAvPgogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTgiIHI9IjMiIC8+CiAgPHBhdGggZD0ibTE1IDktMy0zIDMtMyIgLz4KICA8cGF0aCBkPSJNMTIgNmg1YTIgMiAwIDAgMSAyIDJ2NyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/git-pull-request-arrow
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const GitPullRequestArrow: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name GitPullRequestClosed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10508,6 +10613,21 @@ declare const GitPullRequestClosed: react.ForwardRefExoticComponent<
  *
  */
 declare const GitPullRequestCreateArrow: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name GitPullRequestArrow
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSI1IiBjeT0iNiIgcj0iMyIgLz4KICA8cGF0aCBkPSJNNSA5djEyIiAvPgogIDxjaXJjbGUgY3g9IjE5IiBjeT0iMTgiIHI9IjMiIC8+CiAgPHBhdGggZD0ibTE1IDktMy0zIDMtMyIgLz4KICA8cGF0aCBkPSJNMTIgNmg1YTIgMiAwIDAgMSAyIDJ2NyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/git-pull-request-arrow
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const GitPullRequestArrow: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10572,21 +10692,6 @@ declare const Github: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Gitlab
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMjIgMTMuMjktMy4zMy0xMGEuNDIuNDIgMCAwIDAtLjE0LS4xOC4zOC4zOCAwIDAgMC0uMjItLjExLjM5LjM5IDAgMCAwLS4yMy4wNy40Mi40MiAwIDAgMC0uMTQuMThsLTIuMjYgNi42N0g4LjMyTDYuMSAzLjI2YS40Mi40MiAwIDAgMC0uMS0uMTguMzguMzggMCAwIDAtLjI2LS4wOC4zOS4zOSAwIDAgMC0uMjMuMDcuNDIuNDIgMCAwIDAtLjE0LjE4TDIgMTMuMjlhLjc0Ljc0IDAgMCAwIC4yNy44M0wxMiAyMWw5LjY5LTYuODhhLjcxLjcxIDAgMCAwIC4zMS0uODNaIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/gitlab
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- * @deprecated Brand icons have been deprecated and are due to be removed, please refer to https://github.com/lucide-icons/lucide/issues/670. We recommend using https://simpleicons.org/?q=gitlab instead. This icon will be removed in v1.0
- */
-declare const Gitlab: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name GlassWater
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10598,6 +10703,21 @@ declare const Gitlab: react.ForwardRefExoticComponent<
  *
  */
 declare const GlassWater: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Gitlab
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMjIgMTMuMjktMy4zMy0xMGEuNDIuNDIgMCAwIDAtLjE0LS4xOC4zOC4zOCAwIDAgMC0uMjItLjExLjM5LjM5IDAgMCAwLS4yMy4wNy40Mi40MiAwIDAgMC0uMTQuMThsLTIuMjYgNi42N0g4LjMyTDYuMSAzLjI2YS40Mi40MiAwIDAgMC0uMS0uMTguMzguMzggMCAwIDAtLjI2LS4wOC4zOS4zOSAwIDAgMC0uMjMuMDcuNDIuNDIgMCAwIDAtLjE0LjE4TDIgMTMuMjlhLjc0Ljc0IDAgMCAwIC4yNy44M0wxMiAyMWw5LjY5LTYuODhhLjcxLjcxIDAgMCAwIC4zMS0uODNaIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/gitlab
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ * @deprecated Brand icons have been deprecated and are due to be removed, please refer to https://github.com/lucide-icons/lucide/issues/670. We recommend using https://simpleicons.org/?q=gitlab instead. This icon will be removed in v1.0
+ */
+declare const Gitlab: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10647,21 +10767,6 @@ declare const Globe: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Grab
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggMTEuNVY5YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnYxLjQiIC8+CiAgPHBhdGggZD0iTTE0IDEwVjhhMiAyIDAgMCAwLTItMmEyIDIgMCAwIDAtMiAydjIiIC8+CiAgPHBhdGggZD0iTTEwIDkuOVY5YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnY1IiAvPgogIDxwYXRoIGQ9Ik02IDE0YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMiIgLz4KICA8cGF0aCBkPSJNMTggMTFhMiAyIDAgMSAxIDQgMHYzYTggOCAwIDAgMS04IDhoLTRhOCA4IDAgMCAxLTgtOCAyIDIgMCAxIDEgNCAwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/grab
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Grab: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Goal
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10677,17 +10782,32 @@ declare const Goal: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Grid2x2Check
+ * @component @name Grab
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgM3YxN2ExIDEgMCAwIDEtMSAxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMTRhMiAyIDAgMCAxIDIgMnY2YTEgMSAwIDAgMS0xIDFIMyIgLz4KICA8cGF0aCBkPSJtMTYgMTkgMiAyIDQtNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/grid-2x2-check
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggMTEuNVY5YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnYxLjQiIC8+CiAgPHBhdGggZD0iTTE0IDEwVjhhMiAyIDAgMCAwLTItMmEyIDIgMCAwIDAtMiAydjIiIC8+CiAgPHBhdGggZD0iTTEwIDkuOVY5YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnY1IiAvPgogIDxwYXRoIGQ9Ik02IDE0YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMiIgLz4KICA8cGF0aCBkPSJNMTggMTFhMiAyIDAgMSAxIDQgMHYzYTggOCAwIDAgMS04IDhoLTRhOCA4IDAgMCAxLTgtOCAyIDIgMCAxIDEgNCAwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/grab
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Grid2x2Check: react.ForwardRefExoticComponent<
+declare const Grab: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Grape
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjIgNVYybC01Ljg5IDUuODkiIC8+CiAgPGNpcmNsZSBjeD0iMTYuNiIgY3k9IjE1Ljg5IiByPSIzIiAvPgogIDxjaXJjbGUgY3g9IjguMTEiIGN5PSI3LjQiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iMTIuMzUiIGN5PSIxMS42NSIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSIxMy45MSIgY3k9IjUuODUiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iMTguMTUiIGN5PSIxMC4wOSIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSI2LjU2IiBjeT0iMTMuMiIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSIxMC44IiBjeT0iMTcuNDQiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iNSIgY3k9IjE5IiByPSIzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/grape
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Grape: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10707,17 +10827,17 @@ declare const GraduationCap: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Grape
+ * @component @name Grid2x2Check
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjIgNVYybC01Ljg5IDUuODkiIC8+CiAgPGNpcmNsZSBjeD0iMTYuNiIgY3k9IjE1Ljg5IiByPSIzIiAvPgogIDxjaXJjbGUgY3g9IjguMTEiIGN5PSI3LjQiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iMTIuMzUiIGN5PSIxMS42NSIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSIxMy45MSIgY3k9IjUuODUiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iMTguMTUiIGN5PSIxMC4wOSIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSI2LjU2IiBjeT0iMTMuMiIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSIxMC44IiBjeT0iMTcuNDQiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iNSIgY3k9IjE5IiByPSIzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/grape
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgM3YxN2ExIDEgMCAwIDEtMSAxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMTRhMiAyIDAgMCAxIDIgMnY2YTEgMSAwIDAgMS0xIDFIMyIgLz4KICA8cGF0aCBkPSJtMTYgMTkgMiAyIDQtNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/grid-2x2-check
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Grape: react.ForwardRefExoticComponent<
+declare const Grid2x2Check: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10767,21 +10887,6 @@ declare const Grid2x2: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name GripHorizontal
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjkiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSI5IiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjUiIGN5PSI5IiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTUiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxNSIgcj0iMSIgLz4KICA8Y2lyY2xlIGN4PSI1IiBjeT0iMTUiIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/grip-horizontal
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const GripHorizontal: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Grid3x3
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -10793,6 +10898,21 @@ declare const GripHorizontal: react.ForwardRefExoticComponent<
  *
  */
 declare const Grid3x3: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name GripHorizontal
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjkiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSI5IiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjUiIGN5PSI5IiByPSIxIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTUiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIxNSIgcj0iMSIgLz4KICA8Y2lyY2xlIGN4PSI1IiBjeT0iMTUiIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/grip-horizontal
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const GripHorizontal: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -10977,21 +11097,6 @@ declare const Hand: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Handshake
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTEgMTcgMiAyYTEgMSAwIDEgMCAzLTMiIC8+CiAgPHBhdGggZD0ibTE0IDE0IDIuNSAyLjVhMSAxIDAgMSAwIDMtM2wtMy44OC0zLjg4YTMgMyAwIDAgMC00LjI0IDBsLS44OC44OGExIDEgMCAxIDEtMy0zbDIuODEtMi44MWE1Ljc5IDUuNzkgMCAwIDEgNy4wNi0uODdsLjQ3LjI4YTIgMiAwIDAgMCAxLjQyLjI1TDIxIDQiIC8+CiAgPHBhdGggZD0ibTIxIDMgMSAxMWgtMiIgLz4KICA8cGF0aCBkPSJNMyAzIDIgMTRsNi41IDYuNWExIDEgMCAxIDAgMy0zIiAvPgogIDxwYXRoIGQ9Ik0zIDRoOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/handshake
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Handshake: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name HardDriveDownload
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11003,6 +11108,21 @@ declare const Handshake: react.ForwardRefExoticComponent<
  *
  */
 declare const HardDriveDownload: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Handshake
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTEgMTcgMiAyYTEgMSAwIDEgMCAzLTMiIC8+CiAgPHBhdGggZD0ibTE0IDE0IDIuNSAyLjVhMSAxIDAgMSAwIDMtM2wtMy44OC0zLjg4YTMgMyAwIDAgMC00LjI0IDBsLS44OC44OGExIDEgMCAxIDEtMy0zbDIuODEtMi44MWE1Ljc5IDUuNzkgMCAwIDEgNy4wNi0uODdsLjQ3LjI4YTIgMiAwIDAgMCAxLjQyLjI1TDIxIDQiIC8+CiAgPHBhdGggZD0ibTIxIDMgMSAxMWgtMiIgLz4KICA8cGF0aCBkPSJNMyAzIDIgMTRsNi41IDYuNWExIDEgMCAxIDAgMy0zIiAvPgogIDxwYXRoIGQ9Ik0zIDRoOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/handshake
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Handshake: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11142,21 +11262,6 @@ declare const Heading3: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Heading5
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxMmg4IiAvPgogIDxwYXRoIGQ9Ik00IDE4VjYiIC8+CiAgPHBhdGggZD0iTTEyIDE4VjYiIC8+CiAgPHBhdGggZD0iTTE3IDEzdi0zaDQiIC8+CiAgPHBhdGggZD0iTTE3IDE3LjdjLjQuMi44LjMgMS4zLjMgMS41IDAgMi43LTEuMSAyLjctMi41UzE5LjggMTMgMTguMyAxM0gxNyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/heading-5
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Heading5: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Heading4
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11168,6 +11273,21 @@ declare const Heading5: react.ForwardRefExoticComponent<
  *
  */
 declare const Heading4: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Heading5
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxMmg4IiAvPgogIDxwYXRoIGQ9Ik00IDE4VjYiIC8+CiAgPHBhdGggZD0iTTEyIDE4VjYiIC8+CiAgPHBhdGggZD0iTTE3IDEzdi0zaDQiIC8+CiAgPHBhdGggZD0iTTE3IDE3LjdjLjQuMi44LjMgMS4zLjMgMS41IDAgMi43LTEuMSAyLjctMi41UzE5LjggMTMgMTguMyAxM0gxNyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/heading-5
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Heading5: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11277,6 +11397,21 @@ declare const HeartHandshake: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name HeartMinus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMuNSAxOS41IDEyIDIxbC03LTdjLTEuNS0xLjQ1LTMtMy4yLTMtNS41QTUuNSA1LjUgMCAwIDEgNy41IDNjMS43NiAwIDMgLjUgNC41IDIgMS41LTEuNSAyLjc0LTIgNC41LTJhNS41IDUuNSAwIDAgMSA1LjQwMiA2LjUiIC8+CiAgPHBhdGggZD0iTTE1IDE1aDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/heart-minus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const HeartMinus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name HeartOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11288,6 +11423,21 @@ declare const HeartHandshake: react.ForwardRefExoticComponent<
  *
  */
 declare const HeartOff: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name HeartPlus
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMuNSAxOS41IDEyIDIxbC03LTdjLTEuNS0xLjQ1LTMtMy4yLTMtNS41QTUuNSA1LjUgMCAwIDEgNy41IDNjMS43NiAwIDMgLjUgNC41IDIgMS41LTEuNSAyLjc0LTIgNC41LTJhNS41IDUuNSAwIDAgMSA1LjQwMiA2LjUiIC8+CiAgPHBhdGggZD0iTTE1IDE1aDYiIC8+CiAgPHBhdGggZD0iTTE4IDEydjYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/heart-plus
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const HeartPlus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11427,6 +11577,21 @@ declare const Hospital: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Hotel
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMjJ2LTYuNTciIC8+CiAgPHBhdGggZD0iTTEyIDExaC4wMSIgLz4KICA8cGF0aCBkPSJNMTIgN2guMDEiIC8+CiAgPHBhdGggZD0iTTE0IDE1LjQzVjIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxNmE1IDUgMCAwIDAtNiAwIiAvPgogIDxwYXRoIGQ9Ik0xNiAxMWguMDEiIC8+CiAgPHBhdGggZD0iTTE2IDdoLjAxIiAvPgogIDxwYXRoIGQ9Ik04IDExaC4wMSIgLz4KICA8cGF0aCBkPSJNOCA3aC4wMSIgLz4KICA8cmVjdCB4PSI0IiB5PSIyIiB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHJ4PSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/hotel
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Hotel: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Hourglass
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11453,21 +11618,6 @@ declare const Hourglass: react.ForwardRefExoticComponent<
  *
  */
 declare const HousePlug: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Hotel
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMjJ2LTYuNTciIC8+CiAgPHBhdGggZD0iTTEyIDExaC4wMSIgLz4KICA8cGF0aCBkPSJNMTIgN2guMDEiIC8+CiAgPHBhdGggZD0iTTE0IDE1LjQzVjIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxNmE1IDUgMCAwIDAtNiAwIiAvPgogIDxwYXRoIGQ9Ik0xNiAxMWguMDEiIC8+CiAgPHBhdGggZD0iTTE2IDdoLjAxIiAvPgogIDxwYXRoIGQ9Ik04IDExaC4wMSIgLz4KICA8cGF0aCBkPSJNOCA3aC4wMSIgLz4KICA8cmVjdCB4PSI0IiB5PSIyIiB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHJ4PSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/hotel
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Hotel: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11547,21 +11697,6 @@ declare const IceCreamCone: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name IdCard
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTBoMiIgLz4KICA8cGF0aCBkPSJNMTYgMTRoMiIgLz4KICA8cGF0aCBkPSJNNi4xNyAxNWEzIDMgMCAwIDEgNS42NiAwIiAvPgogIDxjaXJjbGUgY3g9IjkiIGN5PSIxMSIgcj0iMiIgLz4KICA8cmVjdCB4PSIyIiB5PSI1IiB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHJ4PSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/id-card
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const IdCard: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ImageDown
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11573,6 +11708,21 @@ declare const IdCard: react.ForwardRefExoticComponent<
  *
  */
 declare const ImageDown: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name IdCard
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTBoMiIgLz4KICA8cGF0aCBkPSJNMTYgMTRoMiIgLz4KICA8cGF0aCBkPSJNNi4xNyAxNWEzIDMgMCAwIDEgNS42NiAwIiAvPgogIDxjaXJjbGUgY3g9IjkiIGN5PSIxMSIgcj0iMiIgLz4KICA8cmVjdCB4PSIyIiB5PSI1IiB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHJ4PSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/id-card
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const IdCard: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11652,21 +11802,6 @@ declare const ImageUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ImageUpscale
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgM2g1djUiIC8+CiAgPHBhdGggZD0iTTE3IDIxaDJhMiAyIDAgMCAwIDItMiIgLz4KICA8cGF0aCBkPSJNMjEgMTJ2MyIgLz4KICA8cGF0aCBkPSJtMjEgMy01IDUiIC8+CiAgPHBhdGggZD0iTTMgN1Y1YTIgMiAwIDAgMSAyLTIiIC8+CiAgPHBhdGggZD0ibTUgMjEgNC4xNDQtNC4xNDRhMS4yMSAxLjIxIDAgMCAxIDEuNzEyIDBMMTMgMTkiIC8+CiAgPHBhdGggZD0iTTkgM2gzIiAvPgogIDxyZWN0IHg9IjMiIHk9IjExIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHJ4PSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/image-upscale
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ImageUpscale: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Image
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11678,6 +11813,21 @@ declare const ImageUpscale: react.ForwardRefExoticComponent<
  *
  */
 declare const Image: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ImageUpscale
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgM2g1djUiIC8+CiAgPHBhdGggZD0iTTE3IDIxaDJhMiAyIDAgMCAwIDItMiIgLz4KICA8cGF0aCBkPSJNMjEgMTJ2MyIgLz4KICA8cGF0aCBkPSJtMjEgMy01IDUiIC8+CiAgPHBhdGggZD0iTTMgN1Y1YTIgMiAwIDAgMSAyLTIiIC8+CiAgPHBhdGggZD0ibTUgMjEgNC4xNDQtNC4xNDRhMS4yMSAxLjIxIDAgMCAxIDEuNzEyIDBMMTMgMTkiIC8+CiAgPHBhdGggZD0iTTkgM2gzIiAvPgogIDxyZWN0IHg9IjMiIHk9IjExIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHJ4PSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/image-upscale
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ImageUpscale: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -11877,21 +12027,6 @@ declare const IterationCw: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name JapaneseYen
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgOS41VjIxbTAtMTEuNUw2IDNtNiA2LjVMMTggMyIgLz4KICA8cGF0aCBkPSJNNiAxNWgxMiIgLz4KICA8cGF0aCBkPSJNNiAxMWgxMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/japanese-yen
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const JapaneseYen: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Joystick
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -11903,6 +12038,21 @@ declare const JapaneseYen: react.ForwardRefExoticComponent<
  *
  */
 declare const Joystick: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name JapaneseYen
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgOS41VjIxbTAtMTEuNUw2IDNtNiA2LjVMMTggMyIgLz4KICA8cGF0aCBkPSJNNiAxNWgxMiIgLz4KICA8cGF0aCBkPSJNNiAxMWgxMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/japanese-yen
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const JapaneseYen: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12015,7 +12165,7 @@ declare const Keyboard: react.ForwardRefExoticComponent<
  * @component @name LampCeiling
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnY1IiAvPgogIDxwYXRoIGQ9Ik02IDdoMTJsNCA5SDJsNC05WiIgLz4KICA8cGF0aCBkPSJNOS4xNyAxNmEzIDMgMCAxIDAgNS42NiAwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/lamp-ceiling
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnY1IiAvPgogIDxwYXRoIGQ9Ik0xNC44MjkgMTUuOTk4YTMgMyAwIDEgMS01LjY1OCAwIiAvPgogIDxwYXRoIGQ9Ik0yMC45MiAxNC42MDZBMSAxIDAgMCAxIDIwIDE2SDRhMSAxIDAgMCAxLS45Mi0xLjM5NGwzLTdBMSAxIDAgMCAxIDcgN2gxMGExIDEgMCAwIDEgLjkyLjYwNnoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/lamp-ceiling
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12030,7 +12180,7 @@ declare const LampCeiling: react.ForwardRefExoticComponent<
  * @component @name LampDesk
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQgNS0zIDMgMiA3IDgtOC03LTJaIiAvPgogIDxwYXRoIGQ9Im0xNCA1LTMgMy0zLTMgMy0zIDMgM1oiIC8+CiAgPHBhdGggZD0iTTkuNSA2LjUgNCAxMmwzIDYiIC8+CiAgPHBhdGggZD0iTTMgMjJ2LTJjMC0xLjEuOS0yIDItMmg0YTIgMiAwIDAgMSAyIDJ2MkgzWiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/lamp-desk
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAuMjkzIDIuMjkzYTEgMSAwIDAgMSAxLjQxNCAwbDIuNSAyLjUgNS45OTQgMS4yMjdhMSAxIDAgMCAxIC41MDYgMS42ODdsLTcgN2ExIDEgMCAwIDEtMS42ODctLjUwNmwtMS4yMjctNS45OTQtMi41LTIuNWExIDEgMCAwIDEgMC0xLjQxNHoiIC8+CiAgPHBhdGggZD0ibTE0LjIwNyA0Ljc5My0zLjQxNCAzLjQxNCIgLz4KICA8cGF0aCBkPSJNMyAyMGEyIDIgMCAwIDEgMi0yaDRhMiAyIDAgMCAxIDIgMnYxYTEgMSAwIDAgMS0xIDFINGExIDEgMCAwIDEtMS0xeiIgLz4KICA8cGF0aCBkPSJtOS4wODYgNi41LTQuNzkzIDQuNzkzYTEgMSAwIDAgMC0uMTggMS4xN0w3IDE4IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/lamp-desk
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12045,7 +12195,7 @@ declare const LampDesk: react.ForwardRefExoticComponent<
  * @component @name LampFloor
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOSAyaDZsMyA3SDZsMy03WiIgLz4KICA8cGF0aCBkPSJNMTIgOXYxMyIgLz4KICA8cGF0aCBkPSJNOSAyMmg2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/lamp-floor
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTB2MTIiIC8+CiAgPHBhdGggZD0iTTE3LjkyOSA3LjYyOUExIDEgMCAwIDEgMTcgOUg3YTEgMSAwIDAgMS0uOTI4LTEuMzcxbDItNUExIDEgMCAwIDEgOSAyaDZhMSAxIDAgMCAxIC45MjguNjI5eiIgLz4KICA8cGF0aCBkPSJNOSAyMmg2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/lamp-floor
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12060,7 +12210,7 @@ declare const LampFloor: react.ForwardRefExoticComponent<
  * @component @name LampWallDown
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgMTNoNmwzIDdIOGwzLTdaIiAvPgogIDxwYXRoIGQ9Ik0xNCAxM1Y4YTIgMiAwIDAgMC0yLTJIOCIgLz4KICA8cGF0aCBkPSJNNCA5aDJhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHY2WiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/lamp-wall-down
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTkuOTI5IDE4LjYyOUExIDEgMCAwIDEgMTkgMjBIOWExIDEgMCAwIDEtLjkyOC0xLjM3MWwyLTVBMSAxIDAgMCAxIDExIDEzaDZhMSAxIDAgMCAxIC45MjguNjI5eiIgLz4KICA8cGF0aCBkPSJNNiAzYTIgMiAwIDAgMSAyIDJ2MmEyIDIgMCAwIDEtMiAySDVhMSAxIDAgMCAxLTEtMVY0YTEgMSAwIDAgMSAxLTF6IiAvPgogIDxwYXRoIGQ9Ik04IDZoNGEyIDIgMCAwIDEgMiAydjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/lamp-wall-down
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12075,7 +12225,7 @@ declare const LampWallDown: react.ForwardRefExoticComponent<
  * @component @name LampWallUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgNGg2bDMgN0g4bDMtN1oiIC8+CiAgPHBhdGggZD0iTTE0IDExdjVhMiAyIDAgMCAxLTIgMkg4IiAvPgogIDxwYXRoIGQ9Ik00IDE1aDJhMiAyIDAgMCAxIDIgMnYyYTIgMiAwIDAgMS0yIDJINHYtNloiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/lamp-wall-up
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTkuOTI5IDkuNjI5QTEgMSAwIDAgMSAxOSAxMUg5YTEgMSAwIDAgMS0uOTI4LTEuMzcxbDItNUExIDEgMCAwIDEgMTEgNGg2YTEgMSAwIDAgMSAuOTI4LjYyOXoiIC8+CiAgPHBhdGggZD0iTTYgMTVhMiAyIDAgMCAxIDIgMnYyYTIgMiAwIDAgMS0yIDJINWExIDEgMCAwIDEtMS0xdi00YTEgMSAwIDAgMSAxLTF6IiAvPgogIDxwYXRoIGQ9Ik04IDE4aDRhMiAyIDAgMCAwIDItMnYtNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/lamp-wall-up
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12090,7 +12240,7 @@ declare const LampWallUp: react.ForwardRefExoticComponent<
  * @component @name Lamp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAyaDhsNCAxMEg0TDggMloiIC8+CiAgPHBhdGggZD0iTTEyIDEydjYiIC8+CiAgPHBhdGggZD0iTTggMjJ2LTJjMC0xLjEuOS0yIDItMmg0YTIgMiAwIDAgMSAyIDJ2Mkg4WiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/lamp
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTJ2NiIgLz4KICA8cGF0aCBkPSJNNC4wNzcgMTAuNjE1QTEgMSAwIDAgMCA1IDEyaDE0YTEgMSAwIDAgMCAuOTIzLTEuMzg1bC0zLjA3Ny03LjM4NEEyIDIgMCAwIDAgMTUgMkg5YTIgMiAwIDAgMC0xLjg0NiAxLjIzWiIgLz4KICA8cGF0aCBkPSJNOCAyMGEyIDIgMCAwIDEgMi0yaDRhMiAyIDAgMCAxIDIgMnYxYTEgMSAwIDAgMS0xIDFIOWExIDEgMCAwIDEtMS0xeiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/lamp
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12132,21 +12282,6 @@ declare const Landmark: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name LaptopMinimalCheck
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMGgyMCIgLz4KICA8cGF0aCBkPSJtOSAxMCAyIDIgNC00IiAvPgogIDxyZWN0IHg9IjMiIHk9IjQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/laptop-minimal-check
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const LaptopMinimalCheck: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Languages
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -12162,17 +12297,17 @@ declare const Languages: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name LaptopMinimal
+ * @component @name LaptopMinimalCheck
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIgLz4KICA8bGluZSB4MT0iMiIgeDI9IjIyIiB5MT0iMjAiIHkyPSIyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/laptop-minimal
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMGgyMCIgLz4KICA8cGF0aCBkPSJtOSAxMCAyIDIgNC00IiAvPgogIDxyZWN0IHg9IjMiIHk9IjQiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMiIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/laptop-minimal-check
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const LaptopMinimal: react.ForwardRefExoticComponent<
+declare const LaptopMinimalCheck: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12188,6 +12323,21 @@ declare const LaptopMinimal: react.ForwardRefExoticComponent<
  *
  */
 declare const Laptop: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name LaptopMinimal
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTIiIHg9IjMiIHk9IjQiIHJ4PSIyIiByeT0iMiIgLz4KICA8bGluZSB4MT0iMiIgeDI9IjIyIiB5MT0iMjAiIHkyPSIyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/laptop-minimal
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const LaptopMinimal: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12240,7 +12390,7 @@ declare const Laugh: react.ForwardRefExoticComponent<
  * @component @name Layers2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTYuMDIgMTIgNS40OCAzLjEzYTEgMSAwIDAgMSAwIDEuNzRMMTMgMjEuNzRhMiAyIDAgMCAxLTIgMGwtOC41LTQuODdhMSAxIDAgMCAxIDAtMS43NEw3Ljk4IDEyIiAvPgogIDxwYXRoIGQ9Ik0xMyAxMy43NGEyIDIgMCAwIDEtMiAwTDIuNSA4Ljg3YTEgMSAwIDAgMSAwLTEuNzRMMTEgMi4yNmEyIDIgMCAwIDEgMiAwbDguNSA0Ljg3YTEgMSAwIDAgMSAwIDEuNzRaIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/layers-2
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMTMuNzRhMiAyIDAgMCAxLTIgMEwyLjUgOC44N2ExIDEgMCAwIDEgMC0xLjc0TDExIDIuMjZhMiAyIDAgMCAxIDIgMGw4LjUgNC44N2ExIDEgMCAwIDEgMCAxLjc0eiIgLz4KICA8cGF0aCBkPSJtMjAgMTQuMjg1IDEuNS44NDVhMSAxIDAgMCAxIDAgMS43NEwxMyAyMS43NGEyIDIgMCAwIDEtMiAwbC04LjUtNC44N2ExIDEgMCAwIDEgMC0xLjc0bDEuNS0uODQ1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/layers-2
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -12402,21 +12552,6 @@ declare const Lectern: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name LetterText
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMTJoNiIgLz4KICA8cGF0aCBkPSJNMTUgNmg2IiAvPgogIDxwYXRoIGQ9Im0zIDEzIDMuNTUzLTcuNzI0YS41LjUgMCAwIDEgLjg5NCAwTDExIDEzIiAvPgogIDxwYXRoIGQ9Ik0zIDE4aDE4IiAvPgogIDxwYXRoIGQ9Ik00IDExaDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/letter-text
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const LetterText: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name LibraryBig
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -12432,17 +12567,17 @@ declare const LibraryBig: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name LifeBuoy
+ * @component @name LetterText
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtNC45MyA0LjkzIDQuMjQgNC4yNCIgLz4KICA8cGF0aCBkPSJtMTQuODMgOS4xNyA0LjI0LTQuMjQiIC8+CiAgPHBhdGggZD0ibTE0LjgzIDE0LjgzIDQuMjQgNC4yNCIgLz4KICA8cGF0aCBkPSJtOS4xNyAxNC44My00LjI0IDQuMjQiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/life-buoy
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMTJoNiIgLz4KICA8cGF0aCBkPSJNMTUgNmg2IiAvPgogIDxwYXRoIGQ9Im0zIDEzIDMuNTUzLTcuNzI0YS41LjUgMCAwIDEgLjg5NCAwTDExIDEzIiAvPgogIDxwYXRoIGQ9Ik0zIDE4aDE4IiAvPgogIDxwYXRoIGQ9Ik0zLjkyIDExaDYuMTYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/letter-text
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const LifeBuoy: react.ForwardRefExoticComponent<
+declare const LetterText: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12458,6 +12593,21 @@ declare const LifeBuoy: react.ForwardRefExoticComponent<
  *
  */
 declare const Library: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name LifeBuoy
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgLz4KICA8cGF0aCBkPSJtNC45MyA0LjkzIDQuMjQgNC4yNCIgLz4KICA8cGF0aCBkPSJtMTQuODMgOS4xNyA0LjI0LTQuMjQiIC8+CiAgPHBhdGggZD0ibTE0LjgzIDE0LjgzIDQuMjQgNC4yNCIgLz4KICA8cGF0aCBkPSJtOS4xNyAxNC44My00LjI0IDQuMjQiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/life-buoy
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const LifeBuoy: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12522,21 +12672,6 @@ declare const Link2Off: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Link
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMTNhNSA1IDAgMCAwIDcuNTQuNTRsMy0zYTUgNSAwIDAgMC03LjA3LTcuMDdsLTEuNzIgMS43MSIgLz4KICA8cGF0aCBkPSJNMTQgMTFhNSA1IDAgMCAwLTcuNTQtLjU0bC0zIDNhNSA1IDAgMCAwIDcuMDcgNy4wN2wxLjcxLTEuNzEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/link
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Link: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Link2
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -12548,6 +12683,21 @@ declare const Link: react.ForwardRefExoticComponent<
  *
  */
 declare const Link2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Link
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMTNhNSA1IDAgMCAwIDcuNTQuNTRsMy0zYTUgNSAwIDAgMC03LjA3LTcuMDdsLTEuNzIgMS43MSIgLz4KICA8cGF0aCBkPSJNMTQgMTFhNSA1IDAgMCAwLTcuNTQtLjU0bC0zIDNhNSA1IDAgMCAwIDcuMDcgNy4wN2wxLjcxLTEuNzEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/link
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Link: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12597,21 +12747,6 @@ declare const ListChecks: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ListEnd
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTJIMyIgLz4KICA8cGF0aCBkPSJNMTYgNkgzIiAvPgogIDxwYXRoIGQ9Ik0xMCAxOEgzIiAvPgogIDxwYXRoIGQ9Ik0yMSA2djEwYTIgMiAwIDAgMS0yIDJoLTUiIC8+CiAgPHBhdGggZD0ibTE2IDE2LTIgMiAyIDIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/list-end
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ListEnd: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ListCollapse
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -12623,6 +12758,21 @@ declare const ListEnd: react.ForwardRefExoticComponent<
  *
  */
 declare const ListCollapse: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ListEnd
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTJIMyIgLz4KICA8cGF0aCBkPSJNMTYgNkgzIiAvPgogIDxwYXRoIGQ9Ik0xMCAxOEgzIiAvPgogIDxwYXRoIGQ9Ik0yMSA2djEwYTIgMiAwIDAgMS0yIDJoLTUiIC8+CiAgPHBhdGggZD0ibTE2IDE2LTIgMiAyIDIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/list-end
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ListEnd: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -12912,6 +13062,21 @@ declare const Locate: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name LocationEdit
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTcuOTcgOS4zMDRBOCA4IDAgMCAwIDIgMTBjMCA0LjY5IDQuODg3IDkuNTYyIDcuMDIyIDExLjQ2OCIgLz4KICA8cGF0aCBkPSJNMjEuMzc4IDE2LjYyNmExIDEgMCAwIDAtMy4wMDQtMy4wMDRsLTQuMDEgNC4wMTJhMiAyIDAgMCAwLS41MDYuODU0bC0uODM3IDIuODdhLjUuNSAwIDAgMCAuNjIuNjJsMi44Ny0uODM3YTIgMiAwIDAgMCAuODU0LS41MDZ6IiAvPgogIDxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/location-edit
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const LocationEdit: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name LockKeyholeOpen
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -13062,21 +13227,6 @@ declare const Magnet: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MailCheck
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjIgMTNWNmEyIDIgMCAwIDAtMi0ySDRhMiAyIDAgMCAwLTIgMnYxMmMwIDEuMS45IDIgMiAyaDgiIC8+CiAgPHBhdGggZD0ibTIyIDctOC45NyA1LjdhMS45NCAxLjk0IDAgMCAxLTIuMDYgMEwyIDciIC8+CiAgPHBhdGggZD0ibTE2IDE5IDIgMiA0LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/mail-check
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MailCheck: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MailMinus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -13088,6 +13238,21 @@ declare const MailCheck: react.ForwardRefExoticComponent<
  *
  */
 declare const MailMinus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MailCheck
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjIgMTNWNmEyIDIgMCAwIDAtMi0ySDRhMiAyIDAgMCAwLTIgMnYxMmMwIDEuMS45IDIgMiAyaDgiIC8+CiAgPHBhdGggZD0ibTIyIDctOC45NyA1LjdhMS45NCAxLjk0IDAgMCAxLTIuMDYgMEwyIDciIC8+CiAgPHBhdGggZD0ibTE2IDE5IDIgMiA0LTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/mail-check
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MailCheck: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -13287,21 +13452,6 @@ declare const MapPinMinusInside: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MapPinOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNzUgNy4wOWEzIDMgMCAwIDEgMi4xNiAyLjE2IiAvPgogIDxwYXRoIGQ9Ik0xNy4wNzIgMTcuMDcyYy0xLjYzNCAyLjE3LTMuNTI3IDMuOTEyLTQuNDcxIDQuNzI3YTEgMSAwIDAgMS0xLjIwMiAwQzkuNTM5IDIwLjE5MyA0IDE0Ljk5MyA0IDEwYTggOCAwIDAgMSAxLjQzMi00LjU2OCIgLz4KICA8cGF0aCBkPSJtMiAyIDIwIDIwIiAvPgogIDxwYXRoIGQ9Ik04LjQ3NSAyLjgxOEE4IDggMCAwIDEgMjAgMTBjMCAxLjE4My0uMzEgMi4zNzctLjgxIDMuNTMzIiAvPgogIDxwYXRoIGQ9Ik05LjEzIDkuMTNhMyAzIDAgMCAwIDMuNzQgMy43NCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/map-pin-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MapPinOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MapPinMinus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -13313,6 +13463,21 @@ declare const MapPinOff: react.ForwardRefExoticComponent<
  *
  */
 declare const MapPinMinus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MapPinOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuNzUgNy4wOWEzIDMgMCAwIDEgMi4xNiAyLjE2IiAvPgogIDxwYXRoIGQ9Ik0xNy4wNzIgMTcuMDcyYy0xLjYzNCAyLjE3LTMuNTI3IDMuOTEyLTQuNDcxIDQuNzI3YTEgMSAwIDAgMS0xLjIwMiAwQzkuNTM5IDIwLjE5MyA0IDE0Ljk5MyA0IDEwYTggOCAwIDAgMSAxLjQzMi00LjU2OCIgLz4KICA8cGF0aCBkPSJtMiAyIDIwIDIwIiAvPgogIDxwYXRoIGQ9Ik04LjQ3NSAyLjgxOEE4IDggMCAwIDEgMjAgMTBjMCAxLjE4My0uMzEgMi4zNzctLjgxIDMuNTMzIiAvPgogIDxwYXRoIGQ9Ik05LjEzIDkuMTNhMyAzIDAgMCAwIDMuNzQgMy43NCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/map-pin-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MapPinOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -13527,6 +13692,21 @@ declare const Medal: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Megaphone
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMyAxMSAxOC01djEyTDMgMTR2LTN6IiAvPgogIDxwYXRoIGQ9Ik0xMS42IDE2LjhhMyAzIDAgMSAxLTUuOC0xLjYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/megaphone
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Megaphone: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name MegaphoneOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -13553,21 +13733,6 @@ declare const MegaphoneOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Meh: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Megaphone
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMyAxMSAxOC01djEyTDMgMTR2LTN6IiAvPgogIDxwYXRoIGQ9Ik0xMS42IDE2LjhhMyAzIDAgMSAxLTUuOC0xLjYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/megaphone
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Megaphone: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -13692,21 +13857,6 @@ declare const MessageCircleOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MessageCircleQuestion
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNy45IDIwQTkgOSAwIDEgMCA0IDE2LjFMMiAyMloiIC8+CiAgPHBhdGggZD0iTTkuMDkgOWEzIDMgMCAwIDEgNS44MyAxYzAgMi0zIDMtMyAzIiAvPgogIDxwYXRoIGQ9Ik0xMiAxN2guMDEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/message-circle-question
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MessageCircleQuestion: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MessageCirclePlus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -13718,6 +13868,21 @@ declare const MessageCircleQuestion: react.ForwardRefExoticComponent<
  *
  */
 declare const MessageCirclePlus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MessageCircleQuestion
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNy45IDIwQTkgOSAwIDEgMCA0IDE2LjFMMiAyMloiIC8+CiAgPHBhdGggZD0iTTkuMDkgOWEzIDMgMCAwIDEgNS44MyAxYzAgMi0zIDMtMyAzIiAvPgogIDxwYXRoIGQ9Ik0xMiAxN2guMDEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/message-circle-question
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MessageCircleQuestion: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -13992,21 +14157,6 @@ declare const MessageSquareWarning: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MessageSquare
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/message-square
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MessageSquare: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MessageSquareX
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14018,6 +14168,21 @@ declare const MessageSquare: react.ForwardRefExoticComponent<
  *
  */
 declare const MessageSquareX: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MessageSquare
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/message-square
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MessageSquare: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14202,21 +14367,6 @@ declare const Minimize: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Minus
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAxMmgxNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/minus
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Minus: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MonitorCheck
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14232,17 +14382,17 @@ declare const MonitorCheck: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MonitorCog
+ * @component @name Minus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTd2NCIgLz4KICA8cGF0aCBkPSJtMTUuMiA0LjktLjktLjQiIC8+CiAgPHBhdGggZD0ibTE1LjIgNy4xLS45LjQiIC8+CiAgPHBhdGggZD0ibTE2LjkgMy4yLS40LS45IiAvPgogIDxwYXRoIGQ9Im0xNi45IDguOC0uNC45IiAvPgogIDxwYXRoIGQ9Im0xOS41IDIuMy0uNC45IiAvPgogIDxwYXRoIGQ9Im0xOS41IDkuNy0uNC0uOSIgLz4KICA8cGF0aCBkPSJtMjEuNyA0LjUtLjkuNCIgLz4KICA8cGF0aCBkPSJtMjEuNyA3LjUtLjktLjQiIC8+CiAgPHBhdGggZD0iTTIyIDEzdjJhMiAyIDAgMCAxLTIgMkg0YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDciIC8+CiAgPHBhdGggZD0iTTggMjFoOCIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjYiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/monitor-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAxMmgxNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/minus
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const MonitorCog: react.ForwardRefExoticComponent<
+declare const Minus: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14258,6 +14408,21 @@ declare const MonitorCog: react.ForwardRefExoticComponent<
  *
  */
 declare const MonitorDot: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MonitorCog
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTd2NCIgLz4KICA8cGF0aCBkPSJtMTQuMzA1IDcuNTMuOTIzLS4zODIiIC8+CiAgPHBhdGggZD0ibTE1LjIyOCA0Ljg1Mi0uOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiAzLjIyOC0uMzgzLS45MjQiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiA4Ljc3Mi0uMzgzLjkyMyIgLz4KICA8cGF0aCBkPSJtMTkuMTQ4IDMuMjI4LjM4My0uOTI0IiAvPgogIDxwYXRoIGQ9Im0xOS41MyA5LjY5Ni0uMzgyLS45MjQiIC8+CiAgPHBhdGggZD0ibTIwLjc3MiA0Ljg1Mi45MjQtLjM4MyIgLz4KICA8cGF0aCBkPSJtMjAuNzcyIDcuMTQ4LjkyNC4zODMiIC8+CiAgPHBhdGggZD0iTTIyIDEzdjJhMiAyIDAgMCAxLTIgMkg0YTIgMiAwIDAgMS0yLTJWNWEyIDIgMCAwIDEgMi0yaDciIC8+CiAgPHBhdGggZD0iTTggMjFoOCIgLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjYiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/monitor-cog
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MonitorCog: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14307,21 +14472,6 @@ declare const MonitorPause: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MonitorPlay
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNy43NWEuNzUuNzUgMCAwIDEgMS4xNDItLjYzOGwzLjY2NCAyLjI0OWEuNzUuNzUgMCAwIDEgMCAxLjI3OGwtMy42NjQgMi4yNWEuNzUuNzUgMCAwIDEtMS4xNDItLjY0eiIgLz4KICA8cGF0aCBkPSJNMTIgMTd2NCIgLz4KICA8cGF0aCBkPSJNOCAyMWg4IiAvPgogIDxyZWN0IHg9IjIiIHk9IjMiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/monitor-play
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MonitorPlay: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MonitorSmartphone
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14333,6 +14483,21 @@ declare const MonitorPlay: react.ForwardRefExoticComponent<
  *
  */
 declare const MonitorSmartphone: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MonitorPlay
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNy43NWEuNzUuNzUgMCAwIDEgMS4xNDItLjYzOGwzLjY2NCAyLjI0OWEuNzUuNzUgMCAwIDEgMCAxLjI3OGwtMy42NjQgMi4yNWEuNzUuNzUgMCAwIDEtMS4xNDItLjY0eiIgLz4KICA8cGF0aCBkPSJNMTIgMTd2NCIgLz4KICA8cGF0aCBkPSJNOCAyMWg4IiAvPgogIDxyZWN0IHg9IjIiIHk9IjMiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/monitor-play
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MonitorPlay: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14367,21 +14532,6 @@ declare const MonitorStop: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MonitorX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQuNSAxMi41LTUtNSIgLz4KICA8cGF0aCBkPSJtOS41IDEyLjUgNS01IiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgeD0iMiIgeT0iMyIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTEyIDE3djQiIC8+CiAgPHBhdGggZD0iTTggMjFoOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/monitor-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const MonitorX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name MonitorUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14408,6 +14558,21 @@ declare const MonitorUp: react.ForwardRefExoticComponent<
  *
  */
 declare const Monitor: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name MonitorX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQuNSAxMi41LTUtNSIgLz4KICA8cGF0aCBkPSJtOS41IDEyLjUgNS01IiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgeD0iMiIgeT0iMyIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTEyIDE3djQiIC8+CiAgPHBhdGggZD0iTTggMjFoOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/monitor-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MonitorX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14457,6 +14622,21 @@ declare const MountainSnow: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Mountain
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtOCAzIDQgOCA1LTUgNSAxNUgyTDggM3oiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/mountain
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Mountain: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name MouseOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14483,21 +14663,6 @@ declare const MouseOff: react.ForwardRefExoticComponent<
  *
  */
 declare const MousePointer2: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Mountain
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtOCAzIDQgOCA1LTUgNSAxNUgyTDggM3oiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/mountain
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Mountain: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14727,6 +14892,21 @@ declare const MoveUpRight: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name MoveVertical
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyMCIgLz4KICA8cGF0aCBkPSJtOCAxOCA0IDQgNC00IiAvPgogIDxwYXRoIGQ9Im04IDYgNC00IDQgNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/move-vertical
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const MoveVertical: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name MoveUp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -14742,17 +14922,17 @@ declare const MoveUp: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name MoveVertical
+ * @component @name Move
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyMCIgLz4KICA8cGF0aCBkPSJtOCAxOCA0IDQgNC00IiAvPgogIDxwYXRoIGQ9Im04IDYgNC00IDQgNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/move-vertical
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyMCIgLz4KICA8cGF0aCBkPSJtMTUgMTktMyAzLTMtMyIgLz4KICA8cGF0aCBkPSJtMTkgOSAzIDMtMyAzIiAvPgogIDxwYXRoIGQ9Ik0yIDEyaDIwIiAvPgogIDxwYXRoIGQ9Im01IDktMyAzIDMgMyIgLz4KICA8cGF0aCBkPSJtOSA1IDMtMyAzIDMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/move
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const MoveVertical: react.ForwardRefExoticComponent<
+declare const Move: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14783,21 +14963,6 @@ declare const Music2: react.ForwardRefExoticComponent<
  *
  */
 declare const Music3: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Move
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYyMCIgLz4KICA8cGF0aCBkPSJtMTUgMTktMyAzLTMtMyIgLz4KICA8cGF0aCBkPSJtMTkgOSAzIDMtMyAzIiAvPgogIDxwYXRoIGQ9Ik0yIDEyaDIwIiAvPgogIDxwYXRoIGQ9Im01IDktMyAzIDMgMyIgLz4KICA8cGF0aCBkPSJtOSA1IDMtMyAzIDMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/move
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Move: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -14910,7 +15075,7 @@ declare const Network: react.ForwardRefExoticComponent<
  * @component @name Newspaper
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMThoLTUiIC8+CiAgPHBhdGggZD0iTTE4IDE0aC04IiAvPgogIDxwYXRoIGQ9Ik00IDIyaDE2YTIgMiAwIDAgMCAyLTJWNGEyIDIgMCAwIDAtMi0ySDhhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDEtNCAwdi05YTIgMiAwIDAgMSAyLTJoMiIgLz4KICA8cmVjdCB4PSIxMCIgeT0iNiIgd2lkdGg9IjgiIGhlaWdodD0iNCIgcng9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/newspaper
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMThoLTUiIC8+CiAgPHBhdGggZD0iTTE4IDE0aC04IiAvPgogIDxwYXRoIGQ9Ik00IDIyaDE2YTIgMiAwIDAgMCAyLTJWNGEyIDIgMCAwIDAtMi0ySDhhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDEtNCAwdi05YTIgMiAwIDAgMSAyLTJoMiIgLz4KICA8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI0IiB4PSIxMCIgeT0iNiIgcng9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/newspaper
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -14940,7 +15105,7 @@ declare const Nfc: react.ForwardRefExoticComponent<
  * @component @name NonBinary
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYxMCIgLz4KICA8cGF0aCBkPSJtOSA0IDYgNCIgLz4KICA8cGF0aCBkPSJtOSA4IDYtNCIgLz4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjE3IiByPSI1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/non-binary
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMnYxMCIgLz4KICA8cGF0aCBkPSJtOC41IDQgNyA0IiAvPgogIDxwYXRoIGQ9Im04LjUgOCA3LTQiIC8+CiAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxNyIgcj0iNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/non-binary
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -14982,21 +15147,6 @@ declare const NotebookTabs: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name NotebookText
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiA2aDQiIC8+CiAgPHBhdGggZD0iTTIgMTBoNCIgLz4KICA8cGF0aCBkPSJNMiAxNGg0IiAvPgogIDxwYXRoIGQ9Ik0yIDE4aDQiIC8+CiAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiB4PSI0IiB5PSIyIiByeD0iMiIgLz4KICA8cGF0aCBkPSJNOS41IDhoNSIgLz4KICA8cGF0aCBkPSJNOS41IDEySDE2IiAvPgogIDxwYXRoIGQ9Ik05LjUgMTZIMTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/notebook-text
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const NotebookText: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Notebook
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15012,21 +15162,6 @@ declare const Notebook: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name NotepadText
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTEyIDJ2NCIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxOCIgeD0iNCIgeT0iNCIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTggMTBoNiIgLz4KICA8cGF0aCBkPSJNOCAxNGg4IiAvPgogIDxwYXRoIGQ9Ik04IDE4aDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/notepad-text
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const NotepadText: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name NotepadTextDashed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15038,6 +15173,36 @@ declare const NotepadText: react.ForwardRefExoticComponent<
  *
  */
 declare const NotepadTextDashed: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name NotebookText
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiA2aDQiIC8+CiAgPHBhdGggZD0iTTIgMTBoNCIgLz4KICA8cGF0aCBkPSJNMiAxNGg0IiAvPgogIDxwYXRoIGQ9Ik0yIDE4aDQiIC8+CiAgPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjIwIiB4PSI0IiB5PSIyIiByeD0iMiIgLz4KICA8cGF0aCBkPSJNOS41IDhoNSIgLz4KICA8cGF0aCBkPSJNOS41IDEySDE2IiAvPgogIDxwYXRoIGQ9Ik05LjUgMTZIMTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/notebook-text
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const NotebookText: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name NotepadText
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAydjQiIC8+CiAgPHBhdGggZD0iTTEyIDJ2NCIgLz4KICA8cGF0aCBkPSJNMTYgMnY0IiAvPgogIDxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxOCIgeD0iNCIgeT0iNCIgcng9IjIiIC8+CiAgPHBhdGggZD0iTTggMTBoNiIgLz4KICA8cGF0aCBkPSJNOCAxNGg4IiAvPgogIDxwYXRoIGQ9Ik04IDE4aDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/notepad-text
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const NotepadText: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15165,7 +15330,7 @@ declare const Omega: react.ForwardRefExoticComponent<
  * @component @name Orbit
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIiAvPgogIDxjaXJjbGUgY3g9IjE5IiBjeT0iNSIgcj0iMiIgLz4KICA8Y2lyY2xlIGN4PSI1IiBjeT0iMTkiIHI9IjIiIC8+CiAgPHBhdGggZD0iTTEwLjQgMjEuOWExMCAxMCAwIDAgMCA5Ljk0MS0xNS40MTYiIC8+CiAgPHBhdGggZD0iTTEzLjUgMi4xYTEwIDEwIDAgMCAwLTkuODQxIDE1LjQxNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/orbit
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAuMzQxIDYuNDg0QTEwIDEwIDAgMCAxIDEwLjI2NiAyMS44NSIgLz4KICA8cGF0aCBkPSJNMy42NTkgMTcuNTE2QTEwIDEwIDAgMCAxIDEzLjc0IDIuMTUyIiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSI1IiByPSIyIiAvPgogIDxjaXJjbGUgY3g9IjUiIGN5PSIxOSIgcj0iMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/orbit
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -15297,21 +15462,6 @@ declare const PackageSearch: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PackageX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTBWOGEyIDIgMCAwIDAtMS0xLjczbC03LTRhMiAyIDAgMCAwLTIgMGwtNyA0QTIgMiAwIDAgMCAzIDh2OGEyIDIgMCAwIDAgMSAxLjczbDcgNGEyIDIgMCAwIDAgMiAwbDItMS4xNCIgLz4KICA8cGF0aCBkPSJtNy41IDQuMjcgOSA1LjE1IiAvPgogIDxwb2x5bGluZSBwb2ludHM9IjMuMjkgNyAxMiAxMiAyMC43MSA3IiAvPgogIDxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMjIiIHkyPSIxMiIgLz4KICA8cGF0aCBkPSJtMTcgMTMgNSA1bS01IDAgNS01IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/package-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PackageX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Package
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15323,6 +15473,21 @@ declare const PackageX: react.ForwardRefExoticComponent<
  *
  */
 declare const Package: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name PackageX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTBWOGEyIDIgMCAwIDAtMS0xLjczbC03LTRhMiAyIDAgMCAwLTIgMGwtNyA0QTIgMiAwIDAgMCAzIDh2OGEyIDIgMCAwIDAgMSAxLjczbDcgNGEyIDIgMCAwIDAgMiAwbDItMS4xNCIgLz4KICA8cGF0aCBkPSJtNy41IDQuMjcgOSA1LjE1IiAvPgogIDxwb2x5bGluZSBwb2ludHM9IjMuMjkgNyAxMiAxMiAyMC43MSA3IiAvPgogIDxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMjIiIHkyPSIxMiIgLz4KICA8cGF0aCBkPSJtMTcgMTMgNSA1bS01IDAgNS01IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/package-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PackageX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15357,21 +15522,6 @@ declare const PaintRoller: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PaintbrushVertical
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnYyIiAvPgogIDxwYXRoIGQ9Ik0xNCAydjQiIC8+CiAgPHBhdGggZD0iTTE3IDJhMSAxIDAgMCAxIDEgMXY5SDZWM2ExIDEgMCAwIDEgMS0xeiIgLz4KICA8cGF0aCBkPSJNNiAxMmExIDEgMCAwIDAtMSAxdjFhMiAyIDAgMCAwIDIgMmgyYTEgMSAwIDAgMSAxIDF2Mi45YTIgMiAwIDEgMCA0IDBWMTdhMSAxIDAgMCAxIDEtMWgyYTIgMiAwIDAgMCAyLTJ2LTFhMSAxIDAgMCAwLTEtMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/paintbrush-vertical
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PaintbrushVertical: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Paintbrush
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15387,10 +15537,25 @@ declare const Paintbrush: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name PaintbrushVertical
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMnYyIiAvPgogIDxwYXRoIGQ9Ik0xNCAydjQiIC8+CiAgPHBhdGggZD0iTTE3IDJhMSAxIDAgMCAxIDEgMXY5SDZWM2ExIDEgMCAwIDEgMS0xeiIgLz4KICA8cGF0aCBkPSJNNiAxMmExIDEgMCAwIDAtMSAxdjFhMiAyIDAgMCAwIDIgMmgyYTEgMSAwIDAgMSAxIDF2Mi45YTIgMiAwIDEgMCA0IDBWMTdhMSAxIDAgMCAxIDEtMWgyYTIgMiAwIDAgMCAyLTJ2LTFhMSAxIDAgMCAwLTEtMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/paintbrush-vertical
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PaintbrushVertical: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Palette
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMy41IiBjeT0iNi41IiByPSIuNSIgZmlsbD0iY3VycmVudENvbG9yIiAvPgogIDxjaXJjbGUgY3g9IjE3LjUiIGN5PSIxMC41IiByPSIuNSIgZmlsbD0iY3VycmVudENvbG9yIiAvPgogIDxjaXJjbGUgY3g9IjguNSIgY3k9IjcuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4KICA8Y2lyY2xlIGN4PSI2LjUiIGN5PSIxMi41IiByPSIuNSIgZmlsbD0iY3VycmVudENvbG9yIiAvPgogIDxwYXRoIGQ9Ik0xMiAyQzYuNSAyIDIgNi41IDIgMTJzNC41IDEwIDEwIDEwYy45MjYgMCAxLjY0OC0uNzQ2IDEuNjQ4LTEuNjg4IDAtLjQzNy0uMTgtLjgzNS0uNDM3LTEuMTI1LS4yOS0uMjg5LS40MzgtLjY1Mi0uNDM4LTEuMTI1YTEuNjQgMS42NCAwIDAgMSAxLjY2OC0xLjY2OGgxLjk5NmMzLjA1MSAwIDUuNTU1LTIuNTAzIDUuNTU1LTUuNTU0QzIxLjk2NSA2LjAxMiAxNy40NjEgMiAxMiAyeiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/palette
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjJhMSAxIDAgMCAxIDAtMjAgMTAgOSAwIDAgMSAxMCA5IDUgNSAwIDAgMS01IDVoLTIuMjVhMS43NSAxLjc1IDAgMCAwLTEuNCAyLjhsLjMuNGExLjc1IDEuNzUgMCAwIDEtMS40IDIuOHoiIC8+CiAgPGNpcmNsZSBjeD0iMTMuNSIgY3k9IjYuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4KICA8Y2lyY2xlIGN4PSIxNy41IiBjeT0iMTAuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4KICA8Y2lyY2xlIGN4PSI2LjUiIGN5PSIxMi41IiByPSIuNSIgZmlsbD0iY3VycmVudENvbG9yIiAvPgogIDxjaXJjbGUgY3g9IjguNSIgY3k9IjcuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/palette
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -15398,21 +15563,6 @@ declare const Paintbrush: react.ForwardRefExoticComponent<
  *
  */
 declare const Palette: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name PanelBottomDashed
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNCAxNWgxIiAvPgogIDxwYXRoIGQ9Ik0xOSAxNWgyIiAvPgogIDxwYXRoIGQ9Ik0zIDE1aDIiIC8+CiAgPHBhdGggZD0iTTkgMTVoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/panel-bottom-dashed
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PanelBottomDashed: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15428,6 +15578,21 @@ declare const PanelBottomDashed: react.ForwardRefExoticComponent<
  *
  */
 declare const PanelBottomClose: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name PanelBottomDashed
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNCAxNWgxIiAvPgogIDxwYXRoIGQ9Ik0xOSAxNWgyIiAvPgogIDxwYXRoIGQ9Ik0zIDE1aDIiIC8+CiAgPHBhdGggZD0iTTkgMTVoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/panel-bottom-dashed
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PanelBottomDashed: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15522,6 +15687,21 @@ declare const PanelLeft: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name PanelRightClose
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAzdjE4IiAvPgogIDxwYXRoIGQ9Im04IDkgMyAzLTMgMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/panel-right-close
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PanelRightClose: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name PanelRightDashed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15537,17 +15717,17 @@ declare const PanelRightDashed: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PanelRightClose
+ * @component @name PanelRightOpen
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAzdjE4IiAvPgogIDxwYXRoIGQ9Im04IDkgMyAzLTMgMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/panel-right-close
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAzdjE4IiAvPgogIDxwYXRoIGQ9Im0xMCAxNS0zLTMgMy0zIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/panel-right-open
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const PanelRightClose: react.ForwardRefExoticComponent<
+declare const PanelRightOpen: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15578,21 +15758,6 @@ declare const PanelRight: react.ForwardRefExoticComponent<
  *
  */
 declare const PanelTopClose: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name PanelRightOpen
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik0xNSAzdjE4IiAvPgogIDxwYXRoIGQ9Im0xMCAxNS0zLTMgMy0zIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/panel-right-open
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PanelRightOpen: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15672,21 +15837,6 @@ declare const PanelsRightBottom: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Paperclip
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMuMjM0IDIwLjI1MiAyMSAxMi4zIiAvPgogIDxwYXRoIGQ9Im0xNiA2LTguNDE0IDguNTg2YTIgMiAwIDAgMCAwIDIuODI4IDIgMiAwIDAgMCAyLjgyOCAwbDguNDE0LTguNTg2YTQgNCAwIDAgMCAwLTUuNjU2IDQgNCAwIDAgMC01LjY1NiAwbC04LjQxNSA4LjU4NWE2IDYgMCAxIDAgOC40ODYgOC40ODYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/paperclip
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Paperclip: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name PanelsTopLeft
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15698,6 +15848,21 @@ declare const Paperclip: react.ForwardRefExoticComponent<
  *
  */
 declare const PanelsTopLeft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Paperclip
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMuMjM0IDIwLjI1MiAyMSAxMi4zIiAvPgogIDxwYXRoIGQ9Im0xNiA2LTguNDE0IDguNTg2YTIgMiAwIDAgMCAwIDIuODI4IDIgMiAwIDAgMCAyLjgyOCAwbDguNDE0LTguNTg2YTQgNCAwIDAgMCAwLTUuNjU2IDQgNCAwIDAgMC01LjY1NiAwbC04LjQxNSA4LjU4NWE2IDYgMCAxIDAgOC40ODYgOC40ODYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/paperclip
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Paperclip: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -15867,21 +16032,6 @@ declare const PencilLine: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PencilRuler
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgNyA4LjcgMi43YTIuNDEgMi40MSAwIDAgMC0zLjQgMEwyLjcgNS4zYTIuNDEgMi40MSAwIDAgMCAwIDMuNEw3IDEzIiAvPgogIDxwYXRoIGQ9Im04IDYgMi0yIiAvPgogIDxwYXRoIGQ9Im0xOCAxNiAyLTIiIC8+CiAgPHBhdGggZD0ibTE3IDExIDQuMyA0LjNjLjk0Ljk0Ljk0IDIuNDYgMCAzLjRsLTIuNiAyLjZjLS45NC45NC0yLjQ2Ljk0LTMuNCAwTDExIDE3IiAvPgogIDxwYXRoIGQ9Ik0yMS4xNzQgNi44MTJhMSAxIDAgMCAwLTMuOTg2LTMuOTg3TDMuODQyIDE2LjE3NGEyIDIgMCAwIDAtLjUuODNsLTEuMzIxIDQuMzUyYS41LjUgMCAwIDAgLjYyMy42MjJsNC4zNTMtMS4zMmEyIDIgMCAwIDAgLjgzLS40OTd6IiAvPgogIDxwYXRoIGQ9Im0xNSA1IDQgNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/pencil-ruler
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PencilRuler: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name PencilOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -15908,6 +16058,21 @@ declare const PencilOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Pencil: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name PencilRuler
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgNyA4LjcgMi43YTIuNDEgMi40MSAwIDAgMC0zLjQgMEwyLjcgNS4zYTIuNDEgMi40MSAwIDAgMCAwIDMuNEw3IDEzIiAvPgogIDxwYXRoIGQ9Im04IDYgMi0yIiAvPgogIDxwYXRoIGQ9Im0xOCAxNiAyLTIiIC8+CiAgPHBhdGggZD0ibTE3IDExIDQuMyA0LjNjLjk0Ljk0Ljk0IDIuNDYgMCAzLjRsLTIuNiAyLjZjLS45NC45NC0yLjQ2Ljk0LTMuNCAwTDExIDE3IiAvPgogIDxwYXRoIGQ9Ik0yMS4xNzQgNi44MTJhMSAxIDAgMCAwLTMuOTg2LTMuOTg3TDMuODQyIDE2LjE3NGEyIDIgMCAwIDAtLjUuODNsLTEuMzIxIDQuMzUyYS41LjUgMCAwIDAgLjYyMy42MjJsNC4zNTMtMS4zMmEyIDIgMCAwIDAgLjgzLS40OTd6IiAvPgogIDxwYXRoIGQ9Im0xNSA1IDQgNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/pencil-ruler
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PencilRuler: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16077,6 +16242,21 @@ declare const Phone: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Pi
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8bGluZSB4MT0iOSIgeDI9IjkiIHkxPSI0IiB5Mj0iMjAiIC8+CiAgPHBhdGggZD0iTTQgN2MwLTEuNyAxLjMtMyAzLTNoMTMiIC8+CiAgPHBhdGggZD0iTTE4IDIwYy0xLjcgMC0zLTEuMy0zLTNWNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/pi
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Pi: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Piano
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16103,21 +16283,6 @@ declare const Piano: react.ForwardRefExoticComponent<
  *
  */
 declare const Pickaxe: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Pi
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8bGluZSB4MT0iOSIgeDI9IjkiIHkxPSI0IiB5Mj0iMjAiIC8+CiAgPHBhdGggZD0iTTQgN2MwLTEuNyAxLjMtMyAzLTNoMTMiIC8+CiAgPHBhdGggZD0iTTE4IDIwYy0xLjcgMC0zLTEuMy0zLTNWNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/pi
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Pi: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16155,7 +16320,7 @@ declare const PictureInPicture: react.ForwardRefExoticComponent<
  * @component @name PiggyBank
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTkgNWMtMS41IDAtMi44IDEuNC0zIDItMy41LTEuNS0xMS0uMy0xMSA1IDAgMS44IDAgMyAyIDQuNVYyMGg0di0yaDN2Mmg0di00YzEtLjUgMS43LTEgMi0yaDJ2LTRoLTJjMC0xLS41LTEuNS0xLTJWNXoiIC8+CiAgPHBhdGggZD0iTTIgOXYxYzAgMS4xLjkgMiAyIDJoMSIgLz4KICA8cGF0aCBkPSJNMTYgMTFoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/piggy-bank
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgMTdoM3YyYTEgMSAwIDAgMCAxIDFoMmExIDEgMCAwIDAgMS0xdi0zYTMuMTYgMy4xNiAwIDAgMCAyLTJoMWExIDEgMCAwIDAgMS0xdi0yYTEgMSAwIDAgMC0xLTFoLTFhNSA1IDAgMCAwLTItNFYzYTQgNCAwIDAgMC0zLjIgMS42bC0uMy40SDExYTYgNiAwIDAgMC02IDZ2MWE1IDUgMCAwIDAgMiA0djNhMSAxIDAgMCAwIDEgMWgyYTEgMSAwIDAgMCAxLTF6IiAvPgogIDxwYXRoIGQ9Ik0xNiAxMGguMDEiIC8+CiAgPHBhdGggZD0iTTIgOHYxYTIgMiAwIDAgMCAyIDJoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/piggy-bank
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -16242,21 +16407,6 @@ declare const Pill: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Pin
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTd2NSIgLz4KICA8cGF0aCBkPSJNOSAxMC43NmEyIDIgMCAwIDEtMS4xMSAxLjc5bC0xLjc4LjlBMiAyIDAgMCAwIDUgMTUuMjRWMTZhMSAxIDAgMCAwIDEgMWgxMmExIDEgMCAwIDAgMS0xdi0uNzZhMiAyIDAgMCAwLTEuMTEtMS43OWwtMS43OC0uOUEyIDIgMCAwIDEgMTUgMTAuNzZWN2ExIDEgMCAwIDEgMS0xIDIgMiAwIDAgMCAwLTRIOGEyIDIgMCAwIDAgMCA0IDEgMSAwIDAgMSAxIDF6IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/pin
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Pin: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name PinOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16272,10 +16422,25 @@ declare const PinOff: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Pin
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTd2NSIgLz4KICA8cGF0aCBkPSJNOSAxMC43NmEyIDIgMCAwIDEtMS4xMSAxLjc5bC0xLjc4LjlBMiAyIDAgMCAwIDUgMTUuMjRWMTZhMSAxIDAgMCAwIDEgMWgxMmExIDEgMCAwIDAgMS0xdi0uNzZhMiAyIDAgMCAwLTEuMTEtMS43OWwtMS43OC0uOUEyIDIgMCAwIDEgMTUgMTAuNzZWN2ExIDEgMCAwIDEgMS0xIDIgMiAwIDAgMCAwLTRIOGEyIDIgMCAwIDAgMCA0IDEgMSAwIDAgMSAxIDF6IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/pin
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Pin: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Pipette
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMiAyMiAxLTFoM2w5LTkiIC8+CiAgPHBhdGggZD0iTTMgMjF2LTNsOS05IiAvPgogIDxwYXRoIGQ9Im0xNSA2IDMuNC0zLjRhMi4xIDIuMSAwIDEgMSAzIDNMMTggOWwuNC40YTIuMSAyLjEgMCAxIDEtMyAzbC0zLjgtMy44YTIuMSAyLjEgMCAxIDEgMy0zbC40LjRaIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/pipette
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTIgOS04LjQxNCA4LjQxNEEyIDIgMCAwIDAgMyAxOC44Mjh2MS4zNDRhMiAyIDAgMCAxLS41ODYgMS40MTRBMiAyIDAgMCAxIDMuODI4IDIxaDEuMzQ0YTIgMiAwIDAgMCAxLjQxNC0uNTg2TDE1IDEyIiAvPgogIDxwYXRoIGQ9Im0xOCA5IC40LjRhMSAxIDAgMSAxLTMgM2wtMy44LTMuOGExIDEgMCAxIDEgMy0zbC40LjQgMy40LTMuNGExIDEgMCAxIDEgMyAzeiIgLz4KICA8cGF0aCBkPSJtMiAyMiAuNDE0LS40MTQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/pipette
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -16283,21 +16448,6 @@ declare const PinOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Pipette: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Pizza
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTIgMTQtMSAxIiAvPgogIDxwYXRoIGQ9Im0xMy43NSAxOC4yNS0xLjI1IDEuNDIiIC8+CiAgPHBhdGggZD0iTTE3Ljc3NSA1LjY1NGExNS42OCAxNS42OCAwIDAgMC0xMi4xMjEgMTIuMTIiIC8+CiAgPHBhdGggZD0iTTE4LjggOS4zYTEgMSAwIDAgMCAyLjEgNy43IiAvPgogIDxwYXRoIGQ9Ik0yMS45NjQgMjAuNzMyYTEgMSAwIDAgMS0xLjIzMiAxLjIzMmwtMTgtNWExIDEgMCAwIDEtLjY5NS0xLjIzMkExOS42OCAxOS42OCAwIDAgMSAxNS43MzIgMi4wMzdhMSAxIDAgMCAxIDEuMjMyLjY5NXoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/pizza
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Pizza: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16313,6 +16463,21 @@ declare const Pizza: react.ForwardRefExoticComponent<
  *
  */
 declare const PlaneLanding: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Pizza
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTIgMTQtMSAxIiAvPgogIDxwYXRoIGQ9Im0xMy43NSAxOC4yNS0xLjI1IDEuNDIiIC8+CiAgPHBhdGggZD0iTTE3Ljc3NSA1LjY1NGExNS42OCAxNS42OCAwIDAgMC0xMi4xMjEgMTIuMTIiIC8+CiAgPHBhdGggZD0iTTE4LjggOS4zYTEgMSAwIDAgMCAyLjEgNy43IiAvPgogIDxwYXRoIGQ9Ik0yMS45NjQgMjAuNzMyYTEgMSAwIDAgMS0xLjIzMiAxLjIzMmwtMTgtNWExIDEgMCAwIDEtLjY5NS0xLjIzMkExOS42OCAxOS42OCAwIDAgMSAxNS43MzIgMi4wMzdhMSAxIDAgMCAxIDEuMjMyLjY5NXoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/pizza
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Pizza: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16392,21 +16557,6 @@ declare const PlugZap: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Plug
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjJ2LTUiIC8+CiAgPHBhdGggZD0iTTkgOFYyIiAvPgogIDxwYXRoIGQ9Ik0xNSA4VjIiIC8+CiAgPHBhdGggZD0iTTE4IDh2NWE0IDQgMCAwIDEtNCA0aC00YTQgNCAwIDAgMS00LTRWOFoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/plug
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Plug: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Plus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16418,6 +16568,21 @@ declare const Plug: react.ForwardRefExoticComponent<
  *
  */
 declare const Plus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Plug
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjJ2LTUiIC8+CiAgPHBhdGggZD0iTTkgOFYyIiAvPgogIDxwYXRoIGQ9Ik0xNSA4VjIiIC8+CiAgPHBhdGggZD0iTTE4IDh2NWE0IDQgMCAwIDEtNCA0aC00YTQgNCAwIDAgMS00LTRWOFoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/plug
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Plug: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16467,21 +16632,6 @@ declare const Podcast: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PointerOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNC41VjRhMiAyIDAgMCAwLTIuNDEtMS45NTciIC8+CiAgPHBhdGggZD0iTTEzLjkgOC40YTIgMiAwIDAgMC0xLjI2LTEuMjk1IiAvPgogIDxwYXRoIGQ9Ik0yMS43IDE2LjJBOCA4IDAgMCAwIDIyIDE0di0zYTIgMiAwIDEgMC00IDB2LTFhMiAyIDAgMCAwLTMuNjMtMS4xNTgiIC8+CiAgPHBhdGggZD0ibTcgMTUtMS44LTEuOGEyIDIgMCAwIDAtMi43OSAyLjg2TDYgMTkuN2E3Ljc0IDcuNzQgMCAwIDAgNiAyLjNoMmE4IDggMCAwIDAgNS42NTctMi4zNDMiIC8+CiAgPHBhdGggZD0iTTYgNnY4IiAvPgogIDxwYXRoIGQ9Im0yIDIgMjAgMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/pointer-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PointerOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Pointer
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16493,6 +16643,21 @@ declare const PointerOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Pointer: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name PointerOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgNC41VjRhMiAyIDAgMCAwLTIuNDEtMS45NTciIC8+CiAgPHBhdGggZD0iTTEzLjkgOC40YTIgMiAwIDAgMC0xLjI2LTEuMjk1IiAvPgogIDxwYXRoIGQ9Ik0yMS43IDE2LjJBOCA4IDAgMCAwIDIyIDE0di0zYTIgMiAwIDEgMC00IDB2LTFhMiAyIDAgMCAwLTMuNjMtMS4xNTgiIC8+CiAgPHBhdGggZD0ibTcgMTUtMS44LTEuOGEyIDIgMCAwIDAtMi43OSAyLjg2TDYgMTkuN2E3Ljc0IDcuNzQgMCAwIDAgNiAyLjNoMmE4IDggMCAwIDAgNS42NTctMi4zNDMiIC8+CiAgPHBhdGggZD0iTTYgNnY4IiAvPgogIDxwYXRoIGQ9Im0yIDIgMjAgMjAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/pointer-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const PointerOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16527,21 +16692,6 @@ declare const Popsicle: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name PoundSterling
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggN2MwLTUuMzMzLTgtNS4zMzMtOCAwIiAvPgogIDxwYXRoIGQ9Ik0xMCA3djE0IiAvPgogIDxwYXRoIGQ9Ik02IDIxaDEyIiAvPgogIDxwYXRoIGQ9Ik02IDEzaDEwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/pound-sterling
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const PoundSterling: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name PowerOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16557,17 +16707,17 @@ declare const PowerOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Presentation
+ * @component @name PoundSterling
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAzaDIwIiAvPgogIDxwYXRoIGQ9Ik0yMSAzdjExYTIgMiAwIDAgMS0yIDJINWEyIDIgMCAwIDEtMi0yVjMiIC8+CiAgPHBhdGggZD0ibTcgMjEgNS01IDUgNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/presentation
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggN2MwLTUuMzMzLTgtNS4zMzMtOCAwIiAvPgogIDxwYXRoIGQ9Ik0xMCA3djE0IiAvPgogIDxwYXRoIGQ9Ik02IDIxaDEyIiAvPgogIDxwYXRoIGQ9Ik02IDEzaDEwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/pound-sterling
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Presentation: react.ForwardRefExoticComponent<
+declare const PoundSterling: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16583,6 +16733,21 @@ declare const Presentation: react.ForwardRefExoticComponent<
  *
  */
 declare const Power: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Presentation
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAzaDIwIiAvPgogIDxwYXRoIGQ9Ik0yMSAzdjExYTIgMiAwIDAgMS0yIDJINWEyIDIgMCAwIDEtMi0yVjMiIC8+CiAgPHBhdGggZD0ibTcgMjEgNS01IDUgNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/presentation
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Presentation: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16752,21 +16917,6 @@ declare const Radiation: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name RadioReceiver
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAxNnYyIiAvPgogIDxwYXRoIGQ9Ik0xOSAxNnYyIiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSI4IiB4PSIyIiB5PSI4IiByeD0iMiIgLz4KICA8cGF0aCBkPSJNMTggMTJoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/radio-receiver
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const RadioReceiver: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Radical
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16778,6 +16928,21 @@ declare const RadioReceiver: react.ForwardRefExoticComponent<
  *
  */
 declare const Radical: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name RadioReceiver
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAxNnYyIiAvPgogIDxwYXRoIGQ9Ik0xOSAxNnYyIiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSI4IiB4PSIyIiB5PSI4IiByeD0iMiIgLz4KICA8cGF0aCBkPSJNMTggMTJoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/radio-receiver
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const RadioReceiver: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -16887,21 +17052,6 @@ declare const Ratio: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ReceiptCent
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAydjIwbDItMSAyIDEgMi0xIDIgMSAyLTEgMiAxIDItMSAyIDFWMmwtMiAxLTItMS0yIDEtMi0xLTIgMS0yLTEtMiAxWiIgLz4KICA8cGF0aCBkPSJNMTIgNi41djExIiAvPgogIDxwYXRoIGQ9Ik0xNSA5LjRhNCA0IDAgMSAwIDAgNS4yIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/receipt-cent
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ReceiptCent: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ReceiptEuro
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -16913,6 +17063,21 @@ declare const ReceiptCent: react.ForwardRefExoticComponent<
  *
  */
 declare const ReceiptEuro: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ReceiptCent
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAydjIwbDItMSAyIDEgMi0xIDIgMSAyLTEgMiAxIDItMSAyIDFWMmwtMiAxLTItMS0yIDEtMi0xLTIgMS0yLTEtMiAxWiIgLz4KICA8cGF0aCBkPSJNMTIgNi41djExIiAvPgogIDxwYXRoIGQ9Ik0xNSA5LjRhNCA0IDAgMSAwIDAgNS4yIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/receipt-cent
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ReceiptCent: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17037,6 +17202,21 @@ declare const RectangleEllipsis: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name RectangleGoggles
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgNmEyIDIgMCAwIDEgMiAydjhhMiAyIDAgMCAxLTIgMmgtNGEyIDIgMCAwIDEtMS42LS44bC0xLjYtMi4xM2ExIDEgMCAwIDAtMS42IDBMOS42IDE3LjJBMiAyIDAgMCAxIDggMThINGEyIDIgMCAwIDEtMi0yVjhhMiAyIDAgMCAxIDItMnoiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/rectangle-goggles
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const RectangleGoggles: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name RectangleHorizontal
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17112,21 +17292,6 @@ declare const RedoDot: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Redo
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgN3Y2aC02IiAvPgogIDxwYXRoIGQ9Ik0zIDE3YTkgOSAwIDAgMSA5LTkgOSA5IDAgMCAxIDYgMi4zbDMgMi43IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/redo
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Redo: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name RefreshCcwDot
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17138,6 +17303,21 @@ declare const Redo: react.ForwardRefExoticComponent<
  *
  */
 declare const RefreshCcwDot: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Redo
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgN3Y2aC02IiAvPgogIDxwYXRoIGQ9Ik0zIDE3YTkgOSAwIDAgMSA5LTkgOSA5IDAgMCAxIDYgMi4zbDMgMi43IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/redo
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Redo: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17172,6 +17352,21 @@ declare const RefreshCwOff: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name RefreshCw
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAxMmE5IDkgMCAwIDEgOS05IDkuNzUgOS43NSAwIDAgMSA2Ljc0IDIuNzRMMjEgOCIgLz4KICA8cGF0aCBkPSJNMjEgM3Y1aC01IiAvPgogIDxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiIgLz4KICA8cGF0aCBkPSJNOCAxNkgzdjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/refresh-cw
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const RefreshCw: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Refrigerator
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17187,17 +17382,17 @@ declare const Refrigerator: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name RefreshCw
+ * @component @name RemoveFormatting
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMyAxMmE5IDkgMCAwIDEgOS05IDkuNzUgOS43NSAwIDAgMSA2Ljc0IDIuNzRMMjEgOCIgLz4KICA8cGF0aCBkPSJNMjEgM3Y1aC01IiAvPgogIDxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiIgLz4KICA8cGF0aCBkPSJNOCAxNkgzdjUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/refresh-cw
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCA3VjRoMTZ2MyIgLz4KICA8cGF0aCBkPSJNNSAyMGg2IiAvPgogIDxwYXRoIGQ9Ik0xMyA0IDggMjAiIC8+CiAgPHBhdGggZD0ibTE1IDE1IDUgNSIgLz4KICA8cGF0aCBkPSJtMjAgMTUtNSA1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/remove-formatting
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const RefreshCw: react.ForwardRefExoticComponent<
+declare const RemoveFormatting: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17228,21 +17423,6 @@ declare const Regex: react.ForwardRefExoticComponent<
  *
  */
 declare const Repeat1: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name RemoveFormatting
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCA3VjRoMTZ2MyIgLz4KICA8cGF0aCBkPSJNNSAyMGg2IiAvPgogIDxwYXRoIGQ9Ik0xMyA0IDggMjAiIC8+CiAgPHBhdGggZD0ibTE1IDE1IDUgNSIgLz4KICA8cGF0aCBkPSJtMjAgMTUtNSA1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/remove-formatting
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const RemoveFormatting: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17367,21 +17547,6 @@ declare const Ribbon: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Rocket
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNC41IDE2LjVjLTEuNSAxLjI2LTIgNS0yIDVzMy43NC0uNSA1LTJjLjcxLS44NC43LTIuMTMtLjA5LTIuOTFhMi4xOCAyLjE4IDAgMCAwLTIuOTEtLjA5eiIgLz4KICA8cGF0aCBkPSJtMTIgMTUtMy0zYTIyIDIyIDAgMCAxIDItMy45NUExMi44OCAxMi44OCAwIDAgMSAyMiAyYzAgMi43Mi0uNzggNy41LTYgMTFhMjIuMzUgMjIuMzUgMCAwIDEtNCAyeiIgLz4KICA8cGF0aCBkPSJNOSAxMkg0cy41NS0zLjAzIDItNGMxLjYyLTEuMDggNSAwIDUgMCIgLz4KICA8cGF0aCBkPSJNMTIgMTV2NXMzLjAzLS41NSA0LTJjMS4wOC0xLjYyIDAtNSAwLTUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/rocket
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Rocket: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name RockingChair
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17393,6 +17558,21 @@ declare const Rocket: react.ForwardRefExoticComponent<
  *
  */
 declare const RockingChair: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Rocket
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNC41IDE2LjVjLTEuNSAxLjI2LTIgNS0yIDVzMy43NC0uNSA1LTJjLjcxLS44NC43LTIuMTMtLjA5LTIuOTFhMi4xOCAyLjE4IDAgMCAwLTIuOTEtLjA5eiIgLz4KICA8cGF0aCBkPSJtMTIgMTUtMy0zYTIyIDIyIDAgMCAxIDItMy45NUExMi44OCAxMi44OCAwIDAgMSAyMiAyYzAgMi43Mi0uNzggNy41LTYgMTFhMjIuMzUgMjIuMzUgMCAwIDEtNCAyeiIgLz4KICA8cGF0aCBkPSJNOSAxMkg0cy41NS0zLjAzIDItNGMxLjYyLTEuMDggNSAwIDUgMCIgLz4KICA8cGF0aCBkPSJNMTIgMTV2NXMzLjAzLS41NSA0LTJjMS4wOC0xLjYyIDAtNSAwLTUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/rocket
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Rocket: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17423,6 +17603,21 @@ declare const RollerCoaster: react.ForwardRefExoticComponent<
  *
  */
 declare const Rotate3d: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name RotateCcwKey
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQuNSA5LjUgMSAxIiAvPgogIDxwYXRoIGQ9Im0xNS41IDguNS00IDQiIC8+CiAgPHBhdGggZD0iTTMgMTJhOSA5IDAgMSAwIDktOSA5Ljc0IDkuNzQgMCAwIDAtNi43NCAyLjc0TDMgOCIgLz4KICA8cGF0aCBkPSJNMyAzdjVoNSIgLz4KICA8Y2lyY2xlIGN4PSIxMCIgY3k9IjE0IiByPSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/rotate-ccw-key
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const RotateCcwKey: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17502,21 +17697,6 @@ declare const RouteOff: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Router
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iOCIgeD0iMiIgeT0iMTQiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik02LjAxIDE4SDYiIC8+CiAgPHBhdGggZD0iTTEwLjAxIDE4SDEwIiAvPgogIDxwYXRoIGQ9Ik0xNSAxMHY0IiAvPgogIDxwYXRoIGQ9Ik0xNy44NCA3LjE3YTQgNCAwIDAgMC01LjY2IDAiIC8+CiAgPHBhdGggZD0iTTIwLjY2IDQuMzRhOCA4IDAgMCAwLTExLjMxIDAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/router
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Router: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Route
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17528,6 +17708,21 @@ declare const Router: react.ForwardRefExoticComponent<
  *
  */
 declare const Route: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Router
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iOCIgeD0iMiIgeT0iMTQiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Ik02LjAxIDE4SDYiIC8+CiAgPHBhdGggZD0iTTEwLjAxIDE4SDEwIiAvPgogIDxwYXRoIGQ9Ik0xNSAxMHY0IiAvPgogIDxwYXRoIGQ9Ik0xNy44NCA3LjE3YTQgNCAwIDAgMC01LjY2IDAiIC8+CiAgPHBhdGggZD0iTTIwLjY2IDQuMzRhOCA4IDAgMCAwLTExLjMxIDAiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/router
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Router: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17592,6 +17787,21 @@ declare const Rss: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name RulerDimensionLine
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMTV2LTMuMDE0IiAvPgogIDxwYXRoIGQ9Ik0xNiAxNXYtMy4wMTQiIC8+CiAgPHBhdGggZD0iTTIwIDZINCIgLz4KICA8cGF0aCBkPSJNMjAgOFY0IiAvPgogIDxwYXRoIGQ9Ik00IDhWNCIgLz4KICA8cGF0aCBkPSJNOCAxNXYtMy4wMTQiIC8+CiAgPHJlY3QgeD0iMyIgeT0iMTIiIHdpZHRoPSIxOCIgaGVpZ2h0PSI3IiByeD0iMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/ruler-dimension-line
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const RulerDimensionLine: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Ruler
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17637,21 +17847,6 @@ declare const Sailboat: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Sandwich
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMi4zNyAxMS4yMjMgOC4zNzItNi43NzdhMiAyIDAgMCAxIDIuNTE2IDBsOC4zNzEgNi43NzciIC8+CiAgPHBhdGggZD0iTTIxIDE1YTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxaC01LjI1IiAvPgogIDxwYXRoIGQ9Ik0zIDE1YTEgMSAwIDAgMC0xIDF2MmExIDEgMCAwIDAgMSAxaDkiIC8+CiAgPHBhdGggZD0ibTYuNjcgMTUgNi4xMyA0LjZhMiAyIDAgMCAwIDIuOC0uNGwzLjE1LTQuMiIgLz4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iNCIgeD0iMiIgeT0iMTEiIHJ4PSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/sandwich
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Sandwich: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Salad
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17667,17 +17862,17 @@ declare const Salad: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Satellite
+ * @component @name Sandwich
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgNyA5IDMgNSA3bDQgNCIgLz4KICA8cGF0aCBkPSJtMTcgMTEgNCA0LTQgNC00LTQiIC8+CiAgPHBhdGggZD0ibTggMTIgNCA0IDYtNi00LTRaIiAvPgogIDxwYXRoIGQ9Im0xNiA4IDMtMyIgLz4KICA8cGF0aCBkPSJNOSAyMWE2IDYgMCAwIDAtNi02IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/satellite
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMi4zNyAxMS4yMjMgOC4zNzItNi43NzdhMiAyIDAgMCAxIDIuNTE2IDBsOC4zNzEgNi43NzciIC8+CiAgPHBhdGggZD0iTTIxIDE1YTEgMSAwIDAgMSAxIDF2MmExIDEgMCAwIDEtMSAxaC01LjI1IiAvPgogIDxwYXRoIGQ9Ik0zIDE1YTEgMSAwIDAgMC0xIDF2MmExIDEgMCAwIDAgMSAxaDkiIC8+CiAgPHBhdGggZD0ibTYuNjcgMTUgNi4xMyA0LjZhMiAyIDAgMCAwIDIuOC0uNGwzLjE1LTQuMiIgLz4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iNCIgeD0iMiIgeT0iMTEiIHJ4PSIxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/sandwich
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Satellite: react.ForwardRefExoticComponent<
+declare const Sandwich: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17697,6 +17892,21 @@ declare const SatelliteDish: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Satellite
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgNyA5IDMgNSA3bDQgNCIgLz4KICA8cGF0aCBkPSJtMTcgMTEgNCA0LTQgNC00LTQiIC8+CiAgPHBhdGggZD0ibTggMTIgNCA0IDYtNi00LTRaIiAvPgogIDxwYXRoIGQ9Im0xNiA4IDMtMyIgLz4KICA8cGF0aCBkPSJNOSAyMWE2IDYgMCAwIDAtNi02IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/satellite
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Satellite: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name SaudiRiyal
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17712,21 +17922,6 @@ declare const SaudiRiyal: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SaveOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMTNIOGExIDEgMCAwIDAtMSAxdjciIC8+CiAgPHBhdGggZD0iTTE0IDhoMSIgLz4KICA8cGF0aCBkPSJNMTcgMjF2LTQiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNMjAuNDEgMjAuNDFBMiAyIDAgMCAxIDE5IDIxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAuNTktMS40MSIgLz4KICA8cGF0aCBkPSJNMjkuNSAxMS41czUgNSA0IDUiIC8+CiAgPHBhdGggZD0iTTkgM2g2LjJhMiAyIDAgMCAxIDEuNC42bDMuOCAzLjhhMiAyIDAgMCAxIC42IDEuNFYxNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/save-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SaveOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SaveAll
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17738,6 +17933,21 @@ declare const SaveOff: react.ForwardRefExoticComponent<
  *
  */
 declare const SaveAll: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SaveOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTMgMTNIOGExIDEgMCAwIDAtMSAxdjciIC8+CiAgPHBhdGggZD0iTTE0IDhoMSIgLz4KICA8cGF0aCBkPSJNMTcgMjF2LTQiIC8+CiAgPHBhdGggZD0ibTIgMiAyMCAyMCIgLz4KICA8cGF0aCBkPSJNMjAuNDEgMjAuNDFBMiAyIDAgMCAxIDE5IDIxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAuNTktMS40MSIgLz4KICA8cGF0aCBkPSJNMjkuNSAxMS41czUgNSA0IDUiIC8+CiAgPHBhdGggZD0iTTkgM2g2LjJhMiAyIDAgMCAxIDEuNC42bDMuOCAzLjhhMiAyIDAgMCAxIC42IDEuNFYxNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/save-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SaveOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -17937,21 +18147,6 @@ declare const Scan: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ScissorsLineDashed
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNS40MiA5LjQyIDggMTIiIC8+CiAgPGNpcmNsZSBjeD0iNCIgY3k9IjgiIHI9IjIiIC8+CiAgPHBhdGggZD0ibTE0IDYtOC41OCA4LjU4IiAvPgogIDxjaXJjbGUgY3g9IjQiIGN5PSIxNiIgcj0iMiIgLz4KICA8cGF0aCBkPSJNMTAuOCAxNC44IDE0IDE4IiAvPgogIDxwYXRoIGQ9Ik0xNiAxMmgtMiIgLz4KICA8cGF0aCBkPSJNMjIgMTJoLTIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/scissors-line-dashed
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ScissorsLineDashed: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name School
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -17963,6 +18158,21 @@ declare const ScissorsLineDashed: react.ForwardRefExoticComponent<
  *
  */
 declare const School: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ScissorsLineDashed
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNS40MiA5LjQyIDggMTIiIC8+CiAgPGNpcmNsZSBjeD0iNCIgY3k9IjgiIHI9IjIiIC8+CiAgPHBhdGggZD0ibTE0IDYtOC41OCA4LjU4IiAvPgogIDxjaXJjbGUgY3g9IjQiIGN5PSIxNiIgcj0iMiIgLz4KICA8cGF0aCBkPSJNMTAuOCAxNC44IDE0IDE4IiAvPgogIDxwYXRoIGQ9Ik0xNiAxMmgtMiIgLz4KICA8cGF0aCBkPSJNMjIgMTJoLTIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/scissors-line-dashed
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ScissorsLineDashed: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18072,21 +18282,6 @@ declare const SearchCode: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SearchX
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTMuNSA4LjUtNSA1IiAvPgogIDxwYXRoIGQ9Im04LjUgOC41IDUgNSIgLz4KICA8Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4IiAvPgogIDxwYXRoIGQ9Im0yMSAyMS00LjMtNC4zIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/search-x
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SearchX: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SearchSlash
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -18098,6 +18293,21 @@ declare const SearchX: react.ForwardRefExoticComponent<
  *
  */
 declare const SearchSlash: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SearchX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTMuNSA4LjUtNSA1IiAvPgogIDxwYXRoIGQ9Im04LjUgOC41IDUgNSIgLz4KICA8Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4IiAvPgogIDxwYXRoIGQ9Im0yMSAyMS00LjMtNC4zIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/search-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SearchX: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18210,7 +18420,7 @@ declare const SeparatorVertical: react.ForwardRefExoticComponent<
  * @component @name ServerCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIiAvPgogIDxwYXRoIGQ9Ik00LjUgMTBINGEyIDIgMCAwIDEtMi0yVjRhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjRhMiAyIDAgMCAxLTIgMmgtLjUiIC8+CiAgPHBhdGggZD0iTTQuNSAxNEg0YTIgMiAwIDAgMC0yIDJ2NGEyIDIgMCAwIDAgMiAyaDE2YTIgMiAwIDAgMCAyLTJ2LTRhMiAyIDAgMCAwLTItMmgtLjUiIC8+CiAgPHBhdGggZD0iTTYgNmguMDEiIC8+CiAgPHBhdGggZD0iTTYgMThoLjAxIiAvPgogIDxwYXRoIGQ9Im0xNS43IDEzLjQtLjktLjMiIC8+CiAgPHBhdGggZD0ibTkuMiAxMC45LS45LS4zIiAvPgogIDxwYXRoIGQ9Im0xMC42IDE1LjcuMy0uOSIgLz4KICA8cGF0aCBkPSJtMTMuNiAxNS43LS40LTEiIC8+CiAgPHBhdGggZD0ibTEwLjggOS4zLS40LTEiIC8+CiAgPHBhdGggZD0ibTguMyAxMy42IDEtLjQiIC8+CiAgPHBhdGggZD0ibTE0LjcgMTAuOCAxLS40IiAvPgogIDxwYXRoIGQ9Im0xMy40IDguMy0uMy45IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/server-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTAuODUyIDE0Ljc3Mi0uMzgzLjkyMyIgLz4KICA8cGF0aCBkPSJNMTMuMTQ4IDE0Ljc3MmEzIDMgMCAxIDAtMi4yOTYtNS41NDRsLS4zODMtLjkyMyIgLz4KICA8cGF0aCBkPSJtMTMuMTQ4IDkuMjI4LjM4My0uOTIzIiAvPgogIDxwYXRoIGQ9Im0xMy41MyAxNS42OTYtLjM4Mi0uOTI0YTMgMyAwIDEgMS0yLjI5Ni01LjU0NCIgLz4KICA8cGF0aCBkPSJtMTQuNzcyIDEwLjg1Mi45MjMtLjM4MyIgLz4KICA8cGF0aCBkPSJtMTQuNzcyIDEzLjE0OC45MjMuMzgzIiAvPgogIDxwYXRoIGQ9Ik00LjUgMTBINGEyIDIgMCAwIDEtMi0yVjRhMiAyIDAgMCAxIDItMmgxNmEyIDIgMCAwIDEgMiAydjRhMiAyIDAgMCAxLTIgMmgtLjUiIC8+CiAgPHBhdGggZD0iTTQuNSAxNEg0YTIgMiAwIDAgMC0yIDJ2NGEyIDIgMCAwIDAgMiAyaDE2YTIgMiAwIDAgMCAyLTJ2LTRhMiAyIDAgMCAwLTItMmgtLjUiIC8+CiAgPHBhdGggZD0iTTYgMThoLjAxIiAvPgogIDxwYXRoIGQ9Ik02IDZoLjAxIiAvPgogIDxwYXRoIGQ9Im05LjIyOCAxMC44NTItLjkyMy0uMzgzIiAvPgogIDxwYXRoIGQ9Im05LjIyOCAxMy4xNDgtLjkyMy4zODMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/server-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -18387,21 +18597,6 @@ declare const ShieldAlert: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ShieldCheck
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMTNjMCA1LTMuNSA3LjUtNy42NiA4Ljk1YTEgMSAwIDAgMS0uNjctLjAxQzcuNSAyMC41IDQgMTggNCAxM1Y2YTEgMSAwIDAgMSAxLTFjMiAwIDQuNS0xLjIgNi4yNC0yLjcyYTEuMTcgMS4xNyAwIDAgMSAxLjUyIDBDMTQuNTEgMy44MSAxNyA1IDE5IDVhMSAxIDAgMCAxIDEgMXoiIC8+CiAgPHBhdGggZD0ibTkgMTIgMiAyIDQtNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shield-check
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ShieldCheck: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ShieldBan
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -18413,6 +18608,21 @@ declare const ShieldCheck: react.ForwardRefExoticComponent<
  *
  */
 declare const ShieldBan: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ShieldCheck
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjAgMTNjMCA1LTMuNSA3LjUtNy42NiA4Ljk1YTEgMSAwIDAgMS0uNjctLjAxQzcuNSAyMC41IDQgMTggNCAxM1Y2YTEgMSAwIDAgMSAxLTFjMiAwIDQuNS0xLjIgNi4yNC0yLjcyYTEuMTcgMS4xNyAwIDAgMSAxLjUyIDBDMTQuNTEgMy44MSAxNyA1IDE5IDVhMSAxIDAgMCAxIDEgMXoiIC8+CiAgPHBhdGggZD0ibTkgMTIgMiAyIDQtNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shield-check
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ShieldCheck: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18627,21 +18837,6 @@ declare const ShoppingBasket: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ShoppingCart
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSI4IiBjeT0iMjEiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIyMSIgcj0iMSIgLz4KICA8cGF0aCBkPSJNMi4wNSAyLjA1aDJsMi42NiAxMi40MmEyIDIgMCAwIDAgMiAxLjU4aDkuNzhhMiAyIDAgMCAwIDEuOTUtMS41N2wxLjY1LTcuNDNINS4xMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shopping-cart
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ShoppingCart: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Shovel
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -18653,6 +18848,21 @@ declare const ShoppingCart: react.ForwardRefExoticComponent<
  *
  */
 declare const Shovel: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ShoppingCart
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSI4IiBjeT0iMjEiIHI9IjEiIC8+CiAgPGNpcmNsZSBjeD0iMTkiIGN5PSIyMSIgcj0iMSIgLz4KICA8cGF0aCBkPSJNMi4wNSAyLjA1aDJsMi42NiAxMi40MmEyIDIgMCAwIDAgMiAxLjU4aDkuNzhhMiAyIDAgMCAwIDEuOTUtMS41N2wxLjY1LTcuNDNINS4xMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shopping-cart
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ShoppingCart: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18672,10 +18882,25 @@ declare const ShowerHead: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Shredder
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMjJ2LTUiIC8+CiAgPHBhdGggZD0iTTE0IDE5di0yIiAvPgogIDxwYXRoIGQ9Ik0xNCAydjRhMiAyIDAgMCAwIDIgMmg0IiAvPgogIDxwYXRoIGQ9Ik0xOCAyMHYtMyIgLz4KICA8cGF0aCBkPSJNMiAxM2gyMCIgLz4KICA8cGF0aCBkPSJNMjAgMTNWN2wtNS01SDZhMiAyIDAgMCAwLTIgMnY5IiAvPgogIDxwYXRoIGQ9Ik02IDIwdi0zIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/shredder
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Shredder: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Shrimp
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgMTJoLjAxIiAvPgogIDxwYXRoIGQ9Ik0xMyAyMmMuNS0uNSAxLjEyLTEgMi41LTEtMS4zOCAwLTItLjUtMi41LTEiIC8+CiAgPHBhdGggZD0iTTE0IDJhMy4yNzYgMy4yNzYgMCAwIDEtMy4yMjcgMS43OThsLTYuMTctLjU2MUEyLjM4NyAyLjM4NyAwIDEgMCA0LjM4NyA4SDE1LjVhMSAxIDAgMCAxIDAgMTMgMSAxIDAgMCAwIDAtNUgxMmE3IDcgMCAwIDEtNy03VjgiIC8+CiAgPHBhdGggZD0iTTE0IDhhOC41IDguNSAwIDAgMSAwIDgiIC8+CiAgPHBhdGggZD0iTTE2IDE2YzIgMCA0LjUtNCA0LTYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/shrimp
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgMTJoLjAxIiAvPgogIDxwYXRoIGQ9Ik0xMyAyMmMuNS0uNSAxLjEyLTEgMi41LTEtMS4zOCAwLTItLjUtMi41LTEiIC8+CiAgPHBhdGggZD0iTTE0IDJhMy4yOCAzLjI4IDAgMCAxLTMuMjI3IDEuNzk4bC02LjE3LS41NjFBMi4zODcgMi4zODcgMCAxIDAgNC4zODcgOEgxNS41YTEgMSAwIDAgMSAwIDEzIDEgMSAwIDAgMCAwLTVIMTJhNyA3IDAgMCAxLTctN1Y4IiAvPgogIDxwYXRoIGQ9Ik0xNCA4YTguNSA4LjUgMCAwIDEgMCA4IiAvPgogIDxwYXRoIGQ9Ik0xNiAxNmMyIDAgNC41LTQgNC02IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/shrimp
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -18683,21 +18908,6 @@ declare const ShowerHead: react.ForwardRefExoticComponent<
  *
  */
 declare const Shrimp: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Shrink
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTUgMTUgNiA2bS02LTZ2NC44bTAtNC44aDQuOCIgLz4KICA8cGF0aCBkPSJNOSAxOS44VjE1bTAgMEg0LjJNOSAxNWwtNiA2IiAvPgogIDxwYXRoIGQ9Ik0xNSA0LjJWOW0wIDBoNC44TTE1IDlsNi02IiAvPgogIDxwYXRoIGQ9Ik05IDQuMlY5bTAgMEg0LjJNOSA5IDMgMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shrink
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Shrink: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18713,6 +18923,21 @@ declare const Shrink: react.ForwardRefExoticComponent<
  *
  */
 declare const Shrub: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Shrink
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTUgMTUgNiA2bS02LTZ2NC44bTAtNC44aDQuOCIgLz4KICA8cGF0aCBkPSJNOSAxOS44VjE1bTAgMEg0LjJNOSAxNWwtNiA2IiAvPgogIDxwYXRoIGQ9Ik0xNSA0LjJWOW0wIDBoNC44TTE1IDlsNi02IiAvPgogIDxwYXRoIGQ9Ik05IDQuMlY5bTAgMEg0LjJNOSA5IDMgMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/shrink
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Shrink: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -18762,21 +18987,6 @@ declare const SignalHigh: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SignalMedium
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMGguMDEiIC8+CiAgPHBhdGggZD0iTTcgMjB2LTQiIC8+CiAgPHBhdGggZD0iTTEyIDIwdi04IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/signal-medium
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SignalMedium: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SignalLow
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -18788,6 +18998,21 @@ declare const SignalMedium: react.ForwardRefExoticComponent<
  *
  */
 declare const SignalLow: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SignalMedium
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMGguMDEiIC8+CiAgPHBhdGggZD0iTTcgMjB2LTQiIC8+CiAgPHBhdGggZD0iTTEyIDIwdi04IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/signal-medium
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SignalMedium: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19167,21 +19392,6 @@ declare const Spade: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Sparkles
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOS45MzcgMTUuNUEyIDIgMCAwIDAgOC41IDE0LjA2M2wtNi4xMzUtMS41ODJhLjUuNSAwIDAgMSAwLS45NjJMOC41IDkuOTM2QTIgMiAwIDAgMCA5LjkzNyA4LjVsMS41ODItNi4xMzVhLjUuNSAwIDAgMSAuOTYzIDBMMTQuMDYzIDguNUEyIDIgMCAwIDAgMTUuNSA5LjkzN2w2LjEzNSAxLjU4MWEuNS41IDAgMCAxIDAgLjk2NEwxNS41IDE0LjA2M2EyIDIgMCAwIDAtMS40MzcgMS40MzdsLTEuNTgyIDYuMTM1YS41LjUgMCAwIDEtLjk2MyAweiIgLz4KICA8cGF0aCBkPSJNMjAgM3Y0IiAvPgogIDxwYXRoIGQ9Ik0yMiA1aC00IiAvPgogIDxwYXRoIGQ9Ik00IDE3djIiIC8+CiAgPHBhdGggZD0iTTUgMThIMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/sparkles
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Sparkles: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Sparkle
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19193,6 +19403,21 @@ declare const Sparkles: react.ForwardRefExoticComponent<
  *
  */
 declare const Sparkle: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Sparkles
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOS45MzcgMTUuNUEyIDIgMCAwIDAgOC41IDE0LjA2M2wtNi4xMzUtMS41ODJhLjUuNSAwIDAgMSAwLS45NjJMOC41IDkuOTM2QTIgMiAwIDAgMCA5LjkzNyA4LjVsMS41ODItNi4xMzVhLjUuNSAwIDAgMSAuOTYzIDBMMTQuMDYzIDguNUEyIDIgMCAwIDAgMTUuNSA5LjkzN2w2LjEzNSAxLjU4MWEuNS41IDAgMCAxIDAgLjk2NEwxNS41IDE0LjA2M2EyIDIgMCAwIDAtMS40MzcgMS40MzdsLTEuNTgyIDYuMTM1YS41LjUgMCAwIDEtLjk2MyAweiIgLz4KICA8cGF0aCBkPSJNMjAgM3Y0IiAvPgogIDxwYXRoIGQ9Ik0yMiA1aC00IiAvPgogIDxwYXRoIGQ9Ik00IDE3djIiIC8+CiAgPHBhdGggZD0iTTUgMThIMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/sparkles
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Sparkles: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19242,6 +19467,21 @@ declare const SpellCheck2: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name SplinePointer
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIuMDM0IDEyLjY4MWEuNDk4LjQ5OCAwIDAgMSAuNjQ3LS42NDdsOSAzLjVhLjUuNSAwIDAgMS0uMDMzLjk0M2wtMy40NDQgMS4wNjhhMSAxIDAgMCAwLS42Ni42NmwtMS4wNjcgMy40NDNhLjUuNSAwIDAgMS0uOTQzLjAzM3oiIC8+CiAgPHBhdGggZD0iTTUgMTdBMTIgMTIgMCAwIDEgMTcgNSIgLz4KICA8Y2lyY2xlIGN4PSIxOSIgY3k9IjUiIHI9IjIiIC8+CiAgPGNpcmNsZSBjeD0iNSIgY3k9IjE5IiByPSIyIiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/spline-pointer
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SplinePointer: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name SpellCheck
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19257,21 +19497,6 @@ declare const SpellCheck: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Split
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgM2g1djUiIC8+CiAgPHBhdGggZD0iTTggM0gzdjUiIC8+CiAgPHBhdGggZD0iTTEyIDIydi04LjNhNCA0IDAgMCAwLTEuMTcyLTIuODcyTDMgMyIgLz4KICA8cGF0aCBkPSJtMTUgOSA2LTYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/split
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Split: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Spline
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19283,6 +19508,21 @@ declare const Split: react.ForwardRefExoticComponent<
  *
  */
 declare const Spline: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Split
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgM2g1djUiIC8+CiAgPHBhdGggZD0iTTggM0gzdjUiIC8+CiAgPHBhdGggZD0iTTEyIDIydi04LjNhNCA0IDAgMCAwLTEuMTcyLTIuODcyTDMgMyIgLz4KICA8cGF0aCBkPSJtMTUgOSA2LTYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/split
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Split: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19362,21 +19602,6 @@ declare const SquareArrowDownRight: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareArrowLeft
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Im0xMiA4LTQgNCA0IDQiIC8+CiAgPHBhdGggZD0iTTE2IDEySDgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-arrow-left
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquareArrowLeft: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareArrowDown
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19388,6 +19613,21 @@ declare const SquareArrowLeft: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareArrowDown: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareArrowLeft
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiAvPgogIDxwYXRoIGQ9Im0xMiA4LTQgNCA0IDQiIC8+CiAgPHBhdGggZD0iTTE2IDEySDgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-arrow-left
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareArrowLeft: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19437,21 +19677,6 @@ declare const SquareArrowOutUpLeft: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareArrowOutUpRight
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTN2NmEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoNiIgLz4KICA8cGF0aCBkPSJtMjEgMy05IDkiIC8+CiAgPHBhdGggZD0iTTE1IDNoNnY2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/square-arrow-out-up-right
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquareArrowOutUpRight: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareArrowRight
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19478,6 +19703,21 @@ declare const SquareArrowRight: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareArrowUpLeft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareArrowOutUpRight
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTN2NmEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoNiIgLz4KICA8cGF0aCBkPSJtMjEgMy05IDkiIC8+CiAgPHBhdGggZD0iTTE1IDNoNnY2IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/square-arrow-out-up-right
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareArrowOutUpRight: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19662,21 +19902,6 @@ declare const SquareCode: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareDashedBottom
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAyMWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgxNGEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDIiIC8+CiAgPHBhdGggZD0iTTkgMjFoMSIgLz4KICA8cGF0aCBkPSJNMTQgMjFoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-dashed-bottom
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquareDashedBottom: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareDashedBottomCode
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19688,6 +19913,21 @@ declare const SquareDashedBottom: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareDashedBottomCode: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareDashedBottom
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAyMWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgxNGEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDIiIC8+CiAgPHBhdGggZD0iTTkgMjFoMSIgLz4KICA8cGF0aCBkPSJNMTQgMjFoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-dashed-bottom
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareDashedBottom: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -19767,21 +20007,6 @@ declare const SquareDot: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareFunction
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIgLz4KICA8cGF0aCBkPSJNOSAxN2MyIDAgMi44LTEgMi44LTIuOFYxMGMwLTIgMS0zLjMgMy4yLTMiIC8+CiAgPHBhdGggZD0iTTkgMTEuMmg1LjciIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-function
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquareFunction: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareEqual
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -19793,6 +20018,21 @@ declare const SquareFunction: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareEqual: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareFunction
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIgLz4KICA8cGF0aCBkPSJNOSAxN2MyIDAgMi44LTEgMi44LTIuOFYxMGMwLTIgMS0zLjMgMy4yLTMiIC8+CiAgPHBhdGggZD0iTTkgMTEuMmg1LjciIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-function
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareFunction: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20007,21 +20247,6 @@ declare const SquarePlus: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquarePower
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgN3Y0IiAvPgogIDxwYXRoIGQ9Ik03Ljk5OCA5LjAwM2E1IDUgMCAxIDAgOC0uMDA1IiAvPgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-power
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquarePower: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareRadical
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -20037,17 +20262,17 @@ declare const SquareRadical: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareRoundCorner
+ * @component @name SquarePower
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTFhOCA4IDAgMCAwLTgtOCIgLz4KICA8cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-round-corner
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgN3Y0IiAvPgogIDxwYXRoIGQ9Ik03Ljk5OCA5LjAwM2E1IDUgMCAxIDAgOC0uMDA1IiAvPgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-power
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const SquareRoundCorner: react.ForwardRefExoticComponent<
+declare const SquarePower: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20063,6 +20288,21 @@ declare const SquareRoundCorner: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareScissors: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareRoundCorner
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTFhOCA4IDAgMCAwLTgtOCIgLz4KICA8cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-round-corner
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareRoundCorner: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20097,21 +20337,6 @@ declare const SquareSlash: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareSplitVertical
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSA4VjVjMC0xIDEtMiAyLTJoMTBjMSAwIDIgMSAyIDJ2MyIgLz4KICA8cGF0aCBkPSJNMTkgMTZ2M2MwIDEtMSAyLTIgMkg3Yy0xIDAtMi0xLTItMnYtMyIgLz4KICA8bGluZSB4MT0iNCIgeDI9IjIwIiB5MT0iMTIiIHkyPSIxMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-split-vertical
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const SquareSplitVertical: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name SquareSplitHorizontal
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -20123,6 +20348,21 @@ declare const SquareSplitVertical: react.ForwardRefExoticComponent<
  *
  */
 declare const SquareSplitHorizontal: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquareSplitVertical
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSA4VjVjMC0xIDEtMiAyLTJoMTBjMSAwIDIgMSAyIDJ2MyIgLz4KICA8cGF0aCBkPSJNMTkgMTZ2M2MwIDEtMSAyLTIgMkg3Yy0xIDAtMi0xLTItMnYtMyIgLz4KICA8bGluZSB4MT0iNCIgeDI9IjIwIiB5MT0iMTIiIHkyPSIxMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/square-split-vertical
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareSplitVertical: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20202,6 +20442,21 @@ declare const SquareUser: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name SquareX
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIgLz4KICA8cGF0aCBkPSJtMTUgOS02IDYiIC8+CiAgPHBhdGggZD0ibTkgOSA2IDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-x
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquareX: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Square
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -20217,17 +20472,62 @@ declare const Square: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name SquareX
+ * @component @name SquaresExclude
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIgLz4KICA8cGF0aCBkPSJtMTUgOS02IDYiIC8+CiAgPHBhdGggZD0ibTkgOSA2IDYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/square-x
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMTJ2MmEyIDIgMCAwIDEtMiAySDlhMSAxIDAgMCAwLTEgMXYzYTIgMiAwIDAgMCAyIDJoMTBhMiAyIDAgMCAwIDItMlYxMGEyIDIgMCAwIDAtMi0yaDAiIC8+CiAgPHBhdGggZD0iTTQgMTZhMiAyIDAgMCAxLTItMlY0YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYzYTEgMSAwIDAgMS0xIDFoLTVhMiAyIDAgMCAwLTIgMnYyIiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/squares-exclude
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const SquareX: react.ForwardRefExoticComponent<
+declare const SquaresExclude: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquaresIntersect
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMjJhMiAyIDAgMCAxLTItMiIgLz4KICA8cGF0aCBkPSJNMTQgMmEyIDIgMCAwIDEgMiAyIiAvPgogIDxwYXRoIGQ9Ik0xNiAyMmgtMiIgLz4KICA8cGF0aCBkPSJNMiAxMFY4IiAvPgogIDxwYXRoIGQ9Ik0yIDRhMiAyIDAgMCAxIDItMiIgLz4KICA8cGF0aCBkPSJNMjAgOGEyIDIgMCAwIDEgMiAyIiAvPgogIDxwYXRoIGQ9Ik0yMiAxNHYyIiAvPgogIDxwYXRoIGQ9Ik0yMiAyMGEyIDIgMCAwIDEtMiAyIiAvPgogIDxwYXRoIGQ9Ik00IDE2YTIgMiAwIDAgMS0yLTIiIC8+CiAgPHBhdGggZD0iTTggMTBhMiAyIDAgMCAxIDItMmg1YTEgMSAwIDAgMSAxIDF2NWEyIDIgMCAwIDEtMiAySDlhMSAxIDAgMCAxLTEtMXoiIC8+CiAgPHBhdGggZD0iTTggMmgyIiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/squares-intersect
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquaresIntersect: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquaresSubtract
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMjJhMiAyIDAgMCAxLTItMiIgLz4KICA8cGF0aCBkPSJNMTYgMjJoLTIiIC8+CiAgPHBhdGggZD0iTTE2IDRhMiAyIDAgMCAwLTItMkg0YTIgMiAwIDAgMC0yIDJ2MTBhMiAyIDAgMCAwIDIgMmgzYTEgMSAwIDAgMCAxLTF2LTVhMiAyIDAgMCAxIDItMmg1YTEgMSAwIDAgMCAxLTF6IiAvPgogIDxwYXRoIGQ9Ik0yMCA4YTIgMiAwIDAgMSAyIDIiIC8+CiAgPHBhdGggZD0iTTIyIDE0djIiIC8+CiAgPHBhdGggZD0iTTIyIDIwYTIgMiAwIDAgMS0yIDIiIC8+Cjwvc3ZnPg==) - https://lucide.dev/icons/squares-subtract
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquaresSubtract: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name SquaresUnite
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNCAxNmEyIDIgMCAwIDEtMi0yVjRhMiAyIDAgMCAxIDItMmgxMGEyIDIgMCAwIDEgMiAydjNhMSAxIDAgMCAwIDEgMWgzYTIgMiAwIDAgMSAyIDJ2MTBhMiAyIDAgMCAxLTIgMkgxMGEyIDIgMCAwIDEtMi0ydi0zYTEgMSAwIDAgMC0xLTF6IiAvPgo8L3N2Zz4=) - https://lucide.dev/icons/squares-unite
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const SquaresUnite: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20247,21 +20547,6 @@ declare const Squircle: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Stamp
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAyMmgxNCIgLz4KICA8cGF0aCBkPSJNMTkuMjcgMTMuNzNBMi41IDIuNSAwIDAgMCAxNy41IDEzaC0xMUEyLjUgMi41IDAgMCAwIDQgMTUuNVYxN2ExIDEgMCAwIDAgMSAxaDE0YTEgMSAwIDAgMCAxLTF2LTEuNWMwLS42Ni0uMjYtMS4zLS43My0xLjc3WiIgLz4KICA8cGF0aCBkPSJNMTQgMTNWOC41QzE0IDcgMTUgNyAxNSA1YTMgMyAwIDAgMC0zLTNjLTEuNjYgMC0zIDEtMyAzczEgMiAxIDMuNVYxMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/stamp
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Stamp: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Squirrel
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -20273,6 +20558,21 @@ declare const Stamp: react.ForwardRefExoticComponent<
  *
  */
 declare const Squirrel: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Stamp
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAyMmgxNCIgLz4KICA8cGF0aCBkPSJNMTkuMjcgMTMuNzNBMi41IDIuNSAwIDAgMCAxNy41IDEzaC0xMUEyLjUgMi41IDAgMCAwIDQgMTUuNVYxN2ExIDEgMCAwIDAgMSAxaDE0YTEgMSAwIDAgMCAxLTF2LTEuNWMwLS42Ni0uMjYtMS4zLS43My0xLjc3WiIgLz4KICA8cGF0aCBkPSJNMTQgMTNWOC41QzE0IDcgMTUgNyAxNSA1YTMgMyAwIDAgMC0zLTNjLTEuNjYgMC0zIDEtMyAzczEgMiAxIDMuNVYxMyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/stamp
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Stamp: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -20817,21 +21117,6 @@ declare const TabletSmartphone: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Tablet
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHg9IjQiIHk9IjIiIHJ4PSIyIiByeT0iMiIgLz4KICA8bGluZSB4MT0iMTIiIHgyPSIxMi4wMSIgeTE9IjE4IiB5Mj0iMTgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/tablet
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Tablet: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Tablets
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -20843,6 +21128,21 @@ declare const Tablet: react.ForwardRefExoticComponent<
  *
  */
 declare const Tablets: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Tablet
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMjAiIHg9IjQiIHk9IjIiIHJ4PSIyIiByeT0iMiIgLz4KICA8bGluZSB4MT0iMTIiIHgyPSIxMi4wMSIgeTE9IjE4IiB5Mj0iMTgiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/tablet
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Tablet: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -21057,21 +21357,6 @@ declare const TestTubeDiagonal: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name TestTubes
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOSAydjE3LjVBMi41IDIuNSAwIDAgMSA2LjUgMjJBMi41IDIuNSAwIDAgMSA0IDE5LjVWMiIgLz4KICA8cGF0aCBkPSJNMjAgMnYxNy41YTIuNSAyLjUgMCAwIDEtMi41IDIuNWEyLjUgMi41IDAgMCAxLTIuNS0yLjVWMiIgLz4KICA8cGF0aCBkPSJNMyAyaDciIC8+CiAgPHBhdGggZD0iTTE0IDJoNyIgLz4KICA8cGF0aCBkPSJNOSAxNkg0IiAvPgogIDxwYXRoIGQ9Ik0yMCAxNmgtNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/test-tubes
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const TestTubes: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name TestTube
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -21087,10 +21372,25 @@ declare const TestTube: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name TestTubes
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOSAydjE3LjVBMi41IDIuNSAwIDAgMSA2LjUgMjJBMi41IDIuNSAwIDAgMSA0IDE5LjVWMiIgLz4KICA8cGF0aCBkPSJNMjAgMnYxNy41YTIuNSAyLjUgMCAwIDEtMi41IDIuNWEyLjUgMi41IDAgMCAxLTIuNS0yLjVWMiIgLz4KICA8cGF0aCBkPSJNMyAyaDciIC8+CiAgPHBhdGggZD0iTTE0IDJoNyIgLz4KICA8cGF0aCBkPSJNOSAxNkg0IiAvPgogIDxwYXRoIGQ9Ik0yMCAxNmgtNSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/test-tubes
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const TestTubes: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name TextCursorInput
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSA0aDFhMyAzIDAgMCAxIDMgMyAzIDMgMCAwIDEgMy0zaDEiIC8+CiAgPHBhdGggZD0iTTEzIDIwaC0xYTMgMyAwIDAgMS0zLTMgMyAzIDAgMCAxLTMgM0g1IiAvPgogIDxwYXRoIGQ9Ik01IDE2SDRhMiAyIDAgMCAxLTItMnYtNGEyIDIgMCAwIDEgMi0yaDEiIC8+CiAgPHBhdGggZD0iTTEzIDhoN2EyIDIgMCAwIDEgMiAydjRhMiAyIDAgMCAxLTIgMmgtNyIgLz4KICA8cGF0aCBkPSJNOSA3djEwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/text-cursor-input
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjBoLTFhMiAyIDAgMCAxLTItMiAyIDIgMCAwIDEtMiAySDYiIC8+CiAgPHBhdGggZD0iTTEzIDhoN2EyIDIgMCAwIDEgMiAydjRhMiAyIDAgMCAxLTIgMmgtNyIgLz4KICA8cGF0aCBkPSJNNSAxNkg0YTIgMiAwIDAgMS0yLTJ2LTRhMiAyIDAgMCAxIDItMmgxIiAvPgogIDxwYXRoIGQ9Ik02IDRoMWEyIDIgMCAwIDEgMiAyIDIgMiAwIDAgMSAyLTJoMSIgLz4KICA8cGF0aCBkPSJNOSA2djEyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/text-cursor-input
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -21150,7 +21450,7 @@ declare const TextSearch: react.ForwardRefExoticComponent<
  * @component @name TextSelect
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNNSAzYTIgMiAwIDAgMC0yIDIiIC8+CiAgPHBhdGggZD0iTTE5IDNhMiAyIDAgMCAxIDIgMiIgLz4KICA8cGF0aCBkPSJNMjEgMTlhMiAyIDAgMCAxLTIgMiIgLz4KICA8cGF0aCBkPSJNNSAyMWEyIDIgMCAwIDEtMi0yIiAvPgogIDxwYXRoIGQ9Ik05IDNoMSIgLz4KICA8cGF0aCBkPSJNOSAyMWgxIiAvPgogIDxwYXRoIGQ9Ik0xNCAzaDEiIC8+CiAgPHBhdGggZD0iTTE0IDIxaDEiIC8+CiAgPHBhdGggZD0iTTMgOXYxIiAvPgogIDxwYXRoIGQ9Ik0yMSA5djEiIC8+CiAgPHBhdGggZD0iTTMgMTR2MSIgLz4KICA8cGF0aCBkPSJNMjEgMTR2MSIgLz4KICA8bGluZSB4MT0iNyIgeDI9IjE1IiB5MT0iOCIgeTI9IjgiIC8+CiAgPGxpbmUgeDE9IjciIHgyPSIxNyIgeTE9IjEyIiB5Mj0iMTIiIC8+CiAgPGxpbmUgeDE9IjciIHgyPSIxMyIgeTE9IjE2IiB5Mj0iMTYiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/text-select
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMjFoMSIgLz4KICA8cGF0aCBkPSJNMTQgM2gxIiAvPgogIDxwYXRoIGQ9Ik0xOSAzYTIgMiAwIDAgMSAyIDIiIC8+CiAgPHBhdGggZD0iTTIxIDE0djEiIC8+CiAgPHBhdGggZD0iTTIxIDE5YTIgMiAwIDAgMS0yIDIiIC8+CiAgPHBhdGggZD0iTTIxIDl2MSIgLz4KICA8cGF0aCBkPSJNMyAxNHYxIiAvPgogIDxwYXRoIGQ9Ik0zIDl2MSIgLz4KICA8cGF0aCBkPSJNNSAyMWEyIDIgMCAwIDEtMi0yIiAvPgogIDxwYXRoIGQ9Ik01IDNhMiAyIDAgMCAwLTIgMiIgLz4KICA8cGF0aCBkPSJNNyAxMmgxMCIgLz4KICA8cGF0aCBkPSJNNyAxNmg2IiAvPgogIDxwYXRoIGQ9Ik03IDhoOCIgLz4KICA8cGF0aCBkPSJNOSAyMWgxIiAvPgogIDxwYXRoIGQ9Ik05IDNoMSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/text-select
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -21165,7 +21465,7 @@ declare const TextSelect: react.ForwardRefExoticComponent<
  * @component @name Text
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTcgNi4xSDMiIC8+CiAgPHBhdGggZD0iTTIxIDEyLjFIMyIgLz4KICA8cGF0aCBkPSJNMTUuMSAxOEgzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/text
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgMThIMyIgLz4KICA8cGF0aCBkPSJNMTcgNkgzIiAvPgogIDxwYXRoIGQ9Ik0yMSAxMkgzIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/text
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -21402,21 +21702,6 @@ declare const Tickets: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name TimerReset
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMmg0IiAvPgogIDxwYXRoIGQ9Ik0xMiAxNHYtNCIgLz4KICA8cGF0aCBkPSJNNCAxM2E4IDggMCAwIDEgOC03IDggOCAwIDEgMS01LjMgMTRMNCAxNy42IiAvPgogIDxwYXRoIGQ9Ik05IDE3SDR2NSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/timer-reset
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const TimerReset: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name TimerOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -21428,6 +21713,21 @@ declare const TimerReset: react.ForwardRefExoticComponent<
  *
  */
 declare const TimerOff: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name TimerReset
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMmg0IiAvPgogIDxwYXRoIGQ9Ik0xMiAxNHYtNCIgLz4KICA8cGF0aCBkPSJNNCAxM2E4IDggMCAwIDEgOC03IDggOCAwIDEgMS01LjMgMTRMNCAxNy42IiAvPgogIDxwYXRoIGQ9Ik05IDE3SDR2NSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/timer-reset
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const TimerReset: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -21447,25 +21747,10 @@ declare const Timer: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name ToggleRight
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTIiIHg9IjIiIHk9IjYiIHJ4PSI2IiByeT0iNiIgLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjEyIiByPSIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/toggle-right
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const ToggleRight: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name ToggleLeft
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTIiIHg9IjIiIHk9IjYiIHJ4PSI2IiByeT0iNiIgLz4KICA8Y2lyY2xlIGN4PSI4IiBjeT0iMTIiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/toggle-left
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iMTIiIHI9IjMiIC8+CiAgPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiB4PSIyIiB5PSI1IiByeD0iNyIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/toggle-left
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -21473,6 +21758,21 @@ declare const ToggleRight: react.ForwardRefExoticComponent<
  *
  */
 declare const ToggleLeft: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name ToggleRight
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSIzIiAvPgogIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgeD0iMiIgeT0iNSIgcng9IjciIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/toggle-right
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const ToggleRight: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -21600,7 +21900,7 @@ declare const Tractor: react.ForwardRefExoticComponent<
  * @component @name TrafficCone
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOS4zIDYuMmE0LjU1IDQuNTUgMCAwIDAgNS40IDAiIC8+CiAgPHBhdGggZD0iTTcuOSAxMC43Yy45LjggMi40IDEuMyA0LjEgMS4zczMuMi0uNSA0LjEtMS4zIiAvPgogIDxwYXRoIGQ9Ik0xMy45IDMuNWExLjkzIDEuOTMgMCAwIDAtMy44LS4xbC0zIDEwYy0uMS4yLS4xLjQtLjEuNiAwIDEuNyAyLjIgMyA1IDNzNS0xLjMgNS0zYzAtLjIgMC0uNC0uMS0uNVoiIC8+CiAgPHBhdGggZD0ibTcuNSAxMi4yLTQuNyAyLjdjLS41LjMtLjguNy0uOCAxLjFzLjMuOC44IDEuMWw3LjYgNC41Yy45LjUgMi4xLjUgMyAwbDcuNi00LjVjLjctLjMgMS0uNyAxLTEuMXMtLjMtLjgtLjgtMS4xbC00LjctMi44IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/traffic-cone
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYuMDUgMTAuOTY2YTUgMi41IDAgMCAxLTguMSAwIiAvPgogIDxwYXRoIGQ9Im0xNi45MjMgMTQuMDQ5IDQuNDggMi4wNGExIDEgMCAwIDEgLjAwMSAxLjgzMWwtOC41NzQgMy45YTIgMiAwIDAgMS0xLjY2IDBsLTguNTc0LTMuOTFhMSAxIDAgMCAxIDAtMS44M2w0LjQ4NC0yLjA0IiAvPgogIDxwYXRoIGQ9Ik0xNi45NDkgMTQuMTRhNSAyLjUgMCAxIDEtOS45IDBMMTAuMDYzIDMuNWEyIDIgMCAwIDEgMy44NzQgMHoiIC8+CiAgPHBhdGggZD0iTTkuMTk0IDYuNTdhNSAyLjUgMCAwIDAgNS42MSAwIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/traffic-cone
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -21638,21 +21938,6 @@ declare const TrainFrontTunnel: react.ForwardRefExoticComponent<
  *
  */
 declare const TrainFront: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name TrainTrack
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAxNyAxNyAyIiAvPgogIDxwYXRoIGQ9Im0yIDE0IDggOCIgLz4KICA8cGF0aCBkPSJtNSAxMSA4IDgiIC8+CiAgPHBhdGggZD0ibTggOCA4IDgiIC8+CiAgPHBhdGggZD0ibTExIDUgOCA4IiAvPgogIDxwYXRoIGQ9Im0xNCAyIDggOCIgLz4KICA8cGF0aCBkPSJNNyAyMiAyMiA3IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/train-track
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const TrainTrack: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -21698,6 +21983,21 @@ declare const Transgender: react.ForwardRefExoticComponent<
  *
  */
 declare const Trash2: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name TrainTrack
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAxNyAxNyAyIiAvPgogIDxwYXRoIGQ9Im0yIDE0IDggOCIgLz4KICA8cGF0aCBkPSJtNSAxMSA4IDgiIC8+CiAgPHBhdGggZD0ibTggOCA4IDgiIC8+CiAgPHBhdGggZD0ibTExIDUgOCA4IiAvPgogIDxwYXRoIGQ9Im0xNCAyIDggOCIgLz4KICA8cGF0aCBkPSJNNyAyMiAyMiA3IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/train-track
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const TrainTrack: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -21912,6 +22212,21 @@ declare const Trophy: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name TruckElectric
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTQgMTlWN2EyIDIgMCAwIDAtMi0ySDkiIC8+CiAgPHBhdGggZD0iTTE1IDE5SDkiIC8+CiAgPHBhdGggZD0iTTE5IDE5aDJhMSAxIDAgMCAwIDEtMXYtMy42NWExIDEgMCAwIDAtLjIyLS42MkwxOC4zIDkuMzhhMSAxIDAgMCAwLS43OC0uMzhIMTQiIC8+CiAgPHBhdGggZD0iTTIgMTN2NWExIDEgMCAwIDAgMSAxaDIiIC8+CiAgPHBhdGggZD0iTTQgMyAyLjE1IDUuMTVhLjQ5NS40OTUgMCAwIDAgLjM1Ljg2aDIuMTVhLjQ3LjQ3IDAgMCAxIC4zNS44NkwzIDkuMDIiIC8+CiAgPGNpcmNsZSBjeD0iMTciIGN5PSIxOSIgcj0iMiIgLz4KICA8Y2lyY2xlIGN4PSI3IiBjeT0iMTkiIHI9IjIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/truck-electric
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const TruckElectric: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name Truck
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -21957,21 +22272,6 @@ declare const TvMinimalPlay: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Tv
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHg9IjIiIHk9IjciIHJ4PSIyIiByeT0iMiIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyAyIDEyIDcgNyAyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/tv
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Tv: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name TvMinimal
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -21983,6 +22283,21 @@ declare const Tv: react.ForwardRefExoticComponent<
  *
  */
 declare const TvMinimal: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Tv
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHg9IjIiIHk9IjciIHJ4PSIyIiByeT0iMiIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyAyIDEyIDcgNyAyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/tv
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Tv: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22017,6 +22332,21 @@ declare const Twitter: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name Type
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cG9seWxpbmUgcG9pbnRzPSI0IDcgNCA0IDIwIDQgMjAgNyIgLz4KICA8bGluZSB4MT0iOSIgeDI9IjE1IiB5MT0iMjAiIHkyPSIyMCIgLz4KICA8bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjQiIHkyPSIyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/type
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Type: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name TypeOutline
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22043,21 +22373,6 @@ declare const TypeOutline: react.ForwardRefExoticComponent<
  *
  */
 declare const UmbrellaOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
- * @component @name Type
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cG9seWxpbmUgcG9pbnRzPSI0IDcgNCA0IDIwIDQgMjAgNyIgLz4KICA8bGluZSB4MT0iOSIgeDI9IjE1IiB5MT0iMjAiIHkyPSIyMCIgLz4KICA8bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjQiIHkyPSIyMCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/type
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Type: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22107,21 +22422,6 @@ declare const Undo2: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name UndoDot
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTdhOSA5IDAgMCAwLTE1LTYuN0wzIDEzIiAvPgogIDxwYXRoIGQ9Ik0zIDd2Nmg2IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTciIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/undo-dot
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const UndoDot: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Undo
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22133,6 +22433,21 @@ declare const UndoDot: react.ForwardRefExoticComponent<
  *
  */
 declare const Undo: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name UndoDot
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTdhOSA5IDAgMCAwLTE1LTYuN0wzIDEzIiAvPgogIDxwYXRoIGQ9Ik0zIDd2Nmg2IiAvPgogIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTciIHI9IjEiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/undo-dot
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const UndoDot: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22227,21 +22542,6 @@ declare const Unlink: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Upload
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNCIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyA4IDEyIDMgNyA4IiAvPgogIDxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMyIgeTI9IjE1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/upload
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Upload: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Unplug
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22257,17 +22557,17 @@ declare const Unplug: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name UserCheck
+ * @component @name Upload
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIgLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iNyIgcj0iNCIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNiAxMSAxOCAxMyAyMiA5IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/user-check
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNCIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNyA4IDEyIDMgNyA4IiAvPgogIDxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMyIgeTI9IjE1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/upload
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const UserCheck: react.ForwardRefExoticComponent<
+declare const Upload: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22287,10 +22587,25 @@ declare const Usb: react.ForwardRefExoticComponent<
 >;
 
 /**
+ * @component @name UserCheck
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIgLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iNyIgcj0iNCIgLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxNiAxMSAxOCAxMyAyMiA5IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/user-check
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const UserCheck: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
  * @component @name UserCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE1IiByPSIzIiAvPgogIDxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0IiAvPgogIDxwYXRoIGQ9Ik0xMCAxNUg2YTQgNCAwIDAgMC00IDR2MiIgLz4KICA8cGF0aCBkPSJtMjEuNyAxNi40LS45LS4zIiAvPgogIDxwYXRoIGQ9Im0xNS4yIDEzLjktLjktLjMiIC8+CiAgPHBhdGggZD0ibTE2LjYgMTguNy4zLS45IiAvPgogIDxwYXRoIGQ9Im0xOS4xIDEyLjIuMy0uOSIgLz4KICA8cGF0aCBkPSJtMTkuNiAxOC43LS40LTEiIC8+CiAgPHBhdGggZD0ibTE2LjggMTIuMy0uNC0xIiAvPgogIDxwYXRoIGQ9Im0xNC4zIDE2LjYgMS0uNCIgLz4KICA8cGF0aCBkPSJtMjAuNyAxMy44IDEtLjQiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/user-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTAgMTVINmE0IDQgMCAwIDAtNCA0djIiIC8+CiAgPHBhdGggZD0ibTE0LjMwNSAxNi41My45MjMtLjM4MiIgLz4KICA8cGF0aCBkPSJtMTUuMjI4IDEzLjg1Mi0uOTIzLS4zODMiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiAxMi4yMjgtLjM4My0uOTIzIiAvPgogIDxwYXRoIGQ9Im0xNi44NTIgMTcuNzcyLS4zODMuOTI0IiAvPgogIDxwYXRoIGQ9Im0xOS4xNDggMTIuMjI4LjM4My0uOTIzIiAvPgogIDxwYXRoIGQ9Im0xOS41MyAxOC42OTYtLjM4Mi0uOTI0IiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTMuODUyLjkyNC0uMzgzIiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTYuMTQ4LjkyNC4zODMiIC8+CiAgPGNpcmNsZSBjeD0iMTgiIGN5PSIxNSIgcj0iMyIgLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iNyIgcj0iNCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/user-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -22298,6 +22613,21 @@ declare const Usb: react.ForwardRefExoticComponent<
  *
  */
 declare const UserCog: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name UserLock
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8Y2lyY2xlIGN4PSIxMCIgY3k9IjciIHI9IjQiIC8+CiAgPHBhdGggZD0iTTEwLjMgMTVIN2E0IDQgMCAwIDAtNCA0djIiIC8+CiAgPHBhdGggZD0iTTE1IDE1LjVWMTRhMiAyIDAgMCAxIDQgMHYxLjUiIC8+CiAgPHJlY3Qgd2lkdGg9IjgiIGhlaWdodD0iNSIgeD0iMTMiIHk9IjE2IiByeD0iLjg5OSIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/user-lock
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const UserLock: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22365,7 +22695,7 @@ declare const UserRoundCheck: react.ForwardRefExoticComponent<
  * @component @name UserRoundCog
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMWE4IDggMCAwIDEgMTAuNDM0LTcuNjIiIC8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSI4IiByPSI1IiAvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMTgiIHI9IjMiIC8+CiAgPHBhdGggZD0ibTE5LjUgMTQuMy0uNC45IiAvPgogIDxwYXRoIGQ9Im0xNi45IDIwLjgtLjQuOSIgLz4KICA8cGF0aCBkPSJtMjEuNyAxOS41LS45LS40IiAvPgogIDxwYXRoIGQ9Im0xNS4yIDE2LjktLjktLjQiIC8+CiAgPHBhdGggZD0ibTIxLjcgMTYuNS0uOS40IiAvPgogIDxwYXRoIGQ9Im0xNS4yIDE5LjEtLjkuNCIgLz4KICA8cGF0aCBkPSJtMTkuNSAyMS43LS40LS45IiAvPgogIDxwYXRoIGQ9Im0xNi45IDE1LjItLjQtLjkiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/user-round-cog
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMTQuMzA1IDE5LjUzLjkyMy0uMzgyIiAvPgogIDxwYXRoIGQ9Im0xNS4yMjggMTYuODUyLS45MjMtLjM4MyIgLz4KICA8cGF0aCBkPSJtMTYuODUyIDE1LjIyOC0uMzgzLS45MjMiIC8+CiAgPHBhdGggZD0ibTE2Ljg1MiAyMC43NzItLjM4My45MjQiIC8+CiAgPHBhdGggZD0ibTE5LjE0OCAxNS4yMjguMzgzLS45MjMiIC8+CiAgPHBhdGggZD0ibTE5LjUzIDIxLjY5Ni0uMzgyLS45MjQiIC8+CiAgPHBhdGggZD0iTTIgMjFhOCA4IDAgMCAxIDEwLjQzNC03LjYyIiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTYuODUyLjkyNC0uMzgzIiAvPgogIDxwYXRoIGQ9Im0yMC43NzIgMTkuMTQ4LjkyNC4zODMiIC8+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSI4IiByPSI1IiAvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMTgiIHI9IjMiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/user-round-cog
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
@@ -22527,21 +22857,6 @@ declare const UsersRound: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Users
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIgLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iNyIgcj0iNCIgLz4KICA8cGF0aCBkPSJNMjIgMjF2LTJhNCA0IDAgMCAwLTMtMy44NyIgLz4KICA8cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/users
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Users: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name UtensilsCrossed
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22553,6 +22868,21 @@ declare const Users: react.ForwardRefExoticComponent<
  *
  */
 declare const UtensilsCrossed: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Users
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIgLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iNyIgcj0iNCIgLz4KICA8cGF0aCBkPSJNMjIgMjF2LTJhNCA0IDAgMCAwLTMtMy44NyIgLz4KICA8cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1IiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/users
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Users: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22662,21 +22992,6 @@ declare const VenusAndMars: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name VibrateOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMiA4IDIgMi0yIDIgMiAyLTIgMiIgLz4KICA8cGF0aCBkPSJtMjIgOC0yIDIgMiAyLTIgMiAyIDIiIC8+CiAgPHBhdGggZD0iTTggOHYxMGMwIC41NS40NSAxIDEgMWg2Yy41NSAwIDEtLjQ1IDEtMXYtMiIgLz4KICA8cGF0aCBkPSJNMTYgMTAuMzRWNmMwLS41NS0uNDUtMS0xLTFoLTQuMzQiIC8+CiAgPGxpbmUgeDE9IjIiIHgyPSIyMiIgeTE9IjIiIHkyPSIyMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/vibrate-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const VibrateOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Venus
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22688,6 +23003,21 @@ declare const VibrateOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Venus: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name VibrateOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtMiA4IDIgMi0yIDIgMiAyLTIgMiIgLz4KICA8cGF0aCBkPSJtMjIgOC0yIDIgMiAyLTIgMiAyIDIiIC8+CiAgPHBhdGggZD0iTTggOHYxMGMwIC41NS40NSAxIDEgMWg2Yy41NSAwIDEtLjQ1IDEtMXYtMiIgLz4KICA8cGF0aCBkPSJNMTYgMTAuMzRWNmMwLS41NS0uNDUtMS0xLTFoLTQuMzQiIC8+CiAgPGxpbmUgeDE9IjIiIHgyPSIyMiIgeTE9IjIiIHkyPSIyMiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/vibrate-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const VibrateOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22782,21 +23112,6 @@ declare const Voicemail: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Volume1
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgNC43MDJhLjcwNS43MDUgMCAwIDAtMS4yMDMtLjQ5OEw2LjQxMyA3LjU4N0ExLjQgMS40IDAgMCAxIDUuNDE2IDhIM2ExIDEgMCAwIDAtMSAxdjZhMSAxIDAgMCAwIDEgMWgyLjQxNmExLjQgMS40IDAgMCAxIC45OTcuNDEzbDMuMzgzIDMuMzg0QS43MDUuNzA1IDAgMCAwIDExIDE5LjI5OHoiIC8+CiAgPHBhdGggZD0iTTE2IDlhNSA1IDAgMCAxIDAgNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/volume-1
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Volume1: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Volleyball
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22808,6 +23123,21 @@ declare const Volume1: react.ForwardRefExoticComponent<
  *
  */
 declare const Volleyball: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Volume1
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTEgNC43MDJhLjcwNS43MDUgMCAwIDAtMS4yMDMtLjQ5OEw2LjQxMyA3LjU4N0ExLjQgMS40IDAgMCAxIDUuNDE2IDhIM2ExIDEgMCAwIDAtMSAxdjZhMSAxIDAgMCAwIDEgMWgyLjQxNmExLjQgMS40IDAgMCAxIC45OTcuNDEzbDMuMzgzIDMuMzg0QS43MDUuNzA1IDAgMCAwIDExIDE5LjI5OHoiIC8+CiAgPHBhdGggZD0iTTE2IDlhNSA1IDAgMCAxIDAgNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/volume-1
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Volume1: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22857,21 +23187,6 @@ declare const VolumeX: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Vote
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtOSAxMiAyIDIgNC00IiAvPgogIDxwYXRoIGQ9Ik01IDdjMC0xLjEuOS0yIDItMmgxMGEyIDIgMCAwIDEgMiAydjEySDVWN1oiIC8+CiAgPHBhdGggZD0iTTIyIDE5SDIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/vote
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Vote: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Volume
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22883,6 +23198,21 @@ declare const Vote: react.ForwardRefExoticComponent<
  *
  */
 declare const Volume: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Vote
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJtOSAxMiAyIDIgNC00IiAvPgogIDxwYXRoIGQ9Ik01IDdjMC0xLjEuOS0yIDItMmgxMGEyIDIgMCAwIDEgMiAydjEySDVWN1oiIC8+CiAgPHBhdGggZD0iTTIyIDE5SDIiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/vote
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Vote: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -22947,21 +23277,6 @@ declare const Wallpaper: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Wand
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgNFYyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxNnYtMiIgLz4KICA8cGF0aCBkPSJNOCA5aDIiIC8+CiAgPHBhdGggZD0iTTIwIDloMiIgLz4KICA8cGF0aCBkPSJNMTcuOCAxMS44IDE5IDEzIiAvPgogIDxwYXRoIGQ9Ik0xNSA5aC4wMSIgLz4KICA8cGF0aCBkPSJNMTcuOCA2LjIgMTkgNSIgLz4KICA8cGF0aCBkPSJtMyAyMSA5LTkiIC8+CiAgPHBhdGggZD0iTTEyLjIgNi4yIDExIDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/wand
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Wand: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name WandSparkles
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -22973,6 +23288,21 @@ declare const Wand: react.ForwardRefExoticComponent<
  *
  */
 declare const WandSparkles: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Wand
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTUgNFYyIiAvPgogIDxwYXRoIGQ9Ik0xNSAxNnYtMiIgLz4KICA8cGF0aCBkPSJNOCA5aDIiIC8+CiAgPHBhdGggZD0iTTIwIDloMiIgLz4KICA8cGF0aCBkPSJNMTcuOCAxMS44IDE5IDEzIiAvPgogIDxwYXRoIGQ9Ik0xNSA5aC4wMSIgLz4KICA8cGF0aCBkPSJNMTcuOCA2LjIgMTkgNSIgLz4KICA8cGF0aCBkPSJtMyAyMSA5LTkiIC8+CiAgPHBhdGggZD0iTTEyLjIgNi4yIDExIDUiIC8+Cjwvc3ZnPgo=) - https://lucide.dev/icons/wand
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Wand: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -23082,21 +23412,6 @@ declare const Webcam: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Webhook
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggMTYuOThoLTUuOTljLTEuMSAwLTEuOTUuOTQtMi40OCAxLjlBNCA0IDAgMCAxIDIgMTdjLjAxLS43LjItMS40LjU3LTIiIC8+CiAgPHBhdGggZD0ibTYgMTcgMy4xMy01Ljc4Yy41My0uOTcuMS0yLjE4LS41LTMuMWE0IDQgMCAxIDEgNi44OS00LjA2IiAvPgogIDxwYXRoIGQ9Im0xMiA2IDMuMTMgNS43M0MxNS42NiAxMi43IDE2LjkgMTMgMTggMTNhNCA0IDAgMCAxIDAgOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/webhook
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const Webhook: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name WebhookOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -23127,17 +23442,17 @@ declare const Weight: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name Wheat
+ * @component @name Webhook
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMiAxNiA4IiAvPgogIDxwYXRoIGQ9Ik0zLjQ3IDEyLjUzIDUgMTFsMS41MyAxLjUzYTMuNSAzLjUgMCAwIDEgMCA0Ljk0TDUgMTlsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTcuNDcgOC41MyA5IDdsMS41MyAxLjUzYTMuNSAzLjUgMCAwIDEgMCA0Ljk0TDkgMTVsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTExLjQ3IDQuNTMgMTMgM2wxLjUzIDEuNTNhMy41IDMuNSAwIDAgMSAwIDQuOTRMMTMgMTFsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTIwIDJoMnYyYTQgNCAwIDAgMS00IDRoLTJWNmE0IDQgMCAwIDEgNC00WiIgLz4KICA8cGF0aCBkPSJNMTEuNDcgMTcuNDcgMTMgMTlsLTEuNTMgMS41M2EzLjUgMy41IDAgMCAxLTQuOTQgMEw1IDE5bDEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDQuOTQgMFoiIC8+CiAgPHBhdGggZD0iTTE1LjQ3IDEzLjQ3IDE3IDE1bC0xLjUzIDEuNTNhMy41IDMuNSAwIDAgMS00Ljk0IDBMOSAxNWwxLjUzLTEuNTNhMy41IDMuNSAwIDAgMSA0Ljk0IDBaIiAvPgogIDxwYXRoIGQ9Ik0xOS40NyA5LjQ3IDIxIDExbC0xLjUzIDEuNTNhMy41IDMuNSAwIDAgMS00Ljk0IDBMMTMgMTFsMS41My0xLjUzYTMuNSAzLjUgMCAwIDEgNC45NCAwWiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/wheat
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTggMTYuOThoLTUuOTljLTEuMSAwLTEuOTUuOTQtMi40OCAxLjlBNCA0IDAgMCAxIDIgMTdjLjAxLS43LjItMS40LjU3LTIiIC8+CiAgPHBhdGggZD0ibTYgMTcgMy4xMy01Ljc4Yy41My0uOTcuMS0yLjE4LS41LTMuMWE0IDQgMCAxIDEgNi44OS00LjA2IiAvPgogIDxwYXRoIGQ9Im0xMiA2IDMuMTMgNS43M0MxNS42NiAxMi43IDE2LjkgMTMgMTggMTNhNCA0IDAgMCAxIDAgOCIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/webhook
  * @see https://lucide.dev/guide/packages/lucide-react - Documentation
  *
  * @param {Object} props - Lucide icons props and any valid SVG attribute
  * @returns {JSX.Element} JSX Element
  *
  */
-declare const Wheat: react.ForwardRefExoticComponent<
+declare const Webhook: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -23153,6 +23468,21 @@ declare const Wheat: react.ForwardRefExoticComponent<
  *
  */
 declare const WheatOff: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name Wheat
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiAyMiAxNiA4IiAvPgogIDxwYXRoIGQ9Ik0zLjQ3IDEyLjUzIDUgMTFsMS41MyAxLjUzYTMuNSAzLjUgMCAwIDEgMCA0Ljk0TDUgMTlsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTcuNDcgOC41MyA5IDdsMS41MyAxLjUzYTMuNSAzLjUgMCAwIDEgMCA0Ljk0TDkgMTVsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTExLjQ3IDQuNTMgMTMgM2wxLjUzIDEuNTNhMy41IDMuNSAwIDAgMSAwIDQuOTRMMTMgMTFsLTEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDAtNC45NFoiIC8+CiAgPHBhdGggZD0iTTIwIDJoMnYyYTQgNCAwIDAgMS00IDRoLTJWNmE0IDQgMCAwIDEgNC00WiIgLz4KICA8cGF0aCBkPSJNMTEuNDcgMTcuNDcgMTMgMTlsLTEuNTMgMS41M2EzLjUgMy41IDAgMCAxLTQuOTQgMEw1IDE5bDEuNTMtMS41M2EzLjUgMy41IDAgMCAxIDQuOTQgMFoiIC8+CiAgPHBhdGggZD0iTTE1LjQ3IDEzLjQ3IDE3IDE1bC0xLjUzIDEuNTNhMy41IDMuNSAwIDAgMS00Ljk0IDBMOSAxNWwxLjUzLTEuNTNhMy41IDMuNSAwIDAgMSA0Ljk0IDBaIiAvPgogIDxwYXRoIGQ9Ik0xOS40NyA5LjQ3IDIxIDExbC0xLjUzIDEuNTNhMy41IDMuNSAwIDAgMS00Ljk0IDBMMTMgMTFsMS41My0xLjUzYTMuNSAzLjUgMCAwIDEgNC45NCAwWiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/wheat
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const Wheat: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -23202,21 +23532,6 @@ declare const WifiLow: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name WifiZero
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjBoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/wifi-zero
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const WifiZero: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name WifiOff
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -23228,6 +23543,36 @@ declare const WifiZero: react.ForwardRefExoticComponent<
  *
  */
 declare const WifiOff: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name WifiPen
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMiA4LjgyYTE1IDE1IDAgMCAxIDIwIDAiIC8+CiAgPHBhdGggZD0iTTIxLjM3OCAxNi42MjZhMSAxIDAgMCAwLTMuMDA0LTMuMDA0bC00LjAxIDQuMDEyYTIgMiAwIDAgMC0uNTA2Ljg1NGwtLjgzNyAyLjg3YS41LjUgMCAwIDAgLjYyLjYybDIuODctLjgzN2EyIDIgMCAwIDAgLjg1NC0uNTA2eiIgLz4KICA8cGF0aCBkPSJNNSAxMi44NTlhMTAgMTAgMCAwIDEgMTAuNS0yLjIyMiIgLz4KICA8cGF0aCBkPSJNOC41IDE2LjQyOWE1IDUgMCAwIDEgMy0xLjQwNiIgLz4KPC9zdmc+Cg==) - https://lucide.dev/icons/wifi-pen
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const WifiPen: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name WifiZero
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTIgMjBoLjAxIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/wifi-zero
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const WifiZero: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -23277,21 +23622,6 @@ declare const Wind: react.ForwardRefExoticComponent<
 >;
 
 /**
- * @component @name WineOff
- * @description Lucide SVG icon component, renders SVG Element with children.
- *
- * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAyMmg4IiAvPgogIDxwYXRoIGQ9Ik03IDEwaDNtNyAwaC0xLjM0MyIgLz4KICA8cGF0aCBkPSJNMTIgMTV2NyIgLz4KICA8cGF0aCBkPSJNNy4zMDcgNy4zMDdBMTIuMzMgMTIuMzMgMCAwIDAgNyAxMGE1IDUgMCAwIDAgNy4zOTEgNC4zOTFNOC42MzggMi45ODFDOC43NSAyLjY2OCA4Ljg3MiAyLjM0IDkgMmg2YzEuNSA0IDIgNiAyIDggMCAuNDA3LS4wNS44MDktLjE0NSAxLjE5OCIgLz4KICA8bGluZSB4MT0iMiIgeDI9IjIyIiB5MT0iMiIgeTI9IjIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/wine-off
- * @see https://lucide.dev/guide/packages/lucide-react - Documentation
- *
- * @param {Object} props - Lucide icons props and any valid SVG attribute
- * @returns {JSX.Element} JSX Element
- *
- */
-declare const WineOff: react.ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
->;
-
-/**
  * @component @name Wine
  * @description Lucide SVG icon component, renders SVG Element with children.
  *
@@ -23303,6 +23633,21 @@ declare const WineOff: react.ForwardRefExoticComponent<
  *
  */
 declare const Wine: react.ForwardRefExoticComponent<
+  Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
+>;
+
+/**
+ * @component @name WineOff
+ * @description Lucide SVG icon component, renders SVG Element with children.
+ *
+ * @preview ![img](data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogIHdpZHRoPSIyNCIKICBoZWlnaHQ9IjI0IgogIHZpZXdCb3g9IjAgMCAyNCAyNCIKICBmaWxsPSJub25lIgogIHN0cm9rZT0iIzAwMCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6ICNmZmY7IGJvcmRlci1yYWRpdXM6IDJweCIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAyMmg4IiAvPgogIDxwYXRoIGQ9Ik03IDEwaDNtNyAwaC0xLjM0MyIgLz4KICA8cGF0aCBkPSJNMTIgMTV2NyIgLz4KICA8cGF0aCBkPSJNNy4zMDcgNy4zMDdBMTIuMzMgMTIuMzMgMCAwIDAgNyAxMGE1IDUgMCAwIDAgNy4zOTEgNC4zOTFNOC42MzggMi45ODFDOC43NSAyLjY2OCA4Ljg3MiAyLjM0IDkgMmg2YzEuNSA0IDIgNiAyIDggMCAuNDA3LS4wNS44MDktLjE0NSAxLjE5OCIgLz4KICA8bGluZSB4MT0iMiIgeDI9IjIyIiB5MT0iMiIgeTI9IjIyIiAvPgo8L3N2Zz4K) - https://lucide.dev/icons/wine-off
+ * @see https://lucide.dev/guide/packages/lucide-react - Documentation
+ *
+ * @param {Object} props - Lucide icons props and any valid SVG attribute
+ * @returns {JSX.Element} JSX Element
+ *
+ */
+declare const WineOff: react.ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>
 >;
 
@@ -23589,6 +23934,8 @@ declare const index_Banana: typeof Banana;
 declare const index_Bandage: typeof Bandage;
 declare const index_Banknote: typeof Banknote;
 declare const index_BanknoteArrowDown: typeof BanknoteArrowDown;
+declare const index_BanknoteArrowUp: typeof BanknoteArrowUp;
+declare const index_BanknoteX: typeof BanknoteX;
 declare const index_Barcode: typeof Barcode;
 declare const index_Baseline: typeof Baseline;
 declare const index_Bath: typeof Bath;
@@ -23670,6 +24017,7 @@ declare const index_BoomBox: typeof BoomBox;
 declare const index_Bot: typeof Bot;
 declare const index_BotMessageSquare: typeof BotMessageSquare;
 declare const index_BotOff: typeof BotOff;
+declare const index_BowArrow: typeof BowArrow;
 declare const index_Box: typeof Box;
 declare const index_Boxes: typeof Boxes;
 declare const index_Braces: typeof Braces;
@@ -23678,12 +24026,14 @@ declare const index_Brain: typeof Brain;
 declare const index_BrainCircuit: typeof BrainCircuit;
 declare const index_BrainCog: typeof BrainCog;
 declare const index_BrickWall: typeof BrickWall;
+declare const index_BrickWallFire: typeof BrickWallFire;
 declare const index_Briefcase: typeof Briefcase;
 declare const index_BriefcaseBusiness: typeof BriefcaseBusiness;
 declare const index_BriefcaseConveyorBelt: typeof BriefcaseConveyorBelt;
 declare const index_BriefcaseMedical: typeof BriefcaseMedical;
 declare const index_BringToFront: typeof BringToFront;
 declare const index_Brush: typeof Brush;
+declare const index_Bubbles: typeof Bubbles;
 declare const index_Bug: typeof Bug;
 declare const index_BugOff: typeof BugOff;
 declare const index_BugPlay: typeof BugPlay;
@@ -23887,6 +24237,7 @@ declare const index_Cog: typeof Cog;
 declare const index_Coins: typeof Coins;
 declare const index_Columns2: typeof Columns2;
 declare const index_Columns3: typeof Columns3;
+declare const index_Columns3Cog: typeof Columns3Cog;
 declare const index_Columns4: typeof Columns4;
 declare const index_Combine: typeof Combine;
 declare const index_Command: typeof Command;
@@ -23934,6 +24285,8 @@ declare const index_Dam: typeof Dam;
 declare const index_Database: typeof Database;
 declare const index_DatabaseBackup: typeof DatabaseBackup;
 declare const index_DatabaseZap: typeof DatabaseZap;
+declare const index_DecimalsArrowLeft: typeof DecimalsArrowLeft;
+declare const index_DecimalsArrowRight: typeof DecimalsArrowRight;
 declare const index_Delete: typeof Delete;
 declare const index_Dessert: typeof Dessert;
 declare const index_Diameter: typeof Diameter;
@@ -24207,7 +24560,9 @@ declare const index_Headset: typeof Headset;
 declare const index_Heart: typeof Heart;
 declare const index_HeartCrack: typeof HeartCrack;
 declare const index_HeartHandshake: typeof HeartHandshake;
+declare const index_HeartMinus: typeof HeartMinus;
 declare const index_HeartOff: typeof HeartOff;
+declare const index_HeartPlus: typeof HeartPlus;
 declare const index_HeartPulse: typeof HeartPulse;
 declare const index_Heater: typeof Heater;
 declare const index_Hexagon: typeof Hexagon;
@@ -24315,6 +24670,7 @@ declare const index_LoaderPinwheel: typeof LoaderPinwheel;
 declare const index_Locate: typeof Locate;
 declare const index_LocateFixed: typeof LocateFixed;
 declare const index_LocateOff: typeof LocateOff;
+declare const index_LocationEdit: typeof LocationEdit;
 declare const index_Lock: typeof Lock;
 declare const index_LockKeyhole: typeof LockKeyhole;
 declare const index_LockKeyholeOpen: typeof LockKeyholeOpen;
@@ -24590,6 +24946,7 @@ declare const index_ReceiptRussianRuble: typeof ReceiptRussianRuble;
 declare const index_ReceiptSwissFranc: typeof ReceiptSwissFranc;
 declare const index_ReceiptText: typeof ReceiptText;
 declare const index_RectangleEllipsis: typeof RectangleEllipsis;
+declare const index_RectangleGoggles: typeof RectangleGoggles;
 declare const index_RectangleHorizontal: typeof RectangleHorizontal;
 declare const index_RectangleVertical: typeof RectangleVertical;
 declare const index_Recycle: typeof Recycle;
@@ -24617,6 +24974,7 @@ declare const index_RockingChair: typeof RockingChair;
 declare const index_RollerCoaster: typeof RollerCoaster;
 declare const index_Rotate3d: typeof Rotate3d;
 declare const index_RotateCcw: typeof RotateCcw;
+declare const index_RotateCcwKey: typeof RotateCcwKey;
 declare const index_RotateCcwSquare: typeof RotateCcwSquare;
 declare const index_RotateCw: typeof RotateCw;
 declare const index_RotateCwSquare: typeof RotateCwSquare;
@@ -24628,6 +24986,7 @@ declare const index_Rows3: typeof Rows3;
 declare const index_Rows4: typeof Rows4;
 declare const index_Rss: typeof Rss;
 declare const index_Ruler: typeof Ruler;
+declare const index_RulerDimensionLine: typeof RulerDimensionLine;
 declare const index_RussianRuble: typeof RussianRuble;
 declare const index_Sailboat: typeof Sailboat;
 declare const index_Salad: typeof Salad;
@@ -24699,6 +25058,7 @@ declare const index_ShoppingBasket: typeof ShoppingBasket;
 declare const index_ShoppingCart: typeof ShoppingCart;
 declare const index_Shovel: typeof Shovel;
 declare const index_ShowerHead: typeof ShowerHead;
+declare const index_Shredder: typeof Shredder;
 declare const index_Shrimp: typeof Shrimp;
 declare const index_Shrink: typeof Shrink;
 declare const index_Shrub: typeof Shrub;
@@ -24739,6 +25099,7 @@ declare const index_Speech: typeof Speech;
 declare const index_SpellCheck: typeof SpellCheck;
 declare const index_SpellCheck2: typeof SpellCheck2;
 declare const index_Spline: typeof Spline;
+declare const index_SplinePointer: typeof SplinePointer;
 declare const index_Split: typeof Split;
 declare const index_SprayCan: typeof SprayCan;
 declare const index_Sprout: typeof Sprout;
@@ -24803,6 +25164,10 @@ declare const index_SquareTerminal: typeof SquareTerminal;
 declare const index_SquareUser: typeof SquareUser;
 declare const index_SquareUserRound: typeof SquareUserRound;
 declare const index_SquareX: typeof SquareX;
+declare const index_SquaresExclude: typeof SquaresExclude;
+declare const index_SquaresIntersect: typeof SquaresIntersect;
+declare const index_SquaresSubtract: typeof SquaresSubtract;
+declare const index_SquaresUnite: typeof SquaresUnite;
 declare const index_Squircle: typeof Squircle;
 declare const index_Squirrel: typeof Squirrel;
 declare const index_Stamp: typeof Stamp;
@@ -24916,6 +25281,7 @@ declare const index_TriangleDashed: typeof TriangleDashed;
 declare const index_TriangleRight: typeof TriangleRight;
 declare const index_Trophy: typeof Trophy;
 declare const index_Truck: typeof Truck;
+declare const index_TruckElectric: typeof TruckElectric;
 declare const index_Turtle: typeof Turtle;
 declare const index_Tv: typeof Tv;
 declare const index_TvMinimal: typeof TvMinimal;
@@ -24942,6 +25308,7 @@ declare const index_Usb: typeof Usb;
 declare const index_User: typeof User;
 declare const index_UserCheck: typeof UserCheck;
 declare const index_UserCog: typeof UserCog;
+declare const index_UserLock: typeof UserLock;
 declare const index_UserMinus: typeof UserMinus;
 declare const index_UserPen: typeof UserPen;
 declare const index_UserPlus: typeof UserPlus;
@@ -25003,6 +25370,7 @@ declare const index_Wifi: typeof Wifi;
 declare const index_WifiHigh: typeof WifiHigh;
 declare const index_WifiLow: typeof WifiLow;
 declare const index_WifiOff: typeof WifiOff;
+declare const index_WifiPen: typeof WifiPen;
 declare const index_WifiZero: typeof WifiZero;
 declare const index_Wind: typeof Wind;
 declare const index_WindArrowDown: typeof WindArrowDown;
@@ -25153,6 +25521,8 @@ declare namespace index {
     index_Bandage as Bandage,
     index_Banknote as Banknote,
     index_BanknoteArrowDown as BanknoteArrowDown,
+    index_BanknoteArrowUp as BanknoteArrowUp,
+    index_BanknoteX as BanknoteX,
     index_Barcode as Barcode,
     index_Baseline as Baseline,
     index_Bath as Bath,
@@ -25234,6 +25604,7 @@ declare namespace index {
     index_Bot as Bot,
     index_BotMessageSquare as BotMessageSquare,
     index_BotOff as BotOff,
+    index_BowArrow as BowArrow,
     index_Box as Box,
     index_Boxes as Boxes,
     index_Braces as Braces,
@@ -25242,12 +25613,14 @@ declare namespace index {
     index_BrainCircuit as BrainCircuit,
     index_BrainCog as BrainCog,
     index_BrickWall as BrickWall,
+    index_BrickWallFire as BrickWallFire,
     index_Briefcase as Briefcase,
     index_BriefcaseBusiness as BriefcaseBusiness,
     index_BriefcaseConveyorBelt as BriefcaseConveyorBelt,
     index_BriefcaseMedical as BriefcaseMedical,
     index_BringToFront as BringToFront,
     index_Brush as Brush,
+    index_Bubbles as Bubbles,
     index_Bug as Bug,
     index_BugOff as BugOff,
     index_BugPlay as BugPlay,
@@ -25451,6 +25824,7 @@ declare namespace index {
     index_Coins as Coins,
     index_Columns2 as Columns2,
     index_Columns3 as Columns3,
+    index_Columns3Cog as Columns3Cog,
     index_Columns4 as Columns4,
     index_Combine as Combine,
     index_Command as Command,
@@ -25498,6 +25872,8 @@ declare namespace index {
     index_Database as Database,
     index_DatabaseBackup as DatabaseBackup,
     index_DatabaseZap as DatabaseZap,
+    index_DecimalsArrowLeft as DecimalsArrowLeft,
+    index_DecimalsArrowRight as DecimalsArrowRight,
     index_Delete as Delete,
     index_Dessert as Dessert,
     index_Diameter as Diameter,
@@ -25771,7 +26147,9 @@ declare namespace index {
     index_Heart as Heart,
     index_HeartCrack as HeartCrack,
     index_HeartHandshake as HeartHandshake,
+    index_HeartMinus as HeartMinus,
     index_HeartOff as HeartOff,
+    index_HeartPlus as HeartPlus,
     index_HeartPulse as HeartPulse,
     index_Heater as Heater,
     index_Hexagon as Hexagon,
@@ -25879,6 +26257,7 @@ declare namespace index {
     index_Locate as Locate,
     index_LocateFixed as LocateFixed,
     index_LocateOff as LocateOff,
+    index_LocationEdit as LocationEdit,
     index_Lock as Lock,
     index_LockKeyhole as LockKeyhole,
     index_LockKeyholeOpen as LockKeyholeOpen,
@@ -26154,6 +26533,7 @@ declare namespace index {
     index_ReceiptSwissFranc as ReceiptSwissFranc,
     index_ReceiptText as ReceiptText,
     index_RectangleEllipsis as RectangleEllipsis,
+    index_RectangleGoggles as RectangleGoggles,
     index_RectangleHorizontal as RectangleHorizontal,
     index_RectangleVertical as RectangleVertical,
     index_Recycle as Recycle,
@@ -26181,6 +26561,7 @@ declare namespace index {
     index_RollerCoaster as RollerCoaster,
     index_Rotate3d as Rotate3d,
     index_RotateCcw as RotateCcw,
+    index_RotateCcwKey as RotateCcwKey,
     index_RotateCcwSquare as RotateCcwSquare,
     index_RotateCw as RotateCw,
     index_RotateCwSquare as RotateCwSquare,
@@ -26192,6 +26573,7 @@ declare namespace index {
     index_Rows4 as Rows4,
     index_Rss as Rss,
     index_Ruler as Ruler,
+    index_RulerDimensionLine as RulerDimensionLine,
     index_RussianRuble as RussianRuble,
     index_Sailboat as Sailboat,
     index_Salad as Salad,
@@ -26263,6 +26645,7 @@ declare namespace index {
     index_ShoppingCart as ShoppingCart,
     index_Shovel as Shovel,
     index_ShowerHead as ShowerHead,
+    index_Shredder as Shredder,
     index_Shrimp as Shrimp,
     index_Shrink as Shrink,
     index_Shrub as Shrub,
@@ -26303,6 +26686,7 @@ declare namespace index {
     index_SpellCheck as SpellCheck,
     index_SpellCheck2 as SpellCheck2,
     index_Spline as Spline,
+    index_SplinePointer as SplinePointer,
     index_Split as Split,
     index_SprayCan as SprayCan,
     index_Sprout as Sprout,
@@ -26367,6 +26751,10 @@ declare namespace index {
     index_SquareUser as SquareUser,
     index_SquareUserRound as SquareUserRound,
     index_SquareX as SquareX,
+    index_SquaresExclude as SquaresExclude,
+    index_SquaresIntersect as SquaresIntersect,
+    index_SquaresSubtract as SquaresSubtract,
+    index_SquaresUnite as SquaresUnite,
     index_Squircle as Squircle,
     index_Squirrel as Squirrel,
     index_Stamp as Stamp,
@@ -26480,6 +26868,7 @@ declare namespace index {
     index_TriangleRight as TriangleRight,
     index_Trophy as Trophy,
     index_Truck as Truck,
+    index_TruckElectric as TruckElectric,
     index_Turtle as Turtle,
     index_Tv as Tv,
     index_TvMinimal as TvMinimal,
@@ -26506,6 +26895,7 @@ declare namespace index {
     index_User as User,
     index_UserCheck as UserCheck,
     index_UserCog as UserCog,
+    index_UserLock as UserLock,
     index_UserMinus as UserMinus,
     index_UserPen as UserPen,
     index_UserPlus as UserPlus,
@@ -26567,6 +26957,7 @@ declare namespace index {
     index_WifiHigh as WifiHigh,
     index_WifiLow as WifiLow,
     index_WifiOff as WifiOff,
+    index_WifiPen as WifiPen,
     index_WifiZero as WifiZero,
     index_Wind as Wind,
     index_WindArrowDown as WindArrowDown,
@@ -26954,7 +27345,11 @@ export {
   Banknote,
   BanknoteArrowDown,
   BanknoteArrowDown as BanknoteArrowDownIcon,
+  BanknoteArrowUp,
+  BanknoteArrowUp as BanknoteArrowUpIcon,
   Banknote as BanknoteIcon,
+  BanknoteX,
+  BanknoteX as BanknoteXIcon,
   ChartNoAxesColumnIncreasing as BarChart,
   ChartNoAxesColumn as BarChart2,
   ChartNoAxesColumn as BarChart2Icon,
@@ -27137,6 +27532,8 @@ export {
   BotMessageSquare as BotMessageSquareIcon,
   BotOff,
   BotOff as BotOffIcon,
+  BowArrow,
+  BowArrow as BowArrowIcon,
   Box,
   Box as BoxIcon,
   SquareDashed as BoxSelect,
@@ -27154,6 +27551,8 @@ export {
   BrainCog as BrainCogIcon,
   Brain as BrainIcon,
   BrickWall,
+  BrickWallFire,
+  BrickWallFire as BrickWallFireIcon,
   BrickWall as BrickWallIcon,
   Briefcase,
   BriefcaseBusiness,
@@ -27167,6 +27566,8 @@ export {
   BringToFront as BringToFrontIcon,
   Brush,
   Brush as BrushIcon,
+  Bubbles,
+  Bubbles as BubblesIcon,
   Bug,
   Bug as BugIcon,
   BugOff,
@@ -27609,10 +28010,14 @@ export {
   Columns2,
   Columns2 as Columns2Icon,
   Columns3,
+  Columns3Cog,
+  Columns3Cog as Columns3CogIcon,
   Columns3 as Columns3Icon,
   Columns4,
   Columns4 as Columns4Icon,
   Columns2 as ColumnsIcon,
+  Columns3Cog as ColumnsSettings,
+  Columns3Cog as ColumnsSettingsIcon,
   Combine,
   Combine as CombineIcon,
   Command,
@@ -27709,6 +28114,10 @@ export {
   Database as DatabaseIcon,
   DatabaseZap,
   DatabaseZap as DatabaseZapIcon,
+  DecimalsArrowLeft,
+  DecimalsArrowLeft as DecimalsArrowLeftIcon,
+  DecimalsArrowRight,
+  DecimalsArrowRight as DecimalsArrowRightIcon,
   Delete,
   Delete as DeleteIcon,
   Dessert,
@@ -28325,8 +28734,12 @@ export {
   HeartHandshake,
   HeartHandshake as HeartHandshakeIcon,
   Heart as HeartIcon,
+  HeartMinus,
+  HeartMinus as HeartMinusIcon,
   HeartOff,
   HeartOff as HeartOffIcon,
+  HeartPlus,
+  HeartPlus as HeartPlusIcon,
   HeartPulse,
   HeartPulse as HeartPulseIcon,
   Heater,
@@ -28573,6 +28986,8 @@ export {
   Locate as LocateIcon,
   LocateOff,
   LocateOff as LocateOffIcon,
+  LocationEdit,
+  LocationEdit as LocationEditIcon,
   Lock,
   Lock as LockIcon,
   LockKeyhole,
@@ -28756,6 +29171,8 @@ export {
   Bandage as LucideBandage,
   Banknote as LucideBanknote,
   BanknoteArrowDown as LucideBanknoteArrowDown,
+  BanknoteArrowUp as LucideBanknoteArrowUp,
+  BanknoteX as LucideBanknoteX,
   ChartNoAxesColumnIncreasing as LucideBarChart,
   ChartNoAxesColumn as LucideBarChart2,
   ChartColumn as LucideBarChart3,
@@ -28847,6 +29264,7 @@ export {
   Bot as LucideBot,
   BotMessageSquare as LucideBotMessageSquare,
   BotOff as LucideBotOff,
+  BowArrow as LucideBowArrow,
   Box as LucideBox,
   SquareDashed as LucideBoxSelect,
   Boxes as LucideBoxes,
@@ -28856,12 +29274,14 @@ export {
   BrainCircuit as LucideBrainCircuit,
   BrainCog as LucideBrainCog,
   BrickWall as LucideBrickWall,
+  BrickWallFire as LucideBrickWallFire,
   Briefcase as LucideBriefcase,
   BriefcaseBusiness as LucideBriefcaseBusiness,
   BriefcaseConveyorBelt as LucideBriefcaseConveyorBelt,
   BriefcaseMedical as LucideBriefcaseMedical,
   BringToFront as LucideBringToFront,
   Brush as LucideBrush,
+  Bubbles as LucideBubbles,
   Bug as LucideBug,
   BugOff as LucideBugOff,
   BugPlay as LucideBugPlay,
@@ -29084,7 +29504,9 @@ export {
   Columns2 as LucideColumns,
   Columns2 as LucideColumns2,
   Columns3 as LucideColumns3,
+  Columns3Cog as LucideColumns3Cog,
   Columns4 as LucideColumns4,
+  Columns3Cog as LucideColumnsSettings,
   Combine as LucideCombine,
   Command as LucideCommand,
   Compass as LucideCompass,
@@ -29133,6 +29555,8 @@ export {
   Database as LucideDatabase,
   DatabaseBackup as LucideDatabaseBackup,
   DatabaseZap as LucideDatabaseZap,
+  DecimalsArrowLeft as LucideDecimalsArrowLeft,
+  DecimalsArrowRight as LucideDecimalsArrowRight,
   Delete as LucideDelete,
   Dessert as LucideDessert,
   Diameter as LucideDiameter,
@@ -29441,7 +29865,9 @@ export {
   Heart as LucideHeart,
   HeartCrack as LucideHeartCrack,
   HeartHandshake as LucideHeartHandshake,
+  HeartMinus as LucideHeartMinus,
   HeartOff as LucideHeartOff,
+  HeartPlus as LucideHeartPlus,
   HeartPulse as LucideHeartPulse,
   Heater as LucideHeater,
   CircleHelp as LucideHelpCircle,
@@ -29565,6 +29991,7 @@ export {
   Locate as LucideLocate,
   LocateFixed as LucideLocateFixed,
   LocateOff as LucideLocateOff,
+  LocationEdit as LucideLocationEdit,
   Lock as LucideLock,
   LockKeyhole as LucideLockKeyhole,
   LockKeyholeOpen as LucideLockKeyholeOpen,
@@ -29880,6 +30307,7 @@ export {
   ReceiptSwissFranc as LucideReceiptSwissFranc,
   ReceiptText as LucideReceiptText,
   RectangleEllipsis as LucideRectangleEllipsis,
+  RectangleGoggles as LucideRectangleGoggles,
   RectangleHorizontal as LucideRectangleHorizontal,
   RectangleVertical as LucideRectangleVertical,
   Recycle as LucideRecycle,
@@ -29908,6 +30336,7 @@ export {
   Rotate3d as LucideRotate3D,
   Rotate3d as LucideRotate3d,
   RotateCcw as LucideRotateCcw,
+  RotateCcwKey as LucideRotateCcwKey,
   RotateCcwSquare as LucideRotateCcwSquare,
   RotateCw as LucideRotateCw,
   RotateCwSquare as LucideRotateCwSquare,
@@ -29920,6 +30349,7 @@ export {
   Rows4 as LucideRows4,
   Rss as LucideRss,
   Ruler as LucideRuler,
+  RulerDimensionLine as LucideRulerDimensionLine,
   RussianRuble as LucideRussianRuble,
   Sailboat as LucideSailboat,
   Salad as LucideSalad,
@@ -29998,6 +30428,7 @@ export {
   ShoppingCart as LucideShoppingCart,
   Shovel as LucideShovel,
   ShowerHead as LucideShowerHead,
+  Shredder as LucideShredder,
   Shrimp as LucideShrimp,
   Shrink as LucideShrink,
   Shrub as LucideShrub,
@@ -30046,6 +30477,7 @@ export {
   SpellCheck as LucideSpellCheck,
   SpellCheck2 as LucideSpellCheck2,
   Spline as LucideSpline,
+  SplinePointer as LucideSplinePointer,
   Split as LucideSplit,
   SquareSplitHorizontal as LucideSplitSquareHorizontal,
   SquareSplitVertical as LucideSplitSquareVertical,
@@ -30113,6 +30545,10 @@ export {
   SquareUser as LucideSquareUser,
   SquareUserRound as LucideSquareUserRound,
   SquareX as LucideSquareX,
+  SquaresExclude as LucideSquaresExclude,
+  SquaresIntersect as LucideSquaresIntersect,
+  SquaresSubtract as LucideSquaresSubtract,
+  SquaresUnite as LucideSquaresUnite,
   Squircle as LucideSquircle,
   Squirrel as LucideSquirrel,
   Stamp as LucideStamp,
@@ -30151,6 +30587,7 @@ export {
   TableCellsMerge as LucideTableCellsMerge,
   TableCellsSplit as LucideTableCellsSplit,
   TableColumnsSplit as LucideTableColumnsSplit,
+  Columns3Cog as LucideTableConfig,
   TableOfContents as LucideTableOfContents,
   TableProperties as LucideTableProperties,
   TableRowsSplit as LucideTableRowsSplit,
@@ -30233,6 +30670,7 @@ export {
   TriangleRight as LucideTriangleRight,
   Trophy as LucideTrophy,
   Truck as LucideTruck,
+  TruckElectric as LucideTruckElectric,
   Turtle as LucideTurtle,
   Tv as LucideTv,
   TvMinimal as LucideTv2,
@@ -30268,6 +30706,7 @@ export {
   CircleUserRound as LucideUserCircle2,
   UserCog as LucideUserCog,
   UserRoundCog as LucideUserCog2,
+  UserLock as LucideUserLock,
   UserMinus as LucideUserMinus,
   UserRoundMinus as LucideUserMinus2,
   UserPen as LucideUserPen,
@@ -30338,6 +30777,7 @@ export {
   WifiHigh as LucideWifiHigh,
   WifiLow as LucideWifiLow,
   WifiOff as LucideWifiOff,
+  WifiPen as LucideWifiPen,
   WifiZero as LucideWifiZero,
   Wind as LucideWind,
   WindArrowDown as LucideWindArrowDown,
@@ -30968,6 +31408,8 @@ export {
   ReceiptText as ReceiptTextIcon,
   RectangleEllipsis,
   RectangleEllipsis as RectangleEllipsisIcon,
+  RectangleGoggles,
+  RectangleGoggles as RectangleGogglesIcon,
   RectangleHorizontal,
   RectangleHorizontal as RectangleHorizontalIcon,
   RectangleVertical,
@@ -31024,6 +31466,8 @@ export {
   Rotate3d as Rotate3dIcon,
   RotateCcw,
   RotateCcw as RotateCcwIcon,
+  RotateCcwKey,
+  RotateCcwKey as RotateCcwKeyIcon,
   RotateCcwSquare,
   RotateCcwSquare as RotateCcwSquareIcon,
   RotateCw,
@@ -31047,6 +31491,8 @@ export {
   Rss,
   Rss as RssIcon,
   Ruler,
+  RulerDimensionLine,
+  RulerDimensionLine as RulerDimensionLineIcon,
   Ruler as RulerIcon,
   RussianRuble,
   RussianRuble as RussianRubleIcon,
@@ -31205,6 +31651,8 @@ export {
   Shovel as ShovelIcon,
   ShowerHead,
   ShowerHead as ShowerHeadIcon,
+  Shredder,
+  Shredder as ShredderIcon,
   Shrimp,
   Shrimp as ShrimpIcon,
   Shrink,
@@ -31301,6 +31749,8 @@ export {
   SpellCheck as SpellCheckIcon,
   Spline,
   Spline as SplineIcon,
+  SplinePointer,
+  SplinePointer as SplinePointerIcon,
   Split,
   Split as SplitIcon,
   SquareSplitHorizontal as SplitSquareHorizontal,
@@ -31435,6 +31885,14 @@ export {
   SquareUserRound as SquareUserRoundIcon,
   SquareX,
   SquareX as SquareXIcon,
+  SquaresExclude,
+  SquaresExclude as SquaresExcludeIcon,
+  SquaresIntersect,
+  SquaresIntersect as SquaresIntersectIcon,
+  SquaresSubtract,
+  SquaresSubtract as SquaresSubtractIcon,
+  SquaresUnite,
+  SquaresUnite as SquaresUniteIcon,
   Squircle,
   Squircle as SquircleIcon,
   Squirrel,
@@ -31510,6 +31968,8 @@ export {
   TableCellsSplit as TableCellsSplitIcon,
   TableColumnsSplit,
   TableColumnsSplit as TableColumnsSplitIcon,
+  Columns3Cog as TableConfig,
+  Columns3Cog as TableConfigIcon,
   Table as TableIcon,
   TableOfContents,
   TableOfContents as TableOfContentsIcon,
@@ -31674,6 +32134,8 @@ export {
   Trophy,
   Trophy as TrophyIcon,
   Truck,
+  TruckElectric,
+  TruckElectric as TruckElectricIcon,
   Truck as TruckIcon,
   Turtle,
   Turtle as TurtleIcon,
@@ -31745,6 +32207,8 @@ export {
   UserRoundCog as UserCog2Icon,
   UserCog as UserCogIcon,
   User as UserIcon,
+  UserLock,
+  UserLock as UserLockIcon,
   UserMinus,
   UserRoundMinus as UserMinus2,
   UserRoundMinus as UserMinus2Icon,
@@ -31885,6 +32349,8 @@ export {
   WifiLow as WifiLowIcon,
   WifiOff,
   WifiOff as WifiOffIcon,
+  WifiPen,
+  WifiPen as WifiPenIcon,
   WifiZero,
   WifiZero as WifiZeroIcon,
   Wind,

@@ -207,15 +207,14 @@ type FieldArrayPath<TFieldValues extends FieldValues> = ArrayPath<TFieldValues>;
  * PathValue<[number, string], '1'> = string
  * ```
  */
-type PathValue<T, P extends Path<T> | ArrayPath<T>> = T extends any
+type PathValue<T, P extends Path<T> | ArrayPath<T>> = PathValueImpl<T, P>;
+type PathValueImpl<T, P extends string> = T extends any
   ? P extends `${infer K}.${infer R}`
     ? K extends keyof T
-      ? R extends Path<T[K]>
-        ? PathValue<T[K], R>
-        : never
+      ? PathValueImpl<T[K], R>
       : K extends `${ArrayKey}`
         ? T extends ReadonlyArray<infer V>
-          ? PathValue<V, R & Path<V>>
+          ? PathValueImpl<V, R>
           : never
         : never
     : P extends keyof T
@@ -283,10 +282,11 @@ type UseFieldArrayProps<
   TFieldArrayName extends
     FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
+  TTransformedValues = TFieldValues,
 > = {
   name: TFieldArrayName;
   keyName?: TKeyName;
-  control?: Control<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
   rules?: {
     validate?:
       | Validate<FieldArray<TFieldValues, TFieldArrayName>[], TFieldValues>
@@ -542,17 +542,18 @@ type UseFieldArrayReturn<
   fields: FieldArrayWithId<TFieldValues, TFieldArrayName, TKeyName>[];
 };
 
-type ResolverSuccess<TFieldValues extends FieldValues = FieldValues> = {
-  values: TFieldValues;
+type ResolverSuccess<TTransformedValues> = {
+  values: TTransformedValues;
   errors: {};
 };
 type ResolverError<TFieldValues extends FieldValues = FieldValues> = {
   values: {};
   errors: FieldErrors<TFieldValues>;
 };
-type ResolverResult<TFieldValues extends FieldValues = FieldValues> =
-  | ResolverSuccess<TFieldValues>
-  | ResolverError<TFieldValues>;
+type ResolverResult<
+  TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues = TFieldValues,
+> = ResolverSuccess<TTransformedValues> | ResolverError<TFieldValues>;
 interface ResolverOptions<TFieldValues extends FieldValues> {
   criteriaMode?: CriteriaMode;
   fields: Record<InternalFieldName, Field["_f"]>;
@@ -562,11 +563,14 @@ interface ResolverOptions<TFieldValues extends FieldValues> {
 type Resolver<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
+  TTransformedValues = TFieldValues,
 > = (
   values: TFieldValues,
   context: TContext | undefined,
   options: ResolverOptions<TFieldValues>,
-) => Promise<ResolverResult<TFieldValues>> | ResolverResult<TFieldValues>;
+) =>
+  | Promise<ResolverResult<TFieldValues, TTransformedValues>>
+  | ResolverResult<TFieldValues, TTransformedValues>;
 
 declare const $NestedValue: unique symbol;
 /**
@@ -575,19 +579,6 @@ declare const $NestedValue: unique symbol;
 type NestedValue<TValue extends object = object> = {
   [$NestedValue]: never;
 } & TValue;
-/**
- * @deprecated to be removed in the next major version
- */
-type UnpackNestedValue<T> =
-  T extends NestedValue<infer U>
-    ? U
-    : T extends Date | FileList | File | Blob
-      ? T
-      : T extends object
-        ? {
-            [K in keyof T]: UnpackNestedValue<T[K]>;
-          }
-        : T;
 type DefaultValues<TFieldValues> =
   TFieldValues extends AsyncDefaultValues<TFieldValues>
     ? DeepPartial<Awaited<TFieldValues>>
@@ -603,12 +594,12 @@ type ValidationModeFlags = {
   isOnTouch: boolean;
 };
 type CriteriaMode = "firstError" | "all";
-type SubmitHandler<TFieldValues extends FieldValues> = (
-  data: TFieldValues,
+type SubmitHandler<T> = (
+  data: T,
   event?: React.BaseSyntheticEvent,
 ) => unknown | Promise<unknown>;
-type FormSubmitHandler<TFieldValues extends FieldValues> = (payload: {
-  data: TFieldValues;
+type FormSubmitHandler<TTransformedValues> = (payload: {
+  data: TTransformedValues;
   event?: React.BaseSyntheticEvent;
   formData: FormData;
   formDataJson: string;
@@ -637,6 +628,7 @@ type AsyncDefaultValues<TFieldValues> = (
 type UseFormProps<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
+  TTransformedValues = TFieldValues,
 > = Partial<{
   mode: Mode;
   disabled: boolean;
@@ -645,7 +637,7 @@ type UseFormProps<
   values: TFieldValues;
   errors: FieldErrors<TFieldValues>;
   resetOptions: Parameters<UseFormReset<TFieldValues>>[1];
-  resolver: Resolver<TFieldValues, TContext>;
+  resolver: Resolver<TFieldValues, TContext, TTransformedValues>;
   context: TContext;
   shouldFocusError: boolean;
   shouldUnregister: boolean;
@@ -653,6 +645,10 @@ type UseFormProps<
   progressive: boolean;
   criteriaMode: CriteriaMode;
   delayError: number;
+  formControl?: Omit<
+    UseFormReturn<TFieldValues, TContext, TTransformedValues>,
+    "formState"
+  >;
 }>;
 type FieldNamesMarkedBoolean<TFieldValues extends FieldValues> = DeepMap<
   DeepPartial<TFieldValues>,
@@ -669,6 +665,8 @@ type FormStateProxy<TFieldValues extends FieldValues = FieldValues> = {
 };
 type ReadFormState = {
   [K in keyof FormStateProxy]: boolean | "all";
+} & {
+  values?: boolean;
 };
 type FormState<TFieldValues extends FieldValues> = {
   isDirty: boolean;
@@ -685,6 +683,7 @@ type FormState<TFieldValues extends FieldValues> = {
   touchedFields: Partial<Readonly<FieldNamesMarkedBoolean<TFieldValues>>>;
   validatingFields: Partial<Readonly<FieldNamesMarkedBoolean<TFieldValues>>>;
   errors: FieldErrors<TFieldValues>;
+  isReady: boolean;
 };
 type KeepStateOptions = Partial<{
   keepDirtyValues: boolean;
@@ -882,6 +881,36 @@ type UseFormGetFieldState<TFieldValues extends FieldValues> = <
   isValidating: boolean;
   error?: FieldError;
 };
+/**
+ * This method will allow you to subscribe to formState without component render
+ *
+ * @remarks
+ * [API](https://react-hook-form.com/docs/useform/subscribe) • [Demo](https://codesandbox.io/s/subscribe)
+ *
+ * @param options - subscription options on which formState subscribe to
+ *
+ * @example
+ * ```tsx
+const { subscribe } = useForm()
+
+useEffect(() => {
+ subscribe({
+   formState: { isDirty: true },
+   callback: () => {}
+ })
+})
+ * ```
+ */
+type UseFromSubscribe<TFieldValues extends FieldValues> = (payload: {
+  name?: string;
+  formState?: Partial<ReadFormState>;
+  callback: (
+    data: Partial<FormState<TFieldValues>> & {
+      values: TFieldValues;
+    },
+  ) => void;
+  exact?: boolean;
+}) => () => void;
 type UseFormWatch<TFieldValues extends FieldValues> = {
   /**
    * Watch and subscribe to the entire form update/change based on onChange and re-render at the useForm.
@@ -1139,13 +1168,9 @@ type UseFormUnregister<TFieldValues extends FieldValues> = (
  */
 type UseFormHandleSubmit<
   TFieldValues extends FieldValues,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 > = (
-  onValid: TTransformedValues extends undefined
-    ? SubmitHandler<TFieldValues>
-    : TTransformedValues extends FieldValues
-      ? SubmitHandler<TTransformedValues>
-      : never,
+  onValid: SubmitHandler<TTransformedValues>,
   onInvalid?: SubmitErrorHandler<TFieldValues>,
 ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
 /**
@@ -1231,14 +1256,11 @@ type GetIsDirty = <TName extends InternalFieldName, TData>(
 type FormStateSubjectRef<TFieldValues extends FieldValues> = Subject<
   Partial<FormState<TFieldValues>> & {
     name?: InternalFieldName;
+    values?: TFieldValues;
+    type?: EventType;
   }
 >;
 type Subjects<TFieldValues extends FieldValues = FieldValues> = {
-  values: Subject<{
-    name?: InternalFieldName;
-    type?: EventType;
-    values: FieldValues;
-  }>;
   array: Subject<{
     name?: InternalFieldName;
     values?: FieldValues;
@@ -1272,7 +1294,22 @@ type BatchFieldArrayUpdate = <
   shouldSetValue?: boolean,
   shouldUpdateFieldsAndErrors?: boolean,
 ) => void;
-type Control<TFieldValues extends FieldValues = FieldValues, TContext = any> = {
+type FromSubscribe<TFieldValues extends FieldValues> = (payload: {
+  name?: string;
+  formState?: Partial<ReadFormState>;
+  callback: (
+    data: Partial<FormState<TFieldValues>> & {
+      values: TFieldValues;
+    },
+  ) => void;
+  exact?: boolean;
+  reRenderRoot?: boolean;
+}) => () => void;
+type Control<
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+> = {
   _subjects: Subjects<TFieldValues>;
   _removeUnmounted: Noop;
   _names: Names;
@@ -1282,44 +1319,32 @@ type Control<TFieldValues extends FieldValues = FieldValues, TContext = any> = {
     watch: boolean;
   };
   _reset: UseFormReset<TFieldValues>;
-  _options: UseFormProps<TFieldValues, TContext>;
+  _options: UseFormProps<TFieldValues, TContext, TTransformedValues>;
   _getDirty: GetIsDirty;
   _resetDefaultValues: Noop;
   _formState: FormState<TFieldValues>;
-  _updateValid: (shouldUpdateValid?: boolean) => void;
-  _updateFormState: (formState: Partial<FormState<TFieldValues>>) => void;
+  _setValid: (shouldUpdateValid?: boolean) => void;
   _fields: FieldRefs;
   _formValues: FieldValues;
   _proxyFormState: ReadFormState;
   _defaultValues: Partial<DefaultValues<TFieldValues>>;
   _getWatch: WatchInternal<TFieldValues>;
-  _updateFieldArray: BatchFieldArrayUpdate;
+  _setFieldArray: BatchFieldArrayUpdate;
   _getFieldArray: <TFieldArrayValues>(
     name: InternalFieldName,
   ) => Partial<TFieldArrayValues>[];
   _setErrors: (errors: FieldErrors<TFieldValues>) => void;
-  _updateDisabledField: (
-    props: {
-      disabled?: boolean;
-      name: FieldName<any>;
-      value?: unknown;
-    } & (
-      | {
-          field?: Field;
-          fields?: undefined;
-        }
-      | {
-          field?: undefined;
-          fields?: FieldRefs;
-        }
-    ),
-  ) => void;
-  _executeSchema: (names: InternalFieldName[]) => Promise<{
+  _setDisabledField: (props: {
+    disabled?: boolean;
+    name: FieldName<any>;
+  }) => void;
+  _runSchema: (names: InternalFieldName[]) => Promise<{
     errors: FieldErrors;
   }>;
-  register: UseFormRegister<TFieldValues>;
-  handleSubmit: UseFormHandleSubmit<TFieldValues>;
   _disableForm: (disabled?: boolean) => void;
+  _subscribe: FromSubscribe<TFieldValues>;
+  register: UseFormRegister<TFieldValues>;
+  handleSubmit: UseFormHandleSubmit<TFieldValues, TTransformedValues>;
   unregister: UseFormUnregister<TFieldValues>;
   getFieldState: UseFormGetFieldState<TFieldValues>;
   setError: UseFormSetError<TFieldValues>;
@@ -1335,7 +1360,7 @@ type WatchObserver<TFieldValues extends FieldValues> = (
 type UseFormReturn<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 > = {
   watch: UseFormWatch<TFieldValues>;
   getValues: UseFormGetValues<TFieldValues>;
@@ -1349,12 +1374,16 @@ type UseFormReturn<
   reset: UseFormReset<TFieldValues>;
   handleSubmit: UseFormHandleSubmit<TFieldValues, TTransformedValues>;
   unregister: UseFormUnregister<TFieldValues>;
-  control: Control<TFieldValues, TContext>;
+  control: Control<TFieldValues, TContext, TTransformedValues>;
   register: UseFormRegister<TFieldValues>;
   setFocus: UseFormSetFocus<TFieldValues>;
+  subscribe: UseFromSubscribe<TFieldValues>;
 };
-type UseFormStateProps<TFieldValues extends FieldValues> = Partial<{
-  control?: Control<TFieldValues>;
+type UseFormStateProps<
+  TFieldValues extends FieldValues,
+  TTransformedValues = TFieldValues,
+> = Partial<{
+  control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   name?:
     | FieldPath<TFieldValues>
@@ -1377,16 +1406,16 @@ type UseWatchProps<TFieldValues extends FieldValues = FieldValues> = {
 type FormProviderProps<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 > = {
   children: React.ReactNode | React.ReactNode[];
 } & UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 type FormProps<
   TFieldValues extends FieldValues,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 > = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onError" | "onSubmit"> &
   Partial<{
-    control: Control<TFieldValues>;
+    control: Control<TFieldValues, any, TTransformedValues>;
     headers: Record<string, string>;
     validateStatus: (status: number) => boolean;
     onError: ({
@@ -1402,9 +1431,7 @@ type FormProps<
           error: unknown;
         }) => void;
     onSuccess: ({ response }: { response: Response }) => void;
-    onSubmit: TTransformedValues extends FieldValues
-      ? FormSubmitHandler<TTransformedValues>
-      : FormSubmitHandler<TFieldValues>;
+    onSubmit: FormSubmitHandler<TTransformedValues>;
     method: "post" | "put" | "delete";
     children: React.ReactNode | React.ReactNode[];
     render: (props: {
@@ -1418,17 +1445,17 @@ type FormProps<
   }>;
 
 type Noop = () => void;
-interface File$1 extends Blob {
+interface File extends Blob {
   readonly lastModified: number;
   readonly name: string;
 }
 interface FileList$1 {
   readonly length: number;
-  item(index: number): File$1 | null;
-  [index: number]: File$1;
+  item(index: number): File | null;
+  [index: number]: File;
 }
 type Primitive = null | undefined | string | number | boolean | symbol | bigint;
-type BrowserNativeObject = Date | FileList$1 | File$1;
+type BrowserNativeObject = Date | FileList$1 | File;
 type EmptyObject = {
   [K in string | number]: never;
 };
@@ -1694,6 +1721,7 @@ type ControllerRenderProps<
 type UseControllerProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
 > = {
   name: TName;
   rules?: Omit<
@@ -1702,7 +1730,7 @@ type UseControllerProps<
   >;
   shouldUnregister?: boolean;
   defaultValue?: FieldPathValue<TFieldValues, TName>;
-  control?: Control<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
 };
 type UseControllerReturn<
@@ -1737,6 +1765,7 @@ type UseControllerReturn<
 type ControllerProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
 > = {
   render: ({
     field,
@@ -1747,7 +1776,7 @@ type ControllerProps<
     fieldState: ControllerFieldState;
     formState: UseFormStateReturn<TFieldValues>;
   }) => React.ReactElement;
-} & UseControllerProps<TFieldValues, TName>;
+} & UseControllerProps<TFieldValues, TName, TTransformedValues>;
 
 /**
  * Component based on `useController` hook to work with controlled component.
@@ -1794,8 +1823,9 @@ type ControllerProps<
 declare const Controller: <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
 >(
-  props: ControllerProps<TFieldValues, TName>,
+  props: ControllerProps<TFieldValues, TName, TTransformedValues>,
 ) => React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
 //# sourceMappingURL=controller.d.ts.map
 
@@ -1822,9 +1852,9 @@ declare const Controller: <
  * ```
  */
 declare function Form<
-  T extends FieldValues,
-  U extends FieldValues | undefined = undefined,
->(props: FormProps<T, U>): React.JSX.Element;
+  TFieldValues extends FieldValues,
+  TTransformedValues = TFieldValues,
+>(props: FormProps<TFieldValues, TTransformedValues>): React.JSX.Element;
 //# sourceMappingURL=form.d.ts.map
 
 declare const _default$2: (
@@ -1835,6 +1865,22 @@ declare const _default$2: (
   message: ValidateResult,
 ) => {};
 //# sourceMappingURL=appendErrors.d.ts.map
+
+declare function createFormControl<
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+>(
+  props?: UseFormProps<TFieldValues, TContext, TTransformedValues>,
+): Omit<
+  UseFormReturn<TFieldValues, TContext, TTransformedValues>,
+  "formState"
+> & {
+  formControl: Omit<
+    UseFormReturn<TFieldValues, TContext, TTransformedValues>,
+    "formState"
+  >;
+};
 
 /**
  * Custom hook to work with controlled component, this function provide you with both form and field level state. Re-render is isolated at the hook level.
@@ -1863,8 +1909,9 @@ declare const _default$2: (
 declare function useController<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
 >(
-  props: UseControllerProps<TFieldValues, TName>,
+  props: UseControllerProps<TFieldValues, TName, TTransformedValues>,
 ): UseControllerReturn<TFieldValues, TName>;
 
 /**
@@ -1909,8 +1956,14 @@ declare function useFieldArray<
   TFieldArrayName extends
     FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
+  TTransformedValues = TFieldValues,
 >(
-  props: UseFieldArrayProps<TFieldValues, TFieldArrayName, TKeyName>,
+  props: UseFieldArrayProps<
+    TFieldValues,
+    TFieldArrayName,
+    TKeyName,
+    TTransformedValues
+  >,
 ): UseFieldArrayReturn<TFieldValues, TFieldArrayName, TKeyName>;
 
 /**
@@ -1945,9 +1998,9 @@ declare function useFieldArray<
 declare function useForm<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 >(
-  props?: UseFormProps<TFieldValues, TContext>,
+  props?: UseFormProps<TFieldValues, TContext, TTransformedValues>,
 ): UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 
 /**
@@ -1983,8 +2036,8 @@ declare function useForm<
 declare const useFormContext: <
   TFieldValues extends FieldValues,
   TContext = any,
-  TransformedValues extends FieldValues | undefined = undefined,
->() => UseFormReturn<TFieldValues, TContext, TransformedValues>;
+  TTransformedValues = TFieldValues,
+>() => UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 /**
  * A provider component that propagates the `useForm` methods to all children components via [React Context](https://reactjs.org/docs/context.html) API. To be used with {@link useFormContext}.
  *
@@ -2018,7 +2071,7 @@ declare const useFormContext: <
 declare const FormProvider: <
   TFieldValues extends FieldValues,
   TContext = any,
-  TTransformedValues extends FieldValues | undefined = undefined,
+  TTransformedValues = TFieldValues,
 >(
   props: FormProviderProps<TFieldValues, TContext, TTransformedValues>,
 ) => React.JSX.Element;
@@ -2053,10 +2106,12 @@ declare const FormProvider: <
  * }
  * ```
  */
-declare function useFormState<TFieldValues extends FieldValues = FieldValues>(
-  props?: UseFormStateProps<TFieldValues>,
+declare function useFormState<
+  TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues = TFieldValues,
+>(
+  props?: UseFormStateProps<TFieldValues, TTransformedValues>,
 ): UseFormStateReturn<TFieldValues>;
-//# sourceMappingURL=useFormState.d.ts.map
 
 /**
  * Subscribe to the entire form values change and re-render at the hook level.
@@ -2081,9 +2136,10 @@ declare function useFormState<TFieldValues extends FieldValues = FieldValues>(
  */
 declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues = TFieldValues,
 >(props: {
   defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
-  control?: Control<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
 }): DeepPartialSkipArrayKey<TFieldValues>;
@@ -2110,10 +2166,11 @@ declare function useWatch<
 declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
 >(props: {
   name: TFieldName;
   defaultValue?: FieldPathValue<TFieldValues, TFieldName>;
-  control?: Control<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
 }): FieldPathValue<TFieldValues, TFieldName>;
@@ -2144,10 +2201,11 @@ declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
   TFieldNames extends
     readonly FieldPath<TFieldValues>[] = readonly FieldPath<TFieldValues>[],
+  TTransformedValues = TFieldValues,
 >(props: {
   name: readonly [...TFieldNames];
   defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
-  control?: Control<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
 }): FieldPathValues<TFieldValues, TFieldNames>;
@@ -2179,7 +2237,7 @@ declare const _default: (
   object: FieldValues,
   path: FieldPath<FieldValues>,
   value?: unknown,
-) => FieldValues | undefined;
+) => void;
 //# sourceMappingURL=set.d.ts.map
 
 export {
@@ -2231,6 +2289,7 @@ export {
   type FormStateProxy,
   type FormStateSubjectRef,
   type FormSubmitHandler,
+  type FromSubscribe,
   type GetIsDirty,
   type GlobalError,
   type InputValidationRules,
@@ -2274,7 +2333,6 @@ export {
   type SubmitErrorHandler,
   type SubmitHandler,
   type TriggerConfig,
-  type UnpackNestedValue,
   type UseControllerProps,
   type UseControllerReturn,
   type UseFieldArrayAppend,
@@ -2305,6 +2363,7 @@ export {
   type UseFormTrigger,
   type UseFormUnregister,
   type UseFormWatch,
+  type UseFromSubscribe,
   type UseWatchProps,
   type Validate,
   type ValidateResult,
@@ -2316,6 +2375,7 @@ export {
   type WatchInternal,
   type WatchObserver,
   _default$2 as appendErrors,
+  createFormControl,
   _default$1 as get,
   _default as set,
   useController,

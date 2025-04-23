@@ -66,10 +66,6 @@
   --animate-in: enter var(--tw-duration, 150ms) var(--tw-ease, ease);
   --animate-out: exit var(--tw-duration, 150ms) var(--tw-ease, ease);
 
-  --animate-accordion-down: accordion-down var(--tw-duration, 200ms) ease-out;
-  --animate-accordion-up: accordion-up var(--tw-duration, 200ms) ease-out;
-  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
-
   @keyframes enter {
     from {
       opacity: var(--tw-enter-opacity, 1);
@@ -88,23 +84,58 @@
     }
   }
 
+  /*
+  * Radix and Bits UI utilize CSS variables to define the height of Accordion and Collapsible
+  * content during open/close animations. The \`--radix/bits-accordion-content-height\` variables
+  * control the height of Accordion content, while collapsible variables are used for Collapsibles.
+  *
+  * The fallback value \`auto\` is used here, but it depends on the \`interpolate-size: allow-keywords\`
+  * property, which currently has limited browser support. For more details, see: 
+  * <https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size>
+  */
+
+  --animate-accordion-down: accordion-down var(--tw-duration, 200ms) ease-out;
+  --animate-accordion-up: accordion-up var(--tw-duration, 200ms) ease-out;
+  --animate-collapsible-down: collapsible-down var(--tw-duration, 200ms) ease-out;
+  --animate-collapsible-up: collapsible-up var(--tw-duration, 200ms) ease-out;
+
   @keyframes accordion-down {
     from {
       height: 0;
     }
     to {
-      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height));
+      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height, auto));
     }
   }
 
   @keyframes accordion-up {
     from {
-      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height));
+      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height, auto));
     }
     to {
       height: 0;
     }
   }
+
+  @keyframes collapsible-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height, var(--bits-collapsible-content-height, auto));
+    }
+  }
+
+  @keyframes collapsible-up {
+    from {
+      height: var(--radix-collapsible-content-height, var(--bits-collapsible-content-height, auto));
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
 
   @keyframes caret-blink {
     0%,
@@ -130,19 +161,19 @@
 
 @utility delay-* {
   animation-delay: calc(--value(number) * 1ms);
-  animation-delay: --value(--animation-delay- *, [duration], [ *]);
+  animation-delay: --value(--animation-delay- *, [duration], "initial", [ *]);
 }
 
 @utility repeat-* {
-  animation-iteration-count: --value(--animation-repeat- *, number);
+  animation-iteration-count: --value(--animation-repeat- *, number, "initial", [ *]);
 }
 
 @utility direction-* {
-  animation-direction: --value(--animation-direction- *);
+  animation-direction: --value(--animation-direction- *, "initial", [ *]);
 }
 
 @utility fill-mode-* {
-  animation-fill-mode: --value(--animation-fill-mode- *);
+  animation-fill-mode: --value(--animation-fill-mode- *, "initial", [ *]);
 }
 
 @utility running {
@@ -151,11 +182,15 @@
 @utility paused {
   animation-play-state: paused;
 }
+@utility play-state-* {
+  animation-play-state: --value("initial", [ *]);
+}
 
 @utility fade-in {
   --tw-enter-opacity: 0;
 }
 @utility fade-in-* {
+  --tw-enter-opacity: calc(--value(number) / 100);
   --tw-enter-opacity: --value(--percentage- *, [ *]);
 }
 
@@ -163,6 +198,7 @@
   --tw-exit-opacity: 0;
 }
 @utility fade-out-* {
+  --tw-exit-opacity: calc(--value(number) / 100);
   --tw-exit-opacity: --value(--percentage- *, [ *]);
 }
 
@@ -206,7 +242,7 @@
 @utility slide-in-from-top-* {
   --tw-enter-translate-y: calc(--value(integer) * var(--spacing) * -1);
   --tw-enter-translate-y: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
-  --tw-enter-translate-y: calc(--value(ratio) * 100%);
+  --tw-enter-translate-y: calc(--value(ratio) * -100%);
   --tw-enter-translate-y: calc(--value(--translate- *, [percentage], [length]) * -1);
 }
 @utility slide-in-from-bottom {

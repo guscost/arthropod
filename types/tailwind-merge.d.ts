@@ -94,7 +94,7 @@ interface ParsedClassName {
    *
    * This property is prefixed with "maybe" because tailwind-merge does not know whether something is a postfix modifier or part of the base class since it's possible to configure Tailwind CSS classes which include a `/` in the base class name.
    *
-   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If tht fails, it tries again with the possible postfix modifier.
+   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If that fails, it tries again with the possible postfix modifier.
    *
    * @example 11 // for `bg-gray-100/50`
    */
@@ -128,8 +128,10 @@ interface ConfigGroupsPart<
   /**
    * Conflicting classes across groups.
    *
-   * The key is ID of class group which creates conflict, values are IDs of class groups which receive a conflict.
-   * A class group ID is the key of a class group in classGroups object.
+   * The key is the ID of a class group which creates a conflict, values are IDs of class groups which receive a conflict. That means if a class from from the key ID is present, all preceding classes from the values are removed.
+   *
+   * A class group ID is the key of a class group in the classGroups object.
+   *
    * @example { gap: ['gap-x', 'gap-y'] }
    */
   conflictingClassGroups: NoInfer<
@@ -139,6 +141,7 @@ interface ConfigGroupsPart<
    * Postfix modifiers conflicting with other class groups.
    *
    * A class group ID is the key of a class group in classGroups object.
+   *
    * @example { 'font-size': ['leading'] }
    */
   conflictingClassGroupModifiers: NoInfer<
@@ -217,6 +220,7 @@ type DefaultThemeGroupIds =
   | "shadow"
   | "spacing"
   | "text"
+  | "text-shadow"
   | "tracking";
 /**
  * Class group IDs included in the default configuration of tailwind-merge.
@@ -305,6 +309,7 @@ type DefaultClassGroupIds =
   | "divide-y-reverse"
   | "divide-y"
   | "drop-shadow"
+  | "drop-shadow-color"
   | "duration"
   | "ease"
   | "end"
@@ -365,6 +370,57 @@ type DefaultClassGroupIds =
   | "list-style-position"
   | "list-style-type"
   | "m"
+  | "mask-clip"
+  | "mask-composite"
+  | "mask-image-b-from-color"
+  | "mask-image-b-from-pos"
+  | "mask-image-b-to-color"
+  | "mask-image-b-to-pos"
+  | "mask-image-conic-from-color"
+  | "mask-image-conic-from-pos"
+  | "mask-image-conic-pos"
+  | "mask-image-conic-to-color"
+  | "mask-image-conic-to-pos"
+  | "mask-image-l-from-color"
+  | "mask-image-l-from-pos"
+  | "mask-image-l-to-color"
+  | "mask-image-l-to-pos"
+  | "mask-image-linear-from-color"
+  | "mask-image-linear-from-pos"
+  | "mask-image-linear-pos"
+  | "mask-image-linear-to-color"
+  | "mask-image-linear-to-pos"
+  | "mask-image-r-from-color"
+  | "mask-image-r-from-pos"
+  | "mask-image-r-to-color"
+  | "mask-image-r-to-pos"
+  | "mask-image-radial-from-color"
+  | "mask-image-radial-from-pos"
+  | "mask-image-radial-pos"
+  | "mask-image-radial-shape"
+  | "mask-image-radial-size"
+  | "mask-image-radial-to-color"
+  | "mask-image-radial-to-pos"
+  | "mask-image-radial"
+  | "mask-image-t-from-color"
+  | "mask-image-t-from-pos"
+  | "mask-image-t-to-color"
+  | "mask-image-t-to-pos"
+  | "mask-image-x-from-color"
+  | "mask-image-x-from-pos"
+  | "mask-image-x-to-color"
+  | "mask-image-x-to-pos"
+  | "mask-image-y-from-color"
+  | "mask-image-y-from-pos"
+  | "mask-image-y-to-color"
+  | "mask-image-y-to-pos"
+  | "mask-image"
+  | "mask-mode"
+  | "mask-origin"
+  | "mask-position"
+  | "mask-repeat"
+  | "mask-size"
+  | "mask-type"
   | "max-h"
   | "max-w"
   | "mb"
@@ -492,6 +548,8 @@ type DefaultClassGroupIds =
   | "text-decoration-thickness"
   | "text-decoration"
   | "text-overflow"
+  | "text-shadow"
+  | "text-shadow-color"
   | "text-transform"
   | "text-wrap"
   | "top"
@@ -516,6 +574,7 @@ type DefaultClassGroupIds =
   | "w"
   | "whitespace"
   | "will-change"
+  | "wrap"
   | "z";
 type AnyClassGroupIds = string;
 type AnyThemeGroupIds = string;
@@ -576,6 +635,7 @@ declare const getDefaultConfig: () => {
     readonly shadow: readonly [(value: string) => boolean];
     readonly spacing: readonly ["px", (value: string) => boolean];
     readonly text: readonly [(value: string) => boolean];
+    readonly "text-shadow": readonly [(value: string) => boolean];
     readonly tracking: readonly [
       "tighter",
       "tight",
@@ -774,15 +834,19 @@ declare const getDefaultConfig: () => {
     readonly "object-position": readonly [
       {
         readonly object: readonly [
-          "bottom",
           "center",
-          "left",
-          "left-bottom",
-          "left-top",
-          "right",
-          "right-bottom",
-          "right-top",
           "top",
+          "bottom",
+          "left",
+          "right",
+          "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
           (value: string) => boolean,
           (value: string) => boolean,
         ];
@@ -1162,6 +1226,7 @@ declare const getDefaultConfig: () => {
           },
           (value: string) => boolean,
           (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -1224,6 +1289,7 @@ declare const getDefaultConfig: () => {
               (value: string) => boolean,
             ];
           },
+          (value: string) => boolean,
           (value: string) => boolean,
           (value: string) => boolean,
         ];
@@ -1358,6 +1424,8 @@ declare const getDefaultConfig: () => {
           "evenly",
           "stretch",
           "baseline",
+          "center-safe",
+          "end-safe",
           "normal",
         ];
       },
@@ -1373,6 +1441,8 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
+          "center-safe",
+          "end-safe",
           "normal",
         ];
       },
@@ -1389,6 +1459,8 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
+          "center-safe",
+          "end-safe",
         ];
       },
     ];
@@ -1408,6 +1480,8 @@ declare const getDefaultConfig: () => {
           "evenly",
           "stretch",
           "baseline",
+          "center-safe",
+          "end-safe",
         ];
       },
     ];
@@ -1422,7 +1496,11 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
-          "baseline",
+          "center-safe",
+          "end-safe",
+          {
+            readonly baseline: readonly ["", "last"];
+          },
         ];
       },
     ];
@@ -1438,7 +1516,11 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
-          "baseline",
+          "center-safe",
+          "end-safe",
+          {
+            readonly baseline: readonly ["", "last"];
+          },
         ];
       },
     ];
@@ -1457,6 +1539,8 @@ declare const getDefaultConfig: () => {
           "evenly",
           "stretch",
           "baseline",
+          "center-safe",
+          "end-safe",
         ];
       },
     ];
@@ -1471,6 +1555,8 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
+          "center-safe",
+          "end-safe",
           "baseline",
         ];
       },
@@ -1487,6 +1573,8 @@ declare const getDefaultConfig: () => {
           "end",
           "center",
           "stretch",
+          "center-safe",
+          "end-safe",
         ];
       },
     ];
@@ -2339,6 +2427,15 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
+     * Overflow Wrap
+     * @see https://tailwindcss.com/docs/overflow-wrap
+     */
+    readonly wrap: readonly [
+      {
+        readonly wrap: readonly ["break-word", "anywhere", "normal"];
+      },
+    ];
+    /**
      * Hyphens
      * @see https://tailwindcss.com/docs/hyphens
      */
@@ -2394,17 +2491,27 @@ declare const getDefaultConfig: () => {
     readonly "bg-position": readonly [
       {
         readonly bg: readonly [
-          "bottom",
           "center",
-          "left",
-          "left-bottom",
-          "left-top",
-          "right",
-          "right-bottom",
-          "right-top",
           "top",
+          "bottom",
+          "left",
+          "right",
+          "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
           (value: string) => boolean,
           (value: string) => boolean,
+          {
+            readonly position: readonly [
+              (value: string) => boolean,
+              (value: string) => boolean,
+            ];
+          },
         ];
       },
     ];
@@ -2434,6 +2541,12 @@ declare const getDefaultConfig: () => {
           "contain",
           (value: string) => boolean,
           (value: string) => boolean,
+          {
+            readonly size: readonly [
+              (value: string) => boolean,
+              (value: string) => boolean,
+            ];
+          },
         ];
       },
     ];
@@ -2501,6 +2614,7 @@ declare const getDefaultConfig: () => {
         readonly from: readonly [
           (value: string) => boolean,
           (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -2513,6 +2627,7 @@ declare const getDefaultConfig: () => {
         readonly via: readonly [
           (value: string) => boolean,
           (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -2523,6 +2638,7 @@ declare const getDefaultConfig: () => {
     readonly "gradient-to-pos": readonly [
       {
         readonly to: readonly [
+          (value: string) => boolean,
           (value: string) => boolean,
           (value: string) => boolean,
         ];
@@ -3182,7 +3298,11 @@ declare const getDefaultConfig: () => {
      */
     readonly "outline-color": readonly [
       {
-        readonly outline: readonly [ThemeGetter];
+        readonly outline: readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
       },
     ];
     /**
@@ -3221,9 +3341,9 @@ declare const getDefaultConfig: () => {
       {
         readonly "inset-shadow": readonly [
           "none",
-          (value: string) => boolean,
-          (value: string) => boolean,
           ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -3331,6 +3451,33 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
+     * Text Shadow
+     * @see https://tailwindcss.com/docs/text-shadow
+     */
+    readonly "text-shadow": readonly [
+      {
+        readonly "text-shadow": readonly [
+          "none",
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Text Shadow Color
+     * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
+     */
+    readonly "text-shadow-color": readonly [
+      {
+        readonly "text-shadow": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
      * Opacity
      * @see https://tailwindcss.com/docs/opacity
      */
@@ -3398,6 +3545,543 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
+     * Mask Clip
+     * @see https://tailwindcss.com/docs/mask-clip
+     */
+    readonly "mask-clip": readonly [
+      {
+        readonly "mask-clip": readonly [
+          "border",
+          "padding",
+          "content",
+          "fill",
+          "stroke",
+          "view",
+        ];
+      },
+      "mask-no-clip",
+    ];
+    /**
+     * Mask Composite
+     * @see https://tailwindcss.com/docs/mask-composite
+     */
+    readonly "mask-composite": readonly [
+      {
+        readonly mask: readonly ["add", "subtract", "intersect", "exclude"];
+      },
+    ];
+    /**
+     * Mask Image
+     * @see https://tailwindcss.com/docs/mask-image
+     */
+    readonly "mask-image-linear-pos": readonly [
+      {
+        readonly "mask-linear": readonly [(value: string) => boolean];
+      },
+    ];
+    readonly "mask-image-linear-from-pos": readonly [
+      {
+        readonly "mask-linear-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-linear-to-pos": readonly [
+      {
+        readonly "mask-linear-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-linear-from-color": readonly [
+      {
+        readonly "mask-linear-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-linear-to-color": readonly [
+      {
+        readonly "mask-linear-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-t-from-pos": readonly [
+      {
+        readonly "mask-t-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-t-to-pos": readonly [
+      {
+        readonly "mask-t-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-t-from-color": readonly [
+      {
+        readonly "mask-t-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-t-to-color": readonly [
+      {
+        readonly "mask-t-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-r-from-pos": readonly [
+      {
+        readonly "mask-r-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-r-to-pos": readonly [
+      {
+        readonly "mask-r-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-r-from-color": readonly [
+      {
+        readonly "mask-r-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-r-to-color": readonly [
+      {
+        readonly "mask-r-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-b-from-pos": readonly [
+      {
+        readonly "mask-b-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-b-to-pos": readonly [
+      {
+        readonly "mask-b-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-b-from-color": readonly [
+      {
+        readonly "mask-b-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-b-to-color": readonly [
+      {
+        readonly "mask-b-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-l-from-pos": readonly [
+      {
+        readonly "mask-l-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-l-to-pos": readonly [
+      {
+        readonly "mask-l-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-l-from-color": readonly [
+      {
+        readonly "mask-l-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-l-to-color": readonly [
+      {
+        readonly "mask-l-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-x-from-pos": readonly [
+      {
+        readonly "mask-x-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-x-to-pos": readonly [
+      {
+        readonly "mask-x-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-x-from-color": readonly [
+      {
+        readonly "mask-x-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-x-to-color": readonly [
+      {
+        readonly "mask-x-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-y-from-pos": readonly [
+      {
+        readonly "mask-y-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-y-to-pos": readonly [
+      {
+        readonly "mask-y-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-y-from-color": readonly [
+      {
+        readonly "mask-y-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-y-to-color": readonly [
+      {
+        readonly "mask-y-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial": readonly [
+      {
+        readonly "mask-radial": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial-from-pos": readonly [
+      {
+        readonly "mask-radial-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial-to-pos": readonly [
+      {
+        readonly "mask-radial-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial-from-color": readonly [
+      {
+        readonly "mask-radial-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial-to-color": readonly [
+      {
+        readonly "mask-radial-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-radial-shape": readonly [
+      {
+        readonly "mask-radial": readonly ["circle", "ellipse"];
+      },
+    ];
+    readonly "mask-image-radial-size": readonly [
+      {
+        readonly "mask-radial": readonly [
+          {
+            readonly closest: readonly ["side", "corner"];
+            readonly farthest: readonly ["side", "corner"];
+          },
+        ];
+      },
+    ];
+    readonly "mask-image-radial-pos": readonly [
+      {
+        readonly "mask-radial-at": readonly [
+          "center",
+          "top",
+          "bottom",
+          "left",
+          "right",
+          "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
+        ];
+      },
+    ];
+    readonly "mask-image-conic-pos": readonly [
+      {
+        readonly "mask-conic": readonly [(value: string) => boolean];
+      },
+    ];
+    readonly "mask-image-conic-from-pos": readonly [
+      {
+        readonly "mask-conic-from": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-conic-to-pos": readonly [
+      {
+        readonly "mask-conic-to": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-conic-from-color": readonly [
+      {
+        readonly "mask-conic-from": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    readonly "mask-image-conic-to-color": readonly [
+      {
+        readonly "mask-conic-to": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Mask Mode
+     * @see https://tailwindcss.com/docs/mask-mode
+     */
+    readonly "mask-mode": readonly [
+      {
+        readonly mask: readonly ["alpha", "luminance", "match"];
+      },
+    ];
+    /**
+     * Mask Origin
+     * @see https://tailwindcss.com/docs/mask-origin
+     */
+    readonly "mask-origin": readonly [
+      {
+        readonly "mask-origin": readonly [
+          "border",
+          "padding",
+          "content",
+          "fill",
+          "stroke",
+          "view",
+        ];
+      },
+    ];
+    /**
+     * Mask Position
+     * @see https://tailwindcss.com/docs/mask-position
+     */
+    readonly "mask-position": readonly [
+      {
+        readonly mask: readonly [
+          "center",
+          "top",
+          "bottom",
+          "left",
+          "right",
+          "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          {
+            readonly position: readonly [
+              (value: string) => boolean,
+              (value: string) => boolean,
+            ];
+          },
+        ];
+      },
+    ];
+    /**
+     * Mask Repeat
+     * @see https://tailwindcss.com/docs/mask-repeat
+     */
+    readonly "mask-repeat": readonly [
+      {
+        readonly mask: readonly [
+          "no-repeat",
+          {
+            readonly repeat: readonly ["", "x", "y", "space", "round"];
+          },
+        ];
+      },
+    ];
+    /**
+     * Mask Size
+     * @see https://tailwindcss.com/docs/mask-size
+     */
+    readonly "mask-size": readonly [
+      {
+        readonly mask: readonly [
+          "auto",
+          "cover",
+          "contain",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          {
+            readonly size: readonly [
+              (value: string) => boolean,
+              (value: string) => boolean,
+            ];
+          },
+        ];
+      },
+    ];
+    /**
+     * Mask Type
+     * @see https://tailwindcss.com/docs/mask-type
+     */
+    readonly "mask-type": readonly [
+      {
+        readonly "mask-type": readonly ["alpha", "luminance"];
+      },
+    ];
+    /**
+     * Mask Image
+     * @see https://tailwindcss.com/docs/mask-image
+     */
+    readonly "mask-image": readonly [
+      {
+        readonly mask: readonly [
+          "none",
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
      * Filter
      * @see https://tailwindcss.com/docs/filter
      */
@@ -3461,6 +4145,19 @@ declare const getDefaultConfig: () => {
         readonly "drop-shadow": readonly [
           "",
           "none",
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Drop Shadow Color
+     * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
+     */
+    readonly "drop-shadow-color": readonly [
+      {
+        readonly "drop-shadow": readonly [
           ThemeGetter,
           (value: string) => boolean,
           (value: string) => boolean,
@@ -3852,13 +4549,17 @@ declare const getDefaultConfig: () => {
         readonly "perspective-origin": readonly [
           "center",
           "top",
-          "top-right",
-          "right",
-          "bottom-right",
           "bottom",
-          "bottom-left",
           "left",
+          "right",
           "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
           (value: string) => boolean,
           (value: string) => boolean,
         ];
@@ -4045,13 +4746,17 @@ declare const getDefaultConfig: () => {
         readonly origin: readonly [
           "center",
           "top",
-          "top-right",
-          "right",
-          "bottom-right",
           "bottom",
-          "bottom-left",
           "left",
+          "right",
           "top-left",
+          "left-top",
+          "top-right",
+          "right-top",
+          "bottom-right",
+          "right-bottom",
+          "bottom-left",
+          "left-bottom",
           (value: string) => boolean,
           (value: string) => boolean,
         ];
@@ -4710,6 +5415,8 @@ declare const getDefaultConfig: () => {
       "border-spacing-y",
     ];
     readonly "border-w": readonly [
+      "border-w-x",
+      "border-w-y",
       "border-w-s",
       "border-w-e",
       "border-w-t",
@@ -4720,6 +5427,8 @@ declare const getDefaultConfig: () => {
     readonly "border-w-x": readonly ["border-w-r", "border-w-l"];
     readonly "border-w-y": readonly ["border-w-t", "border-w-b"];
     readonly "border-color": readonly [
+      "border-color-x",
+      "border-color-y",
       "border-color-s",
       "border-color-e",
       "border-color-t",
@@ -4773,17 +5482,18 @@ declare const getDefaultConfig: () => {
     readonly "font-size": readonly ["leading"];
   };
   readonly orderSensitiveModifiers: [
-    "before",
-    "after",
-    "placeholder",
-    "file",
-    "marker",
-    "selection",
-    "first-line",
-    "first-letter",
-    "backdrop",
     "*",
     "**",
+    "after",
+    "backdrop",
+    "before",
+    "details-content",
+    "file",
+    "first-letter",
+    "first-line",
+    "marker",
+    "placeholder",
+    "selection",
   ];
 };
 
@@ -4898,14 +5608,6 @@ declare namespace validators_d {
 }
 
 export {
-  type ClassNameValue,
-  type ClassValidator,
-  type Config,
-  type ConfigExtension,
-  type DefaultClassGroupIds,
-  type DefaultThemeGroupIds,
-  type ExperimentalParseClassNameParam,
-  type ParsedClassName as ExperimentalParsedClassName,
   createTailwindMerge,
   extendTailwindMerge,
   fromTheme,
@@ -4914,4 +5616,14 @@ export {
   twJoin,
   twMerge,
   validators_d as validators,
+};
+export type {
+  ClassNameValue,
+  ClassValidator,
+  Config,
+  ConfigExtension,
+  DefaultClassGroupIds,
+  DefaultThemeGroupIds,
+  ExperimentalParseClassNameParam,
+  ParsedClassName as ExperimentalParsedClassName,
 };
