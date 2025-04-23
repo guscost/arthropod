@@ -1,4 +1,3 @@
-// Compiled types from recharts 2.15.1
 import {
   FC,
   MouseEvent,
@@ -33,10 +32,7 @@ import {
   Component,
   Key,
 } from "react";
-
-declare namespace lodash {
-  type DebouncedFunc<T> = T;
-}
+import * as lodash from "lodash";
 
 /**
  * @fileOverview Surface
@@ -1322,7 +1318,8 @@ type Formatter<TValue extends ValueType, TName extends NameType> = (
   index: number,
   payload: Array<Payload<TValue, TName>>,
 ) => [ReactNode, TName] | ReactNode;
-interface Payload<TValue extends ValueType, TName extends NameType> {
+interface Payload<TValue extends ValueType, TName extends NameType>
+  extends Omit<SVGProps<SVGElement>, "name"> {
   type?: TooltipType;
   color?: string;
   formatter?: Formatter<TValue, TName>;
@@ -4002,6 +3999,10 @@ declare const LineChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -4312,6 +4313,10 @@ declare const BarChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -4622,6 +4627,10 @@ declare const PieChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -5130,6 +5139,10 @@ declare const RadarChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -5440,6 +5453,10 @@ declare const ScatterChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -5750,6 +5767,10 @@ declare const AreaChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -6060,6 +6081,10 @@ declare const RadialBarChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -6370,6 +6395,10 @@ declare const ComposedChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
@@ -6888,6 +6917,10 @@ declare const FunnelChart: ForwardRefExoticComponent<
       getTooltipEventType(): TooltipEventType;
       getMouseInfo(event: MousePointer):
         | {
+            activeTooltipIndex: number;
+            activeLabel: any;
+            activePayload: any[];
+            activeCoordinate: ChartCoordinate;
             xValue: any;
             yValue: any;
             chartX: number;
