@@ -32,7 +32,10 @@ import {
   Component,
   Key,
 } from "react";
-import * as lodash from "lodash";
+
+declare namespace lodash {
+  type DebouncedFunc<T> = T;
+}
 
 /**
  * @fileOverview Surface
