@@ -5,7 +5,9 @@ import {
   mkdirSync,
   readdirSync,
   readFileSync,
+  renameSync,
   rmSync,
+  statSync,
 } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -601,22 +603,55 @@ async function buildTypes() {
       path.join(_root, "update/types/react-resizable-panels.d.ts"),
       path.join(_root, "types/react-resizable-panels.d.ts"),
     );
-    // Replace all .js extensions in declarations folder, uncomment, and run to build updated react-resizable-panels types:
-    //await buildType(path.join(_root, "update/node_modules/react-resizable-panels/dist/declarations/src/index.d.ts"), path.join(_root, "update/types/react-resizable-panels.d.ts"));
+    // Uncomment and run to build updated react-resizable-panels types:
+    // function renameFilesToJs(directory) {
+    //   try {
+    //     const files = readdirSync(directory);
+
+    //     files.forEach((file) => {
+    //       const filePath = path.join(directory, file);
+    //       const stats = statSync(filePath);
+
+    //       if (stats.isDirectory()) {
+    //         // Recursively process subdirectories
+    //         renameFilesToJs(filePath);
+    //       } else if (
+    //         stats.isFile() &&
+    //         path.extname(file) !== ".js" &&
+    //         file !== "index.d.ts"
+    //       ) {
+    //         const newFilePath = path.join(
+    //           directory,
+    //           `${path.basename(file, path.extname(file)).replace(/\.d$/, "")}.js`,
+    //         );
+    //         renameSync(filePath, newFilePath);
+    //         console.log(`Renamed: ${file} -> ${path.basename(newFilePath)}`);
+    //       }
+    //     });
+    //   } catch (error) {
+    //     console.error("Error renaming files: ", error);
+    //   }
+    // }
+    // const targetDir = path.join(
+    //   _root,
+    //   "update/node_modules/react-resizable-panels/dist/declarations/src",
+    // );
+    // renameFilesToJs(targetDir);
+    // await buildType(path.join(_root, "update/node_modules/react-resizable-panels/dist/declarations/src/index.d.ts"), path.join(_root, "update/types/react-resizable-panels.d.ts"));
 
     copyFileSync(
       path.join(_root, "update/types/react-day-picker.d.ts"),
       path.join(_root, "types/react-day-picker.d.ts"),
     );
     // Uncomment, run, and fix imports to build updated react-day-picker types:
-    //await buildType(path.join(_root, "update/node_modules/react-day-picker/dist/esm/index.js"), path.join(_root, "update/types/react-day-picker.d.ts"));
+    // await buildType(path.join(_root, "update/node_modules/react-day-picker/dist/esm/index.js"), path.join(_root, "update/types/react-day-picker.d.ts"));
 
     copyFileSync(
       path.join(_root, "update/types/recharts.d.ts"),
       path.join(_root, "types/recharts.d.ts"),
     );
     // Uncomment, run, and fix imports to build updated recharts types:
-    //await buildType(path.join(_root, "update/node_modules/recharts/types/index.d.ts"), path.join(_root, "update/types/recharts.d.ts"));
+    // await buildType(path.join(_root, "update/node_modules/recharts/types/index.d.ts"), path.join(_root, "update/types/recharts.d.ts"));
 
     const classVarianceAuthorityContent = readFileSync(
       path.join(

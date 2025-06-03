@@ -75,7 +75,7 @@ type SwipeEvent = {
   }>,
   "currentTarget"
 >;
-type ToastImplElement = React.ElementRef<typeof Primitive.li>;
+type ToastImplElement = React.ComponentRef<typeof Primitive.li>;
 type DismissableLayerProps = React.ComponentPropsWithoutRef<
   typeof DismissableLayer.Root
 >;

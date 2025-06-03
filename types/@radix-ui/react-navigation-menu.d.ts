@@ -8,7 +8,7 @@ import * as VisuallyHiddenPrimitive from "@radix-ui/react-visually-hidden";
 type Orientation = "vertical" | "horizontal";
 type Direction = "ltr" | "rtl";
 declare const createNavigationMenuScope: _radix_ui_react_context.CreateScope;
-type NavigationMenuElement = React.ElementRef<typeof Primitive.nav>;
+type NavigationMenuElement = React.ComponentRef<typeof Primitive.nav>;
 type PrimitiveNavProps = React.ComponentPropsWithoutRef<typeof Primitive.nav>;
 interface NavigationMenuProps
   extends Omit<
@@ -74,7 +74,9 @@ interface NavigationMenuListProps extends PrimitiveUnorderedListProps {}
 declare const NavigationMenuList: React.ForwardRefExoticComponent<
   NavigationMenuListProps & React.RefAttributes<HTMLUListElement>
 >;
-type FocusProxyElement = React.ElementRef<typeof VisuallyHiddenPrimitive.Root>;
+type FocusProxyElement = React.ComponentRef<
+  typeof VisuallyHiddenPrimitive.Root
+>;
 type PrimitiveListItemProps = React.ComponentPropsWithoutRef<
   typeof Primitive.li
 >;
@@ -84,7 +86,7 @@ interface NavigationMenuItemProps extends PrimitiveListItemProps {
 declare const NavigationMenuItem: React.ForwardRefExoticComponent<
   NavigationMenuItemProps & React.RefAttributes<HTMLLIElement>
 >;
-type NavigationMenuTriggerElement = React.ElementRef<typeof Primitive.button>;
+type NavigationMenuTriggerElement = React.ComponentRef<typeof Primitive.button>;
 type PrimitiveButtonProps = React.ComponentPropsWithoutRef<
   typeof Primitive.button
 >;

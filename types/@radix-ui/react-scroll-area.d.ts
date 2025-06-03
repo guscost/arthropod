@@ -33,7 +33,7 @@ type ScrollAreaContextValue = {
   onCornerWidthChange(width: number): void;
   onCornerHeightChange(height: number): void;
 };
-type ScrollAreaElement = React.ElementRef<typeof Primitive.div>;
+type ScrollAreaElement = React.ComponentRef<typeof Primitive.div>;
 type PrimitiveDivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface ScrollAreaProps extends PrimitiveDivProps {
   type?: ScrollAreaContextValue["type"];
@@ -43,7 +43,7 @@ interface ScrollAreaProps extends PrimitiveDivProps {
 declare const ScrollArea: React.ForwardRefExoticComponent<
   ScrollAreaProps & React.RefAttributes<HTMLDivElement>
 >;
-type ScrollAreaViewportElement = React.ElementRef<typeof Primitive.div>;
+type ScrollAreaViewportElement = React.ComponentRef<typeof Primitive.div>;
 interface ScrollAreaViewportProps extends PrimitiveDivProps {
   nonce?: string;
 }
@@ -91,7 +91,7 @@ type ScrollbarContext = {
   onThumbPointerDown(pointerPos: { x: number; y: number }): void;
   onThumbPositionChange(): void;
 };
-type ScrollAreaScrollbarImplElement = React.ElementRef<typeof Primitive.div>;
+type ScrollAreaScrollbarImplElement = React.ComponentRef<typeof Primitive.div>;
 type ScrollAreaScrollbarImplPrivateProps = {
   sizes: Sizes;
   hasThumb: boolean;
@@ -117,7 +117,7 @@ interface ScrollAreaThumbProps extends ScrollAreaThumbImplProps {
 declare const ScrollAreaThumb: React.ForwardRefExoticComponent<
   ScrollAreaThumbProps & React.RefAttributes<HTMLDivElement>
 >;
-type ScrollAreaThumbImplElement = React.ElementRef<typeof Primitive.div>;
+type ScrollAreaThumbImplElement = React.ComponentRef<typeof Primitive.div>;
 interface ScrollAreaThumbImplProps extends PrimitiveDivProps {}
 interface ScrollAreaCornerProps extends ScrollAreaCornerImplProps {}
 declare const ScrollAreaCorner: React.ForwardRefExoticComponent<

@@ -1977,6 +1977,7 @@ declare const getDefaultConfig: () => {
       {
         readonly h: readonly [
           "screen",
+          "lh",
           (value: string) => boolean,
           "auto",
           "full",
@@ -2003,6 +2004,7 @@ declare const getDefaultConfig: () => {
       {
         readonly "min-h": readonly [
           "screen",
+          "lh",
           "none",
           (value: string) => boolean,
           "auto",
@@ -2030,6 +2032,7 @@ declare const getDefaultConfig: () => {
       {
         readonly "max-h": readonly [
           "screen",
+          "lh",
           (value: string) => boolean,
           "auto",
           "full",

@@ -21,11 +21,10 @@ import {
 declare const constructFromSymbol: unique symbol;
 
 /**
- * The UI elements composing DayPicker. These elements are mapped to
- * {@link CustomComponents}, the {@link ClassNames} and the {@link Styles} used by
- * DayPicker.
+ * Enum representing the UI elements composing DayPicker. These elements are
+ * mapped to {@link CustomComponents}, {@link ClassNames}, and {@link Styles}.
  *
- * Some of these elements are extended by flags and modifiers.
+ * Some elements are extended by flags and modifiers.
  */
 declare enum UI {
   /** The root component displaying the months and the navigation bar. */
@@ -88,7 +87,7 @@ declare enum UI {
   /** The dropdown with the years. */
   YearsDropdown = "years_dropdown",
 }
-/** The flags for the {@link UI.Day}. */
+/** Enum representing flags for the {@link UI.Day} element. */
 declare enum DayFlag {
   /** The day is disabled. */
   disabled = "disabled",
@@ -102,8 +101,8 @@ declare enum DayFlag {
   today = "today",
 }
 /**
- * The state that can be applied to the {@link UI.Day} element when in selection
- * mode.
+ * Enum representing selection states that can be applied to the {@link UI.Day}
+ * element in selection mode.
  */
 declare enum SelectionState {
   /** The day is at the end of a selected range. */
@@ -115,7 +114,6 @@ declare enum SelectionState {
   /** The day is selected. */
   selected = "selected",
 }
-/** CSS classes used for animating months and captions. */
 /**
  * Enum representing different animation states for transitioning between
  * months.
@@ -139,25 +137,15 @@ declare enum Animation {
   caption_before_exit = "caption_before_exit",
 }
 /**
- * Deprecated UI elements and flags.
+ * Deprecated UI elements and flags from previous versions of DayPicker.
  *
- * These elements were used in previous version of DayPicker and are kept here
- * to help the transition to the new {@link UI | UI elements}.
- *
- * ```diff
- *   <DayPicker classNames={{
- * -  cell: "my-cell",
- * +  day: "my-cell",
- * -  day: "my-day",
- * +  day_button: "my-day",
- * -  day_disabled: "my-day_disabled",
- * +  disabled: "my-day_disabled",
- *    // etc.
- *   }}/>
- * ```
+ * These elements are kept for backward compatibility and to assist in
+ * transitioning to the new {@link UI} elements.
  *
  * @deprecated
  * @since 9.0.1
+ * @template T - The type of the deprecated UI element (e.g., CSS class or
+ *   style).
  * @see https://daypicker.dev/upgrading
  * @see https://daypicker.dev/docs/styling
  */
@@ -740,13 +728,6 @@ type Month$1 = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
  */
 type FirstWeekContainsDate = 1 | 4;
 /**
- * The step function options. Used to build function options.
- */
-interface StepOptions {
-  /** The step to use when iterating */
-  step?: number;
-}
-/**
  * The week function options. Used to build function options.
  */
 interface WeekOptions {
@@ -798,429 +779,12 @@ interface ContextOptions<DateType extends Date> {
 type ContextFn<DateType extends Date> = (value: DateArg<Date> & {}) => DateType;
 
 /**
- * The {@link addDays} function options.
- */
-interface AddDaysOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name addDays
- * @category Day Helpers
- * @summary Add the specified number of days to the given date.
- *
- * @description
- * Add the specified number of days to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The date to be changed
- * @param amount - The amount of days to be added.
- * @param options - An object with options
- *
- * @returns The new date with the days added
- *
- * @example
- * // Add 10 days to 1 September 2014:
- * const result = addDays(new Date(2014, 8, 1), 10)
- * //=> Thu Sep 11 2014 00:00:00
- */
-declare function addDays<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  amount: number,
-  options?: AddDaysOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link addMonths} function options.
- */
-interface AddMonthsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name addMonths
- * @category Month Helpers
- * @summary Add the specified number of months to the given date.
- *
- * @description
- * Add the specified number of months to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The date to be changed
- * @param amount - The amount of months to be added.
- * @param options - The options object
- *
- * @returns The new date with the months added
- *
- * @example
- * // Add 5 months to 1 September 2014:
- * const result = addMonths(new Date(2014, 8, 1), 5)
- * //=> Sun Feb 01 2015 00:00:00
- *
- * // Add one month to 30 January 2023:
- * const result = addMonths(new Date(2023, 0, 30), 1)
- * //=> Tue Feb 28 2023 00:00:00
- */
-declare function addMonths<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  amount: number,
-  options?: AddMonthsOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link addWeeks} function options.
- */
-interface AddWeeksOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name addWeeks
- * @category Week Helpers
- * @summary Add the specified number of weeks to the given date.
- *
- * @description
- * Add the specified number of weeks to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The date to be changed
- * @param amount - The amount of weeks to be added.
- * @param options - An object with options
- *
- * @returns The new date with the weeks added
- *
- * @example
- * // Add 4 weeks to 1 September 2014:
- * const result = addWeeks(new Date(2014, 8, 1), 4)
- * //=> Mon Sep 29 2014 00:00:00
- */
-declare function addWeeks<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  amount: number,
-  options?: AddWeeksOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link addYears} function options.
- */
-interface AddYearsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name addYears
- * @category Year Helpers
- * @summary Add the specified number of years to the given date.
- *
- * @description
- * Add the specified number of years to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type.
- *
- * @param date - The date to be changed
- * @param amount - The amount of years to be added.
- * @param options - The options
- *
- * @returns The new date with the years added
- *
- * @example
- * // Add 5 years to 1 September 2014:
- * const result = addYears(new Date(2014, 8, 1), 5)
- * //=> Sun Sep 01 2019 00:00:00
- */
-declare function addYears<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  amount: number,
-  options?: AddYearsOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link differenceInCalendarDays} function options.
- */
-interface DifferenceInCalendarDaysOptions extends ContextOptions<Date> {}
-/**
- * @name differenceInCalendarDays
- * @category Day Helpers
- * @summary Get the number of calendar days between the given dates.
- *
- * @description
- * Get the number of calendar days between the given dates. This means that the times are removed
- * from the dates and then the difference in days is calculated.
- *
- * @param laterDate - The later date
- * @param earlierDate - The earlier date
- * @param options - The options object
- *
- * @returns The number of calendar days
- *
- * @example
- * // How many calendar days are between
- * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * const result = differenceInCalendarDays(
- *   new Date(2012, 6, 2, 0, 0),
- *   new Date(2011, 6, 2, 23, 0)
- * )
- * //=> 366
- * // How many calendar days are between
- * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
- * const result = differenceInCalendarDays(
- *   new Date(2011, 6, 3, 0, 1),
- *   new Date(2011, 6, 2, 23, 59)
- * )
- * //=> 1
- */
-declare function differenceInCalendarDays(
-  laterDate: DateArg<Date> & {},
-  earlierDate: DateArg<Date> & {},
-  options?: DifferenceInCalendarDaysOptions | undefined,
-): number;
-
-/**
- * The {@link differenceInCalendarMonths} function options.
- */
-interface DifferenceInCalendarMonthsOptions extends ContextOptions<Date> {}
-/**
- * @name differenceInCalendarMonths
- * @category Month Helpers
- * @summary Get the number of calendar months between the given dates.
- *
- * @description
- * Get the number of calendar months between the given dates.
- *
- * @param laterDate - The later date
- * @param earlierDate - The earlier date
- * @param options - An object with options
- *
- * @returns The number of calendar months
- *
- * @example
- * // How many calendar months are between 31 January 2014 and 1 September 2014?
- * const result = differenceInCalendarMonths(
- *   new Date(2014, 8, 1),
- *   new Date(2014, 0, 31)
- * )
- * //=> 8
- */
-declare function differenceInCalendarMonths(
-  laterDate: DateArg<Date> & {},
-  earlierDate: DateArg<Date> & {},
-  options?: DifferenceInCalendarMonthsOptions | undefined,
-): number;
-
-/**
- * The {@link eachMonthOfInterval} function options.
- */
-interface EachMonthOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
-/**
- * The {@link eachMonthOfInterval} function result type. It resolves the proper data type.
- */
-type EachMonthOfIntervalResult<
-  IntervalType extends Interval,
-  Options extends EachMonthOfIntervalOptions | undefined,
-> = Array<
-  Options extends EachMonthOfIntervalOptions<infer DateType>
-    ? DateType
-    : IntervalType["start"] extends Date
-      ? IntervalType["start"]
-      : IntervalType["end"] extends Date
-        ? IntervalType["end"]
-        : Date
->;
-/**
- * @name eachMonthOfInterval
- * @category Interval Helpers
- * @summary Return the array of months within the specified time interval.
- *
- * @description
- * Return the array of months within the specified time interval.
- *
- * @typeParam IntervalType - Interval type.
- * @typeParam Options - Options type.
- *
- * @param interval - The interval.
- * @param options - An object with options.
- *
- * @returns The array with starts of months from the month of the interval start to the month of the interval end
- *
- * @example
- * // Each month between 6 February 2014 and 10 August 2014:
- * const result = eachMonthOfInterval({
- *   start: new Date(2014, 1, 6),
- *   end: new Date(2014, 7, 10)
- * })
- * //=> [
- * //   Sat Feb 01 2014 00:00:00,
- * //   Sat Mar 01 2014 00:00:00,
- * //   Tue Apr 01 2014 00:00:00,
- * //   Thu May 01 2014 00:00:00,
- * //   Sun Jun 01 2014 00:00:00,
- * //   Tue Jul 01 2014 00:00:00,
- * //   Fri Aug 01 2014 00:00:00
- * // ]
- */
-declare function eachMonthOfInterval<
-  IntervalType extends Interval,
-  Options extends EachMonthOfIntervalOptions | undefined = undefined,
->(
-  interval: IntervalType,
-  options?: Options,
-): EachMonthOfIntervalResult<IntervalType, Options>;
-
-/**
- * The {@link endOfISOWeek} function options.
- */
-interface EndOfISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name endOfISOWeek
- * @category ISO Week Helpers
- * @summary Return the end of an ISO week for the given date.
- *
- * @description
- * Return the end of an ISO week for the given date.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The end of an ISO week
- *
- * @example
- * // The end of an ISO week for 2 September 2014 11:55:00:
- * const result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sun Sep 07 2014 23:59:59.999
- */
-declare function endOfISOWeek<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: EndOfISOWeekOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link endOfMonth} function options.
- */
-interface EndOfMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name endOfMonth
- * @category Month Helpers
- * @summary Return the end of a month for the given date.
- *
- * @description
- * Return the end of a month for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The end of a month
- *
- * @example
- * // The end of a month for 2 September 2014 11:55:00:
- * const result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 30 2014 23:59:59.999
- */
-declare function endOfMonth<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: EndOfMonthOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
  * The {@link endOfWeek} function options.
  */
 interface EndOfWeekOptions<DateType extends Date = Date>
   extends WeekOptions,
     LocalizedOptions<"options">,
     ContextOptions<DateType> {}
-/**
- * @name endOfWeek
- * @category Week Helpers
- * @summary Return the end of a week for the given date.
- *
- * @description
- * Return the end of a week for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The end of a week
- *
- * @example
- * // The end of a week for 2 September 2014 11:55:00:
- * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sat Sep 06 2014 23:59:59.999
- *
- * @example
- * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
- * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
- * //=> Sun Sep 07 2014 23:59:59.999
- */
-declare function endOfWeek<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(date: DateArg<DateType>, options?: EndOfWeekOptions<ResultDate>): ResultDate;
-
-/**
- * The {@link endOfYear} function options.
- */
-interface EndOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name endOfYear
- * @category Year Helpers
- * @summary Return the end of a year for the given date.
- *
- * @description
- * Return the end of a year for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - The options
- *
- * @returns The end of a year
- *
- * @example
- * // The end of a year for 2 September 2014 11:55:00:
- * const result = endOfYear(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Wed Dec 31 2014 23:59:59.999
- */
-declare function endOfYear<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(date: DateArg<DateType>, options?: EndOfYearOptions<ResultDate>): ResultDate;
 
 /**
  * The {@link format} function options.
@@ -1231,351 +795,11 @@ interface FormatOptions$1
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions,
     ContextOptions<Date> {}
-/**
- * @name format
- * @alias formatDate
- * @category Common Helpers
- * @summary Format the date.
- *
- * @description
- * Return the formatted date string in the given format. The result may vary by locale.
- *
- * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
- * > See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- *
- * The characters wrapped between two single quotes characters (') are escaped.
- * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
- * (see the last example)
- *
- * Format of the string is based on Unicode Technical Standard #35:
- * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (see note 7 below the table).
- *
- * Accepted patterns:
- * | Unit                            | Pattern | Result examples                   | Notes |
- * |---------------------------------|---------|-----------------------------------|-------|
- * | Era                             | G..GGG  | AD, BC                            |       |
- * |                                 | GGGG    | Anno Domini, Before Christ        | 2     |
- * |                                 | GGGGG   | A, B                              |       |
- * | Calendar year                   | y       | 44, 1, 1900, 2017                 | 5     |
- * |                                 | yo      | 44th, 1st, 0th, 17th              | 5,7   |
- * |                                 | yy      | 44, 01, 00, 17                    | 5     |
- * |                                 | yyy     | 044, 001, 1900, 2017              | 5     |
- * |                                 | yyyy    | 0044, 0001, 1900, 2017            | 5     |
- * |                                 | yyyyy   | ...                               | 3,5   |
- * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
- * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
- * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
- * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
- * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
- * |                                 | YYYYY   | ...                               | 3,5   |
- * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
- * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
- * |                                 | RRR     | -043, 000, 001, 1900, 2017        | 5,7   |
- * |                                 | RRRR    | -0043, 0000, 0001, 1900, 2017     | 5,7   |
- * |                                 | RRRRR   | ...                               | 3,5,7 |
- * | Extended year                   | u       | -43, 0, 1, 1900, 2017             | 5     |
- * |                                 | uu      | -43, 01, 1900, 2017               | 5     |
- * |                                 | uuu     | -043, 001, 1900, 2017             | 5     |
- * |                                 | uuuu    | -0043, 0001, 1900, 2017           | 5     |
- * |                                 | uuuuu   | ...                               | 3,5   |
- * | Quarter (formatting)            | Q       | 1, 2, 3, 4                        |       |
- * |                                 | Qo      | 1st, 2nd, 3rd, 4th                | 7     |
- * |                                 | QQ      | 01, 02, 03, 04                    |       |
- * |                                 | QQQ     | Q1, Q2, Q3, Q4                    |       |
- * |                                 | QQQQ    | 1st quarter, 2nd quarter, ...     | 2     |
- * |                                 | QQQQQ   | 1, 2, 3, 4                        | 4     |
- * | Quarter (stand-alone)           | q       | 1, 2, 3, 4                        |       |
- * |                                 | qo      | 1st, 2nd, 3rd, 4th                | 7     |
- * |                                 | qq      | 01, 02, 03, 04                    |       |
- * |                                 | qqq     | Q1, Q2, Q3, Q4                    |       |
- * |                                 | qqqq    | 1st quarter, 2nd quarter, ...     | 2     |
- * |                                 | qqqqq   | 1, 2, 3, 4                        | 4     |
- * | Month (formatting)              | M       | 1, 2, ..., 12                     |       |
- * |                                 | Mo      | 1st, 2nd, ..., 12th               | 7     |
- * |                                 | MM      | 01, 02, ..., 12                   |       |
- * |                                 | MMM     | Jan, Feb, ..., Dec                |       |
- * |                                 | MMMM    | January, February, ..., December  | 2     |
- * |                                 | MMMMM   | J, F, ..., D                      |       |
- * | Month (stand-alone)             | L       | 1, 2, ..., 12                     |       |
- * |                                 | Lo      | 1st, 2nd, ..., 12th               | 7     |
- * |                                 | LL      | 01, 02, ..., 12                   |       |
- * |                                 | LLL     | Jan, Feb, ..., Dec                |       |
- * |                                 | LLLL    | January, February, ..., December  | 2     |
- * |                                 | LLLLL   | J, F, ..., D                      |       |
- * | Local week of year              | w       | 1, 2, ..., 53                     |       |
- * |                                 | wo      | 1st, 2nd, ..., 53th               | 7     |
- * |                                 | ww      | 01, 02, ..., 53                   |       |
- * | ISO week of year                | I       | 1, 2, ..., 53                     | 7     |
- * |                                 | Io      | 1st, 2nd, ..., 53th               | 7     |
- * |                                 | II      | 01, 02, ..., 53                   | 7     |
- * | Day of month                    | d       | 1, 2, ..., 31                     |       |
- * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
- * |                                 | dd      | 01, 02, ..., 31                   |       |
- * | Day of year                     | D       | 1, 2, ..., 365, 366               | 9     |
- * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
- * |                                 | DD      | 01, 02, ..., 365, 366             | 9     |
- * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
- * |                                 | DDDD    | ...                               | 3     |
- * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Sun           |       |
- * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | 2     |
- * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
- * |                                 | EEEEEE  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
- * | ISO day of week (formatting)    | i       | 1, 2, 3, ..., 7                   | 7     |
- * |                                 | io      | 1st, 2nd, ..., 7th                | 7     |
- * |                                 | ii      | 01, 02, ..., 07                   | 7     |
- * |                                 | iii     | Mon, Tue, Wed, ..., Sun           | 7     |
- * |                                 | iiii    | Monday, Tuesday, ..., Sunday      | 2,7   |
- * |                                 | iiiii   | M, T, W, T, F, S, S               | 7     |
- * |                                 | iiiiii  | Mo, Tu, We, Th, Fr, Sa, Su        | 7     |
- * | Local day of week (formatting)  | e       | 2, 3, 4, ..., 1                   |       |
- * |                                 | eo      | 2nd, 3rd, ..., 1st                | 7     |
- * |                                 | ee      | 02, 03, ..., 01                   |       |
- * |                                 | eee     | Mon, Tue, Wed, ..., Sun           |       |
- * |                                 | eeee    | Monday, Tuesday, ..., Sunday      | 2     |
- * |                                 | eeeee   | M, T, W, T, F, S, S               |       |
- * |                                 | eeeeee  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
- * | Local day of week (stand-alone) | c       | 2, 3, 4, ..., 1                   |       |
- * |                                 | co      | 2nd, 3rd, ..., 1st                | 7     |
- * |                                 | cc      | 02, 03, ..., 01                   |       |
- * |                                 | ccc     | Mon, Tue, Wed, ..., Sun           |       |
- * |                                 | cccc    | Monday, Tuesday, ..., Sunday      | 2     |
- * |                                 | ccccc   | M, T, W, T, F, S, S               |       |
- * |                                 | cccccc  | Mo, Tu, We, Th, Fr, Sa, Su        |       |
- * | AM, PM                          | a..aa   | AM, PM                            |       |
- * |                                 | aaa     | am, pm                            |       |
- * |                                 | aaaa    | a.m., p.m.                        | 2     |
- * |                                 | aaaaa   | a, p                              |       |
- * | AM, PM, noon, midnight          | b..bb   | AM, PM, noon, midnight            |       |
- * |                                 | bbb     | am, pm, noon, midnight            |       |
- * |                                 | bbbb    | a.m., p.m., noon, midnight        | 2     |
- * |                                 | bbbbb   | a, p, n, mi                       |       |
- * | Flexible day period             | B..BBB  | at night, in the morning, ...     |       |
- * |                                 | BBBB    | at night, in the morning, ...     | 2     |
- * |                                 | BBBBB   | at night, in the morning, ...     |       |
- * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 |       |
- * |                                 | ho      | 1st, 2nd, ..., 11th, 12th         | 7     |
- * |                                 | hh      | 01, 02, ..., 11, 12               |       |
- * | Hour [0-23]                     | H       | 0, 1, 2, ..., 23                  |       |
- * |                                 | Ho      | 0th, 1st, 2nd, ..., 23rd          | 7     |
- * |                                 | HH      | 00, 01, 02, ..., 23               |       |
- * | Hour [0-11]                     | K       | 1, 2, ..., 11, 0                  |       |
- * |                                 | Ko      | 1st, 2nd, ..., 11th, 0th          | 7     |
- * |                                 | KK      | 01, 02, ..., 11, 00               |       |
- * | Hour [1-24]                     | k       | 24, 1, 2, ..., 23                 |       |
- * |                                 | ko      | 24th, 1st, 2nd, ..., 23rd         | 7     |
- * |                                 | kk      | 24, 01, 02, ..., 23               |       |
- * | Minute                          | m       | 0, 1, ..., 59                     |       |
- * |                                 | mo      | 0th, 1st, ..., 59th               | 7     |
- * |                                 | mm      | 00, 01, ..., 59                   |       |
- * | Second                          | s       | 0, 1, ..., 59                     |       |
- * |                                 | so      | 0th, 1st, ..., 59th               | 7     |
- * |                                 | ss      | 00, 01, ..., 59                   |       |
- * | Fraction of second              | S       | 0, 1, ..., 9                      |       |
- * |                                 | SS      | 00, 01, ..., 99                   |       |
- * |                                 | SSS     | 000, 001, ..., 999                |       |
- * |                                 | SSSS    | ...                               | 3     |
- * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |       |
- * |                                 | XX      | -0800, +0530, Z                   |       |
- * |                                 | XXX     | -08:00, +05:30, Z                 |       |
- * |                                 | XXXX    | -0800, +0530, Z, +123456          | 2     |
- * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
- * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |       |
- * |                                 | xx      | -0800, +0530, +0000               |       |
- * |                                 | xxx     | -08:00, +05:30, +00:00            | 2     |
- * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
- * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
- * | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |       |
- * |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   | 2     |
- * | Timezone (specific non-locat.)  | z...zzz | GMT-8, GMT+5:30, GMT+0            | 6     |
- * |                                 | zzzz    | GMT-08:00, GMT+05:30, GMT+00:00   | 2,6   |
- * | Seconds timestamp               | t       | 512969520                         | 7     |
- * |                                 | tt      | ...                               | 3,7   |
- * | Milliseconds timestamp          | T       | 512969520900                      | 7     |
- * |                                 | TT      | ...                               | 3,7   |
- * | Long localized date             | P       | 04/29/1453                        | 7     |
- * |                                 | PP      | Apr 29, 1453                      | 7     |
- * |                                 | PPP     | April 29th, 1453                  | 7     |
- * |                                 | PPPP    | Friday, April 29th, 1453          | 2,7   |
- * | Long localized time             | p       | 12:00 AM                          | 7     |
- * |                                 | pp      | 12:00:00 AM                       | 7     |
- * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
- * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
- * | Combination of date and time    | Pp      | 04/29/1453, 12:00 AM              | 7     |
- * |                                 | PPpp    | Apr 29, 1453, 12:00:00 AM         | 7     |
- * |                                 | PPPppp  | April 29th, 1453 at ...           | 7     |
- * |                                 | PPPPpppp| Friday, April 29th, 1453 at ...   | 2,7   |
- * Notes:
- * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
- *    are the same as "stand-alone" units, but are different in some languages.
- *    "Formatting" units are declined according to the rules of the language
- *    in the context of a date. "Stand-alone" units are always nominative singular:
- *
- *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
- *
- *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
- *
- * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
- *    the single quote characters (see below).
- *    If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
- *    the output will be the same as default pattern for this unit, usually
- *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
- *    are marked with "2" in the last column of the table.
- *
- *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
- *
- *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
- *
- *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
- *
- *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
- *
- *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
- *
- * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
- *    The output will be padded with zeros to match the length of the pattern.
- *
- *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
- *
- * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
- *    These tokens represent the shortest form of the quarter.
- *
- * 5. The main difference between `y` and `u` patterns are B.C. years:
- *
- *    | Year | `y` | `u` |
- *    |------|-----|-----|
- *    | AC 1 |   1 |   1 |
- *    | BC 1 |   1 |   0 |
- *    | BC 2 |   2 |  -1 |
- *
- *    Also `yy` always returns the last two digits of a year,
- *    while `uu` pads single digit years to 2 characters and returns other years unchanged:
- *
- *    | Year | `yy` | `uu` |
- *    |------|------|------|
- *    | 1    |   01 |   01 |
- *    | 14   |   14 |   14 |
- *    | 376  |   76 |  376 |
- *    | 1453 |   53 | 1453 |
- *
- *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
- *    except local week-numbering years are dependent on `options.weekStartsOn`
- *    and `options.firstWeekContainsDate` (compare [getISOWeekYear](https://date-fns.org/docs/getISOWeekYear)
- *    and [getWeekYear](https://date-fns.org/docs/getWeekYear)).
- *
- * 6. Specific non-location timezones are currently unavailable in `date-fns`,
- *    so right now these tokens fall back to GMT timezones.
- *
- * 7. These patterns are not in the Unicode Technical Standard #35:
- *    - `i`: ISO day of week
- *    - `I`: ISO week of year
- *    - `R`: ISO week-numbering year
- *    - `t`: seconds timestamp
- *    - `T`: milliseconds timestamp
- *    - `o`: ordinal number modifier
- *    - `P`: long localized date
- *    - `p`: long localized time
- *
- * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
- *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- *
- * 9. `D` and `DD` tokens represent days of the year but they are often confused with days of the month.
- *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- *
- * @param date - The original date
- * @param format - The string of tokens
- * @param options - An object with options
- *
- * @returns The formatted date string
- *
- * @throws `date` must not be Invalid Date
- * @throws `options.locale` must contain `localize` property
- * @throws `options.locale` must contain `formatLong` property
- * @throws use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md
- * @throws format string contains an unescaped latin alphabet character
- *
- * @example
- * // Represent 11 February 2014 in middle-endian format:
- * const result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
- * //=> '02/11/2014'
- *
- * @example
- * // Represent 2 July 2014 in Esperanto:
- * import { eoLocale } from 'date-fns/locale/eo'
- * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
- *   locale: eoLocale
- * })
- * //=> '2-a de julio 2014'
- *
- * @example
- * // Escape string by single quote characters:
- * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
- * //=> "3 o'clock"
- */
-declare function format(
-  date: DateArg<Date> & {},
-  formatStr: string,
-  options?: FormatOptions$1,
-): string;
-
-/**
- * The {@link getISOWeek} function options.
- */
-interface GetISOWeekOptions extends ContextOptions<Date> {}
-/**
- * @name getISOWeek
- * @category ISO Week Helpers
- * @summary Get the ISO week of the given date.
- *
- * @description
- * Get the ISO week of the given date.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @param date - The given date
- * @param options - The options
- *
- * @returns The ISO week
- *
- * @example
- * // Which week of the ISO-week numbering year is 2 January 2005?
- * const result = getISOWeek(new Date(2005, 0, 2))
- * //=> 53
- */
-declare function getISOWeek(
-  date: DateArg<Date> & {},
-  options?: GetISOWeekOptions | undefined,
-): number;
 
 /**
  * The {@link getMonth} function options.
  */
 interface GetMonthOptions extends ContextOptions<Date> {}
-/**
- * @name getMonth
- * @category Month Helpers
- * @summary Get the month of the given date.
- *
- * @description
- * Get the month of the given date.
- *
- * @param date - The given date
- * @param options - An object with options
- *
- * @returns The month index (0-11)
- *
- * @example
- * // Which month is 29 February 2012?
- * const result = getMonth(new Date(2012, 1, 29))
- * //=> 1
- */
-declare function getMonth(
-  date: DateArg<Date> & {},
-  options?: GetMonthOptions | undefined,
-): number;
 
 /**
  * The {@link getWeek} function options.
@@ -1585,469 +809,11 @@ interface GetWeekOptions
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<Date> {}
-/**
- * @name getWeek
- * @category Week Helpers
- * @summary Get the local week index of the given date.
- *
- * @description
- * Get the local week index of the given date.
- * The exact calculation depends on the values of
- * `options.weekStartsOn` (which is the index of the first day of the week)
- * and `options.firstWeekContainsDate` (which is the day of January, which is always in
- * the first week of the week-numbering year)
- *
- * Week numbering: https://en.wikipedia.org/wiki/Week#The_ISO_week_date_system
- *
- * @param date - The given date
- * @param options - An object with options
- *
- * @returns The week
- *
- * @example
- * // Which week of the local week numbering year is 2 January 2005 with default options?
- * const result = getWeek(new Date(2005, 0, 2))
- * //=> 2
- *
- * @example
- * // Which week of the local week numbering year is 2 January 2005,
- * // if Monday is the first day of the week,
- * // and the first week of the year always contains 4 January?
- * const result = getWeek(new Date(2005, 0, 2), {
- *   weekStartsOn: 1,
- *   firstWeekContainsDate: 4
- * })
- * //=> 53
- */
-declare function getWeek(
-  date: DateArg<Date> & {},
-  options?: GetWeekOptions | undefined,
-): number;
 
 /**
  * The {@link getYear} function options.
  */
 interface GetYearOptions extends ContextOptions<Date> {}
-/**
- * @name getYear
- * @category Year Helpers
- * @summary Get the year of the given date.
- *
- * @description
- * Get the year of the given date.
- *
- * @param date - The given date
- * @param options - An object with options
- *
- * @returns The year
- *
- * @example
- * // Which year is 2 July 2014?
- * const result = getYear(new Date(2014, 6, 2))
- * //=> 2014
- */
-declare function getYear(
-  date: DateArg<Date> & {},
-  options?: GetYearOptions | undefined,
-): number;
-
-/**
- * @name isAfter
- * @category Common Helpers
- * @summary Is the first date after the second one?
- *
- * @description
- * Is the first date after the second one?
- *
- * @param date - The date that should be after the other one to return true
- * @param dateToCompare - The date to compare with
- *
- * @returns The first date is after the second date
- *
- * @example
- * // Is 10 July 1989 after 11 February 1987?
- * const result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
- * //=> true
- */
-declare function isAfter(
-  date: DateArg<Date> & {},
-  dateToCompare: DateArg<Date> & {},
-): boolean;
-
-/**
- * @name isBefore
- * @category Common Helpers
- * @summary Is the first date before the second one?
- *
- * @description
- * Is the first date before the second one?
- *
- * @param date - The date that should be before the other one to return true
- * @param dateToCompare - The date to compare with
- *
- * @returns The first date is before the second date
- *
- * @example
- * // Is 10 July 1989 before 11 February 1987?
- * const result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
- * //=> false
- */
-declare function isBefore(
-  date: DateArg<Date> & {},
-  dateToCompare: DateArg<Date> & {},
-): boolean;
-
-/**
- * The {@link isSameDay} function options.
- */
-interface IsSameDayOptions extends ContextOptions<Date> {}
-/**
- * @name isSameDay
- * @category Day Helpers
- * @summary Are the given dates in the same day (and year and month)?
- *
- * @description
- * Are the given dates in the same day (and year and month)?
- *
- * @param laterDate - The first date to check
- * @param earlierDate - The second date to check
- * @param options - An object with options
- *
- * @returns The dates are in the same day (and year and month)
- *
- * @example
- * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
- * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
- * //=> true
- *
- * @example
- * // Are 4 September and 4 October in the same day?
- * const result = isSameDay(new Date(2014, 8, 4), new Date(2014, 9, 4))
- * //=> false
- *
- * @example
- * // Are 4 September, 2014 and 4 September, 2015 in the same day?
- * const result = isSameDay(new Date(2014, 8, 4), new Date(2015, 8, 4))
- * //=> false
- */
-declare function isSameDay(
-  laterDate: DateArg<Date> & {},
-  earlierDate: DateArg<Date> & {},
-  options?: IsSameDayOptions | undefined,
-): boolean;
-
-/**
- * The {@link isSameMonth} function options.
- */
-interface IsSameMonthOptions extends ContextOptions<Date> {}
-/**
- * @name isSameMonth
- * @category Month Helpers
- * @summary Are the given dates in the same month (and year)?
- *
- * @description
- * Are the given dates in the same month (and year)?
- *
- * @param laterDate - The first date to check
- * @param earlierDate - The second date to check
- * @param options - An object with options
- *
- * @returns The dates are in the same month (and year)
- *
- * @example
- * // Are 2 September 2014 and 25 September 2014 in the same month?
- * const result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
- * //=> true
- *
- * @example
- * // Are 2 September 2014 and 25 September 2015 in the same month?
- * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
- * //=> false
- */
-declare function isSameMonth(
-  laterDate: DateArg<Date> & {},
-  earlierDate: DateArg<Date> & {},
-  options?: IsSameMonthOptions | undefined,
-): boolean;
-
-/**
- * The {@link isSameYear} function options.
- */
-interface IsSameYearOptions extends ContextOptions<Date> {}
-/**
- * @name isSameYear
- * @category Year Helpers
- * @summary Are the given dates in the same year?
- *
- * @description
- * Are the given dates in the same year?
- *
- * @param laterDate - The first date to check
- * @param earlierDate - The second date to check
- * @param options - An object with options
- *
- * @returns The dates are in the same year
- *
- * @example
- * // Are 2 September 2014 and 25 September 2014 in the same year?
- * const result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
- * //=> true
- */
-declare function isSameYear(
-  laterDate: DateArg<Date> & {},
-  earlierDate: DateArg<Date> & {},
-  options?: IsSameYearOptions | undefined,
-): boolean;
-
-/**
- * The {@link max} function options.
- */
-interface MaxOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name max
- * @category Common Helpers
- * @summary Return the latest of the given dates.
- *
- * @description
- * Return the latest of the given dates.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param dates - The dates to compare
- *
- * @returns The latest of the dates
- *
- * @example
- * // Which of these dates is the latest?
- * const result = max([
- *   new Date(1989, 6, 10),
- *   new Date(1987, 1, 11),
- *   new Date(1995, 6, 2),
- *   new Date(1990, 0, 1)
- * ])
- * //=> Sun Jul 02 1995 00:00:00
- */
-declare function max<DateType extends Date, ResultDate extends Date = DateType>(
-  dates: DateArg<DateType>[],
-  options?: MaxOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link min} function options.
- */
-interface MinOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name min
- * @category Common Helpers
- * @summary Returns the earliest of the given dates.
- *
- * @description
- * Returns the earliest of the given dates.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param dates - The dates to compare
- *
- * @returns The earliest of the dates
- *
- * @example
- * // Which of these dates is the earliest?
- * const result = min([
- *   new Date(1989, 6, 10),
- *   new Date(1987, 1, 11),
- *   new Date(1995, 6, 2),
- *   new Date(1990, 0, 1)
- * ])
- * //=> Wed Feb 11 1987 00:00:00
- */
-declare function min<DateType extends Date, ResultDate extends Date = DateType>(
-  dates: Array<DateArg<DateType>>,
-  options?: MinOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link setMonth} function options.
- */
-interface SetMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name setMonth
- * @category Month Helpers
- * @summary Set the month to the given date.
- *
- * @description
- * Set the month to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The date to be changed
- * @param month - The month index to set (0-11)
- * @param options - The options
- *
- * @returns The new date with the month set
- *
- * @example
- * // Set February to 1 September 2014:
- * const result = setMonth(new Date(2014, 8, 1), 1)
- * //=> Sat Feb 01 2014 00:00:00
- */
-declare function setMonth<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  month: number,
-  options?: SetMonthOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link setYear} function options.
- */
-interface SetYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name setYear
- * @category Year Helpers
- * @summary Set the year to the given date.
- *
- * @description
- * Set the year to the given date.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The date to be changed
- * @param year - The year of the new date
- * @param options - An object with options.
- *
- * @returns The new date with the year set
- *
- * @example
- * // Set year 2013 to 1 September 2014:
- * const result = setYear(new Date(2014, 8, 1), 2013)
- * //=> Sun Sep 01 2013 00:00:00
- */
-declare function setYear<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  year: number,
-  options?: SetYearOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link startOfDay} function options.
- */
-interface StartOfDayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name startOfDay
- * @category Day Helpers
- * @summary Return the start of a day for the given date.
- *
- * @description
- * Return the start of a day for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - The options
- *
- * @returns The start of a day
- *
- * @example
- * // The start of a day for 2 September 2014 11:55:00:
- * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Tue Sep 02 2014 00:00:00
- */
-declare function startOfDay<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: StartOfDayOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link startOfISOWeek} function options.
- */
-interface StartOfISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name startOfISOWeek
- * @category ISO Week Helpers
- * @summary Return the start of an ISO week for the given date.
- *
- * @description
- * Return the start of an ISO week for the given date.
- * The result will be in the local timezone.
- *
- * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The start of an ISO week
- *
- * @example
- * // The start of an ISO week for 2 September 2014 11:55:00:
- * const result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Mon Sep 01 2014 00:00:00
- */
-declare function startOfISOWeek<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: StartOfISOWeekOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * The {@link startOfMonth} function options.
- */
-interface StartOfMonthOptions<ResultDate extends Date>
-  extends ContextOptions<ResultDate> {}
-/**
- * @name startOfMonth
- * @category Month Helpers
- * @summary Return the start of a month for the given date.
- *
- * @description
- * Return the start of a month for the given date. The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments.
- * Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed,
- * or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The start of a month
- *
- * @example
- * // The start of a month for 2 September 2014 11:55:00:
- * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Mon Sep 01 2014 00:00:00
- */
-declare function startOfMonth<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: StartOfMonthOptions<ResultDate> | undefined,
-): ResultDate;
 
 /**
  * The {@link startOfWeek} function options.
@@ -2056,89 +822,6 @@ interface StartOfWeekOptions<DateType extends Date = Date>
   extends LocalizedOptions<"options">,
     WeekOptions,
     ContextOptions<DateType> {}
-/**
- * @name startOfWeek
- * @category Week Helpers
- * @summary Return the start of a week for the given date.
- *
- * @description
- * Return the start of a week for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - An object with options
- *
- * @returns The start of a week
- *
- * @example
- * // The start of a week for 2 September 2014 11:55:00:
- * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
- * //=> Sun Aug 31 2014 00:00:00
- *
- * @example
- * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
- * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
- * //=> Mon Sep 01 2014 00:00:00
- */
-declare function startOfWeek<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: StartOfWeekOptions<ResultDate>,
-): ResultDate;
-
-/**
- * The {@link startOfYear} function options.
- */
-interface StartOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
-/**
- * @name startOfYear
- * @category Year Helpers
- * @summary Return the start of a year for the given date.
- *
- * @description
- * Return the start of a year for the given date.
- * The result will be in the local timezone.
- *
- * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
- * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
- *
- * @param date - The original date
- * @param options - The options
- *
- * @returns The start of a year
- *
- * @example
- * // The start of a year for 2 September 2014 11:55:00:
- * const result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
- * //=> Wed Jan 01 2014 00:00:00
- */
-declare function startOfYear<
-  DateType extends Date,
-  ResultDate extends Date = DateType,
->(
-  date: DateArg<DateType>,
-  options?: StartOfYearOptions<ResultDate> | undefined,
-): ResultDate;
-
-/**
- * Return the end date of the week in the broadcast calendar.
- *
- * @since 9.4.0
- */
-declare function endOfBroadcastWeek(date: Date, dateLib: DateLib): Date;
-
-/**
- * Return the start date of the week in the broadcast calendar.
- *
- * @since 9.4.0
- */
-declare function startOfBroadcastWeek(date: Date, dateLib: DateLib): Date;
 
 /**
  * Render the button elements in the calendar.
@@ -2184,11 +867,11 @@ declare function Chevron(props: {
 type ChevronProps = Parameters<typeof Chevron>[0];
 
 /**
- * Render the gridcell of a day in the calendar and handle the interaction and
- * the focus with they day.
+ * Render a grid cell for a specific day in the calendar.
  *
- * If you need to just change the content of the day cell, consider swapping the
- * `DayButton` component instead.
+ * Handles interaction and focus for the day. If you only need to change the
+ * content of the day cell, consider swapping the `DayButton` component
+ * instead.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2204,7 +887,7 @@ declare function Day(
 type DayProps = Parameters<typeof Day>[0];
 
 /**
- * Render the button for a day in the calendar.
+ * Render a button for a specific day in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2213,7 +896,7 @@ declare function DayButton(
   props: {
     /** The day to render. */
     day: CalendarDay;
-    /** The modifiers for the day. */
+    /** The modifiers to apply to the day. */
     modifiers: Modifiers;
   } & ButtonHTMLAttributes<HTMLButtonElement>,
 ): JSX.Element;
@@ -2225,14 +908,11 @@ type DropdownOption = {
   value: number;
   /** The label of the option. */
   label: string;
-  /**
-   * The dropdown option is disabled when it cannot be selected because out of
-   * the calendar range.
-   */
+  /** Whether the dropdown option is disabled (e.g., out of the calendar range). */
   disabled: boolean;
 };
 /**
- * Render a dropdown component to use in the navigation bar.
+ * Render a dropdown component for navigation in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2240,7 +920,7 @@ type DropdownOption = {
 declare function Dropdown(
   props: {
     /**
-     * @deprecated Use{@link useDayPicker} hook to get the list of internal
+     * @deprecated Use {@link useDayPicker} hook to get the list of internal
      *   components.
      */
     components: CustomComponents;
@@ -2249,13 +929,14 @@ declare function Dropdown(
      *   class names.
      */
     classNames: ClassNames;
+    /** The options to display in the dropdown. */
     options?: DropdownOption[] | undefined;
   } & Omit<SelectHTMLAttributes<HTMLSelectElement>, "children">,
 ): JSX.Element;
 type DropdownProps = Parameters<typeof Dropdown>[0];
 
 /**
- * Render the the navigation dropdowns.
+ * Render the navigation dropdowns for the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2266,7 +947,7 @@ declare function DropdownNav(
 type DropdownNavProps = Parameters<typeof DropdownNav>[0];
 
 /**
- * Component wrapping the footer.
+ * Render the footer of the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2274,26 +955,35 @@ type DropdownNavProps = Parameters<typeof DropdownNav>[0];
 declare function Footer(props: HTMLAttributes<HTMLDivElement>): JSX.Element;
 type FooterProps = Parameters<typeof Footer>[0];
 
-/** Represent a week in a calendar month. */
+/**
+ * Represents a week in a calendar month.
+ *
+ * A `CalendarWeek` contains the days within the week and the week number.
+ */
 declare class CalendarWeek {
   constructor(weekNumber: number, days: CalendarDay[]);
   /** The number of the week within the year. */
   weekNumber: number;
-  /** The days within the week. */
+  /** The days that belong to this week. */
   days: CalendarDay[];
 }
 
-/** Represent a month in a calendar year. Contains the weeks within the month. */
+/**
+ * Represents a month in a calendar year.
+ *
+ * A `CalendarMonth` contains the weeks within the month and the date of the
+ * month.
+ */
 declare class CalendarMonth {
   constructor(month: Date, weeks: CalendarWeek[]);
-  /** The date of the month. */
+  /** The date representing the first day of the month. */
   date: Date;
-  /** The weeks within the month. */
+  /** The weeks that belong to this month. */
   weeks: CalendarWeek[];
 }
 
 /**
- * Render the grid with the weekday header row and the weeks for the given
+ * Render the grid with the weekday header row and the weeks for a specific
  * month.
  *
  * @group Components
@@ -2301,16 +991,16 @@ declare class CalendarMonth {
  */
 declare function Month(
   props: {
-    /** The month where the grid is displayed. */
+    /** The month to display in the grid. */
     calendarMonth: CalendarMonth;
-    /** The index where this month is displayed. */
+    /** The index of the month being displayed. */
     displayIndex: number;
   } & HTMLAttributes<HTMLDivElement>,
 ): JSX.Element;
 type MonthProps = Parameters<typeof Month>[0];
 
 /**
- * Render the grid of days in a month.
+ * Render the grid of days for a specific month.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2321,7 +1011,7 @@ declare function MonthGrid(
 type MonthGridProps = Parameters<typeof MonthGrid>[0];
 
 /**
- * Component wrapping the month grids.
+ * Render a container wrapping the month grids.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2330,7 +1020,7 @@ declare function Months(props: HTMLAttributes<HTMLDivElement>): JSX.Element;
 type MonthsProps = Parameters<typeof Months>[0];
 
 /**
- * Render the dropdown to navigate between months.
+ * Render a dropdown to navigate between months in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2338,23 +1028,27 @@ type MonthsProps = Parameters<typeof Months>[0];
 declare function MonthsDropdown(props: DropdownProps): JSX.Element;
 
 /**
- * Render the toolbar with the navigation button.
+ * Render the navigation toolbar with buttons to navigate between months.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
 declare function Nav(
   props: {
+    /** Handler for the previous month button click. */
     onPreviousClick?: MouseEventHandler<HTMLButtonElement>;
+    /** Handler for the next month button click. */
     onNextClick?: MouseEventHandler<HTMLButtonElement>;
+    /** The date of the previous month, if available. */
     previousMonth?: Date | undefined;
+    /** The date of the next month, if available. */
     nextMonth?: Date | undefined;
   } & HTMLAttributes<HTMLElement>,
 ): JSX.Element;
 type NavProps = Parameters<typeof Nav>[0];
 
 /**
- * Render the next month button element in the calendar.
+ * Render the button to navigate to the next month in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2365,7 +1059,7 @@ declare function NextMonthButton(
 type NextMonthButtonProps = Parameters<typeof NextMonthButton>[0];
 
 /**
- * Render the `option` element.
+ * Render an `option` element.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2376,7 +1070,7 @@ declare function Option(
 type OptionProps = Parameters<typeof Option>[0];
 
 /**
- * Render the previous month button element in the calendar.
+ * Render the button to navigate to the previous month in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2387,21 +1081,21 @@ declare function PreviousMonthButton(
 type PreviousMonthButtonProps = Parameters<typeof PreviousMonthButton>[0];
 
 /**
- * Render the root element.
+ * Render the root element of the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
 declare function Root(
   props: {
-    /** Ref for root element used when `animate` is `true`. */
+    /** Ref for the root element, used when `animate` is `true`. */
     rootRef?: Ref<HTMLDivElement>;
   } & HTMLAttributes<HTMLDivElement>,
 ): JSX.Element;
 type RootProps = Parameters<typeof Root>[0];
 
 /**
- * Render the `select` element.
+ * Render a `select` element.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2412,20 +1106,21 @@ declare function Select(
 type SelectProps = Parameters<typeof Select>[0];
 
 /**
- * Render a row in the calendar, with the days and the week number.
+ * Render a table row representing a week in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
 declare function Week(
   props: {
+    /** The week to render. */
     week: CalendarWeek;
   } & HTMLAttributes<HTMLTableRowElement>,
 ): JSX.Element;
 type WeekProps = Parameters<typeof Week>[0];
 
 /**
- * Render the column header with the weekday name (e.g. "Mo", "Tu", etc.).
+ * Render a table header cell with the name of a weekday (e.g., "Mo", "Tu").
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2436,7 +1131,7 @@ declare function Weekday(
 type WeekdayProps = Parameters<typeof Weekday>[0];
 
 /**
- * Render the row with the weekday names.
+ * Render the table row containing the weekday names.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2447,21 +1142,21 @@ declare function Weekdays(
 type WeekdaysProps = Parameters<typeof Weekdays>[0];
 
 /**
- * Render the cell with the number of the week.
+ * Render a table cell displaying the number of the week.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
 declare function WeekNumber(
   props: {
-    /** The week to render. */
+    /** The week to display. */
     week: CalendarWeek;
   } & ThHTMLAttributes<HTMLTableCellElement>,
 ): JSX.Element;
 type WeekNumberProps = Parameters<typeof WeekNumber>[0];
 
 /**
- * Render the column header for the week numbers.
+ * Render the header cell for the week numbers column.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2472,7 +1167,7 @@ declare function WeekNumberHeader(
 type WeekNumberHeaderProps = Parameters<typeof WeekNumberHeader>[0];
 
 /**
- * Render the weeks in the month grid.
+ * Render the container for the weeks in the month grid.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2483,7 +1178,7 @@ declare function Weeks(
 type WeeksProps = Parameters<typeof Weeks>[0];
 
 /**
- * Render the dropdown to navigate between years.
+ * Render a dropdown to navigate between years in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
@@ -2491,9 +1186,14 @@ type WeeksProps = Parameters<typeof Weeks>[0];
 declare function YearsDropdown(props: DropdownProps): JSX.Element;
 
 /**
- * Format the caption of the month.
+ * Formats the caption of the month.
  *
- * @defaultValue `LLLL y` (e.g. "November 2022")
+ * @defaultValue `LLLL y` (e.g., "November 2022").
+ * @param month The date representing the month.
+ * @param options Configuration options for the date library.
+ * @param dateLib The date library to use for formatting. If not provided, a new
+ *   instance is created.
+ * @returns The formatted caption as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
@@ -2510,9 +1210,14 @@ declare function formatCaption(
 declare const formatMonthCaption: typeof formatCaption;
 
 /**
- * Format the day date shown in the day cell.
+ * Formats the day date shown in the day cell.
  *
- * @defaultValue `d` (e.g. "1")
+ * @defaultValue `d` (e.g., "1").
+ * @param date The date to format.
+ * @param options Configuration options for the date library.
+ * @param dateLib The date library to use for formatting. If not provided, a new
+ *   instance is created.
+ * @returns The formatted day as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
@@ -2523,36 +1228,53 @@ declare function formatDay(
 ): string;
 
 /**
- * Format the month number for the dropdown option label.
+ * Formats the month for the dropdown option label.
  *
- * @defaultValue The localized month name
+ * @defaultValue The localized full month name.
+ * @param month The date representing the month.
+ * @param dateLib The date library to use for formatting. Defaults to
+ *   `defaultDateLib`.
+ * @returns The formatted month name as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
 declare function formatMonthDropdown(month: Date, dateLib?: DateLib): string;
 
 /**
- * Format the week number.
+ * Formats the week number.
  *
- * @defaultValue `weekNumber.toLocaleString()` with a leading zero for single-digit numbers
+ * @defaultValue The week number as a string, with a leading zero for single-digit numbers.
+ * @param weekNumber The week number to format.
+ * @param dateLib The date library to use for formatting. Defaults to
+ *   `defaultDateLib`.
+ * @returns The formatted week number as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
-declare function formatWeekNumber(weekNumber: number): string;
+declare function formatWeekNumber(
+  weekNumber: number,
+  dateLib?: DateLib,
+): string;
 
 /**
- * Format the week number header.
+ * Formats the header for the week number column.
  *
- * @defaultValue `""`
+ * @defaultValue An empty string `""`.
+ * @returns The formatted week number header as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
 declare function formatWeekNumberHeader(): string;
 
 /**
- * Format the weekday name to be displayed in the weekdays header.
+ * Formats the name of a weekday to be displayed in the weekdays header.
  *
- * @defaultValue `cccccc` (e.g. "Mo" for Monday)
+ * @defaultValue `cccccc` (e.g., "Mo" for Monday).
+ * @param weekday The date representing the weekday.
+ * @param options Configuration options for the date library.
+ * @param dateLib The date library to use for formatting. If not provided, a new
+ *   instance is created.
+ * @returns The formatted weekday name as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
@@ -2563,8 +1285,12 @@ declare function formatWeekdayName(
 ): string;
 
 /**
- * Format the years for the dropdown option label.
+ * Formats the year for the dropdown option label.
  *
+ * @param year The year to format.
+ * @param dateLib The date library to use for formatting. Defaults to
+ *   `defaultDateLib`.
+ * @returns The formatted year as a string.
  * @group Formatters
  * @see https://daypicker.dev/docs/translation#custom-formatters
  */
@@ -2577,10 +1303,14 @@ declare function formatYearDropdown(year: Date, dateLib?: DateLib): string;
 declare const formatYearCaption: typeof formatYearDropdown;
 
 /**
- * The ARIA label for the month grid, that will be announced when entering the
- * grid.
+ * Generates the ARIA label for the month grid, which is announced when entering
+ * the grid.
  *
- * @defaultValue `LLLL y` (e.g. "November 2022")
+ * @defaultValue `LLLL y` (e.g., "November 2022").
+ * @param date - The date representing the month.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the month grid.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
@@ -2596,32 +1326,40 @@ declare function labelGrid(
 declare const labelCaption: typeof labelGrid;
 
 /**
- * The label for the day gridcell when the calendar is not interactive.
+ * Generates the label for a day grid cell when the calendar is not interactive.
  *
+ * @param date - The date to format.
+ * @param modifiers - Optional modifiers providing context for the day.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The label for the day grid cell.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
 declare function labelGridcell(
   date: Date,
-  /** The modifiers for the day. */
   modifiers?: Modifiers,
   options?: DateLibOptions,
   dateLib?: DateLib,
 ): string;
 
 /**
- * The ARIA label for the day button.
+ * Generates the ARIA label for a day button.
  *
- * Use the `modifiers` argument to add additional context to the label, e.g.
- * when a day is selected or is today.
+ * Use the `modifiers` argument to provide additional context for the label,
+ * such as indicating if the day is "today" or "selected."
  *
  * @defaultValue The formatted date.
+ * @param date - The date to format.
+ * @param modifiers - The modifiers providing context for the day.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the day button.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
 declare function labelDayButton(
   date: Date,
-  /** The modifiers for the day. */
   modifiers: Modifiers,
   options?: DateLibOptions,
   dateLib?: DateLib,
@@ -2633,51 +1371,58 @@ declare function labelDayButton(
 declare const labelDay: typeof labelDayButton;
 
 /**
- * The ARIA label for the navigation toolbar.
+ * Generates the ARIA label for the navigation toolbar.
  *
  * @defaultValue `""`
+ * @returns The ARIA label for the navigation toolbar.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
 declare function labelNav(): string;
 
 /**
- * The ARIA label for the months dropdown.
+ * Generates the ARIA label for the months dropdown.
  *
  * @defaultValue `"Choose the Month"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the months dropdown.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
 declare function labelMonthDropdown(options?: DateLibOptions): string;
 
 /**
- * The ARIA label for next month button.
+ * Generates the ARIA label for the "next month" button.
  *
  * @defaultValue `"Go to the Next Month"`
+ * @param month - The date representing the next month, or `undefined` if there
+ *   is no next month.
+ * @returns The ARIA label for the "next month" button.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
-declare function labelNext(
-  /** `undefined` where there's no next month to navigate to. */
-  month: Date | undefined,
-): string;
+declare function labelNext(month: Date | undefined): string;
 
 /**
- * The ARIA label for previous month button.
+ * Generates the ARIA label for the "previous month" button.
  *
  * @defaultValue `"Go to the Previous Month"`
+ * @param month - The date representing the previous month, or `undefined` if
+ *   there is no previous month.
+ * @returns The ARIA label for the "previous month" button.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
-declare function labelPrevious(
-  /** Undefined where there's no previous month to navigate to. */
-  month: Date | undefined,
-): string;
+declare function labelPrevious(month: Date | undefined): string;
 
 /**
- * The ARIA label for the Weekday column header.
+ * Generates the ARIA label for a weekday column header.
  *
  * @defaultValue `"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"`
+ * @param date - The date representing the weekday.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the weekday column header.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
@@ -2688,9 +1433,12 @@ declare function labelWeekday(
 ): string;
 
 /**
- * The ARIA label for the week number cell (the first cell in the row).
+ * Generates the ARIA label for the week number cell (the first cell in a row).
  *
  * @defaultValue `Week ${weekNumber}`
+ * @param weekNumber - The number of the week.
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the week number cell.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
@@ -2700,18 +1448,22 @@ declare function labelWeekNumber(
 ): string;
 
 /**
- * The ARIA label for the week number header element.
+ * Generates the ARIA label for the week number header element.
  *
  * @defaultValue `"Week Number"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the week number header.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
 declare function labelWeekNumberHeader(options?: DateLibOptions): string;
 
 /**
- * The ARIA label for the years dropdown.
+ * Generates the ARIA label for the years dropdown.
  *
  * @defaultValue `"Choose the Year"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the years dropdown.
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
@@ -2720,15 +1472,15 @@ declare function labelYearDropdown(options?: DateLibOptions): string;
 /**
  * Selection modes supported by DayPicker.
  *
- * - `single`: use DayPicker to select single days.
- * - `multiple`: allow selecting multiple days.
- * - `range`: use DayPicker to select a range of days.
+ * - `single`: Select a single day.
+ * - `multiple`: Select multiple days.
+ * - `range`: Select a range of days.
  *
  * @see https://daypicker.dev/docs/selection-modes
  */
 type Mode = "single" | "multiple" | "range";
 /**
- * The components that can be changed using the `components` prop.
+ * The components that can be customized using the `components` prop.
  *
  * @see https://daypicker.dev/guides/custom-components
  */
@@ -2786,12 +1538,12 @@ type CustomComponents = {
   WeekNumber: typeof WeekNumber;
   /** Render the header of the week number column. */
   WeekNumberHeader: typeof WeekNumberHeader;
-  /** Render the dropdown with the months. */
+  /** Render the dropdown for selecting months. */
   MonthsDropdown: typeof MonthsDropdown;
-  /** Render the dropdown with the years. */
+  /** Render the dropdown for selecting years. */
   YearsDropdown: typeof YearsDropdown;
 };
-/** Represent a map of formatters used to render localized content. */
+/** Represents a map of formatters used to render localized content. */
 type Formatters = {
   /** Format the caption of a month grid. */
   formatCaption: typeof formatCaption;
@@ -2802,6 +1554,8 @@ type Formatters = {
   /**
    * @ignore
    * @deprecated Use {@link Formatters.formatCaption} instead.
+   *
+   *   **Note:** This formatter will be removed in version 10.0.0.
    */
   formatMonthCaption: typeof formatMonthCaption;
   /** Format the week number. */
@@ -2818,7 +1572,7 @@ type Formatters = {
    */
   formatYearCaption: typeof formatYearCaption;
 };
-/** Map of functions to translate ARIA labels for the relative elements. */
+/** A map of functions to translate ARIA labels for various elements. */
 type Labels = {
   /** The label for the navigation toolbar. */
   labelNav: typeof labelNav;
@@ -2845,56 +1599,18 @@ type Labels = {
   labelWeekday: typeof labelWeekday;
   /** The label for the week number. */
   labelWeekNumber: typeof labelWeekNumber;
-  /**
-   * Return the label for the column of the week number.
-   *
-   * @since 9.0.0
-   */
+  /** The label for the column of week numbers. */
   labelWeekNumberHeader: typeof labelWeekNumberHeader;
 };
 /**
- * A value or a function that matches a specific day.
+ * A value or a function that matches specific days.
  *
  * @example
- *   // will always match the day
- *   const booleanMatcher: Matcher = true;
- *
- *   // will match the today's date
- *   const dateMatcher: Matcher = new Date();
- *
- *   // will match the days in the array
- *   const arrayMatcher: Matcher = [
- *     new Date(2019, 1, 2),
- *     new Date(2019, 1, 4)
+ *   // Match weekends and specific holidays
+ *   const matcher: Matcher = [
+ *     { dayOfWeek: [0, 6] }, // Weekends
+ *     { from: new Date(2023, 11, 24), to: new Date(2023, 11, 26) } // Christmas
  *   ];
- *
- *   // will match days after the 2nd of February 2019
- *   const afterMatcher: DateAfter = { after: new Date(2019, 1, 2) };
- *
- *   // will match days before the 2nd of February 2019 }
- *   const beforeMatcher: DateBefore = { before: new Date(2019, 1, 2) };
- *
- *   // will match Sundays
- *   const dayOfWeekMatcher: DayOfWeek = {
- *     dayOfWeek: 0
- *   };
- *
- *   // will match the included days, except the two dates
- *   const intervalMatcher: DateInterval = {
- *     after: new Date(2019, 1, 2),
- *     before: new Date(2019, 1, 5)
- *   };
- *
- *   // will match the included days, including the two dates
- *   const rangeMatcher: DateRange = {
- *     from: new Date(2019, 1, 2),
- *     to: new Date(2019, 1, 5)
- *   };
- *
- *   // will match when the function return true
- *   const functionMatcher: Matcher = (day: Date) => {
- *     return day.getMonth() === 2; // match when month is March
- *   };
  */
 type Matcher =
   | boolean
@@ -2907,31 +1623,31 @@ type Matcher =
   | DateInterval
   | DayOfWeek;
 /**
- * Match a day falling after the specified date, with the date not included.
+ * Match a day falling after the specified date (exclusive).
  *
  * @example
- *   // Match days after the 2nd of February 2019
+ *   // Match days after February 2, 2019
  *   const matcher: DateAfter = { after: new Date(2019, 1, 2) };
  */
 type DateAfter = {
   after: Date;
 };
 /**
- * Match a day falling before the specified date, with the date not included.
+ * Match a day falling before the specified date (exclusive).
  *
  * @example
- *   // Match days before the 2nd of February 2019
+ *   // Match days before February 2, 2019
  *   const matcher: DateBefore = { before: new Date(2019, 1, 2) };
  */
 type DateBefore = {
   before: Date;
 };
 /**
- * An interval of dates. Differently from {@link DateRange}, the range ends here
- * are not included.
+ * An interval of dates. Unlike {@link DateRange}, the range ends are not
+ * included.
  *
  * @example
- *   // Match the days between the 2nd and the 5th of February 2019
+ *   // Match days between February 2 and February 5, 2019
  *   const matcher: DateInterval = {
  *     after: new Date(2019, 1, 2),
  *     before: new Date(2019, 1, 5)
@@ -2942,11 +1658,10 @@ type DateInterval = {
   after: Date;
 };
 /**
- * A range of dates. The range can be open. Differently from
- * {@link DateInterval}, the range ends here are included.
+ * A range of dates. Unlike {@link DateInterval}, the range ends are included.
  *
  * @example
- *   // Match the days between the 2nd and the 5th of February 2019
+ *   // Match days between February 2 and February 5, 2019
  *   const matcher: DateRange = {
  *     from: new Date(2019, 1, 2),
  *     to: new Date(2019, 1, 5)
@@ -2957,8 +1672,7 @@ type DateRange = {
   to?: Date | undefined;
 };
 /**
- * Match dates being one of the specified days of the week (`0-6`, where `0` is
- * Sunday).
+ * Match days of the week (`0-6`, where `0` is Sunday).
  *
  * @example
  *   // Match Sundays
@@ -3018,22 +1732,11 @@ type Styles = {
 /**
  * Represents the modifiers that match a specific day in the calendar.
  *
- * - Retrieve modifiers using the {@link OnSelectHandler} via the `onSelect` prop,
- *   or within custom components using the {@link useDayPicker} hook.
- * - Includes built-in modifiers from {@link DayFlag} and {@link SelectionState}.
- * - Add custom modifiers using the `modifiers` prop.
- *
  * @example
  *   const modifiers: Modifiers = {
- *   today: false, // the day is not today
- *   selected: true, // the day is selected
- *   disabled: false, // the day is not disabled
- *   outside: false, // the day is not outside the month
- *   focused: false, // the day is not focused
- *
- *   weekend: false // custom modifier example for matching a weekend
- *   booked: true // custom modifier example for matching a booked day
- *   available: false // custom modifier example for matching an available day
+ *     today: true, // The day is today
+ *     selected: false, // The day is not selected
+ *     weekend: true // Custom modifier for weekends
  *   };
  *
  * @see https://daypicker.dev/guides/custom-modifiers
@@ -3174,8 +1877,8 @@ interface DateLibOptions
   numerals?: Numerals;
 }
 /**
- * A wrapper class around [date-fns](http://date-fns.org) sharing the same
- * options.
+ * A wrapper class around [date-fns](http://date-fns.org) that provides utility
+ * methods for date manipulation and formatting.
  *
  * @since 9.2.0
  * @example
@@ -3183,40 +1886,44 @@ interface DateLibOptions
  *   const newDate = dateLib.addDays(new Date(), 5);
  */
 declare class DateLib {
-  /** The options for the date library. */
+  /** The options for configuring the date library. */
   readonly options: DateLibOptions;
-  /** Overrides for the date library functions. */
+  /** Overrides for the default date library functions. */
   readonly overrides?: Partial<typeof DateLib.prototype>;
   /**
-   * Creates an instance of DateLib.
+   * Creates an instance of `DateLib`.
    *
-   * @param options The options for the date library.
-   * @param overrides Overrides for the date library functions.
+   * @param options Configuration options for the date library.
+   * @param overrides Custom overrides for the date library functions.
    */
   constructor(
     options?: DateLibOptions,
     overrides?: Partial<typeof DateLib.prototype>,
   );
   /**
-   * Generate digit map dynamically using Intl.NumberFormat.
+   * Generates a mapping of Arabic digits (0-9) to the target numbering system
+   * digits.
    *
    * @since 9.5.0
+   * @returns A record mapping Arabic digits to the target numerals.
    */
   private getDigitMap;
   /**
-   * Replace Arabic digits with the target numbering system digits.
+   * Replaces Arabic digits in a string with the target numbering system digits.
    *
    * @since 9.5.0
+   * @param input The string containing Arabic digits.
+   * @returns The string with digits replaced.
    */
   private replaceDigits;
   /**
-   * Format number using the custom numbering system.
+   * Formats a number using the configured numbering system.
    *
    * @since 9.5.0
    * @param value The number to format.
-   * @returns The formatted number.
+   * @returns The formatted number as a string.
    */
-  formatNumber(value: number): string;
+  formatNumber(value: number | string): string;
   /**
    * Reference to the built-in Date constructor.
    *
@@ -3224,20 +1931,20 @@ declare class DateLib {
    */
   Date: typeof Date;
   /**
-   * Creates a new date object to the today's date.
+   * Creates a new `Date` object representing today's date.
    *
    * @since 9.5.0
-   * @returns The new date object.
+   * @returns A `Date` object for today's date.
    */
   today: () => Date;
   /**
-   * Creates a new date object with the specified year, month and date.
+   * Creates a new `Date` object with the specified year, month, and day.
    *
    * @since 9.5.0
    * @param year The year.
    * @param monthIndex The month (0-11).
    * @param date The day of the month.
-   * @returns The new date object.
+   * @returns A new `Date` object.
    */
   newDate: (year: number, monthIndex: number, date: number) => Date;
   /**
@@ -3247,7 +1954,7 @@ declare class DateLib {
    * @param amount The number of days to add.
    * @returns The new date with the days added.
    */
-  addDays: typeof addDays;
+  addDays: (date: Date, amount: number) => Date;
   /**
    * Adds the specified number of months to the given date.
    *
@@ -3255,7 +1962,7 @@ declare class DateLib {
    * @param amount The number of months to add.
    * @returns The new date with the months added.
    */
-  addMonths: typeof addMonths;
+  addMonths: (date: Date, amount: number) => Date;
   /**
    * Adds the specified number of weeks to the given date.
    *
@@ -3263,7 +1970,7 @@ declare class DateLib {
    * @param amount The number of weeks to add.
    * @returns The new date with the weeks added.
    */
-  addWeeks: typeof addWeeks;
+  addWeeks: (date: Date, amount: number) => Date;
   /**
    * Adds the specified number of years to the given date.
    *
@@ -3271,7 +1978,7 @@ declare class DateLib {
    * @param amount The number of years to add.
    * @returns The new date with the years added.
    */
-  addYears: typeof addYears;
+  addYears: (date: Date, amount: number) => Date;
   /**
    * Returns the number of calendar days between the given dates.
    *
@@ -3279,7 +1986,7 @@ declare class DateLib {
    * @param dateRight The earlier date.
    * @returns The number of calendar days between the dates.
    */
-  differenceInCalendarDays: typeof differenceInCalendarDays;
+  differenceInCalendarDays: (dateLeft: Date, dateRight: Date) => number;
   /**
    * Returns the number of calendar months between the given dates.
    *
@@ -3287,48 +1994,48 @@ declare class DateLib {
    * @param dateRight The earlier date.
    * @returns The number of calendar months between the dates.
    */
-  differenceInCalendarMonths: typeof differenceInCalendarMonths;
+  differenceInCalendarMonths: (dateLeft: Date, dateRight: Date) => number;
   /**
    * Returns the months between the given dates.
    *
    * @param interval The interval to get the months for.
    */
-  eachMonthOfInterval: typeof eachMonthOfInterval;
+  eachMonthOfInterval: (interval: Interval) => Date[];
   /**
    * Returns the end of the broadcast week for the given date.
    *
    * @param date The original date.
    * @returns The end of the broadcast week.
    */
-  endOfBroadcastWeek: typeof endOfBroadcastWeek;
+  endOfBroadcastWeek: (date: Date) => Date;
   /**
    * Returns the end of the ISO week for the given date.
    *
    * @param date The original date.
    * @returns The end of the ISO week.
    */
-  endOfISOWeek: typeof endOfISOWeek;
+  endOfISOWeek: (date: Date) => Date;
   /**
    * Returns the end of the month for the given date.
    *
    * @param date The original date.
    * @returns The end of the month.
    */
-  endOfMonth: typeof endOfMonth;
+  endOfMonth: (date: Date) => Date;
   /**
    * Returns the end of the week for the given date.
    *
    * @param date The original date.
    * @returns The end of the week.
    */
-  endOfWeek: typeof endOfWeek;
+  endOfWeek: (date: Date, options?: EndOfWeekOptions<Date>) => Date;
   /**
    * Returns the end of the year for the given date.
    *
    * @param date The original date.
    * @returns The end of the year.
    */
-  endOfYear: typeof endOfYear;
+  endOfYear: (date: Date) => Date;
   /**
    * Formats the given date using the specified format string.
    *
@@ -3336,35 +2043,35 @@ declare class DateLib {
    * @param formatStr The format string.
    * @returns The formatted date string.
    */
-  format: typeof format;
+  format: (date: Date, formatStr: string, options?: FormatOptions$1) => string;
   /**
    * Returns the ISO week number for the given date.
    *
    * @param date The date to get the ISO week number for.
    * @returns The ISO week number.
    */
-  getISOWeek: typeof getISOWeek;
+  getISOWeek: (date: Date) => number;
   /**
    * Returns the month of the given date.
    *
    * @param date The date to get the month for.
    * @returns The month.
    */
-  getMonth: typeof getMonth;
+  getMonth: (date: Date, options?: GetMonthOptions) => number;
   /**
    * Returns the year of the given date.
    *
    * @param date The date to get the year for.
    * @returns The year.
    */
-  getYear: typeof getYear;
+  getYear: (date: Date, options?: GetYearOptions) => number;
   /**
    * Returns the local week number for the given date.
    *
    * @param date The date to get the week number for.
    * @returns The week number.
    */
-  getWeek: typeof getWeek;
+  getWeek: (date: Date, options?: GetWeekOptions) => number;
   /**
    * Checks if the first date is after the second date.
    *
@@ -3372,7 +2079,7 @@ declare class DateLib {
    * @param dateToCompare The date to compare with.
    * @returns True if the first date is after the second date.
    */
-  isAfter: typeof isAfter;
+  isAfter: (date: Date, dateToCompare: Date) => boolean;
   /**
    * Checks if the first date is before the second date.
    *
@@ -3380,7 +2087,7 @@ declare class DateLib {
    * @param dateToCompare The date to compare with.
    * @returns True if the first date is before the second date.
    */
-  isBefore: typeof isBefore;
+  isBefore: (date: Date, dateToCompare: Date) => boolean;
   /**
    * Checks if the given value is a Date object.
    *
@@ -3395,7 +2102,7 @@ declare class DateLib {
    * @param dateRight The second date to compare.
    * @returns True if the dates are on the same day.
    */
-  isSameDay: typeof isSameDay;
+  isSameDay: (dateLeft: Date, dateRight: Date) => boolean;
   /**
    * Checks if the given dates are in the same month.
    *
@@ -3403,7 +2110,7 @@ declare class DateLib {
    * @param dateRight The second date to compare.
    * @returns True if the dates are in the same month.
    */
-  isSameMonth: typeof isSameMonth;
+  isSameMonth: (dateLeft: Date, dateRight: Date) => boolean;
   /**
    * Checks if the given dates are in the same year.
    *
@@ -3411,21 +2118,21 @@ declare class DateLib {
    * @param dateRight The second date to compare.
    * @returns True if the dates are in the same year.
    */
-  isSameYear: typeof isSameYear;
+  isSameYear: (dateLeft: Date, dateRight: Date) => boolean;
   /**
    * Returns the latest date in the given array of dates.
    *
    * @param dates The array of dates to compare.
    * @returns The latest date.
    */
-  max: typeof max;
+  max: (dates: Date[]) => Date;
   /**
    * Returns the earliest date in the given array of dates.
    *
    * @param dates The array of dates to compare.
    * @returns The earliest date.
    */
-  min: typeof min;
+  min: (dates: Date[]) => Date;
   /**
    * Sets the month of the given date.
    *
@@ -3433,7 +2140,7 @@ declare class DateLib {
    * @param month The month to set (0-11).
    * @returns The new date with the month set.
    */
-  setMonth: typeof setMonth;
+  setMonth: (date: Date, month: number) => Date;
   /**
    * Sets the year of the given date.
    *
@@ -3441,49 +2148,49 @@ declare class DateLib {
    * @param year The year to set.
    * @returns The new date with the year set.
    */
-  setYear: typeof setYear;
+  setYear: (date: Date, year: number) => Date;
   /**
    * Returns the start of the broadcast week for the given date.
    *
    * @param date The original date.
    * @returns The start of the broadcast week.
    */
-  startOfBroadcastWeek: typeof startOfBroadcastWeek;
+  startOfBroadcastWeek: (date: Date, dateLib: DateLib) => Date;
   /**
    * Returns the start of the day for the given date.
    *
    * @param date The original date.
    * @returns The start of the day.
    */
-  startOfDay: typeof startOfDay;
+  startOfDay: (date: Date) => Date;
   /**
    * Returns the start of the ISO week for the given date.
    *
    * @param date The original date.
    * @returns The start of the ISO week.
    */
-  startOfISOWeek: typeof startOfISOWeek;
+  startOfISOWeek: (date: Date) => Date;
   /**
    * Returns the start of the month for the given date.
    *
    * @param date The original date.
    * @returns The start of the month.
    */
-  startOfMonth: typeof startOfMonth;
+  startOfMonth: (date: Date) => Date;
   /**
    * Returns the start of the week for the given date.
    *
    * @param date The original date.
    * @returns The start of the week.
    */
-  startOfWeek: typeof startOfWeek;
+  startOfWeek: (date: Date, options?: StartOfWeekOptions) => Date;
   /**
    * Returns the start of the year for the given date.
    *
    * @param date The original date.
    * @returns The start of the year.
    */
-  startOfYear: typeof startOfYear;
+  startOfYear: (date: Date) => Date;
 }
 
 /**
@@ -3499,55 +2206,58 @@ declare const defaultDateLib: DateLib;
 declare const dateLib: DateLib;
 
 /**
- * Represent the day displayed in the calendar.
+ * Represents a day displayed in the calendar.
  *
- * In DayPicker, a `Day` is a `Date` that can be displayed in the calendar. It
- * is used as extension of the native `Date` object to provide additional
- * information about the day.
+ * In DayPicker, a `CalendarDay` is a wrapper around a `Date` object that
+ * provides additional information about the day, such as whether it belongs to
+ * the displayed month.
  */
 declare class CalendarDay {
   constructor(date: Date, displayMonth: Date, dateLib?: DateLib);
   /**
-   * The utility functions to manipulate dates.
+   * Utility functions for manipulating dates.
    *
    * @private
    */
   readonly dateLib: DateLib;
   /**
-   * Whether the day is not belonging to the displayed month.
+   * Indicates whether the day does not belong to the displayed month.
    *
-   * When `outside` is `true`, use `displayMonth` to know to which month the day
-   * belongs.
+   * If `outside` is `true`, use `displayMonth` to determine the month to which
+   * the day belongs.
    */
   readonly outside: boolean;
   /**
-   * The months where the day is displayed.
+   * The month that is currently displayed in the calendar.
    *
-   * In DayPicker, days can fall out the displayed months (e.g. when
-   * `showOutsideDays` is `true`). This property is useful to know if the day is
-   * in the same month of the displayed month.
+   * This property is useful for determining if the day belongs to the same
+   * month as the displayed month, especially when `showOutsideDays` is
+   * enabled.
    */
   readonly displayMonth: Date;
   /** The date represented by this day. */
   readonly date: Date;
   /**
-   * Check if the day is the same as the given day: considering if it is in the
-   * same display month.
+   * Checks if this day is equal to another `CalendarDay`, considering both the
+   * date and the displayed month.
+   *
+   * @param day The `CalendarDay` to compare with.
+   * @returns `true` if the days are equal, otherwise `false`.
    */
   isEqualTo(day: CalendarDay): boolean;
 }
 
 /**
- * Render the caption of a month in the calendar.
+ * Render the caption for a month in the calendar.
  *
  * @group Components
  * @see https://daypicker.dev/guides/custom-components
  */
 declare function MonthCaption(
   props: {
-    /** The month where the grid is displayed. */
+    /** The month to display in the caption. */
     calendarMonth: CalendarMonth;
-    /** The index where this month is displayed. */
+    /** The index of the month being displayed. */
     displayIndex: number;
   } & HTMLAttributes<HTMLDivElement>,
 ): JSX.Element;
@@ -3741,13 +2451,28 @@ interface PropsBase {
    * - `month`: display only the dropdown for the months
    * - `year`: display only the dropdown for the years
    *
-   * **Note:** showing the dropdown will set the start/end months
-   * {@link startMonth} to 100 years ago, and {@link endMonth} to the end of the
-   * current year.
+   * **Note:** By default, showing the dropdown will set the {@link startMonth}
+   * to 100 years ago and {@link endMonth} to the end of the current year. You
+   * can override this behavior by explicitly setting `startMonth` and
+   * `endMonth`.
    *
    * @see https://daypicker.dev/docs/customization#caption-layouts
    */
   captionLayout?: "label" | "dropdown" | "dropdown-months" | "dropdown-years";
+  /**
+   * Adjust the positioning of the navigation buttons.
+   *
+   * - `around`: Displays the buttons on either side of the caption.
+   * - `after`: Displays the buttons after the caption. This ensures the tab order
+   *   matches the visual order.
+   *
+   * If not set, the buttons default to being displayed after the caption, but
+   * the tab order may not align with the visual order.
+   *
+   * @since 9.7.0
+   * @see https://daypicker.dev/docs/customization#navigation-layouts
+   */
+  navLayout?: "around" | "after" | undefined;
   /**
    * Display always 6 weeks per each month, regardless of the month’s number of
    * weeks. Weeks will be filled with the days from the next month.
@@ -3804,16 +2529,12 @@ interface PropsBase {
   ISOWeek?: boolean;
   /**
    * The time zone (IANA or UTC offset) to use in the calendar (experimental).
+   *
    * See
    * [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
    * for the possible values.
    *
-   * Time zones are supported by the `TZDate` object by the
-   * [@date-fns/tz](https://github.com/date-fns/tz) package. Please refer to the
-   * package documentation for more information.
-   *
    * @since 9.1.1
-   * @experimental
    * @see https://daypicker.dev/docs/time-zone
    */
   timeZone?: string | undefined;
@@ -3848,9 +2569,10 @@ interface PropsBase {
    */
   initialFocus?: boolean;
   /**
-   * Apply the `disabled` modifier to the matching days.
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
    *
-   * @see https://daypicker.dev/docs/selection-modes#disabling-dates
+   * @see https://daypicker.dev/docs/selection-modes#disabled
    */
   disabled?: Matcher | Matcher[] | undefined;
   /**
@@ -3869,6 +2591,13 @@ interface PropsBase {
   today?: Date;
   /**
    * Add modifiers to the matching days.
+   *
+   * @example
+   *   const modifiers = {
+   *   weekend: { dayOfWeek: [0, 6] }, // Match weekends
+   *   holiday: [new Date(2023, 11, 25)] // Match Christmas
+   *   };
+   *   <DayPicker modifiers={modifiers} />
    *
    * @see https://daypicker.dev/guides/custom-modifiers
    */
@@ -3952,13 +2681,13 @@ interface PropsBase {
   numerals?: Numerals | undefined;
   /**
    * The index of the first day of the week (0 - Sunday). Overrides the locale's
-   * one.
+   * default.
    *
    * @see https://daypicker.dev/docs/localization#first-date-of-the-week
    */
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
   /**
-   * The day of January, which is always in the first week of the year.
+   * The day of January that is always in the first week of the year.
    *
    * @see https://daypicker.dev/docs/localization#first-week-contains-date
    */
@@ -4067,10 +2796,22 @@ interface PropsBase {
 /**
  * Shared handler type for `onSelect` callback when a selection mode is set.
  *
+ * @example
+ *   const handleSelect: OnSelectHandler<Date> = (
+ *     selected,
+ *     triggerDate,
+ *     modifiers,
+ *     e
+ *   ) => {
+ *     console.log("Selected:", selected);
+ *     console.log("Triggered by:", triggerDate);
+ *   };
+ *
  * @template T - The type of the selected item.
  * @callback OnSelectHandler
  * @param {T} selected - The selected item after the event.
- * @param {Date} triggerDate - The date when the event was triggered.
+ * @param {Date} triggerDate - The date when the event was triggered. This is
+ *   typically the day clicked or interacted with.
  * @param {Modifiers} modifiers - The modifiers associated with the event.
  * @param {MouseEvent | KeyboardEvent} e - The event object.
  */
@@ -4153,6 +2894,12 @@ interface PropsMulti {
 interface PropsRangeRequired {
   mode: "range";
   required: true;
+  /**
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
+   *
+   * @see https://daypicker.dev/docs/selection-modes#disabled
+   */
   disabled?: Matcher | Matcher[] | undefined;
   /**
    * When `true`, the range will reset when including a disabled day.
@@ -4178,11 +2925,18 @@ interface PropsRangeRequired {
 interface PropsRange {
   mode: "range";
   required?: false | undefined;
+  /**
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
+   *
+   * @see https://daypicker.dev/docs/selection-modes#disabled
+   */
   disabled?: Matcher | Matcher[] | undefined;
   /**
    * When `true`, the range will reset when including a disabled day.
    *
    * @since V9.0.2
+   * @see https://daypicker.dev/docs/selection-modes#exclude-disabled
    */
   excludeDisabled?: boolean | undefined;
   /** The selected range. */
@@ -4218,6 +2972,19 @@ type SelectedRange<
     required?: boolean;
   },
 > = T["required"] extends true ? DateRange : DateRange | undefined;
+/**
+ * Represents the selected value based on the selection mode.
+ *
+ * @example
+ *   // Single selection mode
+ *   const selected: SelectedValue<{ mode: "single" }> = new Date();
+ *
+ *   // Multiple selection mode
+ *   const selected: SelectedValue<{ mode: "multiple" }> = [new Date(), new Date()];
+ *
+ *   // Range selection mode
+ *   const selected: SelectedValue<{ mode: "range" }> = { from: new Date(), to: new Date() };
+ */
 type SelectedValue<T> = T extends {
   mode: "single";
   required?: boolean;
@@ -4261,6 +3028,18 @@ type SelectHandlerRange<
   modifiers: Modifiers,
   e: MouseEvent | KeyboardEvent,
 ) => T["required"] extends true ? DateRange : DateRange | undefined;
+/**
+ * The handler to set a selection based on the mode.
+ *
+ * @example
+ *   const handleSelect: SelectHandler<{ mode: "single" }> = (
+ *     triggerDate,
+ *     modifiers,
+ *     e
+ *   ) => {
+ *     console.log("Selected date:", triggerDate);
+ *   };
+ */
 type SelectHandler<
   T extends {
     mode?: Mode | undefined;
@@ -4336,15 +3115,13 @@ type DayPickerContext<
   dayPickerProps: DayPickerProps;
 };
 /**
- * Returns the context to work with `<DayPicker />` inside custom components.
- *
- * This hook provides access to the DayPicker context, which includes various
- * properties and methods to interact with the DayPicker component. It must be
- * used within a custom component.
+ * Provides access to the DayPicker context, which includes properties and
+ * methods to interact with the DayPicker component. This hook must be used
+ * within a custom component.
  *
  * @template T - Use this type to refine the returned context type with a
  *   specific selection mode.
- * @returns {DayPickerContext<T>} The context to work with DayPicker.
+ * @returns The context to work with DayPicker.
  * @throws {Error} If the hook is used outside of a DayPicker provider.
  * @group Hooks
  * @see https://daypicker.dev/guides/custom-components
@@ -4414,7 +3191,7 @@ type DayPickerMultipleProps = PropsMulti;
 type DayPickerRangeProps = PropsRange;
 /**
  * @ignore
- * @deprecated This type will be removed. Use `NonNullable<unknown>` instead
+ * @deprecated This type will be removed. Use `NonNullable<unknown>` instead.
  */
 type DayPickerDefaultProps = NonNullable<unknown>;
 /**
@@ -4424,7 +3201,7 @@ type DayPickerDefaultProps = NonNullable<unknown>;
 type DaySelectionMode = Mode;
 /**
  * @ignore
- * @deprecated This type will be removed. Use `string` instead;
+ * @deprecated This type will be removed. Use `string` instead.
  */
 type Modifier = string;
 /**
@@ -4442,19 +3219,19 @@ type InternalModifier =
   | SelectionState.selected;
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{mode: "single"}>`
- *   instead.
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "single"
+ *   }>` instead.
  */
 type SelectSingleEventHandler = PropsSingle["onSelect"];
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{mode:
- *   "multiple"}>` instead.
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "multiple"
+ *   }>` instead.
  */
 type SelectMultipleEventHandler = PropsMulti["onSelect"];
 /**
  * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{mode: "range"}>`
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "range" }>`
  *   instead.
  */
 type SelectRangeEventHandler = PropsRange["onSelect"];
@@ -4465,7 +3242,7 @@ type SelectRangeEventHandler = PropsRange["onSelect"];
 type DayPickerProviderProps = any;
 /**
  * @ignore
- * @deprecated This type has been removed to `useDayPicker`.
+ * @deprecated This type has been moved to `useDayPicker`.
  * @group Hooks
  */
 declare const useNavigation: typeof useDayPicker;
@@ -4538,57 +3315,55 @@ type DayPointerEventHandler = DayEventHandler<PointerEvent>;
 type DayTouchEventHandler = DayEventHandler<TouchEvent>;
 
 /**
- * Render the date picker calendar.
+ * Renders the DayPicker calendar component.
  *
+ * @param initialProps - The props for the DayPicker component.
+ * @returns The rendered DayPicker component.
  * @group DayPicker
  * @see https://daypicker.dev
  */
-declare function DayPicker(props: DayPickerProps): JSX.Element;
+declare function DayPicker(initialProps: DayPickerProps): JSX.Element;
 
 /**
- * Get the default class names for the UI elements.
+ * Returns the default class names for the UI elements.
  *
+ * This function generates a mapping of default class names for various UI
+ * elements, day flags, selection states, and animations.
+ *
+ * @returns An object containing the default class names.
  * @group Utilities
  */
 declare function getDefaultClassNames(): ClassNames;
 
 /**
- * Add a day to an existing range.
+ * Adds a date to an existing range, considering constraints like minimum and
+ * maximum range size.
  *
- * The returned range takes in account the `undefined` values and if the added
- * day is already present in the range.
- *
+ * @param date - The date to add to the range.
+ * @param initialRange - The initial range to which the date will be added.
+ * @param min - The minimum number of days in the range.
+ * @param max - The maximum number of days in the range.
+ * @param required - Whether the range must always include at least one date.
+ * @param dateLib - The date utility library instance.
+ * @returns The updated date range, or `undefined` if the range is cleared.
  * @group Utilities
  */
 declare function addToRange(
-  /** The date to add to the range. */
   date: Date,
-  /** The range where to add `date`. */
   initialRange: DateRange | undefined,
   min?: number,
   max?: number,
   required?: boolean,
-  /** @ignore */
   dateLib?: DateLib,
 ): DateRange | undefined;
 
 /**
- * Returns whether a day matches against at least one of the given
- * {@link Matcher}.
+ * Checks if a given date matches at least one of the specified {@link Matcher}.
  *
- * ```tsx
- * const date = new Date(2022, 5, 19);
- * const matcher1: DateRange = {
- *   from: new Date(2021, 12, 21),
- *   to: new Date(2021, 12, 30)
- * };
- * const matcher2: DateRange = {
- *   from: new Date(2022, 5, 1),
- *   to: new Date(2022, 5, 23)
- * };
- * dateMatchModifiers(date, [matcher1, matcher2]); // true, since day is in the matcher1 range.
- * ```
- *
+ * @param date - The date to check.
+ * @param matchers - The matchers to check against.
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the date matches any of the matchers, otherwise `false`.
  * @group Utilities
  */
 declare function dateMatchModifiers(
@@ -4603,17 +3378,15 @@ declare function dateMatchModifiers(
 declare const isMatch: typeof dateMatchModifiers;
 
 /**
- * Returns whether a date range contains one or more days of the week.
- *
- * ```tsx
- * const range: DateRange = {
- *   from: new Date(2024, 8, 1), //  Sunday
- *   to: new Date(2024, 8, 6) //  Thursday
- * };
- * rangeContainsDayOfWeek(date, 1); // true: contains range contains Monday
- * ```
+ * Checks if a date range contains one or more specified days of the week.
  *
  * @since 9.2.2
+ * @param range - The date range to check.
+ * @param dayOfWeek - The day(s) of the week to check for (`0-6`, where `0` is
+ *   Sunday).
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the range contains the specified day(s) of the week,
+ *   otherwise `false`.
  * @group Utilities
  */
 declare function rangeContainsDayOfWeek(
@@ -4626,22 +3399,13 @@ declare function rangeContainsDayOfWeek(
 ): boolean;
 
 /**
- * Returns whether a range contains dates that match the given modifiers.
- *
- * ```tsx
- * const range: DateRange = {
- *   from: new Date(2021, 12, 21),
- *   to: new Date(2021, 12, 30)
- * };
- * const matcher1: Date = new Date(2021, 12, 21);
- * const matcher2: DateRange = {
- *   from: new Date(2022, 5, 1),
- *   to: new Date(2022, 5, 23)
- * };
- * rangeContainsModifiers(range, [matcher1, matcher2]); // true, since matcher1 is in the date.
- * ```
+ * Checks if a date range contains dates that match the given modifiers.
  *
  * @since 9.2.2
+ * @param range - The date range to check.
+ * @param modifiers - The modifiers to match against.
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the range contains matching dates, otherwise `false`.
  * @group Utilities
  */
 declare function rangeContainsModifiers(
@@ -4654,15 +3418,19 @@ declare function rangeContainsModifiers(
 ): boolean;
 
 /**
- * Determines whether a given date is inside a specified date range.
+ * Checks if a given date is within a specified date range.
  *
  * @since 9.0.0
+ * @param range - The date range to check against.
+ * @param date - The date to check.
+ * @param excludeEnds - If `true`, the range's start and end dates are excluded.
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the date is within the range, otherwise `false`.
  * @group Utilities
  */
 declare function rangeIncludesDate(
   range: DateRange,
   date: Date,
-  /** If `true`, the ends of the range are excluded. */
   excludeEnds?: boolean,
   dateLib?: DateLib,
 ): boolean;
@@ -4673,9 +3441,13 @@ declare function rangeIncludesDate(
 declare const isDateInRange: (range: DateRange, date: Date) => boolean;
 
 /**
- * Determines whether a given range overlaps with another range.
+ * Determines if two date ranges overlap.
  *
  * @since 9.2.2
+ * @param rangeLeft - The first date range.
+ * @param rangeRight - The second date range.
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the ranges overlap, otherwise `false`.
  * @group Utilities
  */
 declare function rangeOverlaps(
@@ -4691,39 +3463,52 @@ declare function rangeOverlaps(
 ): boolean;
 
 /**
- * Returns true if `matcher` is of type {@link DateInterval}.
+ * Checks if the given value is of type {@link DateInterval}.
  *
+ * @param matcher - The value to check.
+ * @returns `true` if the value is a {@link DateInterval}, otherwise `false`.
  * @group Utilities
  */
 declare function isDateInterval(matcher: unknown): matcher is DateInterval;
 /**
- * Returns true if `value` is a {@link DateRange} type.
+ * Checks if the given value is of type {@link DateRange}.
  *
+ * @param value - The value to check.
+ * @returns `true` if the value is a {@link DateRange}, otherwise `false`.
  * @group Utilities
  */
 declare function isDateRange(value: unknown): value is DateRange;
 /**
- * Returns true if `value` is of type {@link DateAfter}.
+ * Checks if the given value is of type {@link DateAfter}.
  *
+ * @param value - The value to check.
+ * @returns `true` if the value is a {@link DateAfter}, otherwise `false`.
  * @group Utilities
  */
 declare function isDateAfterType(value: unknown): value is DateAfter;
 /**
- * Returns true if `value` is of type {@link DateBefore}.
+ * Checks if the given value is of type {@link DateBefore}.
  *
+ * @param value - The value to check.
+ * @returns `true` if the value is a {@link DateBefore}, otherwise `false`.
  * @group Utilities
  */
 declare function isDateBeforeType(value: unknown): value is DateBefore;
 /**
- * Returns true if `value` is a {@link DayOfWeek} type.
+ * Checks if the given value is of type {@link DayOfWeek}.
  *
+ * @param value - The value to check.
+ * @returns `true` if the value is a {@link DayOfWeek}, otherwise `false`.
  * @group Utilities
  */
 declare function isDayOfWeekType(value: unknown): value is DayOfWeek;
 /**
- * Returns true if `value` is an array of valid dates.
+ * Checks if the given value is an array of valid dates.
  *
  * @private
+ * @param value - The value to check.
+ * @param dateLib - The date utility library instance.
+ * @returns `true` if the value is an array of valid dates, otherwise `false`.
  */
 declare function isDatesArray(
   value: unknown,

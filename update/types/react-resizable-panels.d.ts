@@ -1,161 +1,34 @@
+import * as react from "react";
 import {
-  ForwardedRef,
-  CSSProperties,
   HTMLAttributes,
   PropsWithChildren,
+  CSSProperties,
   ReactElement,
-  ReactNode,
-  RefAttributes,
-  ForwardRefExoticComponent,
 } from "react";
 
-export type Direction = "horizontal" | "vertical";
-export type ResizeEvent = KeyboardEvent | PointerEvent | MouseEvent;
-export type ResizeHandler = (event: ResizeEvent) => void;
-
-export type ResizeHandlerAction = "down" | "move" | "up";
-export type SetResizeHandlerState = (
-  action: ResizeHandlerAction,
-  isActive: boolean,
-  event: ResizeEvent | null,
-) => void;
-export type PointerHitAreaMargins = {
-  coarse: number;
-  fine: number;
-};
-export type ResizeHandlerData = {
-  direction: Direction;
-  element: HTMLElement;
-  hitAreaMargins: PointerHitAreaMargins;
-  setResizeHandlerState: SetResizeHandlerState;
-};
-export declare const EXCEEDED_HORIZONTAL_MIN = 1;
-export declare const EXCEEDED_HORIZONTAL_MAX = 2;
-export declare const EXCEEDED_VERTICAL_MIN = 4;
-export declare const EXCEEDED_VERTICAL_MAX = 8;
-export declare function registerResizeHandle(
-  resizeHandleId: string,
-  element: HTMLElement,
-  direction: Direction,
-  hitAreaMargins: PointerHitAreaMargins,
-  setResizeHandlerState: SetResizeHandlerState,
-): () => void;
-export declare function reportConstraintsViolation(
-  resizeHandleId: string,
-  flag: number,
-): void;
-
-export type PanelResizeHandleOnDragging = (isDragging: boolean) => void;
-export type ResizeHandlerState = "drag" | "hover" | "inactive";
-export type PanelResizeHandleProps = Omit<
-  HTMLAttributes<keyof HTMLElementTagNameMap>,
-  "id" | "onBlur" | "onClick" | "onFocus" | "onPointerDown" | "onPointerUp"
-> &
-  PropsWithChildren<{
-    className?: string;
-    disabled?: boolean;
-    hitAreaMargins?: PointerHitAreaMargins;
-    id?: string | null;
-    onBlur?: () => void;
-    onClick?: () => void;
-    onDragging?: PanelResizeHandleOnDragging;
-    onFocus?: () => void;
-    onPointerDown?: () => void;
-    onPointerUp?: () => void;
-    style?: CSSProperties;
-    tabIndex?: number;
-    tagName?: keyof HTMLElementTagNameMap;
-  }>;
-export declare function PanelResizeHandle({
-  children,
-  className: classNameFromProps,
-  disabled,
-  hitAreaMargins,
-  id: idFromProps,
-  onBlur,
-  onClick,
-  onDragging,
-  onFocus,
-  onPointerDown,
-  onPointerUp,
-  style: styleFromProps,
-  tabIndex,
-  tagName: Type,
-  ...rest
-}: PanelResizeHandleProps): ReactElement;
-export declare namespace PanelResizeHandle {
-  var displayName: string;
-}
-
-export type ImperativePanelGroupHandle = {
-  getId: () => string;
-  getLayout: () => number[];
-  setLayout: (layout: number[]) => void;
-};
-export type PanelGroupStorage = {
-  getItem(name: string): string | null;
-  setItem(name: string, value: string): void;
-};
-export type PanelGroupOnLayout = (layout: number[]) => void;
-export type PanelGroupProps = Omit<
-  HTMLAttributes<keyof HTMLElementTagNameMap>,
-  "id"
-> &
-  PropsWithChildren<{
-    autoSaveId?: string | null;
-    className?: string;
-    direction: Direction;
-    id?: string | null;
-    keyboardResizeBy?: number | null;
-    onLayout?: PanelGroupOnLayout | null;
-    storage?: PanelGroupStorage;
-    style?: CSSProperties;
-    tagName?: keyof HTMLElementTagNameMap;
-    dir?: "auto" | "ltr" | "rtl" | undefined;
-  }>;
-export declare const PanelGroup: ForwardRefExoticComponent<
-  Omit<HTMLAttributes<keyof HTMLElementTagNameMap>, "id"> & {
-    autoSaveId?: string | null | undefined;
-    className?: string | undefined;
-    direction: Direction;
-    id?: string | null | undefined;
-    keyboardResizeBy?: number | null | undefined;
-    onLayout?: PanelGroupOnLayout | null | undefined;
-    storage?: PanelGroupStorage | undefined;
-    style?: CSSProperties | undefined;
-    tagName?: keyof HTMLElementTagNameMap | undefined;
-    dir?: "auto" | "ltr" | "rtl" | undefined;
-  } & {
-    children?: ReactNode;
-  } & RefAttributes<ImperativePanelGroupHandle>
->;
-
-export type PanelOnCollapse = () => void;
-export type PanelOnExpand = () => void;
-export type PanelOnResize = (
-  size: number,
-  prevSize: number | undefined,
-) => void;
-export type PanelCallbacks = {
+type PanelOnCollapse = () => void;
+type PanelOnExpand = () => void;
+type PanelOnResize = (size: number, prevSize: number | undefined) => void;
+type PanelCallbacks = {
   onCollapse?: PanelOnCollapse;
   onExpand?: PanelOnExpand;
   onResize?: PanelOnResize;
 };
-export type PanelConstraints = {
+type PanelConstraints = {
   collapsedSize?: number | undefined;
   collapsible?: boolean | undefined;
   defaultSize?: number | undefined;
   maxSize?: number | undefined;
   minSize?: number | undefined;
 };
-export type PanelData = {
+type PanelData = {
   callbacks: PanelCallbacks;
   constraints: PanelConstraints;
   id: string;
   idIsFromProps: boolean;
   order: number | undefined;
 };
-export type ImperativePanelHandle = {
+type ImperativePanelHandle = {
   collapse: () => void;
   expand: (minSize?: number) => void;
   getId(): string;
@@ -164,7 +37,7 @@ export type ImperativePanelHandle = {
   isExpanded: () => boolean;
   resize: (size: number) => void;
 };
-export type PanelProps<
+type PanelProps<
   T extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
 > = Omit<HTMLAttributes<HTMLElementTagNameMap[T]>, "id" | "onResize"> &
   PropsWithChildren<{
@@ -182,37 +55,11 @@ export type PanelProps<
     style?: object;
     tagName?: T;
   }>;
-export declare function PanelWithForwardedRef({
-  children,
-  className: classNameFromProps,
-  collapsedSize,
-  collapsible,
-  defaultSize,
-  forwardedRef,
-  id: idFromProps,
-  maxSize,
-  minSize,
-  onCollapse,
-  onExpand,
-  onResize,
-  order,
-  style: styleFromProps,
-  tagName: Type,
-  ...rest
-}: PanelProps & {
-  forwardedRef: ForwardedRef<ImperativePanelHandle>;
-}): ReactElement;
-export declare namespace PanelWithForwardedRef {
-  var displayName: string;
-}
-export declare const Panel: ForwardRefExoticComponent<
+declare const Panel: react.ForwardRefExoticComponent<
   Omit<
     HTMLAttributes<
       | HTMLObjectElement
       | HTMLElement
-      | HTMLSlotElement
-      | HTMLStyleElement
-      | HTMLTitleElement
       | HTMLAnchorElement
       | HTMLAreaElement
       | HTMLAudioElement
@@ -259,14 +106,17 @@ export declare const Panel: ForwardRefExoticComponent<
       | HTMLProgressElement
       | HTMLScriptElement
       | HTMLSelectElement
+      | HTMLSlotElement
       | HTMLSourceElement
       | HTMLSpanElement
+      | HTMLStyleElement
       | HTMLTableElement
       | HTMLTableSectionElement
       | HTMLTableCellElement
       | HTMLTemplateElement
       | HTMLTextAreaElement
       | HTMLTimeElement
+      | HTMLTitleElement
       | HTMLTableRowElement
       | HTMLTrackElement
       | HTMLUListElement
@@ -274,98 +124,228 @@ export declare const Panel: ForwardRefExoticComponent<
     >,
     "id" | "onResize"
   > & {
-    className?: string | undefined;
+    className?: string;
     collapsedSize?: number | undefined;
     collapsible?: boolean | undefined;
     defaultSize?: number | undefined;
-    id?: string | undefined;
+    id?: string;
     maxSize?: number | undefined;
     minSize?: number | undefined;
-    onCollapse?: PanelOnCollapse | undefined;
-    onExpand?: PanelOnExpand | undefined;
-    onResize?: PanelOnResize | undefined;
-    order?: number | undefined;
-    style?: object | undefined;
+    onCollapse?: PanelOnCollapse;
+    onExpand?: PanelOnExpand;
+    onResize?: PanelOnResize;
+    order?: number;
+    style?: object;
     tagName?: keyof HTMLElementTagNameMap | undefined;
   } & {
-    children?: ReactNode;
-  } & RefAttributes<ImperativePanelHandle>
+    children?: react.ReactNode | undefined;
+  } & react.RefAttributes<ImperativePanelHandle>
 >;
 
-type CursorState = "horizontal" | "intersection" | "vertical";
-export declare function disableGlobalCursorStyles(): void;
-export declare function enableGlobalCursorStyles(): void;
-export declare function getCursorStyle(
-  state: CursorState,
-  constraintFlags: number,
-): string;
-export declare function resetGlobalCursorStyle(): void;
-export declare function setGlobalCursorStyle(
-  state: CursorState,
-  constraintFlags: number,
-): void;
+type Direction = "horizontal" | "vertical";
 
-export declare function getNonce(): string | null;
-export declare function setNonce(value: string | null): void;
+type ImperativePanelGroupHandle = {
+  getId: () => string;
+  getLayout: () => number[];
+  setLayout: (layout: number[]) => void;
+};
+type PanelGroupStorage = {
+  getItem(name: string): string | null;
+  setItem(name: string, value: string): void;
+};
+type PanelGroupOnLayout = (layout: number[]) => void;
+type PanelGroupProps = Omit<HTMLAttributes<keyof HTMLElementTagNameMap>, "id"> &
+  PropsWithChildren<{
+    autoSaveId?: string | null;
+    className?: string;
+    direction: Direction;
+    id?: string | null;
+    keyboardResizeBy?: number | null;
+    onLayout?: PanelGroupOnLayout | null;
+    storage?: PanelGroupStorage;
+    style?: CSSProperties;
+    tagName?: keyof HTMLElementTagNameMap;
+    dir?: "auto" | "ltr" | "rtl" | undefined;
+  }>;
+declare const PanelGroup: react.ForwardRefExoticComponent<
+  Omit<HTMLAttributes<keyof HTMLElementTagNameMap>, "id"> & {
+    autoSaveId?: string | null;
+    className?: string;
+    direction: Direction;
+    id?: string | null;
+    keyboardResizeBy?: number | null;
+    onLayout?: PanelGroupOnLayout | null;
+    storage?: PanelGroupStorage;
+    style?: CSSProperties;
+    tagName?: keyof HTMLElementTagNameMap;
+    dir?: "auto" | "ltr" | "rtl" | undefined;
+  } & {
+    children?: react.ReactNode | undefined;
+  } & react.RefAttributes<ImperativePanelGroupHandle>
+>;
 
-export declare function assert(
+type PointerHitAreaMargins = {
+  coarse: number;
+  fine: number;
+};
+
+type PanelResizeHandleOnDragging = (isDragging: boolean) => void;
+type PanelResizeHandleProps = Omit<
+  HTMLAttributes<keyof HTMLElementTagNameMap>,
+  "id" | "onBlur" | "onClick" | "onFocus" | "onPointerDown" | "onPointerUp"
+> &
+  PropsWithChildren<{
+    className?: string;
+    disabled?: boolean;
+    hitAreaMargins?: PointerHitAreaMargins;
+    id?: string | null;
+    onBlur?: () => void;
+    onClick?: () => void;
+    onDragging?: PanelResizeHandleOnDragging;
+    onFocus?: () => void;
+    onPointerDown?: () => void;
+    onPointerUp?: () => void;
+    style?: CSSProperties;
+    tabIndex?: number;
+    tagName?: keyof HTMLElementTagNameMap;
+  }>;
+declare function PanelResizeHandle({
+  children,
+  className: classNameFromProps,
+  disabled,
+  hitAreaMargins,
+  id: idFromProps,
+  onBlur,
+  onClick,
+  onDragging,
+  onFocus,
+  onPointerDown,
+  onPointerUp,
+  style: styleFromProps,
+  tabIndex,
+  tagName: Type,
+  ...rest
+}: PanelResizeHandleProps): ReactElement;
+declare namespace PanelResizeHandle {
+  var displayName: string;
+}
+
+declare const DATA_ATTRIBUTES: {
+  readonly group: "data-panel-group";
+  readonly groupDirection: "data-panel-group-direction";
+  readonly groupId: "data-panel-group-id";
+  readonly panel: "data-panel";
+  readonly panelCollapsible: "data-panel-collapsible";
+  readonly panelId: "data-panel-id";
+  readonly panelSize: "data-panel-size";
+  readonly resizeHandle: "data-resize-handle";
+  readonly resizeHandleActive: "data-resize-handle-active";
+  readonly resizeHandleEnabled: "data-panel-resize-handle-enabled";
+  readonly resizeHandleId: "data-panel-resize-handle-id";
+  readonly resizeHandleState: "data-resize-handle-state";
+};
+
+declare function usePanelGroupContext(): {
+  direction: "horizontal" | "vertical" | undefined;
+  groupId: string | undefined;
+};
+
+declare function assert(
   expectedCondition: any,
   message: string,
 ): asserts expectedCondition;
 
-export interface Rectangle {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
+declare function setNonce(value: string | null): void;
 
-export declare function intersects(
-  rectOne: Rectangle,
-  rectTwo: Rectangle,
-  strict: boolean,
-): boolean;
+declare function disableGlobalCursorStyles(): void;
+declare function enableGlobalCursorStyles(): void;
 
-export declare function getIntersectingRectangle(
-  rectOne: Rectangle,
-  rectTwo: Rectangle,
-  strict: boolean,
-): Rectangle;
+declare function getPanelElement(
+  id: string,
+  scope?: ParentNode | HTMLElement,
+): HTMLElement | null;
 
-export declare function getResizeHandlePanelIds(
+declare function getPanelElementsForGroup(
+  groupId: string,
+  scope?: ParentNode | HTMLElement,
+): HTMLElement[];
+
+declare function getPanelGroupElement(
+  id: string,
+  rootElement?: ParentNode | HTMLElement,
+): HTMLElement | null;
+
+declare function getResizeHandleElement(
+  id: string,
+  scope?: ParentNode | HTMLElement,
+): HTMLElement | null;
+
+declare function getResizeHandleElementIndex(
+  groupId: string,
+  id: string,
+  scope?: ParentNode | HTMLElement,
+): number | null;
+
+declare function getResizeHandleElementsForGroup(
+  groupId: string,
+  scope?: ParentNode | HTMLElement,
+): HTMLElement[];
+
+declare function getResizeHandlePanelIds(
   groupId: string,
   handleId: string,
   panelsArray: PanelData[],
   scope?: ParentNode | HTMLElement,
 ): [idBefore: string | null, idAfter: string | null];
 
-export declare function getResizeHandleElementsForGroup(
-  groupId: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement[];
+interface Rectangle {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
 
-export declare function getResizeHandleElementIndex(
-  groupId: string,
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): number | null;
+declare function getIntersectingRectangle(
+  rectOne: Rectangle,
+  rectTwo: Rectangle,
+  strict: boolean,
+): Rectangle;
 
-export declare function getResizeHandleElement(
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement | null;
+declare function intersects(
+  rectOne: Rectangle,
+  rectTwo: Rectangle,
+  strict: boolean,
+): boolean;
 
-export declare function getPanelGroupElement(
-  id: string,
-  rootElement?: ParentNode | HTMLElement,
-): HTMLElement | null;
-
-export declare function getPanelElementsForGroup(
-  groupId: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement[];
-
-export declare function getPanelElement(
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement | null;
+export {
+  DATA_ATTRIBUTES,
+  type ImperativePanelGroupHandle,
+  type ImperativePanelHandle,
+  Panel,
+  PanelGroup,
+  type PanelGroupOnLayout,
+  type PanelGroupProps,
+  type PanelGroupStorage,
+  type PanelOnCollapse,
+  type PanelOnExpand,
+  type PanelOnResize,
+  type PanelProps,
+  PanelResizeHandle,
+  type PanelResizeHandleOnDragging,
+  type PanelResizeHandleProps,
+  type PointerHitAreaMargins,
+  assert,
+  disableGlobalCursorStyles,
+  enableGlobalCursorStyles,
+  getIntersectingRectangle,
+  getPanelElement,
+  getPanelElementsForGroup,
+  getPanelGroupElement,
+  getResizeHandleElement,
+  getResizeHandleElementIndex,
+  getResizeHandleElementsForGroup,
+  getResizeHandlePanelIds,
+  intersects,
+  setNonce,
+  usePanelGroupContext,
+};

@@ -31,7 +31,7 @@ type RadioGroupContextValue = {
   name?: string;
   required: boolean;
   disabled: boolean;
-  value: string;
+  value: string | null;
   onValueChange(value: string): void;
 };
 type RovingFocusGroupProps = React.ComponentPropsWithoutRef<
@@ -46,7 +46,7 @@ interface RadioGroupProps extends PrimitiveDivProps {
   orientation?: RovingFocusGroupProps["orientation"];
   loop?: RovingFocusGroupProps["loop"];
   defaultValue?: string;
-  value?: RadioGroupContextValue["value"];
+  value?: string | null;
   onValueChange?: RadioGroupContextValue["onValueChange"];
 }
 declare const RadioGroup: React.ForwardRefExoticComponent<
