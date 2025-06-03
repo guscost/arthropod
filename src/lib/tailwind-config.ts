@@ -11,6 +11,99 @@
  * @license MIT
  */
 
+:root {
+  /* @property declarations for animation variables, to prevent inheritance */
+  @property --tw-animation-delay {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0s;
+  }
+
+  @property --tw-animation-direction {
+    syntax: "*";
+    inherits: false;
+    initial-value: normal;
+  }
+
+  @property --tw-animation-duration {
+    syntax: "*";
+    inherits: false;
+    /* does not have an initial value in order for the \`--tw-duration\` variable to work */
+  }
+
+  @property --tw-animation-fill-mode {
+    syntax: "*";
+    inherits: false;
+    initial-value: forwards;
+  }
+
+  @property --tw-animation-iteration-count {
+    syntax: "*";
+    inherits: false;
+    initial-value: 1;
+  }
+
+  @property --tw-enter-opacity {
+    syntax: "*";
+    inherits: false;
+    initial-value: 1;
+  }
+
+  @property --tw-enter-rotate {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --tw-enter-scale {
+    syntax: "*";
+    inherits: false;
+    initial-value: 1;
+  }
+
+  @property --tw-enter-translate-x {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --tw-enter-translate-y {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --tw-exit-opacity {
+    syntax: "*";
+    inherits: false;
+    initial-value: 1;
+  }
+
+  @property --tw-exit-rotate {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --tw-exit-scale {
+    syntax: "*";
+    inherits: false;
+    initial-value: 1;
+  }
+
+  @property --tw-exit-translate-x {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --tw-exit-translate-y {
+    syntax: "*";
+    inherits: false;
+    initial-value: 0;
+  }
+}
+
 @theme inline {
   /* Predefined values */
 
@@ -63,8 +156,12 @@
 
   /* Animations and keyframes */
 
-  --animate-in: enter var(--tw-duration, 150ms) var(--tw-ease, ease);
-  --animate-out: exit var(--tw-duration, 150ms) var(--tw-ease, ease);
+  --animate-in: enter var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, ease)
+    var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1)
+    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, forwards);
+  --animate-out: exit var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, ease)
+    var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1)
+    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, forwards);
 
   @keyframes enter {
     from {
@@ -85,32 +182,48 @@
   }
 
   /*
-  * Radix and Bits UI utilize CSS variables to define the height of Accordion and Collapsible
-  * content during open/close animations. The \`--radix/bits-accordion-content-height\` variables
-  * control the height of Accordion content, while collapsible variables are used for Collapsibles.
+  * Radix, Bits UI and Reka UI utilize CSS variables to define the height of Accordion and Collapsible
+  * content during open/close animations. The \`--radix/bits/reka-accordion-content-height\` variables
+  * control the height of Accordion content, while \`collapsible\` variables are used for Collapsibles.
   *
   * The fallback value \`auto\` is used here, but it depends on the \`interpolate-size: allow-keywords\`
   * property, which currently has limited browser support. For more details, see: 
   * <https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size>
   */
 
-  --animate-accordion-down: accordion-down var(--tw-duration, 200ms) ease-out;
-  --animate-accordion-up: accordion-up var(--tw-duration, 200ms) ease-out;
-  --animate-collapsible-down: collapsible-down var(--tw-duration, 200ms) ease-out;
-  --animate-collapsible-up: collapsible-up var(--tw-duration, 200ms) ease-out;
+  --animate-accordion-down: accordion-down var(--tw-animation-duration, var(--tw-duration, 200ms))
+    ease-out;
+  --animate-accordion-up: accordion-up var(--tw-animation-duration, var(--tw-duration, 200ms))
+    ease-out;
+  --animate-collapsible-down: collapsible-down
+    var(--tw-animation-duration, var(--tw-duration, 200ms)) ease-out;
+  --animate-collapsible-up: collapsible-up var(--tw-animation-duration, var(--tw-duration, 200ms))
+    ease-out;
 
   @keyframes accordion-down {
     from {
       height: 0;
     }
     to {
-      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height, auto));
+      height: var(
+        --radix-accordion-content-height,
+        var(
+          --bits-accordion-content-height,
+          var(--reka-accordion-content-height, var(--kb-accordion-content-height, auto))
+        )
+      );
     }
   }
 
   @keyframes accordion-up {
     from {
-      height: var(--radix-accordion-content-height, var(--bits-accordion-content-height, auto));
+      height: var(
+        --radix-accordion-content-height,
+        var(
+          --bits-accordion-content-height,
+          var(--reka-accordion-content-height, var(--kb-accordion-content-height, auto))
+        )
+      );
     }
     to {
       height: 0;
@@ -122,13 +235,25 @@
       height: 0;
     }
     to {
-      height: var(--radix-collapsible-content-height, var(--bits-collapsible-content-height, auto));
+      height: var(
+        --radix-collapsible-content-height,
+        var(
+          --bits-collapsible-content-height,
+          var(--reka-collapsible-content-height, var(--kb-collapsible-content-height, auto))
+        )
+      );
     }
   }
 
   @keyframes collapsible-up {
     from {
-      height: var(--radix-collapsible-content-height, var(--bits-collapsible-content-height, auto));
+      height: var(
+        --radix-collapsible-content-height,
+        var(
+          --bits-collapsible-content-height,
+          var(--reka-collapsible-content-height, var(--kb-collapsible-content-height, auto))
+        )
+      );
     }
     to {
       height: 0;
@@ -152,28 +277,33 @@
 
 /* Utility classes */
 
-/*
- * Tailwind's default \`duration\` utility sets the \`--tw-duration\` variable, so
- * can set \`animation-duration\` directly in the animation definition in the
- * \`@theme\` section above. Same goes for the \`animation-timing-function\`, set
- * with \`--tw-ease\`.
- */
+@utility animation-duration-* {
+  --tw-animation-duration: calc(--value(number) * 1ms);
+  --tw-animation-duration: --value(--animation-duration- *, [duration], "initial", [ *]);
+  animation-duration: calc(--value(number) * 1ms);
+  animation-duration: --value(--animation-duration- *, [duration], "initial", [ *]);
+}
 
 @utility delay-* {
   animation-delay: calc(--value(number) * 1ms);
   animation-delay: --value(--animation-delay- *, [duration], "initial", [ *]);
+  --tw-animation-delay: calc(--value(number) * 1ms);
+  --tw-animation-delay: --value(--animation-delay- *, [duration], "initial", [ *]);
 }
 
 @utility repeat-* {
   animation-iteration-count: --value(--animation-repeat- *, number, "initial", [ *]);
+  --tw-animation-iteration-count: --value(--animation-repeat- *, number, "initial", [ *]);
 }
 
 @utility direction-* {
   animation-direction: --value(--animation-direction- *, "initial", [ *]);
+  --tw-animation-direction: --value(--animation-direction- *, "initial", [ *]);
 }
 
 @utility fill-mode-* {
   animation-fill-mode: --value(--animation-fill-mode- *, "initial", [ *]);
+  --tw-animation-fill-mode: --value(--animation-fill-mode- *, "initial", [ *]);
 }
 
 @utility running {
@@ -206,18 +336,28 @@
   --tw-enter-scale: 0;
 }
 @utility zoom-in-* {
-  --tw-enter-scale: calc(--value([percentage]) / 100%);
-  --tw-enter-scale: calc(--value([ratio], [number]));
-  --tw-enter-scale: --value(--percentage- *);
+  --tw-enter-scale: calc(--value(number) * 1%);
+  --tw-enter-scale: calc(--value(ratio));
+  --tw-enter-scale: --value(--percentage- *, [ *]);
+}
+@utility -zoom-in-* {
+  --tw-enter-scale: calc(--value(number) * -1%);
+  --tw-enter-scale: calc(--value(ratio) * -1);
+  --tw-enter-scale: --value(--percentage- *, [ *]);
 }
 
 @utility zoom-out {
   --tw-exit-scale: 0;
 }
 @utility zoom-out-* {
-  --tw-exit-scale: calc(--value([percentage]) / 100%);
-  --tw-exit-scale: calc(--value([ratio], [number]));
-  --tw-exit-scale: --value(--percentage- *);
+  --tw-exit-scale: calc(--value(number) * 1%);
+  --tw-exit-scale: calc(--value(ratio));
+  --tw-exit-scale: --value(--percentage- *, [ *]);
+}
+@utility -zoom-out-* {
+  --tw-exit-scale: calc(--value(number) * -1%);
+  --tw-exit-scale: calc(--value(ratio) * -1);
+  --tw-exit-scale: --value(--percentage- *, [ *]);
 }
 
 @utility spin-in {
@@ -225,7 +365,16 @@
 }
 @utility spin-in-* {
   --tw-enter-rotate: calc(--value(number) * 1deg);
-  --tw-enter-rotate: --value(--rotate- *, [angle]);
+  --tw-enter-rotate: calc(--value(ratio) * 360deg);
+  --tw-enter-rotate: --value(--rotate- *, [ *]);
+}
+@utility -spin-in {
+  --tw-enter-rotate: -30deg;
+}
+@utility -spin-in-* {
+  --tw-enter-rotate: calc(--value(number) * -1deg);
+  --tw-enter-rotate: calc(--value(ratio) * -360deg);
+  --tw-enter-rotate: --value(--rotate- *, [ *]);
 }
 
 @utility spin-out {
@@ -233,7 +382,16 @@
 }
 @utility spin-out-* {
   --tw-exit-rotate: calc(--value(number) * 1deg);
-  --tw-exit-rotate: --value(--rotate- *, [angle]);
+  --tw-exit-rotate: calc(--value(ratio) * 360deg);
+  --tw-exit-rotate: --value(--rotate- *, [ *]);
+}
+@utility -spin-out {
+  --tw-exit-rotate: -30deg;
+}
+@utility -spin-out-* {
+  --tw-exit-rotate: calc(--value(number) * -1deg);
+  --tw-exit-rotate: calc(--value(ratio) * -360deg);
+  --tw-exit-rotate: --value(--rotate- *, [ *]);
 }
 
 @utility slide-in-from-top {
@@ -272,6 +430,50 @@
   --tw-enter-translate-x: calc(--value(ratio) * 100%);
   --tw-enter-translate-x: --value(--translate- *, [percentage], [length]);
 }
+@utility slide-in-from-start {
+  &:dir(ltr) {
+    --tw-enter-translate-x: -100%;
+  }
+  &:dir(rtl) {
+    --tw-enter-translate-x: 100%;
+  }
+}
+@utility slide-in-from-start-* {
+  &:where(:dir(ltr), [dir="ltr"], [dir="ltr"] *) {
+    --tw-enter-translate-x: calc(--value(integer) * var(--spacing) * -1);
+    --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
+    --tw-enter-translate-x: calc(--value(ratio) * -100%);
+    --tw-enter-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
+  }
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    --tw-enter-translate-x: calc(--value(integer) * var(--spacing));
+    --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
+    --tw-enter-translate-x: calc(--value(ratio) * 100%);
+    --tw-enter-translate-x: --value(--translate- *, [percentage], [length]);
+  }
+}
+@utility slide-in-from-end {
+  &:dir(ltr) {
+    --tw-enter-translate-x: 100%;
+  }
+  &:dir(rtl) {
+    --tw-enter-translate-x: -100%;
+  }
+}
+@utility slide-in-from-end-* {
+  &:where(:dir(ltr), [dir="ltr"], [dir="ltr"] *) {
+    --tw-enter-translate-x: calc(--value(integer) * var(--spacing));
+    --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
+    --tw-enter-translate-x: calc(--value(ratio) * 100%);
+    --tw-enter-translate-x: --value(--translate- *, [percentage], [length]);
+  }
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    --tw-enter-translate-x: calc(--value(integer) * var(--spacing) * -1);
+    --tw-enter-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
+    --tw-enter-translate-x: calc(--value(ratio) * -100%);
+    --tw-enter-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
+  }
+}
 
 @utility slide-out-to-top {
   --tw-exit-translate-y: -100%;
@@ -308,6 +510,50 @@
   --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
   --tw-exit-translate-x: calc(--value(ratio) * 100%);
   --tw-exit-translate-x: --value(--translate- *, [percentage], [length]);
+}
+@utility slide-out-to-start {
+  &:dir(ltr) {
+    --tw-exit-translate-x: -100%;
+  }
+  &:dir(rtl) {
+    --tw-exit-translate-x: 100%;
+  }
+}
+@utility slide-out-to-start-* {
+  &:where(:dir(ltr), [dir="ltr"], [dir="ltr"] *) {
+    --tw-exit-translate-x: calc(--value(integer) * var(--spacing) * -1);
+    --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
+    --tw-exit-translate-x: calc(--value(ratio) * -100%);
+    --tw-exit-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
+  }
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    --tw-exit-translate-x: calc(--value(integer) * var(--spacing));
+    --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
+    --tw-exit-translate-x: calc(--value(ratio) * 100%);
+    --tw-exit-translate-x: --value(--translate- *, [percentage], [length]);
+  }
+}
+@utility slide-out-to-end {
+  &:dir(ltr) {
+    --tw-exit-translate-x: 100%;
+  }
+  &:dir(rtl) {
+    --tw-exit-translate-x: -100%;
+  }
+}
+@utility slide-out-to-end-* {
+  &:where(:dir(ltr), [dir="ltr"], [dir="ltr"] *) {
+    --tw-exit-translate-x: calc(--value(integer) * var(--spacing));
+    --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * 100%);
+    --tw-exit-translate-x: calc(--value(ratio) * 100%);
+    --tw-exit-translate-x: --value(--translate- *, [percentage], [length]);
+  }
+  &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) {
+    --tw-exit-translate-x: calc(--value(integer) * var(--spacing) * -1);
+    --tw-exit-translate-x: calc(--value(--percentage- *, --percentage-translate- *) * -100%);
+    --tw-exit-translate-x: calc(--value(ratio) * -100%);
+    --tw-exit-translate-x: calc(--value(--translate- *, [percentage], [length]) * -1);
+  }
 }
 
 /**
