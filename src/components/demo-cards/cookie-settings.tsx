@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/new-york-v4/ui/card"
-import { Label } from "@/registry/new-york-v4/ui/label"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+} from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 
 export function CardsCookieSettings() {
   return (
