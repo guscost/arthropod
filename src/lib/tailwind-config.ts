@@ -680,6 +680,14 @@
   }
 }
 
+/**
+ * \`arthropod\` customizations
+ */
+
+button {
+  cursor: pointer;
+}
+
 html {
   touch-action: manipulation;
 }
