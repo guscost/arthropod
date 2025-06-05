@@ -2,7 +2,16 @@
 (function () {
   const globalStyles = document.createElement("style");
   globalStyles.type = "text/tailwindcss";
-  globalStyles.innerHTML = `@import "tailwindcss";
+  globalStyles.innerHTML = `/* Global CSS, tailwind theme, shadcn */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --font-geist-sans: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
 
 /**
  * TailwindCSS v4.0 compatible replacement for \`tailwindcss-animate\`.
