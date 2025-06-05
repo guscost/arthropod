@@ -18,11 +18,11 @@ export function Title() {
         </p>
       </div>
       <div className="flex gap-1">
-        <a href="https://github.com/guscost/arthropod" target="_blank">
-          <Button size="icon" variant="ghost">
+        <Button asChild size="icon" variant="ghost">
+          <a href="https://github.com/guscost/arthropod" target="_blank">
             <Github fill="currentColor" />
-          </Button>
-        </a>
+          </a>
+        </Button>
         <Button
           size="icon"
           variant="ghost"
