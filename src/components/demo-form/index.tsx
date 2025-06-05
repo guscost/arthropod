@@ -43,7 +43,7 @@ export function FormDemo() {
   }
 
   return (
-    <Card className="w-72">
+    <Card className="w-96">
       <CardHeader>Form Demo</CardHeader>
       <CardContent>
         <Form {...form}>
@@ -71,7 +71,7 @@ export function FormDemo() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="" {...field} />
+                    <Input type="password" placeholder="" {...field} />
                   </FormControl>
                   <FormDescription>Choose a strong password.</FormDescription>
                   <FormMessage />

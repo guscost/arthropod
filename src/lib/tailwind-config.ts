@@ -34,7 +34,7 @@
   @property --tw-animation-fill-mode {
     syntax: "*";
     inherits: false;
-    initial-value: forwards;
+    initial-value: none;
   }
 
   @property --tw-animation-iteration-count {
@@ -158,10 +158,10 @@
 
   --animate-in: enter var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, ease)
     var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1)
-    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, forwards);
+    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
   --animate-out: exit var(--tw-animation-duration, var(--tw-duration, 150ms)) var(--tw-ease, ease)
     var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1)
-    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, forwards);
+    var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
 
   @keyframes enter {
     from {

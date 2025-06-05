@@ -50,7 +50,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
     transform: CSS.Translate.toString(transform),
   };
 
-  const variants = cva("", {
+  const variants = cva("gap-2 p-0", {
     variants: {
       dragging: {
         over: "ring-2 opacity-30",
@@ -67,7 +67,7 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
         dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
       })}
     >
-      <CardHeader className="px-3 py-3 space-between flex flex-row border-b-2 border-secondary relative">
+      <CardHeader className="p-3 space-between flex flex-row border-b-2 border-secondary relative">
         <Button
           variant={"ghost"}
           {...attributes}

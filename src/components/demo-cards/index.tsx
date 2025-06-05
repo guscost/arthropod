@@ -1,15 +1,15 @@
-import { CardsActivityGoal } from "@/components/demo-cards/activity-goal"
-import { CardsCalendar } from "@/components/demo-cards/calendar"
-import { CardsChat } from "@/components/demo-cards/chat"
-import { CardsCookieSettings } from "@/components/demo-cards/cookie-settings"
-import { CardsCreateAccount } from "@/components/demo-cards/create-account"
-import { CardsExerciseMinutes } from "@/components/demo-cards/exercise-minutes"
-import { CardsForms } from "@/components/demo-cards/forms"
-import { CardsPayments } from "@/components/demo-cards/payments"
-import { CardsReportIssue } from "@/components/demo-cards/report-issue"
-import { CardsShare } from "@/components/demo-cards/share"
-import { CardsStats } from "@/components/demo-cards/stats"
-import { CardsTeamMembers } from "@/components/demo-cards/team-members"
+import { CardsActivityGoal } from "@/components/demo-cards/activity-goal";
+import { CardsCalendar } from "@/components/demo-cards/calendar";
+import { CardsChat } from "@/components/demo-cards/chat";
+import { CardsCookieSettings } from "@/components/demo-cards/cookie-settings";
+import { CardsCreateAccount } from "@/components/demo-cards/create-account";
+import { CardsExerciseMinutes } from "@/components/demo-cards/exercise-minutes";
+import { CardsForms } from "@/components/demo-cards/forms";
+import { CardsPayments } from "@/components/demo-cards/payments";
+import { CardsReportIssue } from "@/components/demo-cards/report-issue";
+import { CardsShare } from "@/components/demo-cards/share";
+import { CardsStats } from "@/components/demo-cards/stats";
+import { CardsTeamMembers } from "@/components/demo-cards/team-members";
 
 export function CardsDemo() {
   return (
@@ -59,5 +59,5 @@ export function CardsDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }
