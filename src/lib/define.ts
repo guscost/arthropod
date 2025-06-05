@@ -120,12 +120,12 @@ const define = (...args: any) => {
     };
 
     const unmetDeps = [];
-    for (let dep of deps) {
-      dep = __MODULES__.resolve(dep, name);
-      !(dep in __MODULES__.cache) && unmetDeps.push(dep);
+    for (const dep of deps) {
+      const resolved = __MODULES__.resolve(dep, name);
+      !(resolved in __MODULES__.cache) && unmetDeps.push(resolved);
     }
 
-    for (let dep of unmetDeps) {
+    for (const dep of unmetDeps) {
       if (
         !Object.values(__MODULES__.pending).some(({ unmetDeps }) =>
           unmetDeps.includes(dep),
