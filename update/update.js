@@ -1,7 +1,7 @@
 // Inspired by https://github.com/lofcz/umd-react
 import {
   appendFileSync,
-  copyFileSync,
+  cpSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -413,17 +413,17 @@ async function buildTypes() {
     mkdirSync(path.join(_root, "types"), { recursive: true });
 
     // csstype
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/csstype/index.d.ts"),
       path.join(_root, "types/csstype.d.ts"),
     );
 
     // react is a relative import in jsx-runtime, so rewrite that
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/@types/react/global.d.ts"),
       path.join(_root, "types/global.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/@types/react/index.d.ts"),
       path.join(_root, "types/react.d.ts"),
     );
@@ -452,7 +452,7 @@ async function buildTypes() {
     );
 
     // Copy lucide-react types
-    copyFileSync(
+    cpSync(
       path.join(
         _root,
         "update/node_modules/lucide-react/dist/lucide-react.d.ts",
@@ -503,15 +503,6 @@ async function buildTypes() {
       ),
       path.join(_root, "types/@tanstack/react-table.d.ts"),
     );
-    mkdirSync(path.join(_root, "types/@hookform"));
-    mkdirSync(path.join(_root, "types/@hookform/resolvers"));
-    await buildType(
-      path.join(
-        _root,
-        "update/node_modules/@hookform/resolvers/zod/dist/index.d.ts",
-      ),
-      path.join(_root, "types/@hookform/resolvers/zod.d.ts"),
-    );
     await buildType(
       path.join(_root, "update/node_modules/date-fns/index.js"),
       path.join(_root, "types/date-fns.d.ts"),
@@ -537,33 +528,29 @@ async function buildTypes() {
       path.join(_root, "types/vaul.d.ts"),
     );
     await buildType(
-      path.join(_root, "update/node_modules/react-hook-form/dist/index.d.ts"),
-      path.join(_root, "types/react-hook-form.d.ts"),
-    );
-    await buildType(
       path.join(_root, "update/node_modules/zustand/index.js"),
       path.join(_root, "types/zustand.d.ts"),
     );
 
     // Copy @dnd-kit types
     mkdirSync(path.join(_root, "types/@dnd-kit"));
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/@dnd-kit/utilities.d.ts"),
       path.join(_root, "types/@dnd-kit/utilities.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/@dnd-kit/accessibility.d.ts"),
       path.join(_root, "types/@dnd-kit/accessibility.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/@dnd-kit/core.d.ts"),
       path.join(_root, "types/@dnd-kit/core.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/@dnd-kit/modifiers.d.ts"),
       path.join(_root, "types/@dnd-kit/modifiers.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/@dnd-kit/sortable.d.ts"),
       path.join(_root, "types/@dnd-kit/sortable.d.ts"),
     );
@@ -576,34 +563,34 @@ async function buildTypes() {
 
     // Copy wouter types
     mkdirSync(path.join(_root, "types/wouter"));
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/regexparam/index.d.ts"),
       path.join(_root, "types/regexparam.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/wouter/types/index.d.ts"),
       path.join(_root, "types/wouter/index.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/wouter/types/location-hook.d.ts"),
       path.join(_root, "types/wouter/location-hook.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/wouter/types/memory-location.d.ts"),
       path.join(_root, "types/wouter/memory-location.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/wouter/types/router.d.ts"),
       path.join(_root, "types/wouter/router.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(
         _root,
         "update/node_modules/wouter/types/use-browser-location.d.ts",
       ),
       path.join(_root, "types/wouter/use-browser-location.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(
         _root,
         "update/node_modules/wouter/types/use-hash-location.d.ts",
@@ -612,15 +599,15 @@ async function buildTypes() {
     );
 
     // Copy shadcn dependency types
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/clsx/clsx.d.ts"),
       path.join(_root, "types/clsx.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/tailwind-merge/dist/types.d.ts"),
       path.join(_root, "types/tailwind-merge.d.ts"),
     );
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/node_modules/cmdk/dist/index.d.ts"),
       path.join(_root, "types/cmdk.d.ts"),
     );
@@ -639,22 +626,37 @@ async function buildTypes() {
       ),
       path.join(_root, "types/react-resizable-panels.d.ts"),
     );
-    removeExtensionFromImports(path.join(_root, "update/node_modules/zod"));
+
+    // zod and react-hook-form
+    cpSync(
+      path.join(_root, "update/node_modules/zod/dist/types"),
+      path.join(_root, "types/zod"),
+      { filter: (src, _) => /(^[^\.]+$|\.d\.ts$)/.test(src), recursive: true },
+    );
     await buildType(
-      path.join(_root, "update/node_modules/zod/dist/types/index.d.ts"),
-      path.join(_root, "types/zod.d.ts"),
+      path.join(_root, "update/node_modules/react-hook-form/dist/index.d.ts"),
+      path.join(_root, "types/react-hook-form.d.ts"),
+    );
+    mkdirSync(path.join(_root, "types/@hookform"));
+    mkdirSync(path.join(_root, "types/@hookform/resolvers"));
+    cpSync(
+      path.join(
+        _root,
+        "update/node_modules/@hookform/resolvers/zod/dist/zod.d.ts",
+      ),
+      path.join(_root, "types/@hookform/resolvers/zod.d.ts"),
     );
 
     // Uncomment, run, and fix imports to build updated react-day-picker types:
     // await buildType(path.join(_root, "update/node_modules/react-day-picker/dist/esm/index.js"), path.join(_root, "update/types/react-day-picker.d.ts"));
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/react-day-picker.d.ts"),
       path.join(_root, "types/react-day-picker.d.ts"),
     );
 
     // Uncomment, run, and fix imports to build updated recharts types:
     // await buildType(path.join(_root, "update/node_modules/recharts/types/index.d.ts"), path.join(_root, "update/types/recharts.d.ts"));
-    copyFileSync(
+    cpSync(
       path.join(_root, "update/types/recharts.d.ts"),
       path.join(_root, "types/recharts.d.ts"),
     );
