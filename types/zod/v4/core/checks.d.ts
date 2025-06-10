@@ -29,7 +29,7 @@ export interface $ZodCheckLessThanInternals<
   T extends util.Numeric = util.Numeric,
 > extends $ZodCheckInternals<T> {
   def: $ZodCheckLessThanDef;
-  issc: errors.$ZodIssueTooSmall<T>;
+  issc: errors.$ZodIssueTooBig<T>;
 }
 export interface $ZodCheckLessThan<T extends util.Numeric = util.Numeric>
   extends $ZodCheck<T> {

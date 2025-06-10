@@ -778,7 +778,7 @@ export interface ZodLiteral<T extends util.Primitive = util.Primitive>
   value: T;
 }
 export declare const ZodLiteral: core.$constructor<ZodLiteral>;
-export declare function literal<const T extends Array<util.Literal>>(
+export declare function literal<const T extends ReadonlyArray<util.Literal>>(
   value: T,
   params?: string | core.$ZodLiteralParams,
 ): ZodLiteral<T[number]>;
@@ -968,7 +968,7 @@ declare function _instanceof<T extends typeof util.Class>(
 export { _instanceof as instanceof };
 export declare const stringbool: (
   _params?: string | core.$ZodStringBoolParams,
-) => ZodPipe<ZodUnknown, ZodBoolean>;
+) => ZodPipe<ZodPipe<ZodString, ZodTransform<boolean, string>>, ZodBoolean>;
 type _ZodJSONSchema = ZodUnion<
   [
     ZodString,

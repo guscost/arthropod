@@ -509,7 +509,7 @@ export declare function nativeEnum<T extends util.EnumLike>(
 export interface ZodMiniLiteral<T extends util.Primitive = util.Primitive>
   extends _ZodMiniType<core.$ZodLiteralInternals<T>> {}
 export declare const ZodMiniLiteral: core.$constructor<ZodMiniLiteral>;
-export declare function literal<const T extends Array<util.Literal>>(
+export declare function literal<const T extends ReadonlyArray<util.Literal>>(
   value: T,
   params?: string | core.$ZodLiteralParams,
 ): ZodMiniLiteral<T[number]>;
@@ -649,7 +649,10 @@ declare function _instanceof<T extends typeof Class>(
 export { _instanceof as instanceof };
 export declare const stringbool: (
   _params?: string | core.$ZodStringBoolParams,
-) => ZodMiniPipe<ZodMiniUnknown, ZodMiniBoolean<boolean>>;
+) => ZodMiniPipe<
+  ZodMiniPipe<ZodMiniString, ZodMiniTransform<boolean, string>>,
+  ZodMiniBoolean
+>;
 type _ZodMiniJSONSchema = ZodMiniUnion<
   [
     ZodMiniString,

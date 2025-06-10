@@ -839,9 +839,9 @@ export interface $ZodStringBoolParams extends TypeParams {
   truthy?: string[];
   falsy?: string[];
   /**
-   * Options `"sensitive"`, `"insensitive"`
+   * Options: `"sensitive"`, `"insensitive"`
    *
-   * Defaults to `"insensitive"`
+   * @default `"insensitive"`
    */
   case?: "sensitive" | "insensitive" | undefined;
 }
@@ -849,7 +849,11 @@ export declare function _stringbool(
   Classes: {
     Pipe?: typeof schemas.$ZodPipe;
     Boolean?: typeof schemas.$ZodBoolean;
-    Unknown?: typeof schemas.$ZodUnknown;
+    Transform?: typeof schemas.$ZodTransform;
+    String?: typeof schemas.$ZodString;
   },
   _params?: string | $ZodStringBoolParams,
-): schemas.$ZodPipe<schemas.$ZodUnknown, schemas.$ZodBoolean<boolean>>;
+): schemas.$ZodPipe<
+  schemas.$ZodPipe<schemas.$ZodString, schemas.$ZodTransform<boolean, string>>,
+  schemas.$ZodBoolean<boolean>
+>;
