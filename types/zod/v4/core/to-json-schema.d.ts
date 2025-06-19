@@ -76,9 +76,9 @@ export declare class JSONSchemaGenerator {
   emit(schema: schemas.$ZodType, _params?: EmitParams): JSONSchema.BaseSchema;
 }
 interface ToJSONSchemaParams
-  extends Omit<JSONSchemaGeneratorParams & EmitParams, never> {}
+  extends Omit<JSONSchemaGeneratorParams & EmitParams, "external"> {}
 interface RegistryToJSONSchemaParams
-  extends Omit<JSONSchemaGeneratorParams & EmitParams, never> {
+  extends Omit<JSONSchemaGeneratorParams & EmitParams, "external"> {
   uri?: (id: string) => string;
 }
 export declare function toJSONSchema(

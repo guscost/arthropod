@@ -514,11 +514,11 @@ export declare function array<T extends core.SomeType>(
 ): ZodArray<T>;
 export declare function keyof<T extends ZodObject>(
   schema: T,
-): ZodLiteral<keyof T["_zod"]["output"]>;
+): ZodLiteral<Exclude<keyof T["_zod"]["output"], symbol>>;
 export interface ZodObject<
   /** @ts-ignore Cast variance */
   out Shape extends core.$ZodShape = core.$ZodLooseShape,
-  out Config extends core.$ZodObjectConfig = core.$ZodObjectConfig,
+  out Config extends core.$ZodObjectConfig = core.$strip,
 > extends _ZodType<core.$ZodObjectInternals<Shape, Config>>,
     core.$ZodObject<Shape, Config> {
   shape: Shape;
@@ -534,7 +534,7 @@ export interface ZodObject<
   /** Consider `z.strictObject(A.shape)` instead */
   strict(): ZodObject<Shape, core.$strict>;
   /** This is the default behavior. This method call is likely unnecessary. */
-  strip(): ZodObject<Shape, core.$strict>;
+  strip(): ZodObject<Shape, core.$strip>;
   extend<
     U extends core.$ZodLooseShape & Partial<Record<keyof Shape, core.SomeType>>,
   >(
@@ -770,7 +770,7 @@ export declare function nativeEnum<T extends util.EnumLike>(
   entries: T,
   params?: string | core.$ZodEnumParams,
 ): ZodEnum<T>;
-export interface ZodLiteral<T extends util.Primitive = util.Primitive>
+export interface ZodLiteral<T extends util.Literal = util.Literal>
   extends _ZodType<core.$ZodLiteralInternals<T>>,
     core.$ZodLiteral<T> {
   values: Set<T>;

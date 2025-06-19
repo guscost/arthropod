@@ -276,6 +276,24 @@ type FieldPathByValue<TFieldValues extends FieldValues, TValue> = {
     ? Key
     : never;
 }[FieldPath<TFieldValues>];
+/**
+ * Type which eagerly collects all array paths through a fieldType that matches a give type
+ * @typeParam TFieldValues - field values which are indexed by the paths
+ * @typeParam TValue       - the value you want to match into each type
+ * @example
+ * ```typescript
+ * FieldArrayPathByValue<{foo: {bar: number}[], baz: number, bar: string}, {bar: number}[]>
+ *   = 'foo'
+ * ```
+ */
+type FieldArrayPathByValue<TFieldValues extends FieldValues, TValue> = {
+  [Key in FieldArrayPath<TFieldValues>]: FieldArrayPathValue<
+    TFieldValues,
+    Key
+  > extends TValue
+    ? Key
+    : never;
+}[FieldArrayPath<TFieldValues>];
 
 type UseFieldArrayProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -2277,6 +2295,7 @@ export {
   type FieldArray,
   type FieldArrayMethodProps,
   type FieldArrayPath,
+  type FieldArrayPathByValue,
   type FieldArrayPathValue,
   type FieldArrayWithId,
   type FieldElement,

@@ -282,11 +282,11 @@ export declare function array<T extends SomeType>(
 ): ZodMiniArray<T>;
 export declare function keyof<T extends ZodMiniObject>(
   schema: T,
-): ZodMiniLiteral<keyof T["shape"]>;
+): ZodMiniLiteral<Exclude<keyof T["shape"], symbol>>;
 export interface ZodMiniObject<
   /** @ts-ignore Cast variance */
   out Shape extends core.$ZodShape = core.$ZodShape,
-  out Config extends core.$ZodObjectConfig = core.$ZodObjectConfig,
+  out Config extends core.$ZodObjectConfig = core.$strip,
 > extends ZodMiniType<any, any, core.$ZodObjectInternals<Shape, Config>>,
     core.$ZodObject<Shape, Config> {
   shape: Shape;
@@ -392,6 +392,10 @@ export declare function required<
   >,
   T["_zod"]["config"]
 >;
+export declare function catchall<T extends ZodMiniObject, U extends SomeType>(
+  inst: T,
+  catchall: U,
+): ZodMiniObject<T["shape"], core.$catchall<U>>;
 export interface ZodMiniUnion<
   T extends readonly SomeType[] = readonly core.$ZodType[],
 > extends _ZodMiniType<core.$ZodUnionInternals<T>> {}
@@ -506,7 +510,7 @@ export declare function nativeEnum<T extends util.EnumLike>(
   entries: T,
   params?: string | core.$ZodEnumParams,
 ): ZodMiniEnum<T>;
-export interface ZodMiniLiteral<T extends util.Primitive = util.Primitive>
+export interface ZodMiniLiteral<T extends util.Literal = util.Literal>
   extends _ZodMiniType<core.$ZodLiteralInternals<T>> {}
 export declare const ZodMiniLiteral: core.$constructor<ZodMiniLiteral>;
 export declare function literal<const T extends ReadonlyArray<util.Literal>>(

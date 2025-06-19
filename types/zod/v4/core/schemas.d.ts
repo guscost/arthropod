@@ -112,7 +112,7 @@ export interface _$ZodTypeInternals {
   /** @internal The set of issues this schema might throw during type checking. */
   isst: errors.$ZodIssueBase;
   /** An optional method used to override `toJSONSchema` logic. */
-  toJSONSchema?: () => object;
+  toJSONSchema?: () => unknown;
   /** @internal The parent of this schema. Only set during certain clone operations. */
   parent?: $ZodType | undefined;
 }
@@ -591,7 +591,7 @@ export type $InferObjectOutput<
   T extends $ZodLooseShape,
   Extra extends Record<string, unknown>,
 > = string extends keyof T
-  ? object
+  ? Record<string, unknown>
   : keyof (T & Extra) extends never
     ? Record<string, never>
     : util.Prettify<
@@ -609,7 +609,7 @@ export type $InferObjectInput<
   T extends $ZodLooseShape,
   Extra extends Record<string, unknown>,
 > = string extends keyof T
-  ? object
+  ? Record<string, unknown>
   : keyof (T & Extra) extends never
     ? Record<string, never>
     : util.Prettify<
@@ -932,18 +932,18 @@ export interface $ZodEnum<T extends util.EnumLike = util.EnumLike>
   _zod: $ZodEnumInternals<T>;
 }
 export declare const $ZodEnum: core.$constructor<$ZodEnum>;
-export interface $ZodLiteralDef extends $ZodTypeDef {
+export interface $ZodLiteralDef<T extends util.Literal> extends $ZodTypeDef {
   type: "literal";
-  values: util.LiteralArray;
+  values: T[];
 }
-export interface $ZodLiteralInternals<T extends util.Primitive = util.Primitive>
+export interface $ZodLiteralInternals<T extends util.Literal = util.Literal>
   extends $ZodTypeInternals<T, T> {
-  def: $ZodLiteralDef;
+  def: $ZodLiteralDef<T>;
   values: Set<T>;
   pattern: RegExp;
   isst: errors.$ZodIssueInvalidValue;
 }
-export interface $ZodLiteral<T extends util.Primitive = util.Primitive>
+export interface $ZodLiteral<T extends util.Literal = util.Literal>
   extends $ZodType {
   _zod: $ZodLiteralInternals<T>;
 }

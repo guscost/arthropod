@@ -261,6 +261,13 @@ export declare function _jwt<T extends schemas.$ZodJWT>(
   Class: util.SchemaClass<T>,
   params?: string | $ZodJWTParams | $ZodCheckJWTParams,
 ): T;
+export declare const TimePrecision: {
+  readonly Any: null;
+  readonly Minute: -1;
+  readonly Second: 0;
+  readonly Millisecond: 3;
+  readonly Microsecond: 6;
+};
 export type $ZodISODateTimeParams = StringFormatParams<
   schemas.$ZodISODateTime,
   "pattern"

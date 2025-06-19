@@ -261,6 +261,7 @@ export declare function promiseAllObject<T extends object>(
 }>;
 export declare function randomString(length?: number): string;
 export declare function esc(str: string): string;
+export declare const captureStackTrace: typeof Error.captureStackTrace;
 export declare function isObject(
   data: any,
 ): data is Record<PropertyKey, unknown>;
@@ -386,4 +387,11 @@ export declare function issue(_iss: errors.$ZodRawIssue): errors.$ZodRawIssue;
 export declare function cleanEnum(obj: Record<string, EnumValue>): EnumValue[];
 export declare abstract class Class {
   constructor(..._args: any[]);
+}
+
+// https://github.com/microsoft/TypeScript/issues/3926#issuecomment-169096154
+declare global {
+  interface ErrorConstructor {
+    captureStackTrace(thisArg: any, func: any): void;
+  }
 }

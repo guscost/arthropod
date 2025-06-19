@@ -633,6 +633,17 @@ async function buildTypes() {
       path.join(_root, "types/zod"),
       { filter: (src, _) => /(^[^\.]+$|\.d\.ts$)/.test(src), recursive: true },
     );
+    appendFileSync(
+      path.join(_root, "types/zod/v4/core/util.d.ts"),
+      `
+// https://github.com/microsoft/TypeScript/issues/3926#issuecomment-169096154
+declare global {
+	interface ErrorConstructor {
+		captureStackTrace(thisArg: any, func: any): void;
+	}
+}`,
+    );
+
     await buildType(
       path.join(_root, "update/node_modules/react-hook-form/dist/index.d.ts"),
       path.join(_root, "types/react-hook-form.d.ts"),
