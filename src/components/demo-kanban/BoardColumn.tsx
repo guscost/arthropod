@@ -104,7 +104,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
 export function BoardContainer({ children }: { children: React.ReactNode }) {
   const dndContext = useDndContext();
 
-  const variations = cva("flex lg:justify-center pb-4", {
+  const variations = cva("flex lg:justify-center pb-4 -m-1", {
     variants: {
       dragging: {
         default: "snap-x snap-mandatory",
@@ -119,7 +119,7 @@ export function BoardContainer({ children }: { children: React.ReactNode }) {
         dragging: dndContext.active ? "active" : "default",
       })}
     >
-      <div className="flex gap-4 flex-col lg:flex-row lg:items-center">
+      <div className="flex gap-4 flex-col lg:flex-row lg:items-center m-1">
         {children}
       </div>
       <ScrollBar orientation="horizontal" />
