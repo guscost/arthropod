@@ -14,6 +14,7 @@ export function CardsCalendar() {
         <Calendar
           numberOfMonths={1}
           mode="range"
+          captionLayout="dropdown"
           defaultMonth={start}
           selected={{
             from: start,
