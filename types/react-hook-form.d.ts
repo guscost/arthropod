@@ -635,7 +635,7 @@ type SetValueConfig = Partial<{
 type TriggerConfig = Partial<{
   shouldFocus: boolean;
 }>;
-type UseFormResetFieldOptions<
+type ResetFieldConfig<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = Partial<{
@@ -928,7 +928,7 @@ useEffect(() => {
 })
  * ```
  */
-type UseFromSubscribe<TFieldValues extends FieldValues> = <
+type UseFormSubscribe<TFieldValues extends FieldValues> = <
   TFieldNames extends readonly FieldPath<TFieldValues>[],
 >(payload: {
   name?: readonly [...TFieldNames] | TFieldNames[number];
@@ -937,6 +937,7 @@ type UseFromSubscribe<TFieldValues extends FieldValues> = <
     data: Partial<FormState<TFieldValues>> & {
       values: TFieldValues;
       name?: InternalFieldName;
+      type?: EventType;
     },
   ) => void;
   exact?: boolean;
@@ -1222,7 +1223,7 @@ type UseFormResetField<TFieldValues extends FieldValues> = <
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   name: TFieldName,
-  options?: UseFormResetFieldOptions<TFieldValues, TFieldName>,
+  options?: ResetFieldConfig<TFieldValues, TFieldName>,
 ) => void;
 type ResetAction<TFieldValues> = (formValues: TFieldValues) => TFieldValues;
 /**
@@ -1406,7 +1407,7 @@ type UseFormReturn<
   control: Control<TFieldValues, TContext, TTransformedValues>;
   register: UseFormRegister<TFieldValues>;
   setFocus: UseFormSetFocus<TFieldValues>;
-  subscribe: UseFromSubscribe<TFieldValues>;
+  subscribe: UseFormSubscribe<TFieldValues>;
 };
 type UseFormStateProps<
   TFieldValues extends FieldValues,
@@ -2143,36 +2144,6 @@ declare function useFormState<
 ): UseFormStateReturn<TFieldValues>;
 
 /**
- * Subscribe to the entire form values change and re-render at the hook level.
- *
- * @remarks
- *
- * [API](https://react-hook-form.com/docs/usewatch) • [Demo](https://codesandbox.io/s/react-hook-form-v7-ts-usewatch-h9i5e)
- *
- * @param props - defaultValue, disable subscription and match exact name.
- *
- * @example
- * ```tsx
- * const { control } = useForm();
- * const values = useWatch({
- *   control,
- *   defaultValue: {
- *     name: "data"
- *   },
- *   exact: false,
- * })
- * ```
- */
-declare function useWatch<
-  TFieldValues extends FieldValues = FieldValues,
-  TTransformedValues = TFieldValues,
->(props: {
-  defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
-  control?: Control<TFieldValues, any, TTransformedValues>;
-  disabled?: boolean;
-  exact?: boolean;
-}): DeepPartialSkipArrayKey<TFieldValues>;
-/**
  * Custom hook to subscribe to field change and isolate re-rendering at the component level.
  *
  * @remarks
@@ -2203,6 +2174,36 @@ declare function useWatch<
   disabled?: boolean;
   exact?: boolean;
 }): FieldPathValue<TFieldValues, TFieldName>;
+/**
+ * Subscribe to the entire form values change and re-render at the hook level.
+ *
+ * @remarks
+ *
+ * [API](https://react-hook-form.com/docs/usewatch) • [Demo](https://codesandbox.io/s/react-hook-form-v7-ts-usewatch-h9i5e)
+ *
+ * @param props - defaultValue, disable subscription and match exact name.
+ *
+ * @example
+ * ```tsx
+ * const { control } = useForm();
+ * const values = useWatch({
+ *   control,
+ *   defaultValue: {
+ *     name: "data"
+ *   },
+ *   exact: false,
+ * })
+ * ```
+ */
+declare function useWatch<
+  TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues = TFieldValues,
+>(props: {
+  defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
+  disabled?: boolean;
+  exact?: boolean;
+}): DeepPartialSkipArrayKey<TFieldValues>;
 /**
  * Custom hook to subscribe to field change and isolate re-rendering at the component level.
  *
@@ -2351,6 +2352,7 @@ export {
   type Ref,
   type RefCallBack,
   type RegisterOptions,
+  type ResetFieldConfig,
   type Resolver,
   type ResolverError,
   type ResolverOptions,
@@ -2384,17 +2386,16 @@ export {
   type UseFormRegisterReturn,
   type UseFormReset,
   type UseFormResetField,
-  type UseFormResetFieldOptions,
   type UseFormReturn,
   type UseFormSetError,
   type UseFormSetFocus,
   type UseFormSetValue,
   type UseFormStateProps,
   type UseFormStateReturn,
+  type UseFormSubscribe,
   type UseFormTrigger,
   type UseFormUnregister,
   type UseFormWatch,
-  type UseFromSubscribe,
   type UseWatchProps,
   type Validate,
   type ValidateResult,

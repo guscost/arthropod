@@ -300,9 +300,10 @@ async function buildUmds() {
     // lucide-react icons
     await buildUmd(tempDir, "lucide-react", "lucide-react.min.js");
 
-    // wouter and zustand
+    // wouter, zustand, swr
     await buildUmd(tempDir, "wouter", "extras.min.js");
     await buildUmd(tempDir, "zustand", "extras.min.js");
+    await buildUmd(tempDir, "swr", "extras.min.js");
 
     // @dnd-kit
     await buildUmd(tempDir, "@dnd-kit/utilities", "dnd-kit.min.js"); // includes tslib
@@ -613,6 +614,13 @@ async function buildTypes() {
     );
 
     // tsup needs renamed files, since these typedefs import with .js extension
+    removeExtensionFromImports(
+      path.join(_root, "update/node_modules/swr/dist"),
+    );
+    await buildType(
+      path.join(_root, "update/node_modules/swr/dist/index/index.d.ts"),
+      path.join(_root, "types/swr.d.ts"),
+    );
     removeExtensionFromImports(
       path.join(
         _root,
