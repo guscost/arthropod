@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Title } from "@/components/title";
 import { CardsDemo } from "@/components/demo-cards/index";
 import { FormDemo } from "@/components/demo-form/index";
+import { SwrDemo } from "@/components/demo-swr/index";
 import { KanbanBoard } from "@/components/demo-kanban/KanbanBoard";
 
 export function App() {
@@ -21,9 +22,15 @@ export function App() {
         <Link asChild href="/drag-n-drop">
           <Button>Drag 'n Drop</Button>
         </Link>
+        <Link asChild href="/swr">
+          <Button>SWR</Button>
+        </Link>
       </div>
 
       <Switch>
+        <Route path="/swr">
+          <SwrDemo />
+        </Route>
         <Route path="/drag-n-drop">
           <KanbanBoard />
           <h2 className="my-2">
