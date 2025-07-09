@@ -1,4 +1,4 @@
-import * as core from "zod/v4/core";
+import * as core from "../core/index.js";
 import * as schemas from "./schemas.js";
 export declare function string<T = unknown>(
   params?: string | core.$ZodStringParams,

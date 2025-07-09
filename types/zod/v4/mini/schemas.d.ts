@@ -1,5 +1,5 @@
-import * as core from "zod/v4/core";
-import { util } from "zod/v4/core";
+import * as core from "../core/index.js";
+import { util } from "../core/index.js";
 type SomeType = core.SomeType;
 export interface ZodMiniType<
   out Output = unknown,
@@ -71,9 +71,8 @@ export declare const ZodMiniString: core.$constructor<ZodMiniString>;
 export declare function string(
   params?: string | core.$ZodStringParams,
 ): ZodMiniString<string>;
-export interface ZodMiniStringFormat<
-  Format extends core.$ZodStringFormats = core.$ZodStringFormats,
-> extends _ZodMiniString<core.$ZodStringFormatInternals<Format>>,
+export interface ZodMiniStringFormat<Format extends string = string>
+  extends _ZodMiniString<core.$ZodStringFormatInternals<Format>>,
     core.$ZodStringFormat<Format> {}
 export declare const ZodMiniStringFormat: core.$constructor<ZodMiniStringFormat>;
 export interface ZodMiniEmail extends _ZodMiniString<core.$ZodEmailInternals> {}
@@ -179,6 +178,17 @@ export declare function e164(
 export interface ZodMiniJWT extends _ZodMiniString<core.$ZodJWTInternals> {}
 export declare const ZodMiniJWT: core.$constructor<ZodMiniJWT>;
 export declare function jwt(params?: string | core.$ZodJWTParams): ZodMiniJWT;
+export interface ZodMiniCustomStringFormat<Format extends string = string>
+  extends ZodMiniStringFormat<Format>,
+    core.$ZodCustomStringFormat<Format> {
+  _zod: core.$ZodCustomStringFormatInternals<Format>;
+}
+export declare const ZodMiniCustomStringFormat: core.$constructor<ZodMiniCustomStringFormat>;
+export declare function stringFormat<Format extends string>(
+  format: Format,
+  fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,
+  _params?: string | core.$ZodStringFormatParams,
+): ZodMiniCustomStringFormat<Format>;
 interface _ZodMiniNumber<
   T extends
     core.$ZodNumberInternals<unknown> = core.$ZodNumberInternals<unknown>,
@@ -469,7 +479,7 @@ export declare function partialRecord<
   keyType: Key,
   valueType: Value,
   params?: string | core.$ZodRecordParams,
-): ZodMiniRecord<ZodMiniUnion<[Key, ZodMiniNever]>, Value>;
+): ZodMiniRecord<Key & core.$partial, Value>;
 export interface ZodMiniMap<
   Key extends SomeType = core.$ZodType,
   Value extends SomeType = core.$ZodType,

@@ -724,6 +724,7 @@ type KeepStateOptions = Partial<{
   keepIsValidating: boolean;
   keepIsValid: boolean;
   keepSubmitCount: boolean;
+  keepFieldsRef: boolean;
 }>;
 type SetFieldValue<TFieldValues extends FieldValues> = FieldValue<TFieldValues>;
 type RefCallBack = (instance: any) => void;

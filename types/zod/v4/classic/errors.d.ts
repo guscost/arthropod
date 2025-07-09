@@ -1,5 +1,5 @@
-import * as core from "zod/v4/core";
-import { $ZodError } from "zod/v4/core";
+import * as core from "../core/index.js";
+import { $ZodError } from "../core/index.js";
 /** @deprecated Use `z.core.$ZodIssue` from `@zod/core` instead, especially if you are building a library on top of Zod. */
 export type ZodIssue = core.$ZodIssue;
 /** An Error-like class used to store Zod validation issues.  */
@@ -30,6 +30,6 @@ export type {
   $ZodFormattedError as ZodFormattedError,
   /** @deprecated Use `z.core.$ZodErrorMap` instead. */
   $ZodErrorMap as ZodErrorMap,
-} from "zod/v4/core";
+} from "../core/index.js";
 /** @deprecated Use `z.core.$ZodRawIssue` instead. */
 export type IssueData = core.$ZodRawIssue;

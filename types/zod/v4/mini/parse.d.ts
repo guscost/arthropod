@@ -1,1 +1,1 @@
-export { parse, safeParse, parseAsync, safeParseAsync } from "zod/v4/core";
+export { parse, safeParse, parseAsync, safeParseAsync } from "../core/index.js";

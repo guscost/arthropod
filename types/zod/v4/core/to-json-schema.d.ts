@@ -17,9 +17,10 @@ interface JSONSchemaGeneratorParams {
   override?: (ctx: {
     zodSchema: schemas.$ZodTypes;
     jsonSchema: JSONSchema.BaseSchema;
+    path: (string | number)[];
   }) => void;
   /** Whether to extract the `"input"` or `"output"` type. Relevant to transforms, Error converting schema to JSONz, defaults, coerced primitives, etc.
-   * - `"output" — Default. Convert the output schema.
+   * - `"output"` — Default. Convert the output schema.
    * - `"input"` — Convert the input schema. */
   io?: "input" | "output";
 }
@@ -39,7 +40,7 @@ interface EmitParams {
         registry: $ZodRegistry<{
           id?: string | undefined;
         }>;
-        uri: (id: string) => string;
+        uri?: ((id: string) => string) | undefined;
         defs: Record<string, JSONSchema.BaseSchema>;
       }
     | undefined;
@@ -56,6 +57,8 @@ interface Seen {
   cycle?: (string | number)[] | undefined;
   isParent?: boolean | undefined;
   ref?: schemas.$ZodType | undefined | null;
+  /** JSON Schema property path for this schema */
+  path?: (string | number)[] | undefined;
 }
 export declare class JSONSchemaGenerator {
   metadataRegistry: $ZodRegistry<Record<string, any>>;
@@ -64,6 +67,7 @@ export declare class JSONSchemaGenerator {
   override: (ctx: {
     zodSchema: schemas.$ZodTypes;
     jsonSchema: JSONSchema.BaseSchema;
+    path: (string | number)[];
   }) => void;
   io: "input" | "output";
   counter: number;

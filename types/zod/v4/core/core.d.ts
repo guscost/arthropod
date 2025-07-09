@@ -11,6 +11,8 @@ export interface $constructor<T extends ZodTrait, D = T["_zod"]["def"]> {
   new (def: D): T;
   init(inst: T, def: D): asserts inst is T;
 }
+/** A special constant with type `never` */
+export declare const NEVER: never;
 export declare function $constructor<T extends ZodTrait, D = T["_zod"]["def"]>(
   name: string,
   initializer: (inst: T, def: D) => void,

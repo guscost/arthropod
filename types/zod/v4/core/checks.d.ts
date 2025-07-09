@@ -7,6 +7,8 @@ export interface $ZodCheckDef {
   error?: errors.$ZodErrorMap<never> | undefined;
   /** If true, no later checks will be executed if this check fails. Default `false`. */
   abort?: boolean | undefined;
+  /** If provided, this check will only be executed if the function returns `true`. Defaults to `payload => z.util.isAborted(payload)`. */
+  when?: ((payload: schemas.ParsePayload) => boolean) | undefined;
 }
 export interface $ZodCheckInternals<T> {
   def: $ZodCheckDef;
@@ -14,7 +16,6 @@ export interface $ZodCheckInternals<T> {
   issc?: errors.$ZodIssueBase;
   check(payload: schemas.ParsePayload<T>): util.MaybeAsync<void>;
   onattach: ((schema: schemas.$ZodType) => void)[];
-  when?: ((payload: schemas.ParsePayload) => boolean) | undefined;
 }
 export interface $ZodCheck<in T = never> {
   _zod: $ZodCheckInternals<T>;
@@ -230,9 +231,8 @@ export type $ZodStringFormats =
   | "starts_with"
   | "ends_with"
   | "includes";
-export interface $ZodCheckStringFormatDef<
-  Format extends $ZodStringFormats = $ZodStringFormats,
-> extends $ZodCheckDef {
+export interface $ZodCheckStringFormatDef<Format extends string = string>
+  extends $ZodCheckDef {
   check: "string_format";
   format: Format;
   pattern?: RegExp | undefined;
@@ -382,26 +382,4 @@ export type $ZodStringFormatChecks =
   | $ZodCheckIncludes
   | $ZodCheckStartsWith
   | $ZodCheckEndsWith
-  | schemas.$ZodGUID
-  | schemas.$ZodUUID
-  | schemas.$ZodEmail
-  | schemas.$ZodURL
-  | schemas.$ZodEmoji
-  | schemas.$ZodNanoID
-  | schemas.$ZodCUID
-  | schemas.$ZodCUID2
-  | schemas.$ZodULID
-  | schemas.$ZodXID
-  | schemas.$ZodKSUID
-  | schemas.$ZodISODateTime
-  | schemas.$ZodISODate
-  | schemas.$ZodISOTime
-  | schemas.$ZodISODuration
-  | schemas.$ZodIPv4
-  | schemas.$ZodIPv6
-  | schemas.$ZodCIDRv4
-  | schemas.$ZodCIDRv6
-  | schemas.$ZodBase64
-  | schemas.$ZodBase64URL
-  | schemas.$ZodE164
-  | schemas.$ZodJWT;
+  | schemas.$ZodStringFormatTypes;

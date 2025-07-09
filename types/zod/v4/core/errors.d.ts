@@ -27,6 +27,7 @@ export interface $ZodIssueTooBig<Input = unknown> extends $ZodIssueBase {
     | (string & {});
   readonly maximum: number | bigint;
   readonly inclusive?: boolean;
+  readonly exact?: boolean;
   readonly input: Input;
 }
 export interface $ZodIssueTooSmall<Input = unknown> extends $ZodIssueBase {
@@ -42,7 +43,10 @@ export interface $ZodIssueTooSmall<Input = unknown> extends $ZodIssueBase {
     | "file"
     | (string & {});
   readonly minimum: number | bigint;
+  /** True if the allowable range includes the minimum */
   readonly inclusive?: boolean;
+  /** True if the allowed value is fixed (e.g.` z.length(5)`), not a range (`z.minLength(5)`) */
+  readonly exact?: boolean;
   readonly input: Input;
 }
 export interface $ZodIssueInvalidStringFormat extends $ZodIssueBase {

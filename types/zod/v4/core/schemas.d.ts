@@ -72,7 +72,6 @@ export interface _$ZodTypeInternals {
   /** Schema definition. */
   def: $ZodTypeDef;
   /** @internal Randomly generated ID for this schema. */
-  id: string;
   /** @internal List of deferred initializers. */
   deferred: util.AnyFunc[] | undefined;
   /** @internal Parses input and runs all checks (refinements). */
@@ -166,19 +165,16 @@ export interface $ZodStringInternals<Input>
 export interface $ZodString<Input = unknown>
   extends _$ZodType<$ZodStringInternals<Input>> {}
 export declare const $ZodString: core.$constructor<$ZodString>;
-export interface $ZodStringFormatDef<
-  Format extends checks.$ZodStringFormats = checks.$ZodStringFormats,
-> extends $ZodStringDef,
+export interface $ZodStringFormatDef<Format extends string = string>
+  extends $ZodStringDef,
     checks.$ZodCheckStringFormatDef<Format> {}
-export interface $ZodStringFormatInternals<
-  Format extends checks.$ZodStringFormats = checks.$ZodStringFormats,
-> extends $ZodStringInternals<string>,
+export interface $ZodStringFormatInternals<Format extends string = string>
+  extends $ZodStringInternals<string>,
     checks.$ZodCheckStringFormatInternals {
   def: $ZodStringFormatDef<Format>;
 }
-export interface $ZodStringFormat<
-  Format extends checks.$ZodStringFormats = checks.$ZodStringFormats,
-> extends $ZodType {
+export interface $ZodStringFormat<Format extends string = string>
+  extends $ZodType {
   _zod: $ZodStringFormatInternals<Format>;
 }
 export declare const $ZodStringFormat: core.$constructor<$ZodStringFormat>;
@@ -377,6 +373,19 @@ export interface $ZodJWT extends $ZodType {
   _zod: $ZodJWTInternals;
 }
 export declare const $ZodJWT: core.$constructor<$ZodJWT>;
+export interface $ZodCustomStringFormatDef<Format extends string = string>
+  extends $ZodStringFormatDef<Format> {
+  fn: (val: string) => unknown;
+}
+export interface $ZodCustomStringFormatInternals<Format extends string = string>
+  extends $ZodStringFormatInternals<Format> {
+  def: $ZodCustomStringFormatDef<Format>;
+}
+export interface $ZodCustomStringFormat<Format extends string = string>
+  extends $ZodStringFormat<Format> {
+  _zod: $ZodCustomStringFormatInternals<Format>;
+}
+export declare const $ZodCustomStringFormat: core.$constructor<$ZodCustomStringFormat>;
 export interface $ZodNumberDef extends $ZodTypeDef {
   type: "number";
   coerce?: boolean;
@@ -570,12 +579,14 @@ export interface $ZodArrayDef<T extends SomeType = $ZodType>
   element: T;
 }
 export interface $ZodArrayInternals<T extends SomeType = $ZodType>
-  extends $ZodTypeInternals<core.output<T>[], core.input<T>[]> {
+  extends _$ZodTypeInternals {
   def: $ZodArrayDef<T>;
   isst: errors.$ZodIssueInvalidType;
+  output: core.output<T>[];
+  input: core.input<T>[];
 }
 export interface $ZodArray<T extends SomeType = $ZodType>
-  extends $ZodType<core.output<T>[], core.input<T>[], $ZodArrayInternals<T>> {}
+  extends $ZodType<any, any, $ZodArrayInternals<T>> {}
 export declare const $ZodArray: core.$constructor<$ZodArray>;
 type OptionalOutSchema = {
   _zod: {
@@ -591,7 +602,9 @@ export type $InferObjectOutput<
   T extends $ZodLooseShape,
   Extra extends Record<string, unknown>,
 > = string extends keyof T
-  ? Record<string, unknown>
+  ? util.IsAny<T[keyof T]> extends true
+    ? Record<string, unknown>
+    : Record<string, core.output<T[keyof T]>>
   : keyof (T & Extra) extends never
     ? Record<string, never>
     : util.Prettify<
@@ -609,7 +622,9 @@ export type $InferObjectInput<
   T extends $ZodLooseShape,
   Extra extends Record<string, unknown>,
 > = string extends keyof T
-  ? Record<string, unknown>
+  ? util.IsAny<T[keyof T]> extends true
+    ? Record<string, unknown>
+    : Record<string, core.input<T[keyof T]>>
   : keyof (T & Extra) extends never
     ? Record<string, never>
     : util.Prettify<
@@ -689,18 +704,30 @@ export interface $ZodUnionDef<
   type: "union";
   options: Options;
 }
+type IsOptionalIn<T extends SomeType> = T extends OptionalInSchema
+  ? true
+  : false;
+type IsOptionalOut<T extends SomeType> = T extends OptionalOutSchema
+  ? true
+  : false;
 export interface $ZodUnionInternals<
   T extends readonly SomeType[] = readonly $ZodType[],
-> extends $ZodTypeInternals<
-    $InferUnionOutput<T[number]>,
-    $InferUnionInput<T[number]>
-  > {
+> extends _$ZodTypeInternals {
   def: $ZodUnionDef<T>;
   isst: errors.$ZodIssueInvalidUnion;
   pattern: T[number]["_zod"]["pattern"];
+  values: T[number]["_zod"]["values"];
+  output: $InferUnionOutput<T[number]>;
+  input: $InferUnionInput<T[number]>;
+  optin: IsOptionalIn<T[number]> extends false
+    ? "optional" | undefined
+    : "optional";
+  optout: IsOptionalOut<T[number]> extends false
+    ? "optional" | undefined
+    : "optional";
 }
 export interface $ZodUnion<T extends readonly SomeType[] = readonly $ZodType[]>
-  extends $ZodType {
+  extends $ZodType<any, any, $ZodUnionInternals<T>> {
   _zod: $ZodUnionInternals<T>;
 }
 export declare const $ZodUnion: core.$constructor<$ZodUnion>;
@@ -739,6 +766,8 @@ export interface $ZodIntersectionInternals<
   > {
   def: $ZodIntersectionDef<A, B>;
   isst: never;
+  optin: A["_zod"]["optin"] | B["_zod"]["optin"];
+  optout: A["_zod"]["optout"] | B["_zod"]["optout"];
 }
 export interface $ZodIntersection<
   A extends SomeType = $ZodType,
@@ -828,26 +857,14 @@ export interface $ZodRecordDef<
 export type $InferZodRecordOutput<
   Key extends $ZodRecordKey = $ZodRecordKey,
   Value extends SomeType = $ZodType,
-> = undefined extends Key["_zod"]["values"]
-  ? string extends core.output<Key>
-    ? Record<core.output<Key>, core.output<Value>>
-    : number extends core.output<Key>
-      ? Record<core.output<Key>, core.output<Value>>
-      : symbol extends core.output<Key>
-        ? Record<core.output<Key>, core.output<Value>>
-        : Partial<Record<core.output<Key>, core.output<Value>>>
+> = Key extends $partial
+  ? Partial<Record<core.output<Key>, core.output<Value>>>
   : Record<core.output<Key>, core.output<Value>>;
 export type $InferZodRecordInput<
   Key extends $ZodRecordKey = $ZodRecordKey,
   Value extends SomeType = $ZodType,
-> = undefined extends Key["_zod"]["values"]
-  ? string extends core.input<Key>
-    ? Record<core.input<Key>, core.input<Value>>
-    : number extends core.input<Key>
-      ? Record<core.input<Key>, core.input<Value>>
-      : symbol extends core.input<Key>
-        ? Record<core.input<Key>, core.input<Value>>
-        : Partial<Record<core.input<Key>, core.input<Value>>>
+> = Key extends $partial
+  ? Partial<Record<core.input<Key>, core.input<Value>>>
   : Record<core.input<Key>, core.input<Value>>;
 export interface $ZodRecordInternals<
   Key extends $ZodRecordKey = $ZodRecordKey,
@@ -860,7 +877,12 @@ export interface $ZodRecordInternals<
   isst:
     | errors.$ZodIssueInvalidType
     | errors.$ZodIssueInvalidKey<Record<PropertyKey, unknown>>;
+  optin?: "optional" | undefined;
+  optout?: "optional" | undefined;
 }
+export type $partial = {
+  "~~partial": true;
+};
 export interface $ZodRecord<
   Key extends $ZodRecordKey = $ZodRecordKey,
   Value extends SomeType = $ZodType,
@@ -888,6 +910,8 @@ export interface $ZodMapInternals<
     | errors.$ZodIssueInvalidType
     | errors.$ZodIssueInvalidKey
     | errors.$ZodIssueInvalidElement<unknown>;
+  optin?: "optional" | undefined;
+  optout?: "optional" | undefined;
 }
 export interface $ZodMap<
   Key extends SomeType = $ZodType,
@@ -904,6 +928,8 @@ export interface $ZodSetInternals<T extends SomeType = $ZodType>
   extends $ZodTypeInternals<Set<core.output<T>>, Set<core.input<T>>> {
   def: $ZodSetDef<T>;
   isst: errors.$ZodIssueInvalidType;
+  optin?: "optional" | undefined;
+  optout?: "optional" | undefined;
 }
 export interface $ZodSet<T extends SomeType = $ZodType> extends $ZodType {
   _zod: $ZodSetInternals<T>;
@@ -1036,6 +1062,7 @@ export interface $ZodDefaultInternals<T extends SomeType = $ZodType>
   > {
   def: $ZodDefaultDef<T>;
   optin: "optional";
+  optout?: "optional" | undefined;
   isst: never;
   values: T["_zod"]["values"];
 }
@@ -1057,6 +1084,7 @@ export interface $ZodPrefaultInternals<T extends SomeType = $ZodType>
   > {
   def: $ZodPrefaultDef<T>;
   optin: "optional";
+  optout?: "optional" | undefined;
   isst: never;
   values: T["_zod"]["values"];
 }
@@ -1077,6 +1105,8 @@ export interface $ZodNonOptionalInternals<T extends SomeType = $ZodType>
   def: $ZodNonOptionalDef<T>;
   isst: errors.$ZodIssueInvalidType;
   values: T["_zod"]["values"];
+  optin: "optional" | undefined;
+  optout: "optional" | undefined;
 }
 export interface $ZodNonOptional<T extends SomeType = $ZodType>
   extends $ZodType {
@@ -1092,6 +1122,8 @@ export interface $ZodSuccessInternals<T extends SomeType = $ZodType>
   extends $ZodTypeInternals<boolean, core.input<T>> {
   def: $ZodSuccessDef<T>;
   isst: never;
+  optin: T["_zod"]["optin"];
+  optout: "optional" | undefined;
 }
 export interface $ZodSuccess<T extends SomeType = $ZodType> extends $ZodType {
   _zod: $ZodSuccessInternals<T>;
@@ -1174,6 +1206,7 @@ export interface $ZodReadonlyInternals<T extends SomeType = $ZodType>
   optout: T["_zod"]["optout"];
   isst: never;
   propValues: T["_zod"]["propValues"];
+  values: T["_zod"]["values"];
 }
 export interface $ZodReadonly<T extends SomeType = $ZodType> extends $ZodType {
   _zod: $ZodReadonlyInternals<T>;

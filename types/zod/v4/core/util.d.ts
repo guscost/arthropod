@@ -261,7 +261,10 @@ export declare function promiseAllObject<T extends object>(
 }>;
 export declare function randomString(length?: number): string;
 export declare function esc(str: string): string;
-export declare const captureStackTrace: typeof Error.captureStackTrace;
+export declare const captureStackTrace: (
+  targetObject: object,
+  constructorOpt?: Function,
+) => void;
 export declare function isObject(
   data: any,
 ): data is Record<PropertyKey, unknown>;

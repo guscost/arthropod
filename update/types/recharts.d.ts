@@ -3460,7 +3460,9 @@ declare class Area extends PureComponent<Props$7, State$5> {
   render(): JSX.Element;
 }
 
-type MinPointSize = number | ((value: number, index: number) => number);
+type MinPointSize =
+  | number
+  | ((value: number | undefined | null, index: number) => number);
 
 /**
  * @fileOverview Render a group of bar

@@ -81,6 +81,14 @@ export declare function _coercedString<T extends schemas.$ZodString>(
   Class: util.SchemaClass<T>,
   params?: string | $ZodStringParams,
 ): T;
+export type $ZodStringFormatParams = CheckTypeParams<
+  schemas.$ZodStringFormat,
+  "format" | "coerce"
+>;
+export type $ZodCheckStringFormatParams = CheckParams<
+  checks.$ZodCheckStringFormat,
+  "format"
+>;
 export type $ZodEmailParams = StringFormatParams<schemas.$ZodEmail>;
 export type $ZodCheckEmailParams = CheckStringFormatParams<schemas.$ZodEmail>;
 export declare function _email<T extends schemas.$ZodEmail>(
@@ -864,3 +872,9 @@ export declare function _stringbool(
   schemas.$ZodPipe<schemas.$ZodString, schemas.$ZodTransform<boolean, string>>,
   schemas.$ZodBoolean<boolean>
 >;
+export declare function _stringFormat<Format extends string>(
+  Class: typeof schemas.$ZodCustomStringFormat,
+  format: Format,
+  fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,
+  _params?: string | $ZodStringFormatParams,
+): schemas.$ZodCustomStringFormat<Format>;

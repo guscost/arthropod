@@ -28,7 +28,7 @@ export declare class $ZodRegistry<
 > {
   _meta: Meta;
   _schema: Schema;
-  _map: WeakMap<Schema, $replace<Meta, Schema>>;
+  _map: Map<Schema, $replace<Meta, Schema>>;
   _idmap: Map<string, Schema>;
   add<S extends Schema>(
     schema: S,
@@ -36,6 +36,7 @@ export declare class $ZodRegistry<
       ? [$replace<Meta, S>?]
       : [$replace<Meta, S>]
   ): this;
+  clear(): this;
   remove(schema: Schema): this;
   get<S extends Schema>(schema: S): $replace<Meta, S> | undefined;
   has(schema: Schema): boolean;
@@ -44,17 +45,6 @@ export interface JSONSchemaMeta {
   id?: string | undefined;
   title?: string | undefined;
   description?: string | undefined;
-  example?: unknown | undefined;
-  examples?:
-    | unknown[]
-    | Record<
-        string,
-        {
-          value: unknown;
-          [k: string]: unknown;
-        }
-      >
-    | undefined;
   deprecated?: boolean | undefined;
   [k: string]: unknown;
 }

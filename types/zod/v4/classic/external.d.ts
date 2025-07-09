@@ -1,10 +1,10 @@
-export * as core from "zod/v4/core";
+export * as core from "../core/index.js";
 export * from "./schemas.js";
 export * from "./checks.js";
 export * from "./errors.js";
 export * from "./parse.js";
 export * from "./compat.js";
-export type { infer, output, input } from "zod/v4/core";
+export type { infer, output, input } from "../core/index.js";
 export {
   globalRegistry,
   type GlobalMeta,
@@ -22,7 +22,8 @@ export {
   flattenError,
   toJSONSchema,
   TimePrecision,
-} from "zod/v4/core";
+  NEVER,
+} from "../core/index.js";
 export * as locales from "../locales/index.js";
 export {
   ZodISODateTime,

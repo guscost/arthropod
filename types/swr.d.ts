@@ -16,17 +16,21 @@ type Fetcher<Data = unknown, SWRKey extends Key = Key> = SWRKey extends () =>
 type BlockingData<
   Data = any,
   Options = SWROptions<Data>,
-> = Options extends undefined
-  ? false
-  : Options extends {
-        suspense: true;
-      }
-    ? true
+> = SWRGlobalConfig extends {
+  suspense: true;
+}
+  ? true
+  : Options extends undefined
+    ? false
     : Options extends {
-          fallbackData: Data | Promise<Data>;
+          suspense: true;
         }
       ? true
-      : false;
+      : Options extends {
+            fallbackData: Data | Promise<Data>;
+          }
+        ? true
+        : false;
 interface InternalConfiguration {
   cache: Cache;
   mutate: ScopedMutator;
@@ -406,10 +410,14 @@ type SWRConfiguration<
 type IsLoadingResponse<
   Data = any,
   Options = SWROptions<Data>,
-> = Options extends {
+> = SWRGlobalConfig extends {
   suspense: true;
 }
-  ? false
+  ? Options extends {
+      suspense: true;
+    }
+    ? false
+    : false
   : boolean;
 type SWROptions<Data> = SWRConfiguration<Data, Error, Fetcher<Data, Key>>;
 type SWRConfigurationWithOptionalFallback<Options> =
@@ -498,6 +506,8 @@ declare const SWRConfig: React.FC<
  */
 declare const useSWR: SWRHook;
 
+interface SWRGlobalConfig {}
+
 export {
   type Arguments,
   type BareFetcher,
@@ -513,6 +523,7 @@ export {
   type RevalidatorOptions,
   SWRConfig,
   type SWRConfiguration,
+  type SWRGlobalConfig,
   type SWRHook,
   type SWRResponse,
   type ScopedMutator,

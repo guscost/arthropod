@@ -1,4 +1,4 @@
-import * as core from "zod/v4/core";
+import * as core from "../core/index.js";
 import { type ZodError } from "./errors.js";
 export type ZodSafeParseResult<T> =
   | ZodSafeParseSuccess<T>

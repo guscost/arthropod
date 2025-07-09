@@ -1,5 +1,5 @@
-import * as core from "zod/v4/core";
-import { util } from "zod/v4/core";
+import * as core from "../core/index.js";
+import { util } from "../core/index.js";
 import * as parse from "./parse.js";
 export interface RefinementCtx<T = unknown> extends core.ParsePayload<T> {
   addIssue(
@@ -219,9 +219,11 @@ export declare const ZodString: core.$constructor<ZodString>;
 export declare function string(
   params?: string | core.$ZodStringParams,
 ): ZodString;
-export interface ZodStringFormat<
-  Format extends core.$ZodStringFormats = core.$ZodStringFormats,
-> extends _ZodString<core.$ZodStringFormatInternals<Format>> {}
+export declare function string<T extends string>(
+  params?: string | core.$ZodStringParams,
+): core.$ZodType<T, T>;
+export interface ZodStringFormat<Format extends string = string>
+  extends _ZodString<core.$ZodStringFormatInternals<Format>> {}
 export declare const ZodStringFormat: core.$constructor<ZodStringFormat>;
 export interface ZodEmail extends ZodStringFormat<"email"> {
   _zod: core.$ZodEmailInternals;
@@ -337,6 +339,17 @@ export interface ZodJWT extends ZodStringFormat<"jwt"> {
 }
 export declare const ZodJWT: core.$constructor<ZodJWT>;
 export declare function jwt(params?: string | core.$ZodJWTParams): ZodJWT;
+export interface ZodCustomStringFormat<Format extends string = string>
+  extends ZodStringFormat<Format>,
+    core.$ZodCustomStringFormat<Format> {
+  _zod: core.$ZodCustomStringFormatInternals<Format>;
+}
+export declare const ZodCustomStringFormat: core.$constructor<ZodCustomStringFormat>;
+export declare function stringFormat<Format extends string>(
+  format: Format,
+  fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,
+  _params?: string | core.$ZodStringFormatParams,
+): ZodCustomStringFormat<Format>;
 export interface _ZodNumber<
   Internals extends core.$ZodNumberInternals = core.$ZodNumberInternals,
 > extends _ZodType<Internals> {
@@ -556,13 +569,13 @@ export interface ZodObject<
   merge<U extends ZodObject>(
     other: U,
   ): ZodObject<util.Extend<Shape, U["shape"]>, U["_zod"]["config"]>;
-  pick<M extends util.Exactly<util.Mask<keyof Shape>, M>>(
+  pick<M extends util.Mask<keyof Shape>>(
     mask: M,
   ): ZodObject<
     util.Flatten<Pick<Shape, Extract<keyof Shape, keyof M>>>,
     Config
   >;
-  omit<M extends util.Exactly<util.Mask<keyof Shape>, M>>(
+  omit<M extends util.Mask<keyof Shape>>(
     mask: M,
   ): ZodObject<
     util.Flatten<Omit<Shape, Extract<keyof Shape, keyof M>>>,
@@ -574,7 +587,7 @@ export interface ZodObject<
     },
     Config
   >;
-  partial<M extends util.Exactly<util.Mask<keyof Shape>, M>>(
+  partial<M extends util.Mask<keyof Shape>>(
     mask: M,
   ): ZodObject<
     {
@@ -588,7 +601,7 @@ export interface ZodObject<
     },
     Config
   >;
-  required<M extends util.Exactly<util.Mask<keyof Shape>, M>>(
+  required<M extends util.Mask<keyof Shape>>(
     mask: M,
   ): ZodObject<
     {
@@ -701,7 +714,7 @@ export declare function partialRecord<
   keyType: Key,
   valueType: Value,
   params?: string | core.$ZodRecordParams,
-): ZodRecord<ZodUnion<[Key, ZodNever]>, Value>;
+): ZodRecord<Key & core.$partial, Value>;
 export interface ZodMap<
   Key extends core.SomeType = core.$ZodType,
   Value extends core.SomeType = core.$ZodType,
@@ -942,7 +955,6 @@ export interface ZodCustom<O = unknown, I = unknown>
 export declare const ZodCustom: core.$constructor<ZodCustom>;
 export declare function check<O = unknown>(
   fn: core.CheckFn<O>,
-  params?: string | core.$ZodCustomParams,
 ): core.$ZodCheck<O>;
 export declare function custom<O>(
   fn?: (data: unknown) => unknown,
@@ -954,7 +966,6 @@ export declare function refine<T>(
 ): core.$ZodCheck<T>;
 export declare function superRefine<T>(
   fn: (arg: T, payload: RefinementCtx<T>) => void | Promise<void>,
-  params?: string | core.$ZodCustomParams,
 ): core.$ZodCheck<T>;
 type ZodInstanceOfParams = core.Params<
   ZodCustom,

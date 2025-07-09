@@ -637,7 +637,7 @@ async function buildTypes() {
 
     // zod and react-hook-form
     cpSync(
-      path.join(_root, "update/node_modules/zod/dist/types"),
+      path.join(_root, "update/node_modules/zod"),
       path.join(_root, "types/zod"),
       { filter: (src, _) => /(^[^\.]+$|\.d\.ts$)/.test(src), recursive: true },
     );

@@ -1,4 +1,4 @@
-import * as core from "zod/v4/core";
+import * as core from "../core/index.js";
 import type { ZodType } from "./schemas.js";
 export type {
   /** @deprecated Use `z.output<T>` instead. */
@@ -7,7 +7,7 @@ export type {
   output as Infer,
   /** @deprecated Use `z.core.$$ZodFirstPartyTypes` instead */
   $ZodTypes as ZodFirstPartySchemaTypes,
-} from "zod/v4/core";
+} from "../core/index.js";
 /** @deprecated Use the raw string literal codes instead, e.g. "invalid_type". */
 export declare const ZodIssueCode: {
   readonly invalid_type: "invalid_type";
@@ -22,8 +22,6 @@ export declare const ZodIssueCode: {
   readonly invalid_value: "invalid_value";
   readonly custom: "custom";
 };
-/** A special constant with type `never` */
-export declare const NEVER: never;
 /** @deprecated Use `z.$ZodFlattenedError` */
 export type inferFlattenedErrors<
   T extends core.$ZodType,
@@ -42,7 +40,7 @@ export type BRAND<
     [k in T]: true;
   };
 };
-export { $brand, config } from "zod/v4/core";
+export { $brand, config } from "../core/index.js";
 /** @deprecated Use `z.config(params)` instead. */
 export declare function setErrorMap(map: core.$ZodErrorMap): void;
 /** @deprecated Use `z.config()` instead. */
