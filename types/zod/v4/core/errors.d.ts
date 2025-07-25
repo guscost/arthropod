@@ -1,6 +1,7 @@
 import type { $ZodCheck, $ZodStringFormats } from "./checks.js";
 import { $constructor } from "./core.js";
 import type { $ZodType } from "./schemas.js";
+import type { StandardSchemaV1 } from "./standard-schema.js";
 import * as util from "./util.js";
 export interface $ZodIssueBase {
   readonly code?: string;
@@ -71,6 +72,7 @@ export interface $ZodIssueInvalidUnion extends $ZodIssueBase {
   readonly code: "invalid_union";
   readonly errors: $ZodIssue[][];
   readonly input: unknown;
+  readonly discriminator?: string | undefined;
 }
 export interface $ZodIssueInvalidKey<Input = unknown> extends $ZodIssueBase {
   readonly code: "invalid_key";
@@ -155,7 +157,7 @@ type RawIssue<T extends $ZodIssueBase> = util.Flatten<
     readonly input?: unknown;
     /** The schema or check that originated this issue. */
     readonly inst?: $ZodType | $ZodCheck;
-    /** @deprecated Internal use only. If `true`, Zod will continue executing validation despite this issue. */
+    /** If `true`, Zod will continue executing validation despite this issue. */
     readonly continue?: boolean | undefined;
   } & Record<string, any>
 >;
@@ -218,28 +220,32 @@ export declare function formatError<T, U>(
   error: $ZodError<T>,
   mapper?: (issue: $ZodIssue) => U,
 ): $ZodFormattedError<T, U>;
-export type $ZodErrorTree<T, U = string> = T extends [any, ...any[]]
+export type $ZodErrorTree<T, U = string> = T extends util.Primitive
   ? {
       errors: U[];
-      items?: {
-        [K in keyof T]?: $ZodErrorTree<T[K], U>;
-      };
     }
-  : T extends any[]
+  : T extends [any, ...any[]]
     ? {
         errors: U[];
-        items?: Array<$ZodErrorTree<T[number], U>>;
+        items?: {
+          [K in keyof T]?: $ZodErrorTree<T[K], U>;
+        };
       }
-    : T extends object
+    : T extends any[]
       ? {
           errors: U[];
-          properties?: {
-            [K in keyof T]?: $ZodErrorTree<T[K], U>;
-          };
+          items?: Array<$ZodErrorTree<T[number], U>>;
         }
-      : {
-          errors: U[];
-        };
+      : T extends object
+        ? {
+            errors: U[];
+            properties?: {
+              [K in keyof T]?: $ZodErrorTree<T[K], U>;
+            };
+          }
+        : {
+            errors: U[];
+          };
 export declare function treeifyError<T>(error: $ZodError<T>): $ZodErrorTree<T>;
 export declare function treeifyError<T, U>(
   error: $ZodError<T>,
@@ -277,9 +283,10 @@ export declare function treeifyError<T, U>(
  *   ✖ Invalid input: expected number
  * ```
  */
-export declare function toDotPath(path: (string | number | symbol)[]): string;
-interface BaseError {
-  issues: $ZodIssueBase[];
-}
-export declare function prettifyError(error: BaseError): string;
+export declare function toDotPath(
+  _path: readonly (string | number | symbol | StandardSchemaV1.PathSegment)[],
+): string;
+export declare function prettifyError(
+  error: StandardSchemaV1.FailureResult,
+): string;
 export {};

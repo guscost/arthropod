@@ -69,7 +69,6 @@ export interface ZodType<
     check: (arg: core.output<this>) => unknown | Promise<unknown>,
     params?: string | core.$ZodCustomParams,
   ): this;
-  /** @deprecated Use `.check()` instead. */
   superRefine(
     refinement: (
       arg: core.output<this>,
@@ -548,23 +547,11 @@ export interface ZodObject<
   strict(): ZodObject<Shape, core.$strict>;
   /** This is the default behavior. This method call is likely unnecessary. */
   strip(): ZodObject<Shape, core.$strip>;
-  extend<
-    U extends core.$ZodLooseShape & Partial<Record<keyof Shape, core.SomeType>>,
-  >(
+  extend<U extends core.$ZodLooseShape>(
     shape: U,
   ): ZodObject<util.Extend<Shape, U>, Config>;
   /**
-   * @deprecated Use spread syntax and the `.shape` property to combine two object schemas:
-   *
-   * ```ts
-   * const A = z.object({ a: z.string() });
-   * const B = z.object({ b: z.number() });
-   *
-   * const C = z.object({
-   *    ...A.shape,
-   *    ...B.shape
-   * });
-   * ```
+   * @deprecated Use [`A.extend(B.shape)`](https://zod.dev/api?id=extend) instead.
    */
   merge<U extends ZodObject>(
     other: U,
@@ -643,6 +630,7 @@ export interface ZodDiscriminatedUnion<
 > extends ZodUnion<Options>,
     core.$ZodDiscriminatedUnion<Options> {
   _zod: core.$ZodDiscriminatedUnionInternals<Options>;
+  def: core.$ZodDiscriminatedUnionDef<Options>;
 }
 export declare const ZodDiscriminatedUnion: core.$constructor<ZodDiscriminatedUnion>;
 export declare function discriminatedUnion<
@@ -916,7 +904,9 @@ export declare function pipe<
 >(in_: A, out: B | core.$ZodType<unknown, core.output<A>>): ZodPipe<A, B>;
 export interface ZodReadonly<T extends core.SomeType = core.$ZodType>
   extends _ZodType<core.$ZodReadonlyInternals<T>>,
-    core.$ZodReadonly<T> {}
+    core.$ZodReadonly<T> {
+  unwrap(): T;
+}
 export declare const ZodReadonly: core.$constructor<ZodReadonly>;
 export declare function readonly<T extends core.SomeType>(
   innerType: T,

@@ -250,6 +250,8 @@ export declare function assignProp<T extends object, K extends PropertyKey>(
   prop: K,
   value: K extends keyof T ? T[K] : any,
 ): void;
+export declare function mergeDefs(...defs: Record<string, any>[]): any;
+export declare function cloneDef(schema: schemas.$ZodType): any;
 export declare function getElementAtPath(
   obj: any,
   path: (string | number)[] | null | undefined,

@@ -100,6 +100,7 @@ export interface _$ZodTypeInternals {
    * Todo: unions?
    */
   values?: util.PrimitiveSet | undefined;
+  /** Default value bubbled up from  */
   /** @internal A set of literal discriminators used for the fast path in discriminated unions. */
   propValues?: util.PropValues | undefined;
   /** @internal This flag indicates that a schema validation can be represented with a regular expression. Used to determine allowable schemas in z.templateLiteral(). */
@@ -204,6 +205,7 @@ export declare const $ZodEmail: core.$constructor<$ZodEmail>;
 export interface $ZodURLDef extends $ZodStringFormatDef<"url"> {
   hostname?: RegExp | undefined;
   protocol?: RegExp | undefined;
+  normalize?: boolean | undefined;
 }
 export interface $ZodURLInternals extends $ZodStringFormatInternals<"url"> {
   def: $ZodURLDef;
@@ -974,8 +976,15 @@ export interface $ZodLiteral<T extends util.Literal = util.Literal>
   _zod: $ZodLiteralInternals<T>;
 }
 export declare const $ZodLiteral: core.$constructor<$ZodLiteral>;
-declare global {
-  interface File {}
+type _File = typeof globalThis extends {
+  File: infer F extends new (...args: any[]) => any;
+}
+  ? InstanceType<F>
+  : {};
+/** Do not reference this directly. */
+export interface File extends _File {
+  readonly type: string;
+  readonly size: number;
 }
 export interface $ZodFileDef extends $ZodTypeDef {
   type: "file";
@@ -1144,7 +1153,7 @@ export interface $ZodCatchDef<T extends SomeType = $ZodType>
   catchValue: (ctx: $ZodCatchCtx) => unknown;
 }
 export interface $ZodCatchInternals<T extends SomeType = $ZodType>
-  extends $ZodTypeInternals<core.output<T>, core.input<T> | util.Whatever> {
+  extends $ZodTypeInternals<core.output<T>, core.input<T>> {
   def: $ZodCatchDef<T>;
   optin: T["_zod"]["optin"];
   optout: T["_zod"]["optout"];
@@ -1183,6 +1192,7 @@ export interface $ZodPipeInternals<
   values: A["_zod"]["values"];
   optin: A["_zod"]["optin"];
   optout: B["_zod"]["optout"];
+  propValues: A["_zod"]["propValues"];
 }
 export interface $ZodPipe<
   A extends SomeType = $ZodType,
@@ -1215,6 +1225,7 @@ export declare const $ZodReadonly: core.$constructor<$ZodReadonly>;
 export interface $ZodTemplateLiteralDef extends $ZodTypeDef {
   type: "template_literal";
   parts: $ZodTemplateLiteralPart[];
+  format?: string | undefined;
 }
 export interface $ZodTemplateLiteralInternals<Template extends string = string>
   extends $ZodTypeInternals<Template, Template> {

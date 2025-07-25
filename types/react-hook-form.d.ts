@@ -1433,6 +1433,7 @@ type UseWatchProps<TFieldValues extends FieldValues = FieldValues> = {
     | readonly FieldPath<TFieldValues>[];
   control?: Control<TFieldValues>;
   exact?: boolean;
+  compute?: (formValues: any) => any;
 };
 type FormProviderProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -2145,6 +2146,38 @@ declare function useFormState<
 ): UseFormStateReturn<TFieldValues>;
 
 /**
+ * Subscribe to the entire form values change and re-render at the hook level.
+ *
+ * @remarks
+ *
+ * [API](https://react-hook-form.com/docs/usewatch) • [Demo](https://codesandbox.io/s/react-hook-form-v7-ts-usewatch-h9i5e)
+ *
+ * @param props - defaultValue, disable subscription and match exact name.
+ *
+ * @example
+ * ```tsx
+ * const { control } = useForm();
+ * const values = useWatch({
+ *   control,
+ *   defaultValue: {
+ *     name: "data"
+ *   },
+ *   exact: false,
+ * })
+ * ```
+ */
+declare function useWatch<
+  TFieldValues extends FieldValues = FieldValues,
+  TTransformedValues = TFieldValues,
+>(props: {
+  name?: undefined;
+  defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
+  disabled?: boolean;
+  exact?: boolean;
+  compute?: undefined;
+}): DeepPartialSkipArrayKey<TFieldValues>;
+/**
  * Custom hook to subscribe to field change and isolate re-rendering at the component level.
  *
  * @remarks
@@ -2174,13 +2207,14 @@ declare function useWatch<
   control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
+  compute?: undefined;
 }): FieldPathValue<TFieldValues, TFieldName>;
 /**
- * Subscribe to the entire form values change and re-render at the hook level.
+ * Custom hook to subscribe to field change and compute function to produce state update
  *
  * @remarks
  *
- * [API](https://react-hook-form.com/docs/usewatch) • [Demo](https://codesandbox.io/s/react-hook-form-v7-ts-usewatch-h9i5e)
+ * [API](https://react-hook-form.com/docs/usewatch)
  *
  * @param props - defaultValue, disable subscription and match exact name.
  *
@@ -2189,22 +2223,58 @@ declare function useWatch<
  * const { control } = useForm();
  * const values = useWatch({
  *   control,
- *   defaultValue: {
- *     name: "data"
- *   },
- *   exact: false,
+ *   compute: (formValues) => formValues.fieldA
  * })
  * ```
  */
 declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
   TTransformedValues = TFieldValues,
+  TComputeValue = unknown,
 >(props: {
+  name?: undefined;
   defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
   control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
-}): DeepPartialSkipArrayKey<TFieldValues>;
+  compute: (formValues: TFieldValues) => TComputeValue;
+}): TComputeValue;
+/**
+ * Custom hook to subscribe to field change and compute function to produce state update
+ *
+ * @remarks
+ *
+ * [API](https://react-hook-form.com/docs/usewatch)
+ *
+ * @param props - defaultValue, disable subscription and match exact name.
+ *
+ * @example
+ * ```tsx
+ * const { control } = useForm();
+ * const values = useWatch({
+ *   control,
+ *   name: "fieldA",
+ *   defaultValue: "default value",
+ *   exact: false,
+ *   compute: (fieldValue) => fieldValue === "data" ? fieldValue : null,
+ * })
+ * ```
+ */
+declare function useWatch<
+  TFieldValues extends FieldValues = FieldValues,
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+  TComputeValue = unknown,
+>(props: {
+  name: TFieldName;
+  defaultValue?: FieldPathValue<TFieldValues, TFieldName>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
+  disabled?: boolean;
+  exact?: boolean;
+  compute: (
+    fieldValue: FieldPathValue<TFieldValues, TFieldName>,
+  ) => TComputeValue;
+}): TComputeValue;
 /**
  * Custom hook to subscribe to field change and isolate re-rendering at the component level.
  *
@@ -2239,7 +2309,48 @@ declare function useWatch<
   control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
   exact?: boolean;
+  compute?: undefined;
 }): FieldPathValues<TFieldValues, TFieldNames>;
+/**
+ * Custom hook to subscribe to field change and compute function to produce state update
+ *
+ * @remarks
+ *
+ * [API](https://react-hook-form.com/docs/usewatch)
+ *
+ * @param props - defaultValue, disable subscription and match exact name.
+ *
+ * @example
+ * ```tsx
+ * const { control } = useForm();
+ * const values = useWatch({
+ *   control,
+ *   name: ["fieldA", "fieldB"],
+ *   defaultValue: {
+ *     fieldA: "data",
+ *     fieldB: 0
+ *   },
+ *   compute: ([fieldAValue, fieldBValue]) => fieldB === 2 ? fieldA : null,
+ *   exact: false,
+ * })
+ * ```
+ */
+declare function useWatch<
+  TFieldValues extends FieldValues = FieldValues,
+  TFieldNames extends
+    readonly FieldPath<TFieldValues>[] = readonly FieldPath<TFieldValues>[],
+  TTransformedValues = TFieldValues,
+  TComputeValue = unknown,
+>(props: {
+  name: readonly [...TFieldNames];
+  defaultValue?: DeepPartialSkipArrayKey<TFieldValues>;
+  control?: Control<TFieldValues, any, TTransformedValues>;
+  disabled?: boolean;
+  exact?: boolean;
+  compute: (
+    fieldValue: FieldPathValues<TFieldValues, TFieldNames>,
+  ) => TComputeValue;
+}): TComputeValue;
 /**
  * Custom hook to subscribe to field change and isolate re-rendering at the component level.
  *
