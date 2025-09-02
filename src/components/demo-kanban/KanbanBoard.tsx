@@ -15,6 +15,7 @@ import {
   UniqueIdentifier,
   TouchSensor,
   MouseSensor,
+  closestCenter,
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { type Task, TaskCard } from "./TaskCard";
@@ -237,6 +238,7 @@ export function KanbanBoard() {
         announcements,
       }}
       sensors={sensors}
+      collisionDetection={closestCenter}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onDragOver={onDragOver}
