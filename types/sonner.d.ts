@@ -62,6 +62,7 @@ interface Action {
 }
 interface ToastT {
   id: number | string;
+  toasterId?: string;
   title?: (() => React.ReactNode) | React.ReactNode;
   type?: ToastTypes;
   icon?: React.ReactNode;
@@ -86,6 +87,7 @@ interface ToastT {
   classNames?: ToastClassnames;
   descriptionClassName?: string;
   position?: Position;
+  testId?: string;
 }
 type Position =
   | "top-left"
@@ -105,6 +107,7 @@ interface ToastOptions {
   unstyled?: boolean;
   classNames?: ToastClassnames;
   closeButtonAriaLabel?: string;
+  toasterId?: string;
 }
 type Offset =
   | {
@@ -116,6 +119,7 @@ type Offset =
   | string
   | number;
 interface ToasterProps {
+  id?: string;
   invert?: boolean;
   theme?: "light" | "dark" | "system";
   position?: Position;
@@ -146,6 +150,7 @@ type ExternalToast = Omit<
   "id" | "type" | "title" | "jsx" | "delete" | "promise"
 > & {
   id?: number | string;
+  toasterId?: string;
 };
 
 type titleT = (() => React.ReactNode) | React.ReactNode;

@@ -232,11 +232,11 @@ export declare function _ksuid<T extends schemas.$ZodKSUID>(
 ): T;
 export type $ZodIPv4Params = StringFormatParams<
   schemas.$ZodIPv4,
-  "pattern" | "when"
+  "pattern" | "when" | "version"
 >;
 export type $ZodCheckIPv4Params = CheckStringFormatParams<
   schemas.$ZodIPv4,
-  "pattern" | "when"
+  "pattern" | "when" | "version"
 >;
 export declare function _ipv4<T extends schemas.$ZodIPv4>(
   Class: util.SchemaClass<T>,
@@ -244,11 +244,11 @@ export declare function _ipv4<T extends schemas.$ZodIPv4>(
 ): T;
 export type $ZodIPv6Params = StringFormatParams<
   schemas.$ZodIPv6,
-  "pattern" | "when"
+  "pattern" | "when" | "version"
 >;
 export type $ZodCheckIPv6Params = CheckStringFormatParams<
   schemas.$ZodIPv6,
-  "pattern" | "when"
+  "pattern" | "when" | "version"
 >;
 export declare function _ipv6<T extends schemas.$ZodIPv6>(
   Class: util.SchemaClass<T>,
@@ -702,12 +702,13 @@ export type $ZodDiscriminatedUnionParams = TypeParams<
 >;
 export declare function _discriminatedUnion<
   Types extends [$ZodTypeDiscriminable, ...$ZodTypeDiscriminable[]],
+  Disc extends string,
 >(
   Class: util.SchemaClass<schemas.$ZodDiscriminatedUnion>,
-  discriminator: string,
+  discriminator: Disc,
   options: Types,
   params?: string | $ZodDiscriminatedUnionParams,
-): schemas.$ZodDiscriminatedUnion<Types>;
+): schemas.$ZodDiscriminatedUnion<Types, Disc>;
 export type $ZodIntersectionParams = TypeParams<
   schemas.$ZodIntersection,
   "left" | "right"
@@ -909,6 +910,29 @@ export declare function _refine<O = unknown, I = O>(
   fn: (data: O) => unknown,
   _params: string | $ZodCustomParams | undefined,
 ): schemas.$ZodCustom<O, I>;
+export type $ZodSuperRefineIssue<
+  T extends errors.$ZodIssueBase = errors.$ZodIssue,
+> = T extends any ? RawIssue<T> : never;
+type RawIssue<T extends errors.$ZodIssueBase> = T extends any
+  ? util.Flatten<
+      util.MakePartial<T, "message" | "path"> & {
+        /** The schema or check that originated this issue. */
+        readonly inst?: schemas.$ZodType | checks.$ZodCheck;
+        /** If `true`, Zod will execute subsequent checks/refinements instead of immediately aborting */
+        readonly continue?: boolean | undefined;
+      } & Record<string, unknown>
+    >
+  : never;
+export interface $RefinementCtx<T = unknown> extends schemas.ParsePayload<T> {
+  addIssue(arg: string | $ZodSuperRefineIssue): void;
+}
+export declare function _superRefine<T>(
+  fn: (arg: T, payload: $RefinementCtx<T>) => void | Promise<void>,
+): checks.$ZodCheck<T>;
+export declare function _check<O = unknown>(
+  fn: schemas.CheckFn<O>,
+  params?: string | $ZodCustomParams,
+): checks.$ZodCheck<O>;
 export interface $ZodStringBoolParams extends TypeParams {
   truthy?: string[];
   falsy?: string[];
@@ -921,16 +945,12 @@ export interface $ZodStringBoolParams extends TypeParams {
 }
 export declare function _stringbool(
   Classes: {
-    Pipe?: typeof schemas.$ZodPipe;
+    Codec?: typeof schemas.$ZodCodec;
     Boolean?: typeof schemas.$ZodBoolean;
-    Transform?: typeof schemas.$ZodTransform;
     String?: typeof schemas.$ZodString;
   },
   _params?: string | $ZodStringBoolParams,
-): schemas.$ZodPipe<
-  schemas.$ZodPipe<schemas.$ZodString, schemas.$ZodTransform<boolean, string>>,
-  schemas.$ZodBoolean<boolean>
->;
+): schemas.$ZodCodec<schemas.$ZodString, schemas.$ZodBoolean>;
 export declare function _stringFormat<Format extends string>(
   Class: typeof schemas.$ZodCustomStringFormat,
   format: Format,

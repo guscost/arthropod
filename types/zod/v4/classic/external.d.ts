@@ -10,7 +10,6 @@ export {
   type GlobalMeta,
   registry,
   config,
-  function,
   $output,
   $input,
   $brand,
@@ -22,6 +21,7 @@ export {
   flattenError,
   toJSONSchema,
   TimePrecision,
+  util,
   NEVER,
 } from "../core/index.js";
 export * as locales from "../locales/index.js";

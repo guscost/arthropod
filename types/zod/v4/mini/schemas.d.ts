@@ -9,6 +9,7 @@ export interface ZodMiniType<
     Input
   > = core.$ZodTypeInternals<Output, Input>,
 > extends core.$ZodType<Output, Input, Internals> {
+  type: Internals["def"]["type"];
   check(
     ...checks: (
       | core.CheckFn<core.output<this>>
@@ -102,6 +103,9 @@ export declare function uuidv7(
 export interface ZodMiniURL extends _ZodMiniString<core.$ZodURLInternals> {}
 export declare const ZodMiniURL: core.$constructor<ZodMiniURL>;
 export declare function url(params?: string | core.$ZodURLParams): ZodMiniURL;
+export declare function httpUrl(
+  params?: string | Omit<core.$ZodURLParams, "protocol" | "hostname">,
+): ZodMiniURL;
 export interface ZodMiniEmoji extends _ZodMiniString<core.$ZodEmojiInternals> {}
 export declare const ZodMiniEmoji: core.$constructor<ZodMiniEmoji>;
 export declare function emoji(
@@ -189,6 +193,21 @@ export declare function stringFormat<Format extends string>(
   fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,
   _params?: string | core.$ZodStringFormatParams,
 ): ZodMiniCustomStringFormat<Format>;
+export declare function hostname(
+  _params?: string | core.$ZodStringFormatParams,
+): ZodMiniCustomStringFormat<"hostname">;
+export declare function hex(
+  _params?: string | core.$ZodStringFormatParams,
+): ZodMiniCustomStringFormat<"hex">;
+export declare function hash<
+  Alg extends util.HashAlgorithm,
+  Enc extends util.HashEncoding = "hex",
+>(
+  alg: Alg,
+  params?: {
+    enc?: Enc;
+  } & core.$ZodStringFormatParams,
+): ZodMiniCustomStringFormat<`${Alg}_${Enc}`>;
 interface _ZodMiniNumber<
   T extends
     core.$ZodNumberInternals<unknown> = core.$ZodNumberInternals<unknown>,
@@ -292,7 +311,7 @@ export declare function array<T extends SomeType>(
 ): ZodMiniArray<T>;
 export declare function keyof<T extends ZodMiniObject>(
   schema: T,
-): ZodMiniLiteral<Exclude<keyof T["shape"], symbol>>;
+): ZodMiniEnum<util.KeysEnum<T["shape"]>>;
 export interface ZodMiniObject<
   /** @ts-ignore Cast variance */
   out Shape extends core.$ZodShape = core.$ZodShape,
@@ -322,6 +341,25 @@ export declare function extend<
 >(
   schema: T,
   shape: U,
+): ZodMiniObject<util.Extend<T["shape"], U>, T["_zod"]["config"]>;
+export type SafeExtendShape<
+  Base extends core.$ZodShape,
+  Ext extends core.$ZodLooseShape,
+> = {
+  [K in keyof Ext]: K extends keyof Base
+    ? core.output<Ext[K]> extends core.output<Base[K]>
+      ? core.input<Ext[K]> extends core.input<Base[K]>
+        ? Ext[K]
+        : never
+      : never
+    : Ext[K];
+};
+export declare function safeExtend<
+  T extends ZodMiniObject,
+  U extends core.$ZodLooseShape,
+>(
+  schema: T,
+  shape: SafeExtendShape<T["shape"], U>,
 ): ZodMiniObject<util.Extend<T["shape"], U>, T["_zod"]["config"]>;
 /** @deprecated Identical to `z.extend(A, B)` */
 export declare function merge<T extends ZodMiniObject, U extends ZodMiniObject>(
@@ -416,8 +454,9 @@ export declare function union<const T extends readonly SomeType[]>(
 ): ZodMiniUnion<T>;
 export interface ZodMiniDiscriminatedUnion<
   Options extends readonly SomeType[] = readonly core.$ZodType[],
+  Disc extends string = string,
 > extends ZodMiniUnion<Options> {
-  _zod: core.$ZodDiscriminatedUnionInternals<Options>;
+  _zod: core.$ZodDiscriminatedUnionInternals<Options, Disc>;
 }
 export declare const ZodMiniDiscriminatedUnion: core.$constructor<ZodMiniDiscriminatedUnion>;
 export declare function discriminatedUnion<
@@ -425,11 +464,12 @@ export declare function discriminatedUnion<
     core.$ZodTypeDiscriminable,
     ...core.$ZodTypeDiscriminable[],
   ],
+  Disc extends string,
 >(
-  discriminator: string,
+  discriminator: Disc,
   options: Types,
   params?: string | core.$ZodDiscriminatedUnionParams,
-): ZodMiniDiscriminatedUnion<Types>;
+): ZodMiniDiscriminatedUnion<Types, Disc>;
 export interface ZodMiniIntersection<
   A extends SomeType = core.$ZodType,
   B extends SomeType = core.$ZodType,
@@ -498,7 +538,9 @@ export declare function set<Value extends SomeType>(
   params?: string | core.$ZodSetParams,
 ): ZodMiniSet<Value>;
 export interface ZodMiniEnum<T extends util.EnumLike = util.EnumLike>
-  extends _ZodMiniType<core.$ZodEnumInternals<T>> {}
+  extends _ZodMiniType<core.$ZodEnumInternals<T>> {
+  options: Array<T[keyof T]>;
+}
 export declare const ZodMiniEnum: core.$constructor<ZodMiniEnum>;
 declare function _enum<const T extends readonly string[]>(
   values: T,
@@ -612,6 +654,32 @@ export declare function pipe<
     core.output<A>
   >,
 >(in_: A, out: B | core.$ZodType<unknown, core.output<A>>): ZodMiniPipe<A, B>;
+export interface ZodMiniCodec<
+  A extends SomeType = core.$ZodType,
+  B extends SomeType = core.$ZodType,
+> extends ZodMiniPipe<A, B>,
+    core.$ZodCodec<A, B> {
+  _zod: core.$ZodCodecInternals<A, B>;
+  def: core.$ZodCodecDef<A, B>;
+}
+export declare const ZodMiniCodec: core.$constructor<ZodMiniCodec>;
+export declare function codec<
+  const A extends SomeType,
+  B extends core.SomeType = core.$ZodType,
+>(
+  in_: A,
+  out: B,
+  params: {
+    decode: (
+      value: core.output<A>,
+      payload: core.ParsePayload<core.output<A>>,
+    ) => core.input<B>;
+    encode: (
+      value: core.input<B>,
+      payload: core.ParsePayload<core.input<B>>,
+    ) => core.output<A>;
+  },
+): ZodMiniCodec<A, B>;
 export interface ZodMiniReadonly<T extends SomeType = core.$ZodType>
   extends _ZodMiniType<core.$ZodReadonlyInternals<T>> {}
 export declare const ZodMiniReadonly: core.$constructor<ZodMiniReadonly>;
@@ -653,6 +721,9 @@ export declare function refine<T>(
   fn: (arg: NoInfer<T>) => util.MaybeAsync<unknown>,
   _params?: string | core.$ZodCustomParams,
 ): core.$ZodCheck<T>;
+export declare function superRefine<T>(
+  fn: (arg: T, payload: core.$RefinementCtx<T>) => void | Promise<void>,
+): core.$ZodCheck<T>;
 declare abstract class Class {
   constructor(..._args: any[]);
 }
@@ -663,10 +734,7 @@ declare function _instanceof<T extends typeof Class>(
 export { _instanceof as instanceof };
 export declare const stringbool: (
   _params?: string | core.$ZodStringBoolParams,
-) => ZodMiniPipe<
-  ZodMiniPipe<ZodMiniString, ZodMiniTransform<boolean, string>>,
-  ZodMiniBoolean
->;
+) => ZodMiniCodec<ZodMiniString, ZodMiniBoolean>;
 type _ZodMiniJSONSchema = ZodMiniUnion<
   [
     ZodMiniString,
@@ -687,3 +755,51 @@ export interface ZodMiniJSONSchema extends _ZodMiniJSONSchema {
   _zod: ZodMiniJSONSchemaInternals;
 }
 export declare function json(): ZodMiniJSONSchema;
+export interface ZodMiniFunction<
+  Args extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+  Returns extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+> extends _ZodMiniType<core.$ZodFunctionInternals<Args, Returns>>,
+    core.$ZodFunction<Args, Returns> {
+  _def: core.$ZodFunctionDef<Args, Returns>;
+  _input: core.$InferInnerFunctionType<Args, Returns>;
+  _output: core.$InferOuterFunctionType<Args, Returns>;
+  input<
+    const Items extends util.TupleItems,
+    const Rest extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+  >(
+    args: Items,
+    rest?: Rest,
+  ): ZodMiniFunction<ZodMiniTuple<Items, Rest>, Returns>;
+  input<NewArgs extends core.$ZodFunctionIn>(
+    args: NewArgs,
+  ): ZodMiniFunction<NewArgs, Returns>;
+  input(...args: any[]): ZodMiniFunction<any, Returns>;
+  output<NewReturns extends core.$ZodFunctionOut>(
+    output: NewReturns,
+  ): ZodMiniFunction<Args, NewReturns>;
+}
+export declare const ZodMiniFunction: core.$constructor<ZodMiniFunction>;
+export declare function _function(): ZodMiniFunction;
+export declare function _function<
+  const In extends Array<SomeType> = Array<SomeType>,
+>(params: {
+  input: In;
+}): ZodMiniFunction<ZodMiniTuple<In, null>, core.$ZodFunctionOut>;
+export declare function _function<
+  const In extends Array<SomeType> = Array<SomeType>,
+  const Out extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+>(params: {
+  input: In;
+  output: Out;
+}): ZodMiniFunction<ZodMiniTuple<In, null>, Out>;
+export declare function _function<
+  const In extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+>(params: { input: In }): ZodMiniFunction<In, core.$ZodFunctionOut>;
+export declare function _function<
+  const Out extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+>(params: { output: Out }): ZodMiniFunction<core.$ZodFunctionIn, Out>;
+export declare function _function<
+  In extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+  Out extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+>(params?: { input: In; output: Out }): ZodMiniFunction<In, Out>;
+export { _function as function };

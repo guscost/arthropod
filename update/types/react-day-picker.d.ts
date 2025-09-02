@@ -1,7 +1,7 @@
 import {
-  CSSProperties,
   ButtonHTMLAttributes,
   HTMLAttributes,
+  CSSProperties,
   SelectHTMLAttributes,
   TableHTMLAttributes,
   MouseEventHandler,
@@ -21,350 +21,311 @@ import {
 declare const constructFromSymbol: unique symbol;
 
 /**
- * Enum representing the UI elements composing DayPicker. These elements are
- * mapped to {@link CustomComponents}, {@link ClassNames}, and {@link Styles}.
+ * Time zone date class. It overrides original Date functions making them
+ * to perform all the calculations in the given time zone.
  *
- * Some elements are extended by flags and modifiers.
- */
-declare enum UI {
-  /** The root component displaying the months and the navigation bar. */
-  Root = "root",
-  /** The Chevron SVG element used by navigation buttons and dropdowns. */
-  Chevron = "chevron",
-  /**
-   * The grid cell with the day's date. Extended by {@link DayFlag} and
-   * {@link SelectionState}.
-   */
-  Day = "day",
-  /** The button containing the formatted day's date, inside the grid cell. */
-  DayButton = "day_button",
-  /** The caption label of the month (when not showing the dropdown navigation). */
-  CaptionLabel = "caption_label",
-  /** The container of the dropdown navigation (when enabled). */
-  Dropdowns = "dropdowns",
-  /** The dropdown element to select for years and months. */
-  Dropdown = "dropdown",
-  /** The container element of the dropdown. */
-  DropdownRoot = "dropdown_root",
-  /** The root element of the footer. */
-  Footer = "footer",
-  /** The month grid. */
-  MonthGrid = "month_grid",
-  /** Contains the dropdown navigation or the caption label. */
-  MonthCaption = "month_caption",
-  /** The dropdown with the months. */
-  MonthsDropdown = "months_dropdown",
-  /** Wrapper of the month grid. */
-  Month = "month",
-  /** The container of the displayed months. */
-  Months = "months",
-  /** The navigation bar with the previous and next buttons. */
-  Nav = "nav",
-  /**
-   * The next month button in the navigation. *
-   *
-   * @since 9.1.0
-   */
-  NextMonthButton = "button_next",
-  /**
-   * The previous month button in the navigation.
-   *
-   * @since 9.1.0
-   */
-  PreviousMonthButton = "button_previous",
-  /** The row containing the week. */
-  Week = "week",
-  /** The group of row weeks in a month (`tbody`). */
-  Weeks = "weeks",
-  /** The column header with the weekday. */
-  Weekday = "weekday",
-  /** The row grouping the weekdays in the column headers. */
-  Weekdays = "weekdays",
-  /** The cell containing the week number. */
-  WeekNumber = "week_number",
-  /** The cell header of the week numbers column. */
-  WeekNumberHeader = "week_number_header",
-  /** The dropdown with the years. */
-  YearsDropdown = "years_dropdown",
-}
-/** Enum representing flags for the {@link UI.Day} element. */
-declare enum DayFlag {
-  /** The day is disabled. */
-  disabled = "disabled",
-  /** The day is hidden. */
-  hidden = "hidden",
-  /** The day is outside the current month. */
-  outside = "outside",
-  /** The day is focused. */
-  focused = "focused",
-  /** The day is today. */
-  today = "today",
-}
-/**
- * Enum representing selection states that can be applied to the {@link UI.Day}
- * element in selection mode.
- */
-declare enum SelectionState {
-  /** The day is at the end of a selected range. */
-  range_end = "range_end",
-  /** The day is at the middle of a selected range. */
-  range_middle = "range_middle",
-  /** The day is at the start of a selected range. */
-  range_start = "range_start",
-  /** The day is selected. */
-  selected = "selected",
-}
-/**
- * Enum representing different animation states for transitioning between
- * months.
- */
-declare enum Animation {
-  /** The entering weeks when they appear before the exiting month. */
-  weeks_before_enter = "weeks_before_enter",
-  /** The exiting weeks when they disappear before the entering month. */
-  weeks_before_exit = "weeks_before_exit",
-  /** The entering weeks when they appear after the exiting month. */
-  weeks_after_enter = "weeks_after_enter",
-  /** The exiting weeks when they disappear after the entering month. */
-  weeks_after_exit = "weeks_after_exit",
-  /** The entering caption when it appears after the exiting month. */
-  caption_after_enter = "caption_after_enter",
-  /** The exiting caption when it disappears after the entering month. */
-  caption_after_exit = "caption_after_exit",
-  /** The entering caption when it appears before the exiting month. */
-  caption_before_enter = "caption_before_enter",
-  /** The exiting caption when it disappears before the entering month. */
-  caption_before_exit = "caption_before_exit",
-}
-/**
- * Deprecated UI elements and flags from previous versions of DayPicker.
+ * It also provides new functions useful when working with time zones.
  *
- * These elements are kept for backward compatibility and to assist in
- * transitioning to the new {@link UI} elements.
+ * Combined with date-fns, it allows using the class the same way as
+ * the original date class.
  *
- * @deprecated
- * @since 9.0.1
- * @template T - The type of the deprecated UI element (e.g., CSS class or
- *   style).
- * @see https://daypicker.dev/upgrading
- * @see https://daypicker.dev/docs/styling
+ * This complete version provides formatter functions, mirroring all original
+ * methods of the `Date` class. It's build-size-heavier than `TZDateMini` and
+ * should be used when you need to format a string or in an environment you
+ * don't fully control (a library).
+ *
+ * For the minimal version, see `TZDateMini`.
  */
-type DeprecatedUI<T extends CSSProperties | string> = {
+declare class TZDate extends Date {
   /**
-   * This element was applied to the style of any button in DayPicker and it is
-   * replaced by {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
-   *
-   * @deprecated
+   * Constructs a new `TZDate` instance in the system time zone.
    */
-  button: T;
+  constructor();
+
   /**
-   * This element was resetting the style of any button in DayPicker and it is
-   * replaced by {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
+   * Constructs a new `TZDate` instance from the date time string and time zone.
    *
-   * @deprecated
+   * @param dateStr - Date time string to create a new instance from
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  button_reset: T;
+  constructor(dateStr: string, timeZone?: string);
+
   /**
-   * This element has been renamed to {@link UI.MonthCaption}.
+   * Constructs a new `TZDate` instance from the date object and time zone.
    *
-   * @deprecated
+   * @param date - Date object to create a new instance from
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  caption: T;
+  constructor(date: Date, timeZone?: string);
+
   /**
-   * This element has been removed. Captions are styled via
-   * {@link UI.MonthCaption}.
+   * Constructs a new `TZDate` instance from the Unix timestamp in milliseconds
+   * and time zone.
    *
-   * @deprecated
+   * @param timestamp - Unix timestamp in milliseconds to create a new instance from
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  caption_between: T;
+  constructor(timestamp: number, timeZone?: string);
+
   /**
-   * This element has been renamed to {@link UI.Dropdowns}.
+   * Constructs a new `TZDate` instance from the year, month, and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  caption_dropdowns: T;
+  constructor(year: number, month: number, timeZone?: string);
+
   /**
-   * This element has been removed. Captions are styled via
-   * {@link UI.MonthCaption}.
+   * Constructs a new `TZDate` instance from the year, month, date and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  caption_end: T;
+  constructor(year: number, month: number, date: number, timeZone?: string);
+
   /**
-   * This element has been removed.
+   * Constructs a new `TZDate` instance from the year, month, date, hours
+   * and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  caption_start: T;
+  constructor(
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    timeZone?: string,
+  );
+
   /**
-   * This element has been renamed to {@link UI.Day}.
+   * Constructs a new `TZDate` instance from the year, month, date, hours,
+   * minutes and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  cell: T;
+  constructor(
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+    timeZone?: string,
+  );
+
   /**
-   * This element has been renamed to {@link DayFlag.disabled}.
+   * Constructs a new `TZDate` instance from the year, month, date, hours,
+   * minutes, seconds and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
+   * @param seconds - Seconds
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  day_disabled: T;
+  constructor(
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+    seconds: number,
+    timeZone?: string,
+  );
+
   /**
-   * This element has been renamed to {@link DayFlag.hidden}.
+   * Constructs a new `TZDate` instance from the year, month, date, hours,
+   * minutes, seconds, milliseconds and time zone.
    *
-   * @deprecated
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
+   * @param seconds - Seconds
+   * @param milliseconds - Milliseconds
+   * @param timeZone - Time zone name (IANA or UTC offset)
    */
-  day_hidden: T;
+  constructor(
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+    seconds: number,
+    milliseconds: number,
+    timeZone?: string,
+  );
+
   /**
-   * This element has been renamed to {@link DayFlag.outside}.
+   * Creates a new `TZDate` instance in the given time zone.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
    */
-  day_outside: T;
+  static tz(tz: string): TZDate;
+
   /**
-   * This element has been renamed to {@link SelectionState.range_end}.
+   * Creates a new `TZDate` instance in the given time zone from the Unix
+   * timestamp in milliseconds.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param timestamp - Unix timestamp in milliseconds
    */
-  day_range_end: T;
+  static tz(tz: string, timestamp: number): TZDate;
+
   /**
-   * This element has been renamed to {@link SelectionState.range_middle}.
+   * Creates a new `TZDate` instance in the given time zone from the date time
+   * string.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param dateStr - Date time string
    */
-  day_range_middle: T;
+  static tz(tz: string, dateStr: string): TZDate;
+
   /**
-   * This element has been renamed to {@link SelectionState.range_start}.
+   * Creates a new `TZDate` instance in the given time zone from the date object.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param date - Date object
    */
-  day_range_start: T;
+  static tz(tz: string, date: Date): TZDate;
+
   /**
-   * This element has been renamed to {@link SelectionState.selected}.
+   * Creates a new `TZDate` instance in the given time zone from the year
+   * and month.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
    */
-  day_selected: T;
+  static tz(tz: string, year: number, month: number): TZDate;
+
   /**
-   * This element has been renamed to {@link DayFlag.today}.
+   * Creates a new `TZDate` instance in the given time zone from the year,
+   * month and date.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
    */
-  day_today: T;
+  static tz(tz: string, year: number, month: number, date: number): TZDate;
+
   /**
-   * This element has been removed. The dropdown icon is now {@link UI.Chevron}
-   * inside a {@link UI.CaptionLabel}.
+   * Creates a new `TZDate` instance in the given time zone from the year,
+   * month, date and hours.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
    */
-  dropdown_icon: T;
+  static tz(
+    tz: string,
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+  ): TZDate;
+
   /**
-   * This element has been renamed to {@link UI.MonthsDropdown}.
+   * Creates a new `TZDate` instance in the given time zone from the year,
+   * month, date, hours and minutes.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
    */
-  dropdown_month: T;
+  static tz(
+    tz: string,
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+  ): TZDate;
+
   /**
-   * This element has been renamed to {@link UI.YearsDropdown}.
+   * Creates a new `TZDate` instance in the given time zone from the year,
+   * month, date, hours, minutes and seconds.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
+   * @param seconds - Seconds
    */
-  dropdown_year: T;
+  static tz(
+    tz: string,
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+    seconds: number,
+  ): TZDate;
+
   /**
-   * This element has been removed.
+   * Creates a new `TZDate` instance in the given time zone from the year,
+   * month, date, hours, minutes, seconds and milliseconds.
    *
-   * @deprecated
+   * @param tz - Time zone name (IANA or UTC offset)
+   * @param year - Year
+   * @param month - Month (0-11)
+   * @param date - Date
+   * @param hours - Hours
+   * @param minutes - Minutes
+   * @param seconds - Seconds
+   * @param milliseconds - Milliseconds
    */
-  head: T;
+  static tz(
+    tz: string,
+    year: number,
+    month: number,
+    date: number,
+    hours: number,
+    minutes: number,
+    seconds: number,
+    milliseconds: number,
+  ): TZDate;
+
   /**
-   * This element has been renamed to {@link UI.Weekday}.
-   *
-   * @deprecated
+   * The current time zone of the date.
    */
-  head_cell: T;
+  readonly timeZone: string | undefined;
+
   /**
-   * This element has been renamed to {@link UI.Weekdays}.
-   *
-   * @deprecated
+   * Creates a new `TZDate` instance in the given time zone.
    */
-  head_row: T;
+  withTimeZone(timeZone: string): TZDate;
+
   /**
-   * This flag has been removed. Use `data-multiple-months` in your CSS
-   * selectors.
+   * Creates a new `TZDate` instance in the current instance time zone and
+   * the specified date time value.
    *
-   * @deprecated
+   * @param date - Date value to create a new instance from
    */
-  multiple_months: T;
-  /**
-   * This element has been removed. To style the navigation buttons, use
-   * {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
-   *
-   * @deprecated
-   */
-  nav_button: T;
-  /**
-   * This element has been renamed to {@link UI.NextMonthButton}.
-   *
-   * @deprecated
-   */
-  nav_button_next: T;
-  /**
-   * This element has been renamed to {@link UI.PreviousMonthButton}.
-   *
-   * @deprecated
-   */
-  nav_button_previous: T;
-  /**
-   * This element has been removed. The dropdown icon is now {@link UI.Chevron}
-   * inside a {@link UI.NextMonthButton} or a {@link UI.PreviousMonthButton}.
-   *
-   * @deprecated
-   */
-  nav_icon: T;
-  /**
-   * This element has been renamed to {@link UI.Week}.
-   *
-   * @deprecated
-   */
-  row: T;
-  /**
-   * This element has been renamed to {@link UI.MonthGrid}.
-   *
-   * @deprecated
-   */
-  table: T;
-  /**
-   * This element has been renamed to {@link UI.Weeks}.
-   *
-   * @deprecated
-   */
-  tbody: T;
-  /**
-   * This element has been removed. The {@link UI.Footer} is now a single element
-   * below the months.
-   *
-   * @deprecated
-   */
-  tfoot: T;
-  /**
-   * This flag has been removed. There are no "visually hidden" elements in
-   * DayPicker 9.
-   *
-   * @deprecated
-   */
-  vhidden: T;
-  /**
-   * This element has been renamed. Use {@link UI.WeekNumber} instead.
-   *
-   * @deprecated
-   */
-  weeknumber: T;
-  /**
-   * This flag has been removed. Use `data-week-numbers` in your CSS.
-   *
-   * @deprecated
-   */
-  with_weeknumber: T;
-};
+  [constructFromSymbol](date: Date | number | string): TZDate;
+}
 
 /**
  * The locale object with all functions and data needed to parse and format
@@ -867,6 +828,1640 @@ declare function Chevron(props: {
 type ChevronProps = Parameters<typeof Chevron>[0];
 
 /**
+ * Render the caption for a month in the calendar.
+ *
+ * @group Components
+ * @see https://daypicker.dev/guides/custom-components
+ */
+declare function MonthCaption(
+  props: {
+    /** The month to display in the caption. */
+    calendarMonth: CalendarMonth;
+    /** The index of the month being displayed. */
+    displayIndex: number;
+  } & HTMLAttributes<HTMLDivElement>,
+): JSX.Element;
+type MonthCaptionProps = Parameters<typeof MonthCaption>[0];
+
+/**
+ * Render a table row representing a week in the calendar.
+ *
+ * @group Components
+ * @see https://daypicker.dev/guides/custom-components
+ */
+declare function Week(
+  props: {
+    /** The week to render. */
+    week: CalendarWeek;
+  } & HTMLAttributes<HTMLTableRowElement>,
+): JSX.Element;
+type WeekProps = Parameters<typeof Week>[0];
+
+/**
+ * Generates the ARIA label for a day button.
+ *
+ * Use the `modifiers` argument to provide additional context for the label,
+ * such as indicating if the day is "today" or "selected."
+ *
+ * @defaultValue The formatted date.
+ * @param date - The date to format.
+ * @param modifiers - The modifiers providing context for the day.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the day button.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelDayButton(
+  date: Date,
+  modifiers: Modifiers,
+  options?: DateLibOptions,
+  dateLib?: DateLib,
+): string;
+/**
+ * @ignore
+ * @deprecated Use `labelDayButton` instead.
+ */
+declare const labelDay: typeof labelDayButton;
+
+/**
+ * Generates the ARIA label for the month grid, which is announced when entering
+ * the grid.
+ *
+ * @defaultValue `LLLL y` (e.g., "November 2022").
+ * @param date - The date representing the month.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the month grid.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelGrid(
+  date: Date,
+  options?: DateLibOptions,
+  dateLib?: DateLib,
+): string;
+/**
+ * @ignore
+ * @deprecated Use {@link labelGrid} instead.
+ */
+declare const labelCaption: typeof labelGrid;
+
+/**
+ * Generates the label for a day grid cell when the calendar is not interactive.
+ *
+ * @param date - The date to format.
+ * @param modifiers - Optional modifiers providing context for the day.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The label for the day grid cell.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelGridcell(
+  date: Date,
+  modifiers?: Modifiers,
+  options?: DateLibOptions,
+  dateLib?: DateLib,
+): string;
+
+/**
+ * Generates the ARIA label for the months dropdown.
+ *
+ * @defaultValue `"Choose the Month"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the months dropdown.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelMonthDropdown(_options?: DateLibOptions): string;
+
+/**
+ * Generates the ARIA label for the navigation toolbar.
+ *
+ * @defaultValue `""`
+ * @returns The ARIA label for the navigation toolbar.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelNav(): string;
+
+/**
+ * Generates the ARIA label for the "next month" button.
+ *
+ * @defaultValue `"Go to the Next Month"`
+ * @param month - The date representing the next month, or `undefined` if there
+ *   is no next month.
+ * @returns The ARIA label for the "next month" button.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelNext(_month: Date | undefined): string;
+
+/**
+ * Generates the ARIA label for the "previous month" button.
+ *
+ * @defaultValue `"Go to the Previous Month"`
+ * @param month - The date representing the previous month, or `undefined` if
+ *   there is no previous month.
+ * @returns The ARIA label for the "previous month" button.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelPrevious(_month: Date | undefined): string;
+
+/**
+ * Generates the ARIA label for a weekday column header.
+ *
+ * @defaultValue `"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"`
+ * @param date - The date representing the weekday.
+ * @param options - Optional configuration for the date formatting library.
+ * @param dateLib - An optional instance of the date formatting library.
+ * @returns The ARIA label for the weekday column header.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelWeekday(
+  date: Date,
+  options?: DateLibOptions,
+  dateLib?: DateLib,
+): string;
+
+/**
+ * Generates the ARIA label for the week number cell (the first cell in a row).
+ *
+ * @defaultValue `Week ${weekNumber}`
+ * @param weekNumber - The number of the week.
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the week number cell.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelWeekNumber(
+  weekNumber: number,
+  _options?: DateLibOptions,
+): string;
+
+/**
+ * Generates the ARIA label for the week number header element.
+ *
+ * @defaultValue `"Week Number"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the week number header.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelWeekNumberHeader(_options?: DateLibOptions): string;
+
+/**
+ * Generates the ARIA label for the years dropdown.
+ *
+ * @defaultValue `"Choose the Year"`
+ * @param options - Optional configuration for the date formatting library.
+ * @returns The ARIA label for the years dropdown.
+ * @group Labels
+ * @see https://daypicker.dev/docs/translation#aria-labels
+ */
+declare function labelYearDropdown(_options?: DateLibOptions): string;
+
+/**
+ * Enum representing the UI elements composing DayPicker. These elements are
+ * mapped to {@link CustomComponents}, {@link ClassNames}, and {@link Styles}.
+ *
+ * Some elements are extended by flags and modifiers.
+ */
+declare enum UI {
+  /** The root component displaying the months and the navigation bar. */
+  Root = "root",
+  /** The Chevron SVG element used by navigation buttons and dropdowns. */
+  Chevron = "chevron",
+  /**
+   * The grid cell with the day's date. Extended by {@link DayFlag} and
+   * {@link SelectionState}.
+   */
+  Day = "day",
+  /** The button containing the formatted day's date, inside the grid cell. */
+  DayButton = "day_button",
+  /** The caption label of the month (when not showing the dropdown navigation). */
+  CaptionLabel = "caption_label",
+  /** The container of the dropdown navigation (when enabled). */
+  Dropdowns = "dropdowns",
+  /** The dropdown element to select for years and months. */
+  Dropdown = "dropdown",
+  /** The container element of the dropdown. */
+  DropdownRoot = "dropdown_root",
+  /** The root element of the footer. */
+  Footer = "footer",
+  /** The month grid. */
+  MonthGrid = "month_grid",
+  /** Contains the dropdown navigation or the caption label. */
+  MonthCaption = "month_caption",
+  /** The dropdown with the months. */
+  MonthsDropdown = "months_dropdown",
+  /** Wrapper of the month grid. */
+  Month = "month",
+  /** The container of the displayed months. */
+  Months = "months",
+  /** The navigation bar with the previous and next buttons. */
+  Nav = "nav",
+  /**
+   * The next month button in the navigation. *
+   *
+   * @since 9.1.0
+   */
+  NextMonthButton = "button_next",
+  /**
+   * The previous month button in the navigation.
+   *
+   * @since 9.1.0
+   */
+  PreviousMonthButton = "button_previous",
+  /** The row containing the week. */
+  Week = "week",
+  /** The group of row weeks in a month (`tbody`). */
+  Weeks = "weeks",
+  /** The column header with the weekday. */
+  Weekday = "weekday",
+  /** The row grouping the weekdays in the column headers. */
+  Weekdays = "weekdays",
+  /** The cell containing the week number. */
+  WeekNumber = "week_number",
+  /** The cell header of the week numbers column. */
+  WeekNumberHeader = "week_number_header",
+  /** The dropdown with the years. */
+  YearsDropdown = "years_dropdown",
+}
+/** Enum representing flags for the {@link UI.Day} element. */
+declare enum DayFlag {
+  /** The day is disabled. */
+  disabled = "disabled",
+  /** The day is hidden. */
+  hidden = "hidden",
+  /** The day is outside the current month. */
+  outside = "outside",
+  /** The day is focused. */
+  focused = "focused",
+  /** The day is today. */
+  today = "today",
+}
+/**
+ * Enum representing selection states that can be applied to the {@link UI.Day}
+ * element in selection mode.
+ */
+declare enum SelectionState {
+  /** The day is at the end of a selected range. */
+  range_end = "range_end",
+  /** The day is at the middle of a selected range. */
+  range_middle = "range_middle",
+  /** The day is at the start of a selected range. */
+  range_start = "range_start",
+  /** The day is selected. */
+  selected = "selected",
+}
+/**
+ * Enum representing different animation states for transitioning between
+ * months.
+ */
+declare enum Animation {
+  /** The entering weeks when they appear before the exiting month. */
+  weeks_before_enter = "weeks_before_enter",
+  /** The exiting weeks when they disappear before the entering month. */
+  weeks_before_exit = "weeks_before_exit",
+  /** The entering weeks when they appear after the exiting month. */
+  weeks_after_enter = "weeks_after_enter",
+  /** The exiting weeks when they disappear after the entering month. */
+  weeks_after_exit = "weeks_after_exit",
+  /** The entering caption when it appears after the exiting month. */
+  caption_after_enter = "caption_after_enter",
+  /** The exiting caption when it disappears after the entering month. */
+  caption_after_exit = "caption_after_exit",
+  /** The entering caption when it appears before the exiting month. */
+  caption_before_enter = "caption_before_enter",
+  /** The exiting caption when it disappears before the entering month. */
+  caption_before_exit = "caption_before_exit",
+}
+/**
+ * Deprecated UI elements and flags from previous versions of DayPicker.
+ *
+ * These elements are kept for backward compatibility and to assist in
+ * transitioning to the new {@link UI} elements.
+ *
+ * @deprecated
+ * @since 9.0.1
+ * @template T - The type of the deprecated UI element (e.g., CSS class or
+ *   style).
+ * @see https://daypicker.dev/upgrading
+ * @see https://daypicker.dev/docs/styling
+ */
+type DeprecatedUI<T extends CSSProperties | string> = {
+  /**
+   * This element was applied to the style of any button in DayPicker and it is
+   * replaced by {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
+   *
+   * @deprecated
+   */
+  button: T;
+  /**
+   * This element was resetting the style of any button in DayPicker and it is
+   * replaced by {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
+   *
+   * @deprecated
+   */
+  button_reset: T;
+  /**
+   * This element has been renamed to {@link UI.MonthCaption}.
+   *
+   * @deprecated
+   */
+  caption: T;
+  /**
+   * This element has been removed. Captions are styled via
+   * {@link UI.MonthCaption}.
+   *
+   * @deprecated
+   */
+  caption_between: T;
+  /**
+   * This element has been renamed to {@link UI.Dropdowns}.
+   *
+   * @deprecated
+   */
+  caption_dropdowns: T;
+  /**
+   * This element has been removed. Captions are styled via
+   * {@link UI.MonthCaption}.
+   *
+   * @deprecated
+   */
+  caption_end: T;
+  /**
+   * This element has been removed.
+   *
+   * @deprecated
+   */
+  caption_start: T;
+  /**
+   * This element has been renamed to {@link UI.Day}.
+   *
+   * @deprecated
+   */
+  cell: T;
+  /**
+   * This element has been renamed to {@link DayFlag.disabled}.
+   *
+   * @deprecated
+   */
+  day_disabled: T;
+  /**
+   * This element has been renamed to {@link DayFlag.hidden}.
+   *
+   * @deprecated
+   */
+  day_hidden: T;
+  /**
+   * This element has been renamed to {@link DayFlag.outside}.
+   *
+   * @deprecated
+   */
+  day_outside: T;
+  /**
+   * This element has been renamed to {@link SelectionState.range_end}.
+   *
+   * @deprecated
+   */
+  day_range_end: T;
+  /**
+   * This element has been renamed to {@link SelectionState.range_middle}.
+   *
+   * @deprecated
+   */
+  day_range_middle: T;
+  /**
+   * This element has been renamed to {@link SelectionState.range_start}.
+   *
+   * @deprecated
+   */
+  day_range_start: T;
+  /**
+   * This element has been renamed to {@link SelectionState.selected}.
+   *
+   * @deprecated
+   */
+  day_selected: T;
+  /**
+   * This element has been renamed to {@link DayFlag.today}.
+   *
+   * @deprecated
+   */
+  day_today: T;
+  /**
+   * This element has been removed. The dropdown icon is now {@link UI.Chevron}
+   * inside a {@link UI.CaptionLabel}.
+   *
+   * @deprecated
+   */
+  dropdown_icon: T;
+  /**
+   * This element has been renamed to {@link UI.MonthsDropdown}.
+   *
+   * @deprecated
+   */
+  dropdown_month: T;
+  /**
+   * This element has been renamed to {@link UI.YearsDropdown}.
+   *
+   * @deprecated
+   */
+  dropdown_year: T;
+  /**
+   * This element has been removed.
+   *
+   * @deprecated
+   */
+  head: T;
+  /**
+   * This element has been renamed to {@link UI.Weekday}.
+   *
+   * @deprecated
+   */
+  head_cell: T;
+  /**
+   * This element has been renamed to {@link UI.Weekdays}.
+   *
+   * @deprecated
+   */
+  head_row: T;
+  /**
+   * This flag has been removed. Use `data-multiple-months` in your CSS
+   * selectors.
+   *
+   * @deprecated
+   */
+  multiple_months: T;
+  /**
+   * This element has been removed. To style the navigation buttons, use
+   * {@link UI.PreviousMonthButton} and {@link UI.NextMonthButton}.
+   *
+   * @deprecated
+   */
+  nav_button: T;
+  /**
+   * This element has been renamed to {@link UI.NextMonthButton}.
+   *
+   * @deprecated
+   */
+  nav_button_next: T;
+  /**
+   * This element has been renamed to {@link UI.PreviousMonthButton}.
+   *
+   * @deprecated
+   */
+  nav_button_previous: T;
+  /**
+   * This element has been removed. The dropdown icon is now {@link UI.Chevron}
+   * inside a {@link UI.NextMonthButton} or a {@link UI.PreviousMonthButton}.
+   *
+   * @deprecated
+   */
+  nav_icon: T;
+  /**
+   * This element has been renamed to {@link UI.Week}.
+   *
+   * @deprecated
+   */
+  row: T;
+  /**
+   * This element has been renamed to {@link UI.MonthGrid}.
+   *
+   * @deprecated
+   */
+  table: T;
+  /**
+   * This element has been renamed to {@link UI.Weeks}.
+   *
+   * @deprecated
+   */
+  tbody: T;
+  /**
+   * This element has been removed. The {@link UI.Footer} is now a single element
+   * below the months.
+   *
+   * @deprecated
+   */
+  tfoot: T;
+  /**
+   * This flag has been removed. There are no "visually hidden" elements in
+   * DayPicker 9.
+   *
+   * @deprecated
+   */
+  vhidden: T;
+  /**
+   * This element has been renamed. Use {@link UI.WeekNumber} instead.
+   *
+   * @deprecated
+   */
+  weeknumber: T;
+  /**
+   * This flag has been removed. Use `data-week-numbers` in your CSS.
+   *
+   * @deprecated
+   */
+  with_weeknumber: T;
+};
+
+/**
+ * Represents a week in a calendar month.
+ *
+ * A `CalendarWeek` contains the days within the week and the week number.
+ */
+declare class CalendarWeek {
+  constructor(weekNumber: number, days: CalendarDay[]);
+  /** The number of the week within the year. */
+  weekNumber: number;
+  /** The days that belong to this week. */
+  days: CalendarDay[];
+}
+
+/**
+ * Represents a month in a calendar year.
+ *
+ * A `CalendarMonth` contains the weeks within the month and the date of the
+ * month.
+ */
+declare class CalendarMonth {
+  constructor(month: Date, weeks: CalendarWeek[]);
+  /** The date representing the first day of the month. */
+  date: Date;
+  /** The weeks that belong to this month. */
+  weeks: CalendarWeek[];
+}
+
+/**
+ * The props for the `<DayPicker />` component.
+ *
+ * @group DayPicker
+ */
+type DayPickerProps = PropsBase &
+  (
+    | PropsSingle
+    | PropsSingleRequired
+    | PropsMulti
+    | PropsMultiRequired
+    | PropsRange
+    | PropsRangeRequired
+    | {
+        mode?: undefined;
+        required?: undefined;
+      }
+  );
+/**
+ * Props for customizing the calendar, handling localization, and managing
+ * events. These exclude the selection mode props.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/api/interfaces/PropsBase
+ */
+interface PropsBase {
+  /**
+   * Enable the selection of a single day, multiple days, or a range of days.
+   *
+   * @see https://daypicker.dev/docs/selection-modes
+   */
+  mode?: Mode | undefined;
+  /**
+   * Whether the selection is required.
+   *
+   * @see https://daypicker.dev/docs/selection-modes
+   */
+  required?: boolean | undefined;
+  /** Class name to add to the root element. */
+  className?: string;
+  /**
+   * Change the class names used by DayPicker.
+   *
+   * Use this prop when you need to change the default class names — for
+   * example, when importing the style via CSS modules or when using a CSS
+   * framework.
+   *
+   * @see https://daypicker.dev/docs/styling
+   */
+  classNames?: Partial<ClassNames> & Partial<DeprecatedUI<string>>;
+  /**
+   * Change the class name for the day matching the `modifiers`.
+   *
+   * @see https://daypicker.dev/guides/custom-modifiers
+   */
+  modifiersClassNames?: ModifiersClassNames;
+  /** Style to apply to the root element. */
+  style?: CSSProperties;
+  /**
+   * Change the inline styles of the HTML elements.
+   *
+   * @see https://daypicker.dev/docs/styling
+   */
+  styles?: Partial<Styles> & Partial<DeprecatedUI<CSSProperties>>;
+  /**
+   * Change the class name for the day matching the {@link modifiers}.
+   *
+   * @see https://daypicker.dev/guides/custom-modifiers
+   */
+  modifiersStyles?: ModifiersStyles;
+  /** A unique id to add to the root element. */
+  id?: string;
+  /**
+   * The initial month to show in the calendar.
+   *
+   * Use this prop to let DayPicker control the current month. If you need to
+   * set the month programmatically, use {@link month} and {@link onMonthChange}.
+   *
+   * @defaultValue The current month
+   * @see https://daypicker.dev/docs/navigation
+   */
+  defaultMonth?: Date;
+  /**
+   * The month displayed in the calendar.
+   *
+   * As opposed to `defaultMonth`, use this prop with `onMonthChange` to change
+   * the month programmatically.
+   *
+   * @see https://daypicker.dev/docs/navigation
+   */
+  month?: Date;
+  /**
+   * The number of displayed months.
+   *
+   * @defaultValue 1
+   * @see https://daypicker.dev/docs/customization#multiplemonths
+   */
+  numberOfMonths?: number;
+  /**
+   * The earliest month to start the month navigation.
+   *
+   * @since 9.0.0
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  startMonth?: Date | undefined;
+  /**
+   * @private
+   * @deprecated This prop has been removed. Use `hidden={{ before: date }}`
+   *   instead.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  fromDate?: Date | undefined;
+  /**
+   * @private
+   * @deprecated This prop has been renamed to `startMonth`.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  fromMonth?: Date | undefined;
+  /**
+   * @private
+   * @deprecated Use `startMonth` instead. E.g. `startMonth={new Date(year,
+   *   0)}`.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  fromYear?: number | undefined;
+  /**
+   * The latest month to end the month navigation.
+   *
+   * @since 9.0.0
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  endMonth?: Date;
+  /**
+   * @private
+   * @deprecated This prop has been removed. Use `hidden={{ after: date }}`
+   *   instead.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  toDate?: Date;
+  /**
+   * @private
+   * @deprecated This prop has been renamed to `endMonth`.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  toMonth?: Date;
+  /**
+   * @private
+   * @deprecated Use `endMonth` instead. E.g. `endMonth={new Date(year, 0)}`.
+   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
+   */
+  toYear?: number;
+  /**
+   * Paginate the month navigation displaying the `numberOfMonths` at a time.
+   *
+   * @see https://daypicker.dev/docs/customization#multiplemonths
+   */
+  pagedNavigation?: boolean;
+  /**
+   * Render the months in reversed order (when {@link numberOfMonths} is set) to
+   * display the most recent month first.
+   *
+   * @see https://daypicker.dev/docs/customization#multiplemonths
+   */
+  reverseMonths?: boolean;
+  /**
+   * Hide the navigation buttons. This prop won't disable the navigation: to
+   * disable the navigation, use {@link disableNavigation}.
+   *
+   * @since 9.0.0
+   * @see https://daypicker.dev/docs/navigation#hidenavigation
+   */
+  hideNavigation?: boolean;
+  /**
+   * Disable the navigation between months. This prop won't hide the navigation:
+   * to hide the navigation, use {@link hideNavigation}.
+   *
+   * @see https://daypicker.dev/docs/navigation#disablenavigation
+   */
+  disableNavigation?: boolean;
+  /**
+   * Show dropdowns to navigate between months or years.
+   *
+   * - `label`: Displays the month and year as a label. Default value.
+   * - `dropdown`: Displays dropdowns for both month and year navigation.
+   * - `dropdown-months`: Displays a dropdown only for the month navigation.
+   * - `dropdown-years`: Displays a dropdown only for the year navigation.
+   *
+   * **Note:** By default, showing the dropdown will set the {@link startMonth}
+   * to 100 years ago and {@link endMonth} to the end of the current year. You
+   * can override this behavior by explicitly setting `startMonth` and
+   * `endMonth`.
+   *
+   * @see https://daypicker.dev/docs/customization#caption-layouts
+   */
+  captionLayout?: "label" | "dropdown" | "dropdown-months" | "dropdown-years";
+  /**
+   * Reverse the order of years in the dropdown when using
+   * `captionLayout="dropdown"` or `captionLayout="dropdown-years"`.
+   *
+   * @since 9.9.0
+   * @see https://daypicker.dev/docs/customization#caption-layouts
+   */
+  reverseYears?: boolean;
+  /**
+   * Adjust the positioning of the navigation buttons.
+   *
+   * - `around`: Displays the buttons on either side of the caption.
+   * - `after`: Displays the buttons after the caption. This ensures the tab order
+   *   matches the visual order.
+   *
+   * If not set, the buttons default to being displayed after the caption, but
+   * the tab order may not align with the visual order.
+   *
+   * @since 9.7.0
+   * @see https://daypicker.dev/docs/customization#navigation-layouts
+   */
+  navLayout?: "around" | "after" | undefined;
+  /**
+   * Display always 6 weeks per each month, regardless of the month’s number of
+   * weeks. Weeks will be filled with the days from the next month.
+   *
+   * @see https://daypicker.dev/docs/customization#fixed-weeks
+   */
+  fixedWeeks?: boolean;
+  /**
+   * Hide the row displaying the weekday row header.
+   *
+   * @since 9.0.0
+   */
+  hideWeekdays?: boolean;
+  /**
+   * Show the outside days (days falling in the next or the previous month).
+   *
+   * **Note:** when a {@link broadcastCalendar} is set, this prop defaults to
+   * true.
+   *
+   * @see https://daypicker.dev/docs/customization#outside-days
+   */
+  showOutsideDays?: boolean;
+  /**
+   * Show the week numbers column. Weeks are numbered according to the local
+   * week index.
+   *
+   * @see https://daypicker.dev/docs/customization#showweeknumber
+   */
+  showWeekNumber?: boolean;
+  /**
+   * Animate navigating between months.
+   *
+   * @since 9.6.0
+   * @see https://daypicker.dev/docs/navigation#animate
+   */
+  animate?: boolean;
+  /**
+   * Display the weeks in the month following the broadcast calendar. Setting
+   * this prop will ignore {@link weekStartsOn} (always Monday) and
+   * {@link showOutsideDays} will default to true.
+   *
+   * @since 9.4.0
+   * @see https://daypicker.dev/docs/localization#broadcast-calendar
+   * @see https://en.wikipedia.org/wiki/Broadcast_calendar
+   */
+  broadcastCalendar?: boolean;
+  /**
+   * Use ISO week dates instead of the locale setting. Setting this prop will
+   * ignore `weekStartsOn` and `firstWeekContainsDate`.
+   *
+   * @see https://daypicker.dev/docs/localization#iso-week-dates
+   * @see https://en.wikipedia.org/wiki/ISO_week_date
+   */
+  ISOWeek?: boolean;
+  /**
+   * The time zone (IANA or UTC offset) to use in the calendar (experimental).
+   *
+   * See
+   * [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+   * for the possible values.
+   *
+   * @since 9.1.1
+   * @see https://daypicker.dev/docs/time-zone
+   */
+  timeZone?: string | undefined;
+  /**
+   * Change the components used for rendering the calendar elements.
+   *
+   * @see https://daypicker.dev/guides/custom-components
+   */
+  components?: Partial<CustomComponents>;
+  /**
+   * Add a footer to the calendar, acting as a live region.
+   *
+   * Use this prop to communicate the calendar's status to screen readers.
+   * Prefer strings over complex UI elements.
+   *
+   * @see https://daypicker.dev/guides/accessibility#footer
+   */
+  footer?: ReactNode | string;
+  /**
+   * When a selection mode is set, DayPicker will focus the first selected day
+   * (if set) or today's date (if not disabled).
+   *
+   * Use this prop when you need to focus DayPicker after a user action, for
+   * improved accessibility.
+   *
+   * @see https://daypicker.dev/guides/accessibility#autofocus
+   */
+  autoFocus?: boolean;
+  /**
+   * @private
+   * @deprecated This prop will be removed. Use {@link autoFocus} instead.
+   */
+  initialFocus?: boolean;
+  /**
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
+   *
+   * @see https://daypicker.dev/docs/selection-modes#disabled
+   */
+  disabled?: Matcher | Matcher[] | undefined;
+  /**
+   * Apply the `hidden` modifier to the matching days. Will hide them from the
+   * calendar.
+   *
+   * @see https://daypicker.dev/guides/custom-modifiers#hidden-modifier
+   */
+  hidden?: Matcher | Matcher[] | undefined;
+  /**
+   * The today’s date. Default is the current date. This date will get the
+   * `today` modifier to style the day.
+   *
+   * @see https://daypicker.dev/guides/custom-modifiers#today-modifier
+   */
+  today?: Date;
+  /**
+   * Add modifiers to the matching days.
+   *
+   * @example
+   *   const modifiers = {
+   *   weekend: { dayOfWeek: [0, 6] }, // Match weekends
+   *   holiday: [new Date(2023, 11, 25)] // Match Christmas
+   *   };
+   *   <DayPicker modifiers={modifiers} />
+   *
+   * @see https://daypicker.dev/guides/custom-modifiers
+   */
+  modifiers?: Record<string, Matcher | Matcher[] | undefined> | undefined;
+  /**
+   * Labels creators to override the defaults. Use this prop to customize the
+   * aria-label attributes in DayPicker.
+   *
+   * @see https://daypicker.dev/docs/translation#aria-labels
+   */
+  labels?: Partial<Labels>;
+  /**
+   * Formatters used to format dates to strings. Use this prop to override the
+   * default functions.
+   *
+   * @see https://daypicker.dev/docs/translation#custom-formatters
+   */
+  formatters?: Partial<Formatters>;
+  /**
+   * The text direction of the calendar. Use `ltr` for left-to-right (default)
+   * or `rtl` for right-to-left.
+   *
+   * @see https://daypicker.dev/docs/translation#rtl-text-direction
+   */
+  dir?: HTMLDivElement["dir"];
+  /**
+   * The aria-label attribute to add to the container element.
+   *
+   * @since 9.4.1
+   * @see https://daypicker.dev/guides/accessibility
+   */
+  "aria-label"?: string;
+  /**
+   * The role attribute to add to the container element.
+   *
+   * @since 9.4.1
+   * @see https://daypicker.dev/guides/accessibility
+   */
+  role?: "application" | "dialog" | undefined;
+  /**
+   * A cryptographic nonce ("number used once") which can be used by Content
+   * Security Policy for the inline `style` attributes.
+   */
+  nonce?: HTMLDivElement["nonce"];
+  /** Add a `title` attribute to the container element. */
+  title?: HTMLDivElement["title"];
+  /** Add the language tag to the container element. */
+  lang?: HTMLDivElement["lang"];
+  /**
+   * The locale object used to localize dates. Pass a locale from
+   * `react-day-picker/locale` to localize the calendar.
+   *
+   * @example
+   *   import { es } from "react-day-picker/locale";
+   *   <DayPicker locale={es} />
+   *
+   * @defaultValue enUS - The English locale default of `date-fns`.
+   * @see https://daypicker.dev/docs/localization
+   * @see https://github.com/date-fns/date-fns/tree/main/src/locale for a list of the supported locales
+   */
+  locale?: Partial<Locale> | undefined;
+  /**
+   * The numeral system to use when formatting dates.
+   *
+   * - `latn`: Latin (Western Arabic)
+   * - `arab`: Arabic-Indic
+   * - `arabext`: Eastern Arabic-Indic (Persian)
+   * - `deva`: Devanagari
+   * - `beng`: Bengali
+   * - `guru`: Gurmukhi
+   * - `gujr`: Gujarati
+   * - `orya`: Oriya
+   * - `tamldec`: Tamil
+   * - `telu`: Telugu
+   * - `knda`: Kannada
+   * - `mlym`: Malayalam
+   *
+   * @defaultValue `latn` Latin (Western Arabic)
+   * @see https://daypicker.dev/docs/translation#numeral-systems
+   */
+  numerals?: Numerals | undefined;
+  /**
+   * The index of the first day of the week (0 - Sunday). Overrides the locale's
+   * default.
+   *
+   * @see https://daypicker.dev/docs/localization#first-date-of-the-week
+   */
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
+  /**
+   * The day of January that is always in the first week of the year.
+   *
+   * @see https://daypicker.dev/docs/localization#first-week-contains-date
+   */
+  firstWeekContainsDate?: 1 | 4;
+  /**
+   * Enable `DD` and `DDDD` for week year tokens when formatting or parsing
+   * dates.
+   *
+   * @see https://date-fns.org/docs/Unicode-Tokens
+   */
+  useAdditionalWeekYearTokens?: boolean | undefined;
+  /**
+   * Enable `YY` and `YYYY` for day of year tokens when formatting or parsing
+   * dates.
+   *
+   * @see https://date-fns.org/docs/Unicode-Tokens
+   */
+  useAdditionalDayOfYearTokens?: boolean | undefined;
+  /**
+   * Event fired when the user navigates between months.
+   *
+   * @see https://daypicker.dev/docs/navigation#onmonthchange
+   */
+  onMonthChange?: MonthChangeEventHandler;
+  /**
+   * Event handler when the next month button is clicked.
+   *
+   * @see https://daypicker.dev/docs/navigation
+   */
+  onNextClick?: MonthChangeEventHandler;
+  /**
+   * Event handler when the previous month button is clicked.
+   *
+   * @see https://daypicker.dev/docs/navigation
+   */
+  onPrevClick?: MonthChangeEventHandler;
+  /**
+   * Event handler when a week number is clicked.
+   *
+   * @private
+   * @deprecated Use a custom `WeekNumber` component instead.
+   * @see https://daypicker.dev/docs/customization#showweeknumber
+   */
+  onWeekNumberClick?: any;
+  /** Event handler when a day is clicked. */
+  onDayClick?: DayEventHandler<MouseEvent>;
+  /** Event handler when a day is focused. */
+  onDayFocus?: DayEventHandler<FocusEvent>;
+  /** Event handler when a day is blurred. */
+  onDayBlur?: DayEventHandler<FocusEvent>;
+  /** Event handler when a key is pressed on a day. */
+  onDayKeyDown?: DayEventHandler<KeyboardEvent>;
+  /** Event handler when the mouse enters a day. */
+  onDayMouseEnter?: DayEventHandler<MouseEvent>;
+  /** Event handler when the mouse leaves a day. */
+  onDayMouseLeave?: DayEventHandler<MouseEvent>;
+  /**
+   * Replace the default date library with a custom one. Experimental: not
+   * guaranteed to be stable (may not respect semver).
+   *
+   * @since 9.0.0
+   * @experimental
+   */
+  dateLib?: Partial<typeof DateLib.prototype> | undefined;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayKeyUp?: DayEventHandler<KeyboardEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayKeyPress?: DayEventHandler<KeyboardEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayPointerEnter?: DayEventHandler<PointerEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayPointerLeave?: DayEventHandler<PointerEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayTouchCancel?: DayEventHandler<TouchEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayTouchEnd?: DayEventHandler<TouchEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayTouchMove?: DayEventHandler<TouchEvent>;
+  /**
+   * @private
+   * @deprecated Use a custom `DayButton` component instead.
+   */
+  onDayTouchStart?: DayEventHandler<TouchEvent>;
+}
+/**
+ * Shared handler type for `onSelect` callback when a selection mode is set.
+ *
+ * @example
+ *   const handleSelect: OnSelectHandler<Date> = (
+ *     selected,
+ *     triggerDate,
+ *     modifiers,
+ *     e,
+ *   ) => {
+ *     console.log("Selected:", selected);
+ *     console.log("Triggered by:", triggerDate);
+ *   };
+ *
+ * @template T - The type of the selected item.
+ * @callback OnSelectHandler
+ * @param {T} selected - The selected item after the event.
+ * @param {Date} triggerDate - The date when the event was triggered. This is
+ *   typically the day clicked or interacted with.
+ * @param {Modifiers} modifiers - The modifiers associated with the event.
+ * @param {MouseEvent | KeyboardEvent} e - The event object.
+ */
+type OnSelectHandler<T> = (
+  selected: T,
+  triggerDate: Date,
+  modifiers: Modifiers,
+  e: MouseEvent | KeyboardEvent,
+) => void;
+/**
+ * The props when the single selection is required.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#single-mode
+ */
+interface PropsSingleRequired {
+  mode: "single";
+  required: true;
+  /** The selected date. */
+  selected: Date | undefined;
+  /** Event handler when a day is selected. */
+  onSelect?: OnSelectHandler<Date>;
+}
+/**
+ * The props when the single selection is optional.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#single-mode
+ */
+interface PropsSingle {
+  mode: "single";
+  required?: false | undefined;
+  /** The selected date. */
+  selected?: Date | undefined;
+  /** Event handler when a day is selected. */
+  onSelect?: OnSelectHandler<Date | undefined>;
+}
+/**
+ * The props when the multiple selection is required.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#multiple-mode
+ */
+interface PropsMultiRequired {
+  mode: "multiple";
+  required: true;
+  /** The selected dates. */
+  selected: Date[] | undefined;
+  /** Event handler when days are selected. */
+  onSelect?: OnSelectHandler<Date[]>;
+  /** The minimum number of selectable days. */
+  min?: number;
+  /** The maximum number of selectable days. */
+  max?: number;
+}
+/**
+ * The props when the multiple selection is optional.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#multiple-mode
+ */
+interface PropsMulti {
+  mode: "multiple";
+  required?: false | undefined;
+  /** The selected dates. */
+  selected?: Date[] | undefined;
+  /** Event handler when days are selected. */
+  onSelect?: OnSelectHandler<Date[] | undefined>;
+  /** The minimum number of selectable days. */
+  min?: number;
+  /** The maximum number of selectable days. */
+  max?: number;
+}
+/**
+ * The props when the range selection is required.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#range-mode
+ */
+interface PropsRangeRequired {
+  mode: "range";
+  required: true;
+  /**
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
+   *
+   * @see https://daypicker.dev/docs/selection-modes#disabled
+   */
+  disabled?: Matcher | Matcher[] | undefined;
+  /**
+   * When `true`, the range will reset when including a disabled day.
+   *
+   * @since V9.0.2
+   */
+  excludeDisabled?: boolean | undefined;
+  /** The selected range. */
+  selected: DateRange | undefined;
+  /** Event handler when a range is selected. */
+  onSelect?: OnSelectHandler<DateRange>;
+  /** The minimum number of days to include in the range. */
+  min?: number;
+  /** The maximum number of days to include in the range. */
+  max?: number;
+}
+/**
+ * The props when the range selection is optional.
+ *
+ * @group DayPicker
+ * @see https://daypicker.dev/docs/selection-modes#range-mode
+ */
+interface PropsRange {
+  mode: "range";
+  required?: false | undefined;
+  /**
+   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
+   * selected when in a selection mode is set.
+   *
+   * @see https://daypicker.dev/docs/selection-modes#disabled
+   */
+  disabled?: Matcher | Matcher[] | undefined;
+  /**
+   * When `true`, the range will reset when including a disabled day.
+   *
+   * @since V9.0.2
+   * @see https://daypicker.dev/docs/selection-modes#exclude-disabled
+   */
+  excludeDisabled?: boolean | undefined;
+  /** The selected range. */
+  selected?: DateRange | undefined;
+  /** Event handler when the selection changes. */
+  onSelect?: OnSelectHandler<DateRange | undefined>;
+  /** The minimum number of days to include in the range. */
+  min?: number;
+  /** The maximum number of days to include in the range. */
+  max?: number;
+}
+
+type Selection<T extends DayPickerProps> = {
+  /** The selected date(s). */
+  selected: SelectedValue<T> | undefined;
+  /** Set a selection. */
+  select: SelectHandler<T> | undefined;
+  /** Whether the given date is selected. */
+  isSelected: (date: Date) => boolean;
+};
+type SelectedSingle<
+  T extends {
+    required?: boolean;
+  },
+> = T["required"] extends true ? Date : Date | undefined;
+type SelectedMulti<
+  T extends {
+    required?: boolean;
+  },
+> = T["required"] extends true ? Date[] : Date[] | undefined;
+type SelectedRange<
+  T extends {
+    required?: boolean;
+  },
+> = T["required"] extends true ? DateRange : DateRange | undefined;
+/**
+ * Represents the selected value based on the selection mode.
+ *
+ * @example
+ *   // Single selection mode
+ *   const selected: SelectedValue<{ mode: "single" }> = new Date();
+ *
+ *   // Multiple selection mode
+ *   const selected: SelectedValue<{ mode: "multiple" }> = [
+ *     new Date(),
+ *     new Date(),
+ *   ];
+ *
+ *   // Range selection mode
+ *   const selected: SelectedValue<{ mode: "range" }> = {
+ *     from: new Date(),
+ *     to: new Date(),
+ *   };
+ */
+type SelectedValue<T> = T extends {
+  mode: "single";
+  required?: boolean;
+}
+  ? SelectedSingle<T>
+  : T extends {
+        mode: "multiple";
+        required?: boolean;
+      }
+    ? SelectedMulti<T>
+    : T extends {
+          mode: "range";
+          required?: boolean;
+        }
+      ? SelectedRange<T>
+      : undefined;
+type SelectHandlerSingle<
+  T extends {
+    required?: boolean | undefined;
+  },
+> = (
+  triggerDate: Date,
+  modifiers: Modifiers,
+  e: MouseEvent | KeyboardEvent,
+) => T["required"] extends true ? Date : Date | undefined;
+type SelectHandlerMulti<
+  T extends {
+    required?: boolean | undefined;
+  },
+> = (
+  triggerDate: Date,
+  modifiers: Modifiers,
+  e: MouseEvent | KeyboardEvent,
+) => T["required"] extends true ? Date[] : Date[] | undefined;
+type SelectHandlerRange<
+  T extends {
+    required?: boolean | undefined;
+  },
+> = (
+  triggerDate: Date,
+  modifiers: Modifiers,
+  e: MouseEvent | KeyboardEvent,
+) => T["required"] extends true ? DateRange : DateRange | undefined;
+/**
+ * The handler to set a selection based on the mode.
+ *
+ * @example
+ *   const handleSelect: SelectHandler<{ mode: "single" }> = (
+ *     triggerDate,
+ *     modifiers,
+ *     e,
+ *   ) => {
+ *     console.log("Selected date:", triggerDate);
+ *   };
+ */
+type SelectHandler<
+  T extends {
+    mode?: Mode | undefined;
+    required?: boolean | undefined;
+  },
+> = T extends {
+  mode: "single";
+}
+  ? SelectHandlerSingle<T>
+  : T extends {
+        mode: "multiple";
+      }
+    ? SelectHandlerMulti<T>
+    : T extends {
+          mode: "range";
+        }
+      ? SelectHandlerRange<T>
+      : undefined;
+
+/** @ignore */
+declare const dayPickerContext: Context<
+  | DayPickerContext<{
+      mode?: Mode | undefined;
+      required?: boolean | undefined;
+    }>
+  | undefined
+>;
+/**
+ * Represents the context for the DayPicker component, providing various
+ * properties and methods to interact with the calendar.
+ *
+ * @template T - The type of the DayPicker props, which must optionally include
+ *   `mode` and `required` properties. This type can be used to refine the type
+ *   returned by the hook.
+ */
+type DayPickerContext<
+  T extends {
+    mode?: Mode | undefined;
+    required?: boolean | undefined;
+  },
+> = {
+  /** The months displayed in the calendar. */
+  months: CalendarMonth[];
+  /** The next month to display. */
+  nextMonth: Date | undefined;
+  /** The previous month to display. */
+  previousMonth: Date | undefined;
+  /** Navigate to the specified month. Will fire the `onMonthChange` callback. */
+  goToMonth: (month: Date) => void;
+  /** Returns the modifiers for the given day. */
+  getModifiers: (day: CalendarDay) => Modifiers;
+  /** The selected date(s). */
+  selected: SelectedValue<T> | undefined;
+  /** Set a selection. */
+  select: SelectHandler<T> | undefined;
+  /** Whether the given date is selected. */
+  isSelected: ((date: Date) => boolean) | undefined;
+  /** The components used internally by DayPicker. */
+  components: CustomComponents;
+  /** The class names for the UI elements. */
+  classNames: ClassNames;
+  /** The styles for the UI elements. */
+  styles: Partial<Styles> | undefined;
+  /** The labels used in the user interface. */
+  labels: Labels;
+  /** The formatters used to format the UI elements. */
+  formatters: Formatters;
+  /**
+   * The props as passed to the DayPicker component.
+   *
+   * @since 9.3.0
+   */
+  dayPickerProps: DayPickerProps;
+};
+/**
+ * Provides access to the DayPicker context, which includes properties and
+ * methods to interact with the DayPicker component. This hook must be used
+ * within a custom component.
+ *
+ * @template T - Use this type to refine the returned context type with a
+ *   specific selection mode.
+ * @returns The context to work with DayPicker.
+ * @throws {Error} If the hook is used outside of a DayPicker provider.
+ * @group Hooks
+ * @see https://daypicker.dev/guides/custom-components
+ */
+declare function useDayPicker<
+  T extends {
+    mode?: Mode | undefined;
+    required?: boolean | undefined;
+  },
+>(): DayPickerContext<T>;
+
+/**
+ * @ignore
+ * @deprecated This type will be removed.
+ */
+type RootProvider = any;
+/**
+ * @ignore
+ * @deprecated This type will be removed.
+ */
+type RootProviderProps = any;
+/**
+ * @ignore
+ * @deprecated This component has been renamed. Use `MonthCaption` instead.
+ * @group Components
+ * @see https://daypicker.dev/guides/custom-components
+ */
+declare const Caption: typeof MonthCaption;
+/**
+ * @ignore
+ * @deprecated This type has been renamed. Use `MonthCaptionProps` instead.
+ */
+type CaptionProps = MonthCaptionProps;
+/**
+ * @ignore
+ * @deprecated This component has been removed.
+ * @group Components
+ * @see https://daypicker.dev/guides/custom-components
+ */
+type HeadRow = any;
+/**
+ * @ignore
+ * @deprecated This component has been renamed. Use `Week` instead.
+ * @group Components
+ * @see https://daypicker.dev/guides/custom-components
+ */
+declare const Row: typeof Week;
+/**
+ * @ignore
+ * @deprecated This type has been removed. Use `WeekProps` instead.
+ */
+type RowProps = WeekProps;
+/**
+ * @ignore
+ * @deprecated This type has been renamed. Use `PropsSingle` instead.
+ */
+type DayPickerSingleProps = PropsSingle;
+/**
+ * @ignore
+ * @deprecated This type has been renamed. Use `PropsMulti` instead.
+ */
+type DayPickerMultipleProps = PropsMulti;
+/**
+ * @ignore
+ * @deprecated This type has been renamed. Use `PropsRange` instead.
+ */
+type DayPickerRangeProps = PropsRange;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `NonNullable<unknown>` instead.
+ */
+type DayPickerDefaultProps = NonNullable<unknown>;
+/**
+ * @ignore
+ * @deprecated This type has been renamed. Use `Mode` instead.
+ */
+type DaySelectionMode = Mode;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `string` instead.
+ */
+type Modifier = string;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use {@link DayFlag} or
+ *   {@link SelectionState} instead.
+ */
+type InternalModifier =
+  | DayFlag.disabled
+  | DayFlag.hidden
+  | DayFlag.focused
+  | SelectionState.range_end
+  | SelectionState.range_middle
+  | SelectionState.range_start
+  | SelectionState.selected;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "single"
+ *   }>` instead.
+ */
+type SelectSingleEventHandler = PropsSingle["onSelect"];
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "multiple"
+ *   }>` instead.
+ */
+type SelectMultipleEventHandler = PropsMulti["onSelect"];
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `SelectHandler<{ mode: "range" }>`
+ *   instead.
+ */
+type SelectRangeEventHandler = PropsRange["onSelect"];
+/**
+ * @ignore
+ * @deprecated This type is not used anymore.
+ */
+type DayPickerProviderProps = any;
+/**
+ * @ignore
+ * @deprecated This type has been moved to `useDayPicker`.
+ * @group Hooks
+ */
+declare const useNavigation: typeof useDayPicker;
+/**
+ * @ignore
+ * @deprecated This hook has been removed. Use a custom `Day` component instead.
+ * @group Hooks
+ * @see https://daypicker.dev/guides/custom-components
+ */
+type useDayRender = any;
+/**
+ * @ignore
+ * @deprecated This type is not used anymore.
+ */
+type ContextProvidersProps = any;
+/**
+ * @ignore
+ * @deprecated Use `typeof labelDayButton` instead.
+ */
+type DayLabel = typeof labelDayButton;
+/**
+ * @ignore
+ * @deprecated Use `typeof labelNext` or `typeof labelPrevious` instead.
+ */
+type NavButtonLabel = typeof labelNext;
+/**
+ * @ignore
+ * @deprecated Use `typeof labelWeekday` instead.
+ */
+type WeekdayLabel = typeof labelWeekday;
+/**
+ * @ignore
+ * @deprecated Use `typeof labelWeekNumber` instead.
+ */
+type WeekNumberLabel = typeof labelWeekNumber;
+/**
+ * @ignore
+ * @deprecated Use {@link DayMouseEventHandler} instead.
+ */
+type DayClickEventHandler = DayEventHandler<MouseEvent>;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use `DayEventHandler<FocusEvent
+ *   | KeyboardEvent>` instead.
+ */
+type DayFocusEventHandler = DayEventHandler<FocusEvent | KeyboardEvent>;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use
+ *   `DayEventHandler<KeyboardEvent>` instead.
+ */
+type DayKeyboardEventHandler = DayEventHandler<KeyboardEvent>;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use
+ *   `DayEventHandler<MouseEvent>` instead.
+ */
+type DayMouseEventHandler = DayEventHandler<MouseEvent>;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use
+ *   `DayEventHandler<PointerEvent>` instead.
+ */
+type DayPointerEventHandler = DayEventHandler<PointerEvent>;
+/**
+ * @ignore
+ * @deprecated This type will be removed. Use
+ *   `DayEventHandler<TouchEvent>` instead.
+ */
+type DayTouchEventHandler = DayEventHandler<TouchEvent>;
+
+/**
  * Render a grid cell for a specific day in the calendar.
  *
  * Handles interaction and focus for the day. If you only need to change the
@@ -954,33 +2549,6 @@ type DropdownNavProps = Parameters<typeof DropdownNav>[0];
  */
 declare function Footer(props: HTMLAttributes<HTMLDivElement>): JSX.Element;
 type FooterProps = Parameters<typeof Footer>[0];
-
-/**
- * Represents a week in a calendar month.
- *
- * A `CalendarWeek` contains the days within the week and the week number.
- */
-declare class CalendarWeek {
-  constructor(weekNumber: number, days: CalendarDay[]);
-  /** The number of the week within the year. */
-  weekNumber: number;
-  /** The days that belong to this week. */
-  days: CalendarDay[];
-}
-
-/**
- * Represents a month in a calendar year.
- *
- * A `CalendarMonth` contains the weeks within the month and the date of the
- * month.
- */
-declare class CalendarMonth {
-  constructor(month: Date, weeks: CalendarWeek[]);
-  /** The date representing the first day of the month. */
-  date: Date;
-  /** The weeks that belong to this month. */
-  weeks: CalendarWeek[];
-}
 
 /**
  * Render the grid with the weekday header row and the weeks for a specific
@@ -1106,20 +2674,6 @@ declare function Select(
 type SelectProps = Parameters<typeof Select>[0];
 
 /**
- * Render a table row representing a week in the calendar.
- *
- * @group Components
- * @see https://daypicker.dev/guides/custom-components
- */
-declare function Week(
-  props: {
-    /** The week to render. */
-    week: CalendarWeek;
-  } & HTMLAttributes<HTMLTableRowElement>,
-): JSX.Element;
-type WeekProps = Parameters<typeof Week>[0];
-
-/**
  * Render a table header cell with the name of a weekday (e.g., "Mo", "Tu").
  *
  * @group Components
@@ -1241,6 +2795,24 @@ declare function formatDay(
 declare function formatMonthDropdown(month: Date, dateLib?: DateLib): string;
 
 /**
+ * Formats the name of a weekday to be displayed in the weekdays header.
+ *
+ * @defaultValue `cccccc` (e.g., "Mo" for Monday).
+ * @param weekday The date representing the weekday.
+ * @param options Configuration options for the date library.
+ * @param dateLib The date library to use for formatting. If not provided, a new
+ *   instance is created.
+ * @returns The formatted weekday name as a string.
+ * @group Formatters
+ * @see https://daypicker.dev/docs/translation#custom-formatters
+ */
+declare function formatWeekdayName(
+  weekday: Date,
+  options?: DateLibOptions,
+  dateLib?: DateLib,
+): string;
+
+/**
  * Formats the week number.
  *
  * @defaultValue The week number as a string, with a leading zero for single-digit numbers.
@@ -1267,24 +2839,6 @@ declare function formatWeekNumber(
 declare function formatWeekNumberHeader(): string;
 
 /**
- * Formats the name of a weekday to be displayed in the weekdays header.
- *
- * @defaultValue `cccccc` (e.g., "Mo" for Monday).
- * @param weekday The date representing the weekday.
- * @param options Configuration options for the date library.
- * @param dateLib The date library to use for formatting. If not provided, a new
- *   instance is created.
- * @returns The formatted weekday name as a string.
- * @group Formatters
- * @see https://daypicker.dev/docs/translation#custom-formatters
- */
-declare function formatWeekdayName(
-  weekday: Date,
-  options?: DateLibOptions,
-  dateLib?: DateLib,
-): string;
-
-/**
  * Formats the year for the dropdown option label.
  *
  * @param year The year to format.
@@ -1301,173 +2855,6 @@ declare function formatYearDropdown(year: Date, dateLib?: DateLib): string;
  * @group Formatters
  */
 declare const formatYearCaption: typeof formatYearDropdown;
-
-/**
- * Generates the ARIA label for the month grid, which is announced when entering
- * the grid.
- *
- * @defaultValue `LLLL y` (e.g., "November 2022").
- * @param date - The date representing the month.
- * @param options - Optional configuration for the date formatting library.
- * @param dateLib - An optional instance of the date formatting library.
- * @returns The ARIA label for the month grid.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelGrid(
-  date: Date,
-  options?: DateLibOptions,
-  dateLib?: DateLib,
-): string;
-/**
- * @ignore
- * @deprecated Use {@link labelGrid} instead.
- */
-declare const labelCaption: typeof labelGrid;
-
-/**
- * Generates the label for a day grid cell when the calendar is not interactive.
- *
- * @param date - The date to format.
- * @param modifiers - Optional modifiers providing context for the day.
- * @param options - Optional configuration for the date formatting library.
- * @param dateLib - An optional instance of the date formatting library.
- * @returns The label for the day grid cell.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelGridcell(
-  date: Date,
-  modifiers?: Modifiers,
-  options?: DateLibOptions,
-  dateLib?: DateLib,
-): string;
-
-/**
- * Generates the ARIA label for a day button.
- *
- * Use the `modifiers` argument to provide additional context for the label,
- * such as indicating if the day is "today" or "selected."
- *
- * @defaultValue The formatted date.
- * @param date - The date to format.
- * @param modifiers - The modifiers providing context for the day.
- * @param options - Optional configuration for the date formatting library.
- * @param dateLib - An optional instance of the date formatting library.
- * @returns The ARIA label for the day button.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelDayButton(
-  date: Date,
-  modifiers: Modifiers,
-  options?: DateLibOptions,
-  dateLib?: DateLib,
-): string;
-/**
- * @ignore
- * @deprecated Use `labelDayButton` instead.
- */
-declare const labelDay: typeof labelDayButton;
-
-/**
- * Generates the ARIA label for the navigation toolbar.
- *
- * @defaultValue `""`
- * @returns The ARIA label for the navigation toolbar.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelNav(): string;
-
-/**
- * Generates the ARIA label for the months dropdown.
- *
- * @defaultValue `"Choose the Month"`
- * @param options - Optional configuration for the date formatting library.
- * @returns The ARIA label for the months dropdown.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelMonthDropdown(options?: DateLibOptions): string;
-
-/**
- * Generates the ARIA label for the "next month" button.
- *
- * @defaultValue `"Go to the Next Month"`
- * @param month - The date representing the next month, or `undefined` if there
- *   is no next month.
- * @returns The ARIA label for the "next month" button.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelNext(month: Date | undefined): string;
-
-/**
- * Generates the ARIA label for the "previous month" button.
- *
- * @defaultValue `"Go to the Previous Month"`
- * @param month - The date representing the previous month, or `undefined` if
- *   there is no previous month.
- * @returns The ARIA label for the "previous month" button.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelPrevious(month: Date | undefined): string;
-
-/**
- * Generates the ARIA label for a weekday column header.
- *
- * @defaultValue `"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"`
- * @param date - The date representing the weekday.
- * @param options - Optional configuration for the date formatting library.
- * @param dateLib - An optional instance of the date formatting library.
- * @returns The ARIA label for the weekday column header.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelWeekday(
-  date: Date,
-  options?: DateLibOptions,
-  dateLib?: DateLib,
-): string;
-
-/**
- * Generates the ARIA label for the week number cell (the first cell in a row).
- *
- * @defaultValue `Week ${weekNumber}`
- * @param weekNumber - The number of the week.
- * @param options - Optional configuration for the date formatting library.
- * @returns The ARIA label for the week number cell.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelWeekNumber(
-  weekNumber: number,
-  options?: DateLibOptions,
-): string;
-
-/**
- * Generates the ARIA label for the week number header element.
- *
- * @defaultValue `"Week Number"`
- * @param options - Optional configuration for the date formatting library.
- * @returns The ARIA label for the week number header.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelWeekNumberHeader(options?: DateLibOptions): string;
-
-/**
- * Generates the ARIA label for the years dropdown.
- *
- * @defaultValue `"Choose the Year"`
- * @param options - Optional configuration for the date formatting library.
- * @returns The ARIA label for the years dropdown.
- * @group Labels
- * @see https://daypicker.dev/docs/translation#aria-labels
- */
-declare function labelYearDropdown(options?: DateLibOptions): string;
 
 /**
  * Selection modes supported by DayPicker.
@@ -1609,7 +2996,7 @@ type Labels = {
  *   // Match weekends and specific holidays
  *   const matcher: Matcher = [
  *     { dayOfWeek: [0, 6] }, // Weekends
- *     { from: new Date(2023, 11, 24), to: new Date(2023, 11, 26) } // Christmas
+ *     { from: new Date(2023, 11, 24), to: new Date(2023, 11, 26) }, // Christmas
  *   ];
  */
 type Matcher =
@@ -1650,7 +3037,7 @@ type DateBefore = {
  *   // Match days between February 2 and February 5, 2019
  *   const matcher: DateInterval = {
  *     after: new Date(2019, 1, 2),
- *     before: new Date(2019, 1, 5)
+ *     before: new Date(2019, 1, 5),
  *   };
  */
 type DateInterval = {
@@ -1664,7 +3051,7 @@ type DateInterval = {
  *   // Match days between February 2 and February 5, 2019
  *   const matcher: DateRange = {
  *     from: new Date(2019, 1, 2),
- *     to: new Date(2019, 1, 5)
+ *     to: new Date(2019, 1, 5),
  *   };
  */
 type DateRange = {
@@ -1715,7 +3102,7 @@ type MonthChangeEventHandler = (month: Date) => void;
  *   const classNames: ClassNames = {
  *     [UI.Root]: "root",
  *     [UI.Outside]: "outside",
- *     [UI.Nav]: "nav"
+ *     [UI.Nav]: "nav",
  *     // etc.
  *   };
  */
@@ -1736,7 +3123,7 @@ type Styles = {
  *   const modifiers: Modifiers = {
  *     today: true, // The day is today
  *     selected: false, // The day is not selected
- *     weekend: true // Custom modifier for weekends
+ *     weekend: true, // Custom modifier for weekends
  *   };
  *
  * @see https://daypicker.dev/guides/custom-modifiers
@@ -1749,7 +3136,7 @@ type Modifiers = Record<string, boolean>;
  *   const modifiersStyles: ModifiersStyles = {
  *     today: { color: "red" },
  *     selected: { backgroundColor: "blue" },
- *     weekend: { color: "green" }
+ *     weekend: { color: "green" },
  *   };
  */
 type ModifiersStyles = Record<string, CSSProperties>;
@@ -1760,7 +3147,7 @@ type ModifiersStyles = Record<string, CSSProperties>;
  *   const modifiersClassNames: ModifiersClassNames = {
  *     today: "today", // Use the "today" class for the today's day
  *     selected: "highlight", // Use the "highlight" class for the selected day
- *     weekend: "weekend" // Use the "weekend" class for the weekend days
+ *     weekend: "weekend", // Use the "weekend" class for the weekend days
  *   };
  */
 type ModifiersClassNames = Record<string, string>;
@@ -2043,7 +3430,7 @@ declare class DateLib {
    * @param formatStr The format string.
    * @returns The formatted date string.
    */
-  format: (date: Date, formatStr: string, options?: FormatOptions$1) => string;
+  format: (date: Date, formatStr: string, _options?: FormatOptions$1) => string;
   /**
    * Returns the ISO week number for the given date.
    *
@@ -2057,21 +3444,21 @@ declare class DateLib {
    * @param date The date to get the month for.
    * @returns The month.
    */
-  getMonth: (date: Date, options?: GetMonthOptions) => number;
+  getMonth: (date: Date, _options?: GetMonthOptions) => number;
   /**
    * Returns the year of the given date.
    *
    * @param date The date to get the year for.
    * @returns The year.
    */
-  getYear: (date: Date, options?: GetYearOptions) => number;
+  getYear: (date: Date, _options?: GetYearOptions) => number;
   /**
    * Returns the local week number for the given date.
    *
    * @param date The date to get the week number for.
    * @returns The week number.
    */
-  getWeek: (date: Date, options?: GetWeekOptions) => number;
+  getWeek: (date: Date, _options?: GetWeekOptions) => number;
   /**
    * Checks if the first date is after the second date.
    *
@@ -2155,7 +3542,7 @@ declare class DateLib {
    * @param date The original date.
    * @returns The start of the broadcast week.
    */
-  startOfBroadcastWeek: (date: Date, dateLib: DateLib) => Date;
+  startOfBroadcastWeek: (date: Date, _dateLib: DateLib) => Date;
   /**
    * Returns the start of the day for the given date.
    *
@@ -2183,7 +3570,7 @@ declare class DateLib {
    * @param date The original date.
    * @returns The start of the week.
    */
-  startOfWeek: (date: Date, options?: StartOfWeekOptions) => Date;
+  startOfWeek: (date: Date, _options?: StartOfWeekOptions) => Date;
   /**
    * Returns the start of the year for the given date.
    *
@@ -2246,1073 +3633,6 @@ declare class CalendarDay {
    */
   isEqualTo(day: CalendarDay): boolean;
 }
-
-/**
- * Render the caption for a month in the calendar.
- *
- * @group Components
- * @see https://daypicker.dev/guides/custom-components
- */
-declare function MonthCaption(
-  props: {
-    /** The month to display in the caption. */
-    calendarMonth: CalendarMonth;
-    /** The index of the month being displayed. */
-    displayIndex: number;
-  } & HTMLAttributes<HTMLDivElement>,
-): JSX.Element;
-type MonthCaptionProps = Parameters<typeof MonthCaption>[0];
-
-/**
- * The props for the `<DayPicker />` component.
- *
- * @group DayPicker
- */
-type DayPickerProps = PropsBase &
-  (
-    | PropsSingle
-    | PropsSingleRequired
-    | PropsMulti
-    | PropsMultiRequired
-    | PropsRange
-    | PropsRangeRequired
-    | {
-        mode?: undefined;
-        required?: undefined;
-      }
-  );
-/**
- * Props for customizing the calendar, handling localization, and managing
- * events. These exclude the selection mode props.
- *
- * @group DayPicker
- * @see https://daypicker.dev/api/interfaces/PropsBase
- */
-interface PropsBase {
-  /**
-   * Enable the selection of a single day, multiple days, or a range of days.
-   *
-   * @see https://daypicker.dev/docs/selection-modes
-   */
-  mode?: Mode | undefined;
-  /**
-   * Whether the selection is required.
-   *
-   * @see https://daypicker.dev/docs/selection-modes
-   */
-  required?: boolean | undefined;
-  /** Class name to add to the root element. */
-  className?: string;
-  /**
-   * Change the class names used by DayPicker.
-   *
-   * Use this prop when you need to change the default class names — for
-   * example, when importing the style via CSS modules or when using a CSS
-   * framework.
-   *
-   * @see https://daypicker.dev/docs/styling
-   */
-  classNames?: Partial<ClassNames> & Partial<DeprecatedUI<string>>;
-  /**
-   * Change the class name for the day matching the `modifiers`.
-   *
-   * @see https://daypicker.dev/guides/custom-modifiers
-   */
-  modifiersClassNames?: ModifiersClassNames;
-  /** Style to apply to the root element. */
-  style?: CSSProperties;
-  /**
-   * Change the inline styles of the HTML elements.
-   *
-   * @see https://daypicker.dev/docs/styling
-   */
-  styles?: Partial<Styles> & Partial<DeprecatedUI<CSSProperties>>;
-  /**
-   * Change the class name for the day matching the {@link modifiers}.
-   *
-   * @see https://daypicker.dev/guides/custom-modifiers
-   */
-  modifiersStyles?: ModifiersStyles;
-  /** A unique id to add to the root element. */
-  id?: string;
-  /**
-   * The initial month to show in the calendar.
-   *
-   * Use this prop to let DayPicker control the current month. If you need to
-   * set the month programmatically, use {@link month} and {@link onMonthChange}.
-   *
-   * @defaultValue The current month
-   * @see https://daypicker.dev/docs/navigation
-   */
-  defaultMonth?: Date;
-  /**
-   * The month displayed in the calendar.
-   *
-   * As opposed to `defaultMonth`, use this prop with `onMonthChange` to change
-   * the month programmatically.
-   *
-   * @see https://daypicker.dev/docs/navigation
-   */
-  month?: Date;
-  /**
-   * The number of displayed months.
-   *
-   * @defaultValue 1
-   * @see https://daypicker.dev/docs/customization#multiplemonths
-   */
-  numberOfMonths?: number;
-  /**
-   * The earliest month to start the month navigation.
-   *
-   * @since 9.0.0
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  startMonth?: Date | undefined;
-  /**
-   * @private
-   * @deprecated This prop has been removed. Use `hidden={{ before: date }}`
-   *   instead.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  fromDate?: Date | undefined;
-  /**
-   * @private
-   * @deprecated This prop has been renamed to `startMonth`.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  fromMonth?: Date | undefined;
-  /**
-   * @private
-   * @deprecated Use `startMonth` instead. E.g. `startMonth={new Date(year,
-   *   0)}`.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  fromYear?: number | undefined;
-  /**
-   * The latest month to end the month navigation.
-   *
-   * @since 9.0.0
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  endMonth?: Date;
-  /**
-   * @private
-   * @deprecated This prop has been removed. Use `hidden={{ after: date }}`
-   *   instead.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  toDate?: Date;
-  /**
-   * @private
-   * @deprecated This prop has been renamed to `endMonth`.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  toMonth?: Date;
-  /**
-   * @private
-   * @deprecated Use `endMonth` instead. E.g. `endMonth={new Date(year, 0)}`.
-   * @see https://daypicker.dev/docs/navigation#start-and-end-dates
-   */
-  toYear?: number;
-  /**
-   * Paginate the month navigation displaying the `numberOfMonths` at a time.
-   *
-   * @see https://daypicker.dev/docs/customization#multiplemonths
-   */
-  pagedNavigation?: boolean;
-  /**
-   * Render the months in reversed order (when {@link numberOfMonths} is set) to
-   * display the most recent month first.
-   *
-   * @see https://daypicker.dev/docs/customization#multiplemonths
-   */
-  reverseMonths?: boolean;
-  /**
-   * Hide the navigation buttons. This prop won't disable the navigation: to
-   * disable the navigation, use {@link disableNavigation}.
-   *
-   * @since 9.0.0
-   * @see https://daypicker.dev/docs/navigation#hidenavigation
-   */
-  hideNavigation?: boolean;
-  /**
-   * Disable the navigation between months. This prop won't hide the navigation:
-   * to hide the navigation, use {@link hideNavigation}.
-   *
-   * @see https://daypicker.dev/docs/navigation#disablenavigation
-   */
-  disableNavigation?: boolean;
-  /**
-   * Show dropdowns to navigate between months or years.
-   *
-   * - `true`: display the dropdowns for both month and year
-   * - `label`: display the month and the year as a label. Change the label with
-   *   the `formatCaption` formatter.
-   * - `month`: display only the dropdown for the months
-   * - `year`: display only the dropdown for the years
-   *
-   * **Note:** By default, showing the dropdown will set the {@link startMonth}
-   * to 100 years ago and {@link endMonth} to the end of the current year. You
-   * can override this behavior by explicitly setting `startMonth` and
-   * `endMonth`.
-   *
-   * @see https://daypicker.dev/docs/customization#caption-layouts
-   */
-  captionLayout?: "label" | "dropdown" | "dropdown-months" | "dropdown-years";
-  /**
-   * Adjust the positioning of the navigation buttons.
-   *
-   * - `around`: Displays the buttons on either side of the caption.
-   * - `after`: Displays the buttons after the caption. This ensures the tab order
-   *   matches the visual order.
-   *
-   * If not set, the buttons default to being displayed after the caption, but
-   * the tab order may not align with the visual order.
-   *
-   * @since 9.7.0
-   * @see https://daypicker.dev/docs/customization#navigation-layouts
-   */
-  navLayout?: "around" | "after" | undefined;
-  /**
-   * Display always 6 weeks per each month, regardless of the month’s number of
-   * weeks. Weeks will be filled with the days from the next month.
-   *
-   * @see https://daypicker.dev/docs/customization#fixed-weeks
-   */
-  fixedWeeks?: boolean;
-  /**
-   * Hide the row displaying the weekday row header.
-   *
-   * @since 9.0.0
-   */
-  hideWeekdays?: boolean;
-  /**
-   * Show the outside days (days falling in the next or the previous month).
-   *
-   * **Note:** when a {@link broadcastCalendar} is set, this prop defaults to
-   * true.
-   *
-   * @see https://daypicker.dev/docs/customization#outside-days
-   */
-  showOutsideDays?: boolean;
-  /**
-   * Show the week numbers column. Weeks are numbered according to the local
-   * week index.
-   *
-   * @see https://daypicker.dev/docs/customization#showweeknumber
-   */
-  showWeekNumber?: boolean;
-  /**
-   * Animate navigating between months.
-   *
-   * @since 9.6.0
-   * @see https://daypicker.dev/docs/navigation#animate
-   */
-  animate?: boolean;
-  /**
-   * Display the weeks in the month following the broadcast calendar. Setting
-   * this prop will ignore {@link weekStartsOn} (always Monday) and
-   * {@link showOutsideDays} will default to true.
-   *
-   * @since 9.4.0
-   * @see https://daypicker.dev/docs/localization#broadcast-calendar
-   * @see https://en.wikipedia.org/wiki/Broadcast_calendar
-   */
-  broadcastCalendar?: boolean;
-  /**
-   * Use ISO week dates instead of the locale setting. Setting this prop will
-   * ignore `weekStartsOn` and `firstWeekContainsDate`.
-   *
-   * @see https://daypicker.dev/docs/localization#iso-week-dates
-   * @see https://en.wikipedia.org/wiki/ISO_week_date
-   */
-  ISOWeek?: boolean;
-  /**
-   * The time zone (IANA or UTC offset) to use in the calendar (experimental).
-   *
-   * See
-   * [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-   * for the possible values.
-   *
-   * @since 9.1.1
-   * @see https://daypicker.dev/docs/time-zone
-   */
-  timeZone?: string | undefined;
-  /**
-   * Change the components used for rendering the calendar elements.
-   *
-   * @see https://daypicker.dev/guides/custom-components
-   */
-  components?: Partial<CustomComponents>;
-  /**
-   * Add a footer to the calendar, acting as a live region.
-   *
-   * Use this prop to communicate the calendar's status to screen readers.
-   * Prefer strings over complex UI elements.
-   *
-   * @see https://daypicker.dev/guides/accessibility#footer
-   */
-  footer?: ReactNode | string;
-  /**
-   * When a selection mode is set, DayPicker will focus the first selected day
-   * (if set) or today's date (if not disabled).
-   *
-   * Use this prop when you need to focus DayPicker after a user action, for
-   * improved accessibility.
-   *
-   * @see https://daypicker.dev/guides/accessibility#autofocus
-   */
-  autoFocus?: boolean;
-  /**
-   * @private
-   * @deprecated This prop will be removed. Use {@link autoFocus} instead.
-   */
-  initialFocus?: boolean;
-  /**
-   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
-   * selected when in a selection mode is set.
-   *
-   * @see https://daypicker.dev/docs/selection-modes#disabled
-   */
-  disabled?: Matcher | Matcher[] | undefined;
-  /**
-   * Apply the `hidden` modifier to the matching days. Will hide them from the
-   * calendar.
-   *
-   * @see https://daypicker.dev/guides/custom-modifiers#hidden-modifier
-   */
-  hidden?: Matcher | Matcher[] | undefined;
-  /**
-   * The today’s date. Default is the current date. This date will get the
-   * `today` modifier to style the day.
-   *
-   * @see https://daypicker.dev/guides/custom-modifiers#today-modifier
-   */
-  today?: Date;
-  /**
-   * Add modifiers to the matching days.
-   *
-   * @example
-   *   const modifiers = {
-   *   weekend: { dayOfWeek: [0, 6] }, // Match weekends
-   *   holiday: [new Date(2023, 11, 25)] // Match Christmas
-   *   };
-   *   <DayPicker modifiers={modifiers} />
-   *
-   * @see https://daypicker.dev/guides/custom-modifiers
-   */
-  modifiers?: Record<string, Matcher | Matcher[] | undefined> | undefined;
-  /**
-   * Labels creators to override the defaults. Use this prop to customize the
-   * aria-label attributes in DayPicker.
-   *
-   * @see https://daypicker.dev/docs/translation#aria-labels
-   */
-  labels?: Partial<Labels>;
-  /**
-   * Formatters used to format dates to strings. Use this prop to override the
-   * default functions.
-   *
-   * @see https://daypicker.dev/docs/translation#custom-formatters
-   */
-  formatters?: Partial<Formatters>;
-  /**
-   * The text direction of the calendar. Use `ltr` for left-to-right (default)
-   * or `rtl` for right-to-left.
-   *
-   * @see https://daypicker.dev/docs/translation#rtl-text-direction
-   */
-  dir?: HTMLDivElement["dir"];
-  /**
-   * The aria-label attribute to add to the container element.
-   *
-   * @since 9.4.1
-   * @see https://daypicker.dev/guides/accessibility
-   */
-  ["aria-label"]?: string;
-  /**
-   * The role attribute to add to the container element.
-   *
-   * @since 9.4.1
-   * @see https://daypicker.dev/guides/accessibility
-   */
-  role?: "application" | "dialog" | undefined;
-  /**
-   * A cryptographic nonce ("number used once") which can be used by Content
-   * Security Policy for the inline `style` attributes.
-   */
-  nonce?: HTMLDivElement["nonce"];
-  /** Add a `title` attribute to the container element. */
-  title?: HTMLDivElement["title"];
-  /** Add the language tag to the container element. */
-  lang?: HTMLDivElement["lang"];
-  /**
-   * The locale object used to localize dates. Pass a locale from
-   * `react-day-picker/locale` to localize the calendar.
-   *
-   * @example
-   *   import { es } from "react-day-picker/locale";
-   *   <DayPicker locale={es} />
-   *
-   * @defaultValue enUS - The English locale default of `date-fns`.
-   * @see https://daypicker.dev/docs/localization
-   * @see https://github.com/date-fns/date-fns/tree/main/src/locale for a list of the supported locales
-   */
-  locale?: Partial<Locale> | undefined;
-  /**
-   * The numeral system to use when formatting dates.
-   *
-   * - `latn`: Latin (Western Arabic)
-   * - `arab`: Arabic-Indic
-   * - `arabext`: Eastern Arabic-Indic (Persian)
-   * - `deva`: Devanagari
-   * - `beng`: Bengali
-   * - `guru`: Gurmukhi
-   * - `gujr`: Gujarati
-   * - `orya`: Oriya
-   * - `tamldec`: Tamil
-   * - `telu`: Telugu
-   * - `knda`: Kannada
-   * - `mlym`: Malayalam
-   *
-   * @defaultValue `latn` Latin (Western Arabic)
-   * @see https://daypicker.dev/docs/translation#numeral-systems
-   */
-  numerals?: Numerals | undefined;
-  /**
-   * The index of the first day of the week (0 - Sunday). Overrides the locale's
-   * default.
-   *
-   * @see https://daypicker.dev/docs/localization#first-date-of-the-week
-   */
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined;
-  /**
-   * The day of January that is always in the first week of the year.
-   *
-   * @see https://daypicker.dev/docs/localization#first-week-contains-date
-   */
-  firstWeekContainsDate?: 1 | 4;
-  /**
-   * Enable `DD` and `DDDD` for week year tokens when formatting or parsing
-   * dates.
-   *
-   * @see https://date-fns.org/docs/Unicode-Tokens
-   */
-  useAdditionalWeekYearTokens?: boolean | undefined;
-  /**
-   * Enable `YY` and `YYYY` for day of year tokens when formatting or parsing
-   * dates.
-   *
-   * @see https://date-fns.org/docs/Unicode-Tokens
-   */
-  useAdditionalDayOfYearTokens?: boolean | undefined;
-  /**
-   * Event fired when the user navigates between months.
-   *
-   * @see https://daypicker.dev/docs/navigation#onmonthchange
-   */
-  onMonthChange?: MonthChangeEventHandler;
-  /**
-   * Event handler when the next month button is clicked.
-   *
-   * @see https://daypicker.dev/docs/navigation
-   */
-  onNextClick?: MonthChangeEventHandler;
-  /**
-   * Event handler when the previous month button is clicked.
-   *
-   * @see https://daypicker.dev/docs/navigation
-   */
-  onPrevClick?: MonthChangeEventHandler;
-  /**
-   * Event handler when a week number is clicked.
-   *
-   * @private
-   * @deprecated Use a custom `WeekNumber` component instead.
-   * @see https://daypicker.dev/docs/customization#showweeknumber
-   */
-  onWeekNumberClick?: any;
-  /** Event handler when a day is clicked. */
-  onDayClick?: DayEventHandler<MouseEvent>;
-  /** Event handler when a day is focused. */
-  onDayFocus?: DayEventHandler<FocusEvent>;
-  /** Event handler when a day is blurred. */
-  onDayBlur?: DayEventHandler<FocusEvent>;
-  /** Event handler when a key is pressed on a day. */
-  onDayKeyDown?: DayEventHandler<KeyboardEvent>;
-  /** Event handler when the mouse enters a day. */
-  onDayMouseEnter?: DayEventHandler<MouseEvent>;
-  /** Event handler when the mouse leaves a day. */
-  onDayMouseLeave?: DayEventHandler<MouseEvent>;
-  /**
-   * Replace the default date library with a custom one. Experimental: not
-   * guaranteed to be stable (may not respect semver).
-   *
-   * @since 9.0.0
-   * @experimental
-   */
-  dateLib?: Partial<typeof DateLib.prototype> | undefined;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayKeyUp?: DayEventHandler<KeyboardEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayKeyPress?: DayEventHandler<KeyboardEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayPointerEnter?: DayEventHandler<PointerEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayPointerLeave?: DayEventHandler<PointerEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayTouchCancel?: DayEventHandler<TouchEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayTouchEnd?: DayEventHandler<TouchEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayTouchMove?: DayEventHandler<TouchEvent>;
-  /**
-   * @private
-   * @deprecated Use a custom `DayButton` component instead.
-   */
-  onDayTouchStart?: DayEventHandler<TouchEvent>;
-}
-/**
- * Shared handler type for `onSelect` callback when a selection mode is set.
- *
- * @example
- *   const handleSelect: OnSelectHandler<Date> = (
- *     selected,
- *     triggerDate,
- *     modifiers,
- *     e
- *   ) => {
- *     console.log("Selected:", selected);
- *     console.log("Triggered by:", triggerDate);
- *   };
- *
- * @template T - The type of the selected item.
- * @callback OnSelectHandler
- * @param {T} selected - The selected item after the event.
- * @param {Date} triggerDate - The date when the event was triggered. This is
- *   typically the day clicked or interacted with.
- * @param {Modifiers} modifiers - The modifiers associated with the event.
- * @param {MouseEvent | KeyboardEvent} e - The event object.
- */
-type OnSelectHandler<T> = (
-  selected: T,
-  triggerDate: Date,
-  modifiers: Modifiers,
-  e: MouseEvent | KeyboardEvent,
-) => void;
-/**
- * The props when the single selection is required.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#single-mode
- */
-interface PropsSingleRequired {
-  mode: "single";
-  required: true;
-  /** The selected date. */
-  selected: Date | undefined;
-  /** Event handler when a day is selected. */
-  onSelect?: OnSelectHandler<Date>;
-}
-/**
- * The props when the single selection is optional.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#single-mode
- */
-interface PropsSingle {
-  mode: "single";
-  required?: false | undefined;
-  /** The selected date. */
-  selected?: Date | undefined;
-  /** Event handler when a day is selected. */
-  onSelect?: OnSelectHandler<Date | undefined>;
-}
-/**
- * The props when the multiple selection is required.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#multiple-mode
- */
-interface PropsMultiRequired {
-  mode: "multiple";
-  required: true;
-  /** The selected dates. */
-  selected: Date[] | undefined;
-  /** Event handler when days are selected. */
-  onSelect?: OnSelectHandler<Date[]>;
-  /** The minimum number of selectable days. */
-  min?: number;
-  /** The maximum number of selectable days. */
-  max?: number;
-}
-/**
- * The props when the multiple selection is optional.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#multiple-mode
- */
-interface PropsMulti {
-  mode: "multiple";
-  required?: false | undefined;
-  /** The selected dates. */
-  selected?: Date[] | undefined;
-  /** Event handler when days are selected. */
-  onSelect?: OnSelectHandler<Date[] | undefined>;
-  /** The minimum number of selectable days. */
-  min?: number;
-  /** The maximum number of selectable days. */
-  max?: number;
-}
-/**
- * The props when the range selection is required.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#range-mode
- */
-interface PropsRangeRequired {
-  mode: "range";
-  required: true;
-  /**
-   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
-   * selected when in a selection mode is set.
-   *
-   * @see https://daypicker.dev/docs/selection-modes#disabled
-   */
-  disabled?: Matcher | Matcher[] | undefined;
-  /**
-   * When `true`, the range will reset when including a disabled day.
-   *
-   * @since V9.0.2
-   */
-  excludeDisabled?: boolean | undefined;
-  /** The selected range. */
-  selected: DateRange | undefined;
-  /** Event handler when a range is selected. */
-  onSelect?: OnSelectHandler<DateRange>;
-  /** The minimum number of days to include in the range. */
-  min?: number;
-  /** The maximum number of days to include in the range. */
-  max?: number;
-}
-/**
- * The props when the range selection is optional.
- *
- * @group DayPicker
- * @see https://daypicker.dev/docs/selection-modes#range-mode
- */
-interface PropsRange {
-  mode: "range";
-  required?: false | undefined;
-  /**
-   * Apply the `disabled` modifier to the matching days. Disabled days cannot be
-   * selected when in a selection mode is set.
-   *
-   * @see https://daypicker.dev/docs/selection-modes#disabled
-   */
-  disabled?: Matcher | Matcher[] | undefined;
-  /**
-   * When `true`, the range will reset when including a disabled day.
-   *
-   * @since V9.0.2
-   * @see https://daypicker.dev/docs/selection-modes#exclude-disabled
-   */
-  excludeDisabled?: boolean | undefined;
-  /** The selected range. */
-  selected?: DateRange | undefined;
-  /** Event handler when the selection changes. */
-  onSelect?: OnSelectHandler<DateRange | undefined>;
-  /** The minimum number of days to include in the range. */
-  min?: number;
-  /** The maximum number of days to include in the range. */
-  max?: number;
-}
-
-type Selection<T extends DayPickerProps> = {
-  /** The selected date(s). */
-  selected: SelectedValue<T> | undefined;
-  /** Set a selection. */
-  select: SelectHandler<T> | undefined;
-  /** Whether the given date is selected. */
-  isSelected: (date: Date) => boolean;
-};
-type SelectedSingle<
-  T extends {
-    required?: boolean;
-  },
-> = T["required"] extends true ? Date : Date | undefined;
-type SelectedMulti<
-  T extends {
-    required?: boolean;
-  },
-> = T["required"] extends true ? Date[] : Date[] | undefined;
-type SelectedRange<
-  T extends {
-    required?: boolean;
-  },
-> = T["required"] extends true ? DateRange : DateRange | undefined;
-/**
- * Represents the selected value based on the selection mode.
- *
- * @example
- *   // Single selection mode
- *   const selected: SelectedValue<{ mode: "single" }> = new Date();
- *
- *   // Multiple selection mode
- *   const selected: SelectedValue<{ mode: "multiple" }> = [new Date(), new Date()];
- *
- *   // Range selection mode
- *   const selected: SelectedValue<{ mode: "range" }> = { from: new Date(), to: new Date() };
- */
-type SelectedValue<T> = T extends {
-  mode: "single";
-  required?: boolean;
-}
-  ? SelectedSingle<T>
-  : T extends {
-        mode: "multiple";
-        required?: boolean;
-      }
-    ? SelectedMulti<T>
-    : T extends {
-          mode: "range";
-          required?: boolean;
-        }
-      ? SelectedRange<T>
-      : undefined;
-type SelectHandlerSingle<
-  T extends {
-    required?: boolean | undefined;
-  },
-> = (
-  triggerDate: Date,
-  modifiers: Modifiers,
-  e: MouseEvent | KeyboardEvent,
-) => T["required"] extends true ? Date : Date | undefined;
-type SelectHandlerMulti<
-  T extends {
-    required?: boolean | undefined;
-  },
-> = (
-  triggerDate: Date,
-  modifiers: Modifiers,
-  e: MouseEvent | KeyboardEvent,
-) => T["required"] extends true ? Date[] : Date[] | undefined;
-type SelectHandlerRange<
-  T extends {
-    required?: boolean | undefined;
-  },
-> = (
-  triggerDate: Date,
-  modifiers: Modifiers,
-  e: MouseEvent | KeyboardEvent,
-) => T["required"] extends true ? DateRange : DateRange | undefined;
-/**
- * The handler to set a selection based on the mode.
- *
- * @example
- *   const handleSelect: SelectHandler<{ mode: "single" }> = (
- *     triggerDate,
- *     modifiers,
- *     e
- *   ) => {
- *     console.log("Selected date:", triggerDate);
- *   };
- */
-type SelectHandler<
-  T extends {
-    mode?: Mode | undefined;
-    required?: boolean | undefined;
-  },
-> = T extends {
-  mode: "single";
-}
-  ? SelectHandlerSingle<T>
-  : T extends {
-        mode: "multiple";
-      }
-    ? SelectHandlerMulti<T>
-    : T extends {
-          mode: "range";
-        }
-      ? SelectHandlerRange<T>
-      : undefined;
-
-/** @ignore */
-declare const dayPickerContext: Context<
-  | DayPickerContext<{
-      mode?: Mode | undefined;
-      required?: boolean | undefined;
-    }>
-  | undefined
->;
-/**
- * Represents the context for the DayPicker component, providing various
- * properties and methods to interact with the calendar.
- *
- * @template T - The type of the DayPicker props, which must optionally include
- *   `mode` and `required` properties. This type can be used to refine the type
- *   returned by the hook.
- */
-type DayPickerContext<
-  T extends {
-    mode?: Mode | undefined;
-    required?: boolean | undefined;
-  },
-> = {
-  /** The months displayed in the calendar. */
-  months: CalendarMonth[];
-  /** The next month to display. */
-  nextMonth: Date | undefined;
-  /** The previous month to display. */
-  previousMonth: Date | undefined;
-  /** Navigate to the specified month. Will fire the `onMonthChange` callback. */
-  goToMonth: (month: Date) => void;
-  /** Returns the modifiers for the given day. */
-  getModifiers: (day: CalendarDay) => Modifiers;
-  /** The selected date(s). */
-  selected: SelectedValue<T> | undefined;
-  /** Set a selection. */
-  select: SelectHandler<T> | undefined;
-  /** Whether the given date is selected. */
-  isSelected: ((date: Date) => boolean) | undefined;
-  /** The components used internally by DayPicker. */
-  components: CustomComponents;
-  /** The class names for the UI elements. */
-  classNames: ClassNames;
-  /** The styles for the UI elements. */
-  styles: Partial<Styles> | undefined;
-  /** The labels used in the user interface. */
-  labels: Labels;
-  /** The formatters used to format the UI elements. */
-  formatters: Formatters;
-  /**
-   * The props as passed to the DayPicker component.
-   *
-   * @since 9.3.0
-   */
-  dayPickerProps: DayPickerProps;
-};
-/**
- * Provides access to the DayPicker context, which includes properties and
- * methods to interact with the DayPicker component. This hook must be used
- * within a custom component.
- *
- * @template T - Use this type to refine the returned context type with a
- *   specific selection mode.
- * @returns The context to work with DayPicker.
- * @throws {Error} If the hook is used outside of a DayPicker provider.
- * @group Hooks
- * @see https://daypicker.dev/guides/custom-components
- */
-declare function useDayPicker<
-  T extends {
-    mode?: Mode | undefined;
-    required?: boolean | undefined;
-  },
->(): DayPickerContext<T>;
-
-/**
- * @ignore
- * @deprecated This type will be removed.
- */
-type RootProvider = any;
-/**
- * @ignore
- * @deprecated This type will be removed.
- */
-type RootProviderProps = any;
-/**
- * @ignore
- * @deprecated This component has been renamed. Use `MonthCaption` instead.
- * @group Components
- * @see https://daypicker.dev/guides/custom-components
- */
-declare const Caption: typeof MonthCaption;
-/**
- * @ignore
- * @deprecated This type has been renamed. Use `MonthCaptionProps` instead.
- */
-type CaptionProps = MonthCaptionProps;
-/**
- * @ignore
- * @deprecated This component has been removed.
- * @group Components
- * @see https://daypicker.dev/guides/custom-components
- */
-type HeadRow = any;
-/**
- * @ignore
- * @deprecated This component has been renamed. Use `Week` instead.
- * @group Components
- * @see https://daypicker.dev/guides/custom-components
- */
-declare const Row: typeof Week;
-/**
- * @ignore
- * @deprecated This type has been removed. Use `WeekProps` instead.
- */
-type RowProps = WeekProps;
-/**
- * @ignore
- * @deprecated This type has been renamed. Use `PropsSingle` instead.
- */
-type DayPickerSingleProps = PropsSingle;
-/**
- * @ignore
- * @deprecated This type has been renamed. Use `PropsMulti` instead.
- */
-type DayPickerMultipleProps = PropsMulti;
-/**
- * @ignore
- * @deprecated This type has been renamed. Use `PropsRange` instead.
- */
-type DayPickerRangeProps = PropsRange;
-/**
- * @ignore
- * @deprecated This type will be removed. Use `NonNullable<unknown>` instead.
- */
-type DayPickerDefaultProps = NonNullable<unknown>;
-/**
- * @ignore
- * @deprecated This type has been renamed. Use `Mode` instead.
- */
-type DaySelectionMode = Mode;
-/**
- * @ignore
- * @deprecated This type will be removed. Use `string` instead.
- */
-type Modifier = string;
-/**
- * @ignore
- * @deprecated This type will be removed. Use {@link DayFlag} or
- *   {@link SelectionState} instead.
- */
-type InternalModifier =
-  | DayFlag.disabled
-  | DayFlag.hidden
-  | DayFlag.focused
-  | SelectionState.range_end
-  | SelectionState.range_middle
-  | SelectionState.range_start
-  | SelectionState.selected;
-/**
- * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{ mode: "single"
- *   }>` instead.
- */
-type SelectSingleEventHandler = PropsSingle["onSelect"];
-/**
- * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{ mode: "multiple"
- *   }>` instead.
- */
-type SelectMultipleEventHandler = PropsMulti["onSelect"];
-/**
- * @ignore
- * @deprecated This type will be removed. Use `SelectHandler<{ mode: "range" }>`
- *   instead.
- */
-type SelectRangeEventHandler = PropsRange["onSelect"];
-/**
- * @ignore
- * @deprecated This type is not used anymore.
- */
-type DayPickerProviderProps = any;
-/**
- * @ignore
- * @deprecated This type has been moved to `useDayPicker`.
- * @group Hooks
- */
-declare const useNavigation: typeof useDayPicker;
-/**
- * @ignore
- * @deprecated This hook has been removed. Use a custom `Day` component instead.
- * @group Hooks
- * @see https://daypicker.dev/guides/custom-components
- */
-type useDayRender = any;
-/**
- * @ignore
- * @deprecated This type is not used anymore.
- */
-type ContextProvidersProps = any;
-/**
- * @ignore
- * @deprecated Use `typeof labelDayButton` instead.
- */
-type DayLabel = typeof labelDayButton;
-/**
- * @ignore
- * @deprecated Use `typeof labelNext` or `typeof labelPrevious` instead.
- */
-type NavButtonLabel = typeof labelNext;
-/**
- * @ignore
- * @deprecated Use `typeof labelWeekday` instead.
- */
-type WeekdayLabel = typeof labelWeekday;
-/**
- * @ignore
- * @deprecated Use `typeof labelWeekNumber` instead.
- */
-type WeekNumberLabel = typeof labelWeekNumber;
-/**
- * @ignore
- * @deprecated Use {@link DayMouseEventHandler} instead.
- */
-type DayClickEventHandler = DayEventHandler<MouseEvent>;
-/**
- * @ignore
- * @deprecated This type will be removed. Use `DayEventHandler<FocusEvent
- *   | KeyboardEvent>` instead.
- */
-type DayFocusEventHandler = DayEventHandler<FocusEvent | KeyboardEvent>;
-/**
- * @ignore
- * @deprecated This type will be removed. Use
- *   `DayEventHandler<KeyboardEvent>` instead.
- */
-type DayKeyboardEventHandler = DayEventHandler<KeyboardEvent>;
-/**
- * @ignore
- * @deprecated This type will be removed. Use
- *   `DayEventHandler<MouseEvent>` instead.
- */
-type DayMouseEventHandler = DayEventHandler<MouseEvent>;
-/**
- * @ignore
- * @deprecated This type will be removed. Use
- *   `DayEventHandler<PointerEvent>` instead.
- */
-type DayPointerEventHandler = DayEventHandler<PointerEvent>;
-/**
- * @ignore
- * @deprecated This type will be removed. Use
- *   `DayEventHandler<TouchEvent>` instead.
- */
-type DayTouchEventHandler = DayEventHandler<TouchEvent>;
 
 /**
  * Renders the DayPicker calendar component.
@@ -3514,313 +3834,6 @@ declare function isDatesArray(
   value: unknown,
   dateLib: DateLib,
 ): value is Date[];
-
-/**
- * Time zone date class. It overrides original Date functions making them
- * to perform all the calculations in the given time zone.
- *
- * It also provides new functions useful when working with time zones.
- *
- * Combined with date-fns, it allows using the class the same way as
- * the original date class.
- *
- * This complete version provides formatter functions, mirroring all original
- * methods of the `Date` class. It's build-size-heavier than `TZDateMini` and
- * should be used when you need to format a string or in an environment you
- * don't fully control (a library).
- *
- * For the minimal version, see `TZDateMini`.
- */
-declare class TZDate extends Date {
-  /**
-   * Constructs a new `TZDate` instance in the system time zone.
-   */
-  constructor();
-
-  /**
-   * Constructs a new `TZDate` instance from the date time string and time zone.
-   *
-   * @param dateStr - Date time string to create a new instance from
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(dateStr: string, timeZone?: string);
-
-  /**
-   * Constructs a new `TZDate` instance from the date object and time zone.
-   *
-   * @param date - Date object to create a new instance from
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(date: Date, timeZone?: string);
-
-  /**
-   * Constructs a new `TZDate` instance from the Unix timestamp in milliseconds
-   * and time zone.
-   *
-   * @param timestamp - Unix timestamp in milliseconds to create a new instance from
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(timestamp: number, timeZone?: string);
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(year: number, month: number, timeZone?: string);
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, date and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(year: number, month: number, date: number, timeZone?: string);
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, date, hours
-   * and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    timeZone?: string,
-  );
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, date, hours,
-   * minutes and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-    timeZone?: string,
-  );
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, date, hours,
-   * minutes, seconds and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   * @param seconds - Seconds
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-    seconds: number,
-    timeZone?: string,
-  );
-
-  /**
-   * Constructs a new `TZDate` instance from the year, month, date, hours,
-   * minutes, seconds, milliseconds and time zone.
-   *
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   * @param seconds - Seconds
-   * @param milliseconds - Milliseconds
-   * @param timeZone - Time zone name (IANA or UTC offset)
-   */
-  constructor(
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-    seconds: number,
-    milliseconds: number,
-    timeZone?: string,
-  );
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   */
-  static tz(tz: string): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the Unix
-   * timestamp in milliseconds.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param timestamp - Unix timestamp in milliseconds
-   */
-  static tz(tz: string, timestamp: number): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the date time
-   * string.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param dateStr - Date time string
-   */
-  static tz(tz: string, dateStr: string): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the date object.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param date - Date object
-   */
-  static tz(tz: string, date: Date): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year
-   * and month.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   */
-  static tz(tz: string, year: number, month: number): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year,
-   * month and date.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   */
-  static tz(tz: string, year: number, month: number, date: number): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year,
-   * month, date and hours.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   */
-  static tz(
-    tz: string,
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-  ): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year,
-   * month, date, hours and minutes.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   */
-  static tz(
-    tz: string,
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-  ): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year,
-   * month, date, hours, minutes and seconds.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   * @param seconds - Seconds
-   */
-  static tz(
-    tz: string,
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-    seconds: number,
-  ): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone from the year,
-   * month, date, hours, minutes, seconds and milliseconds.
-   *
-   * @param tz - Time zone name (IANA or UTC offset)
-   * @param year - Year
-   * @param month - Month (0-11)
-   * @param date - Date
-   * @param hours - Hours
-   * @param minutes - Minutes
-   * @param seconds - Seconds
-   * @param milliseconds - Milliseconds
-   */
-  static tz(
-    tz: string,
-    year: number,
-    month: number,
-    date: number,
-    hours: number,
-    minutes: number,
-    seconds: number,
-    milliseconds: number,
-  ): TZDate;
-
-  /**
-   * The current time zone of the date.
-   */
-  readonly timeZone: string | undefined;
-
-  /**
-   * Creates a new `TZDate` instance in the given time zone.
-   */
-  withTimeZone(timeZone: string): TZDate;
-
-  /**
-   * Creates a new `TZDate` instance in the current instance time zone and
-   * the specified date time value.
-   *
-   * @param date - Date value to create a new instance from
-   */
-  [constructFromSymbol](date: Date | number | string): TZDate;
-}
 
 export {
   Animation,

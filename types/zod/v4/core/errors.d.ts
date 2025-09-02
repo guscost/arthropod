@@ -12,7 +12,7 @@ export interface $ZodIssueBase {
 export interface $ZodIssueInvalidType<Input = unknown> extends $ZodIssueBase {
   readonly code: "invalid_type";
   readonly expected: $ZodType["_zod"]["def"]["type"];
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueTooBig<Input = unknown> extends $ZodIssueBase {
   readonly code: "too_big";
@@ -29,7 +29,7 @@ export interface $ZodIssueTooBig<Input = unknown> extends $ZodIssueBase {
   readonly maximum: number | bigint;
   readonly inclusive?: boolean;
   readonly exact?: boolean;
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueTooSmall<Input = unknown> extends $ZodIssueBase {
   readonly code: "too_small";
@@ -48,37 +48,37 @@ export interface $ZodIssueTooSmall<Input = unknown> extends $ZodIssueBase {
   readonly inclusive?: boolean;
   /** True if the allowed value is fixed (e.g.` z.length(5)`), not a range (`z.minLength(5)`) */
   readonly exact?: boolean;
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueInvalidStringFormat extends $ZodIssueBase {
   readonly code: "invalid_format";
   readonly format: $ZodStringFormats | (string & {});
   readonly pattern?: string;
-  readonly input: string;
+  readonly input?: string;
 }
 export interface $ZodIssueNotMultipleOf<
   Input extends number | bigint = number | bigint,
 > extends $ZodIssueBase {
   readonly code: "not_multiple_of";
   readonly divisor: number;
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueUnrecognizedKeys extends $ZodIssueBase {
   readonly code: "unrecognized_keys";
   readonly keys: string[];
-  readonly input: Record<string, unknown>;
+  readonly input?: Record<string, unknown>;
 }
 export interface $ZodIssueInvalidUnion extends $ZodIssueBase {
   readonly code: "invalid_union";
   readonly errors: $ZodIssue[][];
-  readonly input: unknown;
+  readonly input?: unknown;
   readonly discriminator?: string | undefined;
 }
 export interface $ZodIssueInvalidKey<Input = unknown> extends $ZodIssueBase {
   readonly code: "invalid_key";
   readonly origin: "map" | "record";
   readonly issues: $ZodIssue[];
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueInvalidElement<Input = unknown>
   extends $ZodIssueBase {
@@ -86,17 +86,17 @@ export interface $ZodIssueInvalidElement<Input = unknown>
   readonly origin: "map" | "set";
   readonly key: unknown;
   readonly issues: $ZodIssue[];
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueInvalidValue<Input = unknown> extends $ZodIssueBase {
   readonly code: "invalid_value";
   readonly values: util.Primitive[];
-  readonly input: Input;
+  readonly input?: Input;
 }
 export interface $ZodIssueCustom extends $ZodIssueBase {
   readonly code: "custom";
   readonly params?: Record<string, any> | undefined;
-  readonly input: unknown;
+  readonly input?: unknown;
 }
 export interface $ZodIssueStringCommonFormats
   extends $ZodIssueInvalidStringFormat {
@@ -148,19 +148,22 @@ export type $ZodIssue =
   | $ZodIssueInvalidValue
   | $ZodIssueCustom;
 export type $ZodIssueCode = $ZodIssue["code"];
-export type $ZodRawIssue<T extends $ZodIssueBase = $ZodIssue> = T extends any
-  ? RawIssue<T>
+export type $ZodInternalIssue<T extends $ZodIssueBase = $ZodIssue> =
+  T extends any ? RawIssue<T> : never;
+type RawIssue<T extends $ZodIssueBase> = T extends any
+  ? util.Flatten<
+      util.MakePartial<T, "message" | "path"> & {
+        /** The input data */
+        readonly input: unknown;
+        /** The schema or check that originated this issue. */
+        readonly inst?: $ZodType | $ZodCheck;
+        /** If `true`, Zod will continue executing checks/refinements after this issue. */
+        readonly continue?: boolean | undefined;
+      } & Record<string, unknown>
+    >
   : never;
-type RawIssue<T extends $ZodIssueBase> = util.Flatten<
-  util.MakePartial<T, "message" | "path"> & {
-    /** The input data */
-    readonly input?: unknown;
-    /** The schema or check that originated this issue. */
-    readonly inst?: $ZodType | $ZodCheck;
-    /** If `true`, Zod will continue executing validation despite this issue. */
-    readonly continue?: boolean | undefined;
-  } & Record<string, any>
->;
+export type $ZodRawIssue<T extends $ZodIssueBase = $ZodIssue> =
+  $ZodInternalIssue<T>;
 export interface $ZodErrorMap<T extends $ZodIssueBase = $ZodIssue> {
   (issue: $ZodRawIssue<T>):
     | {

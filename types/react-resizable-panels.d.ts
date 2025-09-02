@@ -257,6 +257,19 @@ declare function assert(
 
 declare function setNonce(value: string | null): void;
 
+type CustomCursorStyleConfig = {
+  exceedsHorizontalMaximum: boolean;
+  exceedsHorizontalMinimum: boolean;
+  exceedsVerticalMaximum: boolean;
+  exceedsVerticalMinimum: boolean;
+  intersectsHorizontalDragHandle: boolean;
+  intersectsVerticalDragHandle: boolean;
+  isPointerDown: boolean;
+};
+type GetCustomCursorStyleFunction = (config: CustomCursorStyleConfig) => string;
+declare function customizeGlobalCursorStyles(
+  callback: GetCustomCursorStyleFunction | null,
+): void;
 declare function disableGlobalCursorStyles(): void;
 declare function enableGlobalCursorStyles(): void;
 
@@ -318,6 +331,7 @@ declare function intersects(
 ): boolean;
 
 export {
+  type CustomCursorStyleConfig,
   DATA_ATTRIBUTES,
   type ImperativePanelGroupHandle,
   type ImperativePanelHandle,
@@ -335,6 +349,7 @@ export {
   type PanelResizeHandleProps,
   type PointerHitAreaMargins,
   assert,
+  customizeGlobalCursorStyles,
   disableGlobalCursorStyles,
   enableGlobalCursorStyles,
   getIntersectingRectangle,

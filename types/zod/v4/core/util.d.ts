@@ -26,6 +26,9 @@ export type JWTAlgorithm =
   | "PS512"
   | "EdDSA"
   | (string & {});
+export type HashAlgorithm = "md5" | "sha1" | "sha256" | "sha384" | "sha512";
+export type HashEncoding = "hex" | "base64" | "base64url";
+export type HashFormat = `${HashAlgorithm}_${HashEncoding}`;
 export type IPVersion = "v4" | "v6";
 export type MimeTypes =
   | "application/json"
@@ -245,6 +248,7 @@ export declare function defineLazy<T, K extends keyof T>(
   key: K,
   getter: () => T[K],
 ): void;
+export declare function objectClone(obj: object): any;
 export declare function assignProp<T extends object, K extends PropertyKey>(
   target: T,
   prop: K,
@@ -276,6 +280,7 @@ export declare const allowsEval: {
 export declare function isPlainObject(
   o: any,
 ): o is Record<PropertyKey, unknown>;
+export declare function shallowClone(o: any): any;
 export declare function numKeys(data: any): number;
 export declare const getParsedType: (data: any) => ParsedTypes;
 export declare const propertyKeyTypes: Set<string>;
@@ -340,6 +345,10 @@ export declare function extend(
   schema: schemas.$ZodObject,
   shape: schemas.$ZodShape,
 ): any;
+export declare function safeExtend(
+  schema: schemas.$ZodObject,
+  shape: schemas.$ZodShape,
+): any;
 export declare function merge(
   a: schemas.$ZodObject,
   b: schemas.$ZodObject,
@@ -390,6 +399,18 @@ export declare function issue(
 ): errors.$ZodRawIssue;
 export declare function issue(_iss: errors.$ZodRawIssue): errors.$ZodRawIssue;
 export declare function cleanEnum(obj: Record<string, EnumValue>): EnumValue[];
+export declare function base64ToUint8Array(
+  base64: string,
+): InstanceType<typeof Uint8Array>;
+export declare function uint8ArrayToBase64(bytes: Uint8Array): string;
+export declare function base64urlToUint8Array(
+  base64url: string,
+): InstanceType<typeof Uint8Array>;
+export declare function uint8ArrayToBase64url(bytes: Uint8Array): string;
+export declare function hexToUint8Array(
+  hex: string,
+): InstanceType<typeof Uint8Array>;
+export declare function uint8ArrayToHex(bytes: Uint8Array): string;
 export declare abstract class Class {
   constructor(..._args: any[]);
 }

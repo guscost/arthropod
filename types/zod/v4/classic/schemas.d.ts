@@ -1,11 +1,6 @@
 import * as core from "../core/index.js";
 import { util } from "../core/index.js";
 import * as parse from "./parse.js";
-export interface RefinementCtx<T = unknown> extends core.ParsePayload<T> {
-  addIssue(
-    arg: string | core.$ZodRawIssue | Partial<core.$ZodIssueCustom>,
-  ): void;
-}
 export interface ZodType<
   out Output = unknown,
   out Input = unknown,
@@ -65,6 +60,38 @@ export interface ZodType<
     data: unknown,
     params?: core.ParseContext<core.$ZodIssue>,
   ) => Promise<parse.ZodSafeParseResult<core.output<this>>>;
+  encode(
+    data: core.output<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): core.input<this>;
+  decode(
+    data: core.input<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): core.output<this>;
+  encodeAsync(
+    data: core.output<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): Promise<core.input<this>>;
+  decodeAsync(
+    data: core.input<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): Promise<core.output<this>>;
+  safeEncode(
+    data: core.output<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): parse.ZodSafeParseResult<core.input<this>>;
+  safeDecode(
+    data: core.input<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): parse.ZodSafeParseResult<core.output<this>>;
+  safeEncodeAsync(
+    data: core.output<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): Promise<parse.ZodSafeParseResult<core.input<this>>>;
+  safeDecodeAsync(
+    data: core.input<this>,
+    params?: core.ParseContext<core.$ZodIssue>,
+  ): Promise<parse.ZodSafeParseResult<core.output<this>>>;
   refine(
     check: (arg: core.output<this>) => unknown | Promise<unknown>,
     params?: string | core.$ZodCustomParams,
@@ -72,7 +99,7 @@ export interface ZodType<
   superRefine(
     refinement: (
       arg: core.output<this>,
-      ctx: RefinementCtx<core.output<this>>,
+      ctx: core.$RefinementCtx<core.output<this>>,
     ) => void | Promise<void>,
   ): this;
   overwrite(fn: (x: core.output<this>) => core.output<this>): this;
@@ -92,7 +119,7 @@ export interface ZodType<
   transform<NewOut>(
     transform: (
       arg: core.output<this>,
-      ctx: RefinementCtx<core.output<this>>,
+      ctx: core.$RefinementCtx<core.output<this>>,
     ) => NewOut | Promise<NewOut>,
   ): ZodPipe<this, ZodTransform<Awaited<NewOut>, core.output<this>>>;
   catch(def: core.output<this>): ZodCatch<this>;
@@ -253,6 +280,9 @@ export interface ZodURL extends ZodStringFormat<"url"> {
 }
 export declare const ZodURL: core.$constructor<ZodURL>;
 export declare function url(params?: string | core.$ZodURLParams): ZodURL;
+export declare function httpUrl(
+  params?: string | Omit<core.$ZodURLParams, "protocol" | "hostname">,
+): ZodURL;
 export interface ZodEmoji extends ZodStringFormat<"emoji"> {
   _zod: core.$ZodEmojiInternals;
 }
@@ -349,6 +379,21 @@ export declare function stringFormat<Format extends string>(
   fnOrRegex: ((arg: string) => util.MaybeAsync<unknown>) | RegExp,
   _params?: string | core.$ZodStringFormatParams,
 ): ZodCustomStringFormat<Format>;
+export declare function hostname(
+  _params?: string | core.$ZodStringFormatParams,
+): ZodCustomStringFormat<"hostname">;
+export declare function hex(
+  _params?: string | core.$ZodStringFormatParams,
+): ZodCustomStringFormat<"hex">;
+export declare function hash<
+  Alg extends util.HashAlgorithm,
+  Enc extends util.HashEncoding = "hex",
+>(
+  alg: Alg,
+  params?: {
+    enc?: Enc;
+  } & core.$ZodStringFormatParams,
+): ZodCustomStringFormat<`${Alg}_${Enc}`>;
 export interface _ZodNumber<
   Internals extends core.$ZodNumberInternals = core.$ZodNumberInternals,
 > extends _ZodType<Internals> {
@@ -526,7 +571,19 @@ export declare function array<T extends core.SomeType>(
 ): ZodArray<T>;
 export declare function keyof<T extends ZodObject>(
   schema: T,
-): ZodLiteral<Exclude<keyof T["_zod"]["output"], symbol>>;
+): ZodEnum<util.KeysEnum<T["_zod"]["output"]>>;
+export type SafeExtendShape<
+  Base extends core.$ZodShape,
+  Ext extends core.$ZodLooseShape,
+> = {
+  [K in keyof Ext]: K extends keyof Base
+    ? core.output<Ext[K]> extends core.output<Base[K]>
+      ? core.input<Ext[K]> extends core.input<Base[K]>
+        ? Ext[K]
+        : never
+      : never
+    : Ext[K];
+};
 export interface ZodObject<
   /** @ts-ignore Cast variance */
   out Shape extends core.$ZodShape = core.$ZodLooseShape,
@@ -549,6 +606,10 @@ export interface ZodObject<
   strip(): ZodObject<Shape, core.$strip>;
   extend<U extends core.$ZodLooseShape>(
     shape: U,
+  ): ZodObject<util.Extend<Shape, U>, Config>;
+  safeExtend<U extends core.$ZodLooseShape>(
+    shape: SafeExtendShape<Shape, U> &
+      Partial<Record<keyof Shape, core.SomeType>>,
   ): ZodObject<util.Extend<Shape, U>, Config>;
   /**
    * @deprecated Use [`A.extend(B.shape)`](https://zod.dev/api?id=extend) instead.
@@ -627,10 +688,11 @@ export declare function union<const T extends readonly core.SomeType[]>(
 ): ZodUnion<T>;
 export interface ZodDiscriminatedUnion<
   Options extends readonly core.SomeType[] = readonly core.$ZodType[],
+  Disc extends string = string,
 > extends ZodUnion<Options>,
-    core.$ZodDiscriminatedUnion<Options> {
-  _zod: core.$ZodDiscriminatedUnionInternals<Options>;
-  def: core.$ZodDiscriminatedUnionDef<Options>;
+    core.$ZodDiscriminatedUnion<Options, Disc> {
+  _zod: core.$ZodDiscriminatedUnionInternals<Options, Disc>;
+  def: core.$ZodDiscriminatedUnionDef<Options, Disc>;
 }
 export declare const ZodDiscriminatedUnion: core.$constructor<ZodDiscriminatedUnion>;
 export declare function discriminatedUnion<
@@ -638,11 +700,12 @@ export declare function discriminatedUnion<
     core.$ZodTypeDiscriminable,
     ...core.$ZodTypeDiscriminable[],
   ],
+  Disc extends string,
 >(
-  discriminator: string,
+  discriminator: Disc,
   options: Types,
   params?: string | core.$ZodDiscriminatedUnionParams,
-): ZodDiscriminatedUnion<Types>;
+): ZodDiscriminatedUnion<Types, Disc>;
 export interface ZodIntersection<
   A extends core.SomeType = core.$ZodType,
   B extends core.SomeType = core.$ZodType,
@@ -724,7 +787,6 @@ export interface ZodSet<T extends core.SomeType = core.$ZodType>
   extends _ZodType<core.$ZodSetInternals<T>>,
     core.$ZodSet<T> {
   min(minSize: number, params?: string | core.$ZodCheckMinSizeParams): this;
-  /** */
   nonempty(params?: string | core.$ZodCheckMinSizeParams): this;
   max(maxSize: number, params?: string | core.$ZodCheckMaxSizeParams): this;
   size(size: number, params?: string | core.$ZodCheckSizeEqualsParams): this;
@@ -902,6 +964,32 @@ export declare function pipe<
     core.output<A>
   >,
 >(in_: A, out: B | core.$ZodType<unknown, core.output<A>>): ZodPipe<A, B>;
+export interface ZodCodec<
+  A extends core.SomeType = core.$ZodType,
+  B extends core.SomeType = core.$ZodType,
+> extends ZodPipe<A, B>,
+    core.$ZodCodec<A, B> {
+  _zod: core.$ZodCodecInternals<A, B>;
+  def: core.$ZodCodecDef<A, B>;
+}
+export declare const ZodCodec: core.$constructor<ZodCodec>;
+export declare function codec<
+  const A extends core.SomeType,
+  B extends core.SomeType = core.$ZodType,
+>(
+  in_: A,
+  out: B,
+  params: {
+    decode: (
+      value: core.output<A>,
+      payload: core.ParsePayload<core.output<A>>,
+    ) => core.input<B>;
+    encode: (
+      value: core.input<B>,
+      payload: core.ParsePayload<core.input<B>>,
+    ) => core.output<A>;
+  },
+): ZodCodec<A, B>;
 export interface ZodReadonly<T extends core.SomeType = core.$ZodType>
   extends _ZodType<core.$ZodReadonlyInternals<T>>,
     core.$ZodReadonly<T> {
@@ -939,6 +1027,49 @@ export declare const ZodPromise: core.$constructor<ZodPromise>;
 export declare function promise<T extends core.SomeType>(
   innerType: T,
 ): ZodPromise<T>;
+export interface ZodFunction<
+  Args extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+  Returns extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+> extends _ZodType<core.$ZodFunctionInternals<Args, Returns>>,
+    core.$ZodFunction<Args, Returns> {
+  _def: core.$ZodFunctionDef<Args, Returns>;
+  _input: core.$InferInnerFunctionType<Args, Returns>;
+  _output: core.$InferOuterFunctionType<Args, Returns>;
+  input<
+    const Items extends util.TupleItems,
+    const Rest extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+  >(
+    args: Items,
+    rest?: Rest,
+  ): ZodFunction<core.$ZodTuple<Items, Rest>, Returns>;
+  input<NewArgs extends core.$ZodFunctionIn>(
+    args: NewArgs,
+  ): ZodFunction<NewArgs, Returns>;
+  input(...args: any[]): ZodFunction<any, Returns>;
+  output<NewReturns extends core.$ZodType>(
+    output: NewReturns,
+  ): ZodFunction<Args, NewReturns>;
+}
+export declare const ZodFunction: core.$constructor<ZodFunction>;
+export declare function _function(): ZodFunction;
+export declare function _function<
+  const In extends ReadonlyArray<core.$ZodType>,
+>(params: { input: In }): ZodFunction<ZodTuple<In, null>, core.$ZodFunctionOut>;
+export declare function _function<
+  const In extends ReadonlyArray<core.$ZodType>,
+  const Out extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+>(params: { input: In; output: Out }): ZodFunction<ZodTuple<In, null>, Out>;
+export declare function _function<
+  const In extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+>(params: { input: In }): ZodFunction<In, core.$ZodFunctionOut>;
+export declare function _function<
+  const Out extends core.$ZodFunctionOut = core.$ZodFunctionOut,
+>(params: { output: Out }): ZodFunction<core.$ZodFunctionIn, Out>;
+export declare function _function<
+  In extends core.$ZodFunctionIn = core.$ZodFunctionIn,
+  Out extends core.$ZodType = core.$ZodType,
+>(params?: { input: In; output: Out }): ZodFunction<In, Out>;
+export { _function as function };
 export interface ZodCustom<O = unknown, I = unknown>
   extends _ZodType<core.$ZodCustomInternals<O, I>>,
     core.$ZodCustom<O, I> {}
@@ -955,7 +1086,7 @@ export declare function refine<T>(
   _params?: string | core.$ZodCustomParams,
 ): core.$ZodCheck<T>;
 export declare function superRefine<T>(
-  fn: (arg: T, payload: RefinementCtx<T>) => void | Promise<void>,
+  fn: (arg: T, payload: core.$RefinementCtx<T>) => void | Promise<void>,
 ): core.$ZodCheck<T>;
 type ZodInstanceOfParams = core.Params<
   ZodCustom,
@@ -969,7 +1100,7 @@ declare function _instanceof<T extends typeof util.Class>(
 export { _instanceof as instanceof };
 export declare const stringbool: (
   _params?: string | core.$ZodStringBoolParams,
-) => ZodPipe<ZodPipe<ZodString, ZodTransform<boolean, string>>, ZodBoolean>;
+) => ZodCodec<ZodString, ZodBoolean>;
 type _ZodJSONSchema = ZodUnion<
   [
     ZodString,
@@ -992,6 +1123,6 @@ export declare function json(
   params?: string | core.$ZodCustomParams,
 ): ZodJSONSchema;
 export declare function preprocess<A, U extends core.SomeType, B = unknown>(
-  fn: (arg: B, ctx: RefinementCtx) => A,
+  fn: (arg: B, ctx: core.$RefinementCtx) => A,
   schema: U,
 ): ZodPipe<ZodTransform<A, B>, U>;

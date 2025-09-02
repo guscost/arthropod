@@ -41,3 +41,43 @@ export declare const safeParseAsync: <T extends core.$ZodType>(
   value: unknown,
   _ctx?: core.ParseContext<core.$ZodIssue>,
 ) => Promise<ZodSafeParseResult<core.output<T>>>;
+export declare const encode: <T extends core.$ZodType>(
+  schema: T,
+  value: core.output<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => core.input<T>;
+export declare const decode: <T extends core.$ZodType>(
+  schema: T,
+  value: core.input<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => core.output<T>;
+export declare const encodeAsync: <T extends core.$ZodType>(
+  schema: T,
+  value: core.output<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => Promise<core.input<T>>;
+export declare const decodeAsync: <T extends core.$ZodType>(
+  schema: T,
+  value: core.input<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => Promise<core.output<T>>;
+export declare const safeEncode: <T extends core.$ZodType>(
+  schema: T,
+  value: core.output<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => ZodSafeParseResult<core.input<T>>;
+export declare const safeDecode: <T extends core.$ZodType>(
+  schema: T,
+  value: core.input<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => ZodSafeParseResult<core.output<T>>;
+export declare const safeEncodeAsync: <T extends core.$ZodType>(
+  schema: T,
+  value: core.output<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => Promise<ZodSafeParseResult<core.input<T>>>;
+export declare const safeDecodeAsync: <T extends core.$ZodType>(
+  schema: T,
+  value: core.input<T>,
+  _ctx?: core.ParseContext<core.$ZodIssue>,
+) => Promise<ZodSafeParseResult<core.output<T>>>;
