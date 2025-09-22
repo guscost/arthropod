@@ -81,6 +81,19 @@ export function FormDemo() {
                     <Input
                       className="font-mono"
                       placeholder="(555) 555-5555"
+                      onKeyDown={(e) => {
+                        if (
+                          e.currentTarget.value
+                            .substring(0, e.currentTarget.selectionStart)
+                            .includes("_")
+                        ) {
+                          const firstBlank = e.currentTarget.value.indexOf("_");
+                          e.currentTarget.setSelectionRange(
+                            firstBlank,
+                            firstBlank,
+                          );
+                        }
+                      }}
                       {...field}
                       {...registerWithMask("phone", "(999) 999-9999", {
                         placeholder: "_",
