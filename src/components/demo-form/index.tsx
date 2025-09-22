@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { withMask } from "use-mask-input";
+import { useHookFormMask } from "use-mask-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -47,6 +47,8 @@ export function FormDemo() {
     });
   }
 
+  const registerWithMask = useHookFormMask(form.register);
+
   return (
     <Card className="w-96">
       <CardHeader>Form Demo</CardHeader>
@@ -77,9 +79,14 @@ export function FormDemo() {
                   <FormLabel>Phone</FormLabel>
                   <FormControl>
                     <Input
+                      className="font-mono"
                       placeholder="(555) 555-5555"
-                      ref={withMask("(999) 999-9999")}
                       {...field}
+                      {...registerWithMask("phone", "(999) 999-9999", {
+                        placeholder: "_",
+                        required: true,
+                        showMaskOnHover: false,
+                      })}
                     />
                   </FormControl>
                   <FormDescription>
