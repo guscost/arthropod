@@ -357,6 +357,9 @@ async function buildUmds() {
       "react-hook-form": "react-hook-form",
     });
 
+    // use-mask-input
+    await buildUmd(tempDir, "use-mask-input", "form.min.js");
+
     rmSync(tempDir, { recursive: true, force: true });
   } catch (error) {
     console.error("Error during UMD build:", error);
@@ -664,6 +667,12 @@ declare global {
         "update/node_modules/@hookform/resolvers/zod/dist/zod.d.ts",
       ),
       path.join(_root, "types/@hookform/resolvers/zod.d.ts"),
+    );
+
+    // use-mask-input
+    await buildType(
+      path.join(_root, "update/node_modules/use-mask-input/dist/index.js"),
+      path.join(_root, "types/use-mask-input.d.ts"),
     );
 
     // Uncomment, run, and fix imports to build updated react-day-picker types:

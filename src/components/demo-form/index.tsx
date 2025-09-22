@@ -1,6 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
+import { withMask } from "use-mask-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,6 +21,9 @@ import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   email: z.string().email("Must be a valid email."),
+  phone: z.string().min(12, {
+    message: "Must be a valid phone number.",
+  }),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
@@ -31,6 +35,7 @@ export function FormDemo() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      phone: "",
       password: "",
     },
   });
@@ -59,6 +64,26 @@ export function FormDemo() {
                   </FormControl>
                   <FormDescription>
                     This email will not be shared with anyone.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="(555) 555-5555"
+                      ref={withMask("(999) 999-9999")}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This phone number will not be shared with anyone.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
