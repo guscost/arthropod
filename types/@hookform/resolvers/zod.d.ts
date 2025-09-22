@@ -83,5 +83,5 @@ export declare function zodResolver<
   schema: z4.$ZodType<Output, Input>,
   schemaOptions: Zod4ParseParams | undefined, // already partial
   resolverOptions: RawResolverOptions,
-): Resolver<z4.input<T>, Context, z4.output<T>>;
+): Resolver<z4.input<T>, Context, z4.input<T>>;
 export {};

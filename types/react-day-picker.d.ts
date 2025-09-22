@@ -888,7 +888,7 @@ declare const labelDay: typeof labelDayButton;
  * Generates the ARIA label for the month grid, which is announced when entering
  * the grid.
  *
- * @defaultValue `LLLL y` (e.g., "November 2022").
+ * @defaultValue Locale-specific month/year order (e.g., "November 2022").
  * @param date - The date representing the month.
  * @param options - Optional configuration for the date formatting library.
  * @param dateLib - An optional instance of the date formatting library.
@@ -1771,6 +1771,13 @@ interface PropsBase {
    * @see https://daypicker.dev/guides/accessibility
    */
   "aria-label"?: string;
+  /**
+   * The aria-labelledby attribute to add to the container element.
+   *
+   * @since 9.11.0
+   * @see https://daypicker.dev/guides/accessibility
+   */
+  "aria-labelledby"?: string;
   /**
    * The role attribute to add to the container element.
    *
@@ -2742,7 +2749,7 @@ declare function YearsDropdown(props: DropdownProps): JSX.Element;
 /**
  * Formats the caption of the month.
  *
- * @defaultValue `LLLL y` (e.g., "November 2022").
+ * @defaultValue Locale-specific month/year order (e.g., "November 2022").
  * @param month The date representing the month.
  * @param options Configuration options for the date library.
  * @param dateLib The date library to use for formatting. If not provided, a new
@@ -3196,6 +3203,11 @@ type MoveFocusBy =
  * - `telu`: Telugu
  * - `knda`: Kannada
  * - `mlym`: Malayalam
+ * - `thai`: Thai
+ * - `mymr`: Myanmar
+ * - `khmr`: Khmer
+ * - `laoo`: Lao
+ * - `tibt`: Tibetan
  *
  * @see https://daypicker.dev/docs/translation#numeral-systems
  */
@@ -3204,6 +3216,7 @@ type Numerals =
   | "arab"
   | "arabext"
   | "deva"
+  | "geez"
   | "beng"
   | "guru"
   | "gujr"
@@ -3211,7 +3224,12 @@ type Numerals =
   | "tamldec"
   | "telu"
   | "knda"
-  | "mlym";
+  | "mlym"
+  | "thai"
+  | "mymr"
+  | "khmr"
+  | "laoo"
+  | "tibt";
 
 /**
  * @category Locales
@@ -3233,6 +3251,8 @@ type FormatOptions = DateLibOptions;
  * @deprecated Use {@link DateLibOptions} instead.
  */
 type LabelOptions = DateLibOptions;
+/** Indicates the preferred ordering of month and year for localized labels. */
+type MonthYearOrder = "month-first" | "year-first";
 /**
  * The options for the `DateLib` class.
  *
@@ -3311,6 +3331,18 @@ declare class DateLib {
    * @returns The formatted number as a string.
    */
   formatNumber(value: number | string): string;
+  /**
+   * Returns the preferred ordering for month and year labels for the current
+   * locale.
+   */
+  getMonthYearOrder(): MonthYearOrder;
+  /**
+   * Formats the month/year pair respecting locale conventions.
+   *
+   * @since 9.11.0
+   */
+  formatMonthYear(date: Date): string;
+  private static readonly yearFirstLocales;
   /**
    * Reference to the built-in Date constructor.
    *
@@ -3909,6 +3941,7 @@ export {
   MonthGrid,
   type MonthGridProps,
   type MonthProps,
+  type MonthYearOrder,
   Months,
   MonthsDropdown,
   type MonthsProps,

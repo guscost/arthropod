@@ -673,11 +673,11 @@ export declare function codec<
     decode: (
       value: core.output<A>,
       payload: core.ParsePayload<core.output<A>>,
-    ) => core.input<B>;
+    ) => core.util.MaybeAsync<core.input<B>>;
     encode: (
       value: core.input<B>,
       payload: core.ParsePayload<core.input<B>>,
-    ) => core.output<A>;
+    ) => core.util.MaybeAsync<core.output<A>>;
   },
 ): ZodMiniCodec<A, B>;
 export interface ZodMiniReadonly<T extends SomeType = core.$ZodType>

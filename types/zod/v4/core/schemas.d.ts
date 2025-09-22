@@ -680,7 +680,7 @@ export interface $ZodObjectDef<Shape extends $ZodShape = $ZodShape>
 }
 export interface $ZodObjectInternals<
   /** @ts-ignore Cast variance */
-  out Shape extends Readonly<$ZodShape> = Readonly<$ZodShape>,
+  out Shape extends $ZodShape = $ZodShape,
   out Config extends $ZodObjectConfig = $ZodObjectConfig,
 > extends _$ZodTypeInternals {
   def: $ZodObjectDef<Shape>;
@@ -1195,12 +1195,12 @@ export interface $ZodPipeDef<
   transform?: (
     value: core.output<A>,
     payload: ParsePayload<core.output<A>>,
-  ) => core.input<B>;
+  ) => util.MaybeAsync<core.input<B>>;
   /** Only defined inside $ZodCodec instances. */
   reverseTransform?: (
     value: core.input<B>,
     payload: ParsePayload<core.input<B>>,
-  ) => core.output<A>;
+  ) => util.MaybeAsync<core.output<A>>;
 }
 export interface $ZodPipeInternals<
   A extends SomeType = $ZodType,
@@ -1227,11 +1227,11 @@ export interface $ZodCodecDef<
   transform: (
     value: core.output<A>,
     payload: ParsePayload<core.output<A>>,
-  ) => core.input<B>;
+  ) => util.MaybeAsync<core.input<B>>;
   reverseTransform: (
     value: core.input<B>,
     payload: ParsePayload<core.input<B>>,
-  ) => core.output<A>;
+  ) => util.MaybeAsync<core.output<A>>;
 }
 export interface $ZodCodecInternals<
   A extends SomeType = $ZodType,

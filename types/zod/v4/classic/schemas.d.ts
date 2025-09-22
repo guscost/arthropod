@@ -109,7 +109,7 @@ export interface ZodType<
   ): ZodNonOptional<this>;
   nullable(): ZodNullable<this>;
   nullish(): ZodOptional<ZodNullable<this>>;
-  default(def: core.output<this>): ZodDefault<this>;
+  default(def: util.NoUndefined<core.output<this>>): ZodDefault<this>;
   default(def: () => util.NoUndefined<core.output<this>>): ZodDefault<this>;
   prefault(def: () => core.input<this>): ZodPrefault<this>;
   prefault(def: core.input<this>): ZodPrefault<this>;
@@ -983,11 +983,11 @@ export declare function codec<
     decode: (
       value: core.output<A>,
       payload: core.ParsePayload<core.output<A>>,
-    ) => core.input<B>;
+    ) => core.util.MaybeAsync<core.input<B>>;
     encode: (
       value: core.input<B>,
       payload: core.ParsePayload<core.input<B>>,
-    ) => core.output<A>;
+    ) => core.util.MaybeAsync<core.output<A>>;
   },
 ): ZodCodec<A, B>;
 export interface ZodReadonly<T extends core.SomeType = core.$ZodType>

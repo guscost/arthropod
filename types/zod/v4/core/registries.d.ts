@@ -28,7 +28,7 @@ export declare class $ZodRegistry<
 > {
   _meta: Meta;
   _schema: Schema;
-  _map: Map<Schema, $replace<Meta, Schema>>;
+  _map: WeakMap<Schema, $replace<Meta, Schema>>;
   _idmap: Map<string, Schema>;
   add<S extends Schema>(
     schema: S,
