@@ -666,7 +666,7 @@ type Mask =
   | (string[] & {})
   | null;
 type Options = Options$1;
-type Input = HTMLInputElement | HTMLTextAreaElement | HTMLElement | null;
+type Input = HTMLInputElement | HTMLTextAreaElement | HTMLElement;
 
 declare function withHookFormMask(
   register: UseFormRegisterReturn,
@@ -677,7 +677,7 @@ declare function withHookFormMask(
 declare function withMask(
   mask: Mask,
   options?: Options,
-): (input: Input) => Input;
+): (input: Input | null) => void;
 
 declare function useHookFormMask<
   T extends FieldValues,
