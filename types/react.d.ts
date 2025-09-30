@@ -2927,7 +2927,7 @@ declare namespace React {
     unselectable?: "on" | "off" | undefined;
 
     // Popover API
-    popover?: "" | "auto" | "manual" | undefined;
+    popover?: "" | "auto" | "manual" | "hint" | undefined;
     popoverTargetAction?: "toggle" | "show" | "hide" | undefined;
     popoverTarget?: string | undefined;
 
