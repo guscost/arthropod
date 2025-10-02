@@ -19,15 +19,14 @@ After transpiling with `tsc`, copy the contents of the `www` folder to a static 
 
 ## Included dependencies
 
-- `react`
-- `react-dom`
+- `react` and `react-dom`
 - `lucide-react`
 - `tailwindcss`
+- `shadcn` dependencies: `clsx`, `zod`, `react-day-picker`, etc
 - `@radix-ui/*`
-- `shadcn` dependencies: `clsx`, `zod`, etc
-- `react-day-picker` v9 and custom calendar
-- `zustand` and `wouter` in extras.min.js
-- `@dnd-kit`
+- `@dnd-kit/*`
+- `swr`, `wouter`, and `zustand` in extras.min.js
+- `use-mask-input`
 
 ### Updating dependencies
 
