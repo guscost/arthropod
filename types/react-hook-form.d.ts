@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ReactNode } from "react";
 
 declare const VALIDATION_MODE: {
   readonly onBlur: "onBlur";
@@ -211,7 +212,9 @@ type PathValue<T, P extends Path<T> | ArrayPath<T>> = PathValueImpl<T, P>;
 type PathValueImpl<T, P extends string> = T extends any
   ? P extends `${infer K}.${infer R}`
     ? K extends keyof T
-      ? PathValueImpl<T[K], R>
+      ? undefined extends T[K]
+        ? PathValueImpl<T[K], R> | undefined
+        : PathValueImpl<T[K], R>
       : K extends `${ArrayKey}`
         ? T extends ReadonlyArray<infer V>
           ? PathValueImpl<V, R>
@@ -222,7 +225,9 @@ type PathValueImpl<T, P extends string> = T extends any
       : P extends `${ArrayKey}`
         ? T extends ReadonlyArray<infer V>
           ? V
-          : never
+          : undefined extends T
+            ? undefined
+            : never
         : never
   : never;
 /**
@@ -2395,6 +2400,72 @@ declare const _default: (
 ) => void;
 //# sourceMappingURL=set.d.ts.map
 
+type GetValues<
+  TFieldValues extends FieldValues,
+  TFieldNames extends readonly FieldPath<TFieldValues>[] = readonly [],
+> = TFieldNames extends readonly [
+  infer Name extends FieldPath<TFieldValues>,
+  ...infer RestFieldNames,
+]
+  ? RestFieldNames extends readonly FieldPath<TFieldValues>[]
+    ? readonly [
+        FieldPathValue<TFieldValues, Name>,
+        ...GetValues<TFieldValues, RestFieldNames>,
+      ]
+    : never
+  : TFieldNames extends readonly [infer Name extends FieldPath<TFieldValues>]
+    ? readonly [FieldPathValue<TFieldValues, Name>]
+    : TFieldNames extends readonly []
+      ? readonly []
+      : never;
+type WatchProps<
+  TFieldNames extends readonly FieldPath<TFieldValues>[],
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+> = {
+  control: Control<TFieldValues, TContext, TTransformedValues>;
+  names: TFieldNames;
+  render: (values: GetValues<TFieldValues, TFieldNames>) => ReactNode;
+};
+/**
+ * Watch component that subscribes to form field changes and re-renders when watched fields update.
+ *
+ * @param control - The form control object from useForm
+ * @param names - Array of field names to watch for changes
+ * @param render - The function that receives watched values and returns ReactNode
+ * @returns The result of calling render function with watched values
+ *
+ * @example
+ * The `Watch` component only re-render when the values of `foo`, `bar`, and `baz.qux` change.
+ * The types of `foo`, `bar`, and `baz.qux` are precisely inferred.
+ *
+ * ```tsx
+ * const { control } = useForm();
+ *
+ * <Watch
+ *   control={control}
+ *   names={['foo', 'bar', 'baz.qux']}
+ *   render={([foo, bar, baz_qux]) => <div>{foo}{bar}{baz_qux}</div>}
+ * />
+ * ```
+ */
+declare const Watch: <
+  TFieldNames extends readonly FieldPath<TFieldValues>[],
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+>({
+  control,
+  names,
+  render,
+}: WatchProps<
+  TFieldNames,
+  TFieldValues,
+  TContext,
+  TTransformedValues
+>) => ReactNode;
+
 export {
   type ArrayPath,
   type BatchFieldArrayUpdate,
@@ -2530,8 +2601,10 @@ export {
   type ValidationRule,
   type ValidationValue,
   type ValidationValueMessage,
+  Watch,
   type WatchInternal,
   type WatchObserver,
+  type WatchProps,
   _default$2 as appendErrors,
   createFormControl,
   _default$1 as get,

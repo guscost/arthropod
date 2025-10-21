@@ -3421,6 +3421,14 @@ declare class DateLib {
    */
   eachMonthOfInterval: (interval: Interval) => Date[];
   /**
+   * Returns the years between the given dates.
+   *
+   * @since 9.11.1
+   * @param interval The interval to get the years for.
+   * @returns The array of years in the interval.
+   */
+  eachYearOfInterval: (interval: Interval) => Date[];
+  /**
    * Returns the end of the broadcast week for the given date.
    *
    * @param date The original date.

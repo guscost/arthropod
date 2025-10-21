@@ -405,6 +405,10 @@ async function buildType(src, dest) {
     readFileSync(path.join(_root, `update/${outFile}`), "utf8")
       .replace("import React from 'react';", "import * as React from 'react';")
       .replace("import React__default from 'react';", "")
+      .replace(
+        "import React__default, { ReactNode } from 'react';",
+        "import { ReactNode } from 'react';",
+      )
       .replaceAll("React__default.", "React."),
   );
   rmSync(path.join(_root, `update/${outFile}`));
