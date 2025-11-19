@@ -2089,7 +2089,7 @@ declare const useFormContext: <
   TTransformedValues = TFieldValues,
 >() => UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 /**
- * A provider component that propagates the `useForm` methods to all children components via [React Context](https://reactjs.org/docs/context.html) API. To be used with {@link useFormContext}.
+ * A provider component that propagates the `useForm` methods to all children components via [React Context](https://react.dev/reference/react/useContext) API. To be used with {@link useFormContext}.
  *
  * @remarks
  * [API](https://react-hook-form.com/docs/useformcontext) • [Demo](https://codesandbox.io/s/react-hook-form-v7-form-context-ytudi)
@@ -2451,7 +2451,7 @@ type WatchProps<
  * ```
  */
 declare const Watch: <
-  TFieldNames extends readonly FieldPath<TFieldValues>[],
+  const TFieldNames extends readonly FieldPath<TFieldValues>[],
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
   TTransformedValues = TFieldValues,

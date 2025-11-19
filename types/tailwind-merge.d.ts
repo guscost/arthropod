@@ -16,7 +16,7 @@ type ClassNameValue =
   | 0n
   | false;
 type ClassNameArray = ClassNameValue[];
-declare function twJoin(...classLists: ClassNameValue[]): string;
+declare const twJoin: (...classLists: ClassNameValue[]) => string;
 
 /**
  * Type the tailwind-merge configuration adheres to.
@@ -586,10 +586,10 @@ type AnyConfig = Config<AnyClassGroupIds, AnyThemeGroupIds>;
 type CreateConfigFirst = () => AnyConfig;
 type CreateConfigSubsequent$1 = (config: AnyConfig) => AnyConfig;
 type TailwindMerge = (...classLists: ClassNameValue[]) => string;
-declare function createTailwindMerge(
+declare const createTailwindMerge: (
   createConfigFirst: CreateConfigFirst,
   ...createConfigRest: CreateConfigSubsequent$1[]
-): TailwindMerge;
+) => TailwindMerge;
 
 declare const getDefaultConfig: () => {
   readonly cacheSize: 500;
