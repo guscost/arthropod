@@ -85,6 +85,7 @@ async function generateReactDomEntryFile(tempDir) {
 
         // export client methods
         ${reactDomClientMethods
+          .filter((method) => method !== "module.exports")
           .map((method) => `export const ${method} = ReactDOMClient.${method};`)
           .join("\n")}
 

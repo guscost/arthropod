@@ -4,11 +4,10 @@ import { Primitive } from "@radix-ui/react-primitive";
 
 type Direction = "ltr" | "rtl";
 declare const createSliderScope: _radix_ui_react_context.CreateScope;
-interface SliderProps
-  extends Omit<
-    SliderHorizontalProps | SliderVerticalProps,
-    keyof SliderOrientationPrivateProps | "defaultValue"
-  > {
+interface SliderProps extends Omit<
+  SliderHorizontalProps | SliderVerticalProps,
+  keyof SliderOrientationPrivateProps | "defaultValue"
+> {
   name?: string;
   disabled?: boolean;
   orientation?: React.AriaAttributes["aria-orientation"];
@@ -39,7 +38,8 @@ type SliderOrientationPrivateProps = {
   onStepKeyDown(step: { event: React.KeyboardEvent; direction: number }): void;
 };
 interface SliderOrientationProps
-  extends Omit<SliderImplProps, keyof SliderImplPrivateProps>,
+  extends
+    Omit<SliderImplProps, keyof SliderImplPrivateProps>,
     SliderOrientationPrivateProps {}
 interface SliderHorizontalProps extends SliderOrientationProps {
   dir?: Direction;

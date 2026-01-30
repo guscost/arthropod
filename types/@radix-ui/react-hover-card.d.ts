@@ -50,8 +50,10 @@ type DismissableLayerProps = React.ComponentPropsWithoutRef<
 type PopperContentProps = React.ComponentPropsWithoutRef<
   typeof PopperPrimitive.Content
 >;
-interface HoverCardContentImplProps
-  extends Omit<PopperContentProps, "onPlaced"> {
+interface HoverCardContentImplProps extends Omit<
+  PopperContentProps,
+  "onPlaced"
+> {
   /**
    * Event handler called when the escape key is down.
    * Can be prevented.

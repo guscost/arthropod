@@ -11,10 +11,8 @@ declare const createNavigationMenuScope: _radix_ui_react_context.CreateScope;
 type NavigationMenuElement = React.ComponentRef<typeof Primitive.nav>;
 type PrimitiveNavProps = React.ComponentPropsWithoutRef<typeof Primitive.nav>;
 interface NavigationMenuProps
-  extends Omit<
-      NavigationMenuProviderProps,
-      keyof NavigationMenuProviderPrivateProps
-    >,
+  extends
+    Omit<NavigationMenuProviderProps, keyof NavigationMenuProviderPrivateProps>,
     PrimitiveNavProps {
   value?: string;
   defaultValue?: string;
@@ -37,10 +35,8 @@ declare const NavigationMenu: React.ForwardRefExoticComponent<
 >;
 type PrimitiveDivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface NavigationMenuSubProps
-  extends Omit<
-      NavigationMenuProviderProps,
-      keyof NavigationMenuProviderPrivateProps
-    >,
+  extends
+    Omit<NavigationMenuProviderProps, keyof NavigationMenuProviderPrivateProps>,
     PrimitiveDivProps {
   value?: string;
   defaultValue?: string;
@@ -65,8 +61,7 @@ interface NavigationMenuProviderPrivateProps {
   onItemSelect(itemValue: string): void;
   onItemDismiss(): void;
 }
-interface NavigationMenuProviderProps
-  extends NavigationMenuProviderPrivateProps {}
+interface NavigationMenuProviderProps extends NavigationMenuProviderPrivateProps {}
 type PrimitiveUnorderedListProps = React.ComponentPropsWithoutRef<
   typeof Primitive.ul
 >;
@@ -102,8 +97,7 @@ interface NavigationMenuLinkProps extends Omit<PrimitiveLinkProps, "onSelect"> {
 declare const NavigationMenuLink: React.ForwardRefExoticComponent<
   NavigationMenuLinkProps & React.RefAttributes<HTMLAnchorElement>
 >;
-interface NavigationMenuIndicatorProps
-  extends NavigationMenuIndicatorImplProps {
+interface NavigationMenuIndicatorProps extends NavigationMenuIndicatorImplProps {
   /**
    * Used to force mounting when more control is needed. Useful when
    * controlling animation with React animation libraries.
@@ -114,11 +108,10 @@ declare const NavigationMenuIndicator: React.ForwardRefExoticComponent<
   NavigationMenuIndicatorProps & React.RefAttributes<HTMLDivElement>
 >;
 interface NavigationMenuIndicatorImplProps extends PrimitiveDivProps {}
-interface NavigationMenuContentProps
-  extends Omit<
-    NavigationMenuContentImplProps,
-    keyof NavigationMenuContentImplPrivateProps
-  > {
+interface NavigationMenuContentProps extends Omit<
+  NavigationMenuContentImplProps,
+  keyof NavigationMenuContentImplPrivateProps
+> {
   /**
    * Used to force mounting when more control is needed. Useful when
    * controlling animation with React animation libraries.
@@ -140,13 +133,13 @@ interface NavigationMenuContentImplPrivateProps {
   onRootContentClose(): void;
 }
 interface NavigationMenuContentImplProps
-  extends Omit<
-      DismissableLayerProps,
-      "onDismiss" | "disableOutsidePointerEvents"
-    >,
+  extends
+    Omit<DismissableLayerProps, "onDismiss" | "disableOutsidePointerEvents">,
     NavigationMenuContentImplPrivateProps {}
-interface NavigationMenuViewportProps
-  extends Omit<NavigationMenuViewportImplProps, "activeContentValue"> {
+interface NavigationMenuViewportProps extends Omit<
+  NavigationMenuViewportImplProps,
+  "activeContentValue"
+> {
   /**
    * Used to force mounting when more control is needed. Useful when
    * controlling animation with React animation libraries.

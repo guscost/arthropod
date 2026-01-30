@@ -53,11 +53,10 @@ interface PopoverContentProps extends PopoverContentTypeProps {
 declare const PopoverContent: React.ForwardRefExoticComponent<
   PopoverContentProps & React.RefAttributes<HTMLDivElement>
 >;
-interface PopoverContentTypeProps
-  extends Omit<
-    PopoverContentImplProps,
-    "trapFocus" | "disableOutsidePointerEvents"
-  > {}
+interface PopoverContentTypeProps extends Omit<
+  PopoverContentImplProps,
+  "trapFocus" | "disableOutsidePointerEvents"
+> {}
 type FocusScopeProps = React.ComponentPropsWithoutRef<typeof FocusScope>;
 type DismissableLayerProps = React.ComponentPropsWithoutRef<
   typeof DismissableLayer
@@ -66,7 +65,8 @@ type PopperContentProps = React.ComponentPropsWithoutRef<
   typeof PopperPrimitive.Content
 >;
 interface PopoverContentImplProps
-  extends Omit<PopperContentProps, "onPlaced">,
+  extends
+    Omit<PopperContentProps, "onPlaced">,
     Omit<DismissableLayerProps, "onDismiss"> {
   /**
    * Whether focus should be trapped within the `Popover`

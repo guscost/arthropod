@@ -1,7 +1,6 @@
 import * as core from "../core/index.js";
 import * as schemas from "./schemas.js";
-export interface ZodMiniISODateTime
-  extends schemas.ZodMiniStringFormat<"datetime"> {
+export interface ZodMiniISODateTime extends schemas.ZodMiniStringFormat<"datetime"> {
   _zod: core.$ZodISODateTimeInternals;
 }
 export declare const ZodMiniISODateTime: core.$constructor<ZodMiniISODateTime>;
@@ -22,8 +21,7 @@ export declare const ZodMiniISOTime: core.$constructor<ZodMiniISOTime>;
 export declare function time(
   params?: string | core.$ZodISOTimeParams,
 ): ZodMiniISOTime;
-export interface ZodMiniISODuration
-  extends schemas.ZodMiniStringFormat<"duration"> {
+export interface ZodMiniISODuration extends schemas.ZodMiniStringFormat<"duration"> {
   _zod: core.$ZodISODurationInternals;
 }
 export declare const ZodMiniISODuration: core.$constructor<ZodMiniISODuration>;

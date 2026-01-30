@@ -3,6 +3,7 @@ import {
   SearchString,
   BaseLocationHook,
   BaseSearchHook,
+  HrefsFormatter,
 } from "./location-hook.js";
 
 export type Parser = (
@@ -10,7 +11,20 @@ export type Parser = (
   loose?: boolean,
 ) => { pattern: RegExp; keys: string[] };
 
-export type HrefsFormatter = (href: string, router: RouterObject) => string;
+// Standard navigation options supported by all built-in location hooks
+export type NavigateOptions<S = any> = {
+  replace?: boolean;
+  state?: S;
+  /** Enable view transitions for this navigation (used with aroundNav) */
+  transition?: boolean;
+};
+
+// Function that wraps navigate calls, useful for view transitions
+export type AroundNavHandler = (
+  navigate: (to: Path, options?: NavigateOptions) => void,
+  to: Path,
+  options?: NavigateOptions,
+) => void;
 
 // the object returned from `useRouter`
 export interface RouterObject {
@@ -21,13 +35,17 @@ export interface RouterObject {
   readonly parser: Parser;
   readonly ssrPath?: Path;
   readonly ssrSearch?: SearchString;
+  readonly ssrContext?: SsrContext;
   readonly hrefs: HrefsFormatter;
+  readonly aroundNav: AroundNavHandler;
 }
 
 // state captured during SSR render
 export type SsrContext = {
   // if a redirect was encountered, this will be populated with the path
   redirectTo?: Path;
+  // HTTP status code to set for SSR response
+  statusCode?: number;
 };
 
 // basic options to construct a router
@@ -40,4 +58,5 @@ export type RouterOptions = {
   ssrSearch?: SearchString;
   ssrContext?: SsrContext;
   hrefs?: HrefsFormatter;
+  aroundNav?: AroundNavHandler;
 };

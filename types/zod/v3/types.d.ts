@@ -620,8 +620,9 @@ export declare class ZodVoid extends ZodType<void, ZodVoidDef, void> {
   _parse(input: ParseInput): ParseReturnType<this["_output"]>;
   static create: (params?: RawCreateParams) => ZodVoid;
 }
-export interface ZodArrayDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodArrayDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   type: T;
   typeName: ZodFirstPartyTypeKind.ZodArray;
   exactLength: {
@@ -922,8 +923,8 @@ export type ZodDiscriminatedUnionOption<Discriminator extends string> =
   >;
 export interface ZodDiscriminatedUnionDef<
   Discriminator extends string,
-  Options extends
-    readonly ZodDiscriminatedUnionOption<string>[] = ZodDiscriminatedUnionOption<string>[],
+  Options extends readonly ZodDiscriminatedUnionOption<string>[] =
+    ZodDiscriminatedUnionOption<string>[],
 > extends ZodTypeDef {
   discriminator: Discriminator;
   options: Options;
@@ -1105,8 +1106,9 @@ export declare class ZodMap<
     params?: RawCreateParams,
   ) => ZodMap<KeySchema, ValueSchema>;
 }
-export interface ZodSetDef<Value extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodSetDef<
+  Value extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   valueType: Value;
   typeName: ZodFirstPartyTypeKind.ZodSet;
   minSize: {
@@ -1200,8 +1202,9 @@ export declare class ZodFunction<
     U extends ZodTypeAny = ZodUnknown,
   >(args: T, returns: U, params?: RawCreateParams): ZodFunction<T, U>;
 }
-export interface ZodLazyDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodLazyDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   getter: () => T;
   typeName: ZodFirstPartyTypeKind.ZodLazy;
 }
@@ -1235,8 +1238,9 @@ export type EnumValues<T extends string = string> = readonly [T, ...T[]];
 export type Values<T extends EnumValues> = {
   [k in T[number]]: k;
 };
-export interface ZodEnumDef<T extends EnumValues = EnumValues>
-  extends ZodTypeDef {
+export interface ZodEnumDef<
+  T extends EnumValues = EnumValues,
+> extends ZodTypeDef {
   values: T;
   typeName: ZodFirstPartyTypeKind.ZodEnum;
 }
@@ -1282,8 +1286,9 @@ export declare class ZodEnum<T extends [string, ...string[]]> extends ZodType<
   >;
   static create: typeof createZodEnum;
 }
-export interface ZodNativeEnumDef<T extends EnumLike = EnumLike>
-  extends ZodTypeDef {
+export interface ZodNativeEnumDef<
+  T extends EnumLike = EnumLike,
+> extends ZodTypeDef {
   values: T;
   typeName: ZodFirstPartyTypeKind.ZodNativeEnum;
 }
@@ -1304,8 +1309,9 @@ export declare class ZodNativeEnum<T extends EnumLike> extends ZodType<
     params?: RawCreateParams,
   ) => ZodNativeEnum<Elements>;
 }
-export interface ZodPromiseDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodPromiseDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   type: T;
   typeName: ZodFirstPartyTypeKind.ZodPromise;
 }
@@ -1342,8 +1348,9 @@ export type Effect<T> =
   | RefinementEffect<T>
   | TransformEffect<T>
   | PreprocessEffect<T>;
-export interface ZodEffectsDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodEffectsDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   schema: T;
   typeName: ZodFirstPartyTypeKind.ZodEffects;
   effect: Effect<any>;
@@ -1368,8 +1375,9 @@ export declare class ZodEffects<
   ) => ZodEffects<I, I["_output"], unknown>;
 }
 export { ZodEffects as ZodTransformer };
-export interface ZodOptionalDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodOptionalDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   innerType: T;
   typeName: ZodFirstPartyTypeKind.ZodOptional;
 }
@@ -1386,8 +1394,9 @@ export declare class ZodOptional<T extends ZodTypeAny> extends ZodType<
     params?: RawCreateParams,
   ) => ZodOptional<Inner>;
 }
-export interface ZodNullableDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodNullableDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   innerType: T;
   typeName: ZodFirstPartyTypeKind.ZodNullable;
 }
@@ -1404,8 +1413,9 @@ export declare class ZodNullable<T extends ZodTypeAny> extends ZodType<
     params?: RawCreateParams,
   ) => ZodNullable<Inner>;
 }
-export interface ZodDefaultDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodDefaultDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   innerType: T;
   defaultValue: () => util.noUndefined<T["_input"]>;
   typeName: ZodFirstPartyTypeKind.ZodDefault;
@@ -1424,8 +1434,9 @@ export declare class ZodDefault<T extends ZodTypeAny> extends ZodType<
     },
   ) => ZodDefault<Inner>;
 }
-export interface ZodCatchDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodCatchDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   innerType: T;
   catchValue: (ctx: { error: ZodError; input: unknown }) => T["_input"];
   typeName: ZodFirstPartyTypeKind.ZodCatch;
@@ -1468,8 +1479,10 @@ export declare class ZodBranded<
   _parse(input: ParseInput): ParseReturnType<any>;
   unwrap(): T;
 }
-export interface ZodPipelineDef<A extends ZodTypeAny, B extends ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodPipelineDef<
+  A extends ZodTypeAny,
+  B extends ZodTypeAny,
+> extends ZodTypeDef {
   in: A;
   out: B;
   typeName: ZodFirstPartyTypeKind.ZodPipeline;
@@ -1506,8 +1519,9 @@ type MakeReadonly<T> =
           : T extends BuiltIn
             ? T
             : Readonly<T>;
-export interface ZodReadonlyDef<T extends ZodTypeAny = ZodTypeAny>
-  extends ZodTypeDef {
+export interface ZodReadonlyDef<
+  T extends ZodTypeAny = ZodTypeAny,
+> extends ZodTypeDef {
   innerType: T;
   typeName: ZodFirstPartyTypeKind.ZodReadonly;
 }

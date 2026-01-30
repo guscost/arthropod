@@ -40,20 +40,18 @@ declare const ToolbarLink: React.ForwardRefExoticComponent<
 type ToggleGroupProps = React.ComponentPropsWithoutRef<
   typeof ToggleGroupPrimitive.Root
 >;
-interface ToolbarToggleGroupSingleProps
-  extends Extract<
-    ToggleGroupProps,
-    {
-      type: "single";
-    }
-  > {}
-interface ToolbarToggleGroupMultipleProps
-  extends Extract<
-    ToggleGroupProps,
-    {
-      type: "multiple";
-    }
-  > {}
+interface ToolbarToggleGroupSingleProps extends Extract<
+  ToggleGroupProps,
+  {
+    type: "single";
+  }
+> {}
+interface ToolbarToggleGroupMultipleProps extends Extract<
+  ToggleGroupProps,
+  {
+    type: "multiple";
+  }
+> {}
 declare const ToolbarToggleGroup: React.ForwardRefExoticComponent<
   (ToolbarToggleGroupSingleProps | ToolbarToggleGroupMultipleProps) &
     React.RefAttributes<HTMLDivElement>

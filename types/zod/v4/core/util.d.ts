@@ -267,6 +267,7 @@ export declare function promiseAllObject<T extends object>(
 }>;
 export declare function randomString(length?: number): string;
 export declare function esc(str: string): string;
+export declare function slugify(input: string): string;
 export declare const captureStackTrace: (
   targetObject: object,
   constructorOpt?: Function,
@@ -392,6 +393,9 @@ export declare function getSizableOrigin(
 export declare function getLengthableOrigin(
   input: any,
 ): "array" | "string" | "unknown";
+export declare function parsedType(
+  data: unknown,
+): errors.$ZodInvalidTypeExpected;
 export declare function issue(
   _iss: string,
   input: any,

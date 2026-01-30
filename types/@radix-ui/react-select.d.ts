@@ -65,7 +65,8 @@ type SelectPopperPrivateProps = {
   onPlaced?: PopperContentProps["onPlaced"];
 };
 interface SelectContentImplProps
-  extends Omit<SelectPopperPositionProps, keyof SelectPopperPrivateProps>,
+  extends
+    Omit<SelectPopperPositionProps, keyof SelectPopperPrivateProps>,
     Omit<SelectItemAlignedPositionProps, keyof SelectPopperPrivateProps> {
   /**
    * Event handler called when auto-focusing on close.
@@ -85,14 +86,12 @@ interface SelectContentImplProps
   position?: "item-aligned" | "popper";
 }
 interface SelectItemAlignedPositionProps
-  extends PrimitiveDivProps,
-    SelectPopperPrivateProps {}
+  extends PrimitiveDivProps, SelectPopperPrivateProps {}
 type PopperContentProps = React.ComponentPropsWithoutRef<
   typeof PopperPrimitive.Content
 >;
 interface SelectPopperPositionProps
-  extends PopperContentProps,
-    SelectPopperPrivateProps {}
+  extends PopperContentProps, SelectPopperPrivateProps {}
 type PrimitiveDivProps = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface SelectViewportProps extends PrimitiveDivProps {
   nonce?: string;
@@ -124,13 +123,17 @@ interface SelectItemIndicatorProps extends PrimitiveSpanProps {}
 declare const SelectItemIndicator: React.ForwardRefExoticComponent<
   SelectItemIndicatorProps & React.RefAttributes<HTMLSpanElement>
 >;
-interface SelectScrollUpButtonProps
-  extends Omit<SelectScrollButtonImplProps, "onAutoScroll"> {}
+interface SelectScrollUpButtonProps extends Omit<
+  SelectScrollButtonImplProps,
+  "onAutoScroll"
+> {}
 declare const SelectScrollUpButton: React.ForwardRefExoticComponent<
   SelectScrollUpButtonProps & React.RefAttributes<HTMLDivElement>
 >;
-interface SelectScrollDownButtonProps
-  extends Omit<SelectScrollButtonImplProps, "onAutoScroll"> {}
+interface SelectScrollDownButtonProps extends Omit<
+  SelectScrollButtonImplProps,
+  "onAutoScroll"
+> {}
 declare const SelectScrollDownButton: React.ForwardRefExoticComponent<
   SelectScrollDownButtonProps & React.RefAttributes<HTMLDivElement>
 >;

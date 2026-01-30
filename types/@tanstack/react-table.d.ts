@@ -1191,8 +1191,7 @@ type ResolvedFilterFns = keyof FilterFns extends never
       filterFns: Record<keyof FilterFns, FilterFn<any>>;
     };
 interface ColumnFiltersOptions<TData extends RowData>
-  extends ColumnFiltersOptionsBase<TData>,
-    ResolvedFilterFns {}
+  extends ColumnFiltersOptionsBase<TData>, ResolvedFilterFns {}
 interface ColumnFiltersInstance<TData extends RowData> {
   _getFilteredRowModel?: () => RowModel<TData>;
   /**
@@ -1538,8 +1537,7 @@ type ResolvedSortingFns = keyof SortingFns extends never
       sortingFns: Record<keyof SortingFns, SortingFn<any>>;
     };
 interface SortingOptions<TData extends RowData>
-  extends SortingOptionsBase,
-    ResolvedSortingFns {}
+  extends SortingOptionsBase, ResolvedSortingFns {}
 interface SortingInstance<TData extends RowData> {
   _getSortedRowModel?: () => RowModel<TData>;
   /**
@@ -2740,7 +2738,8 @@ type OnChangeFn<T> = (updaterOrValue: Updater<T>) => void;
 type RowData = unknown | object | any[];
 type AnyRender = (Comp: any, props: any) => any;
 interface Table<TData extends RowData>
-  extends CoreInstance<TData>,
+  extends
+    CoreInstance<TData>,
     HeadersInstance<TData>,
     VisibilityInstance<TData>,
     ColumnOrderInstance<TData>,
@@ -2756,7 +2755,8 @@ interface Table<TData extends RowData>
     PaginationInstance<TData>,
     RowSelectionInstance<TData> {}
 interface FeatureOptions<TData extends RowData>
-  extends VisibilityOptions,
+  extends
+    VisibilityOptions,
     ColumnOrderOptions,
     ColumnPinningOptions,
     RowPinningOptions<TData>,
@@ -2770,15 +2770,14 @@ interface FeatureOptions<TData extends RowData>
     PaginationOptions,
     RowSelectionOptions<TData> {}
 interface TableOptionsResolved<TData extends RowData>
-  extends CoreOptions<TData>,
-    FeatureOptions<TData> {}
-interface TableOptions<TData extends RowData>
-  extends PartialKeys<
-    TableOptionsResolved<TData>,
-    "state" | "onStateChange" | "renderFallbackValue"
-  > {}
+  extends CoreOptions<TData>, FeatureOptions<TData> {}
+interface TableOptions<TData extends RowData> extends PartialKeys<
+  TableOptionsResolved<TData>,
+  "state" | "onStateChange" | "renderFallbackValue"
+> {}
 interface TableState
-  extends CoreTableState,
+  extends
+    CoreTableState,
     VisibilityTableState,
     ColumnOrderTableState,
     ColumnPinningTableState,
@@ -2792,7 +2791,8 @@ interface TableState
     PaginationTableState,
     RowSelectionTableState {}
 interface CompleteInitialTableState
-  extends CoreTableState,
+  extends
+    CoreTableState,
     VisibilityTableState,
     ColumnOrderTableState,
     ColumnPinningTableState,
@@ -2807,7 +2807,8 @@ interface CompleteInitialTableState
     RowSelectionTableState {}
 interface InitialTableState extends Partial<CompleteInitialTableState> {}
 interface Row<TData extends RowData>
-  extends CoreRow<TData>,
+  extends
+    CoreRow<TData>,
     VisibilityRow<TData>,
     ColumnPinningRow<TData>,
     RowPinningRow,
@@ -2842,22 +2843,27 @@ type ColumnIdentifiers<TData extends RowData, TValue> =
   | IdIdentifier<TData, TValue>
   | StringHeaderIdentifier;
 interface ColumnDefExtensions<TData extends RowData, TValue = unknown>
-  extends VisibilityColumnDef,
+  extends
+    VisibilityColumnDef,
     ColumnPinningColumnDef,
     ColumnFiltersColumnDef<TData>,
     GlobalFilterColumnDef,
     SortingColumnDef<TData>,
     GroupingColumnDef<TData, TValue>,
     ColumnSizingColumnDef {}
-interface ColumnDefBase<TData extends RowData, TValue = unknown>
-  extends ColumnDefExtensions<TData, TValue> {
+interface ColumnDefBase<
+  TData extends RowData,
+  TValue = unknown,
+> extends ColumnDefExtensions<TData, TValue> {
   getUniqueValues?: AccessorFn<TData, unknown[]>;
   footer?: ColumnDefTemplate<HeaderContext<TData, TValue>>;
   cell?: ColumnDefTemplate<CellContext<TData, TValue>>;
   meta?: ColumnMeta<TData, TValue>;
 }
-interface IdentifiedColumnDef<TData extends RowData, TValue = unknown>
-  extends ColumnDefBase<TData, TValue> {
+interface IdentifiedColumnDef<
+  TData extends RowData,
+  TValue = unknown,
+> extends ColumnDefBase<TData, TValue> {
   id?: string;
   header?: StringOrTemplateHeader<TData, TValue>;
 }
@@ -2866,24 +2872,30 @@ type DisplayColumnDef<TData extends RowData, TValue = unknown> = ColumnDefBase<
   TValue
 > &
   ColumnIdentifiers<TData, TValue>;
-interface GroupColumnDefBase<TData extends RowData, TValue = unknown>
-  extends ColumnDefBase<TData, TValue> {
+interface GroupColumnDefBase<
+  TData extends RowData,
+  TValue = unknown,
+> extends ColumnDefBase<TData, TValue> {
   columns?: ColumnDef<TData, any>[];
 }
 type GroupColumnDef<
   TData extends RowData,
   TValue = unknown,
 > = GroupColumnDefBase<TData, TValue> & ColumnIdentifiers<TData, TValue>;
-interface AccessorFnColumnDefBase<TData extends RowData, TValue = unknown>
-  extends ColumnDefBase<TData, TValue> {
+interface AccessorFnColumnDefBase<
+  TData extends RowData,
+  TValue = unknown,
+> extends ColumnDefBase<TData, TValue> {
   accessorFn: AccessorFn<TData, TValue>;
 }
 type AccessorFnColumnDef<
   TData extends RowData,
   TValue = unknown,
 > = AccessorFnColumnDefBase<TData, TValue> & ColumnIdentifiers<TData, TValue>;
-interface AccessorKeyColumnDefBase<TData extends RowData, TValue = unknown>
-  extends ColumnDefBase<TData, TValue> {
+interface AccessorKeyColumnDefBase<
+  TData extends RowData,
+  TValue = unknown,
+> extends ColumnDefBase<TData, TValue> {
   id?: string;
   accessorKey: (string & {}) | keyof TData;
 }
@@ -2905,7 +2917,8 @@ type ColumnDefResolved<TData extends RowData, TValue = unknown> = Partial<
   accessorKey?: string;
 };
 interface Column<TData extends RowData, TValue = unknown>
-  extends CoreColumn<TData, TValue>,
+  extends
+    CoreColumn<TData, TValue>,
     VisibilityColumn,
     ColumnPinningColumn,
     FacetedColumn<TData>,
@@ -2916,11 +2929,9 @@ interface Column<TData extends RowData, TValue = unknown>
     ColumnSizingColumn,
     ColumnOrderColumn {}
 interface Cell<TData extends RowData, TValue>
-  extends CoreCell<TData, TValue>,
-    GroupingCell {}
+  extends CoreCell<TData, TValue>, GroupingCell {}
 interface Header<TData extends RowData, TValue>
-  extends CoreHeader<TData, TValue>,
-    ColumnSizingHeader {}
+  extends CoreHeader<TData, TValue>, ColumnSizingHeader {}
 interface HeaderGroup<TData extends RowData> extends CoreHeaderGroup<TData> {}
 
 type ColumnHelper<TData extends RowData> = {

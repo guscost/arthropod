@@ -111,7 +111,8 @@ interface OneTimePasswordFieldOwnProps {
   value?: string;
 }
 interface OneTimePasswordFieldProps
-  extends OneTimePasswordFieldOwnProps,
+  extends
+    OneTimePasswordFieldOwnProps,
     Omit<
       Primitive.PrimitivePropsWithRef<"div">,
       keyof OneTimePasswordFieldOwnProps
@@ -119,36 +120,34 @@ interface OneTimePasswordFieldProps
 declare const OneTimePasswordField: React.ForwardRefExoticComponent<
   Omit<OneTimePasswordFieldProps, "ref"> & React.RefAttributes<HTMLDivElement>
 >;
-interface OneTimePasswordFieldHiddenInputProps
-  extends Omit<
-    React.ComponentProps<"input">,
-    | keyof "value"
-    | "defaultValue"
-    | "type"
-    | "onChange"
-    | "readOnly"
-    | "disabled"
-    | "autoComplete"
-    | "autoFocus"
-  > {}
+interface OneTimePasswordFieldHiddenInputProps extends Omit<
+  React.ComponentProps<"input">,
+  | keyof "value"
+  | "defaultValue"
+  | "type"
+  | "onChange"
+  | "readOnly"
+  | "disabled"
+  | "autoComplete"
+  | "autoFocus"
+> {}
 declare const OneTimePasswordFieldHiddenInput: React.ForwardRefExoticComponent<
   Omit<OneTimePasswordFieldHiddenInputProps, "ref"> &
     React.RefAttributes<HTMLInputElement>
 >;
-interface OneTimePasswordFieldInputProps
-  extends Omit<
-    Primitive.PrimitivePropsWithRef<"input">,
-    | "value"
-    | "defaultValue"
-    | "disabled"
-    | "readOnly"
-    | "autoComplete"
-    | "autoFocus"
-    | "form"
-    | "name"
-    | "placeholder"
-    | "type"
-  > {
+interface OneTimePasswordFieldInputProps extends Omit<
+  Primitive.PrimitivePropsWithRef<"input">,
+  | "value"
+  | "defaultValue"
+  | "disabled"
+  | "readOnly"
+  | "autoComplete"
+  | "autoFocus"
+  | "form"
+  | "name"
+  | "placeholder"
+  | "type"
+> {
   /**
    * Callback fired when the user input fails native HTML input validation.
    */

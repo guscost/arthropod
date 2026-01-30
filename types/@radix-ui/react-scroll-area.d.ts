@@ -58,11 +58,10 @@ declare const ScrollAreaScrollbar: React.ForwardRefExoticComponent<
   ScrollAreaScrollbarProps & React.RefAttributes<HTMLDivElement>
 >;
 type ScrollAreaScrollbarVisibleElement = ScrollAreaScrollbarAxisElement;
-interface ScrollAreaScrollbarVisibleProps
-  extends Omit<
-    ScrollAreaScrollbarAxisProps,
-    keyof ScrollAreaScrollbarAxisPrivateProps
-  > {
+interface ScrollAreaScrollbarVisibleProps extends Omit<
+  ScrollAreaScrollbarAxisProps,
+  keyof ScrollAreaScrollbarAxisPrivateProps
+> {
   orientation?: "horizontal" | "vertical";
 }
 type ScrollAreaScrollbarAxisPrivateProps = {
@@ -78,7 +77,8 @@ type ScrollAreaScrollbarAxisPrivateProps = {
 };
 type ScrollAreaScrollbarAxisElement = ScrollAreaScrollbarImplElement;
 interface ScrollAreaScrollbarAxisProps
-  extends Omit<
+  extends
+    Omit<
       ScrollAreaScrollbarImplProps,
       keyof ScrollAreaScrollbarImplPrivateProps
     >,
@@ -104,7 +104,8 @@ type ScrollAreaScrollbarImplPrivateProps = {
   onResize(): void;
 };
 interface ScrollAreaScrollbarImplProps
-  extends Omit<PrimitiveDivProps, keyof ScrollAreaScrollbarImplPrivateProps>,
+  extends
+    Omit<PrimitiveDivProps, keyof ScrollAreaScrollbarImplPrivateProps>,
     ScrollAreaScrollbarImplPrivateProps {}
 type ScrollAreaThumbElement = ScrollAreaThumbImplElement;
 interface ScrollAreaThumbProps extends ScrollAreaThumbImplProps {

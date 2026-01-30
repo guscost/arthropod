@@ -20,8 +20,10 @@ interface CollapsibleTriggerProps extends PrimitiveButtonProps {}
 declare const CollapsibleTrigger: React.ForwardRefExoticComponent<
   CollapsibleTriggerProps & React.RefAttributes<HTMLButtonElement>
 >;
-interface CollapsibleContentProps
-  extends Omit<CollapsibleContentImplProps, "present"> {
+interface CollapsibleContentProps extends Omit<
+  CollapsibleContentImplProps,
+  "present"
+> {
   /**
    * Used to force mounting when more control is needed. Useful when
    * controlling animation with React animation libraries.

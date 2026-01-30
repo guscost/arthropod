@@ -128,8 +128,7 @@ type FormatRelativeFn = <DateType extends Date>(
  * The {@link FormatRelativeFn} function options.
  */
 interface FormatRelativeFnOptions
-  extends WeekOptions,
-    LocalizedOptions<"options" | "formatRelative"> {}
+  extends WeekOptions, LocalizedOptions<"options" | "formatRelative"> {}
 /**
  * The locale function used inside the {@link FormatRelativeFn} function
  * implementing formatting for a particular token.
@@ -790,8 +789,9 @@ type MaybeArray<Type> = Type | Type[];
 /**
  * The {@link add} function options.
  */
-interface AddOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name add
  * @category Common Helpers
@@ -831,8 +831,9 @@ declare function add<DateType extends Date, ResultDate extends Date = DateType>(
 /**
  * The {@link addBusinessDays} function options.
  */
-interface AddBusinessDaysOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddBusinessDaysOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addBusinessDays
  * @category Day Helpers
@@ -867,8 +868,9 @@ declare function addBusinessDays<
 /**
  * The {@link addDays} function options.
  */
-interface AddDaysOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddDaysOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addDays
  * @category Day Helpers
@@ -903,8 +905,9 @@ declare function addDays<
 /**
  * The {@link addHours} function options.
  */
-interface AddHoursOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddHoursOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addHours
  * @category Hour Helpers
@@ -939,8 +942,9 @@ declare function addHours<
 /**
  * The {@link addISOWeekYears} function options.
  */
-interface AddISOWeekYearsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddISOWeekYearsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -976,8 +980,9 @@ declare function addISOWeekYears<
 /**
  * The {@link addMilliseconds} function options.
  */
-interface AddMillisecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddMillisecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addMilliseconds
  * @category Millisecond Helpers
@@ -1012,8 +1017,9 @@ declare function addMilliseconds<
 /**
  * The {@link addMinutes} function options.
  */
-interface AddMinutesOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddMinutesOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addMinutes
  * @category Minute Helpers
@@ -1048,8 +1054,9 @@ declare function addMinutes<
 /**
  * The {@link addMonths} function options.
  */
-interface AddMonthsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddMonthsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addMonths
  * @category Month Helpers
@@ -1088,8 +1095,9 @@ declare function addMonths<
 /**
  * The {@link addQuarters} function options.
  */
-interface AddQuartersOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddQuartersOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addQuarters
  * @category Quarter Helpers
@@ -1124,8 +1132,9 @@ declare function addQuarters<
 /**
  * The {@link addSeconds} function options.
  */
-interface AddSecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddSecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addSeconds
  * @category Second Helpers
@@ -1160,8 +1169,9 @@ declare function addSeconds<
 /**
  * The {@link addWeeks} function options.
  */
-interface AddWeeksOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddWeeksOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addWeeks
  * @category Week Helpers
@@ -1196,8 +1206,9 @@ declare function addWeeks<
 /**
  * The {@link addYears} function options.
  */
-interface AddYearsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface AddYearsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name addYears
  * @category Year Helpers
@@ -1292,8 +1303,9 @@ declare function areIntervalsOverlapping(
 /**
  * The {@link clamp} function options.
  */
-interface ClampOptions<ContextDate extends Date = Date>
-  extends ContextOptions<ContextDate> {}
+interface ClampOptions<
+  ContextDate extends Date = Date,
+> extends ContextOptions<ContextDate> {}
 /**
  * The {@link clamp} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -1387,8 +1399,9 @@ declare function closestIndexTo(
 /**
  * The {@link closestTo} function options.
  */
-interface ClosestToOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface ClosestToOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * The {@link closestTo} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -1721,8 +1734,7 @@ declare function differenceInCalendarDays(
 /**
  * The {@link differenceInCalendarISOWeekYears} function options.
  */
-interface DifferenceInCalendarISOWeekYearsOptions
-  extends ContextOptions<Date> {}
+interface DifferenceInCalendarISOWeekYearsOptions extends ContextOptions<Date> {}
 /**
  * @name differenceInCalendarISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -1855,9 +1867,7 @@ declare function differenceInCalendarQuarters(
  * The {@link differenceInCalendarWeeks} function options.
  */
 interface DifferenceInCalendarWeeksOptions
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<Date> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<Date> {}
 /**
  * @name differenceInCalendarWeeks
  * @category Week Helpers
@@ -1995,8 +2005,7 @@ declare function differenceInDays(
  * The {@link differenceInHours} function options.
  */
 interface DifferenceInHoursOptions
-  extends RoundingOptions,
-    ContextOptions<Date> {}
+  extends RoundingOptions, ContextOptions<Date> {}
 /**
  * @name differenceInHours
  * @category Hour Helpers
@@ -2156,8 +2165,7 @@ declare function differenceInMonths(
  * The {@link differenceInQuarters} function options.
  */
 interface DifferenceInQuartersOptions
-  extends RoundingOptions,
-    ContextOptions<Date> {}
+  extends RoundingOptions, ContextOptions<Date> {}
 /**
  * @name differenceInQuarters
  * @category Quarter Helpers
@@ -2220,8 +2228,7 @@ declare function differenceInSeconds(
  * The {@link differenceInWeeks} function options.
  */
 interface DifferenceInWeeksOptions
-  extends RoundingOptions,
-    ContextOptions<Date> {}
+  extends RoundingOptions, ContextOptions<Date> {}
 /**
  * @name differenceInWeeks
  * @category Week Helpers
@@ -2301,8 +2308,7 @@ declare function differenceInYears(
  * The {@link eachDayOfInterval} function options.
  */
 interface EachDayOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachDayOfInterval} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -2363,8 +2369,7 @@ declare function eachDayOfInterval<
  * The {@link eachHourOfInterval} function options.
  */
 interface EachHourOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachHourOfInterval} function result type.
  * Resolves to the appropriate date type based on inputs.
@@ -2422,8 +2427,7 @@ declare function eachHourOfInterval<
  * The {@link eachMinuteOfInterval} function options.
  */
 interface EachMinuteOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachMinuteOfInterval} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -2483,8 +2487,7 @@ declare function eachMinuteOfInterval<
  * The {@link eachMonthOfInterval} function options.
  */
 interface EachMonthOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachMonthOfInterval} function result type. It resolves the proper data type.
  */
@@ -2544,8 +2547,7 @@ declare function eachMonthOfInterval<
  * The {@link eachQuarterOfInterval} function options.
  */
 interface EachQuarterOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachQuarterOfInterval} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -2604,7 +2606,8 @@ declare function eachQuarterOfInterval<
  * The {@link eachWeekOfInterval} function options.
  */
 interface EachWeekOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
+  extends
+    StepOptions,
     WeekOptions,
     LocalizedOptions<"options">,
     ContextOptions<DateType> {}
@@ -2666,8 +2669,9 @@ declare function eachWeekOfInterval<
 /**
  * The {@link eachWeekendOfInterval} function options.
  */
-interface EachWeekendOfIntervalOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EachWeekendOfIntervalOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * The {@link eachWeekendOfInterval} function result type.
  */
@@ -2723,8 +2727,9 @@ declare function eachWeekendOfInterval<
 /**
  * The {@link eachWeekendOfMonth} function options.
  */
-interface EachWeekendOfMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EachWeekendOfMonthOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name eachWeekendOfMonth
  * @category Month Helpers
@@ -2766,8 +2771,9 @@ declare function eachWeekendOfMonth<
 /**
  * The {@link eachWeekendOfYear} function options.
  */
-interface EachWeekendOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EachWeekendOfYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name eachWeekendOfYear
  * @category Year Helpers
@@ -2807,8 +2813,7 @@ declare function eachWeekendOfYear<
  * The {@link eachYearOfInterval} function options.
  */
 interface EachYearOfIntervalOptions<DateType extends Date = Date>
-  extends StepOptions,
-    ContextOptions<DateType> {}
+  extends StepOptions, ContextOptions<DateType> {}
 /**
  * The {@link eachYearOfInterval} function result type. It resolves the proper data type.
  * It uses the first argument date object type, starting from the date argument,
@@ -2867,8 +2872,9 @@ declare function eachYearOfInterval<
 /**
  * The {@link endOfDay} function options.
  */
-interface EndOfDayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfDayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfDay
  * @category Day Helpers
@@ -2902,8 +2908,9 @@ declare function endOfDay<
 /**
  * The {@link endOfDecade} function options.
  */
-interface EndOfDecadeOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfDecadeOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfDecade
  * @category Decade Helpers
@@ -2936,8 +2943,9 @@ declare function endOfDecade<
 /**
  * The {@link endOfHour} function options.
  */
-interface EndOfHourOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfHourOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfHour
  * @category Hour Helpers
@@ -2971,8 +2979,9 @@ declare function endOfHour<
 /**
  * The {@link endOfISOWeek} function options.
  */
-interface EndOfISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfISOWeekOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfISOWeek
  * @category ISO Week Helpers
@@ -3008,8 +3017,9 @@ declare function endOfISOWeek<
 /**
  * The {@link endOfISOWeekYear} function options.
  */
-interface EndOfISOWeekYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfISOWeekYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -3046,8 +3056,9 @@ declare function endOfISOWeekYear<
 /**
  * The {@link endOfMinute} function options.
  */
-interface EndOfMinuteOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfMinuteOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfMinute
  * @category Minute Helpers
@@ -3081,8 +3092,9 @@ declare function endOfMinute<
 /**
  * The {@link endOfMonth} function options.
  */
-interface EndOfMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfMonthOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfMonth
  * @category Month Helpers
@@ -3116,8 +3128,9 @@ declare function endOfMonth<
 /**
  * The {@link endOfQuarter} function options.
  */
-interface EndOfQuarterOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfQuarterOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfQuarter
  * @category Quarter Helpers
@@ -3151,8 +3164,9 @@ declare function endOfQuarter<
 /**
  * The {@link endOfSecond} function options.
  */
-interface EndOfSecondOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfSecondOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfSecond
  * @category Second Helpers
@@ -3186,8 +3200,9 @@ declare function endOfSecond<
 /**
  * The {@link endOfToday} function options.
  */
-interface EndOfTodayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfTodayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfToday
  * @category Day Helpers
@@ -3216,8 +3231,9 @@ declare function endOfToday<ResultDate extends Date = Date>(
 /**
  * The {@link endOfTomorrow} function options.
  */
-interface EndOfTomorrowOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfTomorrowOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfTomorrow
  * @category Day Helpers
@@ -3247,9 +3263,7 @@ declare function endOfTomorrow<
  * The {@link endOfWeek} function options.
  */
 interface EndOfWeekOptions<DateType extends Date = Date>
-  extends WeekOptions,
-    LocalizedOptions<"options">,
-    ContextOptions<DateType> {}
+  extends WeekOptions, LocalizedOptions<"options">, ContextOptions<DateType> {}
 /**
  * @name endOfWeek
  * @category Week Helpers
@@ -3285,8 +3299,9 @@ declare function endOfWeek<
 /**
  * The {@link endOfYear} function options.
  */
-interface EndOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfYear
  * @category Year Helpers
@@ -3317,8 +3332,9 @@ declare function endOfYear<
 /**
  * The {@link endOfYesterday} function options.
  */
-interface EndOfYesterdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface EndOfYesterdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name endOfYesterday
  * @category Day Helpers
@@ -3362,7 +3378,8 @@ declare const longFormatters: Record<string, LongFormatter>;
  * The {@link format} function options.
  */
 interface FormatOptions
-  extends LocalizedOptions<"options" | "localize" | "formatLong">,
+  extends
+    LocalizedOptions<"options" | "localize" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions,
@@ -3661,8 +3678,7 @@ declare function format(
  * The {@link formatDistance} function options.
  */
 interface FormatDistanceOptions
-  extends LocalizedOptions<"formatDistance">,
-    ContextOptions<Date> {
+  extends LocalizedOptions<"formatDistance">, ContextOptions<Date> {
   /** Distances less than a minute are more detailed */
   includeSeconds?: boolean;
   /** Add "X ago"/"in X" in the locale language */
@@ -3756,7 +3772,8 @@ declare function formatDistance(
  * The {@link formatDistanceStrict} function options.
  */
 interface FormatDistanceStrictOptions
-  extends LocalizedOptions<"formatDistance">,
+  extends
+    LocalizedOptions<"formatDistance">,
     RoundingOptions,
     ContextOptions<Date> {
   /** Add "X ago"/"in X" in the locale language */
@@ -3861,8 +3878,7 @@ declare function formatDistanceStrict(
  * The {@link formatDistanceToNow} function options.
  */
 interface FormatDistanceToNowOptions
-  extends FormatDistanceOptions,
-    ContextOptions<Date> {}
+  extends FormatDistanceOptions, ContextOptions<Date> {}
 /**
  * @name formatDistanceToNow
  * @category Common Helpers
@@ -3953,8 +3969,7 @@ declare function formatDistanceToNow(
  * The {@link formatDistanceToNowStrict} function options.
  */
 interface FormatDistanceToNowStrictOptions
-  extends FormatDistanceStrictOptions,
-    ContextOptions<Date> {}
+  extends FormatDistanceStrictOptions, ContextOptions<Date> {}
 /**
  * @name formatDistanceToNowStrict
  * @category Common Helpers
@@ -4284,9 +4299,8 @@ declare function formatRFC7231(date: DateArg<Date> & {}): string;
  * The {@link formatRelative} function options.
  */
 interface FormatRelativeOptions
-  extends LocalizedOptions<
-      "options" | "localize" | "formatLong" | "formatRelative"
-    >,
+  extends
+    LocalizedOptions<"options" | "localize" | "formatLong" | "formatRelative">,
     WeekOptions,
     ContextOptions<Date> {}
 /**
@@ -4332,8 +4346,9 @@ declare function formatRelative(
 /**
  * The {@link fromUnixTime} function options.
  */
-interface FromUnixTimeOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface FromUnixTimeOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name fromUnixTime
  * @category Timestamp Helpers
@@ -4896,7 +4911,8 @@ declare function getUnixTime(date: DateArg<Date> & {}): number;
  * The {@link getWeek} function options.
  */
 interface GetWeekOptions
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<Date> {}
@@ -4943,9 +4959,7 @@ declare function getWeek(
  * The {@link getWeekOfMonth} function options.
  */
 interface GetWeekOfMonthOptions
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<Date> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<Date> {}
 /**
  * @name getWeekOfMonth
  * @category Week Helpers
@@ -4973,7 +4987,8 @@ declare function getWeekOfMonth(
  * The {@link getWeekYear} function options.
  */
 interface GetWeekYearOptions
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<Date> {}
@@ -5020,9 +5035,7 @@ declare function getWeekYear(
  * The {@link getWeeksInMonth} function options.
  */
 interface GetWeeksInMonthOptions
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<Date> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<Date> {}
 /**
  * @name getWeeksInMonth
  * @category Week Helpers
@@ -5139,8 +5152,9 @@ declare function hoursToSeconds(hours: number): number;
 /**
  * The {@link interval} function options.
  */
-interface IntervalOptions<ContextDate extends Date = Date>
-  extends ContextOptions<ContextDate> {
+interface IntervalOptions<
+  ContextDate extends Date = Date,
+> extends ContextOptions<ContextDate> {
   /** Asserts that the interval is positive (start is after the end). */
   assertPositive?: boolean;
 }
@@ -5342,8 +5356,7 @@ declare function intlFormat(
  * The {@link intlFormatDistance} function options.
  */
 interface IntlFormatDistanceOptions
-  extends Intl.RelativeTimeFormatOptions,
-    ContextOptions<Date> {
+  extends Intl.RelativeTimeFormatOptions, ContextOptions<Date> {
   /** Force the distance unit */
   unit?: IntlFormatDistanceUnit;
   /** The locales to use (see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) */
@@ -5722,7 +5735,8 @@ declare function isLeapYear(
  * The {@link isMatch} function options.
  */
 interface IsMatchOptions
-  extends LocalizedOptions<"options" | "match" | "formatLong">,
+  extends
+    LocalizedOptions<"options" | "match" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions {}
@@ -6351,9 +6365,7 @@ declare function isSameSecond(
  * The {@link isSameWeek} function options.
  */
 interface IsSameWeekOptions
-  extends WeekOptions,
-    LocalizedOptions<"options">,
-    ContextOptions<Date> {}
+  extends WeekOptions, LocalizedOptions<"options">, ContextOptions<Date> {}
 /**
  * @name isSameWeek
  * @category Week Helpers
@@ -6636,9 +6648,7 @@ declare function isThisSecond(date: DateArg<Date> & {}): boolean;
  * The {@link isThisWeek} function options.
  */
 interface IsThisWeekOptions
-  extends WeekOptions,
-    LocalizedOptions<"options">,
-    ContextOptions<Date> {}
+  extends WeekOptions, LocalizedOptions<"options">, ContextOptions<Date> {}
 /**
  * @name isThisWeek
  * @category Week Helpers
@@ -6975,8 +6985,9 @@ declare function isYesterday(
 /**
  * The {@link lastDayOfDecade} function options.
  */
-interface LastDayOfDecadeOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfDecadeOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfDecade
  * @category Decade Helpers
@@ -7009,8 +7020,9 @@ declare function lastDayOfDecade<
 /**
  * The {@link lastDayOfISOWeek} function options.
  */
-interface LastDayOfISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfISOWeekOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfISOWeek
  * @category ISO Week Helpers
@@ -7046,8 +7058,9 @@ declare function lastDayOfISOWeek<
 /**
  * The {@link lastDayOfISOWeekYear} function options.
  */
-interface LastDayOfISOWeekYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfISOWeekYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -7084,8 +7097,9 @@ declare function lastDayOfISOWeekYear<
 /**
  * The {@link lastDayOfMonth} function options.
  */
-interface LastDayOfMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfMonthOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfMonth
  * @category Month Helpers
@@ -7119,8 +7133,9 @@ declare function lastDayOfMonth<
 /**
  * The {@link lastDayOfQuarter} function options.
  */
-interface LastDayOfQuarterOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfQuarterOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfQuarter
  * @category Quarter Helpers
@@ -7155,9 +7170,7 @@ declare function lastDayOfQuarter<
  * The {@link lastDayOfWeek} function options.
  */
 interface LastDayOfWeekOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<DateType> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<DateType> {}
 /**
  * @name lastDayOfWeek
  * @category Week Helpers
@@ -7186,8 +7199,9 @@ declare function lastDayOfWeek<
 /**
  * The {@link lastDayOfYear} function options.
  */
-interface LastDayOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface LastDayOfYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name lastDayOfYear
  * @category Year Helpers
@@ -7295,8 +7309,9 @@ declare function lightFormat(
 /**
  * The {@link max} function options.
  */
-interface MaxOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface MaxOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name max
  * @category Common Helpers
@@ -7441,8 +7456,9 @@ declare function millisecondsToSeconds(milliseconds: number): number;
 /**
  * The {@link min} function options.
  */
-interface MinOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface MinOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name min
  * @category Common Helpers
@@ -7585,8 +7601,9 @@ declare function monthsToYears(months: number): number;
 /**
  * The {@link nextDay} function options.
  */
-interface NextDayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextDayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextDay
  * @category Weekday Helpers
@@ -7623,8 +7640,9 @@ declare function nextDay<
 /**
  * The {@link nextFriday} function options.
  */
-interface NextFridayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextFridayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextFriday
  * @category Weekday Helpers
@@ -7654,8 +7672,9 @@ declare function nextFriday<
 /**
  * The {@link nextMonday} function options.
  */
-interface NextMondayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextMondayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextMonday
  * @category Weekday Helpers
@@ -7688,8 +7707,9 @@ declare function nextMonday<
 /**
  * The {@link nextSaturday} function options.
  */
-interface NextSaturdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextSaturdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextSaturday
  * @category Weekday Helpers
@@ -7722,8 +7742,9 @@ declare function nextSaturday<
 /**
  * The {@link nextSunday} function options.
  */
-interface NextSundayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextSundayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextSunday
  * @category Weekday Helpers
@@ -7756,8 +7777,9 @@ declare function nextSunday<
 /**
  * The {@link nextThursday} function options.
  */
-interface NextThursdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextThursdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextThursday
  * @category Weekday Helpers
@@ -7790,8 +7812,9 @@ declare function nextThursday<
 /**
  * The {@link nextTuesday} function options.
  */
-interface NextTuesdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextTuesdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextTuesday
  * @category Weekday Helpers
@@ -7824,8 +7847,9 @@ declare function nextTuesday<
 /**
  * The {@link nextWednesday} function options.
  */
-interface NextWednesdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface NextWednesdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name nextWednesday
  * @category Weekday Helpers
@@ -7950,7 +7974,8 @@ declare const parsers: Record<string, Parser<any>>;
  * The {@link parse} function options.
  */
 interface ParseOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options" | "match" | "formatLong">,
+  extends
+    LocalizedOptions<"options" | "match" | "formatLong">,
     FirstWeekContainsDateOptions,
     WeekOptions,
     AdditionalTokensOptions,
@@ -8266,8 +8291,9 @@ declare function parse<
 /**
  * The {@link parseISO} function options.
  */
-interface ParseISOOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {
+interface ParseISOOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {
   /** The additional number of digits in the extended year format */
   additionalDigits?: 0 | 1 | 2;
 }
@@ -8312,8 +8338,9 @@ declare function parseISO<
 /**
  * The {@link parseJSON} function options.
  */
-interface ParseJSONOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface ParseJSONOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * Converts a complete ISO date string in UTC time, the typical format for transmitting
  * a date in JSON, to a JavaScript `Date` instance.
@@ -8354,8 +8381,9 @@ declare function parseJSON<ResultDate extends Date = Date>(
 /**
  * The {@link previousDay} function options.
  */
-interface PreviousDayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousDayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousDay
  * @category Weekday Helpers
@@ -8395,8 +8423,9 @@ declare function previousDay<
 /**
  * The {@link previousFriday} function options.
  */
-interface PreviousFridayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousFridayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousFriday
  * @category Weekday Helpers
@@ -8429,8 +8458,9 @@ declare function previousFriday<
 /**
  * The {@link previousMonday} function options.
  */
-interface PreviousMondayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousMondayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousMonday
  * @category Weekday Helpers
@@ -8463,8 +8493,9 @@ declare function previousMonday<
 /**
  * The {@link previousSaturday} function options.
  */
-interface PreviousSaturdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousSaturdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousSaturday
  * @category Weekday Helpers
@@ -8497,8 +8528,9 @@ declare function previousSaturday<
 /**
  * The {@link previousSunday} function options.
  */
-interface PreviousSundayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousSundayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousSunday
  * @category Weekday Helpers
@@ -8531,8 +8563,9 @@ declare function previousSunday<
 /**
  * The {@link previousThursday} function options.
  */
-interface PreviousThursdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousThursdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousThursday
  * @category Weekday Helpers
@@ -8565,8 +8598,9 @@ declare function previousThursday<
 /**
  * The {@link previousTuesday} function options.
  */
-interface PreviousTuesdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousTuesdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousTuesday
  * @category Weekday Helpers
@@ -8599,8 +8633,9 @@ declare function previousTuesday<
 /**
  * The {@link previousWednesday} function options.
  */
-interface PreviousWednesdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface PreviousWednesdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name previousWednesday
  * @category Weekday Helpers
@@ -8677,7 +8712,8 @@ declare function quartersToYears(quarters: number): number;
  * The {@link roundToNearestHours} function options.
  */
 interface RoundToNearestHoursOptions<DateType extends Date = Date>
-  extends NearestToUnitOptions<NearestHours>,
+  extends
+    NearestToUnitOptions<NearestHours>,
     RoundingOptions,
     ContextOptions<DateType> {}
 /**
@@ -8734,7 +8770,8 @@ declare function roundToNearestHours<
  * The {@link roundToNearestMinutes} function options.
  */
 interface RoundToNearestMinutesOptions<DateType extends Date = Date>
-  extends NearestToUnitOptions<NearestMinutes>,
+  extends
+    NearestToUnitOptions<NearestMinutes>,
     RoundingOptions,
     ContextOptions<DateType> {}
 /**
@@ -8852,8 +8889,9 @@ declare function secondsToMinutes(seconds: number): number;
 /**
  * The {@link set} function options.
  */
-interface SetOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name set
  * @category Common Helpers
@@ -8897,8 +8935,9 @@ declare function set<DateType extends Date, ResultDate extends Date = DateType>(
 /**
  * The {@link setDate} function options.
  */
-interface SetDateOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetDateOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setDate
  * @category Day Helpers
@@ -8934,9 +8973,7 @@ declare function setDate<
  * The {@link setDay} function options.
  */
 interface SetDayOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<DateType> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<DateType> {}
 /**
  * @name setDay
  * @category Weekday Helpers
@@ -8976,8 +9013,9 @@ declare function setDay<
 /**
  * The {@link setDayOfYear} function options.
  */
-interface SetDayOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetDayOfYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setDayOfYear
  * @category Day Helpers
@@ -9059,8 +9097,9 @@ declare function setDefaultOptions(options: DefaultOptions): void;
 /**
  * The {@link setHours} function options.
  */
-interface SetHoursOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetHoursOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setHours
  * @category Hour Helpers
@@ -9095,8 +9134,9 @@ declare function setHours<
 /**
  * The {@link setISODay} function options.
  */
-interface SetISODayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetISODayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setISODay
  * @category Weekday Helpers
@@ -9133,8 +9173,9 @@ declare function setISODay<
 /**
  * The {@link setISOWeek} function options.
  */
-interface SetISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetISOWeekOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setISOWeek
  * @category ISO Week Helpers
@@ -9171,8 +9212,9 @@ declare function setISOWeek<
 /**
  * The {@link setISOWeekYear} function options.
  */
-interface SetISOWeekYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetISOWeekYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -9210,8 +9252,9 @@ declare function setISOWeekYear<
 /**
  * The {@link setMilliseconds} function options.
  */
-interface SetMillisecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetMillisecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setMilliseconds
  * @category Millisecond Helpers
@@ -9246,8 +9289,9 @@ declare function setMilliseconds<
 /**
  * The {@link setMinutes} function options.
  */
-interface SetMinutesOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetMinutesOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setMinutes
  * @category Minute Helpers
@@ -9282,8 +9326,9 @@ declare function setMinutes<
 /**
  * The {@link setMonth} function options.
  */
-interface SetMonthOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetMonthOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setMonth
  * @category Month Helpers
@@ -9318,8 +9363,9 @@ declare function setMonth<
 /**
  * The {@link setQuarter} function options.
  */
-interface SetQuarterOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetQuarterOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setQuarter
  * @category Quarter Helpers
@@ -9354,8 +9400,9 @@ declare function setQuarter<
 /**
  * The {@link setSeconds} function options.
  */
-interface SetSecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetSecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setSeconds
  * @category Second Helpers
@@ -9391,7 +9438,8 @@ declare function setSeconds<
  * The {@link setWeek} function options.
  */
 interface SetWeekOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<DateType> {}
@@ -9446,7 +9494,8 @@ declare function setWeek<
  * The {@link setWeekYear} function options.
  */
 interface SetWeekYearOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<DateType> {}
@@ -9501,8 +9550,9 @@ declare function setWeekYear<
 /**
  * The {@link setYear} function options.
  */
-interface SetYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SetYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name setYear
  * @category Year Helpers
@@ -9537,8 +9587,9 @@ declare function setYear<
 /**
  * The {@link startOfDay} function options.
  */
-interface StartOfDayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfDayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfDay
  * @category Day Helpers
@@ -9572,8 +9623,9 @@ declare function startOfDay<
 /**
  * The {@link startOfDecade} options.
  */
-interface StartOfDecadeOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfDecadeOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfDecade
  * @category Decade Helpers
@@ -9606,8 +9658,9 @@ declare function startOfDecade<
 /**
  * The {@link startOfHour} function options.
  */
-interface StartOfHourOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfHourOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfHour
  * @category Hour Helpers
@@ -9641,8 +9694,9 @@ declare function startOfHour<
 /**
  * The {@link startOfISOWeek} function options.
  */
-interface StartOfISOWeekOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfISOWeekOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfISOWeek
  * @category ISO Week Helpers
@@ -9678,8 +9732,9 @@ declare function startOfISOWeek<
 /**
  * The {@link startOfISOWeekYear} function options.
  */
-interface StartOfISOWeekYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfISOWeekYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -9716,8 +9771,9 @@ declare function startOfISOWeekYear<
 /**
  * The {@link startOfMinute} function options.
  */
-interface StartOfMinuteOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfMinuteOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfMinute
  * @category Minute Helpers
@@ -9751,8 +9807,9 @@ declare function startOfMinute<
 /**
  * The {@link startOfMonth} function options.
  */
-interface StartOfMonthOptions<ResultDate extends Date>
-  extends ContextOptions<ResultDate> {}
+interface StartOfMonthOptions<
+  ResultDate extends Date,
+> extends ContextOptions<ResultDate> {}
 /**
  * @name startOfMonth
  * @category Month Helpers
@@ -9787,8 +9844,9 @@ declare function startOfMonth<
 /**
  * The {@link startOfQuarter} function options.
  */
-interface StartOfQuarterOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfQuarterOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfQuarter
  * @category Quarter Helpers
@@ -9822,8 +9880,9 @@ declare function startOfQuarter<
 /**
  * The {@link startOfSecond} function options.
  */
-interface StartOfSecondOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfSecondOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfSecond
  * @category Second Helpers
@@ -9857,8 +9916,9 @@ declare function startOfSecond<
 /**
  * The {@link startOfToday} function options.
  */
-interface StartOfTodayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfTodayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfToday
  * @category Day Helpers
@@ -9886,8 +9946,9 @@ declare function startOfToday<ContextDate extends Date>(
 /**
  * The {@link startOfTomorrow} function options.
  */
-interface StartOfTomorrowOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfTomorrowOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfTomorrow
  * @category Day Helpers
@@ -9916,9 +9977,7 @@ declare function startOfTomorrow<ContextDate extends Date>(
  * The {@link startOfWeek} function options.
  */
 interface StartOfWeekOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<DateType> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<DateType> {}
 /**
  * @name startOfWeek
  * @category Week Helpers
@@ -9958,7 +10017,8 @@ declare function startOfWeek<
  * The {@link startOfWeekYear} function options.
  */
 interface StartOfWeekYearOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     FirstWeekContainsDateOptions,
     WeekOptions,
     ContextOptions<DateType> {}
@@ -10010,8 +10070,9 @@ declare function startOfWeekYear<
 /**
  * The {@link startOfYear} function options.
  */
-interface StartOfYearOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfYearOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfYear
  * @category Year Helpers
@@ -10045,8 +10106,9 @@ declare function startOfYear<
 /**
  * The {@link startOfYesterday} function options.
  */
-interface StartOfYesterdayOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface StartOfYesterdayOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name startOfYesterday
  * @category Day Helpers
@@ -10074,8 +10136,9 @@ declare function startOfYesterday<ContextDate extends Date>(
 /**
  * The {@link sub} function options.
  */
-interface SubOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name sub
  * @category Common Helpers
@@ -10127,8 +10190,9 @@ declare function sub<DateType extends Date, ResultDate extends Date = DateType>(
 /**
  * The {@link subBusinessDays} function options.
  */
-interface SubBusinessDaysOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubBusinessDaysOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subBusinessDays
  * @category Day Helpers
@@ -10163,8 +10227,9 @@ declare function subBusinessDays<
 /**
  * The {@link subDays} function options.
  */
-interface SubDaysOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubDaysOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subDays
  * @category Day Helpers
@@ -10196,8 +10261,9 @@ declare function subDays<
 /**
  * The {@link subHours} function options.
  */
-interface SubHoursOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubHoursOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subHours
  * @category Hour Helpers
@@ -10232,8 +10298,9 @@ declare function subHours<
 /**
  * The {@link subISOWeekYears} function options.
  */
-interface SubISOWeekYearsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubISOWeekYearsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -10270,8 +10337,9 @@ declare function subISOWeekYears<
 /**
  * The {@link subMilliseconds} function options.
  */
-interface SubMillisecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubMillisecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * Subtract the specified number of milliseconds from the given date.
  *
@@ -10296,8 +10364,9 @@ declare function subMilliseconds<
 /**
  * The {@link subMinutes} function options.
  */
-interface SubMinutesOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubMinutesOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subMinutes
  * @category Minute Helpers
@@ -10332,8 +10401,9 @@ declare function subMinutes<
 /**
  * The subMonths function options.
  */
-interface SubMonthsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubMonthsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subMonths
  * @category Month Helpers
@@ -10368,8 +10438,9 @@ declare function subMonths<
 /**
  * The {@link subQuarters} function options.
  */
-interface SubQuartersOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubQuartersOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subQuarters
  * @category Quarter Helpers
@@ -10404,8 +10475,9 @@ declare function subQuarters<
 /**
  * The {@link subSeconds} function options.
  */
-interface SubSecondsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubSecondsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * Subtract the specified number of seconds from the given date.
  *
@@ -10435,8 +10507,9 @@ declare function subSeconds<
 /**
  * The {@link subWeeks} function options.
  */
-interface SubWeeksOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubWeeksOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subWeeks
  * @category Week Helpers
@@ -10471,8 +10544,9 @@ declare function subWeeks<
 /**
  * The {@link subYears} function options.
  */
-interface SubYearsOptions<DateType extends Date = Date>
-  extends ContextOptions<DateType> {}
+interface SubYearsOptions<
+  DateType extends Date = Date,
+> extends ContextOptions<DateType> {}
 /**
  * @name subYears
  * @category Year Helpers

@@ -16,6 +16,7 @@ type NativeKeyboardEvent = KeyboardEvent;
 type NativeMouseEvent = MouseEvent;
 type NativeTouchEvent = TouchEvent;
 type NativePointerEvent = PointerEvent;
+type NativeSubmitEvent = SubmitEvent;
 type NativeToggleEvent = ToggleEvent;
 type NativeTransitionEvent = TransitionEvent;
 type NativeUIEvent = UIEvent;
@@ -333,8 +334,10 @@ declare namespace React {
   /**
    * @deprecated Use `ReactElement<P, React.FunctionComponent<P>>`
    */
-  interface FunctionComponentElement<P>
-    extends ReactElement<P, FunctionComponent<P>> {
+  interface FunctionComponentElement<P> extends ReactElement<
+    P,
+    FunctionComponent<P>
+  > {
     /**
      * @deprecated Use `element.props.ref` instead.
      */
@@ -357,8 +360,10 @@ declare namespace React {
   /**
    * @deprecated Use `ReactElement<P, React.ComponentClass<P>>`
    */
-  interface ComponentElement<P, T extends Component<P, ComponentState>>
-    extends ReactElement<P, ComponentClass<P>> {
+  interface ComponentElement<
+    P,
+    T extends Component<P, ComponentState>,
+  > extends ReactElement<P, ComponentClass<P>> {
     /**
      * @deprecated Use `element.props.ref` instead.
      */
@@ -385,8 +390,9 @@ declare namespace React {
   }
 
   // ReactHTML for ReactHTMLElement
-  interface ReactHTMLElement<T extends HTMLElement>
-    extends DetailedReactHTMLElement<AllHTMLAttributes<T>, T> {}
+  interface ReactHTMLElement<
+    T extends HTMLElement,
+  > extends DetailedReactHTMLElement<AllHTMLAttributes<T>, T> {}
 
   interface DetailedReactHTMLElement<
     P extends HTMLAttributes<T>,
@@ -396,8 +402,10 @@ declare namespace React {
   }
 
   // ReactSVG for ReactSVGElement
-  interface ReactSVGElement
-    extends DOMElement<SVGAttributes<SVGElement>, SVGElement> {
+  interface ReactSVGElement extends DOMElement<
+    SVGAttributes<SVGElement>,
+    SVGElement
+  > {
     type: SVGElementType;
   }
 
@@ -931,8 +939,11 @@ declare namespace React {
   type ReactInstance = Component<any> | Element;
 
   // Base component for plain JS classes
-  interface Component<P = {}, S = {}, SS = any>
-    extends ComponentLifecycle<P, S, SS> {}
+  interface Component<P = {}, S = {}, SS = any> extends ComponentLifecycle<
+    P,
+    S,
+    SS
+  > {}
   class Component<P, S> {
     /**
      * If set, `this.context` will be set at runtime to the current value of the given Context.
@@ -1167,8 +1178,10 @@ declare namespace React {
    * @template P The props the component accepts.
    * @template S The internal state of the component.
    */
-  interface ComponentClass<P = {}, S = ComponentState>
-    extends StaticLifecycle<P, S> {
+  interface ComponentClass<P = {}, S = ComponentState> extends StaticLifecycle<
+    P,
+    S
+  > {
     // constructor signature must match React.Component
     new (
       props: P,
@@ -1229,8 +1242,7 @@ declare namespace React {
   // as React will _not_ call the deprecated lifecycle methods if any of the new lifecycle
   // methods are present.
   interface ComponentLifecycle<P, S, SS = any>
-    extends NewLifecycle<P, S, SS>,
-      DeprecatedLifecycle<P, S> {
+    extends NewLifecycle<P, S, SS>, DeprecatedLifecycle<P, S> {
     /**
      * Called immediately after a component is mounted. Setting state here will trigger re-rendering.
      */
@@ -1666,8 +1678,9 @@ declare namespace React {
     ) => boolean,
   ): MemoExoticComponent<T>;
 
-  interface LazyExoticComponent<T extends ComponentType<any>>
-    extends ExoticComponent<CustomComponentPropsWithRef<T>> {
+  interface LazyExoticComponent<
+    T extends ComponentType<any>,
+  > extends ExoticComponent<CustomComponentPropsWithRef<T>> {
     readonly _result: T;
   }
 
@@ -2040,7 +2053,31 @@ declare namespace React {
     reducer: (state: State, action: Action) => State,
   ): [State, (action: Action) => void];
 
-  export type Usable<T> = PromiseLike<T> | Context<T>;
+  interface UntrackedReactPromise<T> extends PromiseLike<T> {
+    status?: void;
+  }
+
+  export interface PendingReactPromise<T> extends PromiseLike<T> {
+    status: "pending";
+  }
+
+  export interface FulfilledReactPromise<T> extends PromiseLike<T> {
+    status: "fulfilled";
+    value: T;
+  }
+
+  export interface RejectedReactPromise<T> extends PromiseLike<T> {
+    status: "rejected";
+    reason: unknown;
+  }
+
+  export type ReactPromise<T> =
+    | UntrackedReactPromise<T>
+    | PendingReactPromise<T>
+    | FulfilledReactPromise<T>
+    | RejectedReactPromise<T>;
+
+  export type Usable<T> = ReactPromise<T> | Context<T>;
 
   export function use<T>(usable: Usable<T>): T;
 
@@ -2126,16 +2163,23 @@ declare namespace React {
    * This might be a child element to the element on which the event listener is registered.
    * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/11508#issuecomment-256045682
    */
-  interface SyntheticEvent<T = Element, E = Event>
-    extends BaseSyntheticEvent<E, EventTarget & T, EventTarget> {}
+  interface SyntheticEvent<T = Element, E = Event> extends BaseSyntheticEvent<
+    E,
+    EventTarget & T,
+    EventTarget
+  > {}
 
-  interface ClipboardEvent<T = Element>
-    extends SyntheticEvent<T, NativeClipboardEvent> {
+  interface ClipboardEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeClipboardEvent
+  > {
     clipboardData: DataTransfer;
   }
 
-  interface CompositionEvent<T = Element>
-    extends SyntheticEvent<T, NativeCompositionEvent> {
+  interface CompositionEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeCompositionEvent
+  > {
     data: string;
   }
 
@@ -2143,8 +2187,10 @@ declare namespace React {
     dataTransfer: DataTransfer;
   }
 
-  interface PointerEvent<T = Element>
-    extends MouseEvent<T, NativePointerEvent> {
+  interface PointerEvent<T = Element> extends MouseEvent<
+    T,
+    NativePointerEvent
+  > {
     pointerId: number;
     pressure: number;
     tangentialPressure: number;
@@ -2157,24 +2203,43 @@ declare namespace React {
     isPrimary: boolean;
   }
 
-  interface FocusEvent<Target = Element, RelatedTarget = Element>
-    extends SyntheticEvent<Target, NativeFocusEvent> {
+  interface FocusEvent<
+    Target = Element,
+    RelatedTarget = Element,
+  > extends SyntheticEvent<Target, NativeFocusEvent> {
     relatedTarget: (EventTarget & RelatedTarget) | null;
     target: EventTarget & Target;
   }
 
+  /**
+   * @deprecated FormEvent doesn't actually exist.
+   *             You probably meant to use {@link ChangeEvent}, {@link InputEvent}, {@link SubmitEvent}, or just {@link SyntheticEvent} instead
+   *             depending on the event type.
+   */
   interface FormEvent<T = Element> extends SyntheticEvent<T> {}
 
-  interface InvalidEvent<T = Element> extends SyntheticEvent<T> {
-    target: EventTarget & T;
+  interface InvalidEvent<T = Element> extends SyntheticEvent<T> {}
+
+  /**
+   * change events bubble in React so their target is generally unknown.
+   * Only for form elements we know their target type because form events can't
+   * be nested.
+   * This type exists purely to narrow `target` for form elements. It doesn't
+   * reflect a DOM event. Change events are just fired as standard {@link SyntheticEvent}.
+   */
+  interface ChangeEvent<
+    CurrentTarget = Element,
+    Target = Element,
+  > extends SyntheticEvent<CurrentTarget> {
+    // TODO: This is wrong for change event handlers on arbitrary. Should
+    // be EventTarget & Target, but kept for backward compatibility until React 20.
+    target: EventTarget & CurrentTarget;
   }
 
-  interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
-    target: EventTarget & T;
-  }
-
-  interface InputEvent<T = Element>
-    extends SyntheticEvent<T, NativeInputEvent> {
+  interface InputEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeInputEvent
+  > {
     data: string;
   }
 
@@ -2219,8 +2284,10 @@ declare namespace React {
     which: number;
   }
 
-  interface MouseEvent<T = Element, E = NativeMouseEvent>
-    extends UIEvent<T, E> {
+  interface MouseEvent<T = Element, E = NativeMouseEvent> extends UIEvent<
+    T,
+    E
+  > {
     altKey: boolean;
     button: number;
     buttons: number;
@@ -2242,6 +2309,16 @@ declare namespace React {
     shiftKey: boolean;
   }
 
+  interface SubmitEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeSubmitEvent
+  > {
+    // Currently not exposed by Reat
+    // submitter: HTMLElement | null;
+    // SubmitEvents are always targetted at HTMLFormElements.
+    target: EventTarget & HTMLFormElement;
+  }
+
   interface TouchEvent<T = Element> extends UIEvent<T, NativeTouchEvent> {
     altKey: boolean;
     changedTouches: TouchList;
@@ -2256,8 +2333,10 @@ declare namespace React {
     touches: TouchList;
   }
 
-  interface UIEvent<T = Element, E = NativeUIEvent>
-    extends SyntheticEvent<T, E> {
+  interface UIEvent<T = Element, E = NativeUIEvent> extends SyntheticEvent<
+    T,
+    E
+  > {
     detail: number;
     view: AbstractView;
   }
@@ -2269,21 +2348,27 @@ declare namespace React {
     deltaZ: number;
   }
 
-  interface AnimationEvent<T = Element>
-    extends SyntheticEvent<T, NativeAnimationEvent> {
+  interface AnimationEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeAnimationEvent
+  > {
     animationName: string;
     elapsedTime: number;
     pseudoElement: string;
   }
 
-  interface ToggleEvent<T = Element>
-    extends SyntheticEvent<T, NativeToggleEvent> {
+  interface ToggleEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeToggleEvent
+  > {
     oldState: "closed" | "open";
     newState: "closed" | "open";
   }
 
-  interface TransitionEvent<T = Element>
-    extends SyntheticEvent<T, NativeTransitionEvent> {
+  interface TransitionEvent<T = Element> extends SyntheticEvent<
+    T,
+    NativeTransitionEvent
+  > {
     elapsedTime: number;
     propertyName: string;
     pseudoElement: string;
@@ -2303,11 +2388,20 @@ declare namespace React {
   type CompositionEventHandler<T = Element> = EventHandler<CompositionEvent<T>>;
   type DragEventHandler<T = Element> = EventHandler<DragEvent<T>>;
   type FocusEventHandler<T = Element> = EventHandler<FocusEvent<T>>;
+  /**
+   * @deprecated FormEventHandler doesn't actually exist.
+   *             You probably meant to use {@link ChangeEventHandler}, {@link InputEventHandler}, {@link SubmitEventHandler}, or just {@link EventHandler} instead
+   *             depending on the event type.
+   */
   type FormEventHandler<T = Element> = EventHandler<FormEvent<T>>;
-  type ChangeEventHandler<T = Element> = EventHandler<ChangeEvent<T>>;
+  type ChangeEventHandler<
+    CurrentTarget = Element,
+    Target = Element,
+  > = EventHandler<ChangeEvent<CurrentTarget, Target>>;
   type InputEventHandler<T = Element> = EventHandler<InputEvent<T>>;
   type KeyboardEventHandler<T = Element> = EventHandler<KeyboardEvent<T>>;
   type MouseEventHandler<T = Element> = EventHandler<MouseEvent<T>>;
+  type SubmitEventHandler<T = Element> = EventHandler<SubmitEvent<T>>;
   type TouchEventHandler<T = Element> = EventHandler<TouchEvent<T>>;
   type PointerEventHandler<T = Element> = EventHandler<PointerEvent<T>>;
   type UIEventHandler<T = Element> = EventHandler<UIEvent<T>>;
@@ -2362,19 +2456,19 @@ declare namespace React {
     onBlur?: FocusEventHandler<T> | undefined;
     onBlurCapture?: FocusEventHandler<T> | undefined;
 
-    // Form Events
-    onChange?: FormEventHandler<T> | undefined;
-    onChangeCapture?: FormEventHandler<T> | undefined;
+    // form related Events
+    onChange?: ChangeEventHandler<T> | undefined;
+    onChangeCapture?: ChangeEventHandler<T> | undefined;
     onBeforeInput?: InputEventHandler<T> | undefined;
-    onBeforeInputCapture?: FormEventHandler<T> | undefined;
-    onInput?: FormEventHandler<T> | undefined;
-    onInputCapture?: FormEventHandler<T> | undefined;
-    onReset?: FormEventHandler<T> | undefined;
-    onResetCapture?: FormEventHandler<T> | undefined;
-    onSubmit?: FormEventHandler<T> | undefined;
-    onSubmitCapture?: FormEventHandler<T> | undefined;
-    onInvalid?: FormEventHandler<T> | undefined;
-    onInvalidCapture?: FormEventHandler<T> | undefined;
+    onBeforeInputCapture?: InputEventHandler<T> | undefined;
+    onInput?: InputEventHandler<T> | undefined;
+    onInputCapture?: InputEventHandler<T> | undefined;
+    onReset?: ReactEventHandler<T> | undefined;
+    onResetCapture?: ReactEventHandler<T> | undefined;
+    onSubmit?: SubmitEventHandler<T> | undefined;
+    onSubmitCapture?: SubmitEventHandler<T> | undefined;
+    onInvalid?: ReactEventHandler<T> | undefined;
+    onInvalidCapture?: ReactEventHandler<T> | undefined;
 
     // Image Events
     onLoad?: ReactEventHandler<T> | undefined;
@@ -3425,7 +3519,9 @@ declare namespace React {
     value?: string | readonly string[] | number | undefined;
     width?: number | string | undefined;
 
-    onChange?: ChangeEventHandler<T> | undefined;
+    // No other element dispatching change events can be nested in a <input>
+    // so we know the target will be a HTMLInputElement.
+    onChange?: ChangeEventHandler<T, HTMLInputElement> | undefined;
   }
 
   interface KeygenHTMLAttributes<T> extends HTMLAttributes<T> {
@@ -3588,7 +3684,9 @@ declare namespace React {
     required?: boolean | undefined;
     size?: number | undefined;
     value?: string | readonly string[] | number | undefined;
-    onChange?: ChangeEventHandler<T> | undefined;
+    // No other element dispatching change events can be nested in a <select>
+    // so we know the target will be a HTMLSelectElement.
+    onChange?: ChangeEventHandler<T, HTMLSelectElement> | undefined;
   }
 
   interface SourceHTMLAttributes<T> extends HTMLAttributes<T> {
@@ -3640,7 +3738,9 @@ declare namespace React {
     value?: string | readonly string[] | number | undefined;
     wrap?: string | undefined;
 
-    onChange?: ChangeEventHandler<T> | undefined;
+    // No other element dispatching change events can be nested in a <textare>
+    // so we know the target will be a HTMLTextAreaElement.
+    onChange?: ChangeEventHandler<T, HTMLTextAreaElement> | undefined;
   }
 
   interface TdHTMLAttributes<T> extends HTMLAttributes<T> {
@@ -3712,6 +3812,9 @@ declare namespace React {
     method?: string | undefined;
     min?: number | string | undefined;
     name?: string | undefined;
+    nonce?: string | undefined;
+    part?: string | undefined;
+    slot?: string | undefined;
     style?: CSSProperties | undefined;
     target?: string | undefined;
     type?: string | undefined;

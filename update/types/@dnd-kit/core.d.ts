@@ -674,11 +674,10 @@ declare const defaultDropAnimationSideEffects: (
 ) => DropAnimationSideEffects;
 declare const defaultDropAnimationConfiguration: Required<DropAnimationOptions>;
 
-interface Props
-  extends Pick<
-    Props$1,
-    "adjustScale" | "children" | "className" | "style" | "transition"
-  > {
+interface Props extends Pick<
+  Props$1,
+  "adjustScale" | "children" | "className" | "style" | "transition"
+> {
   dropAnimation?: DropAnimation | null | undefined;
   modifiers?: Modifiers;
   wrapperElement?: keyof JSX.IntrinsicElements;

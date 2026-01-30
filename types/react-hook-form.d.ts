@@ -225,7 +225,7 @@ type PathValueImpl<T, P extends string> = T extends any
       : P extends `${ArrayKey}`
         ? T extends ReadonlyArray<infer V>
           ? V
-          : undefined extends T
+          : T extends undefined
             ? undefined
             : never
         : never
@@ -302,8 +302,8 @@ type FieldArrayPathByValue<TFieldValues extends FieldValues, TValue> = {
 
 type UseFieldArrayProps<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
   TTransformedValues = TFieldValues,
 > = {
@@ -328,14 +328,14 @@ type UseFieldArrayProps<
  */
 type FieldArrayWithId<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
 > = FieldArray<TFieldValues, TFieldArrayName> & Record<TKeyName, string>;
 type FieldArray<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > =
   FieldArrayPathValue<TFieldValues, TFieldArrayName> extends
     | ReadonlyArray<infer U>
@@ -404,8 +404,8 @@ type UseFieldArrayMove = (indexA: number, indexB: number) => void;
  */
 type UseFieldArrayPrepend<
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > = (
   value:
     | FieldArray<TFieldValues, TFieldArrayName>
@@ -435,8 +435,8 @@ type UseFieldArrayPrepend<
  */
 type UseFieldArrayAppend<
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > = (
   value:
     | FieldArray<TFieldValues, TFieldArrayName>
@@ -487,8 +487,8 @@ type UseFieldArrayRemove = (index?: number | number[]) => void;
  */
 type UseFieldArrayInsert<
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > = (
   index: number,
   value:
@@ -518,8 +518,8 @@ type UseFieldArrayInsert<
  */
 type UseFieldArrayUpdate<
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > = (index: number, value: FieldArray<TFieldValues, TFieldArrayName>) => void;
 /**
  * Replace the entire field array values.
@@ -541,8 +541,8 @@ type UseFieldArrayUpdate<
  */
 type UseFieldArrayReplace<
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 > = (
   value:
     | FieldArray<TFieldValues, TFieldArrayName>
@@ -550,8 +550,8 @@ type UseFieldArrayReplace<
 ) => void;
 type UseFieldArrayReturn<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
 > = {
   swap: UseFieldArraySwap;
@@ -1324,8 +1324,8 @@ type Names = {
 type BatchFieldArrayUpdate = <
   T extends Function,
   TFieldValues extends FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
 >(
   name: InternalFieldName,
   updatedFieldArrayValues?: Partial<
@@ -1389,6 +1389,10 @@ type Control<
   _runSchema: (names: InternalFieldName[]) => Promise<{
     errors: FieldErrors;
   }>;
+  _updateIsValidating: (
+    names?: InternalFieldName[],
+    isValidating?: boolean,
+  ) => void;
   _focusError: () => boolean | undefined;
   _disableForm: (disabled?: boolean) => void;
   _subscribe: FromSubscribe<TFieldValues>;
@@ -1442,17 +1446,6 @@ type UseFormStateProps<
 }>;
 type UseFormStateReturn<TFieldValues extends FieldValues> =
   FormState<TFieldValues>;
-type UseWatchProps<TFieldValues extends FieldValues = FieldValues> = {
-  defaultValue?: unknown;
-  disabled?: boolean;
-  name?:
-    | FieldPath<TFieldValues>
-    | FieldPath<TFieldValues>[]
-    | readonly FieldPath<TFieldValues>[];
-  control?: Control<TFieldValues>;
-  exact?: boolean;
-  compute?: (formValues: any) => any;
-};
 type FormProviderProps<
   TFieldValues extends FieldValues = FieldValues,
   TContext = any,
@@ -1520,22 +1513,33 @@ type ExtractObjects<T> = T extends infer U
     ? U
     : never
   : never;
-type DeepPartial<T> = T extends BrowserNativeObject | NestedValue
-  ? T
-  : {
-      [K in keyof T]?: ExtractObjects<T[K]> extends never
-        ? T[K]
-        : DeepPartial<T[K]>;
-    };
-type DeepPartialSkipArrayKey<T> = T extends BrowserNativeObject | NestedValue
-  ? T
-  : T extends ReadonlyArray<any>
-    ? {
-        [K in keyof T]: DeepPartialSkipArrayKey<T[K]>;
-      }
-    : {
-        [K in keyof T]?: DeepPartialSkipArrayKey<T[K]>;
-      };
+type IsPrimitiveLike<T> = T extends Primitive
+  ? true
+  : T extends Primitive & object
+    ? true
+    : false;
+type DeepPartial<T> =
+  IsPrimitiveLike<T> extends true
+    ? T
+    : T extends BrowserNativeObject | NestedValue
+      ? T
+      : {
+          [K in keyof T]?: ExtractObjects<T[K]> extends never
+            ? T[K]
+            : DeepPartial<T[K]>;
+        };
+type DeepPartialSkipArrayKey<T> =
+  IsPrimitiveLike<T> extends true
+    ? T
+    : T extends BrowserNativeObject | NestedValue
+      ? T
+      : T extends ReadonlyArray<any>
+        ? {
+            [K in keyof T]: DeepPartialSkipArrayKey<T[K]>;
+          }
+        : {
+            [K in keyof T]?: DeepPartialSkipArrayKey<T[K]>;
+          };
 /**
  * Checks whether the type is any
  * See {@link https://stackoverflow.com/a/49928360/3406963}
@@ -1782,6 +1786,7 @@ type UseControllerProps<
   defaultValue?: FieldPathValue<TFieldValues, TName>;
   control?: Control<TFieldValues, any, TTransformedValues>;
   disabled?: boolean;
+  exact?: boolean;
 };
 type UseControllerReturn<
   TFieldValues extends FieldValues = FieldValues,
@@ -1827,6 +1832,69 @@ type ControllerProps<
     formState: UseFormStateReturn<TFieldValues>;
   }) => React.ReactElement;
 } & UseControllerProps<TFieldValues, TName, TTransformedValues>;
+
+type UseWatchProps<TFieldValues extends FieldValues = FieldValues> = {
+  defaultValue?: unknown;
+  disabled?: boolean;
+  name?:
+    | FieldPath<TFieldValues>
+    | FieldPath<TFieldValues>[]
+    | readonly FieldPath<TFieldValues>[];
+  control?: Control<TFieldValues>;
+  exact?: boolean;
+  compute?: (formValues: TFieldValues) => TFieldValues;
+};
+type WatchDefaultValue<
+  TFieldName,
+  TFieldValues extends FieldValues = FieldValues,
+> =
+  TFieldName extends FieldPath<TFieldValues>
+    ? FieldPathValue<TFieldValues, TFieldName>
+    : DeepPartialSkipArrayKey<TFieldValues>;
+type WatchName<TFieldValues extends FieldValues> =
+  | FieldPath<TFieldValues>
+  | FieldPath<TFieldValues>[]
+  | readonly FieldPath<TFieldValues>[]
+  | undefined;
+type WatchValue<
+  TFieldName,
+  TFieldValues extends FieldValues = FieldValues,
+> = TFieldName extends
+  | FieldPath<TFieldValues>[]
+  | readonly FieldPath<TFieldValues>[]
+  ? FieldPathValues<TFieldValues, TFieldName>
+  : TFieldName extends FieldPath<TFieldValues>
+    ? FieldPathValue<TFieldValues, TFieldName>
+    : TFieldValues;
+type WatchRenderValue<
+  TFieldName,
+  TFieldValues extends FieldValues,
+  TComputeValue,
+> = TComputeValue extends undefined
+  ? WatchValue<TFieldName, TFieldValues>
+  : TComputeValue;
+type WatchProps<
+  TFieldName extends WatchName<TFieldValues>,
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues = TFieldValues,
+  TComputeValue = undefined,
+> = {
+  control?: Control<TFieldValues, TContext, TTransformedValues>;
+  /**
+   * @deprecated This prop will be renamed to `name` in the next major release.
+   * Use `name` instead.
+   */
+  names?: TFieldName;
+  name?: TFieldName;
+  disabled?: boolean;
+  exact?: boolean;
+  defaultValue?: WatchDefaultValue<TFieldName, TFieldValues>;
+  compute?: (value: WatchValue<TFieldName, TFieldValues>) => TComputeValue;
+  render: (
+    value: WatchRenderValue<TFieldName, TFieldValues, TComputeValue>,
+  ) => ReactNode | ReactNode[];
+};
 
 /**
  * Component based on `useController` hook to work with controlled component.
@@ -1906,6 +1974,23 @@ declare function Form<
   TTransformedValues = TFieldValues,
 >(props: FormProps<TFieldValues, TTransformedValues>): React.JSX.Element;
 //# sourceMappingURL=form.d.ts.map
+
+type FormStateSubscribeProps<
+  TFieldValues extends FieldValues,
+  TTransformedValues = TFieldValues,
+> = UseFormStateProps<TFieldValues, TTransformedValues> & {
+  render: (values: UseFormStateReturn<TFieldValues>) => ReactNode;
+};
+declare const FormStateSubscribe: <
+  TFieldValues extends FieldValues,
+  TTransformedValues = TFieldValues,
+>({
+  control,
+  disabled,
+  exact,
+  name,
+  render,
+}: FormStateSubscribeProps<TFieldValues, TTransformedValues>) => ReactNode;
 
 declare const _default$2: (
   name: InternalFieldName,
@@ -2003,8 +2088,8 @@ declare function useController<
  */
 declare function useFieldArray<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldArrayName extends
-    FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+  TFieldArrayName extends FieldArrayPath<TFieldValues> =
+    FieldArrayPath<TFieldValues>,
   TKeyName extends string = "id",
   TTransformedValues = TFieldValues,
 >(
@@ -2318,8 +2403,8 @@ declare function useWatch<
  */
 declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldNames extends
-    readonly FieldPath<TFieldValues>[] = readonly FieldPath<TFieldValues>[],
+  TFieldNames extends readonly FieldPath<TFieldValues>[] =
+    readonly FieldPath<TFieldValues>[],
   TTransformedValues = TFieldValues,
 >(props: {
   name: readonly [...TFieldNames];
@@ -2355,8 +2440,8 @@ declare function useWatch<
  */
 declare function useWatch<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldNames extends
-    readonly FieldPath<TFieldValues>[] = readonly FieldPath<TFieldValues>[],
+  TFieldNames extends readonly FieldPath<TFieldValues>[] =
+    readonly FieldPath<TFieldValues>[],
   TTransformedValues = TFieldValues,
   TComputeValue = unknown,
 >(props: {
@@ -2400,39 +2485,15 @@ declare const _default: (
 ) => void;
 //# sourceMappingURL=set.d.ts.map
 
-type GetValues<
-  TFieldValues extends FieldValues,
-  TFieldNames extends readonly FieldPath<TFieldValues>[] = readonly [],
-> = TFieldNames extends readonly [
-  infer Name extends FieldPath<TFieldValues>,
-  ...infer RestFieldNames,
-]
-  ? RestFieldNames extends readonly FieldPath<TFieldValues>[]
-    ? readonly [
-        FieldPathValue<TFieldValues, Name>,
-        ...GetValues<TFieldValues, RestFieldNames>,
-      ]
-    : never
-  : TFieldNames extends readonly [infer Name extends FieldPath<TFieldValues>]
-    ? readonly [FieldPathValue<TFieldValues, Name>]
-    : TFieldNames extends readonly []
-      ? readonly []
-      : never;
-type WatchProps<
-  TFieldNames extends readonly FieldPath<TFieldValues>[],
-  TFieldValues extends FieldValues = FieldValues,
-  TContext = any,
-  TTransformedValues = TFieldValues,
-> = {
-  control: Control<TFieldValues, TContext, TTransformedValues>;
-  names: TFieldNames;
-  render: (values: GetValues<TFieldValues, TFieldNames>) => ReactNode;
-};
 /**
  * Watch component that subscribes to form field changes and re-renders when watched fields update.
  *
  * @param control - The form control object from useForm
- * @param names - Array of field names to watch for changes
+ * @param name - Can be field name, array of field names, or undefined to watch the entire form
+ * @param disabled - Disable subscription
+ * @param exact - Whether to watch exact field names or not
+ * @param defaultValue - The default value to use if the field is not yet set
+ * @param compute - Function to compute derived values from watched fields
  * @param render - The function that receives watched values and returns ReactNode
  * @returns The result of calling render function with watched values
  *
@@ -2451,20 +2512,24 @@ type WatchProps<
  * ```
  */
 declare const Watch: <
-  const TFieldNames extends readonly FieldPath<TFieldValues>[],
   TFieldValues extends FieldValues = FieldValues,
+  const TFieldName extends
+    | FieldPath<TFieldValues>
+    | FieldPath<TFieldValues>[]
+    | readonly FieldPath<TFieldValues>[]
+    | undefined = undefined,
   TContext = any,
   TTransformedValues = TFieldValues,
->({
-  control,
-  names,
-  render,
-}: WatchProps<
-  TFieldNames,
-  TFieldValues,
-  TContext,
-  TTransformedValues
->) => ReactNode;
+  TComputeValue = undefined,
+>(
+  props: WatchProps<
+    TFieldName,
+    TFieldValues,
+    TContext,
+    TTransformedValues,
+    TComputeValue
+  >,
+) => React.ReactNode | React.ReactNode[];
 
 export {
   type ArrayPath,
@@ -2515,6 +2580,8 @@ export {
   type FormState,
   type FormStateProxy,
   type FormStateSubjectRef,
+  FormStateSubscribe,
+  type FormStateSubscribeProps,
   type FormSubmitHandler,
   type FromSubscribe,
   type GetIsDirty,
@@ -2602,9 +2669,13 @@ export {
   type ValidationValue,
   type ValidationValueMessage,
   Watch,
+  type WatchDefaultValue,
   type WatchInternal,
+  type WatchName,
   type WatchObserver,
   type WatchProps,
+  type WatchRenderValue,
+  type WatchValue,
   _default$2 as appendErrors,
   createFormControl,
   _default$1 as get,

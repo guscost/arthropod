@@ -14,8 +14,8 @@ export namespace JSX {
     P
   >;
   interface IntrinsicAttributes extends React.JSX.IntrinsicAttributes {}
-  interface IntrinsicClassAttributes<T>
-    extends React.JSX.IntrinsicClassAttributes<T> {}
+  interface IntrinsicClassAttributes<T> extends React.JSX
+    .IntrinsicClassAttributes<T> {}
   interface IntrinsicElements extends React.JSX.IntrinsicElements {}
 }
 

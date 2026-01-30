@@ -26,8 +26,9 @@ type PrimitivePropsWithRef<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent<E extends React.ElementType>
-  extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
+interface PrimitiveForwardRefComponent<
+  E extends React.ElementType,
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
 declare const Primitive: Primitives;
 /**
  * Flush custom event dispatch

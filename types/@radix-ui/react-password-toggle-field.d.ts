@@ -13,7 +13,8 @@ interface PasswordToggleFieldOwnProps {
   autoComplete?: "current-password" | "new-password";
 }
 interface PasswordToggleFieldInputProps
-  extends PasswordToggleFieldOwnProps,
+  extends
+    PasswordToggleFieldOwnProps,
     Omit<PrimitiveInputProps, keyof PasswordToggleFieldOwnProps | "type"> {
   autoComplete?: "current-password" | "new-password";
 }
@@ -21,8 +22,10 @@ declare const PasswordToggleFieldInput: React.ForwardRefExoticComponent<
   PasswordToggleFieldInputProps & React.RefAttributes<HTMLInputElement>
 >;
 type PrimitiveButtonProps = React.ComponentPropsWithoutRef<"button">;
-interface PasswordToggleFieldToggleProps
-  extends Omit<PrimitiveButtonProps, "type"> {}
+interface PasswordToggleFieldToggleProps extends Omit<
+  PrimitiveButtonProps,
+  "type"
+> {}
 declare const PasswordToggleFieldToggle: React.ForwardRefExoticComponent<
   PasswordToggleFieldToggleProps & React.RefAttributes<HTMLButtonElement>
 >;
@@ -38,8 +41,10 @@ type PasswordToggleFieldSlotProps =
   | PasswordToggleFieldSlotRenderProps;
 declare const PasswordToggleFieldSlot: React.FC<PasswordToggleFieldSlotProps>;
 type PrimitiveSvgProps = React.ComponentPropsWithoutRef<"svg">;
-interface PasswordToggleFieldIconProps
-  extends Omit<PrimitiveSvgProps, "children"> {
+interface PasswordToggleFieldIconProps extends Omit<
+  PrimitiveSvgProps,
+  "children"
+> {
   visible: React.ReactElement;
   hidden: React.ReactElement;
 }

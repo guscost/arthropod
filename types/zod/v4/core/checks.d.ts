@@ -32,8 +32,9 @@ export interface $ZodCheckLessThanInternals<
   def: $ZodCheckLessThanDef;
   issc: errors.$ZodIssueTooBig<T>;
 }
-export interface $ZodCheckLessThan<T extends util.Numeric = util.Numeric>
-  extends $ZodCheck<T> {
+export interface $ZodCheckLessThan<
+  T extends util.Numeric = util.Numeric,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckLessThanInternals<T>;
 }
 export declare const $ZodCheckLessThan: core.$constructor<$ZodCheckLessThan>;
@@ -48,8 +49,9 @@ export interface $ZodCheckGreaterThanInternals<
   def: $ZodCheckGreaterThanDef;
   issc: errors.$ZodIssueTooSmall<T>;
 }
-export interface $ZodCheckGreaterThan<T extends util.Numeric = util.Numeric>
-  extends $ZodCheck<T> {
+export interface $ZodCheckGreaterThan<
+  T extends util.Numeric = util.Numeric,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckGreaterThanInternals<T>;
 }
 export declare const $ZodCheckGreaterThan: core.$constructor<$ZodCheckGreaterThan>;
@@ -83,8 +85,7 @@ export interface $ZodCheckNumberFormatDef extends $ZodCheckDef {
   check: "number_format";
   format: $ZodNumberFormats;
 }
-export interface $ZodCheckNumberFormatInternals
-  extends $ZodCheckInternals<number> {
+export interface $ZodCheckNumberFormatInternals extends $ZodCheckInternals<number> {
   def: $ZodCheckNumberFormatDef;
   issc:
     | errors.$ZodIssueInvalidType
@@ -100,8 +101,7 @@ export interface $ZodCheckBigIntFormatDef extends $ZodCheckDef {
   check: "bigint_format";
   format: $ZodBigIntFormats | undefined;
 }
-export interface $ZodCheckBigIntFormatInternals
-  extends $ZodCheckInternals<bigint> {
+export interface $ZodCheckBigIntFormatInternals extends $ZodCheckInternals<bigint> {
   def: $ZodCheckBigIntFormatDef;
   issc: errors.$ZodIssueTooBig<"bigint"> | errors.$ZodIssueTooSmall<"bigint">;
 }
@@ -119,8 +119,9 @@ export interface $ZodCheckMaxSizeInternals<
   def: $ZodCheckMaxSizeDef;
   issc: errors.$ZodIssueTooBig<T>;
 }
-export interface $ZodCheckMaxSize<T extends util.HasSize = util.HasSize>
-  extends $ZodCheck<T> {
+export interface $ZodCheckMaxSize<
+  T extends util.HasSize = util.HasSize,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckMaxSizeInternals<T>;
 }
 export declare const $ZodCheckMaxSize: core.$constructor<$ZodCheckMaxSize>;
@@ -134,8 +135,9 @@ export interface $ZodCheckMinSizeInternals<
   def: $ZodCheckMinSizeDef;
   issc: errors.$ZodIssueTooSmall<T>;
 }
-export interface $ZodCheckMinSize<T extends util.HasSize = util.HasSize>
-  extends $ZodCheck<T> {
+export interface $ZodCheckMinSize<
+  T extends util.HasSize = util.HasSize,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckMinSizeInternals<T>;
 }
 export declare const $ZodCheckMinSize: core.$constructor<$ZodCheckMinSize>;
@@ -149,8 +151,9 @@ export interface $ZodCheckSizeEqualsInternals<
   def: $ZodCheckSizeEqualsDef;
   issc: errors.$ZodIssueTooBig<T> | errors.$ZodIssueTooSmall<T>;
 }
-export interface $ZodCheckSizeEquals<T extends util.HasSize = util.HasSize>
-  extends $ZodCheck<T> {
+export interface $ZodCheckSizeEquals<
+  T extends util.HasSize = util.HasSize,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckSizeEqualsInternals<T>;
 }
 export declare const $ZodCheckSizeEquals: core.$constructor<$ZodCheckSizeEquals>;
@@ -164,8 +167,9 @@ export interface $ZodCheckMaxLengthInternals<
   def: $ZodCheckMaxLengthDef;
   issc: errors.$ZodIssueTooBig<T>;
 }
-export interface $ZodCheckMaxLength<T extends util.HasLength = util.HasLength>
-  extends $ZodCheck<T> {
+export interface $ZodCheckMaxLength<
+  T extends util.HasLength = util.HasLength,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckMaxLengthInternals<T>;
 }
 export declare const $ZodCheckMaxLength: core.$constructor<$ZodCheckMaxLength>;
@@ -179,8 +183,9 @@ export interface $ZodCheckMinLengthInternals<
   def: $ZodCheckMinLengthDef;
   issc: errors.$ZodIssueTooSmall<T>;
 }
-export interface $ZodCheckMinLength<T extends util.HasLength = util.HasLength>
-  extends $ZodCheck<T> {
+export interface $ZodCheckMinLength<
+  T extends util.HasLength = util.HasLength,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckMinLengthInternals<T>;
 }
 export declare const $ZodCheckMinLength: core.$constructor<$ZodCheckMinLength>;
@@ -231,14 +236,14 @@ export type $ZodStringFormats =
   | "starts_with"
   | "ends_with"
   | "includes";
-export interface $ZodCheckStringFormatDef<Format extends string = string>
-  extends $ZodCheckDef {
+export interface $ZodCheckStringFormatDef<
+  Format extends string = string,
+> extends $ZodCheckDef {
   check: "string_format";
   format: Format;
   pattern?: RegExp | undefined;
 }
-export interface $ZodCheckStringFormatInternals
-  extends $ZodCheckInternals<string> {
+export interface $ZodCheckStringFormatInternals extends $ZodCheckInternals<string> {
   def: $ZodCheckStringFormatDef;
   issc: errors.$ZodIssueInvalidStringFormat;
 }
@@ -258,10 +263,8 @@ export interface $ZodCheckRegex extends $ZodCheck<string> {
   _zod: $ZodCheckRegexInternals;
 }
 export declare const $ZodCheckRegex: core.$constructor<$ZodCheckRegex>;
-export interface $ZodCheckLowerCaseDef
-  extends $ZodCheckStringFormatDef<"lowercase"> {}
-export interface $ZodCheckLowerCaseInternals
-  extends $ZodCheckInternals<string> {
+export interface $ZodCheckLowerCaseDef extends $ZodCheckStringFormatDef<"lowercase"> {}
+export interface $ZodCheckLowerCaseInternals extends $ZodCheckInternals<string> {
   def: $ZodCheckLowerCaseDef;
   issc: errors.$ZodIssueInvalidStringFormat;
 }
@@ -269,10 +272,8 @@ export interface $ZodCheckLowerCase extends $ZodCheck<string> {
   _zod: $ZodCheckLowerCaseInternals;
 }
 export declare const $ZodCheckLowerCase: core.$constructor<$ZodCheckLowerCase>;
-export interface $ZodCheckUpperCaseDef
-  extends $ZodCheckStringFormatDef<"uppercase"> {}
-export interface $ZodCheckUpperCaseInternals
-  extends $ZodCheckInternals<string> {
+export interface $ZodCheckUpperCaseDef extends $ZodCheckStringFormatDef<"uppercase"> {}
+export interface $ZodCheckUpperCaseInternals extends $ZodCheckInternals<string> {
   def: $ZodCheckUpperCaseDef;
   issc: errors.$ZodIssueInvalidStringFormat;
 }
@@ -280,8 +281,7 @@ export interface $ZodCheckUpperCase extends $ZodCheck<string> {
   _zod: $ZodCheckUpperCaseInternals;
 }
 export declare const $ZodCheckUpperCase: core.$constructor<$ZodCheckUpperCase>;
-export interface $ZodCheckIncludesDef
-  extends $ZodCheckStringFormatDef<"includes"> {
+export interface $ZodCheckIncludesDef extends $ZodCheckStringFormatDef<"includes"> {
   includes: string;
   position?: number | undefined;
 }
@@ -293,12 +293,10 @@ export interface $ZodCheckIncludes extends $ZodCheck<string> {
   _zod: $ZodCheckIncludesInternals;
 }
 export declare const $ZodCheckIncludes: core.$constructor<$ZodCheckIncludes>;
-export interface $ZodCheckStartsWithDef
-  extends $ZodCheckStringFormatDef<"starts_with"> {
+export interface $ZodCheckStartsWithDef extends $ZodCheckStringFormatDef<"starts_with"> {
   prefix: string;
 }
-export interface $ZodCheckStartsWithInternals
-  extends $ZodCheckInternals<string> {
+export interface $ZodCheckStartsWithInternals extends $ZodCheckInternals<string> {
   def: $ZodCheckStartsWithDef;
   issc: errors.$ZodIssueInvalidStringFormat;
 }
@@ -306,8 +304,7 @@ export interface $ZodCheckStartsWith extends $ZodCheck<string> {
   _zod: $ZodCheckStartsWithInternals;
 }
 export declare const $ZodCheckStartsWith: core.$constructor<$ZodCheckStartsWith>;
-export interface $ZodCheckEndsWithDef
-  extends $ZodCheckStringFormatDef<"ends_with"> {
+export interface $ZodCheckEndsWithDef extends $ZodCheckStringFormatDef<"ends_with"> {
   suffix: string;
 }
 export interface $ZodCheckEndsWithInternals extends $ZodCheckInternals<string> {
@@ -323,13 +320,15 @@ export interface $ZodCheckPropertyDef extends $ZodCheckDef {
   property: string;
   schema: schemas.$ZodType;
 }
-export interface $ZodCheckPropertyInternals<T extends object = object>
-  extends $ZodCheckInternals<T> {
+export interface $ZodCheckPropertyInternals<
+  T extends object = object,
+> extends $ZodCheckInternals<T> {
   def: $ZodCheckPropertyDef;
   issc: errors.$ZodIssue;
 }
-export interface $ZodCheckProperty<T extends object = object>
-  extends $ZodCheck<T> {
+export interface $ZodCheckProperty<
+  T extends object = object,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckPropertyInternals<T>;
 }
 export declare const $ZodCheckProperty: core.$constructor<$ZodCheckProperty>;
@@ -343,8 +342,9 @@ export interface $ZodCheckMimeTypeInternals<
   def: $ZodCheckMimeTypeDef;
   issc: errors.$ZodIssueInvalidValue;
 }
-export interface $ZodCheckMimeType<T extends schemas.File = schemas.File>
-  extends $ZodCheck<T> {
+export interface $ZodCheckMimeType<
+  T extends schemas.File = schemas.File,
+> extends $ZodCheck<T> {
   _zod: $ZodCheckMimeTypeInternals<T>;
 }
 export declare const $ZodCheckMimeType: core.$constructor<$ZodCheckMimeType>;
@@ -352,8 +352,9 @@ export interface $ZodCheckOverwriteDef<T = unknown> extends $ZodCheckDef {
   check: "overwrite";
   tx(value: T): T;
 }
-export interface $ZodCheckOverwriteInternals<T = unknown>
-  extends $ZodCheckInternals<T> {
+export interface $ZodCheckOverwriteInternals<
+  T = unknown,
+> extends $ZodCheckInternals<T> {
   def: $ZodCheckOverwriteDef<T>;
   issc: never;
 }

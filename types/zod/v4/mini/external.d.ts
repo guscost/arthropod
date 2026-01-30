@@ -16,11 +16,11 @@ export {
   prettifyError,
   formatError,
   flattenError,
-  toJSONSchema,
   TimePrecision,
   util,
   NEVER,
 } from "../core/index.js";
+export { toJSONSchema } from "../core/json-schema-processors.js";
 export * as locales from "../locales/index.js";
 /** A special constant with type `never` */
 export * as iso from "./iso.js";

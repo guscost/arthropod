@@ -1,3 +1,4 @@
+import { RefCallback } from "react";
 import {
   FieldValues,
   RegisterOptions,
@@ -6,7 +7,6 @@ import {
   UseFormRegisterReturn,
 } from "react-hook-form";
 export { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
-import { RefObject } from "react";
 
 type Range =
   | {
@@ -667,18 +667,41 @@ type Mask =
   | null;
 type Options = Options$1;
 type Input = HTMLInputElement | HTMLTextAreaElement | HTMLElement;
+interface UseHookFormMaskReturn<
+  T extends FieldValues,
+> extends UseFormRegisterReturn<Path<T>> {
+  ref: RefCallback<HTMLElement | null>;
+  prevRef: RefCallback<HTMLElement | null>;
+}
 
-declare function withHookFormMask(
-  register: UseFormRegisterReturn,
-  mask: Mask,
-  options?: Options,
-): UseFormRegisterReturn;
-
-declare function withMask(
-  mask: Mask,
-  options?: Options,
+interface UseMaskInputOptions {
+  mask: Mask;
+  register?: (element: HTMLElement) => void;
+  options?: Options;
+}
+/**
+ * React hook for applying input masks to form elements.
+ * Works with Ant Design and other wrapped components too.
+ *
+ * @param props - Configuration object
+ * @param props.mask - The mask pattern to apply
+ * @param props.register - Optional callback that receives the element
+ * @param props.options - Optional mask configuration options
+ * @returns A ref callback function to attach to the input element
+ */
+declare function useMaskInput(
+  props: UseMaskInputOptions,
 ): (input: Input | null) => void;
 
+/**
+ * Creates a masked version of React Hook Form's register function.
+ * Takes react-hook-form's register and adds automatic masking. Like an upgrade.
+ *
+ * @template T - The form data type
+ * @template D - The register options type
+ * @param registerFn - The register function from useForm hook
+ * @returns A function that registers a field with mask support
+ */
 declare function useHookFormMask<
   T extends FieldValues,
   D extends RegisterOptions,
@@ -688,22 +711,43 @@ declare function useHookFormMask<
   fieldName: Path<T>,
   mask: Mask,
   options?: (D & Options) | Options | D,
-) => UseFormRegisterReturn<Path<T>>;
+) => UseHookFormMaskReturn<T>;
 
-interface UseInputMaskOptions {
-  mask: Mask;
-  register?: (element: HTMLElement) => void;
-  options?: Options;
-}
-declare function useInputMask(
-  props: UseInputMaskOptions,
-): RefObject<HTMLInputElement>;
+/**
+ * Higher-order function that creates a ref callback for applying input masks.
+ * Simple function to apply mask via ref. No hooks, no drama.
+ *
+ * @param mask - The mask pattern to apply
+ * @param options - Optional mask configuration options
+ * @returns A ref callback function that applies the mask
+ */
+declare function withMask(
+  mask: Mask,
+  options?: Options,
+): (input: Input | null) => void;
+
+/**
+ * Enhances a React Hook Form register return object with mask support.
+ * Takes an already registered field and adds mask to it.
+ * Useful when you registered the field before.
+ *
+ * @param register - The register return object from React Hook Form
+ * @param mask - The mask pattern to apply
+ * @param options - Optional mask configuration options
+ * @returns A new register return object with mask applied
+ */
+declare function withHookFormMask(
+  register: UseFormRegisterReturn,
+  mask: Mask,
+  options?: Options,
+): UseHookFormMaskReturn<FieldValues>;
 
 export {
+  type Input,
   type Mask,
   type Options,
   useHookFormMask,
-  useInputMask as useMaskInput,
+  useMaskInput,
   withHookFormMask,
   withMask,
 };

@@ -331,7 +331,7 @@ declare class TZDate extends Date {
  * The locale object with all functions and data needed to parse and format
  * dates. This is what each locale implements and exports.
  */
-interface Locale {
+interface Locale$1 {
   /** The locale code (ISO 639-1 + optional country code) */
   code: string;
   /** The function to format distance */
@@ -419,8 +419,7 @@ type FormatRelativeFn = <DateType extends Date>(
  * The {@link FormatRelativeFn} function options.
  */
 interface FormatRelativeFnOptions
-  extends WeekOptions,
-    LocalizedOptions<"options" | "formatRelative"> {}
+  extends WeekOptions, LocalizedOptions<"options" | "formatRelative"> {}
 /**
  * The token used in format relative function. Represents the time unit.
  */
@@ -707,9 +706,9 @@ interface FirstWeekContainsDateOptions {
  *
  * @typeParam LocaleFields - The locale fields used in the relevant function. Defines the minimum set of locale fields that must be provided.
  */
-interface LocalizedOptions<LocaleFields extends keyof Locale> {
+interface LocalizedOptions<LocaleFields extends keyof Locale$1> {
   /** The locale to use in the function. */
-  locale?: Pick<Locale, LocaleFields>;
+  locale?: Pick<Locale$1, LocaleFields>;
 }
 /**
  * Additional tokens options. Used to build function options.
@@ -743,15 +742,14 @@ type ContextFn<DateType extends Date> = (value: DateArg<Date> & {}) => DateType;
  * The {@link endOfWeek} function options.
  */
 interface EndOfWeekOptions<DateType extends Date = Date>
-  extends WeekOptions,
-    LocalizedOptions<"options">,
-    ContextOptions<DateType> {}
+  extends WeekOptions, LocalizedOptions<"options">, ContextOptions<DateType> {}
 
 /**
  * The {@link format} function options.
  */
 interface FormatOptions$1
-  extends LocalizedOptions<"options" | "localize" | "formatLong">,
+  extends
+    LocalizedOptions<"options" | "localize" | "formatLong">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     AdditionalTokensOptions,
@@ -766,7 +764,8 @@ interface GetMonthOptions extends ContextOptions<Date> {}
  * The {@link getWeek} function options.
  */
 interface GetWeekOptions
-  extends LocalizedOptions<"options">,
+  extends
+    LocalizedOptions<"options">,
     WeekOptions,
     FirstWeekContainsDateOptions,
     ContextOptions<Date> {}
@@ -780,9 +779,7 @@ interface GetYearOptions extends ContextOptions<Date> {}
  * The {@link startOfWeek} function options.
  */
 interface StartOfWeekOptions<DateType extends Date = Date>
-  extends LocalizedOptions<"options">,
-    WeekOptions,
-    ContextOptions<DateType> {}
+  extends LocalizedOptions<"options">, WeekOptions, ContextOptions<DateType> {}
 
 /**
  * Render the button elements in the calendar.
@@ -956,7 +953,10 @@ declare function labelNav(): string;
  * @group Labels
  * @see https://daypicker.dev/docs/translation#aria-labels
  */
-declare function labelNext(_month: Date | undefined): string;
+declare function labelNext(
+  _month: Date | undefined,
+  _options?: DateLibOptions,
+): string;
 
 /**
  * Generates the ARIA label for the "previous month" button.
@@ -1676,9 +1676,20 @@ interface PropsBase {
    * for the possible values.
    *
    * @since 9.1.1
-   * @see https://daypicker.dev/docs/time-zone
+   * @see https://daypicker.dev/localization/setting-time-zone
    */
   timeZone?: string | undefined;
+  /**
+   * Keep calendar math at noon in the configured {@link timeZone} to avoid
+   * historical second-level offsets drifting dates across midnight.
+   *
+   * This prop sets the time of the dates to noon (12:00).
+   *
+   * @since 9.13.0
+   * @experimental
+   * @see https://daypicker.dev/localization/setting-time-zone#noonsafe
+   */
+  noonSafe?: boolean | undefined;
   /**
    * Change the components used for rendering the calendar elements.
    *
@@ -1806,7 +1817,7 @@ interface PropsBase {
    * @see https://daypicker.dev/docs/localization
    * @see https://github.com/date-fns/date-fns/tree/main/src/locale for a list of the supported locales
    */
-  locale?: Partial<Locale> | undefined;
+  locale?: Partial<DayPickerLocale> | undefined;
   /**
    * The numeral system to use when formatting dates.
    *
@@ -3231,16 +3242,27 @@ type Numerals =
   | "laoo"
   | "tibt";
 
-/**
- * @category Locales
- * @summary English locale (United States).
- * @language English
- * @iso-639-2 eng
- * @author Sasha Koss [@kossnocorp](https://github.com/kossnocorp)
- * @author Lesha Koss [@leshakoss](https://github.com/leshakoss)
- */
-declare const enUS: Locale;
+/** English (United States) locale extended with DayPicker-specific translations. */
+declare const enUS: DayPickerLocale;
 
+/**
+ * Translations for DayPicker-specific labels.
+ *
+ * @since V9.12.0
+ */
+type DayPickerLocaleLabels = {
+  [K in keyof Labels]?: string | Labels[K];
+};
+/**
+ * Locale type used by DayPicker.
+ *
+ * @since V9.12.0
+ */
+interface DayPickerLocale extends Locale$1 {
+  /** Localized DayPicker-specific labels. */
+  labels?: DayPickerLocaleLabels;
+}
+type Locale = DayPickerLocale;
 /**
  * @ignore
  * @deprecated Use {@link DateLibOptions} instead.
@@ -3263,13 +3285,11 @@ type MonthYearOrder = "month-first" | "year-first";
  * @since 9.2.0
  */
 interface DateLibOptions
-  extends FormatOptions$1,
-    StartOfWeekOptions,
-    EndOfWeekOptions {
+  extends FormatOptions$1, StartOfWeekOptions, EndOfWeekOptions {
   /** A constructor for the `Date` object. */
   Date?: typeof Date;
   /** A locale to use for formatting dates. */
-  locale?: Locale;
+  locale?: DayPickerLocale;
   /**
    * A time zone to use for dates.
    *
@@ -3665,6 +3685,24 @@ declare class CalendarDay {
   /** The date represented by this day. */
   readonly date: Date;
   /**
+   * Stable `yyyy-MM-dd` representation for reuse in keys/data attrs.
+   *
+   * @since V9.11.2
+   */
+  readonly isoDate: string;
+  /**
+   * Stable `yyyy-MM` representation of the displayed month.
+   *
+   * @since V9.11.2
+   */
+  readonly displayMonthId: string;
+  /**
+   * Stable `yyyy-MM` representation of the date's actual month.
+   *
+   * @since V9.11.2
+   */
+  readonly dateMonthId: string;
+  /**
    * Checks if this day is equal to another `CalendarDay`, considering both the
    * date and the displayed month.
    *
@@ -3912,6 +3950,8 @@ export {
   DayPicker,
   type DayPickerContext,
   type DayPickerDefaultProps,
+  type DayPickerLocale,
+  type DayPickerLocaleLabels,
   type DayPickerMultipleProps,
   type DayPickerProps,
   type DayPickerProviderProps,

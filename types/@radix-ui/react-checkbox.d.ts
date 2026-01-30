@@ -23,11 +23,10 @@ interface CheckboxProviderProps<State extends CheckedState = CheckedState> {
 declare function CheckboxProvider<State extends CheckedState = CheckedState>(
   props: ScopedProps<CheckboxProviderProps<State>>,
 ): react_jsx_runtime.JSX.Element;
-interface CheckboxTriggerProps
-  extends Omit<
-    React.ComponentPropsWithoutRef<typeof Primitive.button>,
-    keyof CheckboxProviderProps
-  > {
+interface CheckboxTriggerProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof Primitive.button>,
+  keyof CheckboxProviderProps
+> {
   children?: React.ReactNode;
 }
 declare const CheckboxTrigger: React.ForwardRefExoticComponent<
@@ -36,8 +35,10 @@ declare const CheckboxTrigger: React.ForwardRefExoticComponent<
 type PrimitiveButtonProps = React.ComponentPropsWithoutRef<
   typeof Primitive.button
 >;
-interface CheckboxProps
-  extends Omit<PrimitiveButtonProps, "checked" | "defaultChecked"> {
+interface CheckboxProps extends Omit<
+  PrimitiveButtonProps,
+  "checked" | "defaultChecked"
+> {
   checked?: CheckedState;
   defaultChecked?: CheckedState;
   required?: boolean;

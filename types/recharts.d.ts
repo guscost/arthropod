@@ -1321,8 +1321,10 @@ type Formatter<TValue extends ValueType, TName extends NameType> = (
   index: number,
   payload: Array<Payload<TValue, TName>>,
 ) => [ReactNode, TName] | ReactNode;
-interface Payload<TValue extends ValueType, TName extends NameType>
-  extends Omit<SVGProps<SVGElement>, "name"> {
+interface Payload<
+  TValue extends ValueType,
+  TName extends NameType,
+> extends Omit<SVGProps<SVGElement>, "name"> {
   type?: TooltipType;
   color?: string;
   formatter?: Formatter<TValue, TName>;

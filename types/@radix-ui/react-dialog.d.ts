@@ -57,17 +57,18 @@ interface DialogContentProps extends DialogContentTypeProps {
 declare const DialogContent: React.ForwardRefExoticComponent<
   DialogContentProps & React.RefAttributes<HTMLDivElement>
 >;
-interface DialogContentTypeProps
-  extends Omit<
-    DialogContentImplProps,
-    "trapFocus" | "disableOutsidePointerEvents"
-  > {}
+interface DialogContentTypeProps extends Omit<
+  DialogContentImplProps,
+  "trapFocus" | "disableOutsidePointerEvents"
+> {}
 type DismissableLayerProps = React.ComponentPropsWithoutRef<
   typeof DismissableLayer
 >;
 type FocusScopeProps = React.ComponentPropsWithoutRef<typeof FocusScope>;
-interface DialogContentImplProps
-  extends Omit<DismissableLayerProps, "onDismiss"> {
+interface DialogContentImplProps extends Omit<
+  DismissableLayerProps,
+  "onDismiss"
+> {
   /**
    * When `true`, focus cannot escape the `Content` via keyboard,
    * pointer, or a programmatic focus.

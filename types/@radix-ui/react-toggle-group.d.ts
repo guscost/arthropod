@@ -64,14 +64,18 @@ interface ToggleGroupImplProps extends PrimitiveDivProps {
   orientation?: RovingFocusGroupProps["orientation"];
   dir?: RovingFocusGroupProps["dir"];
 }
-interface ToggleGroupItemProps
-  extends Omit<ToggleGroupItemImplProps, "pressed"> {}
+interface ToggleGroupItemProps extends Omit<
+  ToggleGroupItemImplProps,
+  "pressed"
+> {}
 declare const ToggleGroupItem: React.ForwardRefExoticComponent<
   ToggleGroupItemProps & React.RefAttributes<HTMLButtonElement>
 >;
 type ToggleProps = React.ComponentPropsWithoutRef<typeof Toggle>;
-interface ToggleGroupItemImplProps
-  extends Omit<ToggleProps, "defaultPressed" | "onPressedChange"> {
+interface ToggleGroupItemImplProps extends Omit<
+  ToggleProps,
+  "defaultPressed" | "onPressedChange"
+> {
   /**
    * A string value for the toggle group item. All items within a toggle group should use a unique value.
    */

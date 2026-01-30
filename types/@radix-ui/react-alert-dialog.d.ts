@@ -28,11 +28,10 @@ declare const AlertDialogOverlay: React.ForwardRefExoticComponent<
 type DialogContentProps = React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 >;
-interface AlertDialogContentProps
-  extends Omit<
-    DialogContentProps,
-    "onPointerDownOutside" | "onInteractOutside"
-  > {}
+interface AlertDialogContentProps extends Omit<
+  DialogContentProps,
+  "onPointerDownOutside" | "onInteractOutside"
+> {}
 declare const AlertDialogContent: React.ForwardRefExoticComponent<
   AlertDialogContentProps & React.RefAttributes<HTMLDivElement>
 >;

@@ -29,8 +29,10 @@ declare const DropdownMenuPortal: React.FC<DropdownMenuPortalProps>;
 type MenuContentProps = React.ComponentPropsWithoutRef<
   typeof MenuPrimitive.Content
 >;
-interface DropdownMenuContentProps
-  extends Omit<MenuContentProps, "onEntryFocus"> {}
+interface DropdownMenuContentProps extends Omit<
+  MenuContentProps,
+  "onEntryFocus"
+> {}
 declare const DropdownMenuContent: React.ForwardRefExoticComponent<
   DropdownMenuContentProps & React.RefAttributes<HTMLDivElement>
 >;

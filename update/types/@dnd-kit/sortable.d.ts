@@ -221,7 +221,8 @@ interface NewIndexGetterArguments {
 declare type NewIndexGetter = (args: NewIndexGetterArguments) => number;
 
 interface Arguments
-  extends Omit<UseDraggableArguments, "disabled">,
+  extends
+    Omit<UseDraggableArguments, "disabled">,
     Pick<UseDroppableArguments, "resizeObserverConfig"> {
   animateLayoutChanges?: AnimateLayoutChanges;
   disabled?: boolean | Disabled;

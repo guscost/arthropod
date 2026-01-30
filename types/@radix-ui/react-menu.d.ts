@@ -53,8 +53,10 @@ interface MenuContentProps extends MenuRootContentTypeProps {
 declare const MenuContent: React.ForwardRefExoticComponent<
   MenuContentProps & React.RefAttributes<HTMLDivElement>
 >;
-interface MenuRootContentTypeProps
-  extends Omit<MenuContentImplProps, keyof MenuContentImplPrivateProps> {}
+interface MenuRootContentTypeProps extends Omit<
+  MenuContentImplProps,
+  keyof MenuContentImplPrivateProps
+> {}
 type FocusScopeProps = React.ComponentPropsWithoutRef<typeof FocusScope>;
 type DismissableLayerProps = React.ComponentPropsWithoutRef<
   typeof DismissableLayer
@@ -81,7 +83,8 @@ type MenuContentImplPrivateProps = {
   trapFocus?: FocusScopeProps["trapped"];
 };
 interface MenuContentImplProps
-  extends MenuContentImplPrivateProps,
+  extends
+    MenuContentImplPrivateProps,
     Omit<PopperContentProps, "dir" | "onPlaced"> {
   /**
    * Event handler called when auto-focusing on close.
@@ -171,15 +174,14 @@ interface MenuSubTriggerProps extends MenuItemImplProps {}
 declare const MenuSubTrigger: React.ForwardRefExoticComponent<
   MenuSubTriggerProps & React.RefAttributes<HTMLDivElement>
 >;
-interface MenuSubContentProps
-  extends Omit<
-    MenuContentImplProps,
-    | keyof MenuContentImplPrivateProps
-    | "onCloseAutoFocus"
-    | "onEntryFocus"
-    | "side"
-    | "align"
-  > {
+interface MenuSubContentProps extends Omit<
+  MenuContentImplProps,
+  | keyof MenuContentImplPrivateProps
+  | "onCloseAutoFocus"
+  | "onEntryFocus"
+  | "side"
+  | "align"
+> {
   /**
    * Used to force mounting when more control is needed. Useful when
    * controlling animation with React animation libraries.

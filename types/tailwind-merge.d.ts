@@ -22,8 +22,7 @@ declare const twJoin: (...classLists: ClassNameValue[]) => string;
  * Type the tailwind-merge configuration adheres to.
  */
 interface Config<ClassGroupIds extends string, ThemeGroupIds extends string>
-  extends ConfigStaticPart,
-    ConfigGroupsPart<ClassGroupIds, ThemeGroupIds> {}
+  extends ConfigStaticPart, ConfigGroupsPart<ClassGroupIds, ThemeGroupIds> {}
 /**
  * The static part of the tailwind-merge configuration. When merging multiple configurations, the properties of this interface are always overridden.
  */

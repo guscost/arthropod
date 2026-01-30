@@ -1,6 +1,7 @@
 import * as checks from "./checks.js";
 import type * as core from "./core.js";
 import type * as errors from "./errors.js";
+import * as registries from "./registries.js";
 import * as schemas from "./schemas.js";
 import * as util from "./util.js";
 export type Params<
@@ -253,6 +254,18 @@ export type $ZodCheckIPv6Params = CheckStringFormatParams<
 export declare function _ipv6<T extends schemas.$ZodIPv6>(
   Class: util.SchemaClass<T>,
   params?: string | $ZodIPv6Params | $ZodCheckIPv6Params,
+): T;
+export type $ZodMACParams = StringFormatParams<
+  schemas.$ZodMAC,
+  "pattern" | "when"
+>;
+export type $ZodCheckMACParams = CheckStringFormatParams<
+  schemas.$ZodMAC,
+  "pattern" | "when"
+>;
+export declare function _mac<T extends schemas.$ZodMAC>(
+  Class: util.SchemaClass<T>,
+  params?: string | $ZodMACParams | $ZodCheckMACParams,
 ): T;
 export type $ZodCIDRv4Params = StringFormatParams<
   schemas.$ZodCIDRv4,
@@ -673,6 +686,7 @@ export declare function _normalize(
 export declare function _trim(): checks.$ZodCheckOverwrite<string>;
 export declare function _toLowerCase(): checks.$ZodCheckOverwrite<string>;
 export declare function _toUpperCase(): checks.$ZodCheckOverwrite<string>;
+export declare function _slugify(): checks.$ZodCheckOverwrite<string>;
 export type $ZodArrayParams = TypeParams<schemas.$ZodArray, "element">;
 export declare function _array<T extends schemas.$ZodType>(
   Class: util.SchemaClass<schemas.$ZodArray>,
@@ -689,6 +703,12 @@ export declare function _union<const T extends readonly schemas.$ZodObject[]>(
   options: T,
   params?: string | $ZodUnionParams,
 ): schemas.$ZodUnion<T>;
+export type $ZodXorParams = TypeParams<schemas.$ZodXor, "options">;
+export declare function _xor<const T extends readonly schemas.$ZodObject[]>(
+  Class: util.SchemaClass<schemas.$ZodXor>,
+  options: T,
+  params?: string | $ZodXorParams,
+): schemas.$ZodXor<T>;
 export interface $ZodTypeDiscriminableInternals
   extends schemas.$ZodTypeInternals {
   propValues: util.PropValues;
@@ -933,6 +953,10 @@ export declare function _check<O = unknown>(
   fn: schemas.CheckFn<O>,
   params?: string | $ZodCustomParams,
 ): checks.$ZodCheck<O>;
+export declare function describe<T>(description: string): checks.$ZodCheck<T>;
+export declare function meta<T>(
+  metadata: registries.GlobalMeta,
+): checks.$ZodCheck<T>;
 export interface $ZodStringBoolParams extends TypeParams {
   truthy?: string[];
   falsy?: string[];

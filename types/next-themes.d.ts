@@ -4,11 +4,10 @@ interface ValueObject {
   [themeName: string]: string;
 }
 type DataAttribute = `data-${string}`;
-interface ScriptProps
-  extends React.DetailedHTMLProps<
-    React.ScriptHTMLAttributes<HTMLScriptElement>,
-    HTMLScriptElement
-  > {
+interface ScriptProps extends React.DetailedHTMLProps<
+  React.ScriptHTMLAttributes<HTMLScriptElement>,
+  HTMLScriptElement
+> {
   [dataAttribute: DataAttribute]: any;
 }
 interface UseThemeProps {

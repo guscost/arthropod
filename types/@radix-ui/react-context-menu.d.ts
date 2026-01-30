@@ -27,11 +27,10 @@ declare const ContextMenuPortal: React.FC<ContextMenuPortalProps>;
 type MenuContentProps = React.ComponentPropsWithoutRef<
   typeof MenuPrimitive.Content
 >;
-interface ContextMenuContentProps
-  extends Omit<
-    MenuContentProps,
-    "onEntryFocus" | "side" | "sideOffset" | "align"
-  > {}
+interface ContextMenuContentProps extends Omit<
+  MenuContentProps,
+  "onEntryFocus" | "side" | "sideOffset" | "align"
+> {}
 declare const ContextMenuContent: React.ForwardRefExoticComponent<
   ContextMenuContentProps & React.RefAttributes<HTMLDivElement>
 >;

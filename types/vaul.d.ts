@@ -26,8 +26,9 @@ type PrimitivePropsWithRef$3<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent$3<E extends React.ElementType>
-  extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$3<E>> {}
+interface PrimitiveForwardRefComponent$3<
+  E extends React.ElementType,
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$3<E>> {}
 declare const Primitive$3: Primitives$3;
 
 type PrimitiveDivProps$3 = React.ComponentPropsWithoutRef<
@@ -104,8 +105,9 @@ type PrimitivePropsWithRef$2<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent$2<E extends React.ElementType>
-  extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$2<E>> {}
+interface PrimitiveForwardRefComponent$2<
+  E extends React.ElementType,
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$2<E>> {}
 declare const Primitive$2: Primitives$2;
 
 type PrimitiveDivProps$2 = React.ComponentPropsWithoutRef<
@@ -165,8 +167,9 @@ type PrimitivePropsWithRef$1<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent$1<E extends React.ElementType>
-  extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$1<E>> {}
+interface PrimitiveForwardRefComponent$1<
+  E extends React.ElementType,
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$1<E>> {}
 declare const Primitive$1: Primitives$1;
 
 type PrimitiveDivProps$1 = React.ComponentPropsWithoutRef<
@@ -208,8 +211,9 @@ type PrimitivePropsWithRef<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent<E extends React.ElementType>
-  extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
+interface PrimitiveForwardRefComponent<
+  E extends React.ElementType,
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
 declare const Primitive: Primitives;
 
 type PrimitiveButtonProps = React.ComponentPropsWithoutRef<
@@ -245,17 +249,18 @@ interface DialogContentProps extends DialogContentTypeProps {
    */
   forceMount?: true;
 }
-interface DialogContentTypeProps
-  extends Omit<
-    DialogContentImplProps,
-    "trapFocus" | "disableOutsidePointerEvents"
-  > {}
+interface DialogContentTypeProps extends Omit<
+  DialogContentImplProps,
+  "trapFocus" | "disableOutsidePointerEvents"
+> {}
 type DismissableLayerProps = React.ComponentPropsWithoutRef<
   typeof DismissableLayer
 >;
 type FocusScopeProps = React.ComponentPropsWithoutRef<typeof FocusScope>;
-interface DialogContentImplProps
-  extends Omit<DismissableLayerProps, "onDismiss"> {
+interface DialogContentImplProps extends Omit<
+  DismissableLayerProps,
+  "onDismiss"
+> {
   /**
    * When `true`, focus cannot escape the `Content` via keyboard,
    * pointer, or a programmatic focus.
