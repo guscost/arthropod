@@ -58,11 +58,9 @@ const commonConfig = {
 
 // Determine package versions
 const _root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const radixVersion = "DEPRECATED";
 const reactVersion = JSON.parse(
   readFileSync(path.join(_root, "update/node_modules/react/package.json")),
-).version;
-const radixVersion = JSON.parse(
-  readFileSync(path.join(_root, "update/node_modules/radix-ui/package.json")),
 ).version;
 const lucideVersion = JSON.parse(
   readFileSync(
@@ -161,7 +159,7 @@ async function buildUmd(tempDir, moduleName, fileName, entry, externals) {
 }
 
 async function buildRadixUmds(tempDir) {
-  rmSync(path.join(_root, "www/js/lib/radix-ui.min.js"), { force: true });
+  rmSync(path.join(_root, "www/js/lib/headless-ui.min.js"), { force: true });
 
   // Get all Radix UI modules to aggregate into one big UMD file
   const radixUiSources = readdirSync(
@@ -241,7 +239,7 @@ async function buildRadixUmds(tempDir) {
     await buildUmd(
       tempDir,
       `@radix-ui/${packageName}`,
-      "radix-ui.min.js",
+      "headless-ui.min.js",
       null,
       radixExternals,
     );
@@ -285,6 +283,9 @@ async function buildUmds() {
         "",
       ),
     );
+
+    // @base-ui replaces radix-ui for most headless ui
+    await buildUmd(tempDir, "@base-ui/react", "headless-ui.min.js");
 
     // react and other dependencies
     await buildUmd(tempDir, "react", "react.min.js");
@@ -502,6 +503,13 @@ async function buildTypes() {
         );
       }
     }
+
+    // base-ui types
+    mkdirSync(path.join(_root, "types/@base-ui"));
+    await buildType(
+      path.join(_root, "update/node_modules/@base-ui/react/index.js"),
+      path.join(_root, "types/@base-ui/react.d.ts"),
+    );
 
     // Build types with tsup
     mkdirSync(path.join(_root, "types/@tanstack"));
