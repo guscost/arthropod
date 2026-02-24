@@ -25,7 +25,7 @@ __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/react-dom.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/lucide-react.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/extras.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/dnd-kit.min");
-__LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/radix-ui.min");
+__LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/headless-ui.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/shadcn.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/chart.min");
 __LOAD_SCRIPT__(__ROOT_PATH__ + "/js/lib/form.min");
