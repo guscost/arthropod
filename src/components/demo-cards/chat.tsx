@@ -105,9 +105,9 @@ export function CardsChat() {
               <p className="text-muted-foreground text-xs">m@example.com</p>
             </div>
           </div>
-          <TooltipProvider delayDuration={0}>
+          <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger asChild>
+              <TooltipTrigger>
                 <Button
                   size="icon"
                   variant="secondary"

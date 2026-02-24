@@ -1,366 +1,551 @@
-import * as react from "react";
 import {
   HTMLAttributes,
-  PropsWithChildren,
+  ReactNode,
+  Ref,
   CSSProperties,
-  ReactElement,
+  Dispatch,
+  SetStateAction,
+  RefObject,
 } from "react";
+import { JSX } from "react/jsx-runtime";
 
-type PanelOnCollapse = () => void;
-type PanelOnExpand = () => void;
-type PanelOnResize = (size: number, prevSize: number | undefined) => void;
-type PanelCallbacks = {
-  onCollapse?: PanelOnCollapse;
-  onExpand?: PanelOnExpand;
-  onResize?: PanelOnResize;
-};
-type PanelConstraints = {
-  collapsedSize?: number | undefined;
-  collapsible?: boolean | undefined;
-  defaultSize?: number | undefined;
-  maxSize?: number | undefined;
-  minSize?: number | undefined;
-};
-type PanelData = {
-  callbacks: PanelCallbacks;
-  constraints: PanelConstraints;
-  id: string;
-  idIsFromProps: boolean;
-  order: number | undefined;
-};
-type ImperativePanelHandle = {
-  collapse: () => void;
-  expand: (minSize?: number) => void;
-  getId(): string;
-  getSize(): number;
-  isCollapsed: () => boolean;
-  isExpanded: () => boolean;
-  resize: (size: number) => void;
-};
-type PanelProps<
-  T extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
-> = Omit<HTMLAttributes<HTMLElementTagNameMap[T]>, "id" | "onResize"> &
-  PropsWithChildren<{
-    className?: string;
-    collapsedSize?: number | undefined;
-    collapsible?: boolean | undefined;
-    defaultSize?: number | undefined;
-    id?: string;
-    maxSize?: number | undefined;
-    minSize?: number | undefined;
-    onCollapse?: PanelOnCollapse;
-    onExpand?: PanelOnExpand;
-    onResize?: PanelOnResize;
-    order?: number;
-    style?: object;
-    tagName?: T;
-  }>;
-declare const Panel: react.ForwardRefExoticComponent<
-  Omit<
-    HTMLAttributes<
-      | HTMLObjectElement
-      | HTMLElement
-      | HTMLAnchorElement
-      | HTMLAreaElement
-      | HTMLAudioElement
-      | HTMLBaseElement
-      | HTMLQuoteElement
-      | HTMLBodyElement
-      | HTMLBRElement
-      | HTMLButtonElement
-      | HTMLCanvasElement
-      | HTMLTableCaptionElement
-      | HTMLTableColElement
-      | HTMLDataElement
-      | HTMLDataListElement
-      | HTMLModElement
-      | HTMLDetailsElement
-      | HTMLDialogElement
-      | HTMLDivElement
-      | HTMLDListElement
-      | HTMLEmbedElement
-      | HTMLFieldSetElement
-      | HTMLFormElement
-      | HTMLHeadingElement
-      | HTMLHeadElement
-      | HTMLHRElement
-      | HTMLHtmlElement
-      | HTMLIFrameElement
-      | HTMLImageElement
-      | HTMLInputElement
-      | HTMLLabelElement
-      | HTMLLegendElement
-      | HTMLLIElement
-      | HTMLLinkElement
-      | HTMLMapElement
-      | HTMLMenuElement
-      | HTMLMetaElement
-      | HTMLMeterElement
-      | HTMLOListElement
-      | HTMLOptGroupElement
-      | HTMLOptionElement
-      | HTMLOutputElement
-      | HTMLParagraphElement
-      | HTMLPictureElement
-      | HTMLPreElement
-      | HTMLProgressElement
-      | HTMLScriptElement
-      | HTMLSelectElement
-      | HTMLSlotElement
-      | HTMLSourceElement
-      | HTMLSpanElement
-      | HTMLStyleElement
-      | HTMLTableElement
-      | HTMLTableSectionElement
-      | HTMLTableCellElement
-      | HTMLTemplateElement
-      | HTMLTextAreaElement
-      | HTMLTimeElement
-      | HTMLTitleElement
-      | HTMLTableRowElement
-      | HTMLTrackElement
-      | HTMLUListElement
-      | HTMLVideoElement
-    >,
-    "id" | "onResize"
-  > & {
-    className?: string;
-    collapsedSize?: number | undefined;
-    collapsible?: boolean | undefined;
-    defaultSize?: number | undefined;
-    id?: string;
-    maxSize?: number | undefined;
-    minSize?: number | undefined;
-    onCollapse?: PanelOnCollapse;
-    onExpand?: PanelOnExpand;
-    onResize?: PanelOnResize;
-    order?: number;
-    style?: object;
-    tagName?: keyof HTMLElementTagNameMap | undefined;
-  } & {
-    children?: react.ReactNode | undefined;
-  } & react.RefAttributes<ImperativePanelHandle>
+declare type BasePanelAttributes = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onResize"
 >;
 
-type Direction = "horizontal" | "vertical";
-
-type ImperativePanelGroupHandle = {
-  getId: () => string;
-  getLayout: () => number[];
-  setLayout: (layout: number[]) => void;
-};
-type PanelGroupStorage = {
-  getItem(name: string): string | null;
-  setItem(name: string, value: string): void;
-};
-type PanelGroupOnLayout = (layout: number[]) => void;
-type PanelGroupProps = Omit<HTMLAttributes<keyof HTMLElementTagNameMap>, "id"> &
-  PropsWithChildren<{
-    autoSaveId?: string | null;
-    className?: string;
-    direction: Direction;
-    id?: string | null;
-    keyboardResizeBy?: number | null;
-    onLayout?: PanelGroupOnLayout | null;
-    storage?: PanelGroupStorage;
-    style?: CSSProperties;
-    tagName?: keyof HTMLElementTagNameMap;
-    dir?: "auto" | "ltr" | "rtl" | undefined;
-  }>;
-declare const PanelGroup: react.ForwardRefExoticComponent<
-  Omit<HTMLAttributes<keyof HTMLElementTagNameMap>, "id"> & {
-    autoSaveId?: string | null;
-    className?: string;
-    direction: Direction;
-    id?: string | null;
-    keyboardResizeBy?: number | null;
-    onLayout?: PanelGroupOnLayout | null;
-    storage?: PanelGroupStorage;
-    style?: CSSProperties;
-    tagName?: keyof HTMLElementTagNameMap;
-    dir?: "auto" | "ltr" | "rtl" | undefined;
-  } & {
-    children?: react.ReactNode | undefined;
-  } & react.RefAttributes<ImperativePanelGroupHandle>
+declare type BaseSeparatorAttributes = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "role" | "tabIndex"
 >;
 
-type PointerHitAreaMargins = {
-  coarse: number;
-  fine: number;
-};
-
-type PanelResizeHandleOnDragging = (isDragging: boolean) => void;
-type PanelResizeHandleProps = Omit<
-  HTMLAttributes<keyof HTMLElementTagNameMap>,
-  "id" | "onBlur" | "onClick" | "onFocus" | "onPointerDown" | "onPointerUp"
-> &
-  PropsWithChildren<{
-    className?: string;
-    disabled?: boolean;
-    hitAreaMargins?: PointerHitAreaMargins;
-    id?: string | null;
-    onBlur?: () => void;
-    onClick?: () => void;
-    onDragging?: PanelResizeHandleOnDragging;
-    onFocus?: () => void;
-    onPointerDown?: () => void;
-    onPointerUp?: () => void;
-    style?: CSSProperties;
-    tabIndex?: number;
-    tagName?: keyof HTMLElementTagNameMap;
-  }>;
-declare function PanelResizeHandle({
+/**
+ * A Group wraps a set of resizable Panel components.
+ * Group content can be resized _horizontally_ or _vertically_.
+ *
+ * Group elements always include the following attributes:
+ *
+ * ```html
+ * <div data-group data-testid="group-id-prop" id="group-id-prop">
+ * ```
+ *
+ * ℹ️ [Test id](https://testing-library.com/docs/queries/bytestid/) can be used to narrow selection when unit testing.
+ */
+declare function Group({
   children,
-  className: classNameFromProps,
+  className,
+  defaultLayout,
+  disableCursor,
   disabled,
-  hitAreaMargins,
-  id: idFromProps,
-  onBlur,
-  onClick,
-  onDragging,
-  onFocus,
-  onPointerDown,
-  onPointerUp,
-  style: styleFromProps,
-  tabIndex,
-  tagName: Type,
+  elementRef: elementRefProp,
+  groupRef,
+  id: idProp,
+  onLayoutChange: onLayoutChangeUnstable,
+  onLayoutChanged: onLayoutChangedUnstable,
+  orientation,
+  resizeTargetMinimumSize,
+  style,
   ...rest
-}: PanelResizeHandleProps): ReactElement;
-declare namespace PanelResizeHandle {
+}: GroupProps): JSX.Element;
+
+declare namespace Group {
   var displayName: string;
 }
 
-declare const DATA_ATTRIBUTES: {
-  readonly group: "data-panel-group";
-  readonly groupDirection: "data-panel-group-direction";
-  readonly groupId: "data-panel-group-id";
-  readonly panel: "data-panel";
-  readonly panelCollapsible: "data-panel-collapsible";
-  readonly panelId: "data-panel-id";
-  readonly panelSize: "data-panel-size";
-  readonly resizeHandle: "data-resize-handle";
-  readonly resizeHandleActive: "data-resize-handle-active";
-  readonly resizeHandleEnabled: "data-panel-resize-handle-enabled";
-  readonly resizeHandleId: "data-panel-resize-handle-id";
-  readonly resizeHandleState: "data-resize-handle-state";
-};
-
-declare function usePanelGroupContext(): {
-  direction: "horizontal" | "vertical" | undefined;
-  groupId: string | undefined;
-};
-
-declare function assert(
-  expectedCondition: any,
-  message: string,
-): asserts expectedCondition;
-
-declare function setNonce(value: string | null): void;
-
-type CustomCursorStyleConfig = {
-  exceedsHorizontalMaximum: boolean;
-  exceedsHorizontalMinimum: boolean;
-  exceedsVerticalMaximum: boolean;
-  exceedsVerticalMinimum: boolean;
-  intersectsHorizontalDragHandle: boolean;
-  intersectsVerticalDragHandle: boolean;
-  isPointerDown: boolean;
-};
-type GetCustomCursorStyleFunction = (config: CustomCursorStyleConfig) => string;
-declare function customizeGlobalCursorStyles(
-  callback: GetCustomCursorStyleFunction | null,
-): void;
-declare function disableGlobalCursorStyles(): void;
-declare function enableGlobalCursorStyles(): void;
-
-declare function getPanelElement(
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement | null;
-
-declare function getPanelElementsForGroup(
-  groupId: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement[];
-
-declare function getPanelGroupElement(
-  id: string,
-  rootElement?: ParentNode | HTMLElement,
-): HTMLElement | null;
-
-declare function getResizeHandleElement(
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement | null;
-
-declare function getResizeHandleElementIndex(
-  groupId: string,
-  id: string,
-  scope?: ParentNode | HTMLElement,
-): number | null;
-
-declare function getResizeHandleElementsForGroup(
-  groupId: string,
-  scope?: ParentNode | HTMLElement,
-): HTMLElement[];
-
-declare function getResizeHandlePanelIds(
-  groupId: string,
-  handleId: string,
-  panelsArray: PanelData[],
-  scope?: ParentNode | HTMLElement,
-): [idBefore: string | null, idAfter: string | null];
-
-interface Rectangle {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+/**
+ * Imperative Group API.
+ *
+ * ℹ️ The `useGroupRef` and `useGroupCallbackRef` hooks are exported for convenience use in TypeScript projects.
+ */
+declare interface GroupImperativeHandle {
+  /**
+   * Get the Group's current layout as a map of Panel id to percentage (0..100)
+   *
+   * @return Map of Panel id to percentages (specified as numbers ranging between 0..100)
+   */
+  getLayout: () => {
+    [panelId: string]: number;
+  };
+  /**
+   * Set a new layout for the Group
+   *
+   * @param layout Map of Panel id to percentage (a number between 0..100)
+   * @return Applied layout (after validation)
+   */
+  setLayout: (layout: { [panelId: string]: number }) => Layout;
 }
 
-declare function getIntersectingRectangle(
-  rectOne: Rectangle,
-  rectTwo: Rectangle,
-  strict: boolean,
-): Rectangle;
+declare type GroupProps = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * Panel and Separator components that comprise this group.
+   */
+  children?: ReactNode | undefined;
+  /**
+   * CSS class name.
+   */
+  className?: string | undefined;
+  /**
+   * Default layout for the Group.
+   *
+   * ℹ️ This value allows layouts to be remembered between page reloads.
+   *
+   * ⚠️ Refer to the documentation for how to avoid layout shift when using server components.
+   */
+  defaultLayout?: Layout | undefined;
+  /**
+   * This library sets custom mouse cursor styles to indicate drag state.
+   * Use this prop to disable that behavior for Panels and Separators in this group.
+   */
+  disableCursor?: boolean | undefined;
+  /**
+   * Disable resize functionality.
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Ref attached to the root `HTMLDivElement`.
+   */
+  elementRef?: Ref<HTMLDivElement | null> | undefined;
+  /**
+   * Exposes the following imperative API:
+   * - `getLayout(): Layout`
+   * - `setLayout(layout: Layout): void`
+   *
+   * ℹ️ The `useGroupRef` and `useGroupCallbackRef` hooks are exported for convenience use in TypeScript projects.
+   */
+  groupRef?: Ref<GroupImperativeHandle | null> | undefined;
+  /**
+   * Uniquely identifies this group within an application.
+   * Falls back to `useId` when not provided.
+   *
+   * ℹ️ This value will also be assigned to the `data-group` attribute.
+   */
+  id?: string | number | undefined;
+  /**
+   * Called when the Group's layout is changing.
+   *
+   * ⚠️ For layout changes caused by pointer events, this method is called each time the pointer is moved.
+   * For most cases, it is recommended to use the `onLayoutChanged` callback instead.
+   */
+  onLayoutChange?: (layout: Layout) => void | undefined;
+  /**
+   * Called after the Group's layout has  been changed.
+   *
+   * ℹ️ For layout changes caused by pointer events, this method is not called until the pointer has been released.
+   * This method is recommended when saving layouts to some storage api.
+   */
+  onLayoutChanged?: (layout: Layout) => void | undefined;
+  /**
+   * Minimum size of the resizable hit target area (either `Separator` or `Panel` edge)
+   * This threshold ensures are large enough to avoid mis-clicks.
+   *
+   * - Coarse inputs (typically a finger on a touchscreen) have reduced accuracy;
+   * to ensure accessibility and ease of use, hit targets should be larger to prevent mis-clicks.
+   * - Fine inputs (typically a mouse) can be smaller
+   *
+   * ℹ️ [Apple interface guidelines](https://developer.apple.com/design/human-interface-guidelines/accessibility) suggest `20pt` (`27px`) on desktops and `28pt` (`37px`) for touch devices
+   * In practice this seems to be much larger than many of their own applications use though.
+   */
+  resizeTargetMinimumSize?: {
+    coarse: number;
+    fine: number;
+  };
+  /**
+   * Specifies the resizable orientation ("horizontal" or "vertical"); defaults to "horizontal"
+   */
+  orientation?: "horizontal" | "vertical" | undefined;
+  /**
+   * CSS properties.
+   *
+   * ⚠️ The following styles cannot be overridden: `display`, `flex-direction`, `flex-wrap`, and `overflow`.
+   */
+  style?: CSSProperties | undefined;
+};
 
-declare function intersects(
-  rectOne: Rectangle,
-  rectTwo: Rectangle,
-  strict: boolean,
-): boolean;
+/**
+ * Caches and returns matchMedia()'s computed value for "pointer:coarse"
+ */
+declare function isCoarsePointer(): boolean;
+
+/**
+ * Map of Panel id to flexGrow value;
+ */
+declare type Layout = {
+  [id: string]: number;
+};
+
+declare type LayoutStorage = Pick<Storage, "getItem" | "setItem">;
+
+declare type OnGroupLayoutChange = GroupProps["onLayoutChange"];
+
+declare type OnPanelResize = PanelProps["onResize"];
+
+/**
+ * Panel group orientation loosely relates to the `aria-orientation` attribute.
+ * It determines how panels are are laid out within the group group and the direction they can be resized in.
+ */
+declare type Orientation = "horizontal" | "vertical";
+
+/**
+ * A Panel wraps resizable content and can be configured with min/max size constraints and collapsible behavior.
+ *
+ * Panel size props can be in the following formats:
+ * - Percentage of the parent Group (0..100)
+ * - Pixels
+ * - Relative font units (em, rem)
+ * - Viewport relative units (vh, vw)
+ *
+ * ℹ️ Numeric values are assumed to be pixels.
+ * Strings without explicit units are assumed to be percentages (0%..100%).
+ * Percentages may also be specified as strings ending with "%" (e.g. "33%")
+ * Pixels may also be specified as strings ending with the unit "px".
+ * Other units should be specified as strings ending with their CSS property units (e.g. 1rem, 50vh)
+ *
+ * Panel elements always include the following attributes:
+ *
+ * ```html
+ * <div data-panel data-testid="panel-id-prop" id="panel-id-prop">
+ * ```
+ *
+ * ℹ️ [Test id](https://testing-library.com/docs/queries/bytestid/) can be used to narrow selection when unit testing.
+ *
+ * ⚠️ Panel elements must be direct DOM children of their parent Group elements.
+ */
+declare function Panel({
+  children,
+  className,
+  collapsedSize,
+  collapsible,
+  defaultSize,
+  disabled,
+  elementRef: elementRefProp,
+  id: idProp,
+  maxSize,
+  minSize,
+  onResize: onResizeUnstable,
+  panelRef,
+  style,
+  ...rest
+}: PanelProps): JSX.Element;
+
+declare namespace Panel {
+  var displayName: string;
+}
+
+/**
+ * Imperative Panel API
+ *
+ * ℹ️ The `usePanelRef` and `usePanelCallbackRef` hooks are exported for convenience use in TypeScript projects.
+ */
+declare interface PanelImperativeHandle {
+  /**
+   * Collapse the Panel to it's `collapsedSize`.
+   *
+   * ⚠️ This method will do nothing if the Panel is not `collapsible` or if it is already collapsed.
+   */
+  collapse: () => void;
+  /**
+   * Expand a collapsed Panel to its most recent size.
+   *
+   * ⚠️ This method will do nothing if the Panel is not currently collapsed.
+   */
+  expand: () => void;
+  /**
+   * Get the current size of the Panel in pixels as well as a percentage of the parent group (0..100).
+   *
+   * @return Panel size (in pixels and as a percentage of the parent group)
+   */
+  getSize: () => {
+    asPercentage: number;
+    inPixels: number;
+  };
+  /**
+   * The Panel is currently collapsed.
+   */
+  isCollapsed: () => boolean;
+  /**
+   * Update the Panel's size.
+   *
+   * Size can be in the following formats:
+   * - Percentage of the parent Group (0..100)
+   * - Pixels
+   * - Relative font units (em, rem)
+   * - Viewport relative units (vh, vw)
+   *
+   * ℹ️ Numeric values are assumed to be pixels.
+   * Strings without explicit units are assumed to be percentages (0%..100%).
+   * Percentages may also be specified as strings ending with "%" (e.g. "33%")
+   * Pixels may also be specified as strings ending with the unit "px".
+   * Other units should be specified as strings ending with their CSS property units (e.g. 1rem, 50vh)
+   *
+   * @param size New panel size
+   * @return Applied size (after validation)
+   */
+  resize: (size: number | string) => void;
+}
+
+declare type PanelProps = BasePanelAttributes & {
+  /**
+   * CSS class name.
+   *
+   * ⚠️ Class is applied to nested `HTMLDivElement` to avoid styles that interfere with Flex layout.
+   */
+  className?: string | undefined;
+  /**
+   * Panel size when collapsed; defaults to 0%.
+   */
+  collapsedSize?: number | string | undefined;
+  /**
+   * This panel can be collapsed.
+   *
+   * ℹ️ A collapsible panel will collapse when it's size is less than of the specified `minSize`
+   */
+  collapsible?: boolean | undefined;
+  /**
+   * Default size of Panel within its parent group; default is auto-assigned based on the total number of Panels.
+   */
+  defaultSize?: number | string | undefined;
+  /**
+   * When disabled, a panel cannot be resized either directly or indirectly (by resizing another panel).
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Ref attached to the root `HTMLDivElement`.
+   */
+  elementRef?: Ref<HTMLDivElement | null> | undefined;
+  /**
+   * Uniquely identifies this panel within the parent group.
+   * Falls back to `useId` when not provided.
+   *
+   * ℹ️ This prop is used to associate persisted group layouts with the original panel.
+   *
+   * ℹ️ This value will also be assigned to the `data-panel` attribute.
+   */
+  id?: string | number | undefined;
+  /**
+   * Maximum size of Panel within its parent group; defaults to 100%.
+   */
+  maxSize?: number | string | undefined;
+  /**
+   * Minimum size of Panel within its parent group; defaults to 0%.
+   */
+  minSize?: number | string | undefined;
+  /**
+   * Called when panel sizes change.
+   *
+   * @param panelSize Panel size (both as a percentage of the parent Group and in pixels)
+   * @param id Panel id (if one was provided as a prop)
+   * @param prevPanelSize Previous panel size (will be undefined on mount)
+   */
+  onResize?:
+    | ((
+        panelSize: PanelSize,
+        id: string | number | undefined,
+        prevPanelSize: PanelSize | undefined,
+      ) => void)
+    | undefined;
+  /**
+   * Exposes the following imperative API:
+   * - `collapse(): void`
+   * - `expand(): void`
+   * - `getSize(): number`
+   * - `isCollapsed(): boolean`
+   * - `resize(size: number): void`
+   *
+   * ℹ️ The `usePanelRef` and `usePanelCallbackRef` hooks are exported for convenience use in TypeScript projects.
+   */
+  panelRef?: Ref<PanelImperativeHandle | null> | undefined;
+  /**
+   * CSS properties.
+   *
+   * ⚠️ Style is applied to nested `HTMLDivElement` to avoid styles that interfere with Flex layout.
+   */
+  style?: CSSProperties | undefined;
+};
+
+declare type PanelSize = {
+  asPercentage: number;
+  inPixels: number;
+};
+
+/**
+ * Separators are not _required_ but they are _recommended_ as they improve keyboard accessibility.
+ *
+ * ⚠️ Separator elements must be direct DOM children of their parent Group elements.
+ *
+ * Separator elements always include the following attributes:
+ *
+ * ```html
+ * <div data-separator data-testid="separator-id-prop" id="separator-id-prop" role="separator">
+ * ```
+ *
+ * ℹ️ [Test id](https://testing-library.com/docs/queries/bytestid/) can be used to narrow selection when unit testing.
+ *
+ * ℹ️ In addition to the attributes shown above, separator also renders all required [WAI-ARIA properties](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/separator_role#associated_wai-aria_roles_states_and_properties).
+ */
+declare function Separator({
+  children,
+  className,
+  disabled,
+  elementRef: elementRefProp,
+  id: idProp,
+  style,
+  ...rest
+}: SeparatorProps): JSX.Element;
+
+declare namespace Separator {
+  var displayName: string;
+}
+
+declare type SeparatorProps = BaseSeparatorAttributes & {
+  /**
+   * CSS class name.
+   *
+   * ℹ️ Use the `data-separator` attribute for custom _hover_ and _active_ styles
+   *
+   * ⚠️ The following properties cannot be overridden: `flex-grow`, `flex-shrink`
+   */
+  className?: string | undefined;
+  /**
+   * When disabled, the separator cannot be used to resize its neighboring panels.
+   *
+   * ℹ️ The panels may still be resized indirectly (while other panels are being resized).
+   * To prevent a panel from being resized at all, it needs to also be disabled.
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Ref attached to the root `HTMLDivElement`.
+   */
+  elementRef?: Ref<HTMLDivElement> | undefined;
+  /**
+   * Uniquely identifies the separator within the parent group.
+   * Falls back to `useId` when not provided.
+   *
+   * ℹ️ This value will also be assigned to the `data-separator` attribute.
+   */
+  id?: string | number | undefined;
+  /**
+   * CSS properties.
+   *
+   * ℹ️ Use the `data-separator` attribute for custom _hover_ and _active_ styles
+   *
+   * ⚠️ The following properties cannot be overridden: `flex-grow`, `flex-shrink`
+   */
+  style?: CSSProperties | undefined;
+};
+
+declare type SizeUnit = "px" | "%" | "em" | "rem" | "vh" | "vw";
+
+/**
+ * Saves and restores group layouts between page loads.
+ * It can be configured to store values using `localStorage`, `sessionStorage`, cookies, or any other persistence layer that makes sense for your application.
+ */
+declare function useDefaultLayout({
+  debounceSaveMs,
+  panelIds,
+  storage,
+  ...rest
+}: {
+  /**
+   * Debounce save operation by the specified number of milliseconds; defaults to 100ms
+   *
+   * @deprecated Use the {@link onLayoutChanged} callback instead; it does not require debouncing
+   */
+  debounceSaveMs?: number;
+  /**
+   * For Groups that contain conditionally-rendered Panels, this prop can be used to save and restore multiple layouts.
+   *
+   * ℹ️ This prevents layout shift for server-rendered apps.
+   *
+   * ⚠️ Panel ids must match the Panels rendered within the Group during mount or the initial layout will be incorrect.
+   */
+  panelIds?: string[] | undefined;
+  /**
+   * Storage implementation; supports localStorage, sessionStorage, and custom implementations
+   * Refer to documentation site for example integrations.
+   *
+   */
+  storage?: LayoutStorage;
+} & (
+  | {
+      /**
+       * Group id; must be unique in order for layouts to be saved separately.
+       * @deprecated Use the {@link id} param instead
+       */
+      groupId: string;
+    }
+  | {
+      /**
+       * Uniquely identifies a specific group/layout.
+       */
+      id: string;
+    }
+)): {
+  /**
+   * Pass this value to `Group` as the `defaultLayout` prop.
+   */
+  defaultLayout: Layout | undefined;
+  /**
+   * Attach this callback on the `Group` as the `onLayoutChange` prop.
+   *
+   * @deprecated Use the {@link onLayoutChanged} prop instead.
+   */
+  onLayoutChange: (layout: Layout) => void | undefined;
+  /**
+   * Attach this callback on the `Group` as the `onLayoutChanged` prop.
+   */
+  onLayoutChanged: (layout: Layout) => void | undefined;
+};
+
+/**
+ * Convenience hook to return a properly typed ref callback for the Group component.
+ *
+ * Use this hook when you need to share the ref with another component or hook.
+ */
+declare function useGroupCallbackRef(): [
+  GroupImperativeHandle | null,
+  Dispatch<SetStateAction<GroupImperativeHandle | null>>,
+];
+
+/**
+ * Convenience hook to return a properly typed ref for the Group component.
+ */
+declare function useGroupRef(): RefObject<GroupImperativeHandle | null>;
+
+/**
+ * Convenience hook to return a properly typed ref callback for the Panel component.
+ *
+ * Use this hook when you need to share the ref with another component or hook.
+ */
+declare function usePanelCallbackRef(): [
+  PanelImperativeHandle | null,
+  Dispatch<SetStateAction<PanelImperativeHandle | null>>,
+];
+
+/**
+ * Convenience hook to return a properly typed ref for the Panel component.
+ */
+declare function usePanelRef(): RefObject<PanelImperativeHandle | null>;
 
 export {
-  type CustomCursorStyleConfig,
-  DATA_ATTRIBUTES,
-  type ImperativePanelGroupHandle,
-  type ImperativePanelHandle,
+  Group,
+  type GroupImperativeHandle,
+  type GroupProps,
+  type Layout,
+  type LayoutStorage,
+  type OnGroupLayoutChange,
+  type OnPanelResize,
+  type Orientation,
   Panel,
-  PanelGroup,
-  type PanelGroupOnLayout,
-  type PanelGroupProps,
-  type PanelGroupStorage,
-  type PanelOnCollapse,
-  type PanelOnExpand,
-  type PanelOnResize,
+  type PanelImperativeHandle,
   type PanelProps,
-  PanelResizeHandle,
-  type PanelResizeHandleOnDragging,
-  type PanelResizeHandleProps,
-  type PointerHitAreaMargins,
-  assert,
-  customizeGlobalCursorStyles,
-  disableGlobalCursorStyles,
-  enableGlobalCursorStyles,
-  getIntersectingRectangle,
-  getPanelElement,
-  getPanelElementsForGroup,
-  getPanelGroupElement,
-  getResizeHandleElement,
-  getResizeHandleElementIndex,
-  getResizeHandleElementsForGroup,
-  getResizeHandlePanelIds,
-  intersects,
-  setNonce,
-  usePanelGroupContext,
+  type PanelSize,
+  Separator,
+  type SeparatorProps,
+  type SizeUnit,
+  isCoarsePointer,
+  useDefaultLayout,
+  useGroupCallbackRef,
+  useGroupRef,
+  usePanelCallbackRef,
+  usePanelRef,
 };

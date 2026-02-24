@@ -158,10 +158,8 @@ async function buildUmd(tempDir, moduleName, fileName, entry, externals) {
   );
 }
 
-async function buildRadixUmds(tempDir) {
-  rmSync(path.join(_root, "www/js/lib/headless-ui.min.js"), { force: true });
-
-  // Get all Radix UI modules to aggregate into one big UMD file
+async function buildRadixUmds(tempDir, fileName) {
+  // Get Radix UI modules to aggregate into headless-ui (still used for cmdk and vaul)
   const radixUiSources = readdirSync(
     path.join(_root, "update/node_modules/@radix-ui"),
     {
@@ -173,7 +171,7 @@ async function buildRadixUmds(tempDir) {
   const dependencyGraph = new Map();
   const packageJsonCache = new Map();
 
-  // Build dependency graph
+  // Build Radix dependency graph
   for (const folder of radixUiSources.filter((f) => f.isDirectory())) {
     const packagePath = path.join(
       _root,
@@ -239,7 +237,7 @@ async function buildRadixUmds(tempDir) {
     await buildUmd(
       tempDir,
       `@radix-ui/${packageName}`,
-      "headless-ui.min.js",
+      fileName,
       null,
       radixExternals,
     );
@@ -253,9 +251,6 @@ async function buildUmds() {
     rmSync(tempDir, { recursive: true, force: true });
     mkdirSync(tempDir, { recursive: true });
 
-    // @radix-ui packages have a complicated dependency graph, build separately
-    buildRadixUmds(tempDir);
-
     // Clean up old files
     rmSync(path.join(_root, "www/js/lib/tailwind.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/react.min.js"), { force: true });
@@ -266,6 +261,7 @@ async function buildUmds() {
       force: true,
     });
     rmSync(path.join(_root, "www/js/lib/extras.min.js"), { force: true });
+    rmSync(path.join(_root, "www/js/lib/headless-ui.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/dnd-kit.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/shadcn.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/chart.min.js"), { force: true });
@@ -285,6 +281,7 @@ async function buildUmds() {
     );
 
     // @base-ui replaces radix-ui for most headless ui
+    await buildRadixUmds(tempDir, "headless-ui.min.js");
     await buildUmd(tempDir, "@base-ui/react", "headless-ui.min.js");
 
     // react and other dependencies
@@ -511,6 +508,19 @@ async function buildTypes() {
       path.join(_root, "types/@base-ui/react.d.ts"),
     );
 
+    // Update the separator exports so the typescript compiler can analyze them
+    const baseUiTypesPath = path.join(_root, "types/@base-ui/react.d.ts");
+    const baseUiTypesContent = readFileSync(baseUiTypesPath, "utf8");
+    writeFileSync(
+      baseUiTypesPath,
+      baseUiTypesContent
+        .replace(
+          /declare const index_parts\$[a-z0-9]+_Separator: typeof Separator;\n/g,
+          "",
+        )
+        .replace(/index_parts\$[a-z0-9]+_Separator as Separator/g, "Separator"),
+    );
+
     // Build types with tsup
     mkdirSync(path.join(_root, "types/@tanstack"));
     await buildType(
@@ -638,15 +648,12 @@ async function buildTypes() {
       path.join(_root, "types/swr.d.ts"),
     );
     removeExtensionFromImports(
-      path.join(
-        _root,
-        "update/node_modules/react-resizable-panels/dist/declarations/src",
-      ),
+      path.join(_root, "update/node_modules/react-resizable-panels/dist"),
     );
     await buildType(
       path.join(
         _root,
-        "update/node_modules/react-resizable-panels/dist/declarations/src/index.d.ts",
+        "update/node_modules/react-resizable-panels/dist/react-resizable-panels.d.ts",
       ),
       path.join(_root, "types/react-resizable-panels.d.ts"),
     );
@@ -684,8 +691,29 @@ declare global {
 
     // use-mask-input
     await buildType(
-      path.join(_root, "update/node_modules/use-mask-input/dist/index.js"),
+      path.join(_root, "update/node_modules/use-mask-input/dist/index.d.ts"),
       path.join(_root, "types/use-mask-input.d.ts"),
+    );
+
+    // Update the relative import to fix tsup generation for use-mask-input
+    const useMaskDistDir = path.join(
+      _root,
+      "update/node_modules/use-mask-input/dist",
+    );
+    const useMaskChunk = readdirSync(useMaskDistDir).find((file) =>
+      /^index-.*\.d\.ts$/.test(file),
+    );
+    if (useMaskChunk) {
+      cpSync(
+        path.join(useMaskDistDir, useMaskChunk),
+        path.join(_root, "types", useMaskChunk),
+      );
+    }
+    const useMaskTypesPath = path.join(_root, "types/use-mask-input.d.ts");
+    const useMaskTypesContent = readFileSync(useMaskTypesPath, "utf8");
+    writeFileSync(
+      useMaskTypesPath,
+      useMaskTypesContent.replace(/(["']\.\/index-[^"']+)\.js(["'])/g, "$1$2"),
     );
 
     // Uncomment, run, and fix imports to build updated react-day-picker types:

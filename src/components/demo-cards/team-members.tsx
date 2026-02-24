@@ -93,7 +93,7 @@ export function CardsTeamMembers() {
               </div>
             </div>
             <Popover>
-              <PopoverTrigger asChild>
+              <PopoverTrigger>
                 <Button
                   variant="outline"
                   size="sm"

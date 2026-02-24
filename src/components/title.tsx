@@ -18,7 +18,7 @@ export function Title() {
         </p>
       </div>
       <div className="flex gap-1">
-        <Button asChild size="icon" variant="ghost">
+        <Button size="icon" variant="ghost">
           <a href="https://github.com/guscost/arthropod" target="_blank">
             <Github fill="currentColor" />
           </a>

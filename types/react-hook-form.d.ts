@@ -1403,7 +1403,7 @@ type Control<
   setError: UseFormSetError<TFieldValues>;
 };
 type WatchObserver<TFieldValues extends FieldValues> = (
-  value: DeepPartial<TFieldValues>,
+  value: DeepPartialSkipArrayKey<TFieldValues>,
   info: {
     name?: FieldPath<TFieldValues>;
     type?: EventType;

@@ -6,7 +6,7 @@ type HTMLProps<T = any> = React$1.HTMLAttributes<T> & {
 };
 type BaseUIEvent<E extends React$1.SyntheticEvent<Element, Event>> = E & {
   preventBaseUIHandler: () => void;
-  readonly baseUIHandlerPrevented?: boolean;
+  readonly baseUIHandlerPrevented?: boolean | undefined;
 };
 type WithPreventBaseUIHandler<T> = T extends (event: infer E) => any
   ? E extends React$1.SyntheticEvent<Element, Event>
@@ -45,21 +45,26 @@ type BaseUIComponentProps<
    * CSS class applied to the element, or a function that
    * returns a class based on the component’s state.
    */
-  className?: string | ((state: State) => string | undefined);
+  className?: (string | ((state: State) => string | undefined)) | undefined;
   /**
    * Allows you to replace the component’s HTML element
    * with a different tag, or compose it with another component.
    *
    * Accepts a `ReactElement` or a function that returns the element to render.
    */
-  render?: ComponentRenderFn<RenderFunctionProps, State> | React$1.ReactElement;
+  render?:
+    | (React$1.ReactElement | ComponentRenderFn<RenderFunctionProps, State>)
+    | undefined;
   /**
    * Style applied to the element, or a function that
    * returns a style object based on the component’s state.
    */
   style?:
-    | React$1.CSSProperties
-    | ((state: State) => React$1.CSSProperties | undefined);
+    | (
+        | React$1.CSSProperties
+        | ((state: State) => React$1.CSSProperties | undefined)
+      )
+    | undefined;
 };
 interface NativeButtonProps {
   /**
@@ -68,7 +73,7 @@ interface NativeButtonProps {
    * Set to `false` if the rendered element is not a button (e.g. `<div>`).
    * @default true
    */
-  nativeButton?: boolean;
+  nativeButton?: boolean | undefined;
 }
 interface NonNativeButtonProps {
   /**
@@ -77,7 +82,7 @@ interface NonNativeButtonProps {
    * Set to `true` if the rendered element is a native button.
    * @default false
    */
-  nativeButton?: boolean;
+  nativeButton?: boolean | undefined;
 }
 type Orientation = "horizontal" | "vertical";
 
@@ -98,8 +103,10 @@ declare const inputChange: "input-change";
 declare const inputClear: "input-clear";
 declare const inputBlur: "input-blur";
 declare const inputPaste: "input-paste";
+declare const inputPress: "input-press";
 declare const focusOut: "focus-out";
 declare const escapeKey: "escape-key";
+declare const closeWatcher: "close-watcher";
 declare const listNavigation: "list-navigation";
 declare const keyboard: "keyboard";
 declare const pointer: "pointer";
@@ -110,6 +117,7 @@ declare const cancelOpen: "cancel-open";
 declare const siblingOpen: "sibling-open";
 declare const disabled: "disabled";
 declare const imperativeAction: "imperative-action";
+declare const swipe: "swipe";
 declare const windowResize: "window-resize";
 
 interface ReasonToEventMap {
@@ -130,12 +138,15 @@ interface ReasonToEventMap {
   [inputClear]: InputEvent | FocusEvent | Event;
   [inputBlur]: FocusEvent;
   [inputPaste]: ClipboardEvent;
+  [inputPress]: MouseEvent | PointerEvent | TouchEvent | KeyboardEvent;
   [focusOut]: FocusEvent | KeyboardEvent;
   [escapeKey]: KeyboardEvent;
+  [closeWatcher]: Event;
   [listNavigation]: KeyboardEvent;
   [keyboard]: KeyboardEvent;
   [pointer]: PointerEvent;
   [drag]: PointerEvent | TouchEvent;
+  [swipe]: PointerEvent | TouchEvent;
   [wheel]: WheelEvent;
   [scrub]: PointerEvent;
   [cancelOpen]: MouseEvent;
@@ -232,18 +243,18 @@ interface AccordionRootProps extends BaseUIComponentProps<
    *
    * To render an uncontrolled accordion, use the `defaultValue` prop instead.
    */
-  value?: AccordionValue;
+  value?: AccordionValue | undefined;
   /**
    * The uncontrolled value of the item(s) that should be initially expanded.
    *
    * To render a controlled accordion, use the `value` prop instead.
    */
-  defaultValue?: AccordionValue;
+  defaultValue?: AccordionValue | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Allows the browser’s built-in page search to find and expand the panel contents.
    *
@@ -251,38 +262,40 @@ interface AccordionRootProps extends BaseUIComponentProps<
    * to hide the element without removing it from the DOM.
    * @default false
    */
-  hiddenUntilFound?: boolean;
+  hiddenUntilFound?: boolean | undefined;
   /**
    * Whether to keep the element in the DOM while the panel is closed.
    * This prop is ignored when `hiddenUntilFound` is used.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
   /**
    * Whether to loop keyboard focus back to the first item
    * when the end of the list is reached while using the arrow keys.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
   /**
    * Event handler called when an accordion item is expanded or collapsed.
    * Provides the new value as an argument.
    */
-  onValueChange?: (
-    value: AccordionValue,
-    eventDetails: AccordionRootChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: AccordionValue,
+        eventDetails: AccordionRootChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Whether multiple items can be open at the same time.
    * @default false
    */
-  multiple?: boolean;
+  multiple?: boolean | undefined;
   /**
    * The visual orientation of the accordion.
    * Controls whether roving focus uses left/right or up/down arrow keys.
    * @default 'vertical'
    */
-  orientation?: Orientation;
+  orientation?: Orientation | undefined;
 }
 type AccordionRootChangeEventReason = typeof triggerPress | typeof none;
 type AccordionRootChangeEventDetails =
@@ -318,26 +331,25 @@ interface CollapsibleRootProps extends BaseUIComponentProps<
    *
    * To render an uncontrolled collapsible, use the `defaultOpen` prop instead.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Whether the collapsible panel is initially open.
    *
    * To render a controlled collapsible, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Event handler called when the panel is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: CollapsibleRootChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: CollapsibleRootChangeEventDetails) => void)
+    | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 type CollapsibleRootChangeEventReason = typeof triggerPress | typeof none;
 type CollapsibleRootChangeEventDetails =
@@ -369,14 +381,14 @@ interface UseCollapsibleRootParameters {
    *
    * To render an uncontrolled collapsible, use the `defaultOpen` prop instead.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Whether the collapsible panel is initially open.
    *
    * To render a controlled collapsible, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Event handler called when the panel is opened or closed.
    */
@@ -468,10 +480,9 @@ interface AccordionItemProps
   /**
    * Event handler called when the panel is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: AccordionItem.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: AccordionItem.ChangeEventDetails) => void)
+    | undefined;
 }
 type AccordionItemChangeEventReason = typeof triggerPress | typeof none;
 type AccordionItemChangeEventDetails =
@@ -547,7 +558,7 @@ declare namespace AccordionPanel {
   type Props = AccordionPanelProps;
 }
 
-declare namespace index_parts$q {
+declare namespace index_parts$r {
   export {
     AccordionHeader as Header,
     AccordionItem as Item,
@@ -609,7 +620,19 @@ declare class Store<State> {
    * Gives the state a new reference and updates all registered listeners.
    */
   notifyAll(): void;
+  use<F extends (...args: any) => any>(
+    selector: F,
+    ...args: SelectorArgs$1<F>
+  ): ReturnType<F>;
 }
+type SelectorArgs$1<Selector> = Selector extends (
+  ...params: infer Params
+) => any
+  ? Tail$1<Params>
+  : never;
+type Tail$1<T extends readonly any[]> = T extends readonly [any, ...infer Rest]
+  ? Rest
+  : [];
 
 /**
  * A Store that supports controlled state keys, non-reactive values and provides utility methods for React.
@@ -634,10 +657,6 @@ declare class ReactStore<
    * Non-reactive values such as refs, callbacks, etc.
    */
   readonly context: Context;
-  /**
-   * Keeps track of which properties are controlled.
-   */
-  private controlledValues;
   private selectors;
   /**
    * Synchronizes a single external value into the store.
@@ -668,45 +687,21 @@ declare class ReactStore<
    */
   useSyncedValues(statePart: Partial<State>): void;
   /**
-   * Registers a controllable prop pair (`controlled`, `defaultValue`) for a specific key.
-   * - If `controlled` is non-undefined, the key is marked as controlled and the store's
-   *   state at `key` is updated to match `controlled`. Local writes to that key are ignored.
-   * - If `controlled` is undefined, the key is marked as uncontrolled. The store's state
-   *   is initialized to `defaultValue` on first render and can be updated with local writes.
+   * Registers a controllable prop pair (`controlled`, `defaultValue`) for a specific key. If `controlled`
+   * is non-undefined, the store's state at `key` is updated to match `controlled`.
    */
   useControlledProp<Key extends keyof State, Value extends State[Key]>(
     key: keyof State,
     controlled: Value | undefined,
-    defaultValue: Value,
   ): void;
-  /**
-   * Sets a specific key in the store's state to a new value and notifies listeners if the value has changed.
-   * If the key is controlled (registered via {@link useControlledProp} with a non-undefined value),
-   * the update is ignored and no listeners are notified.
-   *
-   * @param key The state key to update.
-   * @param value The new value to set for the specified key.
-   */
-  set<T>(key: keyof State, value: T): void;
-  /**
-   * Merges the provided changes into the current state and notifies listeners if there are changes.
-   * Controlled keys are filtered out and not updated.
-   *
-   * @param values An object containing the changes to apply to the current state.
-   */
-  update(values: Partial<State>): void;
-  /**
-   * Updates the entire store's state and notifies all registered listeners.
-   * Controlled keys are left unchanged; only uncontrolled keys from `newState` are applied.
-   *
-   * @param newState The new state to set for the store.
-   */
-  setState(newState: State): void;
   /** Gets the current value from the store using a selector with the provided key.
    *
    * @param key Key of the selector to use.
    */
-  select: ReactStoreSelectorMethod<Selectors>;
+  select<Key extends keyof Selectors>(
+    key: Key,
+    ...args: SelectorArgs<Selectors[Key]>
+  ): ReturnType<Selectors[Key]>;
   /**
    * Returns a value from the store's state using a selector function.
    * Used to subscribe to specific parts of the state.
@@ -714,7 +709,10 @@ declare class ReactStore<
    *
    * @param key Key of the selector to use.
    */
-  useState: ReactStoreSelectorMethod<Selectors>;
+  useState<Key extends keyof Selectors>(
+    key: Key,
+    ...args: SelectorArgs<Selectors[Key]>
+  ): ReturnType<Selectors[Key]>;
   /**
    * Wraps a function with `useStableCallback` to ensure it has a stable reference
    * and assigns it to the context.
@@ -771,12 +769,6 @@ type ContextFunction<Context, Key extends keyof Context> = Extract<
 type KeysAllowingUndefined<State> = {
   [Key in keyof State]-?: undefined extends State[Key] ? Key : never;
 }[keyof State];
-type ReactStoreSelectorMethod<
-  Selectors extends Record<PropertyKey, SelectorFunction<any>>,
-> = <Key extends keyof Selectors>(
-  key: Key,
-  ...args: SelectorArgs<Selectors[Key]>
-) => ReturnType<Selectors[Key]>;
 type ObserveSelector<State> = (state: State) => any;
 type SelectorFunction<State> = (state: State, ...args: any[]) => any;
 type Tail<T extends readonly any[]> = T extends readonly [any, ...infer Rest]
@@ -1242,58 +1234,67 @@ type UseRenderElementParameters<
    * This is useful for rendering a component conditionally.
    * @default true
    */
-  enabled?: Enabled;
+  enabled?: Enabled | undefined;
   /**
    * @deprecated
    */
-  propGetter?: (externalProps: HTMLProps) => HTMLProps;
+  propGetter?: ((externalProps: HTMLProps) => HTMLProps) | undefined;
   /**
    * The ref to apply to the rendered element.
    */
   ref?:
-    | React$1.Ref<RenderedElementType>
-    | (React$1.Ref<RenderedElementType> | undefined)[];
+    | (
+        | React$1.Ref<RenderedElementType>
+        | (React$1.Ref<RenderedElementType> | undefined)[]
+      )
+    | undefined;
   /**
    * The state of the component.
    */
-  state?: State;
+  state?: State | undefined;
   /**
    * Intrinsic props to be spread on the rendered element.
    */
   props?:
-    | RenderFunctionProps<TagName>
-    | Array<
+    | (
         | RenderFunctionProps<TagName>
-        | undefined
-        | ((
-            props: RenderFunctionProps<TagName>,
-          ) => RenderFunctionProps<TagName>)
-      >;
+        | Array<
+            | RenderFunctionProps<TagName>
+            | undefined
+            | ((
+                props: RenderFunctionProps<TagName>,
+              ) => RenderFunctionProps<TagName>)
+          >
+      )
+    | undefined;
   /**
    * A mapping of state to `data-*` attributes.
    */
-  stateAttributesMapping?: StateAttributesMapping<State>;
+  stateAttributesMapping?: StateAttributesMapping<State> | undefined;
 };
 interface UseRenderElementComponentProps<State> {
   /**
    * The class name to apply to the rendered element.
    * Can be a string or a function that accepts the state and returns a string.
    */
-  className?: string | ((state: State) => string | undefined);
+  className?: (string | ((state: State) => string | undefined)) | undefined;
   /**
    * The render prop or React element to override the default element.
    */
   render?:
     | undefined
-    | ComponentRenderFn<React$1.HTMLAttributes<any>, State>
-    | React$1.ReactElement;
+    | React$1.ReactElement
+    | ComponentRenderFn<React$1.HTMLAttributes<any>, State>;
   /**
    * The style to apply to the rendered element.
    * Can be a style object or a function that accepts the state and returns a style object.
    */
   style?:
-    | React$1.CSSProperties
-    | ((state: State) => React$1.CSSProperties | undefined);
+    | (
+        | React$1.CSSProperties
+        | ((state: State) => React$1.CSSProperties | undefined)
+      )
+    | undefined;
 }
 /**
  * Renders a Base UI element.
@@ -1328,15 +1329,17 @@ declare namespace useRenderElement {
 }
 
 interface UseFloatingPortalNodeProps {
-  ref?: React$1.Ref<HTMLDivElement>;
+  ref?: React$1.Ref<HTMLDivElement> | undefined;
   container?:
-    | HTMLElement
-    | ShadowRoot
-    | null
-    | React$1.RefObject<HTMLElement | ShadowRoot | null>;
-  componentProps?: useRenderElement.ComponentProps<any>;
-  elementProps?: React$1.HTMLAttributes<HTMLDivElement>;
-  elementState?: Record<string, unknown>;
+    | (
+        | HTMLElement
+        | ShadowRoot
+        | null
+        | React$1.RefObject<HTMLElement | ShadowRoot | null>
+      )
+    | undefined;
+  componentProps?: useRenderElement.ComponentProps<any> | undefined;
+  elementProps?: React$1.HTMLAttributes<HTMLDivElement> | undefined;
 }
 /**
  * Portals the floating element into a given container element — by default,
@@ -1350,7 +1353,7 @@ interface UseFloatingPortalNodeProps {
 declare const FloatingPortal: React$1.ForwardRefExoticComponent<
   Omit<
     FloatingPortal.Props<any> & {
-      renderGuards?: boolean;
+      renderGuards?: boolean | undefined;
     },
     "ref"
   > &
@@ -1361,7 +1364,7 @@ declare namespace FloatingPortal {
     /**
      * A parent element to render the portal element into.
      */
-    container?: UseFloatingPortalNodeProps["container"];
+    container?: UseFloatingPortalNodeProps["container"] | undefined;
   }
 }
 
@@ -1376,7 +1379,7 @@ declare function useFloating(options?: UseFloatingOptions): UseFloatingReturn;
  * Uses both a set of Elements and a map of IDs to Elements for efficient lookups.
  */
 declare class PopupTriggerMap {
-  private elements;
+  private elementsSet;
   private idMap;
   constructor();
   /**
@@ -1397,8 +1400,21 @@ declare class PopupTriggerMap {
    * Whether there is a registered trigger element matching the given predicate.
    */
   hasMatchingElement(predicate: (el: Element) => boolean): boolean;
+  /**
+   * Returns the trigger element associated with the given ID, or undefined if no such element exists.
+   */
   getById(id: string): Element | undefined;
+  /**
+   * Returns an iterable of all registered trigger entries, where each entry is a tuple of [id, element].
+   */
   entries(): IterableIterator<[string, Element]>;
+  /**
+   * Returns an iterable of all registered trigger elements.
+   */
+  elements(): IterableIterator<Element>;
+  /**
+   * Returns the number of registered trigger elements.
+   */
   get size(): number;
 }
 
@@ -1407,9 +1423,13 @@ declare class PopupTriggerMap {
  */
 type PopupStoreState<Payload> = {
   /**
-   * Whether the popup is open.
+   * Whether the popup is open (internal state).
    */
   open: boolean;
+  /**
+   * Whether the popup is open (external prop).
+   */
+  readonly openProp: boolean | undefined;
   /**
    * Whether the popup should be mounted in the DOM.
    * This usually follows `open` but can be different during exit transitions.
@@ -1437,6 +1457,10 @@ type PopupStoreState<Payload> = {
    * The currently active trigger DOM element.
    */
   activeTriggerElement: Element | null;
+  /**
+   * ID of the trigger (external prop).
+   */
+  readonly triggerIdProp: string | null | undefined;
   /**
    * The popup DOM element.
    */
@@ -1470,7 +1494,9 @@ type PopupStoreContext<ChangeEventDetails> = {
   /**
    * Callback fired when the open state changes.
    */
-  onOpenChange?: (open: boolean, eventDetails: ChangeEventDetails) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: ChangeEventDetails) => void)
+    | undefined;
   /**
    * Callback fired when the open state change animation completes.
    */
@@ -1502,10 +1528,10 @@ interface FloatingEvents {
   off(event: string, handler: (data: any) => void): void;
 }
 interface ContextData {
-  openEvent?: Event;
-  floatingContext?: FloatingContext;
+  openEvent?: Event | undefined;
+  floatingContext?: FloatingContext | undefined;
   /** @deprecated use `onTypingChange` prop in `useTypeahead` */
-  typing?: boolean;
+  typing?: boolean | undefined;
   [key: string]: any;
 }
 type FloatingRootContext = FloatingRootStore;
@@ -1529,7 +1555,7 @@ type FloatingContext = Omit<
 interface FloatingNodeType {
   id: string | undefined;
   parentId: string | null;
-  context?: FloatingContext;
+  context?: FloatingContext | undefined;
 }
 type ReferenceType = Element | VirtualElement;
 type UseFloatingReturn = Prettify<
@@ -1546,20 +1572,22 @@ type UseFloatingReturn = Prettify<
   }
 >;
 interface UseFloatingOptions extends Omit<UseFloatingOptions$1, "elements"> {
-  rootContext?: FloatingRootContext;
+  rootContext?: FloatingRootContext | undefined;
   /**
    * Object of external elements as an alternative to the `refs` object setters.
    */
-  elements?: {
-    /**
-     * Externally passed reference element. Store in state.
-     */
-    reference?: ReferenceType | null;
-    /**
-     * Externally passed floating element. Store in state.
-     */
-    floating?: HTMLElement | null;
-  };
+  elements?:
+    | {
+        /**
+         * Externally passed reference element. Store in state.
+         */
+        reference?: (ReferenceType | null) | undefined;
+        /**
+         * Externally passed floating element. Store in state.
+         */
+        floating?: (HTMLElement | null) | undefined;
+      }
+    | undefined;
   /**
    * An event callback that is invoked when the floating element is opened or
    * closed.
@@ -1571,11 +1599,11 @@ interface UseFloatingOptions extends Omit<UseFloatingOptions$1, "elements"> {
   /**
    * Unique node id when using `FloatingTree`.
    */
-  nodeId?: string;
+  nodeId?: string | undefined;
   /**
    * External FlatingTree to use when the one provided by context can't be used.
    */
-  externalTree?: FloatingTreeStore;
+  externalTree?: FloatingTreeStore | undefined;
 }
 
 interface FloatingRootState {
@@ -1640,14 +1668,14 @@ interface DialogRootProps<Payload = unknown> {
   /**
    * Whether the dialog is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Whether the dialog is initially open.
    *
    * To render a controlled dialog, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Determines if the dialog enters a modal state when open.
    * - `true`: user interaction is limited to just the dialog: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled.
@@ -1655,23 +1683,22 @@ interface DialogRootProps<Payload = unknown> {
    * - `'trap-focus'`: focus is trapped inside the dialog, but document page scroll is not locked and pointer interactions outside of it remain enabled.
    * @default true
    */
-  modal?: boolean | "trap-focus";
+  modal?: (boolean | "trap-focus") | undefined;
   /**
    * Event handler called when the dialog is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: DialogRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: DialogRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the dialog is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * Determines whether the dialog should close on outside clicks.
    * @default false
    */
-  disablePointerDismissal?: boolean;
+  disablePointerDismissal?: boolean | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the dialog will not be unmounted when closed.
@@ -1679,13 +1706,13 @@ interface DialogRootProps<Payload = unknown> {
    * Useful when the dialog's animation is controlled by an external library.
    * - `close`: Closes the dialog imperatively when called.
    */
-  actionsRef?: React$1.RefObject<DialogRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<DialogRoot.Actions | null> | undefined;
   /**
    * A handle to associate the dialog with a trigger.
    * If specified, allows external triggers to control the dialog's open state.
    * Can be created with the Dialog.createHandle() method.
    */
-  handle?: DialogHandle<Payload>;
+  handle?: DialogHandle<Payload> | undefined;
   /**
    * The content of the dialog.
    * This can be a regular React node or a render function that receives the `payload` of the active trigger.
@@ -1696,12 +1723,12 @@ interface DialogRootProps<Payload = unknown> {
    * This is useful in conjunction with the `open` prop to create a controlled dialog.
    * There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set).
    */
-  triggerId?: string | null;
+  triggerId?: (string | null) | undefined;
   /**
    * ID of the trigger that the dialog is associated with.
    * This is useful in conjunction with the `defaultOpen` prop to create an initially open dialog.
    */
-  defaultTriggerId?: string | null;
+  defaultTriggerId?: (string | null) | undefined;
 }
 interface DialogRootActions {
   unmount: () => void;
@@ -1750,8 +1777,11 @@ type Context$4 = PopupStoreContext<DialogRoot.ChangeEventDetails> & {
   readonly popupRef: React$1.RefObject<HTMLElement | null>;
   readonly backdropRef: React$1.RefObject<HTMLDivElement | null>;
   readonly internalBackdropRef: React$1.RefObject<HTMLDivElement | null>;
-  readonly onNestedDialogOpen?: (ownChildrenCount: number) => void;
-  readonly onNestedDialogClose?: () => void;
+  readonly outsidePressEnabledRef: React$1.MutableRefObject<boolean>;
+  readonly onNestedDialogOpen?:
+    | ((ownChildrenCount: number) => void)
+    | undefined;
+  readonly onNestedDialogClose?: (() => void) | undefined;
 };
 declare const selectors$4: {
   modal: (state: State$4<unknown>) => boolean | "trap-focus";
@@ -1763,33 +1793,273 @@ declare const selectors$4: {
   titleElementId: (state: State$4<unknown>) => string | undefined;
   viewportElement: (state: State$4<unknown>) => HTMLElement | null;
   role: (state: State$4<unknown>) => "dialog" | "alertdialog";
-  open: (state: PopupStoreState<unknown>) => boolean;
-  mounted: (state: PopupStoreState<unknown>) => boolean;
-  transitionStatus: (state: PopupStoreState<unknown>) => TransitionStatus;
-  floatingRootContext: (state: PopupStoreState<unknown>) => FloatingRootStore;
-  preventUnmountingOnClose: (state: PopupStoreState<unknown>) => boolean;
-  payload: (state: PopupStoreState<unknown>) => unknown;
-  activeTriggerId: (state: PopupStoreState<unknown>) => string | null;
-  activeTriggerElement: (state: PopupStoreState<unknown>) => Element | null;
+  open: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  mounted: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  transitionStatus: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => TransitionStatus;
+  floatingRootContext: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => FloatingRootStore;
+  preventUnmountingOnClose: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  payload: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => unknown;
+  activeTriggerId: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => string | null;
+  activeTriggerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => Element | null;
   isTriggerActive: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isOpenedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isMountedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   triggerProps: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     isActive: boolean,
   ) => HTMLProps;
-  popupProps: (state: PopupStoreState<unknown>) => HTMLProps;
-  popupElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
-  positionerElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
+  popupProps: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLProps;
+  popupElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
+  positionerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
 };
 declare class DialogStore<Payload> extends ReactStore<
   Readonly<State$4<Payload>>,
@@ -1850,10 +2120,12 @@ interface AlertDialogRootProps<Payload = unknown> extends Omit<
   /**
    * Event handler called when the dialog is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: AlertDialogRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((
+        open: boolean,
+        eventDetails: AlertDialogRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the dialog will not be unmounted when closed.
@@ -1861,13 +2133,13 @@ interface AlertDialogRootProps<Payload = unknown> extends Omit<
    * Useful when the dialog's animation is controlled by an external library.
    * - `close`: Closes the dialog imperatively when called.
    */
-  actionsRef?: React$1.RefObject<AlertDialogRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<AlertDialogRoot.Actions | null> | undefined;
   /**
    * A handle to associate the alert dialog with a trigger.
    * If specified, allows external triggers to control the alert dialog's open state.
    * Can be created with the AlertDialog.createHandle() method.
    */
-  handle?: DialogHandle<Payload>;
+  handle?: DialogHandle<Payload> | undefined;
 }
 type AlertDialogRootActions = DialogRoot.Actions;
 type AlertDialogRootChangeEventReason = DialogRoot.ChangeEventReason;
@@ -1899,7 +2171,7 @@ interface DialogBackdropProps extends BaseUIComponentProps<
    * Whether the backdrop is forced to render even when nested.
    * @default false
    */
-  forceRender?: boolean;
+  forceRender?: boolean | undefined;
 }
 interface DialogBackdropState {
   /**
@@ -1980,9 +2252,12 @@ interface DialogPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   initialFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((openType: InteractionType) => boolean | HTMLElement | null | void);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((openType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
   /**
    * Determines the element to focus when the dialog is closed.
    *
@@ -1993,9 +2268,12 @@ interface DialogPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   finalFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((closeType: InteractionType) => boolean | HTMLElement | null | void);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
 }
 interface DialogPopupState {
   /**
@@ -2031,11 +2309,11 @@ interface DialogPortalProps extends FloatingPortal.Props<DialogPortal.State> {
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
   /**
    * A parent element to render the portal element into.
    */
-  container?: FloatingPortal.Props<DialogPortal.State>["container"];
+  container?: FloatingPortal.Props<DialogPortal.State>["container"] | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -2081,16 +2359,16 @@ interface DialogTriggerProps<Payload = unknown>
    * A handle to associate the trigger with a dialog.
    * Can be created with the Dialog.createHandle() method.
    */
-  handle?: DialogHandle<Payload>;
+  handle?: DialogHandle<Payload> | undefined;
   /**
    * A payload to pass to the dialog when it is opened.
    */
-  payload?: Payload;
+  payload?: Payload | undefined;
   /**
    * ID of the trigger. In addition to being forwarded to the rendered element,
    * it is also used to specify the active trigger for the dialogs in controlled mode (with the DialogRoot `triggerId` prop).
    */
-  id?: string;
+  id?: string | undefined;
 }
 interface DialogTriggerState {
   /**
@@ -2155,7 +2433,7 @@ declare namespace DialogViewport {
 
 declare function createAlertDialogHandle<Payload>(): DialogHandle<Payload>;
 
-declare namespace index_parts$p {
+declare namespace index_parts$q {
   export {
     DialogBackdrop as Backdrop,
     DialogClose as Close,
@@ -2186,53 +2464,52 @@ interface ComboboxRootProps$1<ItemValue> {
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * The id of the component.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether the user must choose a value before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Whether the user should be unable to choose a different option from the popup.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Whether the popup is initially open.
    *
    * To render a controlled popup, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Whether the popup is currently open. Use when controlled.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Event handler called when the popup is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: AriaCombobox.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: AriaCombobox.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the popup is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * Whether the popup opens when clicking the input.
    * @default true
    */
-  openOnInputClick?: boolean;
+  openOnInputClick?: boolean | undefined;
   /**
    * Whether the first matching item is highlighted automatically.
    * - `false`: do not highlight automatically.
@@ -2240,49 +2517,50 @@ interface ComboboxRootProps$1<ItemValue> {
    * - `'always'`: highlight the first item as soon as the list opens.
    * @default false
    */
-  autoHighlight?: boolean | "always";
+  autoHighlight?: (boolean | "always") | undefined;
   /**
    * Whether the highlighted item should be preserved when the pointer leaves the list.
    * @default false
    */
-  keepHighlight?: boolean;
+  keepHighlight?: boolean | undefined;
   /**
    * Whether moving the pointer over items should highlight them.
    * Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.
    * @default true
    */
-  highlightItemOnHover?: boolean;
+  highlightItemOnHover?: boolean | undefined;
   /**
    * Whether to loop keyboard focus back to the input when the end of the list is reached while using the arrow keys. The first item can then be reached by pressing <kbd>ArrowDown</kbd> again from the input, or the last item can be reached by pressing <kbd>ArrowUp</kbd> from the input.
    * The input is always included in the focus loop per [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
    * When disabled, focus does not move when on the last element and the user presses <kbd>ArrowDown</kbd>, or when on the first element and the user presses <kbd>ArrowUp</kbd>.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
   /**
    * The input value of the combobox. Use when controlled.
    */
-  inputValue?: React$1.ComponentProps<"input">["value"];
+  inputValue?: React$1.ComponentProps<"input">["value"] | undefined;
   /**
    * Callback fired when the input value of the combobox changes.
    */
-  onInputValueChange?: (
-    value: string,
-    eventDetails: AriaCombobox.ChangeEventDetails,
-  ) => void;
+  onInputValueChange?:
+    | ((value: string, eventDetails: AriaCombobox.ChangeEventDetails) => void)
+    | undefined;
   /**
    * The uncontrolled input value when initially rendered.
    *
    * To render a controlled input, use the `inputValue` prop instead.
    */
-  defaultInputValue?: React$1.ComponentProps<"input">["defaultValue"];
+  defaultInputValue?:
+    | React$1.ComponentProps<"input">["defaultValue"]
+    | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the combobox will not be unmounted when closed.
    * Instead, the `unmount` function must be called to unmount the combobox manually.
    * Useful when the combobox's animation is controlled by an external library.
    */
-  actionsRef?: React$1.RefObject<AriaCombobox.Actions | null>;
+  actionsRef?: React$1.RefObject<AriaCombobox.Actions | null> | undefined;
   /**
    * Callback fired when an item is highlighted or unhighlighted.
    * Receives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.
@@ -2291,81 +2569,85 @@ interface ComboboxRootProps$1<ItemValue> {
    * - `'pointer'`: the highlight changed due to pointer hovering.
    * - `'none'`: the highlight changed programmatically.
    */
-  onItemHighlighted?: (
-    itemValue: ItemValue | undefined,
-    eventDetails: AriaCombobox.HighlightEventDetails,
-  ) => void;
+  onItemHighlighted?:
+    | ((
+        itemValue: ItemValue | undefined,
+        eventDetails: AriaCombobox.HighlightEventDetails,
+      ) => void)
+    | undefined;
   /**
    * A ref to the hidden input element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
   /**
    * Whether list items are presented in a grid layout.
    * When enabled, arrow keys navigate across rows and columns inferred from DOM rows.
    * @default false
    */
-  grid?: boolean;
+  grid?: boolean | undefined;
   /**
    * The items to be displayed in the list.
    * Can be either a flat array of items or an array of groups with items.
    */
-  items?: readonly any[] | readonly Group<any>[];
+  items?: (readonly any[] | readonly Group<any>[]) | undefined;
   /**
    * Filtered items to display in the list.
    * When provided, the list will use these items instead of filtering the `items` prop internally.
    * Use when you want to control filtering logic externally with the `useFilter()` hook.
    */
-  filteredItems?: readonly any[] | readonly Group<any>[];
+  filteredItems?: (readonly any[] | readonly Group<any>[]) | undefined;
   /**
    * Filter function used to match items vs input query.
    */
   filter?:
-    | null
-    | ((
-        itemValue: ItemValue,
-        query: string,
-        itemToString?: (itemValue: ItemValue) => string,
-      ) => boolean);
+    | (
+        | null
+        | ((
+            itemValue: ItemValue,
+            query: string,
+            itemToString?: (itemValue: ItemValue) => string,
+          ) => boolean)
+      )
+    | undefined;
   /**
    * When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for display in the input.
    * If the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.
    */
-  itemToStringLabel?: (itemValue: ItemValue) => string;
+  itemToStringLabel?: ((itemValue: ItemValue) => string) | undefined;
   /**
    * When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for form submission.
    * If the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop.
    */
-  itemToStringValue?: (itemValue: ItemValue) => string;
+  itemToStringValue?: ((itemValue: ItemValue) => string) | undefined;
   /**
    * Custom comparison logic used to determine if a combobox item value matches the current selected value. Useful when item values are objects without matching referentially.
    * Defaults to `Object.is` comparison.
    */
-  isItemEqualToValue?: (
-    itemValue: ItemValue,
-    selectedValue: ItemValue,
-  ) => boolean;
+  isItemEqualToValue?:
+    | ((itemValue: ItemValue, value: ItemValue) => boolean)
+    | undefined;
   /**
    * Whether the items are being externally virtualized.
    * @default false
    */
-  virtualized?: boolean;
+  virtualized?: boolean | undefined;
   /**
    * Whether the list is rendered inline without using the popup.
    * @default false
    */
-  inline?: boolean;
+  inline?: boolean | undefined;
   /**
    * Determines if the popup enters a modal state when open.
    * - `true`: user interaction is limited to the popup: document page scroll is locked and pointer interactions on outside elements are disabled.
    * - `false`: user interaction with the rest of the document is allowed.
    * @default false
    */
-  modal?: boolean;
+  modal?: boolean | undefined;
   /**
    * The maximum number of items to display in the list.
    * @default -1
    */
-  limit?: number;
+  limit?: number | undefined;
   /**
    * Controls how the component behaves with respect to list filtering and inline autocompletion.
    * - `list` (default): items are dynamically filtered based on the input value. The input value does not change based on the active item.
@@ -2374,32 +2656,31 @@ interface ComboboxRootProps$1<ItemValue> {
    * - `none`: items are static (not filtered), and the input value will not change based on the active item.
    * @default 'list'
    */
-  autoComplete?: "list" | "both" | "inline" | "none";
+  autoComplete?: ("list" | "both" | "inline" | "none") | undefined;
+  /**
+   * Provides a hint to the browser for autofill on the hidden input element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete
+   */
+  formAutoComplete?: string | undefined;
   /**
    * The locale to use for string comparison.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
   /**
    * Whether clicking an item should submit the owning form.
    * @default false
    */
-  submitOnItemClick?: boolean;
+  submitOnItemClick?: boolean | undefined;
   /**
    * INTERNAL: When `selectionMode` is `none`, controls whether selecting an item fills the input.
    */
-  fillInputOnItemPress?: boolean;
+  fillInputOnItemPress?: boolean | undefined;
 }
-type ComboboxRootConditionalProps<
+type AriaComboboxProps<
   Value,
   Mode extends SelectionMode = "none",
-> = Omit<
-  ComboboxRootProps$1<Value>,
-  | "selectionMode"
-  | "selectedValue"
-  | "defaultSelectedValue"
-  | "onSelectedValueChange"
-> & {
+> = ComboboxRootProps$1<Value> & {
   /**
    * How the combobox should remember the selected value.
    * - `single`: Remembers the last selected value.
@@ -2407,43 +2688,47 @@ type ComboboxRootConditionalProps<
    * - `none`: Do not remember the selected value.
    * @default 'none'
    */
-  selectionMode?: Mode;
+  selectionMode?: Mode | undefined;
   /**
    * The selected value of the combobox. Use when controlled.
    */
-  selectedValue?: ComboboxItemValueType<Value, Mode>;
+  selectedValue?: ComboboxItemValueType<Value, Mode> | undefined;
   /**
    * The uncontrolled selected value of the combobox when it's initially rendered.
    *
    * To render a controlled combobox, use the `selectedValue` prop instead.
    */
-  defaultSelectedValue?: ComboboxItemValueType<Value, Mode> | null;
+  defaultSelectedValue?:
+    | (ComboboxItemValueType<Value, Mode> | null)
+    | undefined;
   /**
    * Callback fired when the selected value of the combobox changes.
    */
-  onSelectedValueChange?: (
-    value: ComboboxItemValueType<Value, Mode>,
-    eventDetails: AriaCombobox.ChangeEventDetails,
-  ) => void;
+  onSelectedValueChange?:
+    | ((
+        value: ComboboxItemValueType<Value, Mode>,
+        eventDetails: AriaCombobox.ChangeEventDetails,
+      ) => void)
+    | undefined;
 };
 /**
  * @internal
  */
 declare function AriaCombobox<Value, Mode extends SelectionMode = "none">(
-  props: Omit<ComboboxRootConditionalProps<Value, Mode>, "items"> & {
+  props: Omit<AriaComboboxProps<Value, Mode>, "items"> & {
     items: readonly Group<any>[];
   },
 ): React$1.JSX.Element;
 declare function AriaCombobox<Value, Mode extends SelectionMode = "none">(
-  props: Omit<ComboboxRootConditionalProps<Value, Mode>, "items"> & {
-    items?: readonly any[];
+  props: Omit<AriaComboboxProps<Value, Mode>, "items"> & {
+    items?: readonly any[] | undefined;
   },
 ): React$1.JSX.Element;
 declare namespace AriaCombobox {
-  type Props<
+  type Props<Value, Mode extends SelectionMode = "none"> = AriaComboboxProps<
     Value,
-    Mode extends SelectionMode = "none",
-  > = ComboboxRootConditionalProps<Value, Mode>;
+    Mode
+  >;
   interface State {}
   interface Actions {
     unmount: () => void;
@@ -2491,12 +2776,14 @@ interface AutocompleteRootProps<ItemValue> extends Omit<
   | "defaultInputValue"
   | "onInputValueChange"
   | "autoComplete"
+  | "formAutoComplete"
   | "itemToStringLabel"
   | "autoHighlight"
   | "keepHighlight"
   | "highlightItemOnHover"
   | "actionsRef"
   | "onOpenChange"
+  | "openOnInputClick"
 > {
   /**
    * Controls how the autocomplete behaves with respect to list filtering and inline autocompletion.
@@ -2506,77 +2793,84 @@ interface AutocompleteRootProps<ItemValue> extends Omit<
    * - `none`: items are static (not filtered), and the input value will not change based on the active item.
    * @default 'list'
    */
-  mode?: "list" | "both" | "inline" | "none";
+  mode?: ("list" | "both" | "inline" | "none") | undefined;
   /**
    * Whether the first matching item is highlighted automatically.
    * - `true`: highlight after the user types and keep the highlight while the query changes.
    * - `'always'`: always highlight the first item.
    * @default false
    */
-  autoHighlight?: boolean | "always";
+  autoHighlight?: (boolean | "always") | undefined;
   /**
    * Whether the highlighted item should be preserved when the pointer leaves the list.
    * @default false
    */
-  keepHighlight?: boolean;
+  keepHighlight?: boolean | undefined;
   /**
    * Whether moving the pointer over items should highlight them.
    * Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.
    * @default true
    */
-  highlightItemOnHover?: boolean;
+  highlightItemOnHover?: boolean | undefined;
   /**
    * The uncontrolled input value of the autocomplete when it's initially rendered.
    *
    * To render a controlled autocomplete, use the `value` prop instead.
    */
-  defaultValue?: AriaCombobox.Props<
-    React$1.ComponentProps<"input">["defaultValue"],
-    "none"
-  >["defaultInputValue"];
+  defaultValue?:
+    | AriaCombobox.Props<
+        React$1.ComponentProps<"input">["defaultValue"],
+        "none"
+      >["defaultInputValue"]
+    | undefined;
   /**
    * The input value of the autocomplete. Use when controlled.
    */
-  value?: AriaCombobox.Props<
-    React$1.ComponentProps<"input">["value"],
-    "none"
-  >["inputValue"];
+  value?:
+    | AriaCombobox.Props<
+        React$1.ComponentProps<"input">["value"],
+        "none"
+      >["inputValue"]
+    | undefined;
   /**
    * Event handler called when the input value of the autocomplete changes.
    */
-  onValueChange?: (
-    value: string,
-    eventDetails: AutocompleteRootChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: string,
+        eventDetails: AutocompleteRootChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Whether clicking an item should submit the autocomplete's owning form.
    * By default, clicking an item via a pointer or <kbd>Enter</kbd> key does not submit the owning form.
    * Useful when the autocomplete is used as a single-field form search input.
    * @default false
    */
-  submitOnItemClick?: AriaCombobox.Props<
-    ItemValue,
-    "none"
-  >["submitOnItemClick"];
+  submitOnItemClick?:
+    | AriaCombobox.Props<ItemValue, "none">["submitOnItemClick"]
+    | undefined;
   /**
    * When the item values are objects (`<Autocomplete.Item value={object}>`), this function converts the object value to a string representation for both display in the input and form submission.
    * If the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.
    */
-  itemToStringValue?: (itemValue: ItemValue) => string;
+  itemToStringValue?: ((itemValue: ItemValue) => string) | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the autocomplete will not be unmounted when closed.
    * Instead, the `unmount` function must be called to unmount the autocomplete manually.
    * Useful when the autocomplete's animation is controlled by an external library.
    */
-  actionsRef?: React$1.RefObject<AutocompleteRootActions | null>;
+  actionsRef?: React$1.RefObject<AutocompleteRootActions | null> | undefined;
   /**
    * Event handler called when the popup is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: AutocompleteRootChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((
+        open: boolean,
+        eventDetails: AutocompleteRootChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Callback fired when an item is highlighted or unhighlighted.
    * Receives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.
@@ -2585,10 +2879,17 @@ interface AutocompleteRootProps<ItemValue> extends Omit<
    * - `'pointer'`: the highlight changed due to pointer hovering.
    * - `'none'`: the highlight changed programmatically.
    */
-  onItemHighlighted?: (
-    highlightedValue: ItemValue | undefined,
-    eventDetails: AutocompleteRootHighlightEventDetails,
-  ) => void;
+  onItemHighlighted?:
+    | ((
+        highlightedValue: ItemValue | undefined,
+        eventDetails: AutocompleteRootHighlightEventDetails,
+      ) => void)
+    | undefined;
+  /**
+   * Whether the popup opens when clicking the input.
+   * @default false
+   */
+  openOnInputClick?: boolean | undefined;
 }
 /**
  * Groups all parts of the autocomplete.
@@ -2618,7 +2919,7 @@ declare function AutocompleteRoot<ItemValue>(
      * The items to be displayed in the list.
      * Can be either a flat array of items or an array of groups with items.
      */
-    items?: readonly ItemValue[];
+    items?: readonly ItemValue[] | undefined;
   },
 ): React$1.JSX.Element;
 declare namespace AutocompleteRoot {
@@ -2690,21 +2991,20 @@ interface FormProps<
    *
    * @default 'onSubmit'
    */
-  validationMode?: FormValidationMode;
+  validationMode?: FormValidationMode | undefined;
   /**
    * Validation errors returned externally, typically after submission by a server or a form action.
    * This should be an object where keys correspond to the `name` attribute on `<Field.Root>`,
    * and values correspond to error(s) related to that field.
    */
-  errors?: FormContext["errors"];
+  errors?: FormContext["errors"] | undefined;
   /**
    * Event handler called when the form is submitted.
    * `preventDefault()` is called on the native submit event when used.
    */
-  onFormSubmit?: (
-    formValues: FormValues,
-    eventDetails: Form.SubmitEventDetails,
-  ) => void;
+  onFormSubmit?:
+    | ((formValues: FormValues, eventDetails: Form.SubmitEventDetails) => void)
+    | undefined;
   /**
    * A ref to imperative actions.
    * - `validate`: Validates all fields when called. Optionally pass a field name to validate a single field.
@@ -2717,7 +3017,7 @@ interface FormProps<
    * actionsRef.current.validate('email');
    * ```
    */
-  actionsRef?: React$1.RefObject<Form.Actions | null>;
+  actionsRef?: React$1.RefObject<Form.Actions | null> | undefined;
 }
 /**
  * A native form element with consolidated error handling.
@@ -2728,7 +3028,7 @@ interface FormProps<
 declare const Form: {
   <FormValues extends Record<string, any> = Record<string, any>>(
     props: Form.Props<FormValues> & {
-      ref?: React$1.Ref<HTMLFormElement>;
+      ref?: React$1.Ref<HTMLFormElement> | undefined;
     },
   ): React$1.JSX.Element;
 };
@@ -2781,22 +3081,24 @@ interface FieldRootProps extends BaseUIComponentProps<"div", FieldRoot.State> {
    * Takes precedence over the `disabled` prop on the `<Field.Control>` component.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Identifies the field when a form is submitted.
    * Takes precedence over the `name` prop on the `<Field.Control>` component.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * A function for custom validation. Return a string or an array of strings with
    * the error message(s) if the value is invalid, or `null` if the value is valid.
    * Asynchronous functions are supported, but they do not prevent form submission
    * when using `validationMode="onSubmit"`.
    */
-  validate?: (
-    value: unknown,
-    formValues: Form.Values,
-  ) => string | string[] | null | Promise<string | string[] | null>;
+  validate?:
+    | ((
+        value: unknown,
+        formValues: Form.Values,
+      ) => string | string[] | null | Promise<string | string[] | null>)
+    | undefined;
   /**
    * Determines when the field should be validated.
    * This takes precedence over the `validationMode` prop on `<Form>`.
@@ -2807,33 +3109,33 @@ interface FieldRootProps extends BaseUIComponentProps<"div", FieldRoot.State> {
    *
    * @default 'onSubmit'
    */
-  validationMode?: Form.ValidationMode;
+  validationMode?: Form.ValidationMode | undefined;
   /**
    * How long to wait between `validate` callbacks if
    * `validationMode="onChange"` is used. Specified in milliseconds.
    * @default 0
    */
-  validationDebounceTime?: number;
+  validationDebounceTime?: number | undefined;
   /**
    * Whether the field is invalid.
    * Useful when the field state is controlled by an external library.
    */
-  invalid?: boolean;
+  invalid?: boolean | undefined;
   /**
    * Whether the field's value has been changed from its initial value.
    * Useful when the field state is controlled by an external library.
    */
-  dirty?: boolean;
+  dirty?: boolean | undefined;
   /**
    * Whether the field has been touched.
    * Useful when the field state is controlled by an external library.
    */
-  touched?: boolean;
+  touched?: boolean | undefined;
   /**
    * A ref to imperative actions.
    * - `validate`: Validates the field when called.
    */
-  actionsRef?: React$1.RefObject<FieldRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<FieldRoot.Actions | null> | undefined;
 }
 /**
  * Groups all parts of the field.
@@ -2869,31 +3171,31 @@ interface SideFlipMode {
   /**
    * How to avoid collisions on the side axis.
    */
-  side?: "flip" | "none";
+  side?: ("flip" | "none") | undefined;
   /**
    * How to avoid collisions on the align axis.
    */
-  align?: "flip" | "shift" | "none";
+  align?: ("flip" | "shift" | "none") | undefined;
   /**
    * If both sides on the preferred axis do not fit, determines whether to fallback
    * to a side on the perpendicular axis and which logical side to prefer.
    */
-  fallbackAxisSide?: "start" | "end" | "none";
+  fallbackAxisSide?: ("start" | "end" | "none") | undefined;
 }
 interface SideShiftMode {
   /**
    * How to avoid collisions on the side axis.
    */
-  side?: "shift" | "none";
+  side?: ("shift" | "none") | undefined;
   /**
    * How to avoid collisions on the align axis.
    */
-  align?: "shift" | "none";
+  align?: ("shift" | "none") | undefined;
   /**
    * If both sides on the preferred axis do not fit, determines whether to fallback
    * to a side on the perpendicular axis and which logical side to prefer.
    */
-  fallbackAxisSide?: "start" | "end" | "none";
+  fallbackAxisSide?: ("start" | "end" | "none") | undefined;
 }
 type CollisionAvoidance = SideFlipMode | SideShiftMode;
 interface UseAnchorPositioningSharedParameters {
@@ -2902,22 +3204,25 @@ interface UseAnchorPositioningSharedParameters {
    * By default, the popup will be positioned against the trigger.
    */
   anchor?:
-    | Element
-    | null
-    | VirtualElement
-    | React$1.RefObject<Element | null>
-    | (() => Element | VirtualElement | null);
+    | (
+        | Element
+        | null
+        | VirtualElement
+        | React$1.RefObject<Element | null>
+        | (() => Element | VirtualElement | null)
+      )
+    | undefined;
   /**
    * Determines which CSS `position` property to use.
    * @default 'absolute'
    */
-  positionMethod?: "absolute" | "fixed";
+  positionMethod?: ("absolute" | "fixed") | undefined;
   /**
    * Which side of the anchor element to align the popup against.
    * May automatically change to avoid collisions.
    * @default 'bottom'
    */
-  side?: Side;
+  side?: Side | undefined;
   /**
    * Distance between the anchor and the popup in pixels.
    * Also accepts a function that returns the distance to read the dimensions of the anchor
@@ -2942,12 +3247,12 @@ interface UseAnchorPositioningSharedParameters {
    *
    * @default 0
    */
-  sideOffset?: number | OffsetFunction;
+  sideOffset?: (number | OffsetFunction) | undefined;
   /**
    * How to align the popup relative to the specified side.
    * @default 'center'
    */
-  align?: Align;
+  align?: Align | undefined;
   /**
    * Additional offset along the alignment axis in pixels.
    * Also accepts a function that returns the offset to read the dimensions of the anchor
@@ -2972,35 +3277,35 @@ interface UseAnchorPositioningSharedParameters {
    *
    * @default 0
    */
-  alignOffset?: number | OffsetFunction;
+  alignOffset?: (number | OffsetFunction) | undefined;
   /**
    * An element or a rectangle that delimits the area that the popup is confined to.
    * @default 'clipping-ancestors'
    */
-  collisionBoundary?: Boundary;
+  collisionBoundary?: Boundary | undefined;
   /**
    * Additional space to maintain from the edge of the collision boundary.
    * @default 5
    */
-  collisionPadding?: Padding;
+  collisionPadding?: Padding | undefined;
   /**
    * Whether to maintain the popup in the viewport after
    * the anchor element was scrolled out of view.
    * @default false
    */
-  sticky?: boolean;
+  sticky?: boolean | undefined;
   /**
    * Minimum distance to maintain between the arrow and the edges of the popup.
    *
    * Use it to prevent the arrow element from hanging out of the rounded corners of a popup.
    * @default 5
    */
-  arrowPadding?: number;
+  arrowPadding?: number | undefined;
   /**
    * Whether to disable the popup from tracking any layout shift of its positioning anchor.
    * @default false
    */
-  disableAnchorTracking?: boolean;
+  disableAnchorTracking?: boolean | undefined;
   /**
    * Determines how to handle collisions when positioning the popup.
    *
@@ -3016,21 +3321,21 @@ interface UseAnchorPositioningSharedParameters {
    * ```
    *
    */
-  collisionAvoidance?: CollisionAvoidance;
+  collisionAvoidance?: CollisionAvoidance | undefined;
 }
 interface UseAnchorPositioningParameters
   extends useAnchorPositioning.SharedParameters {
-  keepMounted?: boolean;
-  trackCursorAxis?: "none" | "x" | "y" | "both";
-  floatingRootContext?: FloatingRootContext;
+  keepMounted?: boolean | undefined;
+  trackCursorAxis?: ("none" | "x" | "y" | "both") | undefined;
+  floatingRootContext?: FloatingRootContext | undefined;
   mounted: boolean;
   disableAnchorTracking: boolean;
-  nodeId?: string;
-  adaptiveOrigin?: Middleware;
+  nodeId?: string | undefined;
+  adaptiveOrigin?: Middleware | undefined;
   collisionAvoidance: CollisionAvoidance;
-  shiftCrossAxis?: boolean;
-  lazyFlip?: boolean;
-  externalTree?: FloatingTreeStore;
+  shiftCrossAxis?: boolean | undefined;
+  lazyFlip?: boolean | undefined;
+  externalTree?: FloatingTreeStore | undefined;
 }
 interface UseAnchorPositioningReturnValue {
   positionerStyles: React$1.CSSProperties;
@@ -3089,7 +3394,7 @@ interface ComboboxTriggerProps
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * A button that opens the popup.
@@ -3129,7 +3434,7 @@ interface ComboboxInputProps extends BaseUIComponentProps<
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * A text input to search for items in the list.
@@ -3153,7 +3458,7 @@ interface ComboboxIconProps extends BaseUIComponentProps<
  * Renders a `<span>` element.
  */
 declare const ComboboxIcon: React$1.ForwardRefExoticComponent<
-  Omit<ComboboxIconProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+  Omit<ComboboxIconProps, "ref"> & React$1.RefAttributes<HTMLSpanElement>
 >;
 declare namespace ComboboxIcon {
   type State = ComboboxIconState;
@@ -3179,12 +3484,12 @@ interface ComboboxClearProps
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Whether the component should remain mounted in the DOM when not visible.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * Clears the value when clicked.
@@ -3247,7 +3552,7 @@ interface ComboboxPortalProps extends FloatingPortal.Props<ComboboxPortal.State>
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -3335,9 +3640,12 @@ interface ComboboxPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   initialFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((openType: InteractionType) => void | boolean | HTMLElement | null);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((openType: InteractionType) => void | boolean | HTMLElement | null)
+      )
+    | undefined;
   /**
    * Determines the element to focus when the popup is closed.
    *
@@ -3348,9 +3656,12 @@ interface ComboboxPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   finalFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((closeType: InteractionType) => void | boolean | HTMLElement | null);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => void | boolean | HTMLElement | null)
+      )
+    | undefined;
 }
 /**
  * A container for the list.
@@ -3398,7 +3709,7 @@ interface ComboboxGroupProps extends BaseUIComponentProps<
    * Items to be rendered within this group.
    * When provided, child `Collection` components will use these items.
    */
-  items?: readonly any[];
+  items?: readonly any[] | undefined;
 }
 /**
  * Groups related items with the corresponding label.
@@ -3452,11 +3763,13 @@ interface ComboboxItemProps
    * An optional click handler for the item when selected.
    * It fires when clicking the item with the pointer, as well as when pressing `Enter` with the keyboard if the item is highlighted when the `Input` or `List` element has focus.
    */
-  onClick?: React$1.MouseEventHandler<HTMLElement>;
+  onClick?:
+    | BaseUIComponentProps<"div", ComboboxItemState>["onClick"]
+    | undefined;
   /**
    * The index of the item in the list. Improves performance when specified by avoiding the need to calculate the index automatically from the DOM.
    */
-  index?: number;
+  index?: number | undefined;
   /**
    * A unique value that identifies this item.
    * @default null
@@ -3466,7 +3779,7 @@ interface ComboboxItemProps
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * An individual item in the list.
@@ -3538,7 +3851,7 @@ interface SeparatorProps extends BaseUIComponentProps<"div", Separator.State> {
    * The orientation of the separator.
    * @default 'horizontal'
    */
-  orientation?: Orientation;
+  orientation?: Orientation | undefined;
 }
 interface SeparatorState {
   /**
@@ -3565,7 +3878,7 @@ interface UseFilterOptions extends Intl.CollatorOptions {
    * The locale to use for string comparison.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
 }
 interface Filter {
   contains: <Item>(
@@ -3594,7 +3907,7 @@ interface UseComboboxFilterOptions extends UseFilterOptions {
    * Whether the combobox is in multiple selection mode.
    * @default false
    */
-  multiple?: boolean;
+  multiple?: boolean | undefined;
   /**
    * The current value of the combobox.
    */
@@ -3605,8 +3918,13 @@ interface UseComboboxFilterOptions extends UseFilterOptions {
  */
 declare function useComboboxFilter(options?: UseComboboxFilterOptions): Filter;
 
-declare const index_parts$o_Separator: typeof Separator;
-declare namespace index_parts$o {
+/**
+ * Returns the internally filtered items.
+ */
+declare function useFilteredItems<T>(): T[];
+
+declare const index_parts$p_useFilteredItems: typeof useFilteredItems;
+declare namespace index_parts$p {
   export {
     ComboboxArrow as Arrow,
     ComboboxBackdrop as Backdrop,
@@ -3624,11 +3942,12 @@ declare namespace index_parts$o {
     ComboboxPositioner as Positioner,
     AutocompleteRoot as Root,
     ComboboxRow as Row,
-    index_parts$o_Separator as Separator,
+    Separator,
     ComboboxStatus as Status,
     ComboboxTrigger as Trigger,
     AutocompleteValue as Value,
     useCoreFilter as useFilter,
+    index_parts$p_useFilteredItems as useFilteredItems,
   };
 }
 
@@ -3656,14 +3975,17 @@ declare namespace AvatarRoot {
 
 type ImageLoadingStatus = "idle" | "loading" | "loaded" | "error";
 
+interface AvatarImageState extends AvatarRoot.State {
+  transitionStatus: TransitionStatus;
+}
 interface AvatarImageProps extends BaseUIComponentProps<
   "img",
-  AvatarRoot.State
+  AvatarImage.State
 > {
   /**
    * Callback fired when the loading status changes.
    */
-  onLoadingStatusChange?: (status: ImageLoadingStatus) => void;
+  onLoadingStatusChange?: ((status: ImageLoadingStatus) => void) | undefined;
 }
 /**
  * The image to be displayed in the avatar.
@@ -3675,17 +3997,21 @@ declare const AvatarImage: React$1.ForwardRefExoticComponent<
   Omit<AvatarImageProps, "ref"> & React$1.RefAttributes<HTMLImageElement>
 >;
 declare namespace AvatarImage {
+  type State = AvatarImageState;
   type Props = AvatarImageProps;
 }
 
+interface AvatarFallbackState extends AvatarRoot.State {
+  transitionStatus: TransitionStatus;
+}
 interface AvatarFallbackProps extends BaseUIComponentProps<
   "span",
-  AvatarRoot.State
+  AvatarFallback.State
 > {
   /**
    * How long to wait before showing the fallback. Specified in milliseconds.
    */
-  delay?: number;
+  delay?: number | undefined;
 }
 /**
  * Rendered when the image fails to load or when no image is provided.
@@ -3697,10 +4023,11 @@ declare const AvatarFallback: React$1.ForwardRefExoticComponent<
   Omit<AvatarFallbackProps, "ref"> & React$1.RefAttributes<HTMLSpanElement>
 >;
 declare namespace AvatarFallback {
+  type State = AvatarFallbackState;
   type Props = AvatarFallbackProps;
 }
 
-declare namespace index_parts$n {
+declare namespace index_parts$o {
   export {
     AvatarFallback as Fallback,
     AvatarImage as Image,
@@ -3720,7 +4047,7 @@ interface ButtonProps
    * Whether the button should be focusable when disabled.
    * @default false
    */
-  focusableWhenDisabled?: boolean;
+  focusableWhenDisabled?: boolean | undefined;
 }
 /**
  * A button component that can be used to trigger actions.
@@ -3769,73 +4096,72 @@ interface CheckboxRootProps
   /**
    * The id of the input element.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Identifies the field when a form is submitted.
    * @default undefined
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * Whether the checkbox is currently ticked.
    *
    * To render an uncontrolled checkbox, use the `defaultChecked` prop instead.
    * @default undefined
    */
-  checked?: boolean;
+  checked?: boolean | undefined;
   /**
    * Whether the checkbox is initially ticked.
    *
    * To render a controlled checkbox, use the `checked` prop instead.
    * @default false
    */
-  defaultChecked?: boolean;
+  defaultChecked?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Event handler called when the checkbox is ticked or unticked.
    */
-  onCheckedChange?: (
-    checked: boolean,
-    eventDetails: CheckboxRootChangeEventDetails,
-  ) => void;
+  onCheckedChange?:
+    | ((checked: boolean, eventDetails: CheckboxRootChangeEventDetails) => void)
+    | undefined;
   /**
    * Whether the user should be unable to tick or untick the checkbox.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Whether the user must tick the checkbox before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Whether the checkbox is in a mixed state: neither ticked, nor unticked.
    * @default false
    */
-  indeterminate?: boolean;
+  indeterminate?: boolean | undefined;
   /**
    * A ref to access the hidden `<input>` element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
   /**
    * Whether the checkbox controls a group of child checkboxes.
    *
    * Must be used in a [Checkbox Group](https://base-ui.com/react/components/checkbox-group).
    * @default false
    */
-  parent?: boolean;
+  parent?: boolean | undefined;
   /**
    * The value submitted with the form when the checkbox is unchecked.
    * By default, unchecked checkboxes do not submit any value, matching native checkbox behavior.
    */
-  uncheckedValue?: string;
+  uncheckedValue?: string | undefined;
   /**
    * The value of the selected checkbox.
    */
-  value?: string;
+  value?: string | undefined;
 }
 type CheckboxRootChangeEventReason = typeof none;
 type CheckboxRootChangeEventDetails =
@@ -3867,7 +4193,7 @@ interface CheckboxIndicatorProps extends BaseUIComponentProps<
    * Whether to keep the element in the DOM when the checkbox is not checked.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * Indicates whether the checkbox is ticked.
@@ -3883,7 +4209,7 @@ declare namespace CheckboxIndicator {
   type Props = CheckboxIndicatorProps;
 }
 
-declare namespace index_parts$m {
+declare namespace index_parts$n {
   export { CheckboxIndicator as Indicator, CheckboxRoot as Root };
 }
 
@@ -3902,30 +4228,29 @@ interface CheckboxGroupProps extends BaseUIComponentProps<
    *
    * To render an uncontrolled checkbox group, use the `defaultValue` prop instead.
    */
-  value?: string[];
+  value?: string[] | undefined;
   /**
    * Names of the checkboxes in the group that should be initially ticked.
    *
    * To render a controlled checkbox group, use the `value` prop instead.
    */
-  defaultValue?: string[];
+  defaultValue?: string[] | undefined;
   /**
    * Event handler called when a checkbox in the group is ticked or unticked.
    * Provides the new value as an argument.
    */
-  onValueChange?: (
-    value: string[],
-    eventDetails: CheckboxGroupChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((value: string[], eventDetails: CheckboxGroupChangeEventDetails) => void)
+    | undefined;
   /**
    * Names of all checkboxes in the group. Use this when creating a parent checkbox.
    */
-  allValues?: string[];
+  allValues?: string[] | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 type CheckboxGroupChangeEventReason = typeof none;
 type CheckboxGroupChangeEventDetails =
@@ -3978,13 +4303,13 @@ interface CollapsiblePanelProps extends BaseUIComponentProps<
    *
    * @default false
    */
-  hiddenUntilFound?: boolean;
+  hiddenUntilFound?: boolean | undefined;
   /**
    * Whether to keep the element in the DOM while the panel is hidden.
    * This prop is ignored when `hiddenUntilFound` is used.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A panel with the collapsible contents.
@@ -4000,7 +4325,7 @@ declare namespace CollapsiblePanel {
   type Props = CollapsiblePanelProps;
 }
 
-declare namespace index_parts$l {
+declare namespace index_parts$m {
   export {
     CollapsiblePanel as Panel,
     CollapsibleRoot as Root,
@@ -4021,6 +4346,7 @@ type ComboboxRootProps<
   AriaCombobox.Props<Value, ModeFromMultiple<Multiple>>,
   | "fillInputOnItemPress"
   | "autoComplete"
+  | "formAutoComplete"
   | "submitOnItemClick"
   | "autoHighlight"
   | "keepHighlight"
@@ -4041,60 +4367,68 @@ type ComboboxRootProps<
    * Whether multiple items can be selected.
    * @default false
    */
-  multiple?: Multiple;
+  multiple?: Multiple | undefined;
+  /**
+   * Provides a hint to the browser for autofill.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete
+   */
+  autoComplete?: string | undefined;
   /**
    * Whether the first matching item is highlighted automatically while filtering.
    * @default false
    */
-  autoHighlight?: boolean;
+  autoHighlight?: boolean | undefined;
   /**
    * Whether moving the pointer over items should highlight them.
    * Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.
    * @default true
    */
-  highlightItemOnHover?: boolean;
+  highlightItemOnHover?: boolean | undefined;
   /**
    * When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for display in the input.
    * If the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.
    */
-  itemToStringLabel?: (itemValue: Value) => string;
+  itemToStringLabel?: ((itemValue: Value) => string) | undefined;
   /**
    * When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for form submission.
    * If the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop.
    */
-  itemToStringValue?: (itemValue: Value) => string;
+  itemToStringValue?: ((itemValue: Value) => string) | undefined;
   /**
    * Custom comparison logic used to determine if a combobox item value matches the current selected value. Useful when item values are objects without matching referentially.
    * Defaults to `Object.is` comparison.
    */
-  isItemEqualToValue?: (itemValue: Value, selectedValue: Value) => boolean;
+  isItemEqualToValue?:
+    | ((itemValue: Value, value: Value) => boolean)
+    | undefined;
   /**
    * The uncontrolled selected value of the combobox when it's initially rendered.
    *
    * To render a controlled combobox, use the `value` prop instead.
    */
-  defaultValue?: ComboboxValueType<Value, Multiple> | null;
+  defaultValue?: (ComboboxValueType<Value, Multiple> | null) | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the combobox will not be unmounted when closed.
    * Instead, the `unmount` function must be called to unmount the combobox manually.
    * Useful when the combobox's animation is controlled by an external library.
    */
-  actionsRef?: React$1.RefObject<ComboboxRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<ComboboxRoot.Actions | null> | undefined;
   /**
    * Event handler called when the popup is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: ComboboxRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: ComboboxRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called when the input value changes.
    */
-  onInputValueChange?: (
-    inputValue: string,
-    eventDetails: ComboboxRoot.ChangeEventDetails,
-  ) => void;
+  onInputValueChange?:
+    | ((
+        inputValue: string,
+        eventDetails: ComboboxRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Callback fired when an item is highlighted or unhighlighted.
    * Receives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.
@@ -4103,23 +4437,27 @@ type ComboboxRootProps<
    * - `'pointer'`: the highlight changed due to pointer hovering.
    * - `'none'`: the highlight changed programmatically.
    */
-  onItemHighlighted?: (
-    highlightedValue: Value | undefined,
-    eventDetails: ComboboxRoot.HighlightEventDetails,
-  ) => void;
+  onItemHighlighted?:
+    | ((
+        highlightedValue: Value | undefined,
+        eventDetails: ComboboxRoot.HighlightEventDetails,
+      ) => void)
+    | undefined;
   /**
    * The selected value of the combobox. Use when controlled.
    */
-  value?: ComboboxValueType<Value, Multiple> | null;
+  value?: (ComboboxValueType<Value, Multiple> | null) | undefined;
   /**
    * Event handler called when the selected value of the combobox changes.
    */
-  onValueChange?: (
-    value:
-      | ComboboxValueType<Value, Multiple>
-      | (Multiple extends true ? never : null),
-    eventDetails: ComboboxRoot.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value:
+          | ComboboxValueType<Value, Multiple>
+          | (Multiple extends true ? never : null),
+        eventDetails: ComboboxRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
 };
 type ComboboxRootState = AriaCombobox.State;
 type ComboboxRootActions = AriaCombobox.Actions;
@@ -4182,7 +4520,7 @@ interface ComboboxItemIndicatorProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM when the item is not selected.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 interface ComboboxItemIndicatorState {
   selected: boolean;
@@ -4263,8 +4601,8 @@ declare namespace ComboboxChipRemove {
   type Props = ComboboxChipRemoveProps;
 }
 
-declare const index_parts$k_Separator: typeof Separator;
-declare namespace index_parts$k {
+declare const index_parts$l_useFilteredItems: typeof useFilteredItems;
+declare namespace index_parts$l {
   export {
     ComboboxArrow as Arrow,
     ComboboxBackdrop as Backdrop,
@@ -4286,11 +4624,12 @@ declare namespace index_parts$k {
     ComboboxPositioner as Positioner,
     ComboboxRoot as Root,
     ComboboxRow as Row,
-    index_parts$k_Separator as Separator,
+    Separator,
     ComboboxStatus as Status,
     ComboboxTrigger as Trigger,
     ComboboxValue as Value,
     useComboboxFilter as useFilter,
+    index_parts$l_useFilteredItems as useFilteredItems,
   };
 }
 
@@ -4395,33 +4734,273 @@ declare const selectors$3: {
   keyboardEventRelay: (
     state: State$3<unknown>,
   ) => React$1.KeyboardEventHandler<any> | undefined;
-  open: (state: PopupStoreState<unknown>) => boolean;
-  mounted: (state: PopupStoreState<unknown>) => boolean;
-  transitionStatus: (state: PopupStoreState<unknown>) => TransitionStatus;
-  floatingRootContext: (state: PopupStoreState<unknown>) => FloatingRootStore;
-  preventUnmountingOnClose: (state: PopupStoreState<unknown>) => boolean;
-  payload: (state: PopupStoreState<unknown>) => unknown;
-  activeTriggerId: (state: PopupStoreState<unknown>) => string | null;
-  activeTriggerElement: (state: PopupStoreState<unknown>) => Element | null;
+  open: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  mounted: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  transitionStatus: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => TransitionStatus;
+  floatingRootContext: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => FloatingRootStore;
+  preventUnmountingOnClose: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  payload: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => unknown;
+  activeTriggerId: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => string | null;
+  activeTriggerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => Element | null;
   isTriggerActive: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isOpenedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isMountedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   triggerProps: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     isActive: boolean,
   ) => HTMLProps;
-  popupProps: (state: PopupStoreState<unknown>) => HTMLProps;
-  popupElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
-  positionerElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
+  popupProps: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLProps;
+  popupElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
+  positionerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
 };
 declare class MenuStore<Payload> extends ReactStore<
   Readonly<State$3<Payload>>,
@@ -4523,58 +5102,57 @@ interface MenuRootProps<Payload = unknown> {
    * To render a controlled menu, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Whether to loop keyboard focus back to the first item
    * when the end of the list is reached while using the arrow keys.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
   /**
    * Whether moving the pointer over items should highlight them.
    * Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.
    * @default true
    */
-  highlightItemOnHover?: boolean;
+  highlightItemOnHover?: boolean | undefined;
   /**
    * Determines if the menu enters a modal state when open.
    * - `true`: user interaction is limited to the menu: document page scroll is locked and pointer interactions on outside elements are disabled.
    * - `false`: user interaction with the rest of the document is allowed.
    * @default true
    */
-  modal?: boolean;
+  modal?: boolean | undefined;
   /**
    * Event handler called when the menu is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: MenuRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: MenuRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the menu is closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * Whether the menu is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * The visual orientation of the menu.
    * Controls whether roving focus uses up/down or left/right arrow keys.
    * @default 'vertical'
    */
-  orientation?: MenuRoot.Orientation;
+  orientation?: MenuRoot.Orientation | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * When in a submenu, determines whether pressing the Escape key
    * closes the entire menu, or only the current child menu.
    * @default false
    */
-  closeParentOnEsc?: boolean;
+  closeParentOnEsc?: boolean | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the menu will not be unmounted when closed.
@@ -4582,23 +5160,23 @@ interface MenuRootProps<Payload = unknown> {
    *   Useful when the menu's animation is controlled by an external library.
    * - `close`: When specified, the menu can be closed imperatively.
    */
-  actionsRef?: React$1.RefObject<MenuRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<MenuRoot.Actions | null> | undefined;
   /**
    * ID of the trigger that the popover is associated with.
    * This is useful in conjunction with the `open` prop to create a controlled popover.
    * There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set).
    */
-  triggerId?: string | null;
+  triggerId?: (string | null) | undefined;
   /**
    * ID of the trigger that the popover is associated with.
    * This is useful in conjunction with the `defaultOpen` prop to create an initially open popover.
    */
-  defaultTriggerId?: string | null;
+  defaultTriggerId?: (string | null) | undefined;
   /**
    * A handle to associate the menu with a trigger.
    * If specified, allows external triggers to control the menu's open state.
    */
-  handle?: MenuHandle<Payload>;
+  handle?: MenuHandle<Payload> | undefined;
   /**
    * The content of the popover.
    * This can be a regular React node or a render function that receives the `payload` of the active trigger.
@@ -4655,9 +5233,9 @@ type MenuParent =
  *
  * Documentation: [Base UI Menu](https://base-ui.com/react/components/menu)
  */
-declare function MenuRoot<Payload>(
+declare const MenuRoot: <Payload>(
   props: MenuRoot.Props<Payload>,
-): react_jsx_runtime.JSX.Element;
+) => react_jsx_runtime.JSX.Element;
 declare namespace MenuRoot {
   type Props<Payload = unknown> = MenuRootProps<Payload>;
   type Actions = MenuRootActions;
@@ -4689,43 +5267,47 @@ interface MenuCheckboxItemProps
    *
    * To render an uncontrolled checkbox item, use the `defaultChecked` prop instead.
    */
-  checked?: boolean;
+  checked?: boolean | undefined;
   /**
    * Whether the checkbox item is initially ticked.
    *
    * To render a controlled checkbox item, use the `checked` prop instead.
    * @default false
    */
-  defaultChecked?: boolean;
+  defaultChecked?: boolean | undefined;
   /**
    * Event handler called when the checkbox item is ticked or unticked.
    */
-  onCheckedChange?: (
-    checked: boolean,
-    eventDetails: MenuCheckboxItem.ChangeEventDetails,
-  ) => void;
+  onCheckedChange?:
+    | ((
+        checked: boolean,
+        eventDetails: MenuCheckboxItem.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * The click handler for the menu item.
    */
-  onClick?: React$1.MouseEventHandler<HTMLElement>;
+  onClick?:
+    | BaseUIComponentProps<"div", MenuCheckboxItemState>["onClick"]
+    | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Overrides the text label to use when the item is matched during keyboard text navigation.
    */
-  label?: string;
+  label?: string | undefined;
   /**
    * @ignore
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether to close the menu when the item is clicked.
    * @default false
    */
-  closeOnClick?: boolean;
+  closeOnClick?: boolean | undefined;
 }
 type MenuCheckboxItemChangeEventReason = MenuRoot.ChangeEventReason;
 type MenuCheckboxItemChangeEventDetails = MenuRoot.ChangeEventDetails;
@@ -4753,7 +5335,7 @@ interface MenuCheckboxItemIndicatorProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM when the checkbox item is not checked.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 interface MenuCheckboxItemIndicatorState {
   /**
@@ -4769,7 +5351,7 @@ interface MenuCheckboxItemIndicatorState {
 }
 /**
  * Indicates whether the checkbox item is ticked.
- * Renders a `<div>` element.
+ * Renders a `<span>` element.
  *
  * Documentation: [Base UI Menu](https://base-ui.com/react/components/menu)
  */
@@ -4837,26 +5419,26 @@ interface MenuItemProps
   /**
    * The click handler for the menu item.
    */
-  onClick?: React$1.MouseEventHandler<HTMLElement>;
+  onClick?: BaseUIComponentProps<"div", MenuItemState>["onClick"] | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Overrides the text label to use when the item is matched during keyboard text navigation.
    */
-  label?: string;
+  label?: string | undefined;
   /**
    * @ignore
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether to close the menu when the item is clicked.
    *
    * @default true
    */
-  closeOnClick?: boolean;
+  closeOnClick?: boolean | undefined;
 }
 /**
  * An individual interactive item in the menu.
@@ -4872,12 +5454,50 @@ declare namespace MenuItem {
   type Props = MenuItemProps;
 }
 
+interface MenuLinkItemState {
+  /**
+   * Whether the item is highlighted.
+   */
+  highlighted: boolean;
+}
+interface MenuLinkItemProps extends BaseUIComponentProps<
+  "a",
+  MenuLinkItem.State
+> {
+  /**
+   * Overrides the text label to use when the item is matched during keyboard text navigation.
+   */
+  label?: string | undefined;
+  /**
+   * @ignore
+   */
+  id?: string | undefined;
+  /**
+   * Whether to close the menu when the item is clicked.
+   * @default false
+   */
+  closeOnClick?: boolean | undefined;
+}
+/**
+ * A link in the menu that can be used to navigate to a different page or section.
+ * Renders an `<a>` element.
+ *
+ * Documentation: [Base UI Menu](https://base-ui.com/react/components/menu)
+ */
+declare const MenuLinkItem: React$1.ForwardRefExoticComponent<
+  Omit<MenuLinkItemProps, "ref"> & React$1.RefAttributes<Element>
+>;
+declare namespace MenuLinkItem {
+  type State = MenuLinkItemState;
+  type Props = MenuLinkItemProps;
+}
+
 interface MenuPopupProps extends BaseUIComponentProps<"div", MenuPopup.State> {
   children?: React$1.ReactNode;
   /**
    * @ignore
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Determines the element to focus when the menu is closed.
    *
@@ -4888,9 +5508,12 @@ interface MenuPopupProps extends BaseUIComponentProps<"div", MenuPopup.State> {
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   finalFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((closeType: InteractionType) => boolean | HTMLElement | null | void);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
 }
 type MenuPopupState = {
   transitionStatus: TransitionStatus;
@@ -4901,6 +5524,7 @@ type MenuPopupState = {
    */
   open: boolean;
   nested: boolean;
+  instant: "dismiss" | "click" | "group" | undefined;
 };
 /**
  * A container for the menu items.
@@ -4921,7 +5545,7 @@ interface MenuPortalProps extends FloatingPortal.Props<MenuPortal.State> {
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -4991,16 +5615,15 @@ interface MenuRadioGroupProps extends BaseUIComponentProps<
   /**
    * Function called when the selected value changes.
    */
-  onValueChange?: (
-    value: any,
-    eventDetails: MenuRadioGroup.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((value: any, eventDetails: MenuRadioGroup.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Whether the component should ignore user interaction.
    *
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 type MenuRadioGroupState = {
   disabled: boolean;
@@ -5049,25 +5672,27 @@ interface MenuRadioItemProps
   /**
    * The click handler for the menu item.
    */
-  onClick?: React$1.MouseEventHandler<HTMLElement>;
+  onClick?:
+    | BaseUIComponentProps<"div", MenuRadioItemState>["onClick"]
+    | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Overrides the text label to use when the item is matched during keyboard text navigation.
    */
-  label?: string;
+  label?: string | undefined;
   /**
    * @ignore
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether to close the menu when the item is clicked.
    * @default false
    */
-  closeOnClick?: boolean;
+  closeOnClick?: boolean | undefined;
 }
 /**
  * A menu item that works like a radio button in a given group.
@@ -5091,7 +5716,7 @@ interface MenuRadioItemIndicatorProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM when the radio item is inactive.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 interface MenuRadioItemIndicatorState {
   /**
@@ -5107,7 +5732,7 @@ interface MenuRadioItemIndicatorState {
 }
 /**
  * Indicates whether the radio item is selected.
- * Renders a `<div>` element.
+ * Renders a `<span>` element.
  *
  * Documentation: [Base UI Menu](https://base-ui.com/react/components/menu)
  */
@@ -5137,16 +5762,18 @@ interface MenuSubmenuRootProps extends Omit<
   /**
    * Event handler called when the menu is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: MenuSubmenuRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((
+        open: boolean,
+        eventDetails: MenuSubmenuRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * When in a submenu, determines whether pressing the Escape key
    * closes the entire menu, or only the current child menu.
    * @default false
    */
-  closeParentOnEsc?: boolean;
+  closeParentOnEsc?: boolean | undefined;
 }
 interface MenuSubmenuRootState {}
 type MenuSubmenuRootChangeEventReason = MenuRoot.ChangeEventReason;
@@ -5174,22 +5801,22 @@ interface MenuTriggerProps<Payload = unknown>
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A handle to associate the trigger with a menu.
    */
-  handle?: MenuHandle<Payload>;
+  handle?: MenuHandle<Payload> | undefined;
   /**
    * A payload to pass to the menu when it is opened.
    */
-  payload?: Payload;
+  payload?: Payload | undefined;
   /**
    * How long to wait before the menu may be opened on hover. Specified in milliseconds.
    *
    * Requires the `openOnHover` prop.
    * @default 100
    */
-  delay?: number;
+  delay?: number | undefined;
   /**
    * How long to wait before closing the menu that was opened on hover.
    * Specified in milliseconds.
@@ -5197,17 +5824,21 @@ interface MenuTriggerProps<Payload = unknown>
    * Requires the `openOnHover` prop.
    * @default 0
    */
-  closeDelay?: number;
+  closeDelay?: number | undefined;
   /**
    * Whether the menu should also open when the trigger is hovered.
    */
-  openOnHover?: boolean;
+  openOnHover?: boolean | undefined;
 }
 type MenuTriggerState = {
   /**
    * Whether the menu is currently open.
    */
   open: boolean;
+  /**
+   * Whether the trigger is disabled.
+   */
+  disabled: boolean;
 };
 /**
  * A button that opens the menu.
@@ -5227,44 +5858,6 @@ declare namespace MenuTrigger {
   type State = MenuTriggerState;
 }
 
-interface MenuSubmenuTriggerProps
-  extends
-    NonNativeButtonProps,
-    BaseUIComponentProps<"div", MenuSubmenuTrigger.State> {
-  onClick?: React$1.MouseEventHandler<HTMLElement>;
-  /**
-   * Overrides the text label to use when the item is matched during keyboard text navigation.
-   */
-  label?: string;
-  /**
-   * @ignore
-   */
-  id?: string;
-  /**
-   * Whether the component should ignore user interaction.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * How long to wait before the menu may be opened on hover. Specified in milliseconds.
-   *
-   * Requires the `openOnHover` prop.
-   * @default 100
-   */
-  delay?: number;
-  /**
-   * How long to wait before closing the menu that was opened on hover.
-   * Specified in milliseconds.
-   *
-   * Requires the `openOnHover` prop.
-   * @default 0
-   */
-  closeDelay?: number;
-  /**
-   * Whether the menu should also open when the trigger is hovered.
-   */
-  openOnHover?: boolean;
-}
 interface MenuSubmenuTriggerState {
   /**
    * Whether the component should ignore user interaction.
@@ -5278,6 +5871,46 @@ interface MenuSubmenuTriggerState {
    * Whether the menu is currently open.
    */
   open: boolean;
+}
+interface MenuSubmenuTriggerProps
+  extends
+    NonNativeButtonProps,
+    BaseUIComponentProps<"div", MenuSubmenuTriggerState> {
+  onClick?:
+    | BaseUIComponentProps<"div", MenuSubmenuTriggerState>["onClick"]
+    | undefined;
+  /**
+   * Overrides the text label to use when the item is matched during keyboard text navigation.
+   */
+  label?: string | undefined;
+  /**
+   * @ignore
+   */
+  id?: string | undefined;
+  /**
+   * Whether the component should ignore user interaction.
+   * @default false
+   */
+  disabled?: boolean | undefined;
+  /**
+   * How long to wait before the menu may be opened on hover. Specified in milliseconds.
+   *
+   * Requires the `openOnHover` prop.
+   * @default 100
+   */
+  delay?: number | undefined;
+  /**
+   * How long to wait before closing the menu that was opened on hover.
+   * Specified in milliseconds.
+   *
+   * Requires the `openOnHover` prop.
+   * @default 0
+   */
+  closeDelay?: number | undefined;
+  /**
+   * Whether the menu should also open when the trigger is hovered.
+   */
+  openOnHover?: boolean | undefined;
 }
 /**
  * A menu item that opens a submenu.
@@ -5293,8 +5926,7 @@ declare namespace MenuSubmenuTrigger {
   type State = MenuSubmenuTriggerState;
 }
 
-declare const index_parts$j_Separator: typeof Separator;
-declare namespace index_parts$j {
+declare namespace index_parts$k {
   export {
     MenuArrow as Arrow,
     MenuBackdrop as Backdrop,
@@ -5304,6 +5936,7 @@ declare namespace index_parts$j {
     MenuGroupLabel as GroupLabel,
     MenuHandle as Handle,
     MenuItem as Item,
+    MenuLinkItem as LinkItem,
     MenuPopup as Popup,
     MenuPortal as Portal,
     MenuPositioner as Positioner,
@@ -5311,7 +5944,7 @@ declare namespace index_parts$j {
     MenuRadioItem as RadioItem,
     MenuRadioItemIndicator as RadioItemIndicator,
     MenuRoot as Root,
-    index_parts$j_Separator as Separator,
+    Separator,
     MenuSubmenuRoot as SubmenuRoot,
     MenuSubmenuTrigger as SubmenuTrigger,
     MenuTrigger as Trigger,
@@ -5327,10 +5960,12 @@ interface ContextMenuRootProps extends Omit<
   /**
    * Event handler called when the menu is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: ContextMenuRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((
+        open: boolean,
+        eventDetails: ContextMenuRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
 }
 type ContextMenuRootChangeEventReason = MenuRoot.ChangeEventReason;
 type ContextMenuRootChangeEventDetails =
@@ -5375,8 +6010,7 @@ declare namespace ContextMenuTrigger {
   type Props = ContextMenuTriggerProps;
 }
 
-declare const index_parts$i_Separator: typeof Separator;
-declare namespace index_parts$i {
+declare namespace index_parts$j {
   export {
     MenuArrow as Arrow,
     MenuBackdrop as Backdrop,
@@ -5385,6 +6019,7 @@ declare namespace index_parts$i {
     MenuGroup as Group,
     MenuGroupLabel as GroupLabel,
     MenuItem as Item,
+    MenuLinkItem as LinkItem,
     MenuPopup as Popup,
     MenuPortal as Portal,
     MenuPositioner as Positioner,
@@ -5392,7 +6027,7 @@ declare namespace index_parts$i {
     MenuRadioItem as RadioItem,
     MenuRadioItemIndicator as RadioItemIndicator,
     ContextMenuRoot as Root,
-    index_parts$i_Separator as Separator,
+    Separator,
     MenuSubmenuRoot as SubmenuRoot,
     MenuSubmenuTrigger as SubmenuTrigger,
     ContextMenuTrigger as Trigger,
@@ -5405,12 +6040,12 @@ interface CSPProviderProps {
   /**
    * The nonce value to apply to inline `<style>` and `<script>` tags.
    */
-  nonce?: string;
+  nonce?: string | undefined;
   /**
    * Whether inline `<style>` elements created by Base UI components should not be rendered. Instead, components must specify the CSS styles via custom class names or other methods.
    * @default false
    */
-  disableStyleElements?: boolean;
+  disableStyleElements?: boolean | undefined;
 }
 /**
  * Provides a default Content Security Policy (CSP) configuration for Base UI components that
@@ -5426,7 +6061,7 @@ declare namespace CSPProvider {
   type Props = CSPProviderProps;
 }
 
-declare namespace index_parts$h {
+declare namespace index_parts$i {
   export {
     DialogBackdrop as Backdrop,
     DialogClose as Close,
@@ -5451,7 +6086,7 @@ interface DirectionProviderProps {
    * The reading direction of the text
    * @default 'ltr'
    */
-  direction?: TextDirection;
+  direction?: TextDirection | undefined;
 }
 /**
  * Enables RTL behavior for Base UI components.
@@ -5461,6 +6096,542 @@ interface DirectionProviderProps {
 declare const DirectionProvider: React$1.FC<DirectionProvider.Props>;
 declare namespace DirectionProvider {
   type Props = DirectionProviderProps;
+}
+
+interface DrawerBackdropProps extends BaseUIComponentProps<
+  "div",
+  DrawerBackdrop.State
+> {
+  /**
+   * Whether the backdrop is forced to render even when nested.
+   * @default false
+   */
+  forceRender?: boolean | undefined;
+}
+interface DrawerBackdropState {
+  /**
+   * Whether the drawer is currently open.
+   */
+  open: boolean;
+  transitionStatus: TransitionStatus;
+}
+/**
+ * An overlay displayed beneath the popup.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerBackdrop: React$1.ForwardRefExoticComponent<
+  Omit<DrawerBackdropProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerBackdrop {
+  type Props = DrawerBackdropProps;
+  type State = DrawerBackdropState;
+}
+
+interface DrawerCloseProps
+  extends
+    NativeButtonProps,
+    BaseUIComponentProps<"button", DrawerClose.State> {}
+interface DrawerCloseState {
+  /**
+   * Whether the button is currently disabled.
+   */
+  disabled: boolean;
+}
+/**
+ * A button that closes the drawer.
+ * Renders a `<button>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerClose: DrawerClose;
+interface DrawerClose {
+  (componentProps: DrawerCloseProps): React$1.JSX.Element;
+}
+declare namespace DrawerClose {
+  type Props = DrawerCloseProps;
+  type State = DrawerCloseState;
+}
+
+interface DrawerContentProps extends BaseUIComponentProps<
+  "div",
+  DrawerContent.State
+> {}
+interface DrawerContentState {}
+/**
+ * A container for the drawer contents.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerContent: React$1.ForwardRefExoticComponent<
+  Omit<DrawerContentProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerContent {
+  type Props = DrawerContentProps;
+  type State = DrawerContentState;
+}
+
+interface DrawerDescriptionProps extends BaseUIComponentProps<
+  "p",
+  DrawerDescription.State
+> {}
+interface DrawerDescriptionState {}
+/**
+ * A paragraph with additional information about the drawer.
+ * Renders a `<p>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerDescription: DrawerDescription;
+interface DrawerDescription {
+  (componentProps: DrawerDescriptionProps): React$1.JSX.Element;
+}
+declare namespace DrawerDescription {
+  type Props = DrawerDescriptionProps;
+  type State = DrawerDescriptionState;
+}
+
+interface DrawerIndentState {
+  /**
+   * Whether any drawer within the nearest <Drawer.Provider> is open.
+   */
+  active: boolean;
+}
+interface DrawerIndentProps extends BaseUIComponentProps<
+  "div",
+  DrawerIndent.State
+> {}
+/**
+ * A wrapper element intended to contain your app's main UI.
+ * Applies `data-active` when any drawer within the nearest <Drawer.Provider> is open.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerIndent: React$1.ForwardRefExoticComponent<
+  Omit<DrawerIndentProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerIndent {
+  type State = DrawerIndentState;
+  type Props = DrawerIndentProps;
+}
+
+interface DrawerIndentBackgroundState {
+  /**
+   * Whether any drawer within the nearest <Drawer.Provider> is open.
+   */
+  active: boolean;
+}
+interface DrawerIndentBackgroundProps extends BaseUIComponentProps<
+  "div",
+  DrawerIndentBackground.State
+> {}
+/**
+ * An element placed before <Drawer.Indent> to render a background layer
+ * that can be styled based on whether any drawer is open.
+ */
+declare const DrawerIndentBackground: React$1.ForwardRefExoticComponent<
+  Omit<DrawerIndentBackgroundProps, "ref"> &
+    React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerIndentBackground {
+  type State = DrawerIndentBackgroundState;
+  type Props = DrawerIndentBackgroundProps;
+}
+
+type SwipeDirection = "up" | "down" | "left" | "right";
+
+interface DrawerRootProps<Payload = unknown> {
+  /**
+   * Whether the drawer is currently open.
+   */
+  open?: boolean | undefined;
+  /**
+   * Whether the drawer is initially open.
+   *
+   * To render a controlled drawer, use the `open` prop instead.
+   * @default false
+   */
+  defaultOpen?: boolean | undefined;
+  /**
+   * Determines if the drawer enters a modal state when open.
+   * - `true`: user interaction is limited to just the drawer: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled.
+   * - `false`: user interaction with the rest of the document is allowed.
+   * - `'trap-focus'`: focus is trapped inside the drawer, but document page scroll is not locked and pointer interactions outside of it remain enabled.
+   * @default true
+   */
+  modal?: (boolean | "trap-focus") | undefined;
+  /**
+   * Event handler called when the drawer is opened or closed.
+   */
+  onOpenChange?:
+    | ((open: boolean, eventDetails: DrawerRoot.ChangeEventDetails) => void)
+    | undefined;
+  /**
+   * Event handler called after any animations complete when the drawer is opened or closed.
+   */
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
+  /**
+   * Determines whether the drawer should close on outside clicks.
+   * @default false
+   */
+  disablePointerDismissal?: boolean | undefined;
+  /**
+   * A ref to imperative actions.
+   * - `unmount`: When specified, the drawer will not be unmounted when closed.
+   * Instead, the `unmount` function must be called to unmount the drawer manually.
+   * Useful when the drawer's animation is controlled by an external library.
+   * - `close`: Closes the drawer imperatively when called.
+   */
+  actionsRef?: React$1.RefObject<DrawerRoot.Actions | null> | undefined;
+  /**
+   * A handle to associate the drawer with a trigger.
+   * If specified, allows detached triggers to control the drawer's open state.
+   * Can be created with the Drawer.createHandle() method.
+   */
+  handle?: DialogHandle<Payload> | undefined;
+  /**
+   * ID of the trigger that the drawer is associated with.
+   * This is useful in conjunction with the `open` prop to create a controlled drawer.
+   * There's no need to specify this prop when the drawer is uncontrolled (i.e. when the `open` prop is not set).
+   */
+  triggerId?: (string | null) | undefined;
+  /**
+   * ID of the trigger that the drawer is associated with.
+   * This is useful in conjunction with the `defaultOpen` prop to create an initially open drawer.
+   */
+  defaultTriggerId?: (string | null) | undefined;
+  /**
+   * The content of the drawer.
+   */
+  children?: React$1.ReactNode | PayloadChildRenderFunction<Payload>;
+  /**
+   * The swipe direction used to dismiss the drawer.
+   * @default 'down'
+   */
+  swipeDirection?: DrawerSwipeDirection | undefined;
+  /**
+   * Snap points used to position the drawer.
+   * Use numbers between 0 and 1 to represent fractions of the viewport height,
+   * numbers greater than 1 as pixel values, or strings in `px`/`rem` units
+   * (for example, `'148px'` or `'30rem'`).
+   */
+  snapPoints?: DrawerSnapPoint[] | undefined;
+  /**
+   * Disables velocity-based snap skipping so drag distance determines the next snap point.
+   * @default false
+   */
+  snapToSequentialPoints?: boolean | undefined;
+  /**
+   * The currently active snap point. Use with `onSnapPointChange` to control the snap point.
+   */
+  snapPoint?: DrawerSnapPoint | null | undefined;
+  /**
+   * The initial snap point value when uncontrolled.
+   */
+  defaultSnapPoint?: DrawerSnapPoint | null | undefined;
+  /**
+   * Callback fired when the snap point changes.
+   */
+  onSnapPointChange?:
+    | ((
+        snapPoint: DrawerSnapPoint | null,
+        eventDetails: DrawerRoot.SnapPointChangeEventDetails,
+      ) => void)
+    | undefined;
+}
+interface DrawerRootActions {
+  unmount: () => void;
+  close: () => void;
+}
+type DrawerRootChangeEventReason =
+  | typeof triggerPress
+  | typeof outsidePress
+  | typeof escapeKey
+  | typeof closeWatcher
+  | typeof closePress
+  | typeof focusOut
+  | typeof imperativeAction
+  | typeof swipe
+  | typeof none;
+type DrawerRootChangeEventDetails =
+  BaseUIChangeEventDetails<DrawerRoot.ChangeEventReason> & {
+    preventUnmountOnClose(): void;
+  };
+type DrawerRootSnapPointChangeEventReason = DrawerRootChangeEventReason;
+type DrawerRootSnapPointChangeEventDetails =
+  BaseUIChangeEventDetails<DrawerRootSnapPointChangeEventReason>;
+/**
+ * Groups all parts of the drawer.
+ * Doesn't render its own HTML element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare function DrawerRoot<Payload = unknown>(
+  props: DrawerRoot.Props<Payload>,
+): react_jsx_runtime.JSX.Element;
+declare namespace DrawerRoot {
+  type Props<Payload = unknown> = DrawerRootProps<Payload>;
+  type Actions = DrawerRootActions;
+  type ChangeEventReason = DrawerRootChangeEventReason;
+  type ChangeEventDetails = DrawerRootChangeEventDetails;
+  type SnapPointChangeEventReason = DrawerRootSnapPointChangeEventReason;
+  type SnapPointChangeEventDetails = DrawerRootSnapPointChangeEventDetails;
+  type SnapPoint = DrawerSnapPoint;
+}
+
+type DrawerSwipeDirection = SwipeDirection;
+type DrawerSnapPoint = number | string;
+
+interface DrawerPopupProps extends BaseUIComponentProps<
+  "div",
+  DrawerPopup.State
+> {
+  /**
+   * Determines the element to focus when the drawer is opened.
+   *
+   * - `false`: Do not move focus.
+   * - `true`: Move focus based on the default behavior (first tabbable element or popup).
+   * - `RefObject`: Move focus to the ref element.
+   * - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).
+   *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
+   */
+  initialFocus?:
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((openType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
+  /**
+   * Determines the element to focus when the drawer is closed.
+   *
+   * - `false`: Do not move focus.
+   * - `true`: Move focus based on the default behavior (trigger or previously focused element).
+   * - `RefObject`: Move focus to the ref element.
+   * - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).
+   *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
+   */
+  finalFocus?:
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
+}
+interface DrawerPopupState {
+  /**
+   * Whether the drawer is currently open.
+   */
+  open: boolean;
+  transitionStatus: TransitionStatus;
+  /**
+   * Whether the active snap point is the full-height expanded state.
+   */
+  expanded: boolean;
+  /**
+   * Whether the drawer is nested within a parent drawer.
+   */
+  nested: boolean;
+  /**
+   * Whether the drawer has nested drawers open.
+   */
+  nestedDrawerOpen: boolean;
+  /**
+   * Whether a nested drawer is currently being swiped.
+   */
+  nestedDrawerSwiping: boolean;
+  /**
+   * The swipe direction used to dismiss the drawer.
+   */
+  swipeDirection: DrawerSwipeDirection;
+  /**
+   * Whether the drawer is being swiped.
+   */
+  swiping: boolean;
+}
+/**
+ * A container for the drawer contents.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerPopup: React$1.ForwardRefExoticComponent<
+  Omit<DrawerPopupProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerPopup {
+  type Props = DrawerPopupProps;
+  type State = DrawerPopupState;
+}
+
+interface DrawerPortalState {}
+interface DrawerPortalProps extends FloatingPortal.Props<DrawerPortal.State> {
+  /**
+   * Whether to keep the portal mounted in the DOM while the popup is hidden.
+   * @default false
+   */
+  keepMounted?: boolean | undefined;
+  /**
+   * A parent element to render the portal element into.
+   */
+  container?: FloatingPortal.Props<DrawerPortal.State>["container"] | undefined;
+}
+/**
+ * A portal element that moves the popup to a different part of the DOM.
+ * By default, the portal element is appended to `<body>`.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerPortal: DrawerPortal;
+interface DrawerPortal {
+  (
+    componentProps: DrawerPortalProps & React$1.RefAttributes<HTMLDivElement>,
+  ): React$1.JSX.Element | null;
+}
+declare namespace DrawerPortal {
+  type Props = DrawerPortalProps;
+  type State = DrawerPortalState;
+}
+
+interface DrawerProviderState {}
+interface DrawerProviderProps {
+  children?: React$1.ReactNode;
+}
+/**
+ * Provides a shared context for coordinating global Drawer UI,
+ * such as indent/background effects based on whether any Drawer is open.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare function DrawerProvider(
+  props: DrawerProvider.Props,
+): react_jsx_runtime.JSX.Element;
+declare namespace DrawerProvider {
+  type State = DrawerProviderState;
+  type Props = DrawerProviderProps;
+}
+
+interface DrawerTitleProps extends BaseUIComponentProps<
+  "h2",
+  DrawerTitle.State
+> {}
+interface DrawerTitleState {}
+/**
+ * A heading that labels the drawer.
+ * Renders an `<h2>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerTitle: DrawerTitle;
+interface DrawerTitle {
+  (componentProps: DrawerTitleProps): React$1.JSX.Element;
+}
+declare namespace DrawerTitle {
+  type Props = DrawerTitleProps;
+  type State = DrawerTitleState;
+}
+
+interface DrawerTriggerProps<Payload = unknown>
+  extends
+    NativeButtonProps,
+    BaseUIComponentProps<"button", DrawerTrigger.State> {
+  /**
+   * A handle to associate the trigger with a drawer.
+   * Can be created with the Drawer.createHandle() method.
+   */
+  handle?: DialogHandle<Payload> | undefined;
+  /**
+   * A payload to pass to the drawer when it is opened.
+   */
+  payload?: Payload | undefined;
+  /**
+   * ID of the trigger. In addition to being forwarded to the rendered element,
+   * it is also used to specify the active trigger for drawers in controlled mode (with the Drawer.Root `triggerId` prop).
+   */
+  id?: string | undefined;
+}
+interface DrawerTriggerState {
+  /**
+   * Whether the drawer is currently disabled.
+   */
+  disabled: boolean;
+  /**
+   * Whether the drawer is currently open.
+   */
+  open: boolean;
+}
+/**
+ * A button that opens the drawer.
+ * Renders a `<button>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerTrigger: DrawerTrigger;
+interface DrawerTrigger {
+  <Payload>(
+    componentProps: DrawerTriggerProps<Payload> &
+      React$1.RefAttributes<HTMLElement>,
+  ): React$1.JSX.Element;
+}
+declare namespace DrawerTrigger {
+  type Props<Payload = unknown> = DrawerTriggerProps<Payload>;
+  type State = DrawerTriggerState;
+}
+
+interface DrawerViewportState {
+  /**
+   * Whether the drawer is currently open.
+   */
+  open: boolean;
+  transitionStatus: TransitionStatus;
+  /**
+   * Whether the drawer is nested within another drawer.
+   */
+  nested: boolean;
+  /**
+   * Whether the drawer has nested drawers open.
+   */
+  nestedDialogOpen: boolean;
+}
+interface DrawerViewportProps extends BaseUIComponentProps<
+  "div",
+  DrawerViewport.State
+> {}
+/**
+ * A positioning container for the drawer popup that can be made scrollable.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Drawer](https://base-ui.com/react/components/drawer)
+ */
+declare const DrawerViewport: React$1.ForwardRefExoticComponent<
+  Omit<DrawerViewportProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+>;
+declare namespace DrawerViewport {
+  type Props = DrawerViewportProps;
+  type State = DrawerViewportState;
+}
+
+declare namespace index_parts$h {
+  export {
+    DrawerBackdrop as Backdrop,
+    DrawerClose as Close,
+    DrawerContent as Content,
+    DrawerDescription as Description,
+    DialogHandle as Handle,
+    DrawerIndent as Indent,
+    DrawerIndentBackground as IndentBackground,
+    DrawerPopup as Popup,
+    DrawerPortal as Portal,
+    DrawerProvider as Provider,
+    DrawerRoot as Root,
+    DrawerTitle as Title,
+    DrawerTrigger as Trigger,
+    DrawerViewport as Viewport,
+    createDialogHandle as createHandle,
+  };
 }
 
 type FieldLabelState = FieldRoot.State;
@@ -5475,7 +6646,7 @@ interface FieldLabelProps extends BaseUIComponentProps<
    * This is useful to avoid inheriting label behaviors on `<button>` controls (such as `<Select.Trigger>` and `<Combobox.Trigger>`), including avoiding `:hover` on the button when hovering the label, and preventing clicks on the label from firing on the button.
    * @default true
    */
-  nativeLabel?: boolean;
+  nativeLabel?: boolean | undefined;
 }
 /**
  * An accessible label that is automatically associated with the field control.
@@ -5491,7 +6662,9 @@ declare namespace FieldLabel {
   type Props = FieldLabelProps;
 }
 
-type FieldErrorState = FieldRoot.State;
+interface FieldErrorState extends FieldRoot.State {
+  transitionStatus: TransitionStatus;
+}
 interface FieldErrorProps extends BaseUIComponentProps<
   "div",
   FieldError.State
@@ -5502,7 +6675,7 @@ interface FieldErrorProps extends BaseUIComponentProps<
    * Specifying `true` will always show the error message, and lets external libraries
    * control the visibility.
    */
-  match?: boolean | keyof ValidityState;
+  match?: (boolean | keyof ValidityState) | undefined;
 }
 /**
  * An error message displayed if the field control fails validation.
@@ -5546,11 +6719,10 @@ interface FieldControlProps extends BaseUIComponentProps<
   /**
    * Callback fired when the `value` changes. Use when controlled.
    */
-  onValueChange?: (
-    value: string,
-    eventDetails: FieldControl.ChangeEventDetails,
-  ) => void;
-  defaultValue?: React$1.ComponentProps<"input">["defaultValue"];
+  onValueChange?:
+    | ((value: string, eventDetails: FieldControl.ChangeEventDetails) => void)
+    | undefined;
+  defaultValue?: React$1.ComponentProps<"input">["defaultValue"] | undefined;
 }
 type FieldControlChangeEventReason = typeof none;
 type FieldControlChangeEventDetails =
@@ -5566,7 +6738,7 @@ type FieldControlChangeEventDetails =
  * Documentation: [Base UI Field](https://base-ui.com/react/components/field)
  */
 declare const FieldControl: React$1.ForwardRefExoticComponent<
-  Omit<FieldControlProps, "ref"> & React$1.RefAttributes<HTMLInputElement>
+  Omit<FieldControlProps, "ref"> & React$1.RefAttributes<HTMLElement>
 >;
 declare namespace FieldControl {
   type State = FieldControlState;
@@ -5577,6 +6749,7 @@ declare namespace FieldControl {
 
 interface FieldValidityState extends Omit<FieldValidityData, "state"> {
   validity: FieldValidityData["state"];
+  transitionStatus: TransitionStatus;
 }
 interface FieldValidityProps {
   /**
@@ -5610,7 +6783,7 @@ interface FieldItemProps extends BaseUIComponentProps<"div", FieldItem.State> {
    * The `disabled` prop on `<Field.Root>` takes precedence over this.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * Groups individual items in a checkbox group or radio group with a label and description.
@@ -5650,7 +6823,7 @@ interface FieldsetRootProps extends BaseUIComponentProps<
   FieldsetRoot.State
 > {}
 /**
- * Groups the fieldset legend and the associated fields.
+ * Groups a shared legend with related controls.
  * Renders a `<fieldset>` element.
  *
  * Documentation: [Base UI Fieldset](https://base-ui.com/react/components/fieldset)
@@ -5695,8 +6868,8 @@ interface InputProps$1 extends BaseUIComponentProps<"input", Input.State> {
   /**
    * Callback fired when the `value` changes. Use when controlled.
    */
-  onValueChange?: FieldControl.Props["onValueChange"];
-  defaultValue?: FieldControl.Props["defaultValue"];
+  onValueChange?: FieldControl.Props["onValueChange"] | undefined;
+  defaultValue?: FieldControl.Props["defaultValue"] | undefined;
 }
 interface InputState extends FieldControl.State {}
 type InputChangeEventReason = FieldControl.ChangeEventReason;
@@ -5708,7 +6881,7 @@ type InputChangeEventDetails = FieldControl.ChangeEventDetails;
  * Documentation: [Base UI Input](https://base-ui.com/react/components/input)
  */
 declare const Input: React$1.ForwardRefExoticComponent<
-  Omit<InputProps$1, "ref"> & React$1.RefAttributes<HTMLInputElement>
+  Omit<InputProps$1, "ref"> & React$1.RefAttributes<HTMLElement>
 >;
 declare namespace Input {
   type Props = InputProps$1;
@@ -5736,23 +6909,23 @@ interface MenubarProps extends BaseUIComponentProps<"div", Menubar.State> {
    * Whether the menubar is modal.
    * @default true
    */
-  modal?: boolean;
+  modal?: boolean | undefined;
   /**
    * Whether the whole menubar is disabled.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * The orientation of the menubar.
    * @default 'horizontal'
    */
-  orientation?: MenuRoot.Orientation;
+  orientation?: MenuRoot.Orientation | undefined;
   /**
    * Whether to loop keyboard focus back to the first item
    * when the end of the list is reached while using the arrow keys.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
 }
 /**
  * The container for menus.
@@ -5855,30 +7028,32 @@ interface MeterRootProps extends BaseUIComponentProps<"div", MeterRoot.State> {
   /**
    * A string value that provides a user-friendly name for `aria-valuenow`, the current value of the meter.
    */
-  "aria-valuetext"?: React$1.AriaAttributes["aria-valuetext"];
+  "aria-valuetext"?: React$1.AriaAttributes["aria-valuetext"] | undefined;
   /**
    * Options to format the value.
    */
-  format?: Intl.NumberFormatOptions;
+  format?: Intl.NumberFormatOptions | undefined;
   /**
    * A function that returns a string value that provides a human-readable text alternative for `aria-valuenow`, the current value of the meter.
    */
-  getAriaValueText?: (formattedValue: string, value: number) => string;
+  getAriaValueText?:
+    | ((formattedValue: string, value: number) => string)
+    | undefined;
   /**
    * The locale used by `Intl.NumberFormat` when formatting the value.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
   /**
    * The maximum value
    * @default 100
    */
-  max?: number;
+  max?: number | undefined;
   /**
    * The minimum value
    * @default 0
    */
-  min?: number;
+  min?: number | undefined;
   /**
    * The current value.
    */
@@ -5937,8 +7112,8 @@ interface MeterValueProps extends Omit<
   "children"
 > {
   children?:
-    | null
-    | ((formattedValue: string, value: number) => React$1.ReactNode);
+    | (null | ((formattedValue: string, value: number) => React$1.ReactNode))
+    | undefined;
 }
 /**
  * A text element displaying the current value.
@@ -5997,11 +7172,11 @@ interface NavigationMenuRootProps extends BaseUIComponentProps<
   /**
    * A ref to imperative actions.
    */
-  actionsRef?: React$1.RefObject<NavigationMenuRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<NavigationMenuRoot.Actions | null> | undefined;
   /**
    * Event handler called after any animations complete when the navigation menu is closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * The controlled value of the navigation menu item that should be currently open.
    * When non-nullish, the menu will be open. When nullish, the menu will be closed.
@@ -6020,25 +7195,27 @@ interface NavigationMenuRootProps extends BaseUIComponentProps<
   /**
    * Callback fired when the value changes.
    */
-  onValueChange?: (
-    value: any,
-    eventDetails: NavigationMenuRoot.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: any,
+        eventDetails: NavigationMenuRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * How long to wait before opening the navigation menu. Specified in milliseconds.
    * @default 50
    */
-  delay?: number;
+  delay?: number | undefined;
   /**
    * How long to wait before closing the navigation menu. Specified in milliseconds.
    * @default 50
    */
-  closeDelay?: number;
+  closeDelay?: number | undefined;
   /**
    * The orientation of the navigation menu.
    * @default 'horizontal'
    */
-  orientation?: "horizontal" | "vertical";
+  orientation?: ("horizontal" | "vertical") | undefined;
 }
 interface NavigationMenuRootActions {
   unmount: () => void;
@@ -6088,7 +7265,7 @@ interface NavigationMenuListProps extends BaseUIComponentProps<
  * Documentation: [Base UI Navigation Menu](https://base-ui.com/react/components/navigation-menu)
  */
 declare const NavigationMenuList: React$1.ForwardRefExoticComponent<
-  Omit<NavigationMenuListProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+  Omit<NavigationMenuListProps, "ref"> & React$1.RefAttributes<HTMLUListElement>
 >;
 declare namespace NavigationMenuList {
   type State = NavigationMenuListState;
@@ -6114,7 +7291,7 @@ interface NavigationMenuItemProps extends BaseUIComponentProps<
  * Documentation: [Base UI Navigation Menu](https://base-ui.com/react/components/navigation-menu)
  */
 declare const NavigationMenuItem: React$1.ForwardRefExoticComponent<
-  Omit<NavigationMenuItemProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+  Omit<NavigationMenuItemProps, "ref"> & React$1.RefAttributes<HTMLLIElement>
 >;
 declare namespace NavigationMenuItem {
   type State = NavigationMenuItemState;
@@ -6138,7 +7315,14 @@ interface NavigationMenuContentState {
 interface NavigationMenuContentProps extends BaseUIComponentProps<
   "div",
   NavigationMenuContent.State
-> {}
+> {
+  /**
+   * Whether to keep the content mounted in the DOM while the popup is closed.
+   * Ensures the content is present during server-side rendering for web crawlers.
+   * @default false
+   */
+  keepMounted?: boolean | undefined;
+}
 /**
  * A container for the content of the navigation menu item that is moved into the popup
  * when the item is active.
@@ -6186,11 +7370,13 @@ interface NavigationMenuPortalProps extends FloatingPortal.Props<NavigationMenuP
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
   /**
    * A parent element to render the portal element into.
    */
-  container?: FloatingPortal.Props<NavigationMenuPortal.State>["container"];
+  container?:
+    | FloatingPortal.Props<NavigationMenuPortal.State>["container"]
+    | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -6299,6 +7485,18 @@ interface NavigationMenuPopupState {
    * The transition status of the popup.
    */
   transitionStatus: TransitionStatus;
+  /**
+   * The side of the anchor the popup is positioned on.
+   */
+  side: Side;
+  /**
+   * The alignment of the popup relative to the anchor.
+   */
+  align: Align;
+  /**
+   * Whether the anchor element is hidden.
+   */
+  anchorHidden: boolean;
 }
 interface NavigationMenuPopupProps extends BaseUIComponentProps<
   "nav",
@@ -6359,12 +7557,12 @@ interface NavigationMenuLinkProps extends BaseUIComponentProps<
    * Whether the link is the currently active page.
    * @default false
    */
-  active?: boolean;
+  active?: boolean | undefined;
   /**
    * Whether to close the navigation menu when the link is clicked.
    * @default false
    */
-  closeOnClick?: boolean;
+  closeOnClick?: boolean | undefined;
 }
 /**
  * A link in the navigation menu that can be used to navigate to a different page or section.
@@ -6397,7 +7595,7 @@ interface NavigationMenuIconProps extends BaseUIComponentProps<
  * Documentation: [Base UI Navigation Menu](https://base-ui.com/react/components/navigation-menu)
  */
 declare const NavigationMenuIcon: React$1.ForwardRefExoticComponent<
-  Omit<NavigationMenuIconProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
+  Omit<NavigationMenuIconProps, "ref"> & React$1.RefAttributes<HTMLSpanElement>
 >;
 declare namespace NavigationMenuIcon {
   type State = NavigationMenuIconState;
@@ -6424,7 +7622,7 @@ declare namespace index_parts$d {
 
 type Direction = -1 | 1;
 interface ChangeEventCustomProperties {
-  direction?: Direction;
+  direction?: Direction | undefined;
 }
 
 interface NumberFieldRootProps extends Omit<
@@ -6434,95 +7632,104 @@ interface NumberFieldRootProps extends Omit<
   /**
    * The id of the input element.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * The minimum value of the input element.
    */
-  min?: number;
+  min?: number | undefined;
   /**
    * The maximum value of the input element.
    */
-  max?: number;
+  max?: number | undefined;
+  /**
+   * When true, direct text entry may be outside the `min`/`max` range without clamping,
+   * so native range underflow/overflow validation can occur.
+   * Step-based interactions (keyboard arrows, buttons, wheel, scrub) still clamp.
+   * @default false
+   */
+  allowOutOfRange?: boolean | undefined;
   /**
    * The small step value of the input element when incrementing while the meta key is held. Snaps
    * to multiples of this value.
    * @default 0.1
    */
-  smallStep?: number;
+  smallStep?: number | undefined;
   /**
    * Amount to increment and decrement with the buttons and arrow keys, or to scrub with pointer movement in the scrub area.
    * To always enable step validation on form submission, specify the `min` prop explicitly in conjunction with this prop.
    * Specify `step="any"` to always disable step validation.
    * @default 1
    */
-  step?: number | "any";
+  step?: (number | "any") | undefined;
   /**
    * The large step value of the input element when incrementing while the shift key is held. Snaps
    * to multiples of this value.
    * @default 10
    */
-  largeStep?: number;
+  largeStep?: number | undefined;
   /**
    * Whether the user must enter a value before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Whether the user should be unable to change the field value.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * The raw numeric value of the field.
    */
-  value?: number | null;
+  value?: (number | null) | undefined;
   /**
    * The uncontrolled value of the field when it’s initially rendered.
    *
    * To render a controlled number field, use the `value` prop instead.
    */
-  defaultValue?: number;
+  defaultValue?: number | undefined;
   /**
    * Whether to allow the user to scrub the input value with the mouse wheel while focused and
    * hovering over the input.
    * @default false
    */
-  allowWheelScrub?: boolean;
+  allowWheelScrub?: boolean | undefined;
   /**
    * Whether the value should snap to the nearest step when incrementing or decrementing.
    * @default false
    */
-  snapOnStep?: boolean;
+  snapOnStep?: boolean | undefined;
   /**
    * Options to format the input value.
    */
-  format?: Intl.NumberFormatOptions;
+  format?: Intl.NumberFormatOptions | undefined;
   /**
    * Callback fired when the number value changes.
    *
    * The `eventDetails.reason` indicates what triggered the change:
    * - `'input-change'` for parseable typing or programmatic text updates
    * - `'input-clear'` when the field becomes empty
-   * - `'input-blur'` when formatting or clamping occurs on blur
+   * - `'input-blur'` when formatting (and clamping, if enabled) occurs on blur
    * - `'input-paste'` for paste interactions
    * - `'keyboard'` for keyboard input
    * - `'increment-press'` / `'decrement-press'` for button presses on the increment and decrement controls
    * - `'wheel'` for wheel-based scrubbing
    * - `'scrub'` for scrub area drags
    */
-  onValueChange?: (
-    value: number | null,
-    eventDetails: NumberFieldRoot.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: number | null,
+        eventDetails: NumberFieldRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Callback function that is fired when the value is committed.
    * It runs later than `onValueChange`, when:
@@ -6533,19 +7740,21 @@ interface NumberFieldRootProps extends Omit<
    *
    * **Warning**: This is a generic event not a change event.
    */
-  onValueCommitted?: (
-    value: number | null,
-    eventDetails: NumberFieldRoot.CommitEventDetails,
-  ) => void;
+  onValueCommitted?:
+    | ((
+        value: number | null,
+        eventDetails: NumberFieldRoot.CommitEventDetails,
+      ) => void)
+    | undefined;
   /**
    * The locale of the input element.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
   /**
    * A ref to access the hidden input element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
 }
 interface NumberFieldRootState extends FieldRoot.State {
   /**
@@ -6712,13 +7921,13 @@ interface NumberFieldScrubAreaProps extends BaseUIComponentProps<
    * Cursor movement direction in the scrub area.
    * @default 'horizontal'
    */
-  direction?: "horizontal" | "vertical";
+  direction?: ("horizontal" | "vertical") | undefined;
   /**
    * Determines how many pixels the cursor must move before the value changes.
    * A higher value will make scrubbing less sensitive.
    * @default 2
    */
-  pixelSensitivity?: number;
+  pixelSensitivity?: number | undefined;
   /**
    * If specified, determines the distance that the cursor may move from the center
    * of the scrub area before it will loop back around.
@@ -6824,33 +8033,273 @@ declare const selectors$2: {
   openOnHover: (state: State$2<unknown>) => boolean;
   closeDelay: (state: State$2<unknown>) => number;
   hasViewport: (state: State$2<unknown>) => boolean;
-  open: (state: PopupStoreState<unknown>) => boolean;
-  mounted: (state: PopupStoreState<unknown>) => boolean;
-  transitionStatus: (state: PopupStoreState<unknown>) => TransitionStatus;
-  floatingRootContext: (state: PopupStoreState<unknown>) => FloatingRootStore;
-  preventUnmountingOnClose: (state: PopupStoreState<unknown>) => boolean;
-  payload: (state: PopupStoreState<unknown>) => unknown;
-  activeTriggerId: (state: PopupStoreState<unknown>) => string | null;
-  activeTriggerElement: (state: PopupStoreState<unknown>) => Element | null;
+  open: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  mounted: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  transitionStatus: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => TransitionStatus;
+  floatingRootContext: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => FloatingRootStore;
+  preventUnmountingOnClose: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  payload: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => unknown;
+  activeTriggerId: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => string | null;
+  activeTriggerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => Element | null;
   isTriggerActive: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isOpenedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isMountedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   triggerProps: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     isActive: boolean,
   ) => HTMLProps;
-  popupProps: (state: PopupStoreState<unknown>) => HTMLProps;
-  popupElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
-  positionerElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
+  popupProps: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLProps;
+  popupElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
+  positionerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
 };
 declare class PopoverStore<Payload> extends ReactStore<
   Readonly<State$2<Payload>>,
@@ -6906,22 +8355,21 @@ interface PopoverRootProps<Payload = unknown> {
    * To render a controlled popover, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Whether the popover is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Event handler called when the popover is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: PopoverRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: PopoverRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the popover is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the popover will not be unmounted when closed.
@@ -6929,7 +8377,7 @@ interface PopoverRootProps<Payload = unknown> {
    * Useful when the popover's animation is controlled by an external library.
    * - `close`: Closes the dialog imperatively when called.
    */
-  actionsRef?: React$1.RefObject<PopoverRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<PopoverRoot.Actions | null> | undefined;
   /**
    * Determines if the popover enters a modal state when open.
    * - `true`: user interaction is limited to the popover: document page scroll is locked, and pointer interactions on outside elements are disabled.
@@ -6937,23 +8385,23 @@ interface PopoverRootProps<Payload = unknown> {
    * - `'trap-focus'`: focus is trapped inside the popover, but document page scroll is not locked and pointer interactions outside of it remain enabled.
    * @default false
    */
-  modal?: boolean | "trap-focus";
+  modal?: (boolean | "trap-focus") | undefined;
   /**
    * ID of the trigger that the popover is associated with.
    * This is useful in conjunction with the `open` prop to create a controlled popover.
    * There's no need to specify this prop when the popover is uncontrolled (i.e. when the `open` prop is not set).
    */
-  triggerId?: string | null;
+  triggerId?: (string | null) | undefined;
   /**
    * ID of the trigger that the popover is associated with.
    * This is useful in conjunction with the `defaultOpen` prop to create an initially open popover.
    */
-  defaultTriggerId?: string | null;
+  defaultTriggerId?: (string | null) | undefined;
   /**
    * A handle to associate the popover with a trigger.
    * If specified, allows external triggers to control the popover's open state.
    */
-  handle?: PopoverHandle<Payload>;
+  handle?: PopoverHandle<Payload> | undefined;
   /**
    * The content of the popover.
    * This can be a regular React node or a render function that receives the `payload` of the active trigger.
@@ -7013,32 +8461,32 @@ type PopoverTriggerProps<Payload = unknown> = NativeButtonProps &
      * Set to `false` if the rendered element is not a button (e.g. `<div>`).
      * @default true
      */
-    nativeButton?: boolean;
+    nativeButton?: boolean | undefined;
     /**
      * A handle to associate the trigger with a popover.
      */
-    handle?: PopoverHandle<Payload>;
+    handle?: PopoverHandle<Payload> | undefined;
     /**
      * A payload to pass to the popover when it is opened.
      */
-    payload?: Payload;
+    payload?: Payload | undefined;
     /**
      * ID of the trigger. In addition to being forwarded to the rendered element,
      * it is also used to specify the active trigger for the popover in controlled mode (with the PopoverRoot `triggerId` prop).
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Whether the popover should also open when the trigger is hovered.
      * @default false
      */
-    openOnHover?: boolean;
+    openOnHover?: boolean | undefined;
     /**
      * How long to wait before the popover may be opened on hover. Specified in milliseconds.
      *
      * Requires the `openOnHover` prop.
      * @default 300
      */
-    delay?: number;
+    delay?: number | undefined;
     /**
      * How long to wait before closing the popover that was opened on hover.
      * Specified in milliseconds.
@@ -7046,7 +8494,7 @@ type PopoverTriggerProps<Payload = unknown> = NativeButtonProps &
      * Requires the `openOnHover` prop.
      * @default 0
      */
-    closeDelay?: number;
+    closeDelay?: number | undefined;
   };
 /**
  * A button that opens the popover.
@@ -7071,7 +8519,7 @@ interface PopoverPortalProps extends FloatingPortal.Props<PopoverPortal.State> {
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -7129,6 +8577,7 @@ interface PopoverPopupState {
   side: Side;
   align: Align;
   transitionStatus: TransitionStatus;
+  instant: "dismiss" | "click" | undefined;
 }
 interface PopoverPopupProps extends BaseUIComponentProps<
   "div",
@@ -7144,9 +8593,12 @@ interface PopoverPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   initialFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((openType: InteractionType) => void | boolean | HTMLElement | null);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((openType: InteractionType) => void | boolean | HTMLElement | null)
+      )
+    | undefined;
   /**
    * Determines the element to focus when the popover is closed.
    *
@@ -7157,9 +8609,12 @@ interface PopoverPopupProps extends BaseUIComponentProps<
    *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
    */
   finalFocus?:
-    | boolean
-    | React$1.RefObject<HTMLElement | null>
-    | ((closeType: InteractionType) => void | boolean | HTMLElement | null);
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => void | boolean | HTMLElement | null)
+      )
+    | undefined;
 }
 /**
  * A container for the popover contents.
@@ -7304,7 +8759,15 @@ declare namespace PopoverViewport {
     children?: React$1.ReactNode;
   }
   interface State {
-    activationDirection?: string;
+    activationDirection: string | undefined;
+    /**
+     * Whether the viewport is currently transitioning between contents.
+     */
+    transitioning: boolean;
+    /**
+     * Present if animations should be instant.
+     */
+    instant: "dismiss" | "click" | undefined;
   }
 }
 
@@ -7336,33 +8799,273 @@ type Context$1 = PopupStoreContext<PreviewCardRoot.ChangeEventDetails> & {
 declare const selectors$1: {
   instantType: (state: State$1<unknown>) => "focus" | "dismiss" | undefined;
   hasViewport: (state: State$1<unknown>) => boolean;
-  open: (state: PopupStoreState<unknown>) => boolean;
-  mounted: (state: PopupStoreState<unknown>) => boolean;
-  transitionStatus: (state: PopupStoreState<unknown>) => TransitionStatus;
-  floatingRootContext: (state: PopupStoreState<unknown>) => FloatingRootStore;
-  preventUnmountingOnClose: (state: PopupStoreState<unknown>) => boolean;
-  payload: (state: PopupStoreState<unknown>) => unknown;
-  activeTriggerId: (state: PopupStoreState<unknown>) => string | null;
-  activeTriggerElement: (state: PopupStoreState<unknown>) => Element | null;
+  open: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  mounted: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  transitionStatus: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => TransitionStatus;
+  floatingRootContext: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => FloatingRootStore;
+  preventUnmountingOnClose: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  payload: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => unknown;
+  activeTriggerId: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => string | null;
+  activeTriggerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => Element | null;
   isTriggerActive: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isOpenedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isMountedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   triggerProps: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     isActive: boolean,
   ) => HTMLProps;
-  popupProps: (state: PopupStoreState<unknown>) => HTMLProps;
-  popupElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
-  positionerElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
+  popupProps: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLProps;
+  popupElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
+  positionerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
 };
 declare class PreviewCardStore<Payload> extends ReactStore<
   Readonly<State$1<Payload>>,
@@ -7424,34 +9127,36 @@ interface PreviewCardRootProps<Payload = unknown> {
    * To render a controlled preview card, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Whether the preview card is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Event handler called when the preview card is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: PreviewCardRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((
+        open: boolean,
+        eventDetails: PreviewCardRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the preview card is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: Unmounts the preview card popup.
    * - `close`: Closes the preview card imperatively when called.
    */
-  actionsRef?: React$1.RefObject<PreviewCardRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<PreviewCardRoot.Actions | null> | undefined;
   /**
    * A handle to associate the preview card with a trigger.
    * If specified, allows external triggers to control the card's open state.
    * Can be created with the PreviewCard.createHandle() method.
    */
-  handle?: PreviewCardHandle<Payload>;
+  handle?: PreviewCardHandle<Payload> | undefined;
   /**
    * The content of the preview card.
    * This can be a regular React node or a render function that receives the `payload` of the active trigger.
@@ -7462,12 +9167,12 @@ interface PreviewCardRootProps<Payload = unknown> {
    * This is useful in conjuntion with the `open` prop to create a controlled preview card.
    * There's no need to specify this prop when the preview card is uncontrolled (i.e. when the `open` prop is not set).
    */
-  triggerId?: string | null;
+  triggerId?: (string | null) | undefined;
   /**
    * ID of the trigger that the preview card is associated with.
    * This is useful in conjunction with the `defaultOpen` prop to create an initially open preview card.
    */
-  defaultTriggerId?: string | null;
+  defaultTriggerId?: (string | null) | undefined;
 }
 interface PreviewCardRootActions {
   unmount: () => void;
@@ -7521,7 +9226,7 @@ interface PreviewCardPortalProps extends FloatingPortalLite.Props<PreviewCardPor
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -7552,21 +9257,21 @@ interface PreviewCardTriggerProps<
   /**
    * A handle to associate the trigger with a preview card.
    */
-  handle?: PreviewCardHandle<Payload>;
+  handle?: PreviewCardHandle<Payload> | undefined;
   /**
    * A payload to pass to the preview card when it is opened.
    */
-  payload?: Payload;
+  payload?: Payload | undefined;
   /**
    * How long to wait before the preview card opens. Specified in milliseconds.
    * @default 600
    */
-  delay?: number;
+  delay?: number | undefined;
   /**
    * How long to wait before closing the preview card. Specified in milliseconds.
    * @default 300
    */
-  closeDelay?: number;
+  closeDelay?: number | undefined;
 }
 /**
  * A link that opens the preview card.
@@ -7714,7 +9419,12 @@ declare namespace PreviewCardViewport {
     children?: React$1.ReactNode;
   }
   interface State {
-    activationDirection?: string;
+    activationDirection: string | undefined;
+    /**
+     * Whether the viewport is currently transitioning between contents.
+     */
+    transitioning: boolean;
+    instant: "dismiss" | "focus" | undefined;
   }
 }
 
@@ -7744,33 +9454,32 @@ interface ProgressRootProps extends BaseUIComponentProps<
   /**
    * A string value that provides a user-friendly name for `aria-valuenow`, the current value of the meter.
    */
-  "aria-valuetext"?: React$1.AriaAttributes["aria-valuetext"];
+  "aria-valuetext"?: React$1.AriaAttributes["aria-valuetext"] | undefined;
   /**
    * Options to format the value.
    */
-  format?: Intl.NumberFormatOptions;
+  format?: Intl.NumberFormatOptions | undefined;
   /**
    * Accepts a function which returns a string value that provides a human-readable text alternative for the current value of the progress bar.
    */
-  getAriaValueText?: (
-    formattedValue: string | null,
-    value: number | null,
-  ) => string;
+  getAriaValueText?:
+    | ((formattedValue: string | null, value: number | null) => string)
+    | undefined;
   /**
    * The locale used by `Intl.NumberFormat` when formatting the value.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
   /**
    * The maximum value.
    * @default 100
    */
-  max?: number;
+  max?: number | undefined;
   /**
    * The minimum value.
    * @default 0
    */
-  min?: number;
+  min?: number | undefined;
   /**
    * The current value. The component is indeterminate when value is `null`.
    * @default null
@@ -7830,11 +9539,14 @@ interface ProgressValueProps extends Omit<
   "children"
 > {
   children?:
-    | null
-    | ((
-        formattedValue: string | null,
-        value: number | null,
-      ) => React$1.ReactNode);
+    | (
+        | null
+        | ((
+            formattedValue: string | null,
+            value: number | null,
+          ) => React$1.ReactNode)
+      )
+    | undefined;
 }
 /**
  * A text label displaying the current value.
@@ -7878,29 +9590,47 @@ declare namespace index_parts$9 {
 }
 
 interface RadioRootState extends FieldRoot.State {
-  /** Whether the radio button is currently selected. */
+  /**
+   * Whether the radio button is currently selected.
+   */
   checked: boolean;
-  /** Whether the component should ignore user interaction. */
+  /**
+   * Whether the component should ignore user interaction.
+   */
   disabled: boolean;
-  /** Whether the user should be unable to select the radio button. */
+  /**
+   * Whether the user should be unable to select the radio button.
+   */
   readOnly: boolean;
-  /** Whether the user must choose a value before submitting a form. */
+  /**
+   * Whether the user must choose a value before submitting a form.
+   */
   required: boolean;
 }
-interface RadioRootProps
+interface RadioRootProps<Value = any>
   extends
     NonNativeButtonProps,
     Omit<BaseUIComponentProps<"span", RadioRoot.State>, "value"> {
-  /** The unique identifying value of the radio in a group. */
-  value: any;
-  /** Whether the component should ignore user interaction. */
-  disabled?: boolean;
-  /** Whether the user must choose a value before submitting a form. */
-  required?: boolean;
-  /** Whether the user should be unable to select the radio button. */
-  readOnly?: boolean;
-  /** A ref to access the hidden input element. */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  /**
+   * The unique identifying value of the radio in a group.
+   */
+  value: Value;
+  /**
+   * Whether the component should ignore user interaction.
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Whether the user must choose a value before submitting a form.
+   */
+  required?: boolean | undefined;
+  /**
+   * Whether the user should be unable to select the radio button.
+   */
+  readOnly?: boolean | undefined;
+  /**
+   * A ref to access the hidden input element.
+   */
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
 }
 /**
  * Represents the radio button itself.
@@ -7908,12 +9638,12 @@ interface RadioRootProps
  *
  * Documentation: [Base UI Radio](https://base-ui.com/react/components/radio)
  */
-declare const RadioRoot: React$1.ForwardRefExoticComponent<
-  Omit<RadioRootProps, "ref"> & React$1.RefAttributes<HTMLElement>
->;
+declare const RadioRoot: {
+  <Value>(props: RadioRoot.Props<Value>): React$1.JSX.Element;
+};
 declare namespace RadioRoot {
   type State = RadioRootState;
-  type Props = RadioRootProps;
+  type Props<TValue = any> = RadioRootProps<TValue>;
 }
 
 interface RadioIndicatorProps extends BaseUIComponentProps<
@@ -7924,7 +9654,7 @@ interface RadioIndicatorProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM when the radio button is inactive.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 interface RadioIndicatorState {
   /**
@@ -7955,9 +9685,13 @@ interface RadioGroupState extends FieldRoot.State {
   /**
    * Whether the user should be unable to select a different radio button in the group.
    */
-  readOnly: boolean | undefined;
+  readOnly: boolean;
+  /**
+   * Whether the user must tick a radio button within the group before submitting a form.
+   */
+  required: boolean;
 }
-interface RadioGroupProps extends Omit<
+interface RadioGroupProps<Value = any> extends Omit<
   BaseUIComponentProps<"div", RadioGroup.State>,
   "value"
 > {
@@ -7965,44 +9699,43 @@ interface RadioGroupProps extends Omit<
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Whether the user should be unable to select a different radio button in the group.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Whether the user must choose a value before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * The controlled value of the radio item that should be currently selected.
    *
    * To render an uncontrolled radio group, use the `defaultValue` prop instead.
    */
-  value?: any;
+  value?: Value | undefined;
   /**
    * The uncontrolled value of the radio button that should be initially selected.
    *
    * To render a controlled radio group, use the `value` prop instead.
    */
-  defaultValue?: any;
+  defaultValue?: Value | undefined;
   /**
    * Callback fired when the value changes.
    */
-  onValueChange?: (
-    value: any,
-    eventDetails: RadioGroup.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((value: Value, eventDetails: RadioGroup.ChangeEventDetails) => void)
+    | undefined;
   /**
    * A ref to access the hidden input element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
 }
 type RadioGroupChangeEventReason = typeof none;
 type RadioGroupChangeEventDetails =
@@ -8013,12 +9746,12 @@ type RadioGroupChangeEventDetails =
  *
  * Documentation: [Base UI Radio Group](https://base-ui.com/react/components/radio)
  */
-declare const RadioGroup: React$1.ForwardRefExoticComponent<
-  Omit<RadioGroupProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
->;
+declare const RadioGroup: {
+  <Value>(props: RadioGroup.Props<Value>): React$1.JSX.Element;
+};
 declare namespace RadioGroup {
   type State = RadioGroupState;
-  type Props = RadioGroupProps;
+  type Props<TValue = any> = RadioGroupProps<TValue>;
   type ChangeEventReason = RadioGroupChangeEventReason;
   type ChangeEventDetails = RadioGroupChangeEventDetails;
 }
@@ -8047,6 +9780,8 @@ type OverflowEdges = typeof DEFAULT_OVERFLOW_EDGES;
 type Size = typeof DEFAULT_SIZE;
 type Coords = typeof DEFAULT_COORDS;
 interface ScrollAreaRootState {
+  /** Whether the scroll area is being scrolled. */
+  scrolling: boolean;
   /** Whether horizontal overflow is present. */
   hasOverflowX: boolean;
   /** Whether vertical overflow is present. */
@@ -8072,13 +9807,16 @@ interface ScrollAreaRootProps extends BaseUIComponentProps<
    * @default 0
    */
   overflowEdgeThreshold?:
-    | number
-    | Partial<{
-        xStart: number;
-        xEnd: number;
-        yStart: number;
-        yEnd: number;
-      }>;
+    | (
+        | number
+        | Partial<{
+            xStart: number;
+            xEnd: number;
+            yStart: number;
+            yEnd: number;
+          }>
+      )
+    | undefined;
 }
 /**
  * Groups all parts of the scroll area.
@@ -8129,12 +9867,12 @@ interface ScrollAreaScrollbarProps extends BaseUIComponentProps<
    * Whether the scrollbar controls vertical or horizontal scroll.
    * @default 'vertical'
    */
-  orientation?: "vertical" | "horizontal";
+  orientation?: ("vertical" | "horizontal") | undefined;
   /**
    * Whether to keep the HTML element in the DOM when the viewport isn’t scrollable.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A vertical or horizontal scrollbar for the scroll area.
@@ -8170,7 +9908,7 @@ declare namespace ScrollAreaContent {
 }
 
 interface ScrollAreaThumbState {
-  orientation?: "horizontal" | "vertical";
+  orientation?: ("horizontal" | "vertical") | undefined;
 }
 interface ScrollAreaThumbProps extends BaseUIComponentProps<
   "div",
@@ -8229,77 +9967,81 @@ interface SelectRootProps<Value, Multiple extends boolean | undefined = false> {
   /**
    * A ref to access the hidden input element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
+  /**
+   * Provides a hint to the browser for autofill.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete
+   */
+  autoComplete?: string | undefined;
   /**
    * The id of the Select.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether the user must choose a value before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Whether the user should be unable to choose a different option from the select popup.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Whether multiple items can be selected.
    * @default false
    */
-  multiple?: Multiple;
+  multiple?: Multiple | undefined;
   /**
    * Whether moving the pointer over items should highlight them.
    * Disabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state.
    * @default true
    */
-  highlightItemOnHover?: boolean;
+  highlightItemOnHover?: boolean | undefined;
   /**
    * Whether the select popup is initially open.
    *
    * To render a controlled select popup, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Event handler called when the select popup is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: SelectRootChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: SelectRootChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the select popup is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * Whether the select popup is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Determines if the select enters a modal state when open.
    * - `true`: user interaction is limited to the select: document page scroll is locked and pointer interactions on outside elements are disabled.
    * - `false`: user interaction with the rest of the document is allowed.
    * @default true
    */
-  modal?: boolean;
+  modal?: boolean | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: When specified, the select will not be unmounted when closed.
    * Instead, the `unmount` function must be called to unmount the select manually.
    * Useful when the select's animation is controlled by an external library.
    */
-  actionsRef?: React$1.RefObject<SelectRootActions | null>;
+  actionsRef?: React$1.RefObject<SelectRootActions | null> | undefined;
   /**
    * Data structure of the items rendered in the select popup.
    * When specified, `<Select.Value>` renders the label of the selected item instead of the raw value.
@@ -8315,45 +10057,52 @@ interface SelectRootProps<Value, Multiple extends boolean | undefined = false> {
    * ```
    */
   items?:
-    | Record<string, React$1.ReactNode>
-    | ReadonlyArray<{
-        label: React$1.ReactNode;
-        value: any;
-      }>;
+    | (
+        | Record<string, React$1.ReactNode>
+        | ReadonlyArray<{
+            label: React$1.ReactNode;
+            value: any;
+          }>
+      )
+    | undefined;
   /**
    * When the item values are objects (`<Select.Item value={object}>`), this function converts the object value to a string representation for display in the trigger.
    * If the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop.
    */
-  itemToStringLabel?: (itemValue: Value) => string;
+  itemToStringLabel?: ((itemValue: Value) => string) | undefined;
   /**
    * When the item values are objects (`<Select.Item value={object}>`), this function converts the object value to a string representation for form submission.
    * If the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop.
    */
-  itemToStringValue?: (itemValue: Value) => string;
+  itemToStringValue?: ((itemValue: Value) => string) | undefined;
   /**
    * Custom comparison logic used to determine if a select item value matches the current selected value. Useful when item values are objects without matching referentially.
    * Defaults to `Object.is` comparison.
    */
-  isItemEqualToValue?: (itemValue: Value, value: Value) => boolean;
+  isItemEqualToValue?:
+    | ((itemValue: Value, value: Value) => boolean)
+    | undefined;
   /**
    * The uncontrolled value of the select when it’s initially rendered.
    *
    * To render a controlled select, use the `value` prop instead.
    */
-  defaultValue?: SelectValueType<Value, Multiple> | null;
+  defaultValue?: (SelectValueType<Value, Multiple> | null) | undefined;
   /**
    * The value of the select. Use when controlled.
    */
-  value?: SelectValueType<Value, Multiple> | null;
+  value?: (SelectValueType<Value, Multiple> | null) | undefined;
   /**
    * Event handler called when the value of the select changes.
    */
-  onValueChange?: (
-    value:
-      | SelectValueType<Value, Multiple>
-      | (Multiple extends true ? never : null),
-    eventDetails: SelectRootChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value:
+          | SelectValueType<Value, Multiple>
+          | (Multiple extends true ? never : null),
+        eventDetails: SelectRootChangeEventDetails,
+      ) => void)
+    | undefined;
 }
 interface SelectRootState {}
 interface SelectRootActions {
@@ -8416,7 +10165,7 @@ interface SelectTriggerProps
     BaseUIComponentProps<"button", SelectTrigger.State> {
   children?: React$1.ReactNode;
   /** Whether the component should ignore user interaction. */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * A button that opens the select popup.
@@ -8437,6 +10186,10 @@ interface SelectValueState {
    * The value of the currently selected item.
    */
   value: any;
+  /**
+   * Whether the placeholder is being displayed.
+   */
+  placeholder: boolean;
 }
 interface SelectValueProps extends Omit<
   BaseUIComponentProps<"span", SelectValue.State>,
@@ -8550,7 +10303,7 @@ interface SelectPositionerProps
    * Whether the positioner overlaps the trigger so the selected item's text is aligned with the trigger's value text. This only applies to mouse input and is automatically disabled if there is not enough space.
    * @default true
    */
-  alignItemWithTrigger?: boolean;
+  alignItemWithTrigger?: boolean | undefined;
 }
 /**
  * Positions the select popup.
@@ -8571,6 +10324,22 @@ interface SelectPopupProps extends BaseUIComponentProps<
   SelectPopup.State
 > {
   children?: React$1.ReactNode;
+  /**
+   * Determines the element to focus when the select popup is closed.
+   *
+   * - `false`: Do not move focus.
+   * - `true`: Move focus based on the default behavior (trigger or previously focused element).
+   * - `RefObject`: Move focus to the ref element.
+   * - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).
+   *   Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
+   */
+  finalFocus?:
+    | (
+        | boolean
+        | React$1.RefObject<HTMLElement | null>
+        | ((closeType: InteractionType) => boolean | HTMLElement | null | void)
+      )
+    | undefined;
 }
 interface SelectPopupState {
   side: Side | "none";
@@ -8639,13 +10408,13 @@ interface SelectItemProps
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Specifies the text label to use when the item is matched during keyboard text navigation.
    *
    * Defaults to the item text content if not provided.
    */
-  label?: string;
+  label?: string | undefined;
 }
 /**
  * An individual option in the select popup.
@@ -8671,7 +10440,7 @@ interface SelectItemIndicatorProps extends BaseUIComponentProps<
 > {
   children?: React$1.ReactNode;
   /** Whether to keep the HTML element in the DOM when the item is not selected. */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * Indicates whether the select item is selected.
@@ -8742,7 +10511,7 @@ interface SelectScrollDownArrowProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM while the select popup is not scrollable.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * An element that scrolls the select popup down when hovered. Does not render when using touch input.
@@ -8768,7 +10537,7 @@ interface SelectScrollUpArrowProps extends BaseUIComponentProps<
    * Whether to keep the HTML element in the DOM while the select popup is not scrollable.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * An element that scrolls the select popup up when hovered. Does not render when using touch input.
@@ -8822,7 +10591,6 @@ declare namespace SelectGroupLabel {
   type Props = SelectGroupLabelProps;
 }
 
-declare const index_parts$6_Separator: typeof Separator;
 declare namespace index_parts$6 {
   export {
     SelectArrow as Arrow,
@@ -8840,7 +10608,7 @@ declare namespace index_parts$6 {
     SelectRoot as Root,
     SelectScrollDownArrow as ScrollDownArrow,
     SelectScrollUpArrow as ScrollUpArrow,
-    index_parts$6_Separator as Separator,
+    Separator,
     SelectTrigger as Trigger,
     SelectValue as Value,
   };
@@ -8889,59 +10657,59 @@ interface SliderRootProps<
    *
    * To render a controlled slider, use the `value` prop instead.
    */
-  defaultValue?: Value;
+  defaultValue?: Value | undefined;
   /**
    * Whether the slider should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Options to format the input value.
    */
-  format?: Intl.NumberFormatOptions;
+  format?: Intl.NumberFormatOptions | undefined;
   /**
    * The locale used by `Intl.NumberFormat` when formatting the value.
    * Defaults to the user's runtime locale.
    */
-  locale?: Intl.LocalesArgument;
+  locale?: Intl.LocalesArgument | undefined;
   /**
    * The maximum allowed value of the slider.
    * Should not be equal to min.
    * @default 100
    */
-  max?: number;
+  max?: number | undefined;
   /**
    * The minimum allowed value of the slider.
    * Should not be equal to max.
    * @default 0
    */
-  min?: number;
+  min?: number | undefined;
   /**
    * The minimum steps between values in a range slider.
    * @default 0
    */
-  minStepsBetweenValues?: number;
+  minStepsBetweenValues?: number | undefined;
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * The component orientation.
    * @default 'horizontal'
    */
-  orientation?: Orientation;
+  orientation?: Orientation | undefined;
   /**
    * The granularity with which the slider can step through values. (A "discrete" slider.)
    * The `min` prop serves as the origin for the valid values.
    * We recommend (max - min) to be evenly divisible by the step.
    * @default 1
    */
-  step?: number;
+  step?: number | undefined;
   /**
    * The granularity with which the slider can step through values when using Page Up/Page Down or Shift + Arrow Up/Arrow Down.
    * @default 10
    */
-  largeStep?: number;
+  largeStep?: number | undefined;
   /**
    * How the thumb(s) are aligned relative to `Slider.Control` when the value is at `min` or `max`:
    * - `center`: The center of the thumb is aligned with the control edge
@@ -8949,7 +10717,7 @@ interface SliderRootProps<
    * - `edge-client-only`: Same as `edge` but renders after React hydration on the client, reducing bundle size in return
    * @default 'center'
    */
-  thumbAlignment?: "center" | "edge" | "edge-client-only";
+  thumbAlignment?: ("center" | "edge" | "edge-client-only") | undefined;
   /**
    * Controls how thumbs behave when they collide during pointer interactions.
    *
@@ -8959,12 +10727,12 @@ interface SliderRootProps<
    *
    * @default 'push'
    */
-  thumbCollisionBehavior?: "push" | "swap" | "none";
+  thumbCollisionBehavior?: ("push" | "swap" | "none") | undefined;
   /**
    * The value of the slider.
    * For ranged sliders, provide an array with two values.
    */
-  value?: Value;
+  value?: Value | undefined;
   /**
    * Callback function that is fired when the slider's value changed.
    * You can pull out the new value by accessing `event.target.value` (any).
@@ -8977,10 +10745,12 @@ interface SliderRootProps<
    * - `'keyboard'` for keyboard input
    * - `'none'` when the change is triggered without a specific interaction
    */
-  onValueChange?: (
-    value: Value extends number ? number : Value,
-    eventDetails: SliderRoot.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: Value extends number ? number : Value,
+        eventDetails: SliderRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Callback function that is fired when the `pointerup` is triggered.
    * **Warning**: This is a generic event not a change event.
@@ -8993,10 +10763,12 @@ interface SliderRootProps<
    * - `'input-change'` when the hidden range input emits a change event (for example, via form integration)
    * - `'none'` when the commit occurs without a specific interaction
    */
-  onValueCommitted?: (
-    value: Value extends number ? number : Value,
-    eventDetails: SliderRoot.CommitEventDetails,
-  ) => void;
+  onValueCommitted?:
+    | ((
+        value: Value extends number ? number : Value,
+        eventDetails: SliderRoot.CommitEventDetails,
+      ) => void)
+    | undefined;
 }
 interface SliderRootChangeEventCustomProperties {
   /**
@@ -9031,7 +10803,7 @@ type SliderRootCommitEventDetails =
 declare const SliderRoot: {
   <Value extends number | readonly number[]>(
     props: SliderRoot.Props<Value> & {
-      ref?: React$1.Ref<HTMLDivElement>;
+      ref?: React$1.Ref<HTMLDivElement> | undefined;
     },
   ): React$1.JSX.Element;
 };
@@ -9051,11 +10823,14 @@ interface SliderValueProps extends Omit<
   "children"
 > {
   children?:
-    | null
-    | ((
-        formattedValues: readonly string[],
-        values: readonly number[],
-      ) => React$1.ReactNode);
+    | (
+        | null
+        | ((
+            formattedValues: readonly string[],
+            values: readonly number[],
+          ) => React$1.ReactNode)
+      )
+    | undefined;
 }
 /**
  * Displays the current value of the slider as text.
@@ -9111,9 +10886,7 @@ interface LabelableContext {
    * When `null` the association is implicit.
    */
   controlId: string | null | undefined;
-  setControlId: React$1.Dispatch<
-    React$1.SetStateAction<string | null | undefined>
-  >;
+  registerControlId: (source: symbol, id: string | null | undefined) => void;
   /**
    * The `id` of the label.
    */
@@ -9144,18 +10917,21 @@ interface SliderThumbProps extends Omit<
    * Whether the thumb should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A function which returns a string value for the [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) attribute of the `input`.
    */
-  getAriaLabel?: ((index: number) => string) | null;
+  getAriaLabel?: (((index: number) => string) | null) | undefined;
   /**
    * A function which returns a string value for the [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuetext) attribute of the `input`.
    * This is important for screen reader users.
    */
   getAriaValueText?:
-    | ((formattedValue: string, value: number, index: number) => string)
-    | null;
+    | (
+        | ((formattedValue: string, value: number, index: number) => string)
+        | null
+      )
+    | undefined;
   /**
    * The index of the thumb which corresponds to the index of its value in the
    * `value` or `defaultValue` array.
@@ -9173,19 +10949,19 @@ interface SliderThumbProps extends Omit<
   /**
    * A ref to access the nested input element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
   /**
    * A blur handler forwarded to the `input`.
    */
-  onBlur?: React$1.FocusEventHandler<HTMLInputElement>;
+  onBlur?: React$1.FocusEventHandler<HTMLInputElement> | undefined;
   /**
    * A focus handler forwarded to the `input`.
    */
-  onFocus?: React$1.FocusEventHandler<HTMLInputElement>;
+  onFocus?: React$1.FocusEventHandler<HTMLInputElement> | undefined;
   /**
    * Optional tab index attribute forwarded to the `input`.
    */
-  tabIndex?: number;
+  tabIndex?: number | undefined;
 }
 /**
  * The draggable part of the slider at the tip of the indicator.
@@ -9254,60 +11030,59 @@ interface SwitchRootProps
   /**
    * The id of the switch element.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether the switch is currently active.
    *
    * To render an uncontrolled switch, use the `defaultChecked` prop instead.
    */
-  checked?: boolean;
+  checked?: boolean | undefined;
   /**
    * Whether the switch is initially active.
    *
    * To render a controlled switch, use the `checked` prop instead.
    * @default false
    */
-  defaultChecked?: boolean;
+  defaultChecked?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A ref to access the hidden `<input>` element.
    */
-  inputRef?: React$1.Ref<HTMLInputElement>;
+  inputRef?: React$1.Ref<HTMLInputElement> | undefined;
   /**
    * Identifies the field when a form is submitted.
    */
-  name?: string;
+  name?: string | undefined;
   /**
    * Event handler called when the switch is activated or deactivated.
    */
-  onCheckedChange?: (
-    checked: boolean,
-    eventDetails: SwitchRoot.ChangeEventDetails,
-  ) => void;
+  onCheckedChange?:
+    | ((checked: boolean, eventDetails: SwitchRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Whether the user should be unable to activate or deactivate the switch.
    * @default false
    */
-  readOnly?: boolean;
+  readOnly?: boolean | undefined;
   /**
    * Whether the user must activate the switch before submitting a form.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * The value submitted with the form when the switch is on.
    * By default, switch submits the "on" value, matching native checkbox behavior.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * The value submitted with the form when the switch is off.
    * By default, unchecked switches do not submit any value, matching native checkbox behavior.
    */
-  uncheckedValue?: string;
+  uncheckedValue?: string | undefined;
 }
 type SwitchRootChangeEventReason = typeof none;
 type SwitchRootChangeEventDetails =
@@ -9391,7 +11166,7 @@ interface TabsTabProps
    * during pre-rendering which Tabs are disabled.
    * To work around it, ensure that `defaultValue` or `value` on `<Tabs.Root>` is set to an enabled Tab's value.
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * An individual interactive tab button that toggles the corresponding panel.
@@ -9422,25 +11197,27 @@ interface TabsRootProps extends BaseUIComponentProps<"div", TabsRoot.State> {
    * The value of the currently active `Tab`. Use when the component is controlled.
    * When the value is `null`, no Tab will be active.
    */
-  value?: TabsTab.Value;
+  value?: TabsTab.Value | undefined;
   /**
    * The default value. Use when the component is not controlled.
    * When the value is `null`, no Tab will be active.
    * @default 0
    */
-  defaultValue?: TabsTab.Value;
+  defaultValue?: TabsTab.Value | undefined;
   /**
    * The component orientation (layout flow direction).
    * @default 'horizontal'
    */
-  orientation?: TabsRoot.Orientation;
+  orientation?: TabsRoot.Orientation | undefined;
   /**
    * Callback invoked when new value is being set.
    */
-  onValueChange?: (
-    value: TabsTab.Value,
-    eventDetails: TabsRoot.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        value: TabsTab.Value,
+        eventDetails: TabsRoot.ChangeEventDetails,
+      ) => void)
+    | undefined;
 }
 type TabsRootChangeEventReason = typeof none;
 type TabsRootChangeEventDetails = BaseUIChangeEventDetails<
@@ -9480,7 +11257,7 @@ interface TabsIndicatorProps extends BaseUIComponentProps<
    * This minimizes the time that the indicator isn’t visible after server-side rendering.
    * @default false
    */
-  renderBeforeHydration?: boolean;
+  renderBeforeHydration?: boolean | undefined;
 }
 /**
  * A visual indicator that can be styled to match the position of the currently active tab.
@@ -9497,11 +11274,12 @@ declare namespace TabsIndicator {
 }
 
 interface TabsPanelMetadata {
-  id?: string;
+  id?: string | undefined;
   value: TabsTab.Value;
 }
 interface TabsPanelState extends TabsRoot.State {
   hidden: boolean;
+  transitionStatus: TransitionStatus;
 }
 interface TabsPanelProps extends BaseUIComponentProps<"div", TabsPanel.State> {
   /**
@@ -9512,7 +11290,7 @@ interface TabsPanelProps extends BaseUIComponentProps<"div", TabsPanel.State> {
    * Whether to keep the HTML element in the DOM while the panel is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A panel displayed when the corresponding tab is active.
@@ -9536,13 +11314,13 @@ interface TabsListProps extends BaseUIComponentProps<"div", TabsList.State> {
    * Otherwise, tabs will be activated using <kbd>Enter</kbd> or <kbd>Space</kbd> key press.
    * @default false
    */
-  activateOnFocus?: boolean;
+  activateOnFocus?: boolean | undefined;
   /**
    * Whether to loop keyboard focus back to the first item
    * when the end of the list is reached while using the arrow keys.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
 }
 /**
  * Groups the individual tab buttons.
@@ -9568,35 +11346,6 @@ declare namespace index_parts$3 {
   };
 }
 
-interface ToastContextValue<Data extends object> {
-  toasts: ToastObject<Data>[];
-  setToasts: React$1.Dispatch<React$1.SetStateAction<ToastObject<Data>[]>>;
-  hovering: boolean;
-  setHovering: React$1.Dispatch<React$1.SetStateAction<boolean>>;
-  focused: boolean;
-  setFocused: React$1.Dispatch<React$1.SetStateAction<boolean>>;
-  expanded: boolean;
-  add: (options: ToastManagerAddOptions<Data>) => string;
-  update: (id: string, options: ToastManagerUpdateOptions<Data>) => void;
-  promise: <Value>(
-    value: Promise<Value>,
-    options: ToastManagerPromiseOptions<Value, Data>,
-  ) => Promise<Value>;
-  close: (id: string) => void;
-  pauseTimers: () => void;
-  resumeTimers: () => void;
-  remove: (id: string) => void;
-  prevFocusElement: HTMLElement | null;
-  setPrevFocusElement: React$1.Dispatch<
-    React$1.SetStateAction<HTMLElement | null>
-  >;
-  viewportRef: React$1.RefObject<HTMLElement | null>;
-  windowFocusedRef: React$1.RefObject<boolean>;
-  scheduleTimer: (id: string, delay: number, callback: () => void) => void;
-}
-type ToastContext<Data extends object> = ToastContextValue<Data>;
-declare const ToastContext: React$1.Context<ToastContext<any> | undefined>;
-
 interface ToastPositionerState {
   side: Side;
   align: Align;
@@ -9609,13 +11358,13 @@ interface ToastPositionerProps
   /**
    * An element to position the toast against.
    */
-  anchor?: Element | null;
+  anchor?: (Element | null) | undefined;
   /**
    * Which side of the anchor element to align the toast against.
    * May automatically change to avoid collisions.
    * @default 'top'
    */
-  side?: Side;
+  side?: Side | undefined;
   /**
    * The toast object associated with the positioner.
    */
@@ -9638,7 +11387,9 @@ declare namespace ToastPositioner {
 /**
  * Returns the array of toasts and methods to manage them.
  */
-declare function useToastManager(): UseToastManagerReturnValue;
+declare function useToastManager<
+  Data extends object = any,
+>(): UseToastManagerReturnValue<Data>;
 interface ToastObject<Data extends object> {
   /**
    * The unique identifier for the toast.
@@ -9647,7 +11398,7 @@ interface ToastObject<Data extends object> {
   /**
    * The ref for the toast.
    */
-  ref?: React$1.RefObject<HTMLElement | null>;
+  ref?: React$1.RefObject<HTMLElement | null> | undefined;
   /**
    * The title of the toast.
    */
@@ -9656,7 +11407,7 @@ interface ToastObject<Data extends object> {
    * The type of the toast. Used to conditionally style the toast,
    * including conditionally rendering elements based on the type.
    */
-  type?: string;
+  type?: string | undefined;
   /**
    * The description of the toast.
    */
@@ -9666,14 +11417,14 @@ interface ToastObject<Data extends object> {
    * A value of `0` will prevent the toast from being dismissed automatically.
    * @default 5000
    */
-  timeout?: number;
+  timeout?: number | undefined;
   /**
    * The priority of the toast.
    * - `low` - The toast will be announced politely.
    * - `high` - The toast will be announced urgently.
    * @default 'low'
    */
-  priority?: "low" | "high";
+  priority?: ("low" | "high") | undefined;
   /**
    * The transition status of the toast.
    */
@@ -9681,31 +11432,31 @@ interface ToastObject<Data extends object> {
   /**
    * Determines if the toast was closed due to the limit being reached.
    */
-  limited?: boolean;
+  limited?: boolean | undefined;
   /**
    * The height of the toast.
    */
-  height?: number;
+  height?: number | undefined;
   /**
    * Callback function to be called when the toast is closed.
    */
-  onClose?: () => void;
+  onClose?: (() => void) | undefined;
   /**
    * Callback function to be called when the toast is removed from the list after any animations are complete when closed.
    */
-  onRemove?: () => void;
+  onRemove?: (() => void) | undefined;
   /**
    * The props for the action button.
    */
-  actionProps?: React$1.ComponentPropsWithoutRef<"button">;
+  actionProps?: React$1.ComponentPropsWithoutRef<"button"> | undefined;
   /**
    * The props forwarded to the toast positioner element when rendering anchored toasts.
    */
-  positionerProps?: ToastManagerPositionerProps;
+  positionerProps?: ToastManagerPositionerProps | undefined;
   /**
    * Custom data for the toast.
    */
-  data?: Data;
+  data?: Data | undefined;
 }
 interface ToastManagerPositionerProps extends Omit<
   ToastPositionerProps,
@@ -9714,29 +11465,32 @@ interface ToastManagerPositionerProps extends Omit<
   /**
    * An element to position the toast against.
    */
-  anchor?: Element | null;
+  anchor?: (Element | null) | undefined;
 }
-interface UseToastManagerReturnValue {
-  toasts: ToastContext<any>["toasts"];
-  add: <Data extends object>(options: ToastManagerAddOptions<Data>) => string;
+interface UseToastManagerReturnValue<Data extends object = any> {
+  toasts: ToastObject<Data>[];
+  add: <T extends Data = Data>(options: ToastManagerAddOptions<T>) => string;
   close: (toastId: string) => void;
-  update: <Data extends object>(
+  update: <T extends Data = Data>(
     toastId: string,
-    options: ToastManagerUpdateOptions<Data>,
+    options: ToastManagerUpdateOptions<T>,
   ) => void;
-  promise: <Value, Data extends object>(
+  promise: <Value, T extends Data = Data>(
     promise: Promise<Value>,
-    options: ToastManagerPromiseOptions<Value, Data>,
+    options: ToastManagerPromiseOptions<Value, T>,
   ) => Promise<Value>;
 }
 interface ToastManagerAddOptions<Data extends object> extends Omit<
   ToastObject<Data>,
   "id" | "animation" | "height" | "ref" | "limited"
 > {
-  id?: string;
+  id?: string | undefined;
 }
 interface ToastManagerUpdateOptions<Data extends object> extends Partial<
-  ToastManagerAddOptions<Data>
+  Omit<
+    ToastObject<Data>,
+    "id" | "ref" | "height" | "transitionStatus" | "limited"
+  >
 > {}
 interface ToastManagerPromiseOptions<Value, Data extends object> {
   loading: string | ToastManagerUpdateOptions<Data>;
@@ -9753,18 +11507,20 @@ interface ToastManagerPromiseOptions<Value, Data extends object> {
 /**
  * Creates a new toast manager.
  */
-declare function createToastManager(): ToastManager;
-interface ToastManager {
+declare function createToastManager<
+  Data extends object = any,
+>(): ToastManager<Data>;
+interface ToastManager<Data extends object = any> {
   " subscribe": (listener: (data: ToastManagerEvent) => void) => () => void;
-  add: <Data extends object>(options: ToastManagerAddOptions<Data>) => string;
+  add: <T extends Data = Data>(options: ToastManagerAddOptions<T>) => string;
   close: (id: string) => void;
-  update: <Data extends object>(
+  update: <T extends Data = Data>(
     id: string,
-    updates: ToastManagerUpdateOptions<Data>,
+    updates: ToastManagerUpdateOptions<T>,
   ) => void;
-  promise: <Value, Data extends object>(
+  promise: <Value, T extends Data = Data>(
     promiseValue: Promise<Value>,
-    options: ToastManagerPromiseOptions<Value, Data>,
+    options: ToastManagerPromiseOptions<Value, T>,
   ) => Promise<Value>;
 }
 interface ToastManagerEvent {
@@ -9779,17 +11535,17 @@ interface ToastProviderProps {
    * A value of `0` will prevent the toast from being dismissed automatically.
    * @default 5000
    */
-  timeout?: number;
+  timeout?: number | undefined;
   /**
    * The maximum number of toasts that can be displayed at once.
    * When the limit is reached, the oldest toast will be removed to make room for the new one.
    * @default 3
    */
-  limit?: number;
+  limit?: number | undefined;
   /**
    * A global manager for toasts to use outside of a React component.
    */
-  toastManager?: ToastManager;
+  toastManager?: ToastManager | undefined;
 }
 /**
  * Provides a context for creating and managing toasts.
@@ -9849,11 +11605,8 @@ interface ToastRootProps extends BaseUIComponentProps<"div", ToastRoot.State> {
    * @default ['down', 'right']
    */
   swipeDirection?:
-    | "up"
-    | "down"
-    | "left"
-    | "right"
-    | ("up" | "down" | "left" | "right")[];
+    | ("up" | "down" | "left" | "right" | ("up" | "down" | "left" | "right")[])
+    | undefined;
 }
 /**
  * Groups all parts of an individual toast.
@@ -10066,36 +11819,35 @@ interface ToggleState {
    */
   disabled: boolean;
 }
-interface ToggleProps
+interface ToggleProps<Value extends string>
   extends NativeButtonProps, BaseUIComponentProps<"button", Toggle.State> {
   /**
    * Whether the toggle button is currently pressed.
    * This is the controlled counterpart of `defaultPressed`.
    */
-  pressed?: boolean;
+  pressed?: boolean | undefined;
   /**
    * Whether the toggle button is currently pressed.
    * This is the uncontrolled counterpart of `pressed`.
    * @default false
    */
-  defaultPressed?: boolean;
+  defaultPressed?: boolean | undefined;
   /**
    * Whether the component should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Callback fired when the pressed state is changed.
    */
-  onPressedChange?: (
-    pressed: boolean,
-    eventDetails: Toggle.ChangeEventDetails,
-  ) => void;
+  onPressedChange?:
+    | ((pressed: boolean, eventDetails: Toggle.ChangeEventDetails) => void)
+    | undefined;
   /**
    * A unique string that identifies the toggle when used
    * inside a toggle group.
    */
-  value?: string;
+  value?: Value | undefined;
 }
 type ToggleChangeEventReason = typeof none;
 type ToggleChangeEventDetails =
@@ -10106,12 +11858,14 @@ type ToggleChangeEventDetails =
  *
  * Documentation: [Base UI Toggle](https://base-ui.com/react/components/toggle)
  */
-declare const Toggle: React$1.ForwardRefExoticComponent<
-  Omit<ToggleProps, "ref"> & React$1.RefAttributes<HTMLButtonElement>
->;
+declare const Toggle: {
+  <Value extends string>(
+    props: Toggle.Props<Value> & React$1.RefAttributes<HTMLButtonElement>,
+  ): React$1.JSX.Element;
+};
 declare namespace Toggle {
   type State = ToggleState;
-  type Props = ToggleProps;
+  type Props<TValue extends string = string> = ToggleProps<TValue>;
   type ChangeEventReason = ToggleChangeEventReason;
   type ChangeEventDetails = ToggleChangeEventDetails;
 }
@@ -10121,9 +11875,19 @@ interface ToggleGroupState {
    * Whether the component should ignore user interaction.
    */
   disabled: boolean;
+  /**
+   * When `false` only one item in the group can be pressed. If any item in
+   * the group becomes pressed, the others will become unpressed.
+   * When `true` multiple items can be pressed.
+   * @default false
+   */
   multiple: boolean;
+  /**
+   * The orientation of the toggle group.
+   */
+  orientation: Orientation;
 }
-interface ToggleGroupProps extends BaseUIComponentProps<
+interface ToggleGroupProps<Value extends string> extends BaseUIComponentProps<
   "div",
   ToggleGroup.State
 > {
@@ -10132,42 +11896,44 @@ interface ToggleGroupProps extends BaseUIComponentProps<
    * the values of all pressed toggle buttons.
    * This is the controlled counterpart of `defaultValue`.
    */
-  value?: readonly any[];
+  value?: readonly Value[] | undefined;
   /**
    * The open state of the toggle group represented by an array of
    * the values of all pressed toggle buttons.
    * This is the uncontrolled counterpart of `value`.
    */
-  defaultValue?: readonly any[];
+  defaultValue?: readonly Value[] | undefined;
   /**
    * Callback fired when the pressed states of the toggle group changes.
    */
-  onValueChange?: (
-    groupValue: any[],
-    eventDetails: ToggleGroup.ChangeEventDetails,
-  ) => void;
+  onValueChange?:
+    | ((
+        groupValue: Value[],
+        eventDetails: ToggleGroup.ChangeEventDetails,
+      ) => void)
+    | undefined;
   /**
    * Whether the toggle group should ignore user interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * @default 'horizontal'
    */
-  orientation?: Orientation;
+  orientation?: Orientation | undefined;
   /**
    * Whether to loop keyboard focus back to the first item
    * when the end of the list is reached while using the arrow keys.
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
   /**
    * When `false` only one item in the group can be pressed. If any item in
    * the group becomes pressed, the others will become unpressed.
    * When `true` multiple items can be pressed.
    * @default false
    */
-  multiple?: boolean;
+  multiple?: boolean | undefined;
 }
 type ToggleGroupChangeEventReason = typeof none;
 type ToggleGroupChangeEventDetails =
@@ -10177,12 +11943,14 @@ type ToggleGroupChangeEventDetails =
  *
  * Documentation: [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group)
  */
-declare const ToggleGroup: React$1.ForwardRefExoticComponent<
-  Omit<ToggleGroupProps, "ref"> & React$1.RefAttributes<HTMLDivElement>
->;
+declare const ToggleGroup: {
+  <Value extends string>(
+    props: ToggleGroup.Props<Value> & React$1.RefAttributes<HTMLDivElement>,
+  ): React$1.JSX.Element;
+};
 declare namespace ToggleGroup {
   type State = ToggleGroupState;
-  type Props = ToggleGroupProps;
+  type Props<Value extends string = string> = ToggleGroupProps<Value>;
   type ChangeEventReason = ToggleGroupChangeEventReason;
   type ChangeEventDetails = ToggleGroupChangeEventDetails;
 }
@@ -10214,18 +11982,18 @@ interface ToolbarRootProps extends BaseUIComponentProps<
   "div",
   ToolbarRoot.State
 > {
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * The orientation of the toolbar.
    * @default 'horizontal'
    */
-  orientation?: ToolbarRoot.Orientation;
+  orientation?: ToolbarRoot.Orientation | undefined;
   /**
    * If `true`, using keyboard navigation will wrap focus to the other end of the toolbar once the end is reached.
    *
    * @default true
    */
-  loopFocus?: boolean;
+  loopFocus?: boolean | undefined;
 }
 /**
  * A container for grouping a set of controls, such as buttons, toggle groups, or menus.
@@ -10251,7 +12019,7 @@ interface ToolbarGroupProps extends BaseUIComponentProps<
    * When `true` all toolbar items in the group are disabled.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 /**
  * Groups several toolbar items or toggles.
@@ -10278,12 +12046,12 @@ interface ToolbarButtonProps
    * When `true` the item is disabled.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * When `true` the item remains focuseable when disabled.
    * @default true
    */
-  focusableWhenDisabled?: boolean;
+  focusableWhenDisabled?: boolean | undefined;
 }
 /**
  * A button that can be used as-is or as a trigger for other components.
@@ -10332,13 +12100,13 @@ interface ToolbarInputProps extends BaseUIComponentProps<
    * When `true` the item is disabled.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * When `true` the item remains focuseable when disabled.
    * @default true
    */
-  focusableWhenDisabled?: boolean;
-  defaultValue?: React$1.ComponentProps<"input">["defaultValue"];
+  focusableWhenDisabled?: boolean | undefined;
+  defaultValue?: React$1.ComponentProps<"input">["defaultValue"] | undefined;
 }
 /**
  * A native input element that integrates with Toolbar keyboard navigation.
@@ -10384,7 +12152,7 @@ declare const selectors: {
   disabled: (state: State<unknown>) => boolean;
   instantType: (
     state: State<unknown>,
-  ) => "delay" | "focus" | "dismiss" | undefined;
+  ) => "focus" | "delay" | "dismiss" | undefined;
   isInstantPhase: (state: State<unknown>) => boolean;
   trackCursorAxis: (state: State<unknown>) => "none" | "both" | "x" | "y";
   disableHoverablePopup: (state: State<unknown>) => boolean;
@@ -10393,33 +12161,273 @@ declare const selectors: {
   ) => TooltipRootChangeEventReason | null;
   closeDelay: (state: State<unknown>) => number;
   hasViewport: (state: State<unknown>) => boolean;
-  open: (state: PopupStoreState<unknown>) => boolean;
-  mounted: (state: PopupStoreState<unknown>) => boolean;
-  transitionStatus: (state: PopupStoreState<unknown>) => TransitionStatus;
-  floatingRootContext: (state: PopupStoreState<unknown>) => FloatingRootStore;
-  preventUnmountingOnClose: (state: PopupStoreState<unknown>) => boolean;
-  payload: (state: PopupStoreState<unknown>) => unknown;
-  activeTriggerId: (state: PopupStoreState<unknown>) => string | null;
-  activeTriggerElement: (state: PopupStoreState<unknown>) => Element | null;
+  open: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  mounted: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  transitionStatus: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => TransitionStatus;
+  floatingRootContext: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => FloatingRootStore;
+  preventUnmountingOnClose: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => boolean;
+  payload: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => unknown;
+  activeTriggerId: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => string | null;
+  activeTriggerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => Element | null;
   isTriggerActive: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isOpenedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   isMountedByTrigger: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     triggerId: string | undefined,
   ) => boolean;
   triggerProps: (
-    state: PopupStoreState<unknown>,
+    state: {
+      open: boolean;
+      readonly openProp: boolean | undefined;
+      mounted: boolean;
+      transitionStatus: TransitionStatus;
+      floatingRootContext: FloatingRootContext;
+      preventUnmountingOnClose: boolean;
+      payload: unknown;
+      activeTriggerId: string | null;
+      activeTriggerElement: Element | null;
+      readonly triggerIdProp: string | null | undefined;
+      popupElement: HTMLElement | null;
+      positionerElement: HTMLElement | null;
+      activeTriggerProps: HTMLProps;
+      inactiveTriggerProps: HTMLProps;
+      popupProps: HTMLProps;
+    },
     isActive: boolean,
   ) => HTMLProps;
-  popupProps: (state: PopupStoreState<unknown>) => HTMLProps;
-  popupElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
-  positionerElement: (state: PopupStoreState<unknown>) => HTMLElement | null;
+  popupProps: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLProps;
+  popupElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
+  positionerElement: (state: {
+    open: boolean;
+    readonly openProp: boolean | undefined;
+    mounted: boolean;
+    transitionStatus: TransitionStatus;
+    floatingRootContext: FloatingRootContext;
+    preventUnmountingOnClose: boolean;
+    payload: unknown;
+    activeTriggerId: string | null;
+    activeTriggerElement: Element | null;
+    readonly triggerIdProp: string | null | undefined;
+    popupElement: HTMLElement | null;
+    positionerElement: HTMLElement | null;
+    activeTriggerProps: HTMLProps;
+    inactiveTriggerProps: HTMLProps;
+    popupProps: HTMLProps;
+  }) => HTMLElement | null;
 };
 declare class TooltipStore<Payload> extends ReactStore<
   Readonly<State<Payload>>,
@@ -10478,49 +12486,48 @@ interface TooltipRootProps<Payload = unknown> {
    * To render a controlled tooltip, use the `open` prop instead.
    * @default false
    */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean | undefined;
   /**
    * Whether the tooltip is currently open.
    */
-  open?: boolean;
+  open?: boolean | undefined;
   /**
    * Event handler called when the tooltip is opened or closed.
    */
-  onOpenChange?: (
-    open: boolean,
-    eventDetails: TooltipRoot.ChangeEventDetails,
-  ) => void;
+  onOpenChange?:
+    | ((open: boolean, eventDetails: TooltipRoot.ChangeEventDetails) => void)
+    | undefined;
   /**
    * Event handler called after any animations complete when the tooltip is opened or closed.
    */
-  onOpenChangeComplete?: (open: boolean) => void;
+  onOpenChangeComplete?: ((open: boolean) => void) | undefined;
   /**
    * Whether the tooltip contents can be hovered without closing the tooltip.
    * @default false
    */
-  disableHoverablePopup?: boolean;
+  disableHoverablePopup?: boolean | undefined;
   /**
    * Determines which axis the tooltip should track the cursor on.
    * @default 'none'
    */
-  trackCursorAxis?: "none" | "x" | "y" | "both";
+  trackCursorAxis?: ("none" | "x" | "y" | "both") | undefined;
   /**
    * A ref to imperative actions.
    * - `unmount`: Unmounts the tooltip popup.
    * - `close`: Closes the tooltip imperatively when called.
    */
-  actionsRef?: React$1.RefObject<TooltipRoot.Actions | null>;
+  actionsRef?: React$1.RefObject<TooltipRoot.Actions | null> | undefined;
   /**
    * Whether the tooltip is disabled.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A handle to associate the tooltip with a trigger.
    * If specified, allows external triggers to control the tooltip's open state.
    * Can be created with the Tooltip.createHandle() method.
    */
-  handle?: TooltipHandle<Payload>;
+  handle?: TooltipHandle<Payload> | undefined;
   /**
    * The content of the tooltip.
    * This can be a regular React node or a render function that receives the `payload` of the active trigger.
@@ -10531,12 +12538,12 @@ interface TooltipRootProps<Payload = unknown> {
    * This is useful in conjunction with the `open` prop to create a controlled tooltip.
    * There's no need to specify this prop when the tooltip is uncontrolled (i.e. when the `open` prop is not set).
    */
-  triggerId?: string | null;
+  triggerId?: (string | null) | undefined;
   /**
    * ID of the trigger that the tooltip is associated with.
    * This is useful in conjunction with the `defaultOpen` prop to create an initially open tooltip.
    */
-  defaultTriggerId?: string | null;
+  defaultTriggerId?: (string | null) | undefined;
 }
 interface TooltipRootActions {
   unmount: () => void;
@@ -10561,9 +12568,9 @@ type TooltipRootChangeEventDetails =
  *
  * Documentation: [Base UI Tooltip](https://base-ui.com/react/components/tooltip)
  */
-declare function TooltipRoot<Payload>(
+declare const TooltipRoot: <Payload>(
   props: TooltipRoot.Props<Payload>,
-): react_jsx_runtime.JSX.Element;
+) => react_jsx_runtime.JSX.Element;
 declare namespace TooltipRoot {
   type State = TooltipRootState;
   type Props<Payload = unknown> = TooltipRootProps<Payload>;
@@ -10585,21 +12592,28 @@ interface TooltipTriggerProps<Payload = unknown> extends BaseUIComponentProps<
   /**
    * A handle to associate the trigger with a tooltip.
    */
-  handle?: TooltipHandle<Payload>;
+  handle?: TooltipHandle<Payload> | undefined;
   /**
    * A payload to pass to the tooltip when it is opened.
    */
-  payload?: Payload;
+  payload?: Payload | undefined;
   /**
    * How long to wait before opening the tooltip. Specified in milliseconds.
    * @default 600
    */
-  delay?: number;
+  delay?: number | undefined;
   /**
    * How long to wait before closing the tooltip. Specified in milliseconds.
    * @default 0
    */
-  closeDelay?: number;
+  closeDelay?: number | undefined;
+  /**
+   * If `true`, the tooltip will not open when interacting with this trigger.
+   * Note that this doesn't apply the `disabled` attribute to the trigger element.
+   * If you want to disable the trigger element itself, you can pass the `disabled` prop to the trigger element via the `render` prop.
+   * @default false
+   */
+  disabled?: boolean | undefined;
 }
 /**
  * An element to attach the tooltip to.
@@ -10624,7 +12638,7 @@ interface TooltipPortalProps extends FloatingPortalLite.Props<TooltipPortal.Stat
    * Whether to keep the portal mounted in the DOM while the popup is hidden.
    * @default false
    */
-  keepMounted?: boolean;
+  keepMounted?: boolean | undefined;
 }
 /**
  * A portal element that moves the popup to a different part of the DOM.
@@ -10665,7 +12679,7 @@ interface TooltipPositionerProps
    * May automatically change to avoid collisions.
    * @default 'top'
    */
-  side?: Side;
+  side?: Side | undefined;
 }
 /**
  * Positions the tooltip against the trigger.
@@ -10717,6 +12731,7 @@ interface TooltipArrowState {
   side: Side;
   align: Align;
   uncentered: boolean;
+  instant: "delay" | "dismiss" | "focus" | undefined;
 }
 interface TooltipArrowProps extends BaseUIComponentProps<
   "div",
@@ -10741,17 +12756,17 @@ interface TooltipProviderProps {
   /**
    * How long to wait before opening a tooltip. Specified in milliseconds.
    */
-  delay?: number;
+  delay?: number | undefined;
   /**
    * How long to wait before closing a tooltip. Specified in milliseconds.
    */
-  closeDelay?: number;
+  closeDelay?: number | undefined;
   /**
    * Another tooltip will open instantly if the previous tooltip
    * is closed within this timeout. Specified in milliseconds.
    * @default 400
    */
-  timeout?: number;
+  timeout?: number | undefined;
 }
 /**
  * Provides a shared delay for multiple tooltips. The grouping logic ensures that
@@ -10783,7 +12798,15 @@ declare namespace TooltipViewport {
     children?: React$1.ReactNode;
   }
   interface State {
-    activationDirection?: string;
+    activationDirection: string | undefined;
+    /**
+     * Whether the viewport is currently transitioning between contents.
+     */
+    transitioning: boolean;
+    /**
+     * Present if animations should be instant.
+     */
+    instant: "delay" | "dismiss" | "focus" | undefined;
   }
 }
 
@@ -10803,8 +12826,8 @@ declare namespace index_parts {
 }
 
 type UseRenderRenderProp<State = Record<string, unknown>> =
-  | ComponentRenderFn<React$1.HTMLAttributes<any>, State>
-  | React$1.ReactElement;
+  | React$1.ReactElement
+  | ComponentRenderFn<React$1.HTMLAttributes<any>, State>;
 type UseRenderElementProps<ElementType extends React$1.ElementType> =
   React$1.ComponentPropsWithRef<ElementType>;
 type UseRenderComponentProps<
@@ -10818,7 +12841,9 @@ type UseRenderComponentProps<
    *
    * Accepts a `ReactElement` or a function that returns the element to render.
    */
-  render?: ComponentRenderFn<RenderFunctionProps, State> | React$1.ReactElement;
+  render?:
+    | (React$1.ReactElement | ComponentRenderFn<RenderFunctionProps, State>)
+    | undefined;
 };
 interface UseRenderParameters<
   State,
@@ -10828,40 +12853,42 @@ interface UseRenderParameters<
   /**
    * The React element or a function that returns one to override the default element.
    */
-  render?: UseRenderRenderProp<State>;
+  render?: UseRenderRenderProp<State> | undefined;
   /**
    * The ref to apply to the rendered element.
    */
-  ref?: React$1.Ref<RenderedElementType> | React$1.Ref<RenderedElementType>[];
+  ref?:
+    | (React$1.Ref<RenderedElementType> | React$1.Ref<RenderedElementType>[])
+    | undefined;
   /**
    * The state of the component, passed as the second argument to the `render` callback.
    * State properties are automatically converted to data-* attributes.
    */
-  state?: State;
+  state?: State | undefined;
   /**
    * Custom mapping for converting state properties to data-* attributes.
    * @example
    * { isActive: (value) => (value ? { 'data-is-active': '' } : null) }
    */
-  stateAttributesMapping?: StateAttributesMapping<State>;
+  stateAttributesMapping?: StateAttributesMapping<State> | undefined;
   /**
    * Props to be spread on the rendered element.
    * They are merged with the internal props of the component, so that event handlers
    * are merged, `className` strings and `style` properties are joined, while other external props overwrite the
    * internal ones.
    */
-  props?: Record<string, unknown>;
+  props?: Record<string, unknown> | undefined;
   /**
    * If `false`, the hook will skip most of its internal logic and return `null`.
    * This is useful for rendering a component conditionally.
    * @default true
    */
-  enabled?: Enabled;
+  enabled?: Enabled | undefined;
   /**
    * The default tag name to use for the rendered element when `render` is not provided.
    * @default 'div'
    */
-  defaultTagName?: keyof React$1.JSX.IntrinsicElements;
+  defaultTagName?: keyof React$1.JSX.IntrinsicElements | undefined;
 }
 type UseRenderReturnValue<Enabled extends boolean | undefined> =
   Enabled extends false ? null : React$1.ReactElement;
@@ -10896,7 +12923,7 @@ declare namespace useRender {
 }
 
 export {
-  index_parts$q as Accordion,
+  index_parts$r as Accordion,
   AccordionHeader,
   type AccordionHeaderProps,
   AccordionItem,
@@ -10915,13 +12942,13 @@ export {
   AccordionTrigger,
   type AccordionTriggerProps,
   type AccordionValue,
-  index_parts$p as AlertDialog,
+  index_parts$q as AlertDialog,
   AlertDialogRoot,
   type AlertDialogRootActions,
   type AlertDialogRootChangeEventDetails,
   type AlertDialogRootChangeEventReason,
   type AlertDialogRootProps,
-  index_parts$o as Autocomplete,
+  index_parts$p as Autocomplete,
   type ComboboxArrowProps as AutocompleteArrowProps,
   type ComboboxArrowState as AutocompleteArrowState,
   type ComboboxBackdropProps as AutocompleteBackdropProps,
@@ -10961,11 +12988,13 @@ export {
   AutocompleteValue,
   type AutocompleteValueProps,
   type AutocompleteValueState,
-  index_parts$n as Avatar,
+  index_parts$o as Avatar,
   AvatarFallback,
   type AvatarFallbackProps,
+  type AvatarFallbackState,
   AvatarImage,
   type AvatarImageProps,
+  type AvatarImageState,
   AvatarRoot,
   type AvatarRootProps,
   type AvatarRootState,
@@ -10977,7 +13006,7 @@ export {
   CSPProvider,
   type CSPProviderProps,
   type CSPProviderState,
-  index_parts$m as Checkbox,
+  index_parts$n as Checkbox,
   CheckboxGroup,
   type CheckboxGroupChangeEventDetails,
   type CheckboxGroupChangeEventReason,
@@ -10991,7 +13020,7 @@ export {
   type CheckboxRootChangeEventReason,
   type CheckboxRootProps,
   type CheckboxRootState,
-  index_parts$l as Collapsible,
+  index_parts$m as Collapsible,
   CollapsiblePanel,
   type CollapsiblePanelProps,
   type CollapsiblePanelState,
@@ -11002,7 +13031,7 @@ export {
   type CollapsibleRootState,
   CollapsibleTrigger,
   type CollapsibleTriggerProps,
-  index_parts$k as Combobox,
+  index_parts$l as Combobox,
   ComboboxArrow,
   type ComboboxArrowProps,
   type ComboboxArrowState,
@@ -11078,7 +13107,7 @@ export {
   type ComboboxValueProps,
   type ComboboxValueState,
   type ComponentRenderFn,
-  index_parts$i as ContextMenu,
+  index_parts$j as ContextMenu,
   type MenuArrowProps as ContextMenuArrowProps,
   type MenuArrowState as ContextMenuArrowState,
   type MenuBackdropProps as ContextMenuBackdropProps,
@@ -11093,6 +13122,8 @@ export {
   type MenuGroupState as ContextMenuGroupState,
   type MenuItemProps as ContextMenuItemProps,
   type MenuItemState as ContextMenuItemState,
+  type MenuLinkItemProps as ContextMenuLinkItemProps,
+  type MenuLinkItemState as ContextMenuLinkItemState,
   type MenuPopupProps as ContextMenuPopupProps,
   type MenuPopupState as ContextMenuPopupState,
   type MenuPortalProps as ContextMenuPortalProps,
@@ -11117,7 +13148,7 @@ export {
   type ContextMenuTriggerProps,
   type ContextMenuTriggerState,
   type Coords,
-  index_parts$h as Dialog,
+  index_parts$i as Dialog,
   DialogBackdrop,
   type DialogBackdropProps,
   type DialogBackdropState,
@@ -11148,6 +13179,50 @@ export {
   type DialogViewportState,
   DirectionProvider,
   type DirectionProviderProps,
+  DrawerBackdrop,
+  type DrawerBackdropProps,
+  type DrawerBackdropState,
+  DrawerClose,
+  type DrawerCloseProps,
+  type DrawerCloseState,
+  DrawerContent,
+  type DrawerContentProps,
+  type DrawerContentState,
+  DrawerDescription,
+  type DrawerDescriptionProps,
+  type DrawerDescriptionState,
+  DrawerIndent,
+  DrawerIndentBackground,
+  type DrawerIndentBackgroundProps,
+  type DrawerIndentBackgroundState,
+  type DrawerIndentProps,
+  type DrawerIndentState,
+  DrawerPopup,
+  type DrawerPopupProps,
+  type DrawerPopupState,
+  DrawerPortal,
+  type DrawerPortalProps,
+  type DrawerPortalState,
+  index_parts$h as DrawerPreview,
+  DrawerProvider,
+  type DrawerProviderProps,
+  type DrawerProviderState,
+  DrawerRoot,
+  type DrawerRootActions,
+  type DrawerRootChangeEventDetails,
+  type DrawerRootChangeEventReason,
+  type DrawerRootProps,
+  type DrawerRootSnapPointChangeEventDetails,
+  type DrawerRootSnapPointChangeEventReason,
+  DrawerTitle,
+  type DrawerTitleProps,
+  type DrawerTitleState,
+  DrawerTrigger,
+  type DrawerTriggerProps,
+  type DrawerTriggerState,
+  DrawerViewport,
+  type DrawerViewportProps,
+  type DrawerViewportState,
   index_parts$g as Field,
   FieldControl,
   type FieldControlChangeEventDetails,
@@ -11195,7 +13270,7 @@ export {
   type InputChangeEventReason,
   type InputProps$1 as InputProps,
   type InputState,
-  index_parts$j as Menu,
+  index_parts$k as Menu,
   MenuArrow,
   type MenuArrowProps,
   type MenuArrowState,
@@ -11219,6 +13294,9 @@ export {
   MenuItem,
   type MenuItemProps,
   type MenuItemState,
+  MenuLinkItem,
+  type MenuLinkItemProps,
+  type MenuLinkItemState,
   type MenuParent,
   MenuPopup,
   type MenuPopupProps,
