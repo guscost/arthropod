@@ -531,6 +531,29 @@ async function buildTypes() {
         .replace(/index_parts\$[a-z0-9]+_Separator as Separator/g, "Separator"),
     );
 
+    // base-ui sub-module types for path resolution (e.g. @base-ui/react/accordion)
+    mkdirSync(path.join(_root, "types/@base-ui/react"), { recursive: true });
+    const baseUiDir = path.join(
+      _root,
+      "update/node_modules/@base-ui/react",
+    );
+    for (const entry of readdirSync(baseUiDir, { withFileTypes: true })) {
+      if (
+        !entry.isDirectory() ||
+        ["esm", "types", "internals", "utils"].includes(entry.name) ||
+        entry.name.startsWith("unstable-")
+      ) {
+        continue;
+      }
+      const indexPath = path.join(baseUiDir, entry.name, "index.js");
+      if (!statSync(indexPath).isFile()) continue;
+
+      await buildType(
+        indexPath,
+        path.join(_root, `types/@base-ui/react/${entry.name}.d.ts`),
+      );
+    }
+
     // Build types with tsup
     mkdirSync(path.join(_root, "types/@tanstack"));
     await buildType(
