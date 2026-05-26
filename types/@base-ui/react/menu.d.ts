@@ -2657,7 +2657,6 @@ declare namespace MenuSubmenuTrigger {
   type State = MenuSubmenuTriggerState;
 }
 
-declare const index_parts_Separator: typeof Separator;
 declare namespace index_parts {
   export {
     MenuArrow as Arrow,
@@ -2676,7 +2675,7 @@ declare namespace index_parts {
     MenuRadioItem as RadioItem,
     MenuRadioItemIndicator as RadioItemIndicator,
     MenuRoot as Root,
-    index_parts_Separator as Separator,
+    Separator,
     MenuSubmenuRoot as SubmenuRoot,
     MenuSubmenuTrigger as SubmenuTrigger,
     MenuTrigger as Trigger,

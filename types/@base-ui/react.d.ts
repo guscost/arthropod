@@ -3839,7 +3839,6 @@ declare function useComboboxFilter(options?: UseComboboxFilterOptions): Filter;
  */
 declare function useFilteredItems<T>(): T[];
 
-declare const index_parts$q_useFilteredItems: typeof useFilteredItems;
 declare namespace index_parts$q {
   export {
     ComboboxArrow as Arrow,
@@ -3864,7 +3863,7 @@ declare namespace index_parts$q {
     AutocompleteTrigger as Trigger,
     AutocompleteValue as Value,
     useCoreFilter as useFilter,
-    index_parts$q_useFilteredItems as useFilteredItems,
+    useFilteredItems,
   };
 }
 
@@ -4713,7 +4712,6 @@ declare namespace ComboboxChipRemove {
   type Props = ComboboxChipRemoveProps;
 }
 
-declare const index_parts$m_useFilteredItems: typeof useFilteredItems;
 declare namespace index_parts$m {
   export {
     ComboboxArrow as Arrow,
@@ -4743,7 +4741,7 @@ declare namespace index_parts$m {
     ComboboxTrigger as Trigger,
     ComboboxValue as Value,
     useComboboxFilter as useFilter,
-    index_parts$m_useFilteredItems as useFilteredItems,
+    useFilteredItems,
   };
 }
 
@@ -12935,8 +12933,6 @@ declare namespace ToastArrow {
   type Props = ToastArrowProps;
 }
 
-declare const index_parts$2_createToastManager: typeof createToastManager;
-declare const index_parts$2_useToastManager: typeof useToastManager;
 declare namespace index_parts$2 {
   export {
     ToastAction as Action,
@@ -12950,8 +12946,8 @@ declare namespace index_parts$2 {
     ToastRoot as Root,
     ToastTitle as Title,
     ToastViewport as Viewport,
-    index_parts$2_createToastManager as createToastManager,
-    index_parts$2_useToastManager as useToastManager,
+    createToastManager,
+    useToastManager,
   };
 }
 
@@ -13293,14 +13289,13 @@ declare namespace ToolbarInput {
   type Props = ToolbarInputProps;
 }
 
-type index_parts$1_Orientation = Orientation;
 declare namespace index_parts$1 {
   export {
     ToolbarButton as Button,
     ToolbarGroup as Group,
     ToolbarInput as Input,
     ToolbarLink as Link,
-    type index_parts$1_Orientation as Orientation,
+    type Orientation,
     ToolbarRoot as Root,
     ToolbarSeparator as Separator,
   };

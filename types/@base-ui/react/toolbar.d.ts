@@ -295,14 +295,13 @@ declare namespace ToolbarInput {
   type Props = ToolbarInputProps;
 }
 
-type index_parts_Orientation = Orientation;
 declare namespace index_parts {
   export {
     ToolbarButton as Button,
     ToolbarGroup as Group,
     ToolbarInput as Input,
     ToolbarLink as Link,
-    type index_parts_Orientation as Orientation,
+    type Orientation,
     ToolbarRoot as Root,
     ToolbarSeparator as Separator,
   };

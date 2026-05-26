@@ -482,13 +482,8 @@ declare namespace Separator {
   type State = SeparatorState;
 }
 
-declare const index_parts_Separator: typeof Separator;
 declare namespace index_parts {
-  export {
-    OTPFieldInput as Input,
-    OTPFieldRoot as Root,
-    index_parts_Separator as Separator,
-  };
+  export { OTPFieldInput as Input, OTPFieldRoot as Root, Separator };
 }
 
 export {

@@ -2,6 +2,7 @@
 import {
   appendFileSync,
   cpSync,
+  existsSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -408,18 +409,27 @@ function removeExtensionFromImports(directory: string) {
 
 async function buildType(src: string, dest: string) {
   await exec(`tsup ${src}`);
+  await exec(`tsup ${src}`);
   const outFile = path.basename(src).replace(/\.(j|t)sx?$/, ".d.cts");
-  appendFileSync(
-    dest,
-    readFileSync(path.join(_root, `update/${outFile}`), "utf8")
-      .replace("import React from 'react';", "import * as React from 'react';")
-      .replace("import React__default from 'react';", "")
-      .replace(
-        "import React__default, { ReactNode } from 'react';",
-        "import { ReactNode } from 'react';",
-      )
-      .replaceAll("React__default.", "React."),
-  );
+  let content = readFileSync(path.join(_root, `update/${outFile}`), "utf8")
+    .replace("import React from 'react';", "import * as React from 'react';")
+    .replace("import React__default from 'react';", "")
+    .replace(
+      "import React__default, { ReactNode } from 'react';",
+      "import { ReactNode } from 'react';",
+    )
+    .replaceAll("React__default.", "React.");
+
+  // Fix mangled cross-module references tsup cannot resolve
+  content = content
+    // Strip mangled declare const lines that shadow real declarations
+    .replace(/declare const index_parts[\$_a-zA-Z0-9]*_(\w+): typeof \1;\n/g, "")
+    // Strip mangled type aliases
+    .replace(/type index_parts[\$_a-zA-Z0-9]*_(\w+) = \1;/g, "")
+    // Fix mangled re-export references inside index_parts namespace
+    .replace(/index_parts[\$_a-zA-Z0-9]*_(\w+) as \1/g, "$1");
+
+  appendFileSync(dest, content);
   rmSync(path.join(_root, `update/${outFile}`));
 }
 
@@ -511,6 +521,25 @@ async function buildTypes() {
       }
     }
 
+  // Patch @base-ui 1.5.0 .parts.d.ts that are missing re-exports present in the JS
+  // (e.g., direction-provider/index.parts.d.ts is missing useDirection)
+  const baseUiDir = path.join(_root, "update/node_modules/@base-ui/react");
+  for (const entry of readdirSync(baseUiDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const partsDecl = path.join(baseUiDir, entry.name, "index.parts.d.ts");
+    if (!existsSync(partsDecl)) continue;
+    let partsContent = readFileSync(partsDecl, "utf8");
+    // direction-provider is missing useDirection re-export from internal context
+    if (!partsContent.includes("useDirection") &&
+        partsContent.includes("DirectionProvider as Provider")) {
+      appendFileSync(
+        partsDecl,
+        '\nexport type { TextDirection } from "../internals/direction-context/DirectionContext.js";\n' +
+          'export { useDirection } from "../internals/direction-context/DirectionContext.js";\n',
+      );
+    }
+  }
+
     // base-ui types
     mkdirSync(path.join(_root, "types/@base-ui"));
     await buildType(
@@ -533,11 +562,11 @@ async function buildTypes() {
 
     // base-ui sub-module types for path resolution (e.g. @base-ui/react/accordion)
     mkdirSync(path.join(_root, "types/@base-ui/react"), { recursive: true });
-    const baseUiDir = path.join(
+    const subDir = path.join(
       _root,
       "update/node_modules/@base-ui/react",
     );
-    for (const entry of readdirSync(baseUiDir, { withFileTypes: true })) {
+    for (const entry of readdirSync(subDir, { withFileTypes: true })) {
       if (
         !entry.isDirectory() ||
         ["esm", "types", "internals", "utils"].includes(entry.name) ||
@@ -545,7 +574,7 @@ async function buildTypes() {
       ) {
         continue;
       }
-      const indexPath = path.join(baseUiDir, entry.name, "index.js");
+      const indexPath = path.join(subDir, entry.name, "index.js");
       if (!statSync(indexPath).isFile()) continue;
 
       await buildType(
@@ -553,7 +582,6 @@ async function buildTypes() {
         path.join(_root, `types/@base-ui/react/${entry.name}.d.ts`),
       );
     }
-
     // Build types with tsup
     mkdirSync(path.join(_root, "types/@tanstack"));
     await buildType(

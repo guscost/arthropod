@@ -2563,7 +2563,6 @@ declare namespace ContextMenuTrigger {
   type Props = ContextMenuTriggerProps;
 }
 
-declare const index_parts_Separator: typeof Separator;
 declare namespace index_parts {
   export {
     MenuArrow as Arrow,
@@ -2581,7 +2580,7 @@ declare namespace index_parts {
     MenuRadioItem as RadioItem,
     MenuRadioItemIndicator as RadioItemIndicator,
     ContextMenuRoot as Root,
-    index_parts_Separator as Separator,
+    Separator,
     MenuSubmenuRoot as SubmenuRoot,
     MenuSubmenuTrigger as SubmenuTrigger,
     ContextMenuTrigger as Trigger,

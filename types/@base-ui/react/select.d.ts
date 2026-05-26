@@ -1502,7 +1502,6 @@ declare namespace Separator {
   type State = SeparatorState;
 }
 
-declare const index_parts_Separator: typeof Separator;
 declare namespace index_parts {
   export {
     SelectArrow as Arrow,
@@ -1521,7 +1520,7 @@ declare namespace index_parts {
     SelectRoot as Root,
     SelectScrollDownArrow as ScrollDownArrow,
     SelectScrollUpArrow as ScrollUpArrow,
-    index_parts_Separator as Separator,
+    Separator,
     SelectTrigger as Trigger,
     SelectValue as Value,
   };

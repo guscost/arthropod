@@ -2057,8 +2057,6 @@ declare function useComboboxFilter(options?: UseComboboxFilterOptions): Filter;
  */
 declare function useFilteredItems<T>(): T[];
 
-declare const index_parts_Separator: typeof Separator;
-declare const index_parts_useFilteredItems: typeof useFilteredItems;
 declare namespace index_parts {
   export {
     ComboboxArrow as Arrow,
@@ -2083,12 +2081,12 @@ declare namespace index_parts {
     ComboboxPositioner as Positioner,
     ComboboxRoot as Root,
     ComboboxRow as Row,
-    index_parts_Separator as Separator,
+    Separator,
     ComboboxStatus as Status,
     ComboboxTrigger as Trigger,
     ComboboxValue as Value,
     useComboboxFilter as useFilter,
-    index_parts_useFilteredItems as useFilteredItems,
+    useFilteredItems,
   };
 }
 

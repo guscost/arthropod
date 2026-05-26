@@ -886,8 +886,6 @@ declare namespace ToastArrow {
   type Props = ToastArrowProps;
 }
 
-declare const index_parts_createToastManager: typeof createToastManager;
-declare const index_parts_useToastManager: typeof useToastManager;
 declare namespace index_parts {
   export {
     ToastAction as Action,
@@ -901,8 +899,8 @@ declare namespace index_parts {
     ToastRoot as Root,
     ToastTitle as Title,
     ToastViewport as Viewport,
-    index_parts_createToastManager as createToastManager,
-    index_parts_useToastManager as useToastManager,
+    createToastManager,
+    useToastManager,
   };
 }
 
