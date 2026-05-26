@@ -107,7 +107,10 @@ const define = (...args: any) => {
     factory = args[2];
 
     // Webpack modules do not load dynamically, add these script tags in order
-    __MODULES__.set(name, factory.call(undefined, ...deps.map(__MODULES__.get)));
+    __MODULES__.set(
+      name,
+      factory.call(undefined, ...deps.map(__MODULES__.get)),
+    );
 
     // TypeScript AMD modules are not named
   } else {
