@@ -1105,8 +1105,8 @@ declare enum DayFlag {
   today = "today",
 }
 /**
- * Enum representing selection states that can be applied to the {@link UI | UI.Day}
- * element in selection mode.
+ * Enum representing selection states that can be applied to the
+ * {@link UI | UI.Day} element in selection mode.
  */
 declare enum SelectionState {
   /** The day is at the end of a selected range. */
@@ -1156,14 +1156,16 @@ declare enum Animation {
 type DeprecatedUI<T extends CSSProperties | string> = {
   /**
    * This element was applied to the style of any button in DayPicker and it is
-   * replaced by {@link UI | UI.PreviousMonthButton} and {@link UI | UI.NextMonthButton}.
+   * replaced by {@link UI | UI.PreviousMonthButton} and
+   * {@link UI | UI.NextMonthButton}.
    *
    * @deprecated
    */
   button: T;
   /**
    * This element was resetting the style of any button in DayPicker and it is
-   * replaced by {@link UI | UI.PreviousMonthButton} and {@link UI | UI.NextMonthButton}.
+   * replaced by {@link UI | UI.PreviousMonthButton} and
+   * {@link UI | UI.NextMonthButton}.
    *
    * @deprecated
    */
@@ -1225,25 +1227,29 @@ type DeprecatedUI<T extends CSSProperties | string> = {
    */
   day_outside: T;
   /**
-   * This element has been renamed to {@link SelectionState | SelectionState.range_end}.
+   * This element has been renamed to
+   * {@link SelectionState | SelectionState.range_end}.
    *
    * @deprecated
    */
   day_range_end: T;
   /**
-   * This element has been renamed to {@link SelectionState | SelectionState.range_middle}.
+   * This element has been renamed to
+   * {@link SelectionState | SelectionState.range_middle}.
    *
    * @deprecated
    */
   day_range_middle: T;
   /**
-   * This element has been renamed to {@link SelectionState | SelectionState.range_start}.
+   * This element has been renamed to
+   * {@link SelectionState | SelectionState.range_start}.
    *
    * @deprecated
    */
   day_range_start: T;
   /**
-   * This element has been renamed to {@link SelectionState | SelectionState.selected}.
+   * This element has been renamed to
+   * {@link SelectionState | SelectionState.selected}.
    *
    * @deprecated
    */
@@ -1255,8 +1261,8 @@ type DeprecatedUI<T extends CSSProperties | string> = {
    */
   day_today: T;
   /**
-   * This element has been removed. The dropdown icon is now {@link UI | UI.Chevron}
-   * inside a {@link UI | UI.CaptionLabel}.
+   * This element has been removed. The dropdown icon is now
+   * {@link UI | UI.Chevron} inside a {@link UI | UI.CaptionLabel}.
    *
    * @deprecated
    */
@@ -1318,8 +1324,9 @@ type DeprecatedUI<T extends CSSProperties | string> = {
    */
   nav_button_previous: T;
   /**
-   * This element has been removed. The dropdown icon is now {@link UI | UI.Chevron}
-   * inside a {@link UI | UI.NextMonthButton} or a {@link UI | UI.PreviousMonthButton}.
+   * This element has been removed. The dropdown icon is now
+   * {@link UI | UI.Chevron} inside a {@link UI | UI.NextMonthButton} or a
+   * {@link UI | UI.PreviousMonthButton}.
    *
    * @deprecated
    */
@@ -1343,8 +1350,8 @@ type DeprecatedUI<T extends CSSProperties | string> = {
    */
   tbody: T;
   /**
-   * This element has been removed. The {@link UI | UI.Footer} is now a single element
-   * below the months.
+   * This element has been removed. The {@link UI | UI.Footer} is now a single
+   * element below the months.
    *
    * @deprecated
    */
@@ -1803,7 +1810,12 @@ interface PropsBase {
   nonce?: HTMLDivElement["nonce"];
   /** Add a `title` attribute to the container element. */
   title?: HTMLDivElement["title"];
-  /** Add the language tag to the container element. */
+  /**
+   * Add the language tag to the container element.
+   *
+   * When omitted, DayPicker uses the active locale code (`locale.code`).
+   * Set this prop to override the language tag.
+   */
   lang?: HTMLDivElement["lang"];
   /**
    * The locale object used to localize dates. Pass a locale from
@@ -2063,9 +2075,18 @@ interface PropsRangeRequired {
   /**
    * When `true`, the range will reset when including a disabled day.
    *
-   * @since V9.0.2
+   * @since 9.0.2
    */
   excludeDisabled?: boolean | undefined;
+  /**
+   * When `true`, clicking a day starts a new range if there is no current start
+   * date or if a range is already complete. In those cases, the clicked day
+   * becomes the start of the new range.
+   *
+   * @since 9.14
+   * @see https://daypicker.dev/selections/range-mode#reset-selection
+   */
+  resetOnSelect?: boolean | undefined;
   /** The selected range. */
   selected: DateRange | undefined;
   /** Event handler when a range is selected. */
@@ -2094,10 +2115,20 @@ interface PropsRange {
   /**
    * When `true`, the range will reset when including a disabled day.
    *
-   * @since V9.0.2
+   * @since 9.0.2
    * @see https://daypicker.dev/docs/selection-modes#exclude-disabled
    */
   excludeDisabled?: boolean | undefined;
+  /**
+   * When `true`, clicking a day starts a new range if there is no current start
+   * date or if a range is already complete. In those cases, the clicked day
+   * becomes the start of the new range. When `required` is `false`, clicking
+   * the same day of a single-day range clears the selection.
+   *
+   * @since 9.14
+   * @see https://daypicker.dev/selections/range-mode#reset-selection
+   */
+  resetOnSelect?: boolean | undefined;
   /** The selected range. */
   selected?: DateRange | undefined;
   /** Event handler when the selection changes. */

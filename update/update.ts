@@ -59,11 +59,21 @@ const commonConfig: WebpackConfig = {
 };
 
 // Determine package versions
-const _root: string = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-type PackageJson = { version?: string; dependencies?: Record<string, string>; peerDependencies?: Record<string, string> };
+const _root: string = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
+type PackageJson = {
+  version?: string;
+  dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+};
 const radixVersion = "DEPRECATED";
 const reactPackage: PackageJson = JSON.parse(
-  readFileSync(path.join(_root, "update/node_modules/react/package.json"), "utf8"),
+  readFileSync(
+    path.join(_root, "update/node_modules/react/package.json"),
+    "utf8",
+  ),
 );
 const reactVersion: string = reactPackage.version!;
 const lucidePackage: PackageJson = JSON.parse(
@@ -122,7 +132,13 @@ async function runWebpack(config: WebpackConfig): Promise<webpack.Stats> {
 }
 
 type ExternalsMap = Record<string, string>;
-async function buildUmd(tempDir: string, moduleName: string, fileName: string, entry?: string | null, externals: ExternalsMap = {}) {
+async function buildUmd(
+  tempDir: string,
+  moduleName: string,
+  fileName: string,
+  entry?: string | null,
+  externals: ExternalsMap = {},
+) {
   await runWebpack({
     ...commonConfig,
     entry: entry || moduleName,
@@ -181,14 +197,18 @@ async function buildRadixUmds(tempDir: string, fileName: string) {
   const packageJsonCache = new Map<RadixPackage, PackageJson>();
 
   // Build Radix dependency graph
-  for (const folder of radixUiSources.filter((f): f is Dirent & { isDirectory: () => true } => f.isDirectory())) {
+  for (const folder of radixUiSources.filter(
+    (f): f is Dirent & { isDirectory: () => true } => f.isDirectory(),
+  )) {
     const packagePath = path.join(
       _root,
       "update/node_modules/@radix-ui",
       folder.name,
       "package.json",
     );
-    const packageJson: PackageJson = JSON.parse(readFileSync(packagePath, "utf8"));
+    const packageJson: PackageJson = JSON.parse(
+      readFileSync(packagePath, "utf8"),
+    );
     packageJsonCache.set(folder.name, packageJson);
 
     const radixDeps: RadixPackage[] = Object.keys({
@@ -202,7 +222,9 @@ async function buildRadixUmds(tempDir: string, fileName: string) {
   }
 
   // Topological sort function
-  function topologicalSort(graph: Map<RadixPackage, RadixPackage[]>): RadixPackage[] {
+  function topologicalSort(
+    graph: Map<RadixPackage, RadixPackage[]>,
+  ): RadixPackage[] {
     const visited = new Set<RadixPackage>();
     const temp = new Set<RadixPackage>();
     const order: RadixPackage[] = [];
@@ -423,7 +445,10 @@ async function buildType(src: string, dest: string) {
   // Fix mangled cross-module references tsup cannot resolve
   content = content
     // Strip mangled declare const lines that shadow real declarations
-    .replace(/declare const index_parts[\$_a-zA-Z0-9]*_(\w+): typeof \1;\n/g, "")
+    .replace(
+      /declare const index_parts[\$_a-zA-Z0-9]*_(\w+): typeof \1;\n/g,
+      "",
+    )
     // Strip mangled type aliases
     .replace(/type index_parts[\$_a-zA-Z0-9]*_(\w+) = \1;/g, "")
     // Fix mangled re-export references inside index_parts namespace
@@ -521,24 +546,26 @@ async function buildTypes() {
       }
     }
 
-  // Patch @base-ui 1.5.0 .parts.d.ts that are missing re-exports present in the JS
-  // (e.g., direction-provider/index.parts.d.ts is missing useDirection)
-  const baseUiDir = path.join(_root, "update/node_modules/@base-ui/react");
-  for (const entry of readdirSync(baseUiDir, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
-    const partsDecl = path.join(baseUiDir, entry.name, "index.parts.d.ts");
-    if (!existsSync(partsDecl)) continue;
-    let partsContent = readFileSync(partsDecl, "utf8");
-    // direction-provider is missing useDirection re-export from internal context
-    if (!partsContent.includes("useDirection") &&
-        partsContent.includes("DirectionProvider as Provider")) {
-      appendFileSync(
-        partsDecl,
-        '\nexport type { TextDirection } from "../internals/direction-context/DirectionContext.js";\n' +
-          'export { useDirection } from "../internals/direction-context/DirectionContext.js";\n',
-      );
+    // Patch @base-ui 1.5.0 .parts.d.ts that are missing re-exports present in the JS
+    // (e.g., direction-provider/index.parts.d.ts is missing useDirection)
+    const baseUiDir = path.join(_root, "update/node_modules/@base-ui/react");
+    for (const entry of readdirSync(baseUiDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const partsDecl = path.join(baseUiDir, entry.name, "index.parts.d.ts");
+      if (!existsSync(partsDecl)) continue;
+      let partsContent = readFileSync(partsDecl, "utf8");
+      // direction-provider is missing useDirection re-export from internal context
+      if (
+        !partsContent.includes("useDirection") &&
+        partsContent.includes("DirectionProvider as Provider")
+      ) {
+        appendFileSync(
+          partsDecl,
+          '\nexport type { TextDirection } from "../internals/direction-context/DirectionContext.js";\n' +
+            'export { useDirection } from "../internals/direction-context/DirectionContext.js";\n',
+        );
+      }
     }
-  }
 
     // base-ui types
     mkdirSync(path.join(_root, "types/@base-ui"));
@@ -562,10 +589,7 @@ async function buildTypes() {
 
     // base-ui sub-module types for path resolution (e.g. @base-ui/react/accordion)
     mkdirSync(path.join(_root, "types/@base-ui/react"), { recursive: true });
-    const subDir = path.join(
-      _root,
-      "update/node_modules/@base-ui/react",
-    );
+    const subDir = path.join(_root, "update/node_modules/@base-ui/react");
     for (const entry of readdirSync(subDir, { withFileTypes: true })) {
       if (
         !entry.isDirectory() ||
@@ -781,18 +805,17 @@ declare global {
       useMaskTypesContent.replace(/(["']\.\/index-[^"']+)\.js(["'])/g, "$1$2"),
     );
 
+    // Recharts
+    await buildType(
+      path.join(_root, "update/node_modules/recharts/types/index.d.ts"),
+      path.join(_root, "types/recharts.d.ts"),
+    );
+
     // Uncomment, run, and fix imports to build updated react-day-picker types:
     // await buildType(path.join(_root, "update/node_modules/react-day-picker/dist/esm/index.js"), path.join(_root, "update/types/react-day-picker.d.ts"));
     cpSync(
       path.join(_root, "update/types/react-day-picker.d.ts"),
       path.join(_root, "types/react-day-picker.d.ts"),
-    );
-
-    // Uncomment, run, and fix imports to build updated recharts types:
-    // await buildType(path.join(_root, "update/node_modules/recharts/types/index.d.ts"), path.join(_root, "update/types/recharts.d.ts"));
-    cpSync(
-      path.join(_root, "update/types/recharts.d.ts"),
-      path.join(_root, "types/recharts.d.ts"),
     );
 
     // Combine class-variance-authority types
