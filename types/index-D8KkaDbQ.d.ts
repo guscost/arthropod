@@ -300,7 +300,7 @@ interface Options$1 {
         char: string,
         currentResult: boolean,
         opts: Options$1,
-        maskset: any,
+        maskset: unknown,
         strict: boolean,
         fromCheckval: boolean,
       ) => boolean | CommandObject)
@@ -320,7 +320,7 @@ interface Options$1 {
         char: string,
         isSelection: boolean,
         opts: Options$1,
-        maskset: any,
+        maskset: unknown,
         caretPos: {
           begin: number;
           end: number;
@@ -655,16 +655,41 @@ type Mask =
   | "brl-currency"
   | "cpf"
   | "cnpj"
+  | "br-bank-account"
+  | "br-bank-agency"
   | (string & {})
   | (string[] & {})
   | null;
 type Options = Options$1;
 type Input = HTMLInputElement | HTMLTextAreaElement | HTMLElement;
-interface UseHookFormMaskReturn<
-  T extends FieldValues,
-> extends UseFormRegisterReturn<Path<T>> {
+interface UnmaskedValueApi {
+  unmaskedValue: () => string;
+}
+type UseMaskInputReturn = RefCallback<HTMLElement | null> & UnmaskedValueApi;
+interface UseHookFormMaskReturn<T extends FieldValues>
+  extends UseFormRegisterReturn<Path<T>>, UnmaskedValueApi {
   ref: RefCallback<HTMLElement | null>;
   prevRef: RefCallback<HTMLElement | null>;
 }
+interface TanStackFormInputProps {
+  name?: string;
+  ref?: RefCallback<HTMLElement | null>;
+  [key: string]: unknown;
+}
+type UseTanStackFormMaskReturn<
+  T extends TanStackFormInputProps = TanStackFormInputProps,
+> = Omit<T, "ref"> & {
+  ref: RefCallback<HTMLElement | null>;
+  prevRef: RefCallback<HTMLElement | null> | undefined;
+} & UnmaskedValueApi;
 
-export type { Input as I, Mask as M, Options as O, UseHookFormMaskReturn as U };
+export type {
+  Input as I,
+  Mask as M,
+  Options as O,
+  TanStackFormInputProps as T,
+  UseMaskInputReturn as U,
+  UseHookFormMaskReturn as a,
+  UseTanStackFormMaskReturn as b,
+  UnmaskedValueApi as c,
+};

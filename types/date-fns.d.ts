@@ -800,6 +800,19 @@ interface AddOptions<
  * @description
  * Add the specified years, months, weeks, days, hours, minutes, and seconds to the given date.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in `add` method on all its classes:
+ *
+ * - [`Temporal.Instant.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/add)
+ * - [`Temporal.PlainDate.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/add)
+ * - [`Temporal.PlainDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDateTime/add)
+ * - [`Temporal.PlainTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainTime/add)
+ * - [`Temporal.PlainYearMonth.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainYearMonth/add)
+ * - [`Temporal.ZonedDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime/add)
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam DateType - The `Date` type the function operates on. Gets inferred from passed arguments. Allows using extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
@@ -821,6 +834,22 @@ interface AddOptions<
  *   seconds: 30,
  * })
  * //=> Thu Jun 15 2017 15:29:20
+ *
+ * @example
+ * // Using Temporal:
+ * // Add the following duration to 1 September 2014, 10:19:50
+ * Temporal.PlainDateTime.from("2014-09-01T10:19:50")
+ *   .add({
+ *     years: 2,
+ *     months: 9,
+ *     weeks: 1,
+ *     days: 7,
+ *     hours: 5,
+ *     minutes: 9,
+ *     seconds: 30,
+ *   })
+ *   .toString();
+ * //=> "2017-06-15T15:29:20"
  */
 declare function add<DateType extends Date, ResultDate extends Date = DateType>(
   date: DateArg<DateType>,
@@ -841,6 +870,12 @@ interface AddBusinessDaysOptions<
  *
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
+ *
+ * **You don't need date-fns\***:
+ *
+ * Temporal doesn't have built-in business day arithmetic, so you still need date-fns for this.
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
  *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
@@ -879,6 +914,19 @@ interface AddDaysOptions<
  * @description
  * Add the specified number of days to the given date.
  *
+ * **You don't need date-fns\***:
+ *
+ * Temporal has a built-in `add` method on all its classes:
+ *
+ * - [`Temporal.Instant.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/Instant/add)
+ * - [`Temporal.PlainDate.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDate/add)
+ * - [`Temporal.PlainDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainDateTime/add)
+ * - [`Temporal.PlainTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainTime/add)
+ * - [`Temporal.PlainYearMonth.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/PlainYearMonth/add)
+ * - [`Temporal.ZonedDateTime.prototype.add()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime/add)
+ *
+ * \* **Not really**, see: https://date-fns.org/you-dont-need-date-fns
+ *
  * @typeParam DateType - The `Date` type, the function operates on. Gets inferred from passed arguments. Allows to use extensions like [`UTCDate`](https://github.com/date-fns/utc).
  * @typeParam ResultDate - The result `Date` type, it is the type returned from the context function if it is passed, or inferred from the arguments.
  *
@@ -892,6 +940,12 @@ interface AddDaysOptions<
  * // Add 10 days to 1 September 2014:
  * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
+ *
+ * @example
+ * // Using Temporal:
+ * // Add 10 days to 1 September 2014:
+ * Temporal.PlainDate.from("2014-09-01").add({ days: 10 }).toString();
+ * //=> "2014-09-11"
  */
 declare function addDays<
   DateType extends Date,

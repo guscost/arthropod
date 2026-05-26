@@ -8,22 +8,23 @@ import {
   rmSync,
   statSync,
   writeFileSync,
+  Dirent,
 } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import util from "util";
 import proc from "child_process";
 
-import webpack from "webpack";
+import webpack, { type Configuration as WebpackConfig } from "webpack";
 
 // Get keys to load from react-dom and react-dom/client
 import * as ReactDOMClient from "react-dom/client";
 import * as ReactDOM from "react-dom";
 
-const reactDomClientMethods = Object.keys(ReactDOMClient).filter(
+const reactDomClientMethods: string[] = Object.keys(ReactDOMClient).filter(
   (key) => key !== "default",
 );
-const reactDomMethods = Object.keys(ReactDOM).filter(
+const reactDomMethods: string[] = Object.keys(ReactDOM).filter(
   (key) => key !== "default" && !reactDomClientMethods.includes(key),
 );
 
@@ -31,7 +32,7 @@ const reactDomMethods = Object.keys(ReactDOM).filter(
 const exec = util.promisify(proc.exec);
 
 // Common Webpack config
-const commonConfig = {
+const commonConfig: WebpackConfig = {
   mode: "production",
   optimization: {
     minimize: true,
@@ -57,17 +58,22 @@ const commonConfig = {
 };
 
 // Determine package versions
-const _root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const _root: string = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+type PackageJson = { version?: string; dependencies?: Record<string, string>; peerDependencies?: Record<string, string> };
 const radixVersion = "DEPRECATED";
-const reactVersion = JSON.parse(
-  readFileSync(path.join(_root, "update/node_modules/react/package.json")),
-).version;
-const lucideVersion = JSON.parse(
+const reactPackage: PackageJson = JSON.parse(
+  readFileSync(path.join(_root, "update/node_modules/react/package.json"), "utf8"),
+);
+const reactVersion: string = reactPackage.version!;
+const lucidePackage: PackageJson = JSON.parse(
   readFileSync(
     path.join(_root, "update/node_modules/lucide-react/package.json"),
+    "utf8",
   ),
-).version;
-const packageVersions = {
+);
+const lucideVersion: string = lucidePackage.version!;
+type VersionMap = Record<string, string>;
+const packageVersions: VersionMap = {
   react: reactVersion,
   "react-dom": reactVersion,
   "jsx-runtime": reactVersion,
@@ -76,7 +82,7 @@ const packageVersions = {
 };
 
 // Helper methods for building UMD bundles
-async function generateReactDomEntryFile(tempDir) {
+async function generateReactDomEntryFile(tempDir: string): Promise<string> {
   const entryContent = `
         import * as ReactDOM from "react-dom";
         import * as ReactDOMClient from "react-dom/client";
@@ -98,23 +104,24 @@ async function generateReactDomEntryFile(tempDir) {
   return entryFile;
 }
 
-async function runWebpack(config) {
+async function runWebpack(config: WebpackConfig): Promise<webpack.Stats> {
   return new Promise((resolve, reject) => {
     webpack(config, (err, stats) => {
       if (err) {
         reject(err);
         return;
       }
-      if (stats.hasErrors()) {
-        reject(new Error(stats.toString()));
+      if (stats!.hasErrors()) {
+        reject(new Error(stats!.toString()));
         return;
       }
-      resolve(stats);
+      resolve(stats!);
     });
   });
 }
 
-async function buildUmd(tempDir, moduleName, fileName, entry, externals) {
+type ExternalsMap = Record<string, string>;
+async function buildUmd(tempDir: string, moduleName: string, fileName: string, entry?: string | null, externals: ExternalsMap = {}) {
   await runWebpack({
     ...commonConfig,
     entry: entry || moduleName,
@@ -158,7 +165,7 @@ async function buildUmd(tempDir, moduleName, fileName, entry, externals) {
   );
 }
 
-async function buildRadixUmds(tempDir, fileName) {
+async function buildRadixUmds(tempDir: string, fileName: string) {
   // Get Radix UI modules to aggregate into headless-ui (still used for cmdk and vaul)
   const radixUiSources = readdirSync(
     path.join(_root, "update/node_modules/@radix-ui"),
@@ -168,37 +175,38 @@ async function buildRadixUmds(tempDir, fileName) {
   );
 
   // First, build a dependency graph and sort topologically
-  const dependencyGraph = new Map();
-  const packageJsonCache = new Map();
+  type RadixPackage = string;
+  const dependencyGraph = new Map<RadixPackage, RadixPackage[]>();
+  const packageJsonCache = new Map<RadixPackage, PackageJson>();
 
   // Build Radix dependency graph
-  for (const folder of radixUiSources.filter((f) => f.isDirectory())) {
+  for (const folder of radixUiSources.filter((f): f is Dirent & { isDirectory: () => true } => f.isDirectory())) {
     const packagePath = path.join(
       _root,
       "update/node_modules/@radix-ui",
       folder.name,
       "package.json",
     );
-    const packageJson = JSON.parse(readFileSync(packagePath, "utf8"));
+    const packageJson: PackageJson = JSON.parse(readFileSync(packagePath, "utf8"));
     packageJsonCache.set(folder.name, packageJson);
 
-    const radixDeps = Object.keys({
+    const radixDeps: RadixPackage[] = Object.keys({
       ...packageJson.dependencies,
       ...packageJson.peerDependencies,
     })
       .filter((dep) => dep.startsWith("@radix-ui/"))
-      .map((dep) => dep.replace("@radix-ui/", ""));
+      .map((dep): RadixPackage => dep.replace("@radix-ui/", ""));
 
     dependencyGraph.set(folder.name, radixDeps);
   }
 
   // Topological sort function
-  function topologicalSort(graph) {
-    const visited = new Set();
-    const temp = new Set();
-    const order = [];
+  function topologicalSort(graph: Map<RadixPackage, RadixPackage[]>): RadixPackage[] {
+    const visited = new Set<RadixPackage>();
+    const temp = new Set<RadixPackage>();
+    const order: RadixPackage[] = [];
 
-    function visit(node) {
+    function visit(node: RadixPackage) {
       if (temp.has(node)) throw new Error("Circular dependency detected");
       if (visited.has(node)) return;
 
@@ -224,7 +232,7 @@ async function buildRadixUmds(tempDir, fileName) {
   // Build packages in dependency order
   const buildOrder = topologicalSort(dependencyGraph);
   for (const packageName of buildOrder) {
-    const packageJson = packageJsonCache.get(packageName);
+    const packageJson = packageJsonCache.get(packageName)!;
     const radixDeps = Object.keys({
       ...packageJson.dependencies,
       ...packageJson.peerDependencies,
@@ -366,7 +374,7 @@ async function buildUmds() {
   }
 }
 
-function removeExtensionFromImports(directory) {
+function removeExtensionFromImports(directory: string) {
   try {
     const files = readdirSync(directory);
 
@@ -381,10 +389,12 @@ function removeExtensionFromImports(directory) {
         // Only process .d.ts files
         if (file.endsWith(".d.ts")) {
           const content = readFileSync(filePath, "utf8");
-          const updatedContent = content.replace(
-            /((import|export)\s+.*\s+from)\s+['"]([^'"]+)\.js['"]/g,
-            (_match, p1, _p2, p3) => `${p1} '${p3}'`,
-          );
+          // Multi-pass: strip .d.ts before .ts to avoid partial match; tsx before ts same reason
+          const updatedContent = content
+            .replace(/(from ['\"])([^'\"]+)\.d\.ts(['\"])/g, "$1$2$3")
+            .replace(/(from ['\"])([^'\"]+)\.tsx(['\"])/g, "$1$2$3")
+            .replace(/(from ['\"])([^'\"]+)\.ts(['\"])/g, "$1$2$3")
+            .replace(/(from ['\"])([^'\"]+)\.js(['\"])/g, "$1$2$3");
           if (updatedContent !== content) {
             writeFileSync(filePath, updatedContent);
           }
@@ -396,7 +406,7 @@ function removeExtensionFromImports(directory) {
   }
 }
 
-async function buildType(src, dest) {
+async function buildType(src: string, dest: string) {
   await exec(`tsup ${src}`);
   const outFile = path.basename(src).replace(/\.(j|t)sx?$/, ".d.cts");
   appendFileSync(
@@ -530,6 +540,10 @@ async function buildTypes() {
       ),
       path.join(_root, "types/@tanstack/react-table.d.ts"),
     );
+    // tsup needs renamed files, since these typedefs import with .ts extension
+    removeExtensionFromImports(
+      path.join(_root, "update/node_modules/date-fns"),
+    );
     await buildType(
       path.join(_root, "update/node_modules/date-fns/index.js"),
       path.join(_root, "types/date-fns.d.ts"),
@@ -639,7 +653,7 @@ async function buildTypes() {
       path.join(_root, "types/cmdk.d.ts"),
     );
 
-    // tsup needs renamed files, since these typedefs import with .js extension
+    // tsup needs renamed files, since these typedefs import with file extensions (.js/.ts)
     removeExtensionFromImports(
       path.join(_root, "update/node_modules/swr/dist"),
     );

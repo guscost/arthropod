@@ -89,7 +89,8 @@ declare type GroupProps = HTMLAttributes<HTMLDivElement> & {
    *
    * ℹ️ This value allows layouts to be remembered between page reloads.
    *
-   * ⚠️ Refer to the documentation for how to avoid layout shift when using server components.
+   * ⚠️ Slight layout shift may occur when server-rendering panels with percentage-based default sizes.
+   * Refer to the documentation for suggestions on how to minimize the impact of this.
    */
   defaultLayout?: Layout | undefined;
   /**
@@ -218,6 +219,7 @@ declare function Panel({
   defaultSize,
   disabled,
   elementRef: elementRefProp,
+  groupResizeBehavior,
   id: idProp,
   maxSize,
   minSize,
@@ -302,6 +304,9 @@ declare type PanelProps = BasePanelAttributes & {
   collapsible?: boolean | undefined;
   /**
    * Default size of Panel within its parent group; default is auto-assigned based on the total number of Panels.
+   *
+   * ⚠️ Percentage based sizes may cause slight layout shift when server-rendering.
+   * For more information see the documentation.
    */
   defaultSize?: number | string | undefined;
   /**
@@ -312,6 +317,21 @@ declare type PanelProps = BasePanelAttributes & {
    * Ref attached to the root `HTMLDivElement`.
    */
   elementRef?: Ref<HTMLDivElement | null> | undefined;
+  /**
+   * How should this Panel behave if the parent Group is resized?
+   * Defaults to `preserve-relative-size`.
+   *
+   * - `preserve-relative-size`: Retain the current relative size (as a percentage of the Group)
+   * - `preserve-pixel-size`: Retain its current size (in pixels)
+   *
+   * ℹ️ Panel min/max size constraints may impact this behavior.
+   *
+   * ⚠️ A Group must contain at least one Panel with `preserve-relative-size` resize behavior.
+   */
+  groupResizeBehavior?:
+    | "preserve-relative-size"
+    | "preserve-pixel-size"
+    | undefined;
   /**
    * Uniquely identifies this panel within the parent group.
    * Falls back to `useId` when not provided.
@@ -386,6 +406,7 @@ declare function Separator({
   children,
   className,
   disabled,
+  disableDoubleClick,
   elementRef: elementRefProp,
   id: idProp,
   style,
@@ -412,6 +433,10 @@ declare type SeparatorProps = BaseSeparatorAttributes & {
    * To prevent a panel from being resized at all, it needs to also be disabled.
    */
   disabled?: boolean | undefined;
+  /**
+   * When true, double-clicking this `Separator` will not reset its `Panel` to its default size.
+   */
+  disableDoubleClick?: boolean;
   /**
    * Ref attached to the root `HTMLDivElement`.
    */

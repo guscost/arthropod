@@ -25,8 +25,13 @@ export interface ParseContextInternal<
 export interface ParsePayload<T = unknown> {
   value: T;
   issues: errors.$ZodRawIssue[];
-  /** A may to mark a whole payload as aborted. Used in codecs/pipes. */
+  /** A way to mark a whole payload as aborted. Used in codecs/pipes. */
   aborted?: boolean;
+  /** @internal Marks a value as a fallback that an outer wrapper (e.g.
+   * $ZodOptional) may override with its own interpretation when input was
+   * undefined. Set by $ZodCatch when catchValue substitutes and by every
+   * $ZodTransform invocation. */
+  fallback?: boolean | undefined;
 }
 export type CheckFn<T> = (input: ParsePayload<T>) => util.MaybeAsync<void>;
 export interface $ZodTypeDef {
@@ -246,11 +251,31 @@ export interface $ZodNanoID extends $ZodType {
   _zod: $ZodNanoIDInternals;
 }
 export declare const $ZodNanoID: core.$constructor<$ZodNanoID>;
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link $ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export interface $ZodCUIDDef extends $ZodStringFormatDef<"cuid"> {}
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link $ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export interface $ZodCUIDInternals extends $ZodStringFormatInternals<"cuid"> {}
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link $ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export interface $ZodCUID extends $ZodType {
   _zod: $ZodCUIDInternals;
 }
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link $ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export declare const $ZodCUID: core.$constructor<$ZodCUID>;
 export interface $ZodCUID2Def extends $ZodStringFormatDef<"cuid2"> {}
 export interface $ZodCUID2Internals extends $ZodStringFormatInternals<"cuid2"> {}
@@ -1328,6 +1353,26 @@ export interface $ZodCodec<
   _zod: $ZodCodecInternals<A, B>;
 }
 export declare const $ZodCodec: core.$constructor<$ZodCodec>;
+export interface $ZodPreprocessDef<
+  B extends SomeType = $ZodType,
+> extends $ZodPipeDef<$ZodTransform, B> {
+  in: $ZodTransform;
+  out: B;
+}
+export interface $ZodPreprocessInternals<
+  B extends SomeType = $ZodType,
+> extends $ZodPipeInternals<$ZodTransform, B> {
+  def: $ZodPreprocessDef<B>;
+  optin: B["_zod"]["optin"];
+  optout: B["_zod"]["optout"];
+}
+export interface $ZodPreprocess<B extends SomeType = $ZodType> extends $ZodPipe<
+  $ZodTransform,
+  B
+> {
+  _zod: $ZodPreprocessInternals<B>;
+}
+export declare const $ZodPreprocess: core.$constructor<$ZodPreprocess>;
 export interface $ZodReadonlyDef<
   T extends SomeType = $ZodType,
 > extends $ZodTypeDef {

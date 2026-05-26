@@ -6,7 +6,7 @@ Set versions in `package.json` and run:
 npm run update
 ```
 
-A few dependencies need additional steps to update the types. See commented-out lines in update.js.
+A few dependencies need additional steps to update the types. See commented-out lines in update.ts.
 
 ## Updating shadcn
 

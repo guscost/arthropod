@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "src",
+    "ignoreDeprecations": "6.0",
     "esModuleInterop": false,
     "inlineSourceMap": true,
     "inlineSources": true,

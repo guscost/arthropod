@@ -1,6 +1,14 @@
 import * as React from "react";
 import { ReactNode } from "react";
 
+declare const EVENTS: {
+  readonly BLUR: "blur";
+  readonly FOCUS_OUT: "focusout";
+  readonly CHANGE: "change";
+  readonly SUBMIT: "submit";
+  readonly TRIGGER: "trigger";
+  readonly VALID: "valid";
+};
 declare const VALIDATION_MODE: {
   readonly onBlur: "onBlur";
   readonly onChange: "onChange";
@@ -681,6 +689,7 @@ type UseFormProps<
     UseFormReturn<TFieldValues, TContext, TTransformedValues>,
     "formState"
   >;
+  validate: ValidateForm<TFieldValues>;
 }>;
 type FieldNamesMarkedBoolean<TFieldValues extends FieldValues> = DeepMap<
   DeepPartial<TFieldValues>,
@@ -699,6 +708,9 @@ type ReadFormState = {
   [K in keyof FormStateProxy]: boolean | "all";
 } & {
   values?: boolean;
+  defaultValues?: boolean | "all";
+  isSubmitted?: boolean | "all";
+  submitCount?: boolean | "all";
 };
 type FormState<TFieldValues extends FieldValues> = {
   isDirty: boolean;
@@ -757,7 +769,7 @@ type UseFormRegisterReturn<
  * @param name - the path name to the form field value, name is required and unique
  * @param options - register options include validation, disabled, unregister, value as and dependent validation
  *
- * @returns onChange, onBlur, name, ref, and native contribute attribute if browser validation is enabled.
+ * @returns onChange, onBlur, name, ref, and native HTML validation attributes if browser validation is enabled.
  *
  * @example
  * ```tsx
@@ -899,7 +911,7 @@ type UseFormGetValues<TFieldValues extends FieldValues> = {
  *
  * @param name - the path name to the form field value.
  *
- * @returns invalid, isDirty, isTouched and error object
+ * @returns invalid, isDirty, isTouched, isValidating, and error object
  *
  * @example
  * ```tsx
@@ -1095,7 +1107,9 @@ type UseFormClearErrors<TFieldValues extends FieldValues> = (
     | FieldPath<TFieldValues>[]
     | readonly FieldPath<TFieldValues>[]
     | `root.${string}`
-    | "root",
+    | "root"
+    | "form"
+    | `form.${string}`,
 ) => void;
 /**
  * Set a single field value, or a group of fields value.
@@ -1133,6 +1147,10 @@ type UseFormSetValue<TFieldValues extends FieldValues> = <
   value: FieldPathValue<TFieldValues, TFieldName>,
   options?: SetValueConfig,
 ) => void;
+type UseFormSetValues<TFieldValues extends FieldValues> = (
+  value: Partial<TFieldValues> | ResetAction<TFieldValues>,
+  options?: SetValueConfig,
+) => void;
 /**
  * Set an error for the field. When set an error which is not associated to a field then manual `clearErrors` invoke is required.
  *
@@ -1155,7 +1173,12 @@ type UseFormSetValue<TFieldValues extends FieldValues> = <
  * ```
  */
 type UseFormSetError<TFieldValues extends FieldValues> = (
-  name: FieldPath<TFieldValues> | `root.${string}` | "root",
+  name:
+    | FieldPath<TFieldValues>
+    | `root.${string}`
+    | "root"
+    | "form"
+    | `form.${string}`,
   error: ErrorOption,
   options?: {
     shouldFocus: boolean;
@@ -1318,6 +1341,7 @@ type Names = {
   disabled: InternalNameSet;
   array: InternalNameSet;
   watch: InternalNameSet;
+  registerName: InternalNameSet;
   focus?: InternalFieldName;
   watchAll?: boolean;
 };
@@ -1421,6 +1445,7 @@ type UseFormReturn<
   setError: UseFormSetError<TFieldValues>;
   clearErrors: UseFormClearErrors<TFieldValues>;
   setValue: UseFormSetValue<TFieldValues>;
+  setValues: UseFormSetValues<TFieldValues>;
   trigger: UseFormTrigger<TFieldValues>;
   formState: FormState<TFieldValues>;
   resetField: UseFormResetField<TFieldValues>;
@@ -1554,8 +1579,8 @@ type IsAny<T> = 0 extends 1 & T ? true : false;
  * Checks whether the type is never
  * @typeParam T - type which may be never
  * ```
- * IsAny<never> = true
- * IsAny<string> = false
+ * IsNever<never> = true
+ * IsNever<string> = false
  * ```
  */
 type IsNever<T> = [T] extends [never] ? true : false;
@@ -1692,6 +1717,7 @@ type FieldErrors<T extends FieldValues = FieldValues> = Partial<
     : FieldErrorsImpl<DeepRequired<T>>
 > & {
   root?: Record<string, GlobalError> & GlobalError;
+  form?: GlobalError;
 };
 type InternalFieldErrors = Partial<Record<InternalFieldName, FieldError>>;
 
@@ -1706,10 +1732,34 @@ type ValidationValueMessage<
   message: Message;
 };
 type ValidateResult = Message | Message[] | boolean | undefined;
+type FormValidateResult<T> =
+  | Partial<
+      Record<
+        keyof T,
+        {
+          message: Message | Message[] | boolean | undefined;
+          type: string;
+        }
+      >
+    >
+  | string
+  | boolean;
 type Validate<TFieldValue, TFormValues> = (
   value: TFieldValue,
   formValues: TFormValues,
 ) => ValidateResult | Promise<ValidateResult>;
+type ValidateFormEventType = (typeof EVENTS)[keyof typeof EVENTS];
+type ValidateForm<
+  TFormValues extends FieldValues,
+  TFieldName extends FieldPath<TFormValues> = FieldPath<TFormValues>,
+> = (props: {
+  formValues: TFormValues;
+  formState: FormState<TFormValues>;
+  eventType?: ValidateFormEventType;
+  name?: TFieldName | TFieldName[];
+}) =>
+  | FormValidateResult<TFormValues>
+  | Promise<FormValidateResult<TFormValues>>;
 type RegisterOptions<
   TFieldValues extends FieldValues = FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
@@ -2513,8 +2563,9 @@ declare const _default: (
  */
 declare const Watch: <
   TFieldValues extends FieldValues = FieldValues,
-  const TFieldName extends
+  TFieldName extends
     | FieldPath<TFieldValues>
+    | readonly [FieldPath<TFieldValues>, ...FieldPath<TFieldValues>[]]
     | FieldPath<TFieldValues>[]
     | readonly FieldPath<TFieldValues>[]
     | undefined = undefined,
@@ -2583,6 +2634,7 @@ export {
   FormStateSubscribe,
   type FormStateSubscribeProps,
   type FormSubmitHandler,
+  type FormValidateResult,
   type FromSubscribe,
   type GetIsDirty,
   type GetValuesConfig,
@@ -2654,6 +2706,7 @@ export {
   type UseFormSetError,
   type UseFormSetFocus,
   type UseFormSetValue,
+  type UseFormSetValues,
   type UseFormStateProps,
   type UseFormStateReturn,
   type UseFormSubscribe,
@@ -2662,6 +2715,8 @@ export {
   type UseFormWatch,
   type UseWatchProps,
   type Validate,
+  type ValidateForm,
+  type ValidateFormEventType,
   type ValidateResult,
   type ValidationMode,
   type ValidationModeFlags,

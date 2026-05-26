@@ -1,5 +1,13 @@
-import { M, O, U, I } from "./index-F3rlTTTe";
-export { I as Input, M as Mask, O as Options } from "./index-F3rlTTTe";
+import { M, O, a, U, T, b } from "./index-D8KkaDbQ";
+export {
+  I as Input,
+  M as Mask,
+  O as Options,
+  T as TanStackFormInputProps,
+  c as UnmaskedValueApi,
+  U as UseMaskInputReturn,
+  b as UseTanStackFormMaskReturn,
+} from "./index-D8KkaDbQ";
 import {
   FieldValues,
   RegisterOptions,
@@ -24,9 +32,7 @@ interface UseMaskInputOptions {
  * @param props.options - Optional mask configuration options
  * @returns A ref callback function to attach to the input element
  */
-declare function useMaskInput(
-  props: UseMaskInputOptions,
-): (input: I | null) => void;
+declare function useMaskInput(props: UseMaskInputOptions): U;
 
 /**
  * Creates a masked version of React Hook Form's register function.
@@ -42,7 +48,17 @@ declare function useHookFormMask<
   D extends RegisterOptions,
 >(
   registerFn: UseFormRegister<T>,
-): (fieldName: Path<T>, mask: M, options?: (D & O) | O | D) => U<T>;
+): (fieldName: Path<T>, mask: M, options?: (D & O) | O | D) => a<T>;
+
+/**
+ * Creates a helper to mask TanStack Form-compatible input props.
+ * Designed for objects returned by field.getInputProps().
+ */
+declare function useTanStackFormMask(): <T extends T>(
+  mask: M,
+  inputProps: T,
+  options?: O,
+) => b<T>;
 
 /**
  * Higher-order function that creates a ref callback for applying input masks.
@@ -52,7 +68,7 @@ declare function useHookFormMask<
  * @param options - Optional mask configuration options
  * @returns A ref callback function that applies the mask
  */
-declare function withMask(mask: M, options?: O): (input: I | null) => void;
+declare function withMask(mask: M, options?: O): U;
 
 /**
  * Enhances a React Hook Form register return object with mask support.
@@ -68,6 +84,23 @@ declare function withHookFormMask(
   register: UseFormRegisterReturn,
   mask: M,
   options?: O,
-): U<FieldValues>;
+): a<FieldValues>;
 
-export { useHookFormMask, useMaskInput, withHookFormMask, withMask };
+/**
+ * Enhances TanStack Form-compatible input props with mask support.
+ * Works with objects returned by field.getInputProps().
+ */
+declare function withTanStackFormMask<T extends T>(
+  inputProps: T,
+  mask: M,
+  options?: O,
+): b<T>;
+
+export {
+  useHookFormMask,
+  useMaskInput,
+  useTanStackFormMask,
+  withHookFormMask,
+  withMask,
+  withTanStackFormMask,
+};

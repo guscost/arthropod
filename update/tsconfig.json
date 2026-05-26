@@ -1,7 +1,16 @@
 {
   "compilerOptions": {
-    "declaration": true,
+    "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Bundler"
-  }
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "lib": ["es2022", "dom"],
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["update.ts"]
 }

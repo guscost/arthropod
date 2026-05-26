@@ -15,7 +15,7 @@ type ClassNameValue =
   | 0
   | 0n
   | false;
-type ClassNameArray = ClassNameValue[];
+type ClassNameArray = readonly ClassNameValue[];
 declare const twJoin: (...classLists: ClassNameValue[]) => string;
 
 /**
@@ -93,7 +93,7 @@ interface ParsedClassName {
    *
    * This property is prefixed with "maybe" because tailwind-merge does not know whether something is a postfix modifier or part of the base class since it's possible to configure Tailwind CSS classes which include a `/` in the base class name.
    *
-   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If that fails, it tries again with the possible postfix modifier.
+   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If that fails or the matched class group is configured in `postfixLookupClassGroups`, it tries again with the possible postfix modifier.
    *
    * @example 11 // for `bg-gray-100/50`
    */
@@ -147,6 +147,14 @@ interface ConfigGroupsPart<
     Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
   >;
   /**
+   * Class group IDs which should be resolved again with their postfix modifier attached.
+   *
+   * This is needed when a slash can make the full class name belong to a different class group than the part before the slash.
+   *
+   * @example ['container-type'] // `@container-size/sidebar` should resolve differently from `@container-size`
+   */
+  postfixLookupClassGroups?: readonly NoInferString<ClassGroupIds>[];
+  /**
    * Modifiers whose order among multiple modifiers should be preserved because their order changes which element gets targeted.
    *
    * tailwind-merge makes sure that classes with these modifiers are not overwritten by classes with the same modifiers with order-sensitive modifiers being in a different position.
@@ -160,12 +168,26 @@ interface ConfigExtension<
   ClassGroupIds extends string,
   ThemeGroupIds extends string,
 > extends Partial<ConfigStaticPart> {
-  override?: PartialPartial<ConfigGroupsPart<ClassGroupIds, ThemeGroupIds>>;
-  extend?: PartialPartial<ConfigGroupsPart<ClassGroupIds, ThemeGroupIds>>;
+  override?: PartialConfigGroupsPart<ClassGroupIds, ThemeGroupIds>;
+  extend?: PartialConfigGroupsPart<ClassGroupIds, ThemeGroupIds>;
 }
-type PartialPartial<T> = {
-  [P in keyof T]?: T[P] extends any[] ? T[P] : Partial<T[P]>;
-};
+interface PartialConfigGroupsPart<
+  ClassGroupIds extends string,
+  ThemeGroupIds extends string,
+> {
+  theme?: NoInfer<Partial<ThemeObject<ThemeGroupIds>>>;
+  classGroups?: NoInfer<
+    Partial<Record<ClassGroupIds, ClassGroup<ThemeGroupIds>>>
+  >;
+  conflictingClassGroups?: NoInfer<
+    Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
+  >;
+  conflictingClassGroupModifiers?: NoInfer<
+    Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
+  >;
+  postfixLookupClassGroups?: readonly NoInferString<ClassGroupIds>[];
+  orderSensitiveModifiers?: string[];
+}
 type ThemeObject<ThemeGroupIds extends string> = Record<
   ThemeGroupIds,
   ClassGroup<ThemeGroupIds>
@@ -192,6 +214,12 @@ type ClassObject<ThemeGroupIds extends string> = Record<
  * Could be replaced with NoInfer utility type from TypeScript (https://www.typescriptlang.org/docs/handbook/utility-types.html#noinfertype), but that is only supported in TypeScript 5.4 or higher, so I should wait some time before using it.
  */
 type NoInfer<T> = [T][T extends any ? 0 : never];
+/**
+ * Special-purpose NoInfer variant for string unions used in array item positions.
+ *
+ * The NoInfer helper above doesn't prevent inference from array items in all cases, so this keeps config arrays like `postfixLookupClassGroups` from defining or narrowing class group IDs. Once tailwind-merge only supports TypeScript 5.4 and newer, this can be replaced with TypeScript's built-in NoInfer utility type.
+ */
+type NoInferString<T extends string> = T extends infer S ? S & string : never;
 /**
  * Theme group IDs included in the default configuration of tailwind-merge.
  *
@@ -301,6 +329,8 @@ type DefaultClassGroupIds =
   | "color-scheme"
   | "columns"
   | "container"
+  | "container-named"
+  | "container-type"
   | "content"
   | "contrast"
   | "cursor"
@@ -516,6 +546,10 @@ type DefaultClassGroupIds =
   | "scale-y"
   | "scale-z"
   | "scale"
+  | "scrollbar-gutter"
+  | "scrollbar-thumb-color"
+  | "scrollbar-track-color"
+  | "scrollbar-w"
   | "scroll-behavior"
   | "scroll-m"
   | "scroll-mb"
@@ -561,6 +595,7 @@ type DefaultClassGroupIds =
   | "stroke-w"
   | "stroke"
   | "table-layout"
+  | "tab-size"
   | "text-alignment"
   | "text-color"
   | "text-decoration-color"
@@ -595,6 +630,7 @@ type DefaultClassGroupIds =
   | "whitespace"
   | "will-change"
   | "wrap"
+  | "zoom"
   | "z";
 type AnyClassGroupIds = string;
 type AnyThemeGroupIds = string;
@@ -688,6 +724,26 @@ declare const getDefaultConfig: () => {
      * @deprecated since Tailwind CSS v4.0.0
      */
     readonly container: readonly ["container"];
+    /**
+     * Container Type
+     * @see https://tailwindcss.com/docs/responsive-design#container-queries
+     */
+    readonly "container-type": readonly [
+      {
+        readonly "@container": readonly [
+          "",
+          "normal",
+          "size",
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Container Name
+     * @see https://tailwindcss.com/docs/responsive-design#named-containers
+     */
+    readonly "container-named": readonly [(value: string) => boolean];
     /**
      * Columns
      * @see https://tailwindcss.com/docs/columns
@@ -2663,6 +2719,19 @@ declare const getDefaultConfig: () => {
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Tab Size
+     * @see https://tailwindcss.com/docs/tab-size
+     */
+    readonly "tab-size": readonly [
+      {
+        readonly tab: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -5176,6 +5245,19 @@ declare const getDefaultConfig: () => {
      */
     readonly "translate-none": readonly ["translate-none"];
     /**
+     * Zoom
+     * @see https://tailwindcss.com/docs/zoom
+     */
+    readonly zoom: readonly [
+      {
+        readonly zoom: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
      * Accent Color
      * @see https://tailwindcss.com/docs/accent-color
      */
@@ -5308,6 +5390,50 @@ declare const getDefaultConfig: () => {
     readonly "scroll-behavior": readonly [
       {
         readonly scroll: readonly ["auto", "smooth"];
+      },
+    ];
+    /**
+     * Scrollbar Thumb Color
+     * @see https://tailwindcss.com/docs/scrollbar-color
+     */
+    readonly "scrollbar-thumb-color": readonly [
+      {
+        readonly "scrollbar-thumb": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Scrollbar Track Color
+     * @see https://tailwindcss.com/docs/scrollbar-color
+     */
+    readonly "scrollbar-track-color": readonly [
+      {
+        readonly "scrollbar-track": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Scrollbar Gutter
+     * @see https://tailwindcss.com/docs/scrollbar-gutter
+     */
+    readonly "scrollbar-gutter": readonly [
+      {
+        readonly "scrollbar-gutter": readonly ["auto", "stable", "both"];
+      },
+    ];
+    /**
+     * Scrollbar Width
+     * @see https://tailwindcss.com/docs/scrollbar-width
+     */
+    readonly "scrollbar-w": readonly [
+      {
+        readonly scrollbar: readonly ["auto", "thin", "none"];
       },
     ];
     /**
@@ -5742,6 +5868,7 @@ declare const getDefaultConfig: () => {
     ];
   };
   readonly conflictingClassGroups: {
+    readonly "container-named": readonly ["container-type"];
     readonly overflow: readonly ["overflow-x", "overflow-y"];
     readonly overscroll: readonly ["overscroll-x", "overscroll-y"];
     readonly inset: readonly [
@@ -5904,6 +6031,7 @@ declare const getDefaultConfig: () => {
   readonly conflictingClassGroupModifiers: {
     readonly "font-size": readonly ["leading"];
   };
+  readonly postfixLookupClassGroups: readonly ["container-type"];
   readonly orderSensitiveModifiers: [
     "*",
     "**",
@@ -5968,6 +6096,7 @@ declare const isPercent: (value: string) => boolean;
 declare const isTshirtSize: (value: string) => boolean;
 declare const isAny: () => boolean;
 declare const isAnyNonArbitrary: (value: string) => boolean;
+declare const isNamedContainerQuery: (value: string) => boolean;
 declare const isArbitrarySize: (value: string) => boolean;
 declare const isArbitraryValue: (value: string) => boolean;
 declare const isArbitraryLength: (value: string) => boolean;
@@ -6007,6 +6136,7 @@ declare const validators_d_isArbitraryVariableWeight: typeof isArbitraryVariable
 declare const validators_d_isArbitraryWeight: typeof isArbitraryWeight;
 declare const validators_d_isFraction: typeof isFraction;
 declare const validators_d_isInteger: typeof isInteger;
+declare const validators_d_isNamedContainerQuery: typeof isNamedContainerQuery;
 declare const validators_d_isNumber: typeof isNumber;
 declare const validators_d_isPercent: typeof isPercent;
 declare const validators_d_isTshirtSize: typeof isTshirtSize;
@@ -6033,6 +6163,7 @@ declare namespace validators_d {
     validators_d_isArbitraryWeight as isArbitraryWeight,
     validators_d_isFraction as isFraction,
     validators_d_isInteger as isInteger,
+    validators_d_isNamedContainerQuery as isNamedContainerQuery,
     validators_d_isNumber as isNumber,
     validators_d_isPercent as isPercent,
     validators_d_isTshirtSize as isTshirtSize,
