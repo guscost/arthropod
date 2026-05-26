@@ -50,18 +50,12 @@ const addons = [
 
 const formSchema = z.object({
   plan: z
-    .string({
-      required_error: "Please select a subscription plan",
-    })
+    .string()
     .min(1, "Please select a subscription plan")
     .refine((value) => value === "basic" || value === "pro", {
       message: "Invalid plan selection. Please choose Basic or Pro",
     }),
-  billingPeriod: z
-    .string({
-      required_error: "Please select a billing period",
-    })
-    .min(1, "Please select a billing period"),
+  billingPeriod: z.string().min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on")
@@ -187,7 +181,7 @@ export function FormTanstackComplex() {
                     <Select
                       name={field.name}
                       value={field.state.value}
-                      onValueChange={field.handleChange}
+                      onValueChange={(value) => field.setValue(value ?? "")}
                       aria-invalid={isInvalid}
                     >
                       <SelectTrigger id={field.name}>

@@ -677,21 +677,113 @@ async function buildTypes() {
         path.join(_root, `types/@base-ui/react/${entry.name}.d.ts`),
       );
     }
+    // Copy helper: recursively copy .d.ts files, stripping .js extensions from relative imports
+    function copyTypesPreservingStructure(srcDir: string, destDir: string) {
+      for (const entry of readdirSync(srcDir, { withFileTypes: true })) {
+        if (entry.isDirectory()) {
+          mkdirSync(path.join(destDir, entry.name), { recursive: true });
+          copyTypesPreservingStructure(
+            path.join(srcDir, entry.name),
+            path.join(destDir, entry.name),
+          );
+        } else if (entry.name.endsWith(".d.ts")) {
+          const content = readFileSync(path.join(srcDir, entry.name), "utf8")
+            .replace(/(from ['"])([^'"]+)\.js(['"])/g, "$1$2$3")
+            .replace(/(from ['"])([^'"]+)\.d\.ts(['"])/g, "$1$2$3")
+            .replace(/from ['"]\.\.(['"])/g, "from '../index$1");
+          writeFileSync(path.join(destDir, entry.name), content);
+        }
+      }
+    }
     // Build types with tsup
     mkdirSync(path.join(_root, "types/@tanstack"));
-    await buildType(
-      path.join(
-        _root,
-        "update/node_modules/@tanstack/react-table/build/lib/index.js",
-      ),
-      path.join(_root, "types/@tanstack/react-table.d.ts"),
+    // @tanstack/react-table — copy .d.ts preserving structure so tsconfig paths resolve
+    mkdirSync(path.join(_root, "types/@tanstack/react-table/build/lib"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/react-table/build/lib"),
+      path.join(_root, "types/@tanstack/react-table/build/lib"),
     );
-    await buildType(
+    appendFileSync(
+      path.join(_root, "types/@tanstack/react-table/index.d.ts"),
+      "export * from './build/lib/index';\n",
+    );
+    // @tanstack/table-core — dependency of react-table
+    mkdirSync(path.join(_root, "types/@tanstack/table-core/build/lib"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/table-core/build/lib"),
+      path.join(_root, "types/@tanstack/table-core/build/lib"),
+    );
+    appendFileSync(
+      path.join(_root, "types/@tanstack/table-core/index.d.ts"),
+      "export * from './build/lib/index';\n",
+    );
+    // @tanstack/react-form — copy .d.ts preserving structure so TypeScript resolves
+    // relative imports between react-form, form-core, and react-store
+    mkdirSync(path.join(_root, "types/@tanstack/react-form/dist/esm"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/react-form/dist/esm"),
+      path.join(_root, "types/@tanstack/react-form/dist/esm"),
+    );
+    mkdirSync(path.join(_root, "types/@tanstack/form-core/dist/esm"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/form-core/dist/esm"),
+      path.join(_root, "types/@tanstack/form-core/dist/esm"),
+    );
+    mkdirSync(path.join(_root, "types/@tanstack/react-store/dist/esm"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/react-store/dist/esm"),
+      path.join(_root, "types/@tanstack/react-store/dist/esm"),
+    );
+    // Create package-level entry points so tsconfig path resolution works
+    appendFileSync(
+      path.join(_root, "types/@tanstack/react-form/index.d.ts"),
+      "export * from './dist/esm/index';\n",
+    );
+    appendFileSync(
+      path.join(_root, "types/@tanstack/form-core/index.d.ts"),
+      "export * from './dist/esm/index';\n",
+    );
+    appendFileSync(
+      path.join(_root, "types/@tanstack/react-store/index.d.ts"),
+      "export * from './dist/esm/index';\n",
+    );
+    // @tanstack/store — dependency of form-core and react-store
+    mkdirSync(path.join(_root, "types/@tanstack/store/dist/esm"), {
+      recursive: true,
+    });
+    copyTypesPreservingStructure(
+      path.join(_root, "update/node_modules/@tanstack/store/dist/esm"),
+      path.join(_root, "types/@tanstack/store/dist/esm"),
+    );
+    appendFileSync(
+      path.join(_root, "types/@tanstack/store/index.d.ts"),
+      "export * from './dist/esm/index';\n",
+    );
+    // @tanstack/devtools-event-client — dependency of form-core
+    mkdirSync(
+      path.join(_root, "types/@tanstack/devtools-event-client/dist/esm"),
+      { recursive: true },
+    );
+    copyTypesPreservingStructure(
       path.join(
         _root,
-        "update/node_modules/@tanstack/react-form/dist/esm/index.js",
+        "update/node_modules/@tanstack/devtools-event-client/dist/esm",
       ),
-      path.join(_root, "types/@tanstack/react-form.d.ts"),
+      path.join(_root, "types/@tanstack/devtools-event-client/dist/esm"),
+    );
+    appendFileSync(
+      path.join(_root, "types/@tanstack/devtools-event-client/index.d.ts"),
+      "export * from './dist/esm/index';\n",
     );
     // tsup needs renamed files, since these typedefs import with .ts extension
     removeExtensionFromImports(
