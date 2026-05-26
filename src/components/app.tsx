@@ -3,7 +3,7 @@ import { Link, Route, Switch } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Title } from "@/components/title";
 import { CardsDemo } from "@/components/demo-cards/index";
-import { FormDemo } from "@/components/demo-form/index";
+import { FormTanstackComplex } from "@/components/demo-form/index";
 import { SwrDemo } from "@/components/demo-swr/index";
 import { KanbanBoard } from "@/components/demo-kanban/KanbanBoard";
 
@@ -45,7 +45,7 @@ export function App() {
           </h2>
         </Route>
         <Route path="/form">
-          <FormDemo />
+          <FormTanstackComplex />
         </Route>
         <Route path="*">
           <CardsDemo />

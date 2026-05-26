@@ -372,8 +372,7 @@ async function buildUmds() {
     rmSync(path.join(_root, "www/js/lib/headless-ui.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/dnd-kit.min.js"), { force: true });
     rmSync(path.join(_root, "www/js/lib/shadcn.min.js"), { force: true });
-    rmSync(path.join(_root, "www/js/lib/chart.min.js"), { force: true });
-    rmSync(path.join(_root, "www/js/lib/form.min.js"), { force: true });
+    rmSync(path.join(_root, "www/js/lib/charts.min.js"), { force: true });
 
     // tailwindcss
     const tailwindResponse = await fetch(
@@ -434,6 +433,7 @@ async function buildUmds() {
     });
 
     // shadcn deps
+    await buildUmd(tempDir, "zod", "shadcn.min.js");
     await buildUmd(tempDir, "date-fns", "shadcn.min.js");
     await buildUmd(tempDir, "tailwind-merge", "shadcn.min.js");
     await buildUmd(tempDir, "clsx", "shadcn.min.js");
@@ -441,6 +441,7 @@ async function buildUmds() {
     await buildUmd(tempDir, "react-resizable-panels", "shadcn.min.js");
     await buildUmd(tempDir, "react-day-picker", "shadcn.min.js"); //date-fns
     await buildUmd(tempDir, "embla-carousel-react", "shadcn.min.js");
+    await buildUmd(tempDir, "@tanstack/react-form", "shadcn.min.js");
     await buildUmd(tempDir, "@tanstack/react-table", "shadcn.min.js");
     await buildUmd(tempDir, "input-otp", "shadcn.min.js");
     await buildUmd(tempDir, "next-themes", "shadcn.min.js");
@@ -454,18 +455,11 @@ async function buildUmds() {
       "@radix-ui/react-primitive": "@radix-ui/react-primitive",
     });
 
-    // shadcn chart
-    await buildUmd(tempDir, "recharts", "chart.min.js"); //clsx
-
-    // shadcn form
-    await buildUmd(tempDir, "zod", "form.min.js");
-    await buildUmd(tempDir, "react-hook-form", "form.min.js");
-    await buildUmd(tempDir, "@hookform/resolvers/zod", "form.min.js", null, {
-      "react-hook-form": "react-hook-form",
-    });
-
     // use-mask-input
-    await buildUmd(tempDir, "use-mask-input", "form.min.js");
+    await buildUmd(tempDir, "use-mask-input", "shadcn.min.js");
+
+    // shadcn charts
+    await buildUmd(tempDir, "recharts", "charts.min.js"); //clsx
 
     rmSync(tempDir, { recursive: true, force: true });
   } catch (error) {
@@ -692,6 +686,13 @@ async function buildTypes() {
       ),
       path.join(_root, "types/@tanstack/react-table.d.ts"),
     );
+    await buildType(
+      path.join(
+        _root,
+        "update/node_modules/@tanstack/react-form/dist/esm/index.js",
+      ),
+      path.join(_root, "types/@tanstack/react-form.d.ts"),
+    );
     // tsup needs renamed files, since these typedefs import with .ts extension
     removeExtensionFromImports(
       path.join(_root, "update/node_modules/date-fns"),
@@ -824,7 +825,7 @@ async function buildTypes() {
       path.join(_root, "types/react-resizable-panels.d.ts"),
     );
 
-    // zod and react-hook-form
+    // zod
     cpSync(
       path.join(_root, "update/node_modules/zod"),
       path.join(_root, "types/zod"),
@@ -839,20 +840,6 @@ declare global {
 		captureStackTrace(thisArg: any, func: any): void;
 	}
 }`,
-    );
-
-    await buildType(
-      path.join(_root, "update/node_modules/react-hook-form/dist/index.d.ts"),
-      path.join(_root, "types/react-hook-form.d.ts"),
-    );
-    mkdirSync(path.join(_root, "types/@hookform"));
-    mkdirSync(path.join(_root, "types/@hookform/resolvers"));
-    cpSync(
-      path.join(
-        _root,
-        "update/node_modules/@hookform/resolvers/zod/dist/zod.d.ts",
-      ),
-      path.join(_root, "types/@hookform/resolvers/zod.d.ts"),
     );
 
     // use-mask-input
