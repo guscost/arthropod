@@ -20,109 +20,107 @@
  * @license MIT
  */
 
-:root {
-  /* @property declarations for animation variables, to prevent inheritance */
-  @property --tw-animation-delay {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0s;
-  }
+/* @property declarations for animation variables, to prevent inheritance */
+@property --tw-animation-delay {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0s;
+}
 
-  @property --tw-animation-direction {
-    syntax: "*";
-    inherits: false;
-    initial-value: normal;
-  }
+@property --tw-animation-direction {
+  syntax: "*";
+  inherits: false;
+  initial-value: normal;
+}
 
-  @property --tw-animation-duration {
-    syntax: "*";
-    inherits: false;
-    /* does not have an initial value in order for the \`--tw-duration\` variable to work */
-  }
+@property --tw-animation-duration {
+  syntax: "*";
+  inherits: false;
+  /* does not have an initial value in order for the \`--tw-duration\` variable to work */
+}
 
-  @property --tw-animation-fill-mode {
-    syntax: "*";
-    inherits: false;
-    initial-value: none;
-  }
+@property --tw-animation-fill-mode {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
 
-  @property --tw-animation-iteration-count {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-animation-iteration-count {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-blur {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-opacity {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-enter-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-rotate {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-scale {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-enter-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-translate-x {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-translate-y {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-blur {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-opacity {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-exit-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-exit-rotate {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-scale {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-exit-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-exit-translate-x {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-translate-y {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 @theme inline {
@@ -227,8 +225,10 @@
         --radix-accordion-content-height,
         var(
           --bits-accordion-content-height,
-          var(--reka-accordion-content-height, 
-          var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto)))
+          var(
+            --reka-accordion-content-height,
+            var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto))
+          )
         )
       );
     }
@@ -240,8 +240,10 @@
         --radix-accordion-content-height,
         var(
           --bits-accordion-content-height,
-          var(--reka-accordion-content-height, 
-          var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto)))
+          var(
+            --reka-accordion-content-height,
+            var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto))
+          )
         )
       );
     }
@@ -599,10 +601,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -632,13 +632,15 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
@@ -656,15 +658,15 @@
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.22 27);
+  --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -683,23 +685,23 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
+  --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
+  --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -716,6 +718,9 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
