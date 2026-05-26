@@ -67,6 +67,7 @@ type PackageJson = {
   version?: string;
   dependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
+  exports?: Record<string, unknown>;
 };
 const radixVersion = "DEPRECATED";
 const reactPackage: PackageJson = JSON.parse(
@@ -180,6 +181,82 @@ async function buildUmd(
     path.join(_root, "www/js/lib", fileName),
     content.replace(/^\/\*\!.*\*\//, `/*! ${fileName} ${version} */`) + "\n",
   );
+}
+
+async function buildBaseUiUmds(tempDir: string, fileName: string) {
+  const baseUiDir = path.join(_root, "update/node_modules/@base-ui/react");
+
+  // Get sub-modules from package.json exports
+  const baseUiPackage: PackageJson = JSON.parse(
+    readFileSync(path.join(baseUiDir, "package.json"), "utf8"),
+  );
+
+  // Extract sub-module paths from package.json exports
+  const subModules: string[] = Object.keys(baseUiPackage.exports || {})
+    .filter(
+      (key) =>
+        key !== "." &&
+        key !== "./package.json" &&
+        key !== "./esm" &&
+        key !== "./internals/temporal-adapter-luxon",
+    )
+    .map((key) => key.slice(2));
+
+  // Build dependency graph (only for cross-module deps that are actual sub-modules)
+  type BaseUiPackage = string;
+  const dependencyGraph = new Map<BaseUiPackage, BaseUiPackage[]>();
+
+  for (const subModule of subModules) {
+    const indexPath = path.join(baseUiDir, subModule, "index.js");
+    const partsPath = path.join(baseUiDir, subModule, "index.parts.js");
+
+    const content =
+      (existsSync(indexPath) ? readFileSync(indexPath, "utf8") : "") +
+      (existsSync(partsPath) ? readFileSync(partsPath, "utf8") : "");
+
+    // Find cross-module dependencies (require("../<sub-module>/..."))
+    const deps: BaseUiPackage[] = [];
+    for (const other of subModules) {
+      if (other === subModule) continue;
+      if (content.includes(`require("../${other}`)) {
+        deps.push(other);
+      }
+    }
+    dependencyGraph.set(subModule, deps);
+  }
+
+  // Topological sort
+  function topologicalSort(
+    graph: Map<BaseUiPackage, BaseUiPackage[]>,
+  ): BaseUiPackage[] {
+    const visited = new Set<BaseUiPackage>();
+    const temp = new Set<BaseUiPackage>();
+    const order: BaseUiPackage[] = [];
+
+    function visit(node: BaseUiPackage) {
+      if (temp.has(node)) throw new Error("Circular dependency detected");
+      if (visited.has(node)) return;
+      temp.add(node);
+      for (const dep of graph.get(node) || []) visit(dep);
+      temp.delete(node);
+      visited.add(node);
+      order.push(node);
+    }
+
+    for (const node of graph.keys()) {
+      if (!visited.has(node)) visit(node);
+    }
+
+    return order;
+  }
+
+  const buildOrder = topologicalSort(dependencyGraph);
+
+  // Build each sub-module as UMD, appending to the same output file
+  // Cross-module deps are bundled (not externalized) to handle internal file references
+  for (const packageName of buildOrder) {
+    await buildUmd(tempDir, `@base-ui/react/${packageName}`, fileName);
+  }
 }
 
 async function buildRadixUmds(tempDir: string, fileName: string) {
@@ -313,7 +390,7 @@ async function buildUmds() {
 
     // @base-ui replaces radix-ui for most headless ui
     await buildRadixUmds(tempDir, "headless-ui.min.js");
-    await buildUmd(tempDir, "@base-ui/react", "headless-ui.min.js");
+    await buildBaseUiUmds(tempDir, "headless-ui.min.js");
 
     // react and other dependencies
     await buildUmd(tempDir, "react", "react.min.js");
