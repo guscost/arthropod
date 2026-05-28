@@ -120,6 +120,7 @@ export interface ZodType<
       arg: core.output<this>,
       ctx: core.$RefinementCtx<core.output<this>>,
     ) => void | Promise<void>,
+    params?: core.$ZodSuperRefineParams,
   ): this;
   overwrite(fn: (x: core.output<this>) => core.output<this>): this;
   optional(): ZodOptional<this>;
@@ -231,7 +232,11 @@ export interface ZodString extends _ZodString<
   nanoid(params?: string | core.$ZodCheckNanoIDParams): this;
   /** @deprecated Use `z.guid()` instead. */
   guid(params?: string | core.$ZodCheckGUIDParams): this;
-  /** @deprecated Use `z.cuid()` instead. */
+  /**
+   * @deprecated CUID v1 is deprecated by its authors due to information leakage
+   * (timestamps embedded in the id). Use `z.cuid2()` instead.
+   * See https://github.com/paralleldrive/cuid.
+   */
   cuid(params?: string | core.$ZodCheckCUIDParams): this;
   /** @deprecated Use `z.cuid2()` instead. */
   cuid2(params?: string | core.$ZodCheckCUID2Params): this;
@@ -319,10 +324,27 @@ export declare const ZodNanoID: core.$constructor<ZodNanoID>;
 export declare function nanoid(
   params?: string | core.$ZodNanoIDParams,
 ): ZodNanoID;
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export interface ZodCUID extends ZodStringFormat<"cuid"> {
   _zod: core.$ZodCUIDInternals;
 }
+/**
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link ZodCUID2} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export declare const ZodCUID: core.$constructor<ZodCUID>;
+/**
+ * Validates a CUID v1 string.
+ *
+ * @deprecated CUID v1 is deprecated by its authors due to information leakage
+ * (timestamps embedded in the id). Use {@link cuid2 | `z.cuid2()`} instead.
+ * See https://github.com/paralleldrive/cuid.
+ */
 export declare function cuid(params?: string | core.$ZodCUIDParams): ZodCUID;
 export interface ZodCUID2 extends ZodStringFormat<"cuid2"> {
   _zod: core.$ZodCUID2Internals;
@@ -641,11 +663,11 @@ export interface ZodObject<
   strip(): ZodObject<Shape, core.$strip>;
   extend<U extends core.$ZodLooseShape>(
     shape: U,
-  ): ZodObject<util.Extend<Shape, U>, Config>;
+  ): ZodObject<util.Extend<Shape, util.Writeable<U>>, Config>;
   safeExtend<U extends core.$ZodLooseShape>(
     shape: SafeExtendShape<Shape, U> &
       Partial<Record<keyof Shape, core.SomeType>>,
-  ): ZodObject<util.Extend<Shape, U>, Config>;
+  ): ZodObject<util.Extend<Shape, util.Writeable<U>>, Config>;
   /**
    * @deprecated Use [`A.extend(B.shape)`](https://zod.dev/api?id=extend) instead.
    */
@@ -666,7 +688,7 @@ export interface ZodObject<
   >;
   partial(): ZodObject<
     {
-      [k in keyof Shape]: ZodOptional<Shape[k]>;
+      -readonly [k in keyof Shape]: ZodOptional<Shape[k]>;
     },
     Config
   >;
@@ -674,13 +696,15 @@ export interface ZodObject<
     mask: M & Record<Exclude<keyof M, keyof Shape>, never>,
   ): ZodObject<
     {
-      [k in keyof Shape]: k extends keyof M ? ZodOptional<Shape[k]> : Shape[k];
+      -readonly [k in keyof Shape]: k extends keyof M
+        ? ZodOptional<Shape[k]>
+        : Shape[k];
     },
     Config
   >;
   required(): ZodObject<
     {
-      [k in keyof Shape]: ZodNonOptional<Shape[k]>;
+      -readonly [k in keyof Shape]: ZodNonOptional<Shape[k]>;
     },
     Config
   >;
@@ -688,7 +712,7 @@ export interface ZodObject<
     mask: M & Record<Exclude<keyof M, keyof Shape>, never>,
   ): ZodObject<
     {
-      [k in keyof Shape]: k extends keyof M
+      -readonly [k in keyof Shape]: k extends keyof M
         ? ZodNonOptional<Shape[k]>
         : Shape[k];
     },
@@ -705,11 +729,11 @@ export declare function object<
 export declare function strictObject<T extends core.$ZodLooseShape>(
   shape: T,
   params?: string | core.$ZodObjectParams,
-): ZodObject<T, core.$strict>;
+): ZodObject<util.Writeable<T>, core.$strict>;
 export declare function looseObject<T extends core.$ZodLooseShape>(
   shape: T,
   params?: string | core.$ZodObjectParams,
-): ZodObject<T, core.$loose>;
+): ZodObject<util.Writeable<T>, core.$loose>;
 export interface ZodUnion<
   T extends readonly core.SomeType[] = readonly core.$ZodType[],
 >
@@ -749,8 +773,8 @@ export interface ZodDiscriminatedUnion<
 export declare const ZodDiscriminatedUnion: core.$constructor<ZodDiscriminatedUnion>;
 export declare function discriminatedUnion<
   Types extends readonly [
-    core.$ZodTypeDiscriminable,
-    ...core.$ZodTypeDiscriminable[],
+    core.$ZodTypeDiscriminable<Disc>,
+    ...core.$ZodTypeDiscriminable<Disc>[],
   ],
   Disc extends string,
 >(
@@ -945,7 +969,7 @@ export interface ZodTransform<O = unknown, I = unknown>
 }
 export declare const ZodTransform: core.$constructor<ZodTransform>;
 export declare function transform<I = unknown, O = I>(
-  fn: (input: I, ctx: core.ParsePayload) => O,
+  fn: (input: I, ctx: core.$RefinementCtx) => O,
 ): ZodTransform<Awaited<O>, I>;
 export interface ZodOptional<T extends core.SomeType = core.$ZodType>
   extends _ZodType<core.$ZodOptionalInternals<T>>, core.$ZodOptional<T> {
@@ -1084,6 +1108,17 @@ export declare function codec<
     ) => core.util.MaybeAsync<core.output<A>>;
   },
 ): ZodCodec<A, B>;
+export declare function invertCodec<
+  A extends core.SomeType,
+  B extends core.SomeType,
+>(codec: ZodCodec<A, B>): ZodCodec<B, A>;
+export interface ZodPreprocess<B extends core.SomeType = core.$ZodType>
+  extends ZodPipe<core.$ZodTransform, B>, core.$ZodPreprocess<B> {
+  "~standard": ZodStandardSchemaWithJSON<this>;
+  _zod: core.$ZodPreprocessInternals<B>;
+  def: core.$ZodPreprocessDef<B>;
+}
+export declare const ZodPreprocess: core.$constructor<ZodPreprocess>;
 export interface ZodReadonly<T extends core.SomeType = core.$ZodType>
   extends _ZodType<core.$ZodReadonlyInternals<T>>, core.$ZodReadonly<T> {
   "~standard": ZodStandardSchemaWithJSON<this>;
@@ -1188,6 +1223,7 @@ export declare function refine<T>(
 ): core.$ZodCheck<T>;
 export declare function superRefine<T>(
   fn: (arg: T, payload: core.$RefinementCtx<T>) => void | Promise<void>,
+  params?: core.$ZodSuperRefineParams,
 ): core.$ZodCheck<T>;
 export declare const describe: typeof core.describe;
 export declare const meta: typeof core.meta;
@@ -1228,4 +1264,4 @@ export declare function json(
 export declare function preprocess<A, U extends core.SomeType, B = unknown>(
   fn: (arg: B, ctx: core.$RefinementCtx) => A,
   schema: U,
-): ZodPipe<ZodTransform<A, B>, U>;
+): ZodPreprocess<U>;

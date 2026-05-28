@@ -15,7 +15,7 @@ type ClassNameValue =
   | 0
   | 0n
   | false;
-type ClassNameArray = ClassNameValue[];
+type ClassNameArray = readonly ClassNameValue[];
 declare const twJoin: (...classLists: ClassNameValue[]) => string;
 
 /**
@@ -93,7 +93,7 @@ interface ParsedClassName {
    *
    * This property is prefixed with "maybe" because tailwind-merge does not know whether something is a postfix modifier or part of the base class since it's possible to configure Tailwind CSS classes which include a `/` in the base class name.
    *
-   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If that fails, it tries again with the possible postfix modifier.
+   * If a `maybePostfixModifierPosition` is present, tailwind-merge first tries to match the `baseClassName` without the possible postfix modifier to a class group. If that fails or the matched class group is configured in `postfixLookupClassGroups`, it tries again with the possible postfix modifier.
    *
    * @example 11 // for `bg-gray-100/50`
    */
@@ -147,6 +147,14 @@ interface ConfigGroupsPart<
     Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
   >;
   /**
+   * Class group IDs which should be resolved again with their postfix modifier attached.
+   *
+   * This is needed when a slash can make the full class name belong to a different class group than the part before the slash.
+   *
+   * @example ['container-type'] // `@container-size/sidebar` should resolve differently from `@container-size`
+   */
+  postfixLookupClassGroups?: readonly NoInferString<ClassGroupIds>[];
+  /**
    * Modifiers whose order among multiple modifiers should be preserved because their order changes which element gets targeted.
    *
    * tailwind-merge makes sure that classes with these modifiers are not overwritten by classes with the same modifiers with order-sensitive modifiers being in a different position.
@@ -160,12 +168,26 @@ interface ConfigExtension<
   ClassGroupIds extends string,
   ThemeGroupIds extends string,
 > extends Partial<ConfigStaticPart> {
-  override?: PartialPartial<ConfigGroupsPart<ClassGroupIds, ThemeGroupIds>>;
-  extend?: PartialPartial<ConfigGroupsPart<ClassGroupIds, ThemeGroupIds>>;
+  override?: PartialConfigGroupsPart<ClassGroupIds, ThemeGroupIds>;
+  extend?: PartialConfigGroupsPart<ClassGroupIds, ThemeGroupIds>;
 }
-type PartialPartial<T> = {
-  [P in keyof T]?: T[P] extends any[] ? T[P] : Partial<T[P]>;
-};
+interface PartialConfigGroupsPart<
+  ClassGroupIds extends string,
+  ThemeGroupIds extends string,
+> {
+  theme?: NoInfer<Partial<ThemeObject<ThemeGroupIds>>>;
+  classGroups?: NoInfer<
+    Partial<Record<ClassGroupIds, ClassGroup<ThemeGroupIds>>>
+  >;
+  conflictingClassGroups?: NoInfer<
+    Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
+  >;
+  conflictingClassGroupModifiers?: NoInfer<
+    Partial<Record<ClassGroupIds, readonly ClassGroupIds[]>>
+  >;
+  postfixLookupClassGroups?: readonly NoInferString<ClassGroupIds>[];
+  orderSensitiveModifiers?: string[];
+}
 type ThemeObject<ThemeGroupIds extends string> = Record<
   ThemeGroupIds,
   ClassGroup<ThemeGroupIds>
@@ -192,6 +214,12 @@ type ClassObject<ThemeGroupIds extends string> = Record<
  * Could be replaced with NoInfer utility type from TypeScript (https://www.typescriptlang.org/docs/handbook/utility-types.html#noinfertype), but that is only supported in TypeScript 5.4 or higher, so I should wait some time before using it.
  */
 type NoInfer<T> = [T][T extends any ? 0 : never];
+/**
+ * Special-purpose NoInfer variant for string unions used in array item positions.
+ *
+ * The NoInfer helper above doesn't prevent inference from array items in all cases, so this keeps config arrays like `postfixLookupClassGroups` from defining or narrowing class group IDs. Once tailwind-merge only supports TypeScript 5.4 and newer, this can be replaced with TypeScript's built-in NoInfer utility type.
+ */
+type NoInferString<T extends string> = T extends infer S ? S & string : never;
 /**
  * Theme group IDs included in the default configuration of tailwind-merge.
  *
@@ -255,9 +283,12 @@ type DefaultClassGroupIds =
   | "bg-position"
   | "bg-repeat"
   | "bg-size"
+  | "block-size"
   | "blur"
   | "border-collapse"
   | "border-color-b"
+  | "border-color-be"
+  | "border-color-bs"
   | "border-color-e"
   | "border-color-l"
   | "border-color-r"
@@ -271,6 +302,8 @@ type DefaultClassGroupIds =
   | "border-spacing"
   | "border-style"
   | "border-w-b"
+  | "border-w-be"
+  | "border-w-bs"
   | "border-w-e"
   | "border-w-l"
   | "border-w-r"
@@ -296,6 +329,8 @@ type DefaultClassGroupIds =
   | "color-scheme"
   | "columns"
   | "container"
+  | "container-named"
+  | "container-type"
   | "content"
   | "contrast"
   | "cursor"
@@ -320,6 +355,7 @@ type DefaultClassGroupIds =
   | "flex"
   | "float"
   | "font-family"
+  | "font-features"
   | "font-size"
   | "font-smoothing"
   | "font-stretch"
@@ -350,10 +386,13 @@ type DefaultClassGroupIds =
   | "hue-rotate"
   | "hyphens"
   | "indent"
+  | "inline-size"
   | "inset-ring-color"
   | "inset-ring-w"
   | "inset-shadow-color"
   | "inset-shadow"
+  | "inset-be"
+  | "inset-bs"
   | "inset-x"
   | "inset-y"
   | "inset"
@@ -420,11 +459,17 @@ type DefaultClassGroupIds =
   | "mask-repeat"
   | "mask-size"
   | "mask-type"
+  | "max-block-size"
   | "max-h"
+  | "max-inline-size"
   | "max-w"
   | "mb"
+  | "mbe"
+  | "mbs"
   | "me"
+  | "min-block-size"
   | "min-h"
+  | "min-inline-size"
   | "min-w"
   | "mix-blend"
   | "ml"
@@ -449,6 +494,7 @@ type DefaultClassGroupIds =
   | "overscroll"
   | "p"
   | "pb"
+  | "pbe"
   | "pe"
   | "perspective-origin"
   | "perspective"
@@ -461,6 +507,7 @@ type DefaultClassGroupIds =
   | "position"
   | "pr"
   | "ps"
+  | "pbs"
   | "pt"
   | "px"
   | "py"
@@ -499,21 +546,29 @@ type DefaultClassGroupIds =
   | "scale-y"
   | "scale-z"
   | "scale"
+  | "scrollbar-gutter"
+  | "scrollbar-thumb-color"
+  | "scrollbar-track-color"
+  | "scrollbar-w"
   | "scroll-behavior"
   | "scroll-m"
   | "scroll-mb"
+  | "scroll-mbe"
   | "scroll-me"
   | "scroll-ml"
   | "scroll-mr"
+  | "scroll-mbs"
   | "scroll-ms"
   | "scroll-mt"
   | "scroll-mx"
   | "scroll-my"
   | "scroll-p"
   | "scroll-pb"
+  | "scroll-pbe"
   | "scroll-pe"
   | "scroll-pl"
   | "scroll-pr"
+  | "scroll-pbs"
   | "scroll-ps"
   | "scroll-pt"
   | "scroll-px"
@@ -540,6 +595,7 @@ type DefaultClassGroupIds =
   | "stroke-w"
   | "stroke"
   | "table-layout"
+  | "tab-size"
   | "text-alignment"
   | "text-color"
   | "text-decoration-color"
@@ -574,6 +630,7 @@ type DefaultClassGroupIds =
   | "whitespace"
   | "will-change"
   | "wrap"
+  | "zoom"
   | "z";
 type AnyClassGroupIds = string;
 type AnyThemeGroupIds = string;
@@ -667,6 +724,26 @@ declare const getDefaultConfig: () => {
      * @deprecated since Tailwind CSS v4.0.0
      */
     readonly container: readonly ["container"];
+    /**
+     * Container Type
+     * @see https://tailwindcss.com/docs/responsive-design#container-queries
+     */
+    readonly "container-type": readonly [
+      {
+        readonly "@container": readonly [
+          "",
+          "normal",
+          "size",
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Container Name
+     * @see https://tailwindcss.com/docs/responsive-design#named-containers
+     */
+    readonly "container-named": readonly [(value: string) => boolean];
     /**
      * Columns
      * @see https://tailwindcss.com/docs/columns
@@ -935,7 +1012,7 @@ declare const getDefaultConfig: () => {
       "sticky",
     ];
     /**
-     * Top / Right / Bottom / Left
+     * Inset
      * @see https://tailwindcss.com/docs/top-right-bottom-left
      */
     readonly inset: readonly [
@@ -951,7 +1028,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Right / Left
+     * Inset Inline
      * @see https://tailwindcss.com/docs/top-right-bottom-left
      */
     readonly "inset-x": readonly [
@@ -967,7 +1044,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Top / Bottom
+     * Inset Block
      * @see https://tailwindcss.com/docs/top-right-bottom-left
      */
     readonly "inset-y": readonly [
@@ -983,11 +1060,24 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Start
+     * Inset Inline Start
      * @see https://tailwindcss.com/docs/top-right-bottom-left
+     * @todo class group will be renamed to `inset-s` in next major release
      */
     readonly start: readonly [
       {
+        readonly "inset-s": readonly [
+          (value: string) => boolean,
+          "full",
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+        /**
+         * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-s-*` utilities.
+         * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
+         */
         readonly start: readonly [
           (value: string) => boolean,
           "full",
@@ -999,12 +1089,57 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * End
+     * Inset Inline End
      * @see https://tailwindcss.com/docs/top-right-bottom-left
+     * @todo class group will be renamed to `inset-e` in next major release
      */
     readonly end: readonly [
       {
+        readonly "inset-e": readonly [
+          (value: string) => boolean,
+          "full",
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+        /**
+         * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-e-*` utilities.
+         * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
+         */
         readonly end: readonly [
+          (value: string) => boolean,
+          "full",
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Inset Block Start
+     * @see https://tailwindcss.com/docs/top-right-bottom-left
+     */
+    readonly "inset-bs": readonly [
+      {
+        readonly "inset-bs": readonly [
+          (value: string) => boolean,
+          "full",
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Inset Block End
+     * @see https://tailwindcss.com/docs/top-right-bottom-left
+     */
+    readonly "inset-be": readonly [
+      {
+        readonly "inset-be": readonly [
           (value: string) => boolean,
           "full",
           "auto",
@@ -1591,7 +1726,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Padding X
+     * Padding Inline
      * @see https://tailwindcss.com/docs/padding
      */
     readonly px: readonly [
@@ -1604,7 +1739,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Padding Y
+     * Padding Block
      * @see https://tailwindcss.com/docs/padding
      */
     readonly py: readonly [
@@ -1617,7 +1752,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Padding Start
+     * Padding Inline Start
      * @see https://tailwindcss.com/docs/padding
      */
     readonly ps: readonly [
@@ -1630,12 +1765,38 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Padding End
+     * Padding Inline End
      * @see https://tailwindcss.com/docs/padding
      */
     readonly pe: readonly [
       {
         readonly pe: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Padding Block Start
+     * @see https://tailwindcss.com/docs/padding
+     */
+    readonly pbs: readonly [
+      {
+        readonly pbs: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Padding Block End
+     * @see https://tailwindcss.com/docs/padding
+     */
+    readonly pbe: readonly [
+      {
+        readonly pbe: readonly [
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -1709,7 +1870,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Margin X
+     * Margin Inline
      * @see https://tailwindcss.com/docs/margin
      */
     readonly mx: readonly [
@@ -1723,7 +1884,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Margin Y
+     * Margin Block
      * @see https://tailwindcss.com/docs/margin
      */
     readonly my: readonly [
@@ -1737,7 +1898,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Margin Start
+     * Margin Inline Start
      * @see https://tailwindcss.com/docs/margin
      */
     readonly ms: readonly [
@@ -1751,12 +1912,40 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Margin End
+     * Margin Inline End
      * @see https://tailwindcss.com/docs/margin
      */
     readonly me: readonly [
       {
         readonly me: readonly [
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Margin Block Start
+     * @see https://tailwindcss.com/docs/margin
+     */
+    readonly mbs: readonly [
+      {
+        readonly mbs: readonly [
+          "auto",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Margin Block End
+     * @see https://tailwindcss.com/docs/margin
+     */
+    readonly mbe: readonly [
+      {
+        readonly mbe: readonly [
           "auto",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -1871,6 +2060,147 @@ declare const getDefaultConfig: () => {
           "lvw",
           "lvh",
           "svw",
+          "svh",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Inline Size
+     * @see https://tailwindcss.com/docs/width
+     */
+    readonly "inline-size": readonly [
+      {
+        readonly inline: readonly [
+          "auto",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "dvw",
+          "lvw",
+          "svw",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Min-Inline Size
+     * @see https://tailwindcss.com/docs/min-width
+     */
+    readonly "min-inline-size": readonly [
+      {
+        readonly "min-inline": readonly [
+          "auto",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "dvw",
+          "lvw",
+          "svw",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Max-Inline Size
+     * @see https://tailwindcss.com/docs/max-width
+     */
+    readonly "max-inline-size": readonly [
+      {
+        readonly "max-inline": readonly [
+          "none",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "dvw",
+          "lvw",
+          "svw",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Block Size
+     * @see https://tailwindcss.com/docs/height
+     */
+    readonly "block-size": readonly [
+      {
+        readonly block: readonly [
+          "auto",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "lh",
+          "dvh",
+          "lvh",
+          "svh",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Min-Block Size
+     * @see https://tailwindcss.com/docs/min-height
+     */
+    readonly "min-block-size": readonly [
+      {
+        readonly "min-block": readonly [
+          "auto",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "lh",
+          "dvh",
+          "lvh",
+          "svh",
+          "min",
+          "max",
+          "fit",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Max-Block Size
+     * @see https://tailwindcss.com/docs/max-height
+     */
+    readonly "max-block-size": readonly [
+      {
+        readonly "max-block": readonly [
+          "none",
+          (value: string) => boolean,
+          "screen",
+          "full",
+          "lh",
+          "dvh",
+          "lvh",
           "svh",
           "min",
           "max",
@@ -2119,6 +2449,15 @@ declare const getDefaultConfig: () => {
           (value: string) => boolean,
           ThemeGetter,
         ];
+      },
+    ];
+    /**
+     * Font Feature Settings
+     * @see https://tailwindcss.com/docs/font-feature-settings
+     */
+    readonly "font-features": readonly [
+      {
+        readonly "font-features": readonly [(value: string) => boolean];
       },
     ];
     /**
@@ -2380,6 +2719,19 @@ declare const getDefaultConfig: () => {
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Tab Size
+     * @see https://tailwindcss.com/docs/tab-size
+     */
+    readonly "tab-size": readonly [
+      {
+        readonly tab: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
         ];
       },
     ];
@@ -2940,7 +3292,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Width X
+     * Border Width Inline
      * @see https://tailwindcss.com/docs/border-width
      */
     readonly "border-w-x": readonly [
@@ -2954,7 +3306,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Width Y
+     * Border Width Block
      * @see https://tailwindcss.com/docs/border-width
      */
     readonly "border-w-y": readonly [
@@ -2968,7 +3320,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Width Start
+     * Border Width Inline Start
      * @see https://tailwindcss.com/docs/border-width
      */
     readonly "border-w-s": readonly [
@@ -2982,12 +3334,40 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Width End
+     * Border Width Inline End
      * @see https://tailwindcss.com/docs/border-width
      */
     readonly "border-w-e": readonly [
       {
         readonly "border-e": readonly [
+          "",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Border Width Block Start
+     * @see https://tailwindcss.com/docs/border-width
+     */
+    readonly "border-w-bs": readonly [
+      {
+        readonly "border-bs": readonly [
+          "",
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Border Width Block End
+     * @see https://tailwindcss.com/docs/border-width
+     */
+    readonly "border-w-be": readonly [
+      {
+        readonly "border-be": readonly [
           "",
           (value: string) => boolean,
           (value: string) => boolean,
@@ -3135,7 +3515,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Color X
+     * Border Color Inline
      * @see https://tailwindcss.com/docs/border-color
      */
     readonly "border-color-x": readonly [
@@ -3148,7 +3528,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Color Y
+     * Border Color Block
      * @see https://tailwindcss.com/docs/border-color
      */
     readonly "border-color-y": readonly [
@@ -3161,7 +3541,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Color S
+     * Border Color Inline Start
      * @see https://tailwindcss.com/docs/border-color
      */
     readonly "border-color-s": readonly [
@@ -3174,12 +3554,38 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Border Color E
+     * Border Color Inline End
      * @see https://tailwindcss.com/docs/border-color
      */
     readonly "border-color-e": readonly [
       {
         readonly "border-e": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Border Color Block Start
+     * @see https://tailwindcss.com/docs/border-color
+     */
+    readonly "border-color-bs": readonly [
+      {
+        readonly "border-bs": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Border Color Block End
+     * @see https://tailwindcss.com/docs/border-color
+     */
+    readonly "border-color-be": readonly [
+      {
+        readonly "border-be": readonly [
           ThemeGetter,
           (value: string) => boolean,
           (value: string) => boolean,
@@ -4839,6 +5245,19 @@ declare const getDefaultConfig: () => {
      */
     readonly "translate-none": readonly ["translate-none"];
     /**
+     * Zoom
+     * @see https://tailwindcss.com/docs/zoom
+     */
+    readonly zoom: readonly [
+      {
+        readonly zoom: readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
      * Accent Color
      * @see https://tailwindcss.com/docs/accent-color
      */
@@ -4974,6 +5393,50 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
+     * Scrollbar Thumb Color
+     * @see https://tailwindcss.com/docs/scrollbar-color
+     */
+    readonly "scrollbar-thumb-color": readonly [
+      {
+        readonly "scrollbar-thumb": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Scrollbar Track Color
+     * @see https://tailwindcss.com/docs/scrollbar-color
+     */
+    readonly "scrollbar-track-color": readonly [
+      {
+        readonly "scrollbar-track": readonly [
+          ThemeGetter,
+          (value: string) => boolean,
+          (value: string) => boolean,
+        ];
+      },
+    ];
+    /**
+     * Scrollbar Gutter
+     * @see https://tailwindcss.com/docs/scrollbar-gutter
+     */
+    readonly "scrollbar-gutter": readonly [
+      {
+        readonly "scrollbar-gutter": readonly ["auto", "stable", "both"];
+      },
+    ];
+    /**
+     * Scrollbar Width
+     * @see https://tailwindcss.com/docs/scrollbar-width
+     */
+    readonly "scrollbar-w": readonly [
+      {
+        readonly scrollbar: readonly ["auto", "thin", "none"];
+      },
+    ];
+    /**
      * Scroll Margin
      * @see https://tailwindcss.com/docs/scroll-margin
      */
@@ -4987,7 +5450,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Margin X
+     * Scroll Margin Inline
      * @see https://tailwindcss.com/docs/scroll-margin
      */
     readonly "scroll-mx": readonly [
@@ -5000,7 +5463,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Margin Y
+     * Scroll Margin Block
      * @see https://tailwindcss.com/docs/scroll-margin
      */
     readonly "scroll-my": readonly [
@@ -5013,7 +5476,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Margin Start
+     * Scroll Margin Inline Start
      * @see https://tailwindcss.com/docs/scroll-margin
      */
     readonly "scroll-ms": readonly [
@@ -5026,12 +5489,38 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Margin End
+     * Scroll Margin Inline End
      * @see https://tailwindcss.com/docs/scroll-margin
      */
     readonly "scroll-me": readonly [
       {
         readonly "scroll-me": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Scroll Margin Block Start
+     * @see https://tailwindcss.com/docs/scroll-margin
+     */
+    readonly "scroll-mbs": readonly [
+      {
+        readonly "scroll-mbs": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Scroll Margin Block End
+     * @see https://tailwindcss.com/docs/scroll-margin
+     */
+    readonly "scroll-mbe": readonly [
+      {
+        readonly "scroll-mbe": readonly [
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -5104,7 +5593,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Padding X
+     * Scroll Padding Inline
      * @see https://tailwindcss.com/docs/scroll-padding
      */
     readonly "scroll-px": readonly [
@@ -5117,7 +5606,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Padding Y
+     * Scroll Padding Block
      * @see https://tailwindcss.com/docs/scroll-padding
      */
     readonly "scroll-py": readonly [
@@ -5130,7 +5619,7 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Padding Start
+     * Scroll Padding Inline Start
      * @see https://tailwindcss.com/docs/scroll-padding
      */
     readonly "scroll-ps": readonly [
@@ -5143,12 +5632,38 @@ declare const getDefaultConfig: () => {
       },
     ];
     /**
-     * Scroll Padding End
+     * Scroll Padding Inline End
      * @see https://tailwindcss.com/docs/scroll-padding
      */
     readonly "scroll-pe": readonly [
       {
         readonly "scroll-pe": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Scroll Padding Block Start
+     * @see https://tailwindcss.com/docs/scroll-padding
+     */
+    readonly "scroll-pbs": readonly [
+      {
+        readonly "scroll-pbs": readonly [
+          (value: string) => boolean,
+          (value: string) => boolean,
+          ThemeGetter,
+        ];
+      },
+    ];
+    /**
+     * Scroll Padding Block End
+     * @see https://tailwindcss.com/docs/scroll-padding
+     */
+    readonly "scroll-pbe": readonly [
+      {
+        readonly "scroll-pbe": readonly [
           (value: string) => boolean,
           (value: string) => boolean,
           ThemeGetter,
@@ -5353,11 +5868,14 @@ declare const getDefaultConfig: () => {
     ];
   };
   readonly conflictingClassGroups: {
+    readonly "container-named": readonly ["container-type"];
     readonly overflow: readonly ["overflow-x", "overflow-y"];
     readonly overscroll: readonly ["overscroll-x", "overscroll-y"];
     readonly inset: readonly [
       "inset-x",
       "inset-y",
+      "inset-bs",
+      "inset-be",
       "start",
       "end",
       "top",
@@ -5369,10 +5887,32 @@ declare const getDefaultConfig: () => {
     readonly "inset-y": readonly ["top", "bottom"];
     readonly flex: readonly ["basis", "grow", "shrink"];
     readonly gap: readonly ["gap-x", "gap-y"];
-    readonly p: readonly ["px", "py", "ps", "pe", "pt", "pr", "pb", "pl"];
+    readonly p: readonly [
+      "px",
+      "py",
+      "ps",
+      "pe",
+      "pbs",
+      "pbe",
+      "pt",
+      "pr",
+      "pb",
+      "pl",
+    ];
     readonly px: readonly ["pr", "pl"];
     readonly py: readonly ["pt", "pb"];
-    readonly m: readonly ["mx", "my", "ms", "me", "mt", "mr", "mb", "ml"];
+    readonly m: readonly [
+      "mx",
+      "my",
+      "ms",
+      "me",
+      "mbs",
+      "mbe",
+      "mt",
+      "mr",
+      "mb",
+      "ml",
+    ];
     readonly mx: readonly ["mr", "ml"];
     readonly my: readonly ["mt", "mb"];
     readonly size: readonly ["w", "h"];
@@ -5421,6 +5961,8 @@ declare const getDefaultConfig: () => {
       "border-w-y",
       "border-w-s",
       "border-w-e",
+      "border-w-bs",
+      "border-w-be",
       "border-w-t",
       "border-w-r",
       "border-w-b",
@@ -5433,6 +5975,8 @@ declare const getDefaultConfig: () => {
       "border-color-y",
       "border-color-s",
       "border-color-e",
+      "border-color-bs",
+      "border-color-be",
       "border-color-t",
       "border-color-r",
       "border-color-b",
@@ -5456,6 +6000,8 @@ declare const getDefaultConfig: () => {
       "scroll-my",
       "scroll-ms",
       "scroll-me",
+      "scroll-mbs",
+      "scroll-mbe",
       "scroll-mt",
       "scroll-mr",
       "scroll-mb",
@@ -5468,6 +6014,8 @@ declare const getDefaultConfig: () => {
       "scroll-py",
       "scroll-ps",
       "scroll-pe",
+      "scroll-pbs",
+      "scroll-pbe",
       "scroll-pt",
       "scroll-pr",
       "scroll-pb",
@@ -5483,6 +6031,7 @@ declare const getDefaultConfig: () => {
   readonly conflictingClassGroupModifiers: {
     readonly "font-size": readonly ["leading"];
   };
+  readonly postfixLookupClassGroups: readonly ["container-type"];
   readonly orderSensitiveModifiers: [
     "*",
     "**",
@@ -5547,10 +6096,13 @@ declare const isPercent: (value: string) => boolean;
 declare const isTshirtSize: (value: string) => boolean;
 declare const isAny: () => boolean;
 declare const isAnyNonArbitrary: (value: string) => boolean;
+declare const isNamedContainerQuery: (value: string) => boolean;
 declare const isArbitrarySize: (value: string) => boolean;
 declare const isArbitraryValue: (value: string) => boolean;
 declare const isArbitraryLength: (value: string) => boolean;
 declare const isArbitraryNumber: (value: string) => boolean;
+declare const isArbitraryWeight: (value: string) => boolean;
+declare const isArbitraryFamilyName: (value: string) => boolean;
 declare const isArbitraryPosition: (value: string) => boolean;
 declare const isArbitraryImage: (value: string) => boolean;
 declare const isArbitraryShadow: (value: string) => boolean;
@@ -5561,9 +6113,11 @@ declare const isArbitraryVariablePosition: (value: string) => boolean;
 declare const isArbitraryVariableSize: (value: string) => boolean;
 declare const isArbitraryVariableImage: (value: string) => boolean;
 declare const isArbitraryVariableShadow: (value: string) => boolean;
+declare const isArbitraryVariableWeight: (value: string) => boolean;
 
 declare const validators_d_isAny: typeof isAny;
 declare const validators_d_isAnyNonArbitrary: typeof isAnyNonArbitrary;
+declare const validators_d_isArbitraryFamilyName: typeof isArbitraryFamilyName;
 declare const validators_d_isArbitraryImage: typeof isArbitraryImage;
 declare const validators_d_isArbitraryLength: typeof isArbitraryLength;
 declare const validators_d_isArbitraryNumber: typeof isArbitraryNumber;
@@ -5578,8 +6132,11 @@ declare const validators_d_isArbitraryVariableLength: typeof isArbitraryVariable
 declare const validators_d_isArbitraryVariablePosition: typeof isArbitraryVariablePosition;
 declare const validators_d_isArbitraryVariableShadow: typeof isArbitraryVariableShadow;
 declare const validators_d_isArbitraryVariableSize: typeof isArbitraryVariableSize;
+declare const validators_d_isArbitraryVariableWeight: typeof isArbitraryVariableWeight;
+declare const validators_d_isArbitraryWeight: typeof isArbitraryWeight;
 declare const validators_d_isFraction: typeof isFraction;
 declare const validators_d_isInteger: typeof isInteger;
+declare const validators_d_isNamedContainerQuery: typeof isNamedContainerQuery;
 declare const validators_d_isNumber: typeof isNumber;
 declare const validators_d_isPercent: typeof isPercent;
 declare const validators_d_isTshirtSize: typeof isTshirtSize;
@@ -5587,6 +6144,7 @@ declare namespace validators_d {
   export {
     validators_d_isAny as isAny,
     validators_d_isAnyNonArbitrary as isAnyNonArbitrary,
+    validators_d_isArbitraryFamilyName as isArbitraryFamilyName,
     validators_d_isArbitraryImage as isArbitraryImage,
     validators_d_isArbitraryLength as isArbitraryLength,
     validators_d_isArbitraryNumber as isArbitraryNumber,
@@ -5601,8 +6159,11 @@ declare namespace validators_d {
     validators_d_isArbitraryVariablePosition as isArbitraryVariablePosition,
     validators_d_isArbitraryVariableShadow as isArbitraryVariableShadow,
     validators_d_isArbitraryVariableSize as isArbitraryVariableSize,
+    validators_d_isArbitraryVariableWeight as isArbitraryVariableWeight,
+    validators_d_isArbitraryWeight as isArbitraryWeight,
     validators_d_isFraction as isFraction,
     validators_d_isInteger as isInteger,
+    validators_d_isNamedContainerQuery as isNamedContainerQuery,
     validators_d_isNumber as isNumber,
     validators_d_isPercent as isPercent,
     validators_d_isTshirtSize as isTshirtSize,

@@ -5,7 +5,10 @@ import { Router } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import { App } from "@/components/app";
 
-createRoot(document.getElementById("root")).render(
+const rootEl = document.getElementById("root");
+if (!rootEl) throw new Error("Missing #root mount element");
+
+createRoot(rootEl).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="light">
       <Router base={__ROOT_PATH__}>

@@ -6,7 +6,7 @@ Set versions in `package.json` and run:
 npm run update
 ```
 
-A few dependencies need additional steps to update the types. See commented-out lines in update.js.
+A few dependencies need additional steps to update the types. See commented-out lines in update.ts.
 
 ## Updating shadcn
 
@@ -15,13 +15,15 @@ To get the shadcn components, it's a bit more work.
 1. Init shadcn from somewhere outside this directory:
 
 ```
-pnpm dlx shadcn@latest init -d
+pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=base&style=vega&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=next&rtl=false" --template next
 ```
 
 2. `cd` to the new folder and add the components:
 
 ```
-pnpm dlx shadcn@latest add accordion alert alert-dialog aspect-ratio avatar badge breadcrumb button button-group calendar card carousel chart checkbox collapsible command context-menu dialog drawer dropdown-menu empty field form hover-card input input-group input-otp item kbd label menubar native-select navigation-menu pagination popover progress radio-group resizable scroll-area select separator sheet sidebar skeleton slider sonner spinner switch table tabs textarea toggle toggle-group tooltip
+pnpm dlx shadcn@latest add accordion alert alert-dialog aspect-ratio avatar badge breadcrumb button button-group calendar card carousel chart checkbox collapsible command context-menu dialog drawer dropdown-menu empty field hover-card input input-group input-otp item kbd label menubar native-select navigation-menu pagination popover progress radio-group resizable scroll-area select separator sheet sidebar skeleton slider sonner spinner switch table tabs textarea toggle toggle-group tooltip
 ```
 
-3. Copy over the contents of `components/ui` to `src`, and possibly also the contents of `lib` and `hooks` (this version of `useMobile` is improved, and these files do not often change). Run `prettier src --write` and `tsc` and fix any type issues. Copy `app/globals.css` over the shadcn globals section in `src/lib/tailwind-config.ts`, leaving the reference to tailwindcss and inlined `tw-animate-css` plugin.
+3. Copy over the contents of `components/ui` to `src`, and possibly also the contents of `lib` and `hooks` (this version of `useMobile` is improved, and these files do not often change). Run `prettier src --write` and `tsc` and fix any type issues. Copy `app/globals.css` over the shadcn globals section in `src/lib/tailwind-config.ts`, and the `shadcn/tailwind.css` import if that file has changed (https://github.com/shadcn-ui/ui/blob/main/packages/shadcn/src/tailwind.css), leaving the reference to tailwindcss and inlined `tw-animate-css` plugin (from https://github.com/Wombosvideo/tw-animate-css/blob/main/src/tw-animate.css).
+
+4. For Base UI, find and replace all paths like "@base-ui/react"]+" to "@base-ui/react".

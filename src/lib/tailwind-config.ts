@@ -9,7 +9,7 @@
 @import "tailwindcss";
 
 :root {
-  --font-geist-sans: "Geist", sans-serif;
+  --font-sans: "Geist", sans-serif;
   --font-geist-mono: "Geist Mono", monospace;
 }
 
@@ -20,109 +20,107 @@
  * @license MIT
  */
 
-:root {
-  /* @property declarations for animation variables, to prevent inheritance */
-  @property --tw-animation-delay {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0s;
-  }
+/* @property declarations for animation variables, to prevent inheritance */
+@property --tw-animation-delay {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0s;
+}
 
-  @property --tw-animation-direction {
-    syntax: "*";
-    inherits: false;
-    initial-value: normal;
-  }
+@property --tw-animation-direction {
+  syntax: "*";
+  inherits: false;
+  initial-value: normal;
+}
 
-  @property --tw-animation-duration {
-    syntax: "*";
-    inherits: false;
-    /* does not have an initial value in order for the \`--tw-duration\` variable to work */
-  }
+@property --tw-animation-duration {
+  syntax: "*";
+  inherits: false;
+  /* does not have an initial value in order for the \`--tw-duration\` variable to work */
+}
 
-  @property --tw-animation-fill-mode {
-    syntax: "*";
-    inherits: false;
-    initial-value: none;
-  }
+@property --tw-animation-fill-mode {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
 
-  @property --tw-animation-iteration-count {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-animation-iteration-count {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-blur {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-opacity {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-enter-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-rotate {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-scale {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-enter-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-enter-translate-x {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-enter-translate-y {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-enter-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-blur {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-opacity {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-exit-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-exit-rotate {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-scale {
-    syntax: "*";
-    inherits: false;
-    initial-value: 1;
-  }
+@property --tw-exit-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 
-  @property --tw-exit-translate-x {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 
-  @property --tw-exit-translate-y {
-    syntax: "*";
-    inherits: false;
-    initial-value: 0;
-  }
+@property --tw-exit-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 @theme inline {
@@ -227,8 +225,10 @@
         --radix-accordion-content-height,
         var(
           --bits-accordion-content-height,
-          var(--reka-accordion-content-height, 
-          var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto)))
+          var(
+            --reka-accordion-content-height,
+            var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto))
+          )
         )
       );
     }
@@ -240,8 +240,10 @@
         --radix-accordion-content-height,
         var(
           --bits-accordion-content-height,
-          var(--reka-accordion-content-height, 
-          var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto)))
+          var(
+            --reka-accordion-content-height,
+            var(--kb-accordion-content-height, var(--ngp-accordion-content-height, auto))
+          )
         )
       );
     }
@@ -599,10 +601,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -632,14 +632,18 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
-  --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -658,11 +662,12 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -692,11 +697,11 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -713,6 +718,108 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/**
+ * \`import @shadcn/tailwind.css\` contents
+ */
+@theme inline {
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(
+        --radix-accordion-content-height,
+        var(--accordion-panel-height, auto)
+      );
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(
+        --radix-accordion-content-height,
+        var(--accordion-panel-height, auto)
+      );
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/* Custom variants */
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-selected {
+  &:where([data-selected="true"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-disabled {
+  &:where([data-disabled="true"]),
+  &:where([data-disabled]:not([data-disabled="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]:not([data-active="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) {
+    @slot;
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

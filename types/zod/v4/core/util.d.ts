@@ -369,6 +369,10 @@ export declare function aborted(
   x: schemas.ParsePayload,
   startIndex?: number,
 ): boolean;
+export declare function explicitlyAborted(
+  x: schemas.ParsePayload,
+  startIndex?: number,
+): boolean;
 export declare function prefixIssues(
   path: PropertyKey,
   issues: errors.$ZodRawIssue[],

@@ -222,12 +222,18 @@ declare namespace React {
 
   type ComponentState = any;
 
+  interface DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_KEY_TYPES {}
+
   /**
    * A value which uniquely identifies a node among items in an array.
    *
    * @see {@link https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key React Docs}
    */
-  type Key = string | number | bigint;
+  type Key =
+    | string
+    | number
+    | bigint
+    | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_KEY_TYPES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_KEY_TYPES];
 
   /**
    * @internal The props any component can receive.
@@ -2008,7 +2014,7 @@ declare namespace React {
    *
    * @param callback A synchronous, void callback that will execute as a single, complete React commit.
    *
-   * @see https://reactjs.org/blog/2019/02/06/react-v16.8.0.html#testing-hooks
+   * @see {@link https://reactjs.org/blog/2019/02/06/react-v16.8.0.html#testing-hooks}
    */
   // NOTES
   // - the order of these signatures matters - typescript will check the signatures in source order.
@@ -2313,7 +2319,7 @@ declare namespace React {
     T,
     NativeSubmitEvent
   > {
-    // Currently not exposed by Reat
+    // `submitter` is available in react@canary
     // submitter: HTMLElement | null;
     // SubmitEvents are always targetted at HTMLFormElements.
     target: EventTarget & HTMLFormElement;
@@ -3059,7 +3065,7 @@ declare namespace React {
 
     // Living Standard
     /**
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert}
      */
     inert?: boolean | undefined;
     /**
@@ -3377,7 +3383,7 @@ declare namespace React {
     alt?: string | undefined;
     crossOrigin?: CrossOrigin;
     decoding?: "async" | "auto" | "sync" | undefined;
-    fetchPriority?: "high" | "low" | "auto";
+    fetchPriority?: "high" | "low" | "auto" | undefined;
     height?: number | string | undefined;
     loading?: "eager" | "lazy" | undefined;
     referrerPolicy?: HTMLAttributeReferrerPolicy | undefined;
@@ -3546,7 +3552,7 @@ declare namespace React {
     as?: string | undefined;
     blocking?: "render" | (string & {}) | undefined;
     crossOrigin?: CrossOrigin;
-    fetchPriority?: "high" | "low" | "auto";
+    fetchPriority?: "high" | "low" | "auto" | undefined;
     href?: string | undefined;
     hrefLang?: string | undefined;
     integrity?: string | undefined;
@@ -3738,7 +3744,7 @@ declare namespace React {
     value?: string | readonly string[] | number | undefined;
     wrap?: string | undefined;
 
-    // No other element dispatching change events can be nested in a <textare>
+    // No other element dispatching change events can be nested in a <textarea>
     // so we know the target will be a HTMLTextAreaElement.
     onChange?: ChangeEventHandler<T, HTMLTextAreaElement> | undefined;
   }

@@ -96,6 +96,7 @@ interface $ZodIssueInvalidUnionNoMatch extends $ZodIssueBase {
   readonly errors: $ZodIssue[][];
   readonly input?: unknown;
   readonly discriminator?: string | undefined;
+  readonly options?: util.Primitive[];
   readonly inclusive?: true;
 }
 interface $ZodIssueInvalidUnionMultipleMatch extends $ZodIssueBase {
