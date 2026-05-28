@@ -12,7 +12,8 @@ import {
   Dirent,
 } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
+import { createRequire } from "module";
 import util from "util";
 import proc from "child_process";
 
@@ -186,76 +187,51 @@ async function buildUmd(
 async function buildBaseUiUmds(tempDir: string, fileName: string) {
   const baseUiDir = path.join(_root, "update/node_modules/@base-ui/react");
 
-  // Get sub-modules from package.json exports
+  // Build ONE monolithic UMD for @base-ui/react so every sub-module shares the
+  // same module instances (React contexts, stores, etc.), preventing
+  // shared-context bugs that arise when each sub-module bundles its own copy.
+  await buildUmd(tempDir, "@base-ui/react", fileName);
+
+  // Get the exported sub-module paths from package.json
   const baseUiPackage: PackageJson = JSON.parse(
     readFileSync(path.join(baseUiDir, "package.json"), "utf8"),
   );
-
-  // Extract sub-module paths from package.json exports
   const subModules: string[] = Object.keys(baseUiPackage.exports || {})
     .filter(
       (key) =>
         key !== "." &&
         key !== "./package.json" &&
         key !== "./esm" &&
-        key !== "./internals/temporal-adapter-luxon",
+        !key.startsWith("./internals/"),
     )
     .map((key) => key.slice(2));
 
-  // Build dependency graph (only for cross-module deps that are actual sub-modules)
-  type BaseUiPackage = string;
-  const dependencyGraph = new Map<BaseUiPackage, BaseUiPackage[]>();
+  // Resolve sub-module exports via Node require so we know which names to
+  // extract from the shared root bundle at runtime.
+  const req = createRequire(
+    pathToFileURL(path.join(_root, "update/update.ts")).href,
+  );
 
+  // Append a lightweight AMD shim per sub-module so the app can import e.g.
+  // `@base-ui/react/accordion` and receive its exports from the shared bundle.
   for (const subModule of subModules) {
-    const indexPath = path.join(baseUiDir, subModule, "index.js");
-    const partsPath = path.join(baseUiDir, subModule, "index.parts.js");
-
-    const content =
-      (existsSync(indexPath) ? readFileSync(indexPath, "utf8") : "") +
-      (existsSync(partsPath) ? readFileSync(partsPath, "utf8") : "");
-
-    // Find cross-module dependencies (require("../<sub-module>/..."))
-    const deps: BaseUiPackage[] = [];
-    for (const other of subModules) {
-      if (other === subModule) continue;
-      if (content.includes(`require("../${other}`)) {
-        deps.push(other);
-      }
+    let exportNames: string[];
+    try {
+      const mod = req(`@base-ui/react/${subModule}`) as Record<string, unknown>;
+      exportNames = Object.keys(mod).filter(
+        (k) => k !== "__esModule" && k !== "default",
+      );
+    } catch {
+      continue;
     }
-    dependencyGraph.set(subModule, deps);
-  }
+    if (exportNames.length === 0) continue;
 
-  // Topological sort
-  function topologicalSort(
-    graph: Map<BaseUiPackage, BaseUiPackage[]>,
-  ): BaseUiPackage[] {
-    const visited = new Set<BaseUiPackage>();
-    const temp = new Set<BaseUiPackage>();
-    const order: BaseUiPackage[] = [];
-
-    function visit(node: BaseUiPackage) {
-      if (temp.has(node)) throw new Error("Circular dependency detected");
-      if (visited.has(node)) return;
-      temp.add(node);
-      for (const dep of graph.get(node) || []) visit(dep);
-      temp.delete(node);
-      visited.add(node);
-      order.push(node);
-    }
-
-    for (const node of graph.keys()) {
-      if (!visited.has(node)) visit(node);
-    }
-
-    return order;
-  }
-
-  const buildOrder = topologicalSort(dependencyGraph);
-
-  // Build each sub-module as UMD, appending to the same output file
-  // Cross-module deps are bundled (not externalized) to handle internal file references
-  for (const packageName of buildOrder) {
-    await buildUmd(tempDir, `@base-ui/react/${packageName}`, fileName);
+    const exportMap = exportNames.map((n) => `"${n}":lib["${n}"]`).join(",");
+    appendFileSync(
+      path.join(_root, "www/js/lib", fileName),
+      `(function(r){if(typeof define==="function"&&define.amd)define("@base-ui/react/${subModule}",["@base-ui/react"],function(lib){return{${exportMap}};});})(this);
+`,
+    );
   }
 }
 
