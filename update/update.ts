@@ -94,6 +94,39 @@ const packageVersions: VersionMap = {
   "radix-ui": radixVersion,
 };
 
+// Build a custom entry that re-exports wouter + wouter/use-hash-location
+// so the single UMD bundle contains all exports needed by the app.
+async function generateWouterEntryFile(tempDir: string): Promise<string> {
+  const entryContent = `
+        import * as Wouter from "wouter";
+        import * as HashLocation from "wouter/use-hash-location";
+
+        // re-export everything from main wouter
+        export const {
+          Link,
+          Redirect,
+          Route,
+          Router,
+          Switch,
+          matchRoute,
+          useLocation,
+          useParams,
+          useRoute,
+          useRouter,
+          useSearch,
+          useSearchParams,
+        } = Wouter;
+
+        // re-export use-hash-location (not in main wouter bundle)
+        export const navigate = HashLocation.navigate;
+        export const useHashLocation = HashLocation.useHashLocation;
+    `;
+
+  const entryFile = path.join(tempDir, "wouter-entry.js");
+  appendFileSync(entryFile, entryContent);
+  return entryFile;
+}
+
 // Helper methods for building UMD bundles
 async function generateReactDomEntryFile(tempDir: string): Promise<string> {
   const entryContent = `
@@ -382,8 +415,16 @@ async function buildUmds() {
     // lucide-react icons
     await buildUmd(tempDir, "lucide-react", "lucide-react.min.js");
 
-    // wouter, zustand, swr
-    await buildUmd(tempDir, "wouter", "extras.min.js");
+    // wouter — custom entry includes use-hash-location exports
+    const wouterEntry = await generateWouterEntryFile(tempDir);
+    await buildUmd(tempDir, "wouter", "extras.min.js", wouterEntry);
+
+    // AMD shim for wouter/use-hash-location (sub-module of the shared wouter bundle)
+    appendFileSync(
+      path.join(_root, "www/js/lib", "extras.min.js"),
+      `(function(r){if(typeof define==="function"&&define.amd)define("wouter/use-hash-location",["wouter"],function(lib){return{"navigate":lib["navigate"],"useHashLocation":lib["useHashLocation"]};});})(this);
+`,
+    );
     await buildUmd(tempDir, "zustand", "extras.min.js");
     await buildUmd(tempDir, "swr", "extras.min.js");
 
