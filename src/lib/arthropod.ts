@@ -7,7 +7,7 @@ const __ROOT_PATH__ =
 function __LOAD_SCRIPT__(src: string, async = false) {
   const dynamicScript = document.createElement("script");
   dynamicScript.type = "text/javascript";
-  dynamicScript.src = src + ".js";
+  dynamicScript.src = src.endsWith(".js") ? src : src + ".js";
   dynamicScript.async = async;
   document.body.appendChild(dynamicScript);
 }
