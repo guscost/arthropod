@@ -1,6 +1,6 @@
 import * as React from "react";
 
-declare const NODES$3: readonly [
+declare const NODES: readonly [
   "a",
   "button",
   "div",
@@ -19,21 +19,19 @@ declare const NODES$3: readonly [
   "svg",
   "ul",
 ];
-type Primitives$3 = {
-  [E in (typeof NODES$3)[number]]: PrimitiveForwardRefComponent$3<E>;
+type Primitives = {
+  [E in (typeof NODES)[number]]: PrimitiveForwardRefComponent<E>;
 };
-type PrimitivePropsWithRef$3<E extends React.ElementType> =
+type PrimitivePropsWithRef<E extends React.ElementType> =
   React.ComponentPropsWithRef<E> & {
     asChild?: boolean;
   };
-interface PrimitiveForwardRefComponent$3<
+interface PrimitiveForwardRefComponent<
   E extends React.ElementType,
-> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$3<E>> {}
-declare const Primitive$3: Primitives$3;
+> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
+declare const Primitive: Primitives;
 
-type PrimitiveDivProps$3 = React.ComponentPropsWithoutRef<
-  typeof Primitive$3.div
->;
+type PrimitiveDivProps$3 = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface DismissableLayerProps$1 extends PrimitiveDivProps$3 {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside
@@ -79,40 +77,7 @@ type FocusOutsideEvent = CustomEvent<{
   originalEvent: FocusEvent;
 }>;
 
-declare const NODES$2: readonly [
-  "a",
-  "button",
-  "div",
-  "form",
-  "h2",
-  "h3",
-  "img",
-  "input",
-  "label",
-  "li",
-  "nav",
-  "ol",
-  "p",
-  "select",
-  "span",
-  "svg",
-  "ul",
-];
-type Primitives$2 = {
-  [E in (typeof NODES$2)[number]]: PrimitiveForwardRefComponent$2<E>;
-};
-type PrimitivePropsWithRef$2<E extends React.ElementType> =
-  React.ComponentPropsWithRef<E> & {
-    asChild?: boolean;
-  };
-interface PrimitiveForwardRefComponent$2<
-  E extends React.ElementType,
-> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$2<E>> {}
-declare const Primitive$2: Primitives$2;
-
-type PrimitiveDivProps$2 = React.ComponentPropsWithoutRef<
-  typeof Primitive$2.div
->;
+type PrimitiveDivProps$2 = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface FocusScopeProps$1 extends PrimitiveDivProps$2 {
   /**
    * When `true`, tabbing from last item will focus first tabbable
@@ -141,40 +106,7 @@ declare const FocusScope: React.ForwardRefExoticComponent<
   FocusScopeProps$1 & React.RefAttributes<HTMLDivElement>
 >;
 
-declare const NODES$1: readonly [
-  "a",
-  "button",
-  "div",
-  "form",
-  "h2",
-  "h3",
-  "img",
-  "input",
-  "label",
-  "li",
-  "nav",
-  "ol",
-  "p",
-  "select",
-  "span",
-  "svg",
-  "ul",
-];
-type Primitives$1 = {
-  [E in (typeof NODES$1)[number]]: PrimitiveForwardRefComponent$1<E>;
-};
-type PrimitivePropsWithRef$1<E extends React.ElementType> =
-  React.ComponentPropsWithRef<E> & {
-    asChild?: boolean;
-  };
-interface PrimitiveForwardRefComponent$1<
-  E extends React.ElementType,
-> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef$1<E>> {}
-declare const Primitive$1: Primitives$1;
-
-type PrimitiveDivProps$1 = React.ComponentPropsWithoutRef<
-  typeof Primitive$1.div
->;
+type PrimitiveDivProps$1 = React.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface PortalProps$2 extends PrimitiveDivProps$1 {
   /**
    * An optional container where the portaled content should be appended.
@@ -184,37 +116,6 @@ interface PortalProps$2 extends PrimitiveDivProps$1 {
 declare const Portal$2: React.ForwardRefExoticComponent<
   PortalProps$2 & React.RefAttributes<HTMLDivElement>
 >;
-
-declare const NODES: readonly [
-  "a",
-  "button",
-  "div",
-  "form",
-  "h2",
-  "h3",
-  "img",
-  "input",
-  "label",
-  "li",
-  "nav",
-  "ol",
-  "p",
-  "select",
-  "span",
-  "svg",
-  "ul",
-];
-type Primitives = {
-  [E in (typeof NODES)[number]]: PrimitiveForwardRefComponent<E>;
-};
-type PrimitivePropsWithRef<E extends React.ElementType> =
-  React.ComponentPropsWithRef<E> & {
-    asChild?: boolean;
-  };
-interface PrimitiveForwardRefComponent<
-  E extends React.ElementType,
-> extends React.ForwardRefExoticComponent<PrimitivePropsWithRef<E>> {}
-declare const Primitive: Primitives;
 
 type PrimitiveButtonProps = React.ComponentPropsWithoutRef<
   typeof Primitive.button

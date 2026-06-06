@@ -1,4 +1,5 @@
 import { AnyFormApi, FormValidators } from "./FormApi";
+import { AnyFormGroupApi } from "./FormGroupApi";
 export interface ValidationLogicValidatorsFn {
   fn: FormValidators<
     any,
@@ -16,6 +17,12 @@ export interface ValidationLogicValidatorsFn {
 }
 export interface ValidationLogicProps {
   form: AnyFormApi;
+  /**
+   * Set when the validators being processed belong to a `FormGroupApi`.
+   * Allows validation strategies (e.g. `revalidateLogic`) to gate their
+   * behavior on the group's own state instead of the parent form's.
+   */
+  group?: AnyFormGroupApi;
   validators:
     | FormValidators<any, any, any, any, any, any, any, any, any, any>
     | undefined

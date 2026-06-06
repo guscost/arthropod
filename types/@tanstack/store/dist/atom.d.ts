@@ -1,11 +1,13 @@
 import { Atom, AtomOptions, Observer, ReadonlyAtom } from "./types";
-export declare function toObserver<T>(
+
+//#region src/atom.d.ts
+declare function toObserver<T>(
   nextHandler?: Observer<T> | ((value: T) => void),
   errorHandler?: (error: any) => void,
   completionHandler?: () => void,
 ): Observer<T>;
-export declare function batch(fn: () => void): void;
-export declare function flush(): void;
+declare function batch(fn: () => void): void;
+declare function flush(): void;
 type AsyncAtomState<TData, TError = unknown> =
   | {
       status: "pending";
@@ -18,16 +20,18 @@ type AsyncAtomState<TData, TError = unknown> =
       status: "error";
       error: TError;
     };
-export declare function createAsyncAtom<T>(
+declare function createAsyncAtom<T>(
   getValue: () => Promise<T>,
   options?: AtomOptions<AsyncAtomState<T>>,
 ): ReadonlyAtom<AsyncAtomState<T>>;
-export declare function createAtom<T>(
+declare function createAtom<T>(
   getValue: (prev?: NoInfer<T>) => T,
   options?: AtomOptions<T>,
 ): ReadonlyAtom<T>;
-export declare function createAtom<T>(
+declare function createAtom<T>(
   initialValue: T,
   options?: AtomOptions<T>,
 ): Atom<T>;
-export {};
+//#endregion
+export { batch, createAsyncAtom, createAtom, flush, toObserver };
+//# sourceMappingURL=atom.d.ts.map

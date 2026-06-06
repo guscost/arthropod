@@ -1,5 +1,10 @@
 import * as React from "react";
 
+declare module "react" {
+  interface ReactElement {
+    $$typeof?: symbol | string;
+  }
+}
 interface SlotProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
 }
@@ -11,9 +16,14 @@ declare function createSlot(
 declare const Slot: React.ForwardRefExoticComponent<
   SlotProps & React.RefAttributes<HTMLElement>
 >;
-interface SlottableProps {
+type SlottableChildrenProps = {
   children: React.ReactNode;
-}
+};
+type SlottableRenderFnProps = {
+  child: React.ReactNode;
+  children: (slottable: React.ReactNode) => React.ReactNode;
+};
+type SlottableProps = SlottableRenderFnProps | SlottableChildrenProps;
 interface SlottableComponent extends React.FC<SlottableProps> {
   __radixId: symbol;
 }

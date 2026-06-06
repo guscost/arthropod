@@ -79,6 +79,7 @@ export declare function getSyncValidatorArray<T>(
   options: SyncValidatorArrayPartialOptions<T> & {
     validationLogic?: any;
     form?: any;
+    group?: any;
     fieldName?: string;
   },
 ): T extends FieldValidators<
@@ -123,6 +124,7 @@ export declare function getAsyncValidatorArray<T>(
   options: AsyncValidatorArrayPartialOptions<T> & {
     validationLogic?: any;
     form?: any;
+    group?: any;
     fieldName?: string;
   },
 ): T extends FieldValidators<
@@ -205,4 +207,11 @@ export declare function mergeOpts<T>(
 export declare function uuid(): string;
 export declare const throttleFormState: (form: AnyFormApi) => void;
 export declare function deepCopy<T>(obj: T): T;
+/**
+ * @private
+ */
+export declare function isFieldInGroup(
+  groupName: string,
+  fieldName: string,
+): boolean;
 export {};

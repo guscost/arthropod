@@ -5,6 +5,7 @@ import {
   FormState,
   FormValidateOrFn,
 } from "@tanstack/form-core";
+import { FormGroupComponent } from "./useFormGroup";
 import { FunctionComponent, ReactNode } from "react";
 import { FieldComponent } from "./useField";
 /**
@@ -28,6 +29,20 @@ export interface ReactFormApi<
    * A React component to render form fields. With this, you can render and manage individual form fields.
    */
   Field: FieldComponent<
+    TFormData,
+    TOnMount,
+    TOnChange,
+    TOnChangeAsync,
+    TOnBlur,
+    TOnBlurAsync,
+    TOnSubmit,
+    TOnSubmitAsync,
+    TOnDynamic,
+    TOnDynamicAsync,
+    TOnServer,
+    TSubmitMeta
+  >;
+  FormGroup: FormGroupComponent<
     TFormData,
     TOnMount,
     TOnChange,

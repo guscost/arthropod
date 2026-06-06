@@ -1,7 +1,7 @@
 import { FormApi, FormAsyncValidateOrFn, FormValidateOrFn } from "./FormApi";
-import { AnyFieldMeta } from "./FieldApi";
 import { DeepKeys } from "./util-types";
-export declare const defaultFieldMeta: AnyFieldMeta;
+import { AnyFieldLikeMeta } from "./types";
+export declare const defaultFieldMeta: AnyFieldLikeMeta;
 export declare function metaHelper<
   TFormData,
   TOnMount extends undefined | FormValidateOrFn<TFormData>,

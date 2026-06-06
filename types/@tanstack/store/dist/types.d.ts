@@ -1,17 +1,19 @@
 import { ReactiveNode } from "./alien";
-export type Selection<TSelected> = Readable<TSelected>;
-export interface InteropSubscribable<T> {
+
+//#region src/types.d.ts
+type Selection<TSelected> = Readable<TSelected>;
+interface InteropSubscribable<T> {
   subscribe: (observer: Observer<T>) => Subscription;
 }
-export type Observer<T> = {
+type Observer<T> = {
   next?: (value: T) => void;
   error?: (err: unknown) => void;
   complete?: () => void;
 };
-export interface Subscription {
+interface Subscription {
   unsubscribe: () => void;
 }
-export interface Subscribable<T> extends InteropSubscribable<T> {
+interface Subscribable<T> extends InteropSubscribable<T> {
   subscribe: ((observer: Observer<T>) => Subscription) &
     ((
       next: (value: T) => void,
@@ -19,26 +21,25 @@ export interface Subscribable<T> extends InteropSubscribable<T> {
       complete?: () => void,
     ) => Subscription);
 }
-export interface Readable<T> extends Subscribable<T> {
+interface Readable<T> extends Subscribable<T> {
   get: () => T;
 }
-export interface BaseAtom<T> extends Subscribable<T>, Readable<T> {}
-export interface InternalBaseAtom<T> extends Subscribable<T>, Readable<T> {
+interface BaseAtom<T> extends Subscribable<T>, Readable<T> {}
+interface InternalBaseAtom<T> extends Subscribable<T>, Readable<T> {
   /** @internal */
   _snapshot: T;
   /** @internal */
   _update: (getValue?: T | ((snapshot: T) => T)) => boolean;
 }
-export interface Atom<T> extends BaseAtom<T> {
+interface Atom<T> extends BaseAtom<T> {
   /** Sets the value of the atom using a function. */
   set: ((fn: (prevVal: T) => T) => void) & ((value: T) => void);
 }
-export interface AtomOptions<T> {
+interface AtomOptions<T> {
   compare?: (prev: T, next: T) => boolean;
 }
-export type AnyAtom = BaseAtom<any>;
-export interface InternalReadonlyAtom<T>
-  extends InternalBaseAtom<T>, ReactiveNode {}
+type AnyAtom = BaseAtom<any>;
+interface InternalReadonlyAtom<T> extends InternalBaseAtom<T>, ReactiveNode {}
 /**
  * An atom that is read-only and cannot be set.
  *
@@ -50,4 +51,21 @@ export interface InternalReadonlyAtom<T>
  * atom.set(43);
  * ```
  */
-export interface ReadonlyAtom<T> extends BaseAtom<T> {}
+interface ReadonlyAtom<T> extends BaseAtom<T> {}
+//#endregion
+export {
+  AnyAtom,
+  Atom,
+  AtomOptions,
+  BaseAtom,
+  InternalBaseAtom,
+  InternalReadonlyAtom,
+  InteropSubscribable,
+  Observer,
+  Readable,
+  ReadonlyAtom,
+  Selection,
+  Subscribable,
+  Subscription,
+};
+//# sourceMappingURL=types.d.ts.map

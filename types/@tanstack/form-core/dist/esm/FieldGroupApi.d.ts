@@ -1,9 +1,14 @@
+import {
+  AnyFieldLikeMetaBase,
+  FormLikeAPI,
+  UpdateMetaOptions,
+  ValidationCause,
+} from "./types";
 import { ReadonlyStore } from "@tanstack/store";
 import { Updater } from "./utils";
 import { FormApi, FormAsyncValidateOrFn, FormValidateOrFn } from "./FormApi";
-import { AnyFieldMetaBase, FieldOptions } from "./FieldApi";
+import { FieldOptions } from "./FieldApi";
 import { DeepKeys, DeepKeysOfType, DeepValue, FieldsMap } from "./util-types";
-import { FieldManipulator, UpdateMetaOptions, ValidationCause } from "./types";
 export type AnyFieldGroupApi = FieldGroupApi<
   any,
   any,
@@ -108,7 +113,7 @@ export declare class FieldGroupApi<
   in out TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
   in out TOnServer extends undefined | FormAsyncValidateOrFn<TFormData>,
   in out TSubmitMeta = never,
-> implements FieldManipulator<TFieldGroupData, TSubmitMeta> {
+> implements FormLikeAPI<TFieldGroupData, TSubmitMeta> {
   /**
    * The form that called this field group.
    */
@@ -218,13 +223,13 @@ export declare class FieldGroupApi<
    */
   getFieldMeta: <TField extends DeepKeys<TFieldGroupData>>(
     field: TField,
-  ) => import("./FieldApi.js").AnyFieldMeta | undefined;
+  ) => import("./types.js").AnyFieldLikeMeta | undefined;
   /**
    * Updates the metadata of the specified field.
    */
   setFieldMeta: <TField extends DeepKeys<TFieldGroupData>>(
     field: TField,
-    updater: Updater<AnyFieldMetaBase>,
+    updater: Updater<AnyFieldLikeMetaBase>,
   ) => void;
   /**
    * Sets the value of the specified field and optionally updates the touched state.

@@ -754,12 +754,12 @@ async function buildTypes() {
       path.join(_root, "update/node_modules/@tanstack/form-core/dist/esm"),
       path.join(_root, "types/@tanstack/form-core/dist/esm"),
     );
-    mkdirSync(path.join(_root, "types/@tanstack/react-store/dist/esm"), {
+    mkdirSync(path.join(_root, "types/@tanstack/react-store/dist"), {
       recursive: true,
     });
     copyTypesPreservingStructure(
-      path.join(_root, "update/node_modules/@tanstack/react-store/dist/esm"),
-      path.join(_root, "types/@tanstack/react-store/dist/esm"),
+      path.join(_root, "update/node_modules/@tanstack/react-store/dist"),
+      path.join(_root, "types/@tanstack/react-store/dist"),
     );
     // Create package-level entry points so tsconfig path resolution works
     appendFileSync(
@@ -772,19 +772,19 @@ async function buildTypes() {
     );
     appendFileSync(
       path.join(_root, "types/@tanstack/react-store/index.d.ts"),
-      "export * from './dist/esm/index';\n",
+      "export * from './dist/index';\n",
     );
     // @tanstack/store — dependency of form-core and react-store
-    mkdirSync(path.join(_root, "types/@tanstack/store/dist/esm"), {
+    mkdirSync(path.join(_root, "types/@tanstack/store/dist"), {
       recursive: true,
     });
     copyTypesPreservingStructure(
-      path.join(_root, "update/node_modules/@tanstack/store/dist/esm"),
-      path.join(_root, "types/@tanstack/store/dist/esm"),
+      path.join(_root, "update/node_modules/@tanstack/store/dist"),
+      path.join(_root, "types/@tanstack/store/dist"),
     );
     appendFileSync(
       path.join(_root, "types/@tanstack/store/index.d.ts"),
-      "export * from './dist/esm/index';\n",
+      "export * from './dist/index';\n",
     );
     // @tanstack/devtools-event-client — dependency of form-core
     mkdirSync(

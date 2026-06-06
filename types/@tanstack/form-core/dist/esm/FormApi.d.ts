@@ -1,19 +1,9 @@
-import { ReadonlyStore, Store } from "@tanstack/store";
-import { ValidationLogicFn } from "./ValidationLogic";
 import {
-  StandardSchemaV1,
-  StandardSchemaV1Issue,
-  TStandardSchemaValidatorValue,
-} from "./standardSchemaValidator";
-import {
-  AnyFieldApi,
-  AnyFieldMeta,
-  AnyFieldMetaBase,
-  FieldApi,
-} from "./FieldApi";
-import {
+  AnyFieldLikeMeta,
+  AnyFieldLikeMetaBase,
   ExtractGlobalFormError,
-  FieldManipulator,
+  FieldInfo,
+  FormLikeAPI,
   FormValidationError,
   FormValidationErrorMap,
   ListenerCause,
@@ -23,6 +13,19 @@ import {
   ValidationErrorMap,
   ValidationErrorMapKeys,
 } from "./types";
+import { ReadonlyStore, Store } from "@tanstack/store";
+import { ValidationLogicFn } from "./ValidationLogic";
+import {
+  StandardSchemaV1,
+  StandardSchemaV1Issue,
+  TStandardSchemaValidatorValue,
+} from "./standardSchemaValidator";
+import { AnyFieldApi } from "./FieldApi";
+import {
+  AnyFormGroupApi,
+  AnyFormGroupMeta,
+  FormGroupState,
+} from "./FormGroupApi";
 import {
   DeepKeys,
   DeepKeysOfType,
@@ -184,6 +187,66 @@ export interface FormValidators<
   onDynamicAsync?: TOnDynamicAsync;
   onDynamicAsyncDebounceMs?: number;
 }
+interface FormListenersPropsGroup<
+  TFormData,
+  TOnMount extends undefined | FormValidateOrFn<TFormData>,
+  TOnChange extends undefined | FormValidateOrFn<TFormData>,
+  TOnChangeAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnBlur extends undefined | FormValidateOrFn<TFormData>,
+  TOnBlurAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnSubmit extends undefined | FormValidateOrFn<TFormData>,
+  TOnSubmitAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnDynamic extends undefined | FormValidateOrFn<TFormData>,
+  TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnServer extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TSubmitMeta = never,
+> {
+  formApi: FormApi<
+    TFormData,
+    TOnMount,
+    TOnChange,
+    TOnChangeAsync,
+    TOnBlur,
+    TOnBlurAsync,
+    TOnSubmit,
+    TOnSubmitAsync,
+    TOnDynamic,
+    TOnDynamicAsync,
+    TOnServer,
+    TSubmitMeta
+  >;
+  groupApi: AnyFormGroupApi;
+}
+interface FormListenersPropsField<
+  TFormData,
+  TOnMount extends undefined | FormValidateOrFn<TFormData>,
+  TOnChange extends undefined | FormValidateOrFn<TFormData>,
+  TOnChangeAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnBlur extends undefined | FormValidateOrFn<TFormData>,
+  TOnBlurAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnSubmit extends undefined | FormValidateOrFn<TFormData>,
+  TOnSubmitAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnDynamic extends undefined | FormValidateOrFn<TFormData>,
+  TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TOnServer extends undefined | FormAsyncValidateOrFn<TFormData>,
+  TSubmitMeta = never,
+> {
+  formApi: FormApi<
+    TFormData,
+    TOnMount,
+    TOnChange,
+    TOnChangeAsync,
+    TOnBlur,
+    TOnBlurAsync,
+    TOnSubmit,
+    TOnSubmitAsync,
+    TOnDynamic,
+    TOnDynamicAsync,
+    TOnServer,
+    TSubmitMeta
+  >;
+  fieldApi: AnyFieldApi;
+}
 export interface FormListeners<
   TFormData,
   TOnMount extends undefined | FormValidateOrFn<TFormData>,
@@ -198,8 +261,8 @@ export interface FormListeners<
   TOnServer extends undefined | FormAsyncValidateOrFn<TFormData>,
   TSubmitMeta = never,
 > {
-  onChange?: (props: {
-    formApi: FormApi<
+  onChange?: (
+    props: FormListenersPropsField<
       TFormData,
       TOnMount,
       TOnChange,
@@ -212,10 +275,26 @@ export interface FormListeners<
       TOnDynamicAsync,
       TOnServer,
       TSubmitMeta
-    >;
-    fieldApi: AnyFieldApi;
-  }) => void;
+    >,
+  ) => void;
   onChangeDebounceMs?: number;
+  onChangeGroup?: (
+    props: FormListenersPropsGroup<
+      TFormData,
+      TOnMount,
+      TOnChange,
+      TOnChangeAsync,
+      TOnBlur,
+      TOnBlurAsync,
+      TOnSubmit,
+      TOnSubmitAsync,
+      TOnDynamic,
+      TOnDynamicAsync,
+      TOnServer,
+      TSubmitMeta
+    >,
+  ) => void;
+  onChangeGroupDebounceMs?: number;
   onBlur?: (props: {
     formApi: FormApi<
       TFormData,
@@ -267,8 +346,8 @@ export interface FormListeners<
     >;
     meta: TSubmitMeta;
   }) => void;
-  onFieldUnmount?: (props: {
-    formApi: FormApi<
+  onFieldUnmount?: (
+    props: FormListenersPropsField<
       TFormData,
       TOnMount,
       TOnChange,
@@ -281,9 +360,24 @@ export interface FormListeners<
       TOnDynamicAsync,
       TOnServer,
       TSubmitMeta
-    >;
-    fieldApi: AnyFieldApi;
-  }) => void;
+    >,
+  ) => void;
+  onGroupUnmount?: (
+    props: FormListenersPropsGroup<
+      TFormData,
+      TOnMount,
+      TOnChange,
+      TOnChangeAsync,
+      TOnBlur,
+      TOnBlurAsync,
+      TOnSubmit,
+      TOnSubmitAsync,
+      TOnDynamic,
+      TOnDynamicAsync,
+      TOnServer,
+      TSubmitMeta
+    >,
+  ) => void;
 }
 /**
  * An object representing the base properties of a form, unrelated to any validators
@@ -450,43 +544,6 @@ export type ValidationMeta = {
   lastAbortController: AbortController;
 };
 /**
- * An object representing the field information for a specific field within the form.
- */
-export type FieldInfo<TFormData> = {
-  /**
-   * An instance of the FieldAPI.
-   */
-  instance: FieldApi<
-    TFormData,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any,
-    any
-  > | null;
-  /**
-   * A record of field validation internal handling.
-   */
-  validationMetaMap: Record<ValidationErrorMapKeys, ValidationMeta | undefined>;
-};
-/**
  * An object representing the current state of the form.
  */
 export type BaseFormState<
@@ -528,7 +585,14 @@ export type BaseFormState<
   /**
    * A record of field metadata for each field in the form, not including the derived properties, like `errors` and such
    */
-  fieldMetaBase: Partial<Record<DeepKeys<TFormData>, AnyFieldMetaBase>>;
+  fieldMetaBase: Partial<Record<DeepKeys<TFormData>, AnyFieldLikeMetaBase>>;
+  /**
+   * A record of submission lifecycle state for each mounted `FormGroupApi`,
+   * keyed by the group's fully-qualified field name. Stored on the form so
+   * group-level state can be read from `FormApi` without having to walk the
+   * mounted group instances.
+   */
+  formGroupStateBase: Partial<Record<string, FormGroupState>>;
   /**
    * A boolean indicating if the form is currently in the process of being submitted after `handleSubmit` is called.
    *
@@ -657,7 +721,7 @@ export type DerivedFormState<
   /**
    * A record of field metadata for each field in the form.
    */
-  fieldMeta: Partial<Record<DeepKeys<TFormData>, AnyFieldMeta>>;
+  fieldMeta: Partial<Record<DeepKeys<TFormData>, AnyFieldLikeMeta>>;
 };
 export interface FormState<
   in out TFormData,
@@ -731,6 +795,11 @@ export type AnyFormApi = FormApi<
   any,
   any
 >;
+interface ValidateOpts<TFormData> {
+  dontUpdateFormErrorMap?: boolean;
+  filterFieldNames?: (fieldName: DeepKeys<TFormData>) => boolean;
+  group?: AnyFormGroupApi;
+}
 /**
  * We cannot use methods and must use arrow functions. Otherwise, our React adapters
  * will break due to loss of the method when using spread.
@@ -755,7 +824,7 @@ export declare class FormApi<
   in out TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TFormData>,
   in out TOnServer extends undefined | FormAsyncValidateOrFn<TFormData>,
   in out TSubmitMeta = never,
-> implements FieldManipulator<TFormData, TSubmitMeta> {
+> implements FormLikeAPI<TFormData, TSubmitMeta> {
   /**
    * The options for the form.
    */
@@ -803,6 +872,14 @@ export declare class FormApi<
       TOnServer
     >["fieldMeta"]
   >;
+  /**
+   * A derived store of every mounted `FormGroupApi`'s `meta`, keyed by
+   * group name. Mirrors `fieldMetaDerived` for fields: per-group `meta`
+   * is computed once on the form (from `baseStore.formGroupStateBase`,
+   * `fieldMetaDerived`, and the registered `formGroupApis`) so reads
+   * from a `FormGroupApi.store` instance stay minimal.
+   */
+  formGroupMetaDerived: ReadonlyStore<Record<string, AnyFormGroupMeta>>;
   store: ReadonlyStore<
     FormState<
       TFormData,
@@ -822,6 +899,12 @@ export declare class FormApi<
    * A record of field information for each field in the form.
    */
   fieldInfo: Partial<Record<DeepKeys<TFormData>, FieldInfo<TFormData>>>;
+  /**
+   * The set of currently-mounted `FormGroupApi` instances belonging to
+   * this form. Used by `FieldApi.validate` to cascade field-level changes
+   * into the validators of any group that encompasses the field.
+   */
+  formGroupApis: Set<AnyFormGroupApi>;
   get state(): FormState<
     TFormData,
     TOnMount,
@@ -945,7 +1028,10 @@ export declare class FormApi<
    * TODO: This code is copied from FieldApi, we should refactor to share
    * @private
    */
-  validateSync: (cause: ValidationCause) => {
+  validateSync: (
+    cause: ValidationCause,
+    validateOpts?: ValidateOpts<TFormData>,
+  ) => {
     hasErrored: boolean;
     fieldsErrorMap: FormErrorMapFromValidator<
       TFormData,
@@ -965,6 +1051,7 @@ export declare class FormApi<
    */
   validateAsync: (
     cause: ValidationCause,
+    validateOpts?: ValidateOpts<TFormData>,
   ) => Promise<
     FormErrorMapFromValidator<
       TFormData,
@@ -984,6 +1071,7 @@ export declare class FormApi<
    */
   validate: (
     cause: ValidationCause,
+    validateOpts?: ValidateOpts<TFormData>,
   ) =>
     | FormErrorMapFromValidator<
         TFormData,
@@ -1028,7 +1116,13 @@ export declare class FormApi<
    */
   getFieldMeta: <TField extends DeepKeys<TFormData>>(
     field: TField,
-  ) => AnyFieldMeta | undefined;
+  ) => AnyFieldLikeMeta | undefined;
+  /**
+   * Gets the derived `meta` of the form group registered at the given
+   * name. Mirrors `getFieldMeta` for fields. Returns `undefined` if no
+   * `FormGroupApi` with that name is currently mounted.
+   */
+  getFormGroupMeta: (name: string) => AnyFormGroupMeta | undefined;
   /**
    * Gets the field info of the specified field.
    */
@@ -1040,14 +1134,14 @@ export declare class FormApi<
    */
   setFieldMeta: <TField extends DeepKeys<TFormData>>(
     field: TField,
-    updater: Updater<AnyFieldMetaBase>,
+    updater: Updater<AnyFieldLikeMetaBase>,
   ) => void;
   /**
    * resets every field's meta
    */
   resetFieldMeta: <TField extends DeepKeys<TFormData>>(
-    fieldMeta: Partial<Record<TField, AnyFieldMeta>>,
-  ) => Partial<Record<TField, AnyFieldMeta>>;
+    fieldMeta: Partial<Record<TField, AnyFieldLikeMeta>>,
+  ) => Partial<Record<TField, AnyFieldLikeMeta>>;
   /**
    * Sets the value of the specified field and optionally updates the touched state.
    */
